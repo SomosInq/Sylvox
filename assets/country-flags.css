@@ -1,6 +1,6 @@
 .country-flags {
-  background: -webkit-image-set(url("//www.ottocast.com/cdn/shop/t/71/assets/country-flags.png?v=37230036826556269641742201233") 1x, url("//www.ottocast.com/cdn/shop/t/71/assets/country-flags-2x.png?v=119388446682176363021742201233") 2x) no-repeat top left;
-  background: image-set(url("//www.ottocast.com/cdn/shop/t/71/assets/country-flags.png?v=37230036826556269641742201233") 1x, url("//www.ottocast.com/cdn/shop/t/71/assets/country-flags-2x.png?v=119388446682176363021742201233") 2x) no-repeat top left;
+  background: -webkit-image-set(url("//sylvoxtv.com/cdn/shop/t/109/assets/country-flags.png?v=37230036826556269641746537993") 1x, url("//sylvoxtv.com/cdn/shop/t/109/assets/country-flags-2x.png?v=119388446682176363021746537992") 2x) no-repeat top left;
+  background: image-set(url("//sylvoxtv.com/cdn/shop/t/109/assets/country-flags.png?v=37230036826556269641746537993") 1x, url("//sylvoxtv.com/cdn/shop/t/109/assets/country-flags-2x.png?v=119388446682176363021746537992") 2x) no-repeat top left;
   width: 20px;
   height: 20px;
   flex-shrink: 0;
