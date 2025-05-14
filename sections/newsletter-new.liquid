@@ -1,0 +1,492 @@
+{% schema %}
+{
+  "name": "Newsletter Subscription",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "This ID will be used for page navigation. Must match with the navigation item's section ID.",
+      "default": "section1"
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1_1",
+      "label": "Heading Line img"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "Spring Sale"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1_2",
+      "label": "Heading Line img"
+    },
+     {
+      "type": "color_background",
+      "id": "heading_color_1_desktop",
+      "label": "Heading Line 1 Color"
+    },
+  
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Sign up now for exclusive discounts and a special gift!\nDon't miss out on the spring savings!"
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "label": "Input Placeholder Text",
+      "default": "Subscribe to win your gift for free!"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Subscribe Now"
+    },
+    {
+      "type": "text",
+      "id": "terms_text",
+      "label": "Terms Text",
+      "default": "I agree to the Terms of Service and Privacy Policy."
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms URL"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum Width",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Section Height",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#2E7D5F"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "form_bg_color",
+      "label": "Form Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Text Styling"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop_1",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Line 1 Font Size (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop_2",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Line 2 Font Size (Desktop)",
+      "default": 48
+    },
+  
+    {
+      "type": "color",
+      "id": "heading_color_2_desktop",
+      "label": "Heading Line 2 Color (Desktop)",
+      "default": "#B06A8A"
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color_desktop",
+      "label": "Description Text Color (Desktop)",
+      "default": "#777777"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Text Styling"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile_1",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Line 1 Font Size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile_2",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Line 2 Font Size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color_1_mobile",
+      "label": "Heading Line 1 Color (Mobile)",
+      "default": "#2E7D5F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_2_mobile",
+      "label": "Heading Line 2 Color (Mobile)",
+      "default": "#B06A8A"
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "description_color_mobile",
+      "label": "Description Text Color (Mobile)",
+      "default": "#777777"
+    },
+    {
+      "type": "header",
+      "content": "Form Styling"
+    },
+    {
+      "type": "color",
+      "id": "input_bg_color",
+      "label": "Input Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#2E7D5F"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Subscription"
+    }
+  ]
+}
+{% endschema %}
+
+<div id="{{ section.settings.section_id }}" class="newsletter-subscription">
+  <div class="newsletter-background" style="background-color: {{ section.settings.background_color }}; height: {{ section.settings.section_height }}px;">
+    {% if section.settings.background_image %}
+      <img src="{{ section.settings.background_image | img_url: 'master' }}" alt="" class="background-image">
+    {% endif %}
+    
+    <div class="newsletter-container" style="max-width: {{ section.settings.max_width }}px;">
+      <div class="newsletter-form-wrapper" style="background-color: {{ section.settings.form_bg_color }};">
+        <div class="newsletter-content">
+          <h2 class="newsletter-heading">
+            <span class="heading-line1" >
+        {{ section.settings.heading_line1_1 }} 
+          <span style="background: {{ section.settings.heading_color_1_desktop }};-webkit-background-clip: text;-webkit-text-fill-color: transparent;">{{ section.settings.heading_line1 }}</span>
+          {{ section.settings.heading_line1_1 }}
+        </span>
+           
+          </h2>
+          
+          <div class="newsletter-description">
+            {{ section.settings.description | newline_to_br }}
+          </div>
+        </div>
+        
+        <div class="newsletter-form">
+          {%- form 'customer', id: 'newsletter-form' -%}
+            {% if form.errors %}
+              <div class="form-error">
+                {{ form.errors | default_errors }}
+              </div>
+            {% endif %}
+            
+            {%- if form.posted_successfully? -%}
+              <div class="form-success">
+                Thank you for subscribing!
+              </div>
+            {%- else -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              
+              <div class="input-group">
+                <input type="email" 
+                       name="contact[email]" 
+                       id="Email" 
+                       class="input-field"
+                       value="{% if customer %}{{ customer.email }}{% endif %}"
+                       placeholder="{{ section.settings.input_placeholder }}"
+                       required
+                       style="background-color: {{ section.settings.input_bg_color }}; color: {{ section.settings.input_text_color }};">
+                
+                <button type="submit" 
+                        class="submit-button"
+                        style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
+                  {{ section.settings.button_text }}
+                </button>
+              </div>
+              
+              <div class="terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                  {% if section.settings.terms_url != blank %}
+                    {{ section.settings.terms_text | replace: 'Terms of Service', '<a href="' | append: section.settings.terms_url | append: '">Terms of Service</a>' | replace: 'Privacy Policy', '<a href="' | append: section.settings.terms_url | append: '">Privacy Policy</a>' }}
+                  {% else %}
+                    {{ section.settings.terms_text }}
+                  {% endif %}
+                </label>
+              </div>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} .newsletter-subscription {
+    width: 100%;
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-background {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #shopify-section-{{ section.id }} .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-form-wrapper {
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-heading {
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  #shopify-section-{{ section.id }} .heading-line1,
+  #shopify-section-{{ section.id }} .heading-line2 {
+    display: inline;
+  }
+  
+  /* Desktop Styles */
+  @media screen and (min-width: 769px) {
+    #shopify-section-{{ section.id }} .heading-line1 {
+      font-size: {{ section.settings.heading_size_desktop_1 }}px;
+      color: {{ section.settings.heading_color_1_desktop }};
+    }
+    
+    #shopify-section-{{ section.id }} .heading-line2 {
+      font-size: {{ section.settings.heading_size_desktop_2 }}px;
+      color: {{ section.settings.heading_color_2_desktop }};
+    }
+    
+    #shopify-section-{{ section.id }} .newsletter-description {
+      font-size: {{ section.settings.description_size_desktop }}px;
+      color: {{ section.settings.description_color_desktop }};
+    }
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-description {
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  
+  #shopify-section-{{ section.id }} .newsletter-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #shopify-section-{{ section.id }} .input-group {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  #shopify-section-{{ section.id }} .input-field {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  #shopify-section-{{ section.id }} .submit-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  #shopify-section-{{ section.id }} .submit-button:hover {
+    opacity: 0.9;
+  }
+  
+  #shopify-section-{{ section.id }} .terms-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  #shopify-section-{{ section.id }} .terms-checkbox input {
+    margin-top: 3px;
+  }
+  
+  #shopify-section-{{ section.id }} .terms-checkbox a {
+    color: inherit;
+    text-decoration: underline;
+  }
+  
+  #shopify-section-{{ section.id }} .form-error {
+    color: #d82c0d;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  #shopify-section-{{ section.id }} .form-success {
+    color: #2E7D5F;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Mobile Styles */
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .heading-line1 {
+      font-size: {{ section.settings.heading_size_mobile_1 }}px;
+      color: {{ section.settings.heading_color_1_mobile }};
+    }
+    
+    #shopify-section-{{ section.id }} .heading-line2 {
+      font-size: {{ section.settings.heading_size_mobile_2 }}px;
+      color: {{ section.settings.heading_color_2_mobile }};
+    }
+    
+    #shopify-section-{{ section.id }} .newsletter-description {
+      font-size: {{ section.settings.description_size_mobile }}px;
+      color: {{ section.settings.description_color_mobile }};
+    }
+    
+    #shopify-section-{{ section.id }} .newsletter-form-wrapper {
+      padding: 30px 20px;
+    }
+    
+    #shopify-section-{{ section.id }} .input-group {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    #shopify-section-{{ section.id }} .input-field {
+      border-radius: 30px;
+      width: 100%;
+    }
+    
+    #shopify-section-{{ section.id }} .submit-button {
+      border-radius: 30px;
+      width: 100%;
+    }
+  }
+</style>

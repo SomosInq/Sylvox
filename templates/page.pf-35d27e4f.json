@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "b51a0891-9696-4b32-9d00-c5e0c2ade6ea": {
+      "type": "slideshow-split",
+      "blocks": {
+        "template--15081906995261__b51a0891-9696-4b32-9d00-c5e0c2ade6ea-1669882240dc08a0a1-1": {
+          "type": "slide",
+          "settings": {
+            "top_subheading": "NEW",
+            "title": "Deck pro series",
+            "title_size": 60,
+            "subheading": "Deck Pro series for partial sun,IP55 waterproof ,support downlaod App",
+            "link": "shopify://products/sylvox-55-outdoor-tv",
+            "link_text": "Buy Now",
+            "link_2": "",
+            "link_text_2": "",
+            "text_position": "left",
+            "image": "shopify://shop_images/1_2b2b3942-3524-4983-a775-6ecfe800ab42.jpg",
+            "indent_image": true,
+            "color_scheme": "1"
+          }
+        }
+      },
+      "block_order": [
+        "template--15081906995261__b51a0891-9696-4b32-9d00-c5e0c2ade6ea-1669882240dc08a0a1-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "height": 650,
+        "height_mobile": 450,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "pf-35d27e4f": {
+      "type": "pf-35d27e4f",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "b51a0891-9696-4b32-9d00-c5e0c2ade6ea",
+    "pf-35d27e4f"
+  ]
+}

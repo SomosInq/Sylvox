@@ -1,172 +1,260 @@
-{%- render 'section-spacing-collapsing' -%}
-
-{%- if section.settings.image -%}
-  <style>
-    #shopify-section-{{ section.id }} {
-      {%- if section.settings.background_gradient != blank or section.settings.background != blank and section.settings.background != 'rgba(0,0,0,0)' -%}
-        --section-spacing-block: 0px;
-      {%- endif -%}
-
-      --section-spacing-inline: 0px;
-    }
-
-    {%- if section.settings.full_width -%}
-      #shopify-section-{{ section.id }} .section {
-        padding-inline-start: 0;
-      }
-    {%- endif -%}
-  </style>
-{%- endif -%}
-
-{%- capture newsletter_content -%}
-  <div class="newsletter-content {% unless section.settings.image %}text-center justify-items-center{% endunless %}">
-    {%- if section.settings.show_icon -%}
-      {%- render 'icon' with 'picto-at-sign', width: 32, height: 32, class: 'newsletter-content__icon' -%}
-    {%- endif -%}
-
-    {%- if section.settings.title != blank or section.settings.content -%}
-      <div class="prose">
-        {%- if section.settings.title != blank -%}
-          <h2 class="h2">{{ section.settings.title }}</h2>
-        {%- endif -%}
-
-        {{- section.settings.content -}}
-      </div>
-    {%- endif -%}
-
-    {%- assign newsletter_form_id = 'newsletter-form-' | append: section.id -%}
-
-    {%- form 'customer', id: newsletter_form_id, class: 'form' -%}
-      {%- if form.posted_successfully? -%}
-        {%- assign success_message = 'general.newsletter.subscribed_successfully' | t -%}
-        {%- render 'banner', content: success_message, status: 'success' -%}
-      {%- else -%}
-        {%- if form.errors -%}
-          {%- capture error_message -%}{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}{%- endcapture -%}
-          {%- render 'banner', content: error_message, status: 'error' -%}
-        {%- endif -%}
-
-        <input type="hidden" name="contact[tags]" value="newsletter">
-
-        <div class="fieldset-with-submit">
-          {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%}
-          {%- render 'input', name: 'contact[email]', label: label, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
-          {%- render 'button', type: 'submit', content: section.settings.button_text, size: 'xl', icon: 'picto-envelope', background: section.settings.button_background, text_color: section.settings.button_text_color -%}
-        </div>
-      {%- endif -%}
-
-      {%- if section.settings.subtext != blank -%}
-        <p class="text-xs text-subdued">{{ section.settings.subtext | escape }}</p>
-      {%- endif -%}
-    {%- endform -%}
-  </div>
-{%- endcapture -%}
-
-<div {% render 'section-properties' %}>
-  {%- if section.settings.image != blank -%}
-    <div class="newsletter">
-      {%- capture sizes -%}(max-width: 999px) 100vw, min(50vw, {{ settings.page_width }}px / 2){%- endcapture -%}
-      {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: sizes: sizes, class: 'h-full object-cover' -}}
-
-      <div {% render 'surface', class: 'newsletter-box', background: section.settings.background, background_gradient: section.settings.background_gradient, background_fallback: 'bg-secondary', text_color: section.settings.text_color %}>
-        {{- newsletter_content -}}
-      </div>
-    </div>
-  {%- else -%}
-    {{- newsletter_content -}}
-  {%- endif -%}
-</div>
+{%- render 'section-newsletter' -%}
 
 {% schema %}
 {
-  "name": "Newsletter",
-  "class": "shopify-section--newsletter",
-  "tag": "section",
-  "disabled_on": {
-    "templates": ["password"],
-    "groups": ["header", "custom.overlay"]
-  },
+  "name": "t:labels.email_signup",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "t:labels.title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:labels.heading",
+          "default": "Sign up and save"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:labels.heading_size",
+          "default": "h2",
+          "options": [
+            {
+              "value": "h3",
+              "label": "t:labels.sizes.small"
+            },
+            {
+              "value": "h2",
+              "label": "t:labels.sizes.medium"
+            },
+            {
+              "value": "h1",
+              "label": "t:labels.sizes.large"
+            },
+            {
+              "value": "h0",
+              "label": "t:labels.sizes.extra_large"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:labels.text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:labels.subheading",
+          "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "name": "t:labels.form",
+      "limit": 1
+    },
+    {
+      "type": "share_buttons",
+      "name": "t:labels.share_buttons",
+      "limit": 1
+    }
+  ],
   "settings": [
     {
       "type": "paragraph",
-      "content": "Customers who subscribe will have their email address added to the \"accepts marketing\" [customer list](/admin/customers?query=&accepts_marketing=1)."
+      "content": "t:info.customers_who_subscribe_accept_marketing"
     },
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width",
-      "default": true
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "1",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "t:labels.content_alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:labels.alignments.left"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.alignments.centered"
+        },
+        {
+          "value": "right",
+          "label": "t:labels.alignments.right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:labels.image"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image",
-      "info": "1500 x 1000px .jpg recommended"
+      "label": "t:labels.image",
+      "info": "t:actions.add_alt_text"
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "t:labels.image_size",
+      "default": "33",
+      "options": [
+        {
+          "value": "33",
+          "label": "t:labels.sizes.small"
+        },
+        {
+          "value": "50",
+          "label": "t:labels.sizes.medium"
+        },
+        {
+          "value": "66",
+          "label": "t:labels.sizes.large"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_mask",
+      "label": "t:labels.image_shape",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:labels.landscape"
+        },
+        {
+          "value": "square",
+          "label": "t:labels.square"
+        },
+        {
+          "value": "rounded",
+          "label": "t:labels.rounded"
+        },
+        {
+          "value": "rounded-wave",
+          "label": "t:labels.rounded_wave"
+        },
+        {
+          "value": "rounded-top",
+          "label": "t:labels.arch"
+        },
+        {
+          "value": "star",
+          "label": "t:labels.star"
+        },
+        {
+          "value": "splat-1",
+          "label": "t:labels.splat_1"
+        },
+        {
+          "value": "splat-2",
+          "label": "t:labels.splat_2"
+        },
+        {
+          "value": "splat-3",
+          "label": "t:labels.splat_3"
+        },
+        {
+          "value": "splat-4",
+          "label": "t:labels.splat_4"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "t:labels.position",
+      "default": "right",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:labels.alignments.left"
+        },
+        {
+          "value": "right",
+          "label": "t:labels.alignments.right"
+        }
+      ]
     },
     {
       "type": "checkbox",
-      "id": "show_icon",
-      "label": "Show icon",
+      "id": "divider",
+      "label": "t:actions.show_section_divider",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "top_padding",
+      "label": "t:actions.show_top_padding",
       "default": true
     },
     {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Newsletter"
-    },
-    {
-      "type": "richtext",
-      "id": "content",
-      "label": "Content",
-      "default": "<p>Write something about what your customers will receive by subscribing to your newsletter.</p>"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button",
-      "default": "Subscribe"
-    },
-    {
-      "type": "text",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "header",
-      "content": "Colors",
-      "info": "Gradient replaces solid colors when set."
-    },
-    {
-      "type": "color",
-      "id": "background",
-      "label": "Background"
-    },
-    {
-      "type": "color_background",
-      "id": "background_gradient",
-      "label": "Background gradient"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text"
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Button background"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button text color"
+      "type": "checkbox",
+      "id": "bottom_padding",
+      "label": "t:actions.show_bottom_padding",
+      "default": true
     }
   ],
   "presets": [
     {
-      "name": "Newsletter"
+      "name": "t:labels.email_signup",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "form"
+        }
+      ]
     }
-  ]
+  ],
+  "disabled_on": {
+    "groups": ["custom.popups"]
+  }
 }
 {% endschema %}

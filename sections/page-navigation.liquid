@@ -1,0 +1,473 @@
+{% schema %}
+{
+  "name": "Page Navigation",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Navigation Settings"
+    },
+    {
+      "type": "color",
+      "id": "nav_bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "nav_border_color",
+      "label": "Border Color",
+      "default": "#EEEEEE"
+    },
+    {
+      "type": "color",
+      "id": "active_bg_color",
+      "label": "Active Button Background",
+      "default": "#C25B76"
+    },
+    {
+      "type": "color",
+      "id": "active_text_color",
+      "label": "Active Button Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "inactive_text_color",
+      "label": "Inactive Button Text",
+      "default": "#333333"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_nav",
+      "label": "Sticky Navigation",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Navigation Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "nav_text",
+          "label": "Navigation Text",
+          "default": "Section Name"
+        },
+        {
+          "type": "text",
+          "id": "section_id",
+          "label": "Section ID to Navigate to",
+          "info": "Enter the ID of the section you want to navigate to (without the # symbol)",
+          "default": "section1"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Is Active by Default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Navigation",
+      "blocks": [
+        {
+          "type": "nav_item",
+          "settings": {
+            "nav_text": "Partial Sun",
+            "section_id": "partial-sun",
+            "is_active": true
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "nav_text": "Full Sun",
+            "section_id": "full-sun"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "nav_text": "Outdoor TV Cabinet",
+            "section_id": "tv-cabinet"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "nav_text": "Lifestyle TVs",
+            "section_id": "lifestyle-tvs"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div id="shopify-section-{{ section.id }}" class="page-navigation-wrapper">
+  <div class="page-navigation {% if section.settings.sticky_nav %}sticky-nav{% endif %}" style="background-color: {{ section.settings.nav_bg_color }}; border-color: {{ section.settings.nav_border_color }};">
+    <div class="mobile-nav-arrows">
+      <button class="nav-arrow nav-prev" aria-label="Previous items">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="page-navigation-container">
+      <div class="nav-items-wrapper">
+        {% for block in section.blocks %}
+          {% if block.type == 'nav_item' %}
+            <a href="#{{ block.settings.section_id }}" 
+               class="nav-item {% if block.settings.is_active %}active{% endif %}" 
+               data-section-id="{{ block.settings.section_id }}"
+               {% if block.settings.is_active %}
+               style="background-color: {{ section.settings.active_bg_color }}; color: {{ section.settings.active_text_color }};"
+               {% else %}
+               style="color: {{ section.settings.inactive_text_color }};"
+               {% endif %}
+               {{ block.shopify_attributes }}>
+              {{ block.settings.nav_text }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="mobile-nav-arrows">
+      <button class="nav-arrow nav-next" aria-label="Next items">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Placeholder div to prevent content jump when navigation becomes fixed -->
+  <div class="nav-placeholder" style="display: none;"></div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} .page-navigation-wrapper {
+    position: relative;
+  }
+  
+  #shopify-section-{{ section.id }} .page-navigation {
+    width: 100%;
+    border-bottom: 1px solid;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+  }
+  
+  #shopify-section-{{ section.id }} .sticky-nav {
+    position: relative; /* Initially not sticky */
+  }
+  
+  #shopify-section-{{ section.id }} .sticky-nav.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  #shopify-section-{{ section.id }} .page-navigation-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  #shopify-section-{{ section.id }} .nav-items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+  }
+  
+  #shopify-section-{{ section.id }} .nav-item {
+    padding: 7px 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    margin: 10px 5px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .nav-item:hover {
+    opacity: 0.9;
+  }
+  
+  #shopify-section-{{ section.id }} .mobile-nav-arrows {
+    display: none;
+    padding: 0 10px;
+  }
+  
+  #shopify-section-{{ section.id }} .nav-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.inactive_text_color }};
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  
+  #shopify-section-{{ section.id }} .nav-arrow:hover {
+    opacity: 1;
+  }
+  
+  #shopify-section-{{ section.id }} .nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .page-navigation {
+      padding: 5px 0;
+    }
+    
+    #shopify-section-{{ section.id }} .mobile-nav-arrows {
+      display: block;
+    }
+    
+    #shopify-section-{{ section.id }} .page-navigation-container {
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scroll-behavior: smooth;
+    }
+    
+    #shopify-section-{{ section.id }} .page-navigation-container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+    
+    #shopify-section-{{ section.id }} .nav-items-wrapper {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      padding: 0 5px;
+    }
+    
+    #shopify-section-{{ section.id }} .nav-item {
+      padding: 10px 15px;
+      white-space: nowrap;
+      margin: 5px 3px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const navWrapper = document.querySelector(`#shopify-section-${sectionId} .page-navigation-wrapper`);
+    const navigation = document.querySelector(`#shopify-section-${sectionId} .page-navigation`);
+    const navPlaceholder = document.querySelector(`#shopify-section-${sectionId} .nav-placeholder`);
+    const navItems = document.querySelectorAll(`#shopify-section-${sectionId} .nav-item`);
+    const navContainer = document.querySelector(`#shopify-section-${sectionId} .page-navigation-container`);
+    const prevButton = document.querySelector(`#shopify-section-${sectionId} .nav-prev`);
+    const nextButton = document.querySelector(`#shopify-section-${sectionId} .nav-next`);
+    
+    const activeColor = "{{ section.settings.active_bg_color }}";
+    const activeTextColor = "{{ section.settings.active_text_color }}";
+    const inactiveTextColor = "{{ section.settings.inactive_text_color }}";
+    const stickyEnabled = {{ section.settings.sticky_nav | json }};
+    
+    // Set up sticky navigation
+    if (stickyEnabled && navigation) {
+      // Get the initial position of the navigation
+      const navHeight = navigation.offsetHeight;
+      let navOffset = navigation.getBoundingClientRect().top + window.scrollY;
+      
+      // Create a placeholder with the same height as the navigation
+      navPlaceholder.style.height = navHeight + 'px';
+      
+      // Function to handle scroll
+      function handleScroll() {
+        // Check if we've scrolled past the navigation's original position
+        if (window.scrollY > navOffset) {
+          if (!navigation.classList.contains('is-sticky')) {
+            navigation.classList.add('is-sticky');
+            navPlaceholder.style.display = 'block';
+          }
+        } else {
+          if (navigation.classList.contains('is-sticky')) {
+            navigation.classList.remove('is-sticky');
+            navPlaceholder.style.display = 'none';
+          }
+        }
+      }
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll);
+      
+      // Update nav offset on window resize
+      window.addEventListener('resize', function() {
+        // Only update if not already sticky
+        if (!navigation.classList.contains('is-sticky')) {
+          navOffset = navigation.getBoundingClientRect().top + window.scrollY;
+        }
+        navPlaceholder.style.height = navigation.offsetHeight + 'px';
+      });
+      
+      // Initial check
+      handleScroll();
+    }
+    
+    // Mobile scroll navigation
+    if (prevButton && nextButton && navContainer) {
+      // Update arrow buttons state
+      function updateArrowState() {
+        const scrollLeft = navContainer.scrollLeft;
+        const maxScrollLeft = navContainer.scrollWidth - navContainer.clientWidth;
+        
+        prevButton.disabled = scrollLeft <= 0;
+        nextButton.disabled = scrollLeft >= maxScrollLeft - 5;
+      }
+      
+      // Scroll to active item on load
+      function scrollToActive() {
+        const activeItem = document.querySelector(`#shopify-section-${sectionId} .nav-item.active`);
+        if (activeItem && window.innerWidth <= 768) {
+          const containerWidth = navContainer.offsetWidth;
+          const itemLeft = activeItem.offsetLeft;
+          const itemWidth = activeItem.offsetWidth;
+          
+          // Center the active item
+          navContainer.scrollLeft = itemLeft - (containerWidth / 2) + (itemWidth / 2);
+        }
+      }
+      
+      // Scroll left
+      prevButton.addEventListener('click', function() {
+        navContainer.scrollBy({ left: -200, behavior: 'smooth' });
+      });
+      
+      // Scroll right
+      nextButton.addEventListener('click', function() {
+        navContainer.scrollBy({ left: 200, behavior: 'smooth' });
+      });
+      
+      // Update arrow state on scroll
+      navContainer.addEventListener('scroll', updateArrowState);
+      
+      // Initial arrow state
+      updateArrowState();
+      
+      // Scroll to active item on page load
+      setTimeout(scrollToActive, 100);
+      
+      // Update on window resize
+      window.addEventListener('resize', function() {
+        updateArrowState();
+        scrollToActive();
+      });
+    }
+    
+    // Add click event to each navigation item
+    navItems.forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Get the target section ID
+        const targetId = this.getAttribute('data-section-id');
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          // Calculate offset for sticky nav
+          const navHeight = navigation.offsetHeight;
+          
+          // Smooth scroll to the target section
+          window.scrollTo({
+            top: targetSection.offsetTop - navHeight, // Offset for the sticky nav
+            behavior: 'smooth'
+          });
+          
+          // Update active state
+          navItems.forEach(function(navItem) {
+            navItem.classList.remove('active');
+            navItem.style.backgroundColor = '';
+            navItem.style.color = inactiveTextColor;
+          });
+          
+          this.classList.add('active');
+          this.style.backgroundColor = activeColor;
+          this.style.color = activeTextColor;
+        }
+      });
+    });
+    
+    // Update active state on scroll
+    if (stickyEnabled) {
+      const sections = [];
+      
+      // Collect all target sections
+      navItems.forEach(function(item) {
+        const sectionId = item.getAttribute('data-section-id');
+        const section = document.getElementById(sectionId);
+        if (section) {
+          sections.push({
+            id: sectionId,
+            element: section
+          });
+        }
+      });
+      
+      // Check which section is in view on scroll
+      window.addEventListener('scroll', function() {
+        const navHeight = navigation.offsetHeight;
+        const scrollPosition = window.scrollY + navHeight + 10;
+        
+        let currentSection = null;
+        
+        sections.forEach(function(section) {
+          const sectionTop = section.element.offsetTop;
+          const sectionBottom = sectionTop + section.element.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = section.id;
+          }
+        });
+        
+        if (currentSection) {
+          navItems.forEach(function(item) {
+            const itemSectionId = item.getAttribute('data-section-id');
+            
+            if (itemSectionId === currentSection) {
+              item.classList.add('active');
+              item.style.backgroundColor = activeColor;
+              item.style.color = activeTextColor;
+              
+              // Scroll active item into view on mobile
+              if (window.innerWidth <= 768) {
+                const containerWidth = navContainer.offsetWidth;
+                const itemLeft = item.offsetLeft;
+                const itemWidth = item.offsetWidth;
+                
+                // Center the active item
+                navContainer.scrollLeft = itemLeft - (containerWidth / 2) + (itemWidth / 2);
+              }
+            } else {
+              item.classList.remove('active');
+              item.style.backgroundColor = '';
+              item.style.color = inactiveTextColor;
+            }
+          });
+        }
+      });
+    }
+  });
+</script>

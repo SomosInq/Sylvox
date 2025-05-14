@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "pf-3014361e": {
+      "type": "pf-3014361e",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "pf-3014361e"
+  ]
+}

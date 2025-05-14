@@ -1,126 +1,165 @@
-{%- unless request.page_type == 'captcha' or section.settings.show_only_on_index and request.page_type != 'index' -%}
-  {%- unless section.settings.show_only_for_visitors and customer -%}
-    {%- assign posted_successfully = false -%}
-    {%- assign newsletter_id = 'newsletter-' | append: section.id -%}
-
-    {%- capture _temporary -%}
-      {%- form 'customer', id: newsletter_id, class: 'form' -%}
-        {%- assign posted_successfully = form.posted_successfully? -%}
-      {%- endform -%}
-    {%- endcapture -%}
-
-    <newsletter-popup id="newsletter-drawer" open-from="right" class="drawer newsletter-drawer" {% if section.settings.show_only_once %}only-once{% endif %} apparition-delay="{{ section.settings.apparition_delay }}" {% if posted_successfully %}open{% endif %} handle-section-events>
-      <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}" class="sm-max:hidden">
-        {%- render 'icon' with 'close', width: 19, height: 19 -%}
-      </button>
-
-      {%- if section.settings.image != blank -%}
-        {%- capture sizes -%}min(calc(100vw - 16px), 445px){%- endcapture -%}
-        {%- capture widths -%}{{ section.settings.image.width }}, {{ section.settings.image.width | times: 2 | at_most: section.settings.image.width }}{%- endcapture -%}
-        {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', widths: widths, sizes: sizes -}}
-      {%- endif -%}
-
-      <div class="newsletter-drawer__content v-stack gap-4 text-center">
-        <div class="v-stack gap-6">
-          {%- if section.settings.title != blank -%}
-            <p class="h5">{{- section.settings.title -}}</p>
-          {%- endif -%}
-
-          {%- form 'customer', id: newsletter_id, class: 'form' -%}
-            {%- if form.posted_successfully? -%}
-              {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
-              {%- render 'banner', content: success_message, status: 'success' -%}
-
-              <script>
-                localStorage.setItem('theme:popup-filled', 'true');
-              </script>
-            {%- else -%}
-              {%- if form.errors -%}
-                {%- assign content = form.errors | default_errors -%}
-                {%- render 'banner', status: 'error', content: content -%}
-              {%- endif -%}
-
-              <div class="fieldset">
-                <input type="hidden" name="contact[tags]" value="newsletter">
-
-                {%- assign label = 'blog.comments.email' | t -%}
-                {%- render 'input', type: 'email', name: 'contact[email]', label: label, value: customer.email, required: true, autocomplete: 'email' -%}
-              </div>
-
-              {%- render 'button', content: section.settings.button_text, icon: 'picto-envelope', type: 'submit', size: 'xl' -%}
-            {%- endif -%}
-          {%- endform -%}
-        </div>
-
-        {%- if section.settings.subtext != blank -%}
-          <p class="text-xs text-subdued">{{- section.settings.subtext -}}</p>
-        {%- endif -%}
-      </div>
-    </newsletter-popup>
-  {%- endunless -%}
-{%- endunless -%}
+{%- render 'section-newsletter-popup' -%}
 
 {% schema %}
 {
-  "name": "Newsletter popup",
-  "class": "shopify-section--popup",
+  "name": "t:labels.popup",
+  "max_blocks": 1,
+  "class": "index-section--hidden",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "Customers who subscribe will have their email address added to the \"accepts marketing\" [customer list](/admin/customers?query=&accepts_marketing=1)."
+      "type": "checkbox",
+      "id": "disable_for_account_holders",
+      "label": "t:actions.disable_for_accounts",
+      "default": true,
+      "info": "t:info.not_shown_to_customers_with_accounts"
     },
     {
       "type": "range",
-      "id": "apparition_delay",
-      "min": 0,
-      "max": 15,
+      "id": "popup_seconds",
+      "label": "t:labels.delay",
+      "default": 30,
+      "min": 5,
+      "max": 60,
       "step": 1,
       "unit": "sec",
-      "label": "Delay until the popup appears",
-      "default": 5
+      "info": "t:info.values_below_10_not_recommended"
     },
     {
-      "type": "checkbox",
-      "id": "show_only_on_index",
-      "label": "Show only on home page",
-      "default": true
+      "type": "range",
+      "id": "popup_days",
+      "label": "t:labels.frequency",
+      "default": 30,
+      "info": "t:info.number_of_days_popup_reappears",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "unit": "day"
     },
     {
-      "type": "checkbox",
-      "id": "show_only_for_visitors",
-      "label": "Disable for account holders",
-      "default": true
+      "type": "header",
+      "content": "t:labels.content"
     },
     {
-      "type": "checkbox",
-      "id": "show_only_once",
-      "label": "Show once to visitors",
-      "default": true
+      "type": "text",
+      "id": "popup_title",
+      "label": "t:labels.heading",
+      "default": "Sign up and save"
+    },
+    {
+      "type": "richtext",
+      "id": "popup_text",
+      "label": "t:labels.text",
+      "default": "<p>Entice customers to sign up for your mailing list with discounts or exclusive offers. Include an image for extra impact.</p>"
     },
     {
       "type": "image_picker",
-      "id": "image",
-      "label": "Image",
-      "info": "1000 x 600px .jpg recommended"
+      "id": "popup_image",
+      "label": "t:labels.image",
+      "info": "t:info.does_not_appear_on_mobile"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "t:labels.image_position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:labels.alignments.left"
+        },
+        {
+          "value": "right",
+          "label": "t:labels.alignments.right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show social icons",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:labels.newsletter"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:info.sign_up_creates_customer"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_newsletter",
+      "label": "t:actions.enable_newsletter",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:labels.button"
     },
     {
       "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Signup for our newsletter"
+      "id": "button_label",
+      "label": "t:labels.button_label",
+      "default": "Optional button"
     },
     {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button",
-      "default": "Subscribe"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "subtext",
-      "label": "Subtext",
-      "default": "Describe what your customers will receive when subscribing to your newsletter."
+      "type": "url",
+      "id": "button_link",
+      "label": "t:labels.button_link"
     }
-  ]
+  ],
+  "blocks": [
+    {
+      "type": "header",
+      "name": "t:labels.sticky_reminder",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "reminder_label",
+          "label": "t:labels.reminder_label",
+          "default": "Get 10% off",
+          "info": "t:info.appears_when_newsletter_popup_closed"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      {
+        "type": "header",
+        "settings": {}
+      }
+    ]
+  },
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  }
 }
 {% endschema %}

@@ -1,0 +1,481 @@
+{% schema %}
+{
+  "name": "Product Showcase",
+  "settings": [
+     {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "info": "This ID will be used for page navigation. Must match with the navigation item's section ID.",
+      "default": "section1"
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    },
+    
+    {
+      "type": "text",
+      "id": "main_heading_1",
+      "label": "Main Heading img"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Ultimate Outdoor Viewing"
+    },
+    {
+      "type": "text",
+      "id": "main_heading_2",
+      "label": "Main Heading img"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text",
+      "default": "Enjoy a stunning 65\" display with a weatherproof lift cabinet that keeps your TV safe and stylish, perfect for any outdoor setup."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Recommendation Badge Text",
+      "default": "Highly Recommended"
+    },
+    {
+      "type": "header",
+      "content": "Text Styling"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Main Heading Font Size",
+      "default": 48
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color_1",
+      "label": "Main Heading First Part Color",
+      "default": "#2E7D5F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_2",
+      "label": "Main Heading Second Part Color",
+      "default": "#B06A8A"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Text Color",
+      "default": "#777777"
+    },
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Product Title Font Size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product Title Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Price Font Size",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price Color",
+      "default": "#B06A8A"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F8F7F2"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#B06A8A"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Buy Button Background Color",
+      "default": "#2E7D5F"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Buy Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Product Features"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Product Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Feature Subtitle",
+          "default": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div id="{{ section.settings.section_id }}" class="featured-product-showcase" style="background-color: {{ section.settings.background_color }};">
+  <div class="showcase-container">
+    <div class="showcase-header">
+      
+      
+      <h1 class="showcase-heading" style="font-size: {{ section.settings.heading_size }}px;">
+        {{ section.settings.main_heading_1}}
+        <span style="background: {{ section.settings.heading_color_1 }};-webkit-background-clip: text;-webkit-text-fill-color: transparent;">{{ section.settings.main_heading}}</span>
+       {{ section.settings.main_heading_2}}
+      </h1>
+      
+      <p class="showcase-description" style="font-size: {{ section.settings.description_size }}px; color: {{ section.settings.description_color }};">
+        {{ section.settings.description }}
+      </p>
+    </div>
+    
+    {% if section.settings.product != blank %}
+      {% assign product = all_products[section.settings.product] %}
+      
+      <div class="product-display">
+        <div class="product-image">
+          <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+        </div>
+        
+        <div class="product-details">
+          {% if section.settings.badge_text != blank %}
+            <div class="product-badge" style="background-color: {{ section.settings.badge_bg_color }}; color: {{ section.settings.badge_text_color }};">
+              {{ section.settings.badge_text }}
+            </div>
+          {% endif %}
+          
+          <h2 class="product-title" style="font-size: {{ section.settings.product_title_size }}px; color: {{ section.settings.product_title_color }};">
+            {{ product.title }}
+          </h2>
+          
+          <div class="product-features">
+            {% for block in section.blocks %}
+              {% if block.type == 'feature' and block.settings.icon != blank %}
+                <div class="feature-item" {{ block.shopify_attributes }}>
+                  <div class="feature-icon">
+                    <img src="{{ block.settings.icon | img_url: '50x50', crop: 'center' }}" alt="{{ block.settings.title }}">
+                  </div>
+                  <div class="feature-text">
+                    <div class="feature-title">{{ block.settings.title }}</div>
+                    <div class="feature-subtitle">{{ block.settings.subtitle }}</div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          
+          <div class="product-price" style="font-size: {{ section.settings.price_size }}px; color: {{ section.settings.price_color }};">
+            {{ product.price | money }}
+          </div>
+          
+          <div class="product-actions">
+            <a href="{{ product.url }}" class="buy-now-button" style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
+              Buy Now
+            </a>
+            <a href="{{ product.url }}" class="learn-more-button">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .featured-product-showcase {
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .showcase-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .showcase-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  
+  .showcase-heading {
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  .showcase-description {
+    line-height: 1.6;
+  }
+  
+ #shopify-section-{{ section.id}}   .product-display {
+    display: flex;
+    align-items: center;
+    background-color: {{ section.settings.background_color }};
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+ #shopify-section-{{ section.id}}   .product-image {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #shopify-section-{{ section.id}}  .product-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+  }
+  
+  #shopify-section-{{ section.id}}  .product-details {
+    flex: 1;
+    padding: 40px;
+    position: relative;
+  }
+  
+   #shopify-section-{{ section.id}} .product-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  #shopify-section-{{ section.id}}  .product-title {
+    margin-bottom: 25px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+ #shopify-section-{{ section.id}}   .product-features {
+   display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .feature-item {
+    display: flex;
+   align-items: center;
+    width: calc(25% - 10px);
+    display: grid
+;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        margin: 0 auto;
+  }
+  
+  .feature-icon img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .feature-text {
+    flex: 1;
+  }
+  
+  .feature-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .feature-subtitle {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .product-price {
+    margin: 25px 0;
+    font-weight: 600;
+  }
+  
+  .product-actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .buy-now-button, .learn-more-button {
+    padding: 5px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .learn-more-button {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .buy-now-button:hover, .learn-more-button:hover {
+    opacity: 0.9;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .product-display {
+      flex-direction: column;
+    }
+    
+    .product-image, .product-details {
+      width: 100%;
+    }
+    
+    .feature-item {
+      width: calc(50% - 10px);
+      gap: 5px;
+    }
+    .product-features {
+    display: flex
+;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+  }
+  
+  @media screen and (max-width: 768px) {
+    .featured-product-showcase {
+      padding: 50px 0;
+    }
+    
+   #shopify-section-{{ section.id}}   .showcase-heading {
+      font-size: calc({{ section.settings.heading_size }}px * 0.7) !important;
+    }
+    
+  #shopify-section-{{ section.id}}    .showcase-description {
+      font-size: calc({{ section.settings.description_size }}px * 0.9) !important;
+    }
+    
+  #shopify-section-{{ section.id}}    .product-title {
+      font-size: calc({{ section.settings.product_title_size }}px * 0.8) !important;
+    }
+    
+  #shopify-section-{{ section.id}}    .product-price {
+      font-size: calc({{ section.settings.price_size }}px * 0.8) !important;
+    }
+    
+    .product-details {
+      padding: 30px 20px;
+    }
+    
+    .product-actions {
+      flex-direction: column;
+    }
+  }
+</style>

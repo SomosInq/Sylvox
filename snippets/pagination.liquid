@@ -1,47 +1,61 @@
+{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | "Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)" License  %}
 {%- comment -%}
-----------------------------------------------------------------------------------------------------------------------
-PAGINATION COMPONENT
-----------------------------------------------------------------------------------------------------------------------
+  Renders a pagination component.
 
-Create a pagination from the pagination object. To be use, this snippet must be included between a "paginate"/"endpaginate"
-block
+  Accepts:
+  - paginate {paginate} - The paginate object
+  - hash {string} - A hash to append to the URL
 
-********************************************
-Supported variables
-********************************************
-
-* paginate: the paginate object to use (required)
-* facet: if set to true, it adds a "facet-link" custom elements to allow live reload of faceting search
-* hash: a hash string that is appended to generated URL
-* class: extra class being added to the container
+  Usage:
+  {% render 'pagination' %}
 {%- endcomment -%}
 
-{%- if paginate.pages > 1 -%}
-  <nav class="{{ class }} pagination" role="navigation" aria-label="{{ 'general.accessibility.pagination' | t }}">
-    {%- if paginate.previous.is_link -%}
-      {%- assign previous_page = paginate.current_page | minus: 1 -%}
-
-      <a class="pagination__item group" {% if facet %}is="facet-link"{% endif %} rel="prev" aria-label="{{ 'general.accessibility.go_to_page' | t: index: previous_page }}" href="{{ paginate.previous.url }}{{ hash }}">
-        <span class="animated-arrow animated-arrow--reverse"></span>
+<div class="pagination">
+  {% if paginate.previous %}
+    <span class="prev">
+      <a
+        href="{{ paginate.previous.url | replace: 'view=ajax', '' }}{{ hash }}"
+        title="
+          {% render 't_with_fallback', key: 'actions.previous', fallback: 'Previous' -%}
+        "
+        class="btn btn--large btn--circle btn--icon"
+      >
+        {% render 'icon', name: 'chevron-left' %}
+        <span class="icon__fallback-text visually-hidden">
+          {% render 't_with_fallback', key: 'actions.previous', fallback: 'Previous' -%}
+        </span>
       </a>
-    {%- else -%}
-      <span class="pagination__item pagination__item--disabled">
-        <span class="animated-arrow animated-arrow--reverse"></span>
+    </span>
+  {% endif %}
+
+  {% for part in paginate.parts %}
+    {% if part.is_link %}
+      <span class="page">
+        <a href="{{ part.url | replace: 'view=ajax', '' }}{{ hash }}">{{ part.title }}</a>
       </span>
-    {%- endif -%}
+    {% else %}
+      {% if part.title == paginate.current_page %}
+        <span class="page current">{{ part.title }}</span>
+      {% else %}
+        <span class="page">{{ part.title }}</span>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
 
-    <span class="pagination__current">{{ paginate.current_page }}&nbsp;&nbsp;/&nbsp;&nbsp;{{ paginate.pages }}</span>
-
-    {%- if paginate.next.is_link -%}
-      {%- assign next_page = paginate.current_page | plus: 1 -%}
-
-      <a class="pagination__item group" {% if facet %}is="facet-link"{% endif %} rel="next" aria-label="{{ 'general.accessibility.go_to_page' | t: index: next_page }}" href="{{ paginate.next.url }}{{ hash }}">
-        <span class="animated-arrow"></span>
+  {% if paginate.next %}
+    <span class="next">
+      <a
+        href="{{ paginate.next.url | replace: 'view=ajax', '' }}{{ hash }}"
+        title="
+          {% render 't_with_fallback', key: 'actions.next', fallback: 'Next' -%}
+        "
+        class="btn btn--large btn--circle btn--icon"
+      >
+        {% render 'icon', name: 'chevron-right' %}
+        <span class="icon__fallback-text visually-hidden">
+          {% render 't_with_fallback', key: 'actions.next', fallback: 'Next' -%}
+        </span>
       </a>
-    {%- else -%}
-      <span class="pagination__item pagination__item--disabled">
-        <span class="animated-arrow"></span>
-      </span>
-    {%- endif -%}
-  </nav>
-{%- endif -%}
+    </span>
+  {% endif %}
+</div>

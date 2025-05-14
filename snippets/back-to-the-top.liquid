@@ -1,0 +1,65 @@
+{% assign vertical_offset_for_trigger = 300 %}
+
+{% comment %}
+    Vertical offset from bottom of browser for the position of the button.
+{% endcomment %}
+{% assign position_from_bottom = '120px' %} <!-- Adjusted to place it above Tidio -->
+
+<a id="BackToTop" href="#" title="Back to the top" class="back-to-top hide">
+    Top
+</a>
+{{ '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' | stylesheet_tag }}
+<style>
+    .back-to-top {
+        position: fixed;
+        bottom: {{ position_from_bottom }}; /* Adjusted to place it above Tidio */
+        right: 30px; /* Adjusted to move the button closer to the left */
+        text-decoration: none;
+        color: #000; /* Set text color to black */
+        background-color: #eee;
+        font-size: 16px;
+        padding: 0.2em; /* Adjust padding for circular appearance */
+        border-radius: 50%; /* Make the outer frame circular */
+        z-index: 60000;
+        display: flex;
+        justify-content: center; /* Center the text */
+        align-items: center; /* Center the text vertically */
+        width: 50px; /* Set width for a smaller circle */
+        height: 50px; /* Set height for a smaller circle */
+        font-weight: bold; /* Make the text bold */
+    }
+    .back-to-top:hover {
+        text-decoration: none;
+        color: #555; /* Change hover color */
+    }
+    .hide {
+        display: none!important;
+    }
+</style>
+<script>
+    (function() {
+        function trackScroll() {
+            var scrolled = window.pageYOffset;
+            var coords = {{ vertical_offset_for_trigger }};
+
+            if (scrolled > coords) {
+                goTopBtn.classList.remove('hide');
+            }
+            if (scrolled < coords) {
+                goTopBtn.classList.add('hide');
+            }
+        }
+
+        function backToTop() {
+            if (window.pageYOffset > 0) {
+                window.scrollBy(0, -80);
+                setTimeout(backToTop, 0);
+            }
+        }
+
+        var goTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', trackScroll);
+        goTopBtn.addEventListener('click', backToTop);
+    })();
+</script>

@@ -1,0 +1,146 @@
+
+{% if section.settings.section_id.size > 0 %}
+  <!-- PageFlyGlobalSection -->
+  {% render 'pagefly-main-js' %}
+  {% render 'pagefly-main-css' %}
+  {% include section.settings.section_id %}
+{% else %}
+  
+    {% if request.design_mode %}
+      <style>.pf-ph{font-size:14px!important;background:#fafafa;padding:20px;text-align:center;border:1px solid #f0f0f0;border-radius:4px;margin:15px}.pf-ph span{display:block;background:#e6f7ff;padding:8px 15px;border:1px solid #91d5ff}</style>
+      <div class="pf-ph">
+        <h3>PageFly Section</h3>
+        <span>No section selected. Please select your section from the list</span>
+      </div>
+    {% endif %}
+  
+{% endif %}
+
+{% schema %}
+{
+  "name": "PageFly Section",
+  "settings": [
+    {
+      "id": "section_id",
+      "type": "select",
+      "label": "Sections",
+      "options": [
+        {
+          "label": "Select section",
+          "value": ""
+        },
+        {
+          "label": "outdoor Mom",
+          "value": "pf-862716de"
+        },
+        {
+          "label": "2025 Cinema Pro",
+          "value": "pf-76e12100"
+        },
+        {
+          "label": "5%",
+          "value": "pf-ca880a9d"
+        },
+        {
+          "label": "sign",
+          "value": "pf-9dd5fcbd"
+        },
+        {
+          "label": "Pool-SPEC AND SHIPPINFO MATION - copy",
+          "value": "pf-9ca02bcc"
+        },
+        {
+          "label": "Parial sun difference",
+          "value": "pf-ab7fb721"
+        },
+        {
+          "label": "Full sun difference - copy",
+          "value": "pf-87dd18c5"
+        },
+        {
+          "label": "2024 12V TV mini-no dvd combo",
+          "value": "pf-b67c93cb"
+        },
+        {
+          "label": "Mini-Kitchen TV",
+          "value": "pf-1617aae1"
+        },
+        {
+          "label": "Portable TV",
+          "value": "pf-37b0c9a1"
+        },
+        {
+          "label": "Smart 12V TV",
+          "value": "pf-3f39350f"
+        },
+        {
+          "label": "Smart 27inch 12V TV ",
+          "value": "pf-291b589a"
+        },
+        {
+          "label": "Marina TV - copy",
+          "value": "pf-26cd7ece"
+        },
+        {
+          "label": "kitchentv",
+          "value": "pf-30264e17"
+        },
+        {
+          "label": "Bathroom TV",
+          "value": "pf-9b89d32f"
+        },
+        {
+          "label": "Pool Pro ",
+          "value": "pf-114b5045"
+        },
+        {
+          "label": "Pool PRO QLED 2.0 - copy",
+          "value": "pf-fe34629c"
+        },
+        {
+          "label": "Pool Pro 2.0",
+          "value": "pf-6facf64e"
+        },
+        {
+          "label": "2022 Deck",
+          "value": "pf-1d67efba"
+        },
+        {
+          "label": "2025 Gaming",
+          "value": "pf-e51a399d"
+        },
+        {
+          "label": "2024 DECK PRO 2.0",
+          "value": "pf-f18dd167"
+        },
+        {
+          "label": "2024 DECK PRO QLED 2.0",
+          "value": "pf-c1d87a30"
+        },
+        {
+          "label": "FAQ",
+          "value": "pf-251d72f9"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Find and edit your section on the [section listing](https://sylvox.myshopify.com/admin/apps/pagefly/sections)"
+    },
+    {
+      "type": "paragraph",
+      "content": "To add block to a section, please use the App Block element on PageFly section editor."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PageFly Section"
+    }
+  ]
+}
+{% endschema %}

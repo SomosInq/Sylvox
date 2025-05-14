@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "4a962589-0f2a-4893-bdcc-d506e6110e8d": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/5_a7dd0948-7964-48d1-84c8-0082338f8b4d.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "",
+        "title": "Sylvox Window Display",
+        "heading_size": "h3",
+        "text": "<p>Catch the eye of passersby with the 2025 Window Display, featuring 3000 nits of ultra-high brightness and stunning 4K clarity. Its durable, anti-glare design is perfect for storefronts and outdoor-facing installations.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "33",
+        "layout": "right",
+        "color_scheme": "none",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true
+      }
+    },
+    "collection-header": {
+      "type": "collection-header",
+      "settings": {
+        "enable": false,
+        "collection_image_enable": true,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "advanced_content_nNKBQN": {
+      "type": "advanced-content",
+      "blocks": {
+        "liquid_PXXaeb": {
+          "type": "liquid",
+          "settings": {
+            "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Black Friday Banner</title>\n    <style>\n        body {\n            margin: 0;\n            font-family: Arial, sans-serif;\n        }\n        .banner {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            background: linear-gradient(to right, #FFA500, #000000); /* 黄色到黑色渐变 */\n            color: white;\n            padding: 10px 15px;\n            font-size: 16px;\n        }\n        .text-content {\n            line-height: 1.4;\n            flex: 1;\n        }\n        .text-content .title {\n            font-size: 18px; /* 调整标题字体大小 */\n            font-weight: bold;\n            margin-bottom: 5px;\n        }\n        .text-content .subtitle {\n            font-size: 14px; /* 调整副标题字体大小 */\n        }\n        .date-box {\n            background: #1a1a2e; /* 深蓝色背景 */\n            padding: 5px 10px;\n            border-radius: 8px;\n            text-align: center;\n            flex-shrink: 0; /* 保证右侧框不会被压缩 */\n        }\n        .date-box .dates {\n            font-size: 12px; /* 调整日期文字大小 */\n            color: #ccc; /* 日期文字颜色 */\n        }\n        .date-box .highlight {\n            font-size: 14px; /* 调整高亮文字大小 */\n            color: #FFA500; /* 高亮橙色 */\n            font-weight: bold;\n        }\n\n        /* 适配手机端的额外调整 */\n        @media (max-width: 768px) {\n            .banner {\n                flex-direction: column;\n                align-items: flex-start;\n                padding: 10px;\n            }\n            .text-content {\n                margin-bottom: 10px;\n            }\n            .text-content .title {\n                font-size: 16px; /* 再次缩小字体 */\n            }\n            .text-content .subtitle {\n                font-size: 12px; /* 再次缩小字体 */\n            }\n            .date-box {\n                width: 100%;\n                text-align: center;\n            }\n        }\n    </style>\n</head>\n<body>\n\n<div class=\"banner\">\n    <div class=\"text-content\">\n        <div class=\"title\">2024 Cyber Monday Sale</div>\n        <div class=\"subtitle\">Final & Best Deals of the Year</div>\n    </div>\n    <div class=\"date-box\">\n        <div class=\"dates\">Dec. 2 - Dec. 2</div>\n        <div class=\"highlight\">Last Call for Best Savings!</div>\n    </div>\n</div>\n\n</body>\n</html>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_PXXaeb"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "collection_description": {
+          "type": "collection_description",
+          "settings": {}
+        },
+        "subcollections": {
+          "type": "subcollections",
+          "settings": {}
+        },
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "grid_style": "large"
+          }
+        }
+      },
+      "block_order": [
+        "collection_description",
+        "subcollections",
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": true,
+        "collapse_filters": true,
+        "enable_color_swatches": false,
+        "enable_sort": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "4a962589-0f2a-4893-bdcc-d506e6110e8d",
+    "collection-header",
+    "advanced_content_nNKBQN",
+    "main-collection",
+    "recently-viewed"
+  ]
+}

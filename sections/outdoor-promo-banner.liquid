@@ -1,0 +1,554 @@
+
+
+<div class="outdoor-promo-banner">
+  {% if section.settings.background_image_desktop %}
+    <img class="background-image desktop-image" src="{{ section.settings.background_image_desktop | img_url: 'master' }}" alt="Outdoor TV Promotion">
+  {% endif %}
+  
+  {% if section.settings.background_image_mobile %}
+    <img class="background-image mobile-image" src="{{ section.settings.background_image_mobile | img_url: 'master' }}" alt="Outdoor TV Promotion">
+  {% endif %}
+  
+  <div class="text-content" style="left: {{ section.settings.text_block_position_x }}%; top: {{ section.settings.text_block_position_y }}%;">
+    <h1 class="heading">
+      <span class="heading-line1">{{ section.settings.heading_line1 }}</span>
+      <span class="heading-line2">{{ section.settings.heading_line2 }}</span>
+    </h1>
+    
+    <div class="subheading">
+      <span class="subheading-prefix">{{ section.settings.subheading_prefix }}</span>
+      <span class="discount-amount" style="background-color: {{ section.settings.discount_bg_color }}; color: {{ section.settings.discount_text_color }};">
+        {{ section.settings.discount_amount }}
+      </span> 
+      <span class="subheading-suffix">{{ section.settings.subheading_suffix }}</span>
+    </div>
+    
+    <p class="description">
+      {{ section.settings.description }}
+    </p>
+    
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="cta-button" style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .outdoor-promo-banner {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 43.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .mobile-image {
+    display: none;
+  }
+  
+  .text-content {
+    position: absolute;
+    max-width: 50%;
+    transform: translate(-0%, -50%);
+  }
+  
+  .heading {
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+  }
+  
+  .heading-line1, .heading-line2 {
+    display: block;
+    font-weight: 600;
+  }
+  #shopify-section-{{ section.id}} .heading-line1 {
+   
+    background: {{ section.settings.heading_color_desktop_1 }};-webkit-background-clip: text;-webkit-text-fill-color: transparent;
+    }
+    
+  #shopify-section-{{ section.id}}   .heading-line2 {
+   
+       background: {{ section.settings.heading_color_desktop_2 }};-webkit-background-clip: text;-webkit-text-fill-color: transparent;
+  
+    }
+  /* Desktop Styles */
+  @media screen and (min-width: 769px) {
+ #shopify-section-{{ section.id}}    .heading-line1 {
+      font-size: {{ section.settings.heading_size_desktop_1 }}px;
+   
+    }
+    
+ #shopify-section-{{ section.id}}    .heading-line2 {
+      font-size: {{ section.settings.heading_size_desktop_2 }}px;
+    
+    }
+    
+    .subheading-prefix {
+      font-size: {{ section.settings.subheading_prefix_size_desktop }}px;
+      color: {{ section.settings.subheading_prefix_color_desktop }};
+    }
+    
+    .discount-amount {
+      font-size: {{ section.settings.discount_size_desktop }}px;
+    }
+    
+    .subheading-suffix {
+      font-size: {{ section.settings.subheading_suffix_size_desktop }}px;
+      color: {{ section.settings.subheading_suffix_color_desktop }};
+    }
+    
+    .description {
+      font-size: {{ section.settings.description_size_desktop }}px;
+      color: {{ section.settings.description_color_desktop }};
+    }
+    
+    .cta-button {
+      font-size: {{ section.settings.button_size_desktop }}px;
+    }
+  }
+  
+  .subheading {
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .discount-amount {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  
+  .description {
+    margin: 0 0 25px 0;
+    line-height: 1.4;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Mobile Styles */
+  @media screen and (max-width: 768px) {
+    .desktop-image {
+      display: none;
+    }
+    .outdoor-promo-banner {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 150%;
+    overflow: hidden;
+}
+    .mobile-image {
+      display: block;
+    }
+    
+    .text-content {
+      max-width: 90%;
+      left: 50% !important;
+      top: 30% !important;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+  #shopify-section-{{ section.id}}   .heading-line1 {
+      font-size: {{ section.settings.heading_size_mobile_1 }}px;
+     
+    }
+    
+  #shopify-section-{{ section.id}}   .heading-line2 {
+      font-size: {{ section.settings.heading_size_mobile_2 }}px;
+   
+    }
+    
+    .subheading-prefix {
+      font-size: {{ section.settings.subheading_prefix_size_mobile }}px;
+      color: {{ section.settings.subheading_prefix_color_mobile }};
+    }
+    
+    .discount-amount {
+      font-size: {{ section.settings.discount_size_mobile }}px;
+    }
+    
+    .subheading-suffix {
+      font-size: {{ section.settings.subheading_suffix_size_mobile }}px;
+      color: {{ section.settings.subheading_suffix_color_mobile }};
+    }
+    
+    .description {
+      font-size: {{ section.settings.description_size_mobile }}px;
+      color: {{ section.settings.description_color_mobile }};
+    }
+    
+    .cta-button {
+      font-size: {{ section.settings.button_size_mobile }}px;
+    }
+    
+    .subheading {
+      justify-content: center;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "Outdoor Promo Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Heading Line 1"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Text Content",
+      "default": "Outdoor TV"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop_1",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color_desktop_1",
+      "label": "Text Color"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile_1",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 32
+    },
+   
+    {
+      "type": "header",
+      "content": "Heading Line 2"
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Text Content",
+      "default": "Spring Kickoff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop_2",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color_desktop_2",
+      "label": "Text Color"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile_2",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 32
+    },
+  
+    {
+      "type": "header",
+      "content": "Subheading Prefix"
+    },
+    {
+      "type": "text",
+      "id": "subheading_prefix",
+      "label": "Text Content",
+      "default": "Enjoy"
+    },
+    {
+      "type": "range",
+      "id": "subheading_prefix_size_desktop",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "subheading_prefix_color_desktop",
+      "label": "Text Color (Desktop)",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "subheading_prefix_size_mobile",
+      "min": 14,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "subheading_prefix_color_mobile",
+      "label": "Text Color (Mobile)",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Discount Amount"
+    },
+    {
+      "type": "text",
+      "id": "discount_amount",
+      "label": "Text Content",
+      "default": "$300"
+    },
+    {
+      "type": "range",
+      "id": "discount_size_desktop",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "discount_bg_color",
+      "label": "Background Color",
+      "default": "#C25B76"
+    },
+    {
+      "type": "color",
+      "id": "discount_text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "discount_size_mobile",
+      "min": 14,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Subheading Suffix"
+    },
+    {
+      "type": "text",
+      "id": "subheading_suffix",
+      "label": "Text Content",
+      "default": "in Savings"
+    },
+    {
+      "type": "range",
+      "id": "subheading_suffix_size_desktop",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "subheading_suffix_color_desktop",
+      "label": "Text Color (Desktop)",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "subheading_suffix_size_mobile",
+      "min": 14,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "subheading_suffix_color_mobile",
+      "label": "Text Color (Mobile)",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Text Content",
+      "default": "Watch and Embrace Spring Vibes Outdoors"
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "description_color_desktop",
+      "label": "Text Color (Desktop)",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color_mobile",
+      "label": "Text Color (Mobile)",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background Color",
+      "default": "#2E7D5F"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Text Position"
+    },
+    {
+      "type": "range",
+      "id": "text_block_position_x",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Text Block Horizontal Position (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_block_position_y",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Text Block Vertical Position (Desktop)",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Outdoor Promo Banner",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}
