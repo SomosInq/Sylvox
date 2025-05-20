@@ -42,6 +42,7 @@
         "toolbar-1",
         "a20146b5-90e7-4454-9485-11d2cc3ea04c"
       ],
+      "disabled": true,
       "settings": {
         "announcement_center": true,
         "toolbar_social": true,
