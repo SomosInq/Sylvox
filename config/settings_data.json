@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "color_body_bg": "#20413b",
+    "color_body_bg": "rgba(0,0,0,0)",
     "color_body_text": "#000000",
     "color_price": "#1c1d1d",
     "color_savings_text": "#ba4444",
