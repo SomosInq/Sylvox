@@ -65,7 +65,7 @@
       ],
       "name": "Tab products",
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "stack_products": true,
         "products_count": 6,
         "products_per_row_mobile": "2",
@@ -79,7 +79,7 @@
         "image_size": "auto",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
-        "tabs_position": 30
+        "tabs_position": 18
       }
     },
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7": {
