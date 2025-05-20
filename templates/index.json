@@ -81,72 +81,54 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "category_tabs_RiP9pX": {
-      "type": "category-tabs",
+    "tab_products_nkhjFy": {
+      "type": "tab-products",
       "blocks": {
-        "category_mP9JaH": {
-          "type": "category",
+        "tab_9PpCiX": {
+          "type": "tab",
           "settings": {
-            "category_name": "RV TV",
+            "tab_label": "Tab",
+            "title": "Heading",
+            "heading_tag": "h2",
+            "inline_title": "Series",
+            "description": "<p>Description</p>",
+            "content_max_width": 780,
+            "text_color": "#000000",
+            "image": "shopify://shop_images/cloudy-sky-from-above.jpg",
             "collection": "rv-tv",
-            "products_to_show": 3,
-            "is_active": true
-          }
-        },
-        "category_aACJbp": {
-          "type": "category",
-          "settings": {
-            "category_name": "Kitchen TV",
-            "collection": "kitchen-tv",
-            "products_to_show": 3,
-            "is_active": false
-          }
-        },
-        "category_tGGXHK": {
-          "type": "category",
-          "settings": {
-            "category_name": "Bathroom TV",
-            "collection": "",
-            "products_to_show": 3,
-            "is_active": false
+            "product": "100-difference",
+            "product_title": "New Nano AI",
+            "product_description": "The new Nano AI is the most powerful device we've ever created.",
+            "product_image": "shopify://shop_images/4_990e7e2c-0a03-49f1-be87-3cc32c912328.jpg",
+            "product_2": "",
+            "product_title_2": "New Nano AI",
+            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
+            "featured_text_color": "",
+            "background": "",
+            "btn_text_color": ""
           }
         }
       },
       "block_order": [
-        "category_mP9JaH",
-        "category_aACJbp",
-        "category_tGGXHK"
+        "tab_9PpCiX"
       ],
-      "name": "Category Product tabs",
+      "name": "Tab products",
       "settings": {
-        "section_id": "section1",
-        "heading_line1_1": "",
-        "heading_line1": "Spring into",
-        "heading_line1_2": "",
-        "heading_line2": "Entertainment",
-        "heading_line3": "Lifestyle TVs",
-        "description": "Brighten up your RV, kitchen, or bathroom with crisp, vibrant viewing.\nSmall, sleek, and ready to bring springtime entertainment wherever you go.",
-        "max_width": 900,
-        "background_color": "#F8F7F2",
-        "heading_size_desktop_1": 48,
-        "heading_size_desktop_2": 48,
-        "heading_size_desktop_3": 48,
-        "heading_color_1_desktop": "#2E7D5F",
-        "heading_color_2_desktop": "#B06A8A",
-        "heading_color_3_desktop": "#2E7D5F",
-        "description_size_desktop": 16,
-        "description_color_desktop": "#777777",
-        "heading_size_mobile_1": 32,
-        "heading_size_mobile_2": 32,
-        "heading_size_mobile_3": 32,
-        "description_size_mobile": 14,
-        "description_color_mobile": "#777777",
-        "discount_bg_color": "#B06A8A",
-        "discount_color": "#fff",
-        "discount_size": 15,
-        "price_color": "#B06A8A",
-        "button_bg_color": "#2E7D5F",
-        "button_text_color": "#FFFFFF"
+        "full_width": true,
+        "stack_products": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "tabs_position": 30
       }
     },
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7": {
@@ -758,7 +740,7 @@
   },
   "order": [
     "slidershow_cUCkgC",
-    "category_tabs_RiP9pX",
+    "tab_products_nkhjFy",
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
