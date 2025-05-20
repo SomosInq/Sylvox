@@ -155,6 +155,23 @@
         "tabs_position": 41
       }
     },
+    "info_section_JEKir6": {
+      "type": "info-section",
+      "name": "Info section",
+      "settings": {
+        "icon": "<svg width=\"81\" height=\"81\" viewbox=\"0 0 81 81\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<rect width=\"81\" height=\"81\" fill=\"url(#pattern0_2870_6437)\"></rect>\n<defs>\n<pattern id=\"pattern0_2870_6437\" patterncontentunits=\"objectBoundingBox\" width=\"1\" height=\"1\">\n<use xlink:href=\"#image0_2870_6437\" transform=\"scale(0.00531915)\"></use>\n</pattern>\n<image id=\"image0_2870_6437\" width=\"188\" height=\"188\" preserveaspectratio=\"none\" xlink:href=\"data:image/png;base64,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\"></image>\n</defs>\n</svg>",
+        "title": "Not Sure What Outdoor TV Fits you Best?",
+        "description": "Outdoor TV finder tool",
+        "text_color": "#221551",
+        "bg": "#20413b",
+        "style": "fill",
+        "size": "base",
+        "button_text": "Find your perfect fit",
+        "url": "",
+        "background": "#336256",
+        "btn_text_color": ""
+      }
+    },
     "featured_collections_XJWX4m": {
       "type": "featured-collections",
       "blocks": {
@@ -691,6 +708,7 @@
   "order": [
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
     "tab_products_i4fR76",
+    "info_section_JEKir6",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
     "70b62ca6-065a-45cd-a481-2704f5dc26c0",
