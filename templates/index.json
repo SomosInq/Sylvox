@@ -140,7 +140,7 @@
       "settings": {
         "full_width": false,
         "stack_products": true,
-        "products_count": 6,
+        "products_count": 2,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "subheading": "test",
@@ -152,7 +152,7 @@
         "image_size": "auto",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
-        "tabs_position": 41
+        "tabs_position": 100
       }
     },
     "info_section_JEKir6": {
