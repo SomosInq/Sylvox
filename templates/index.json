@@ -9,12 +9,132 @@
  */
 {
   "sections": {
+    "slidershow_cUCkgC": {
+      "type": "slidershow",
+      "blocks": {
+        "slide_kzzHKQ": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "btn_margin_left": 0,
+            "btn_margin_right": 0,
+            "btn_margin_top": 0,
+            "btn_margin_bottom": 0,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "mobile_box_align": "middle",
+            "text_alignment_mobile": "center",
+            "mobile_margin_left": 0,
+            "mobile_margin_right": 0,
+            "mobile_margin_top": 0,
+            "mobile_margin_bottom": 0
+          }
+        },
+        "slide_pRBLBq": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "btn_margin_left": 0,
+            "btn_margin_right": 0,
+            "btn_margin_top": 0,
+            "btn_margin_bottom": 0,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "mobile_box_align": "middle",
+            "text_alignment_mobile": "center",
+            "mobile_margin_left": 0,
+            "mobile_margin_right": 0,
+            "mobile_margin_top": 0,
+            "mobile_margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "slide_kzzHKQ",
+        "slide_pRBLBq"
+      ],
+      "name": "New Slider",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "tab_products_i4fR76": {
+      "type": "tab-products",
+      "blocks": {
+        "tab_MjRrMX": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "label",
+            "title": "heading",
+            "heading_tag": "h2",
+            "inline_title": "Series",
+            "description": "<p>desc</p>",
+            "content_max_width": 780,
+            "text_color": "#000000",
+            "image": "shopify://shop_images/antelope-canyon-sunbeams.jpg",
+            "collection": "12v-tv",
+            "product": "",
+            "product_title": "New Nano AI",
+            "product_description": "The new Nano AI is the most powerful device we've ever created.",
+            "product_2": "",
+            "product_title_2": "New Nano AI",
+            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
+            "featured_text_color": "",
+            "background": "",
+            "btn_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_MjRrMX"
+      ],
+      "name": "Tab products",
+      "settings": {
+        "full_width": true,
+        "stack_products": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "test",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "tabs_position": 30
+      }
+    },
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7": {
       "type": "slideshow",
       "blocks": {
         "hero_ENCXGB": {
           "type": "hero",
-          "disabled": true,
           "settings": {
             "top_subheading": "",
             "title": "<p>Mother’s Day Sale</p>",
@@ -74,6 +194,7 @@
         "c6e06cf1-25c9-425b-9d93-79130c2a1a11",
         "hero_yNnGUW"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "desktop_size": -10,
@@ -129,6 +250,7 @@
         "collection_VAjAWA",
         "collection_NYRc6N"
       ],
+      "disabled": true,
       "settings": {
         "title": "Sylvox popular categories",
         "heading_size": "h2",
@@ -168,6 +290,7 @@
       "block_order": [
         "template--15419224457277__70b62ca6-065a-45cd-a481-2704f5dc26c0-heading-1"
       ],
+      "disabled": true,
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -223,6 +346,7 @@
         "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-2",
         "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-0"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "align_text": "left",
@@ -286,6 +410,7 @@
         "text_block_Nmk4Jm",
         "text_block_tA98UW"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "align_text": "left",
@@ -429,6 +554,7 @@
         "118b9aa1-07fc-488f-a44b-f333ab6e99ca",
         "7168f6de-09d9-4361-9322-761adfbfbc41"
       ],
+      "disabled": true,
       "settings": {
         "title": "Featured On",
         "heading_size": "h2",
@@ -582,6 +708,7 @@
         "template--15059620692029__9f154551-1b10-4a4c-98c7-4e7a0a6811fd-166634474763348e12-1",
         "1c470e18-993f-47ed-baa4-6bf4141ce4a9"
       ],
+      "disabled": true,
       "settings": {
         "title": "You Can Count On Us",
         "align_text": "center",
@@ -594,6 +721,7 @@
     },
     "blog_posts_qPiVK8": {
       "type": "blog-posts",
+      "disabled": true,
       "settings": {
         "title": "From the blog",
         "heading_size": "h2",
@@ -610,6 +738,8 @@
     }
   },
   "order": [
+    "slidershow_cUCkgC",
+    "tab_products_i4fR76",
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",

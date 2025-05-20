@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "color_body_bg": "#ffffff",
+    "color_body_bg": "#20413b",
     "color_body_text": "#000000",
     "color_price": "#1c1d1d",
     "color_savings_text": "#ba4444",
@@ -21,14 +21,14 @@
     "color_cart_dot_text": "#fff",
     "color_small_image_bg": "#ffffff",
     "color_large_image_bg": "#e7e7e7",
-    "color_header": "#ffffff",
-    "color_header_text": "#000000",
-    "color_announcement": "#297f67",
+    "color_header": "#20413b",
+    "color_header_text": "#ffffff",
+    "color_announcement": "#20413b",
     "color_announcement_text": "#ffffff",
     "color_header_search": "#f7f7f7",
-    "color_footer": "#297f67",
+    "color_footer": "#ffffff",
     "color_footer_border": "#e8e8e1",
-    "color_footer_text": "#ffffff",
+    "color_footer_text": "#1c1d1d",
     "color_scheme_1_bg": "#ffffff",
     "color_scheme_1_text": "#000000",
     "color_scheme_1_texture": "none",
@@ -401,11 +401,6 @@
       "144831480468751239": {
         "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
         "disabled": false,
-        "settings": {}
-      },
-      "7872257831342662540": {
-        "type": "shopify://apps/worry-free-purchase/blocks/index/c61a403d-127f-4a83-aa2d-dd891cc35fd1",
-        "disabled": true,
         "settings": {}
       }
     }
