@@ -10,6 +10,7 @@
   transform: translateZ(0);
 }
 
+
 .content-over-media:before {
   content: "";
   background: rgb(var(--content-over-media-overlay));
