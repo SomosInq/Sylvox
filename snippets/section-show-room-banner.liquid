@@ -1,0 +1,96 @@
+{%- liquid
+    assign banner_title = banner_title | default: section.settings.banner_title
+    assign banner_sub_title = banner_sub_title | default: section.settings.banner_sub_title
+    assign text_block_left_margin = text_block_left_margin | default: section.settings.text_block_left_margin | default: 40
+    assign text_block_width = text_block_width | default: section.settings.text_block_width | default: 750
+    assign bg_image = bg_image | default: section.settings.background_image
+    assign layout = layout | default: 'left'
+    assign height = height | default: section.settings.height | default: 550
+    assign lazyload_images = true
+    assign hydration = hydration | default: 'on:visible'
+    assign banner_title_color = banner_title_color | default: section.settings.banner_title_color | default: '#fff'
+    assign banner_sub_title_color = banner_sub_title_color | default: section.settings.banner_sub_title_color | default: '#efefef'
+
+    if section.index == 1
+        assign lazyload_images = false
+    endif
+-%}
+{% capture bg_image_content %}
+  {%- if bg_image != blank -%}
+    {% assign classes = 'image-fit background-media-text__image background-media-text__image--'
+      | append: section.id
+    %}
+    {% comment %} Full width image so don't need to adjust sizes attribute, fallback is 100vw {% endcomment %}
+    {%- render 'image-element', img: bg_image, img_width: 2400, loading: lazyload_images, classes: classes -%}
+  {%- else -%}
+    {%- render 'placeholder-svg', name: 'lifestyle-1' -%}
+  {%- endif -%}
+{% endcapture %}
+{%- style -%}
+    .background_banner_block{
+        top: 50%;
+        transform: translateY(-50%);
+        height:auto !important;
+    }
+  .banner-text-block{
+    background-color: transparent;
+    width:{{  text_block_width }}px;
+    margin-left:{{  text_block_left_margin }}%;
+  }
+  .banner-text-title{
+     color:{{ banner_title_color }};
+     font-size: clamp(22px, 2vw, 40px);
+     font-weight:600;
+  }
+  .banner-text-sub-title{
+     color:{{ banner_sub_title_color }};
+     font-size: clamp(14px, 2vw, 18px);
+  }
+  /* 手机端调整为单列 */
+    @media (max-width: 768px) {
+        .banner-text-block {
+            width: 90% !important; 
+            margin:0 auto;
+        }
+        .background_banner_block{
+            position:absolute;
+            top: 8% !important;
+            transform: translateY(0) !important;
+        }
+    }
+{%- endstyle -%}
+<is-land {{ hydration }}>
+    <background-image>
+        <div
+        data-section-type="background-image"
+        class="background-media-text background-media-text--{{ section.id }} background-media-text--{{ height }} background-media-text-mobile"
+        >
+        <div class="background-media-text__container">
+            {{ bg_image_content }}
+        </div>
+        {%- if banner_title != blank or banner_sub_title != blank -%}
+            <div class="background-media-text__inner background_banner_block">
+                <div class="background-media-text__aligner background-media-text--{{ layout }}">
+                    <div data-animate="rise-up">
+                        <div class="background-media-text__text banner-text-block">
+                            {%- if banner_title != blank -%}
+                            <p class="banner-text-title">{{ banner_title | escape }}</p>
+                            {%- endif -%}
+
+                            {%- if banner_sub_title != blank -%}
+                            <div class="rte background-media-text__subtext clearfix banner-text-sub-title">{{ banner_sub_title }}</div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%- endif -%}
+        </div>
+    </background-image>
+
+    <template data-island>
+        <script type="module">
+        import 'components/section-background-image-text'
+        </script>
+    </template>
+</is-land>

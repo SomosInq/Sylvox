@@ -1,0 +1,180 @@
+{%- liquid
+  assign info_blocks_margin_top = info_blocks_margin_top | default: section.settings.info_blocks_margin_top | default: 120
+  assign info_blocks_margin_bottom = info_blocks_margin_bottom | default: section.settings.info_blocks_margin_bottom | default: 0
+  assign blocks_width = blocks_width | default: section.settings.blocks_width | default: 65
+  assign block_title_color = block_title_color | default: section.settings.block_title_color | default: '#333'
+  assign content_text_color = content_text_color | default: section.settings.content_text_color | default: '#666'
+  assign icon_image_one = icon_image_one | default: section.settings.icon_image_one
+  assign icon_image_two = icon_image_two | default: section.settings.icon_image_two
+  assign icon_image_three = icon_image_three | default: section.settings.icon_image_three
+
+-%}
+{%- style -%}
+  .info-blocks{
+        width:{{ blocks_width }}%;
+        margin:0 auto;
+      margin-top:{{ info_blocks_margin_top }}px;
+      margin-bottom:{{ info_blocks_margin_bottom }}px;
+  }
+  .info-block-item{
+    display:flex;
+    align-items:center;
+    display: -webkit-flex; /* Safari */
+    -webkit-align-items: center;
+    background-color:#f9f9f9;
+    margin-bottom:60px;
+  }
+  .cursor{
+    cursor: pointer;
+  }
+  .info-content{
+    width:100%;
+    display:flex;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;   /* 改为垂直方向主轴 */
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content:flex-start;
+    margin-left:clamp(40px, 2vw, 60px);
+    padding-right:clamp(30px, 2vw, 40px);
+  }
+  .info-text-title{
+     font-size: 22px;
+     /* font-weight:500; */
+  }
+  .info-text-line{
+    display:flex;
+    display: -webkit-flex;
+    margin-bottom:10px;
+  }
+  .info-text-size{
+    color:{{ content_text_color }};
+    font-size:16px;
+  }
+  /* 1440端调整 */
+    @media (max-width: 1440px) {
+        .info-text-title{
+            font-size: 20px;
+        }
+        .info-text-size{
+            font-size:16px;
+        }
+    }
+   /* 手机端调整为单列 */
+    @media (max-width: 768px) {
+        .info-blocks{
+            width:90%;
+            margin-top:40px;
+        }
+        .info-block-item{
+            display:flex;
+           flex-direction: column;
+           justify-content:center;
+            display: -webkit-flex; /* Safari */
+            -webkit-flex-direction: column;
+            -webkit-justify-content: center;
+        }
+        .info-content{
+            -webkit-justify-content: center;
+            justify-content:center;
+            margin-left:0;
+            padding:14px 14px;
+        }
+        .show-room-icon__image{
+            width:20px;
+            height:20px;
+        }
+        .info-text-title{
+            font-size: 17px;
+            font-weight:500;
+        }
+        .info-text-size{
+            font-size:15px;
+        }
+    }
+{%- endstyle -%}
+{%- if section.blocks.size > 0 -%}
+  <div class="info-blocks">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.link != blank -%}
+        <a
+          href="{{ block.settings.link }}"
+          class="info-block-item cursor"
+          aria-label="{{ block.settings.block_image.alt }}"
+        >
+      {%- else -%}
+        <div class="info-block-item">
+      {%- endif -%}
+      {%- if block.settings.block_image != blank -%}
+          {%- render 'image-element',
+            img: block.settings.block_image,
+            widths: '540,720,900',
+            loading:'lazy',
+            classes: 'show-room-info-block__image'
+          -%}
+      {%- else -%}
+        {%- render 'placeholder-svg', name: 'lifestyle-1' -%}
+      {%- endif -%}
+      <div class="info-content">
+        {%- if block.settings.block_title != blank -%}
+          <p class="info-text-title">
+            {{ block.settings.block_title | escape }}
+          </p>
+        {%- endif -%}
+        {%- if icon_image_one != blank or block.settings.content_text_one != blank -%}
+          <p class="info-text-line">
+            {%- if icon_image_one != blank -%}
+                {%- render 'image-element',
+                    img: icon_image_one,
+                    img_width: '24px',
+                    img_height:'24px',
+                    loading:'lazy',
+                    classes: 'show-room-icon__image'
+                -%}
+            {%- endif -%}
+            {%- if block.settings.content_text_one != blank -%}
+              <span class="info-text-size">{{ block.settings.content_text_one }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+        {%- if icon_image_two != blank or block.settings.content_text_two != blank -%}
+          <p class="info-text-line">
+            {%- if icon_image_two != blank -%}
+              {%- render 'image-element',
+                    img: icon_image_two,
+                    img_width: '24px',
+                    img_height:'24px',
+                    loading:'lazy',
+                    classes: 'show-room-icon__image'
+                -%}
+            {%- endif -%}
+            {%- if block.settings.content_text_two != blank -%}
+              <span class="info-text-size">{{ block.settings.content_text_two }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+        {%- if icon_image_three != blank or block.settings.content_text_three != blank -%}
+          <p class="info-text-line">
+            {%- if icon_image_three != blank -%}
+              {%- render 'image-element',
+                    img: icon_image_three,
+                    img_width: '24px',
+                    img_height:'24px',
+                    loading:'lazy',
+                    classes: 'show-room-icon__image'
+                -%}
+            {%- endif -%}
+            {%- if block.settings.content_text_three != blank -%}
+              <span class="info-text-size">{{ block.settings.content_text_three }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+      </div>
+      {%- if block.settings.link != blank -%}
+        </a>
+      {%- else -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

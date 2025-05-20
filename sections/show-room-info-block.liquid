@@ -1,0 +1,133 @@
+{%- render 'section-show-room-info-block' -%}
+{% schema %}
+  {
+    "name": "Show Room Info Block",
+     "class": "index-section",
+    "settings": [
+      {
+        "type": "number",
+        "id": "info_blocks_margin_top",
+        "label": "Blocks Margin Top(px)",
+        "default": 120,
+      },
+      {
+        "type": "number",
+        "id": "info_blocks_margin_bottom",
+        "label": "Blocks Margin Bottom(px)",
+        "default": 0,
+      },
+      {
+          "type": "range",
+          "id": "blocks_width",
+          "label": "Blocks Width(%)",
+          "default": 65,
+          "min": 60,
+          "max": 80,
+          "step": 5,
+          "unit": "%"
+        },
+        {
+          "type": "color",
+          "id": "block_title_color",
+          "label": "Block Title Text Color",
+          "default": "#333"
+        },
+        {
+          "type": "color",
+          "id": "content_text_color",
+          "label": "Content Text Color",
+          "default": "#666"
+        },
+         {
+          "type": "image_picker",
+          "id": "icon_image_one",
+          "label": "Icon Image One",
+          "info": "t:actions.add_alt_text"
+        },
+         {
+          "type": "image_picker",
+          "id": "icon_image_two",
+          "label": "Icon Image Two",
+          "info": "t:actions.add_alt_text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image_three",
+          "label": "Icon Image Three",
+          "info": "t:actions.add_alt_text"
+        },
+    ],
+    "blocks": [
+    {
+      "type": "info_block",
+      "name": "Info Block",
+      "settings": [
+        {
+          "type": "number",
+          "id": "block_margin-bottom",
+          "label": "Block Margin bottom(px)",
+          "default": 20,
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link",
+          "info": "t:labels.optional"
+        },
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "t:labels.image",
+          "info": "t:actions.add_alt_text"
+        },
+        {
+          "id": "block_title",
+          "type": "text",
+          "label": "t:labels.heading",
+          "default": "NTX BBQ Supply/Majestic Outdoor Living"
+        },
+        {
+          "id": "content_text_one",
+          "type": "text",
+          "label": "Content Text One",
+          "default": "327W Crawford St."
+        },
+        {
+          "id": "content_text_two",
+          "type": "text",
+          "label": "Content Text Two",
+          "default": "Denison，TX 75020"
+        },
+        {
+          "id": "content_text_three",
+          "type": "text",
+          "label": "Content Text Three",
+          "default": "Model:55\" Pool Pro QLED2.0"
+        },
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "name": "Show Room Info Block",
+        "blocks": [
+          {
+            "type": "info_block"
+          },
+          {
+            "type": "info_block"
+          },
+          {
+            "type": "info_block"
+          },
+          {
+            "type": "info_block"
+          },
+          {
+            "type": "info_block"
+          }
+        ]
+      }
+    ],
+  }
+{% endschema %}

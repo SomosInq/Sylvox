@@ -1,0 +1,120 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "show_room_banner_iw6chg": {
+      "type": "show-room-banner",
+      "name": "Show Room Banner",
+      "settings": {
+        "banner_title": "Where to Experience Sylvox Displays",
+        "banner_title_color": "#ffffff",
+        "banner_sub_title": "Step into the world of Sylvox.See our Outdoor TVs up close and experience brilliant outdoor viewing like never before.",
+        "banner_sub_title_color": "#efefef",
+        "text_block_width": 750,
+        "text_block_left_margin": 17,
+        "height": 400,
+        "background_image": "shopify://shop_images/A4.png"
+      }
+    },
+    "show_room_info_block_FCL6Qd": {
+      "type": "show-room-info-block",
+      "blocks": {
+        "info_block_zmNNiY": {
+          "type": "info_block",
+          "settings": {
+            "block_margin-bottom": 20,
+            "link": "",
+            "block_image": "shopify://shop_images/4-3_32d5dcaf-27b5-46d3-93fd-411433c2f331.jpg",
+            "block_title": "Interiors For Outdoor Living",
+            "content_text_one": "16 W 280 Jeans Road",
+            "content_text_two": "Lemont IL, 60439",
+            "content_text_three": "Model: 43\" Deck Pro 2.0"
+          }
+        },
+        "info_block_Nrgywx": {
+          "type": "info_block",
+          "settings": {
+            "block_margin-bottom": 20,
+            "link": "",
+            "block_image": "shopify://shop_images/43_59e64f2e-bb70-4b70-af91-1f546d894838.jpg",
+            "block_title": "Majestic Outdoor Living",
+            "content_text_one": "NTX BBQ Supply/Majestic Outdoor Living",
+            "content_text_two": "327 W Crawford St.Denison, TX 75020",
+            "content_text_three": "Model: 55\" Pool Pro QLED 2.0"
+          }
+        },
+        "info_block_VFwXjE": {
+          "type": "info_block",
+          "settings": {
+            "block_margin-bottom": 20,
+            "link": "",
+            "block_image": "shopify://shop_images/43-1_64e5a672-b920-4bdb-b017-5fa37bd43320.jpg",
+            "block_title": "Seaside Kitchens & Baths Inc",
+            "content_text_one": "451 Nathan Ellis Highway",
+            "content_text_two": "Mashpee, MA 02649",
+            "content_text_three": "Model: 55\" Deck Pro 2.0"
+          }
+        },
+        "info_block_zxHPdR": {
+          "type": "info_block",
+          "disabled": true,
+          "settings": {
+            "block_margin-bottom": 20,
+            "link": "",
+            "block_title": "NTX BBQ Supply/Majestic Outdoor Living",
+            "content_text_one": "327W Crawford St.",
+            "content_text_two": "Denison，TX 75020",
+            "content_text_three": "Model:55\" Pool Pro QLED2.0"
+          }
+        },
+        "info_block_m9RFkm": {
+          "type": "info_block",
+          "disabled": true,
+          "settings": {
+            "block_margin-bottom": 20,
+            "link": "",
+            "block_title": "NTX BBQ Supply/Majestic Outdoor Living",
+            "content_text_one": "327W Crawford St.",
+            "content_text_two": "Denison，TX 75020",
+            "content_text_three": "Model:55\" Pool Pro QLED2.0"
+          }
+        }
+      },
+      "block_order": [
+        "info_block_zmNNiY",
+        "info_block_Nrgywx",
+        "info_block_VFwXjE",
+        "info_block_zxHPdR",
+        "info_block_m9RFkm"
+      ],
+      "name": "Show Room Info Block",
+      "settings": {
+        "info_blocks_margin_top": 120,
+        "info_blocks_margin_bottom": 0,
+        "blocks_width": 65,
+        "block_title_color": "#333333",
+        "content_text_color": "#666666",
+        "icon_image_one": "shopify://shop_images/2_8a69deeb-ce29-4ae0-863d-311d1f707a5f.png",
+        "icon_image_two": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
+        "icon_image_three": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "show_room_banner_iw6chg",
+    "show_room_info_block_FCL6Qd"
+  ]
+}
