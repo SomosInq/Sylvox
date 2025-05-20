@@ -77,9 +77,11 @@ window.ChatraSetup = {
     {%- render 'social-meta-tags' -%}
 
     {%- render 'font-face' -%}
+    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'components.css' | asset_url | stylesheet_tag: preload: true }}
     {%- render 'css-variables' -%}
     {{ 'overrides.css' | asset_url | stylesheet_tag }}
+
 
     {%- style -%}
       :root {

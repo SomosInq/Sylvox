@@ -1,0 +1,286 @@
+
+/* Content Over Media */
+.content-over-media {
+  grid-template: 0 minmax(0, 1fr) 0 / minmax(0, 1fr) minmax(0, min(var(--container-max-width), 100% - var(--content-over-media-gap, var(--content-over-media-column-gap, var(--container-gutter))) * 2)) minmax(0, 1fr);
+  gap: var(--content-over-media-row-gap, var(--content-over-media-gap, var(--container-gutter))) var(--content-over-media-column-gap, var(--content-over-media-gap, var(--container-gutter)));
+  place-items: center;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.content-over-media:before {
+  content: "";
+  background: rgb(var(--content-over-media-overlay));
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+  transition: background .2s ease-in-out;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.content-over-media > :is(picture, img, video, iframe, svg, video-media) {
+  height: var(--content-over-media-height, auto);
+  transform-origin: top;
+  overflow-wrap: anywhere;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  grid-area: 1 / 1 / span 3 / span 3;
+  place-self: stretch stretch;
+  width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  position: relative;
+}
+
+.content-over-media > :is(picture, img, video, iframe, svg, video-media) > * {
+  border-radius: inherit;
+}
+
+.content-over-media > :not(img, video, iframe, svg, video-media, picture) {
+  max-width: var(--content-over-media-content-max-width, 780px);
+  z-index: 1;
+  grid-area: 2 / 2 / auto / span 1;
+  position: relative;
+}
+
+[allow-transparent-header] :is(.content-over-media > :not(img, video, iframe, svg, video-media, picture)) {
+  padding-block-start: calc(var(--header-height) * var(--section-is-first));
+}
+
+.content-over-media > video-media:not([autoplay]) ~ * {
+  transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
+}
+
+.content-over-media > video-media:not([autoplay])[loaded] ~ * {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.content-over-media:has( > video-media[loaded]:not([autoplay])):before {
+  background: none;
+  transition-delay: .1s;
+}
+
+.content-over-media--sm {
+  --content-over-media-height: 375px;
+}
+
+.content-over-media--md {
+  --content-over-media-height: 480px;
+}
+
+.content-over-media--lg {
+  --content-over-media-height: 560px;
+}
+
+.content-over-media--fill {
+  --content-over-media-height: calc(100vh - var(--sticky-area-height));
+}
+
+.shopify-section:first-child [allow-transparent-header] .content-over-media--fill {
+  --content-over-media-height: calc(100vh - var(--announcement-bar-height, 0px));
+}
+
+@supports (height: 100svh) {
+  .content-over-media--fill {
+    --content-over-media-height: calc(100svh - var(--sticky-area-height));
+  }
+
+  .shopify-section:first-child [allow-transparent-header] .content-over-media--fill {
+    --content-over-media-height: calc(100svh - var(--announcement-bar-height, 0px));
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .content-over-media--sm {
+    --content-over-media-height: 400px;
+  }
+
+  .content-over-media--md {
+    --content-over-media-height: 460px;
+  }
+
+  .content-over-media--lg {
+    --content-over-media-height: 560px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .content-over-media--sm {
+    --content-over-media-height: 440px;
+  }
+
+  .content-over-media--md {
+    --content-over-media-height: 500px;
+  }
+
+  .content-over-media--lg {
+    --content-over-media-height: 640px;
+  }
+
+  .content-over-media--fill > :is(img, video, iframe, svg, video-media, picture) {
+    max-height: 1200px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .content-over-media--md {
+    --content-over-media-height: 560px;
+  }
+
+  .content-over-media--lg {
+    --content-over-media-height: 720px;
+  }
+}
+
+.page-dots {
+  justify-content: center;
+  gap: var(--spacing-2-5) var(--spacing-4);
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.page-dots > * {
+  width: var(--spacing-1-5);
+  height: var(--spacing-1-5);
+  border-radius: var(--rounded-full);
+  opacity: .3;
+  background: currentColor;
+  transition: opacity .2s ease-in-out;
+}
+
+.page-dots > *[aria-current="true"] {
+  opacity: 1;
+}
+
+.page-dots--blurred {
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--rounded-full);
+  background: rgb(var(--background) / .7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.stretching-dots {
+  align-items: center;
+  gap: var(--spacing-5);
+  display: flex;
+}
+
+.stretching-dots > * {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: var(--spacing-2);
+  opacity: .5;
+  background: currentColor;
+  transition: opacity .5s cubic-bezier(.34, 1.56, .64, 1), width .5s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.stretching-dots > *[aria-current="true"] {
+  width: var(--spacing-6);
+  opacity: 1;
+}
+
+.numbered-dots {
+  align-items: center;
+  gap: var(--spacing-2);
+  display: flex;
+}
+
+.numbered-dots__item {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  will-change: transform;
+  border-radius: 100%;
+  place-items: center;
+  font-weight: bold;
+  transition: color .2s;
+  display: grid;
+}
+
+.numbered-dots__item > * {
+  grid-area: 1 / -1;
+}
+
+.numbered-dots__item svg {
+  width: inherit;
+  height: inherit;
+  transform: rotate(-90deg);
+}
+
+.numbered-dots__item circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: butt;
+  stroke-opacity: .3;
+  stroke-width: 2px;
+}
+
+.numbered-dots__item[aria-current="true"] circle:last-child {
+  --radius: 15;
+  --circumference: calc(2px * (22 / 7) * var(--radius));
+  stroke-opacity: 1;
+  stroke-dasharray: calc(var(--circumference) * var(--progress, 1)), var(--circumference);
+}
+
+.prev-next-buttons {
+  align-items: center;
+  gap: var(--spacing-4);
+  display: flex;
+}
+
+:is(.drawer, .popover):not(:defined) {
+  display: none;
+}
+
+:is(.drawer, .popover)::part(outside-close-button), :is(.drawer, .popover)::part(close-button) {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+:is(.drawer, .popover)::part(outside-close-button) {
+  width: var(--spacing-12);
+  height: var(--spacing-12);
+  bottom: 100%;
+  left: calc(50% - var(--spacing-6));
+  background: rgb(var(--dialog-background));
+  color: rgb(var(--text-color));
+  border-radius: var(--rounded-full);
+  z-index: 1;
+  place-items: center;
+  margin-block-end: var(--spacing-4);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  display: grid;
+  position: absolute;
+}
+
+:is(.drawer, .popover)::part(close-button) {
+  color: currentColor;
+  background: none;
+  margin-inline-start: auto;
+  display: none;
+}
+
+@media screen and (min-width: 700px) {
+  :is(.drawer, .popover)::part(outside-close-button) {
+    display: none;
+  }
+
+  :is(.drawer, .popover)::part(close-button) {
+    display: grid;
+  }
+}
