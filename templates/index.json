@@ -9,78 +9,6 @@
  */
 {
   "sections": {
-    "slidershow_cUCkgC": {
-      "type": "slidershow",
-      "blocks": {
-        "slide_kzzHKQ": {
-          "type": "slide",
-          "settings": {
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "btn_margin_left": 0,
-            "btn_margin_right": 0,
-            "btn_margin_top": 0,
-            "btn_margin_bottom": 0,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "mobile_box_align": "middle",
-            "text_alignment_mobile": "center",
-            "mobile_margin_left": 0,
-            "mobile_margin_right": 0,
-            "mobile_margin_top": 0,
-            "mobile_margin_bottom": 0
-          }
-        },
-        "slide_pRBLBq": {
-          "type": "slide",
-          "settings": {
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "btn_margin_left": 0,
-            "btn_margin_right": 0,
-            "btn_margin_top": 0,
-            "btn_margin_bottom": 0,
-            "box_align": "middle-center",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "mobile_box_align": "middle",
-            "text_alignment_mobile": "center",
-            "mobile_margin_left": 0,
-            "mobile_margin_right": 0,
-            "mobile_margin_top": 0,
-            "mobile_margin_bottom": 0
-          }
-        }
-      },
-      "block_order": [
-        "slide_kzzHKQ",
-        "slide_pRBLBq"
-      ],
-      "name": "New Slider",
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
     "tab_products_i4fR76": {
       "type": "tab-products",
       "blocks": {
@@ -94,7 +22,7 @@
             "description": "<p>desc</p>",
             "content_max_width": 780,
             "text_color": "#000000",
-            "image": "shopify://shop_images/antelope-canyon-sunbeams.jpg",
+            "image": "shopify://shop_images/A4.png",
             "collection": "12v-tv",
             "product": "",
             "product_title": "New Nano AI",
@@ -738,7 +666,6 @@
     }
   },
   "order": [
-    "slidershow_cUCkgC",
     "tab_products_i4fR76",
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
     "featured_collections_XJWX4m",
