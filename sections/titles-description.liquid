@@ -1,0 +1,215 @@
+{%  style  %}
+.titles-desc-wrapper{
+    display: flex;
+    gap: 80px;
+}
+
+.title-desc-item{
+    flex: 1;
+    padding: 0 20px;
+}
+
+.title-desc-section__title{
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #000;
+}
+
+.title-desc-section__title > *{
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.title-desc-section__title strong{
+    font-weight: 700;
+}
+
+.title-desc-section__description h5{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.title-desc-section__description p{
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+
+.title-desc-section__description p strong{
+    font-weight: 700;
+}
+
+.titles-desc-wrapper{
+    margin-bottom: 80px;
+}
+
+@media screen and (max-width: 699px){
+    .titles-desc-wrapper{
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .title-desc-item{
+        padding: 0;
+    }
+
+    .titles-desc-wrapper{
+        margin-bottom: 40px;
+    }
+
+    .title-desc-section__title{
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+    }
+
+    .title-desc-section__title > *{
+        font-size: 24px;
+    }
+
+    .title-desc-section__description h5{
+        font-size: 18px;
+    }
+
+    .title-desc-section__description p{
+        font-size: 12px;
+    }
+}
+{% endstyle %}
+
+<div {% render 'section-properties' %}>
+  <div class="titles-desc-wrapper">
+    {% for block in section.blocks %}
+        <div class="title-desc-item">
+        {% case block.type %}
+            {% when 'title' %}
+              <div class="title-desc-section__title text-{% if block.settings.alignment == 'center' %}center{% elsif block.settings.alignment == 'right' %}end{% else %}start{% endif %}">
+                  {{ block.settings.title }}
+              </div>
+              <div class="title-desc-section__description text-{% if block.settings.alignment == 'center' %}center{% elsif block.settings.alignment == 'right' %}end{% else %}start{% endif %}">
+                {{ block.settings.description }}
+              </div>
+            {% when 'title_img' %}
+              <div class="title-desc-section__title text-{% if block.settings.alignment == 'center' %}center{% elsif block.settings.alignment == 'right' %}end{% else %}start{% endif %}">
+                  {{ block.settings.title }}
+              </div>
+              <div class="title-desc-section__image">
+                  <img src="{{ block.settings.image_with_text_image | image_url: 'master' }}" alt="{{ block.settings.title }}" loading="lazy">
+              </div>
+            {% endcase %}
+        </div>
+    {% endfor %}
+  </div>
+  {%- if section.settings.button_text != blank -%}
+    <div class="text-center">
+    {% render 'button', content: section.settings.button_text, href: section.settings.button_url, size: 'md', background: section.settings.button_background, text_color: section.settings.button_text_color, style: section.settings.style %}
+    </div>
+    {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Titles description",
+  "class": "titles-desc-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "LEARN MORE"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "fill",
+          "label": "Solid"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text"
+    }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title with description",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title",
+          "default": "<h3>Curious to learn  more about us?</h3>"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Lorem ipsum</p>"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment",
+          "label": "Text alignment",
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "title_img",
+      "name": "Title with image",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title",
+          "default": "<h3>Curious to learn  more about us?</h3>"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment",
+          "label": "Text alignment",
+          "default": "center"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_with_text_image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Titles and descriptions"
+    }
+  ]
+}
+{% endschema %}

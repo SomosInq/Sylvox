@@ -1,0 +1,362 @@
+{{ 'section-image-sliders.css' | asset_url | stylesheet_tag }}
+
+
+<div {% render 'section-properties' %}>
+  <div class="swiper image-slider" data-section-id="{{ section.id }}">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %} rounded-lg{% endif %}{%- endcapture -%}
+          <image-banner
+            reveal-on-scroll="true"
+            {% if section.settings.enable_parallax %}
+              parallax="0.3"
+            {% endif %}
+            {% render 'surface', class: class, text_color: section.settings.text_color %}
+          >
+            {%- if block.settings.image != blank -%}
+              {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
+              {%- capture fetch_priority -%}{% if section.index == 1 %}high{% else %}low{% endif %}{%- endcapture -%}
+
+              <picture>
+                {%- if section.settings.mobile_image != blank -%}
+                  <source
+                    media="(max-width: 699px)"
+                    srcset="{{ block.settings.mobile_image | image_url: width: 400 }} 400w, {{ block.settings.mobile_image | image_url: width: 600 }} 600w, {{ blcok.settings.mobile_image | image_url: width: 800 }} 800w, {{ section.settings.mobile_image | image_url: width: 1000 }} 1000w, {{ block.settings.mobile_image | image_url: width: 1200 }} 1200w"
+                    width="{{ block.settings.mobile_image.width }}"
+                    height="{{ block.settings.mobile_image.height }}"
+                  >
+                {%- endif -%}
+
+                {{-
+                  block.settings.image
+                  | image_url: width: block.settings.image.width
+                  | image_tag:
+                    sizes: sizes,
+                    fetchpriority: fetch_priority,
+                    widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200'
+                -}}
+              </picture>
+            {%- else -%}
+              {{
+                'lifestyle-1'
+                | placeholder_svg_tag: 'placeholder'
+                | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"'
+              }}
+            {%- endif -%}
+
+            <div
+              class="image-slide__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
+              style="
+              --image-slide__info-max-width: {{ block.settings.content_max_width }}px;
+              --image-slide__info-text-color: {{ block.settings.text_color }};
+              "
+            >
+                <div class="image-slide__info-top">
+                    <span class="image-slide__info-badge" style="--info-badge-bg:{{ block.settings.badge_bg }}; --info-badge-color:{{ block.settings.badge_color }}">{{ block.settings.badge_text }}</span>
+                    <span class="image-slide__info-other">{{ block.settings.other_text }}</span>
+                </div>
+              <h4>{{ block.settings.title }}</h4>
+              <p>{{ block.settings.description }}</p>
+              {%- if block.settings.button_text != blank -%}
+                {% render 'button', content: block.settings.button_text, href: block.settings.url, size: 'base', style: 'outline', background: block.settings.btn_background, text_color: block.settings.btn_text_color %}
+              {%- endif -%}
+            </div>
+          </image-banner>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<script>
+  var bulletLabels = [
+    {% for block in section.blocks %}
+      "{{ block.settings.pagination_label | escape }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  var swiper = new Swiper(".image-slider", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return `
+          <div class="${className}">
+            <span class="bullet-text">${bulletLabels[index]}</span>
+            <div class="progress-bar"></div>
+          </div>`;
+      }
+    },
+    on: {
+      autoplayTimeLeft(s, time, progress) {
+        let bullets = document.querySelectorAll(".swiper-pagination-bullet .progress-bar");
+        bullets.forEach(bar => bar.style.width = "0%"); // Reset all bars
+        let activeBar = document.querySelector(".swiper-pagination-bullet-active .progress-bar");
+        if (activeBar) {
+          activeBar.style.width = `${(1 - progress) * 100}%`; // Animate active bullet
+        }
+      }
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Image sliders",
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Original image ratio"
+        },
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        },
+        {
+          "value": "fill",
+          "label": "Fill screen"
+        }
+      ],
+      "info": "Choose \"Original image ratio\" to avoid image cropping. [Learn more](https://help.shopify.com/en/manual/online-store/images/theme-images#best-practices-for-slideshows-and-full-widtw-images)",
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_position",
+      "label": "Mobile content position",
+      "options": [
+        {
+          "value": "place-self-start text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "place-self-start-center text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "place-self-start-end text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "place-self-center-start text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "place-self-center text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "place-self-center-end text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "place-self-end-start text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "place-self-end-center text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "place-self-end text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "place-self-center text-center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_position",
+      "label": "Desktop content position",
+      "options": [
+        {
+          "value": "sm:place-self-start sm:text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "sm:place-self-start-center sm:text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "sm:place-self-start-end sm:text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "sm:place-self-center-start sm:text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "sm:place-self-center sm:text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "sm:place-self-center-end sm:text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "sm:place-self-end-start sm:text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "sm:place-self-end-center sm:text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "sm:place-self-end sm:text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "sm:place-self-center sm:text-center"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "image_slider",
+      "name": "Image slider",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text",
+          "default": "Valentine’s Day Sale"
+        },
+        {
+            "type": "color",
+            "id": "badge_bg",
+            "label": "Badge background",
+            "default": "#F34F4F"
+        },
+        {
+            "type": "color",
+            "id": "badge_color",
+            "label": "Badge text color",
+            "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "other_text",
+          "label": "Other text",
+          "default": "Feb 1st - Feb 14th"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "pagination_label",
+          "label": "Pagination label",
+          "default": "Slide"
+        },
+        {
+        "type": "header",
+        "content": "Button"
+      },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "color",
+          "id": "btn_background",
+          "label": "Button background"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button text color"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "range",
+          "id": "content_max_width",
+          "label": "Content maximum width",
+          "min": 400,
+          "max": 1200,
+          "step": 20,
+          "unit": "px",
+          "default": 780
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image sliders"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,153 @@
+
+
+{{ 'section-interactive-map.css' | asset_url | stylesheet_tag }}
+
+<div id="location-map-section" class="section section--full location-map">
+  <div class="map-controls">
+    <h3>{{ section.settings.title }}</h3>
+
+    <div class="country-button-wrapper">
+      {% assign countries = '' %}
+      {% for block in section.blocks %}
+        {% unless countries contains block.settings.country %}
+          {% assign countries = countries | append: block.settings.country | append: ',' %}
+        {% endunless %}
+      {% endfor %}
+      {% assign all_countries = countries | split: ',' %}
+      {% for country in all_countries %}
+        {% unless country == '' %}
+          <button class="country-button {% if forloop.first %}active{% endif %}" data-value="{{ country }}">
+            {{ country }}
+          </button>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="tabs-continent">
+    {%- assign count_location = 0 -%}
+    {% for block in section.blocks %}
+      {% assign count_location = count_location | plus: 1 %}
+    {% endfor %}
+
+    <div class="tab-content-locations">
+      <div class="tab active">
+        <ul>
+          {% for block in section.blocks %}
+            {% render 'location-item', block: block, forloop_index: forloop.index %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="map"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const map = L.map('map').setView([20, 0], 2); // Default view
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '© OpenStreetMap contributors',
+    }).addTo(map);
+
+    const markers = [];
+
+    // Loop through all <li> location items
+    document.querySelectorAll('.tab-content-locations ul li').forEach((item) => {
+      const latitude = parseFloat(item.dataset.latitude);
+      const longitude = parseFloat(item.dataset.longitude);
+      const name = item.dataset.name;
+      const address = item.dataset.address;
+      const email = item.dataset.email;
+      const phone = item.dataset.phone;
+      const website = item.dataset.website;
+      const country = item.dataset.country;
+
+      if (latitude && longitude) {
+        const marker = L.marker([latitude, longitude]).addTo(map);
+        marker.bindPopup(`
+          <b>${name}</b><hr>
+          <div>${address}</div>
+          <a href="mailto:${email}">${email}</a>
+          <div>${phone}</div>
+          <a href="${website}" target="_blank">${website}</a>
+        `);
+        markers.push({ marker, country, latitude, longitude, element: item });
+      }
+    });
+
+    // Country tab buttons
+    const countryButtons = document.querySelectorAll('.country-button');
+
+    // Simulate click on the first button to initialize
+    if (countryButtons.length) {
+      countryButtons[0].click();
+    }
+
+    countryButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        const selectedCountry = this.getAttribute('data-value');
+
+        countryButtons.forEach((btn) => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        const bounds = L.latLngBounds();
+
+        markers.forEach(({ marker, country, latitude, longitude, element }) => {
+          const matches = country.toLowerCase() === selectedCountry.toLowerCase();
+
+          if (matches) {
+            map.addLayer(marker);
+            bounds.extend([latitude, longitude]);
+            element.style.display = '';
+          } else {
+            map.removeLayer(marker);
+            element.style.display = 'none';
+          }
+        });
+
+        if (bounds.isValid()) {
+          map.fitBounds(bounds, { padding: [20, 20] });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Interactive Map",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Company Address"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Location",
+      "settings": [
+        { "id": "name", "type": "text", "label": "Name", "info": "Name that will appear on map pinpoint" },
+        { "id": "email", "type": "text", "label": "Email", "default": "support@ottocast.com " },
+        { "id": "address", "type": "text", "label": "Address" },
+        { "id": "phone", "type": "text", "label": "Phone Number" },
+        { "id": "website", "type": "url", "label": "Website" },
+        { "id": "latitude", "type": "number", "label": "Latitude" },
+        { "id": "longitude", "type": "number", "label": "Longitude" },
+        { "id": "country", "type": "text", "label": "Country", "info": "Country tab name" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Interactive Map"
+    }
+  ]
+}
+{% endschema %}

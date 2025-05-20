@@ -1,0 +1,580 @@
+{% style %}
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .grid-section__header{
+        text-align: center;
+        margin-bottom: 40px;
+
+    }
+
+    .section-{{ section.id }} .grid-section__header{
+      {% if section.settings.header_inline == true %}
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        {% endif %}
+    }
+
+    .grid-section__header img{
+      margin: auto;
+    }
+
+    .grid-section__header h2{
+        font-family: "BasicSans";
+        font-size: 35px;
+        font-weight: 400;
+    }
+
+    .grid__item {
+        position: relative;
+        /* max-height: 570px; */
+        /* overflow: hidden; */
+
+    }
+
+    .grid-section__header-intro{
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    .grid__item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        /* display: block; */
+    }
+
+    .section-{{ section.id }} .grid__item img{
+        border-radius: {{ section.settings.border_radius }}px;
+    }
+
+    .grid-section .button{
+      margin-top: 40px;
+    }
+
+    /* Flex-based width handling */
+    .grid__item--full {
+        flex: 0 0 100%;
+    }
+
+    .grid__item--half {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    .grid__item--third {
+        flex: 0 0 calc(33.3% - (40px / 3));
+    }
+
+    .grid__item--sixty {
+        flex: 0 0 calc(60% - 10px);
+    }
+
+    .grid__item--forty {
+        flex: 0 0 calc(40% - 10px);
+    }
+
+    .grid-section__header-desc > *{
+      font-weight: 400;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .grid__item--full,
+        .grid__item--half,
+        .grid__item--third,
+        .grid__item--sixty,
+        .grid__item--forty {
+            flex: 0 0 100%;
+        }
+    }
+
+    .grid__item-content{
+        position: relative;
+        /* text-align: var(--grid-text-alignment); */
+    }
+
+
+    .grid__item-content h3 {
+        margin: 0;
+        font-size: 48px;
+        font-weight: 700;
+        margin-top: 16px;
+    }
+
+    .grid__item-content h4 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-top: 16px;
+    }
+
+    .grid__item-content p {
+        margin: 0;
+        font-size: 16px;
+        color: rgba(38, 38, 38, 0.65);
+        font-weight: 400;
+    }
+
+    /* Content Overlay */
+    .grid__item-content.grid__item-content--overlap {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px;
+    }
+
+
+    .grid__item-content.grid__item-content--overlap h3 {
+        margin: 0;
+        font-size: 35px;
+        font-weight: 300;
+    }
+
+    .grid__item-content.grid__item-content--overlap h3 strong{
+      font-weight: 700;
+    }
+
+    .grid__item-content.grid__item-content--overlap p {
+        margin: 5px 0 0;
+        font-size: 20px;
+    }
+
+    .grid__item-content.grid__item-content--overlap h3,  .grid__item-content.grid__item-content--overlap p{
+        color: #fff;
+    }
+
+
+  @media screen and (max-width: 699px){
+
+  .grid__item-content h4{
+    font-size: 16px;
+  }
+
+    .grid__item-content p{
+      font-size: 12px;
+    }
+    .grid__item-content.grid__item-content--overlap h3{
+        font-size: 18px;
+    }
+
+    .grid-section__header h2{
+      font-size: 24px;
+    }
+
+    .grid__item-content h3{
+      font-size: 24px;
+      margin-top: 8px;
+    }
+
+    .grid__item-content.grid__item-content--overlap p {
+        font-size: 12px;
+    }
+
+    .grid-section__header img{
+      max-width: 180px;
+    }
+
+    .grid-section__header{
+      margin-bottom: 24px;
+      flex-direction: column;
+    }
+  }
+{% endstyle %}
+
+<div {% render 'section-properties' %}>
+  <div class="grid-section section-{{ section.id }}">
+    {% if section.settings.image != blank or section.settings.intro != blank or section.settings.title != blank or section.settings.paragraph != blank %}
+    <div class="grid-section__header">
+      <div>
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url }}"
+            alt="{{ section.settings.title }}"
+            width="320"
+            height="auto"
+          >
+        {% endif %}
+        {% if section.settings.intro != blank %}
+          <p class="grid-section__header-intro">{{ section.settings.intro }}</p>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+      </div>
+      {% if section.settings.paragraph != blank %}
+      <div class="grid-section__header-desc">
+        {{ section.settings.paragraph }}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="grid" style="--grid-text-alignment: {{ section.settings.alignment }};">
+      {% for block in section.blocks %}
+        {% style %}
+          #grid-item-{{ block.id }} .grid__item-content-heading > * {
+            color: {{ block.settings.title_color }};
+          }
+
+          #grid-item-{{ block.id }} .grid__item-content-desc > * {
+            color: {{ block.settings.paragraph_color }};
+          }
+        {% endstyle %}
+        <div class="grid__item grid__item--{{ block.settings.image_width }}" id="grid-item-{{ block.id }}">
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="{% if block.settings.mobile_image != blank %}hidden sm:block{% endif %}" loading="lazy">
+        {% if block.settings.mobile_image != blank %}
+          <img class="block sm:hidden" src="{{ block.settings.mobile_image | image_url }}" alt="{{ block.settings.title }}">
+        {% endif %}
+        {% else %}
+        {% if block.settings.show_placeholder %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-class' }}
+        {% endif %}
+        {% else %}
+            <div class="block_settings_mobile_image"></div>
+        {% endif %}
+        {% endif %}
+
+          
+          <div class="grid__item-content {% if section.settings.content_overlap %}grid__item-content--overlap {{section.settings.mobile_text_position}} {{section.settings.desktop_text_position}}{% endif %}">
+            {% if block.settings.title != blank %}
+              <div class="grid__item-content-heading">{{ block.settings.title }}</div>
+            {% endif %}
+            {% if block.settings.paragraph != blank %}
+              <div class="grid__item-content-desc">{{ block.settings.paragraph }}</div>
+            {% endif %}
+            {%- if block.settings.button_text != blank -%}
+              {%- render 'button',
+                content: block.settings.button_text,
+                href: block.settings.button_url,
+                size: 'md',
+                background: block.settings.button_background,
+                text_color: block.settings.button_text_color,
+                style: block.settings.style
+              -%}
+            {%- endif -%}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {%- if section.settings.button_text != blank -%}
+      <div class="text-center">
+        {% render 'button',
+          content: section.settings.button_text,
+          href: section.settings.button_url,
+          size: 'md',
+          background: section.settings.button_background,
+          text_color: section.settings.button_text_color,
+          style: section.settings.style
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Grid section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Into",
+      "default": "Interactive 1.83” Display"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Choose Nano AI?"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Description",
+      "default": "<p>It’s not just a screen—it’s your personal co-pilot. Nano AI keeps you informed, engaged, and in control.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_inline",
+      "label": "Text header inline",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "content_overlap",
+      "label": "Content overlap",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_position",
+      "label": "Mobile content position",
+      "options": [
+        {
+          "value": "place-self-start text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "place-self-start-center text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "place-self-start-end text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "place-self-center-start text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "place-self-center text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "place-self-center-end text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "place-self-end-start text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "place-self-end-center text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "place-self-end text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "place-self-start-center text-center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_position",
+      "label": "Desktop content position",
+      "options": [
+        {
+          "value": "sm:place-self-start sm:text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "sm:place-self-start-center sm:text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "sm:place-self-start-end sm:text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "sm:place-self-center-start sm:text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "sm:place-self-center sm:text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "sm:place-self-center-end sm:text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "sm:place-self-end-start sm:text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "sm:place-self-end-center sm:text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "sm:place-self-end sm:text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "sm:place-self-start-center sm:text-center"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Text alignment",
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "fill",
+          "label": "Solid"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid",
+      "name": "Grid",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#000000"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Description"
+        },
+        {
+          "type": "color",
+          "id": "paragraph_color",
+          "label": "Paragraph Color",
+          "default": "#000000"
+        },
+        {
+          "type": "select",
+          "id": "image_width",
+          "label": "Image Width",
+          "options": [
+            { "value": "full", "label": "Full Width (100%)" },
+            { "value": "half", "label": "Half Width (50%)" },
+            { "value": "third", "label": "One-third Width (33.3%)" },
+            { "value": "sixty", "label": "60%" },
+            { "value": "forty", "label": "40%" }
+          ],
+          "default": "half"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button Style",
+          "options": [
+            {
+              "value": "outline",
+              "label": "Outline"
+            },
+            {
+              "value": "fill",
+              "label": "Solid"
+            }
+          ],
+          "default": "fill"
+        },
+        {
+          "type": "color",
+          "id": "button_background",
+          "label": "Button background"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,139 @@
+{{ 'section-info.css' | asset_url | stylesheet_tag }}
+
+<div class="section info-section"
+    style="
+        --info-section-bg: {{ section.settings.bg }};
+        --info-section-text-color: {{ section.settings.text_color }};
+    "
+>
+  <div class="info-section-wrapper section-{{section.id}}">
+    <div class="info-section__inner">
+      <div class="info-section__header-icon">
+        {{ section.settings.icon }}
+        {% comment %} <p class="info-section__title hide-medium hide-large-up">{{ section.settings.title }}</p> {% endcomment %}
+      </div>
+      <div class="info-section__header">
+        <p class="info-section__title">{{ section.settings.title }}</p>
+        <p class="info-section__desc">{{ section.settings.description }}</p>
+      </div>
+    </div>
+    {%- if section.settings.button_text != blank -%}
+      {% render 'button',
+        content: section.settings.button_text,
+        href: section.settings.url,
+        size: section.settings.size,
+        style: section.settings.style,
+        background: section.settings.background,
+        text_color: section.settings.btn_text_color
+      %}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Info section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "icon",
+      "label": "SVG icon",
+      "info": "Paste svg code in here"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Not Sure What Otto Fits you Best?"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "about quiz"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#221551"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Container background",
+      "default": "#E5E1E6"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Size",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "base",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        },
+        {
+          "value": "xl",
+          "label": "X-Large"
+        }
+      ],
+      "default": "lg"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "try it now"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Button Background"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button text color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info section"
+    }
+  ]
+}
+{% endschema %}

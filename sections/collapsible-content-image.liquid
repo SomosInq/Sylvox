@@ -1,0 +1,310 @@
+<style>
+  #collapsible-section-{{section.id}}.collapsible-image-section {
+    width: 100%;
+    overflow: hidden;
+    font-family: BasicSans;
+  }
+
+  #collapsible-section-{{section.id}}.collapsible-image-section .collapsibles-column {
+    background: #f0f0f0;
+    margin: auto 0;
+    padding: 24px;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 520px;
+  }
+
+  #collapsible-section-{{section.id}} .collapsibles-column__description p {
+    font-size: 16px;
+    margin: 20px 0 28px;
+    color: #3C4043;
+    font-weight: 400;
+  }
+
+  #collapsible-section-{{section.id}} .collapsibles-column h2 {
+    font-size: 35px;
+    font-weight: 700;
+    font-family: BasicSans;
+    color: #3C4043;
+  }
+
+  #collapsible-section-{{section.id}} .collapsible-btn .title-text {
+    font-weight: 700;
+    font-size: 20px;
+    color: #3C4043;
+  }
+
+  /* Side by side layout */
+  #collapsible-section-{{section.id}}.collapsible-image-section.side-by-side .collapsible-image__inner {
+    display: flex;
+    height: 600px;
+  }
+
+  #collapsible-section-{{section.id}}.collapsible-image-section.side-by-side .collapsibles-column {
+    padding: 60px 80px;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+  }
+
+  #collapsible-section-{{section.id}} .collapsible-image__inner .column {
+    width: 50%;
+  }
+
+  #collapsible-section-{{section.id}} .image-column img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px 0 0 20px;
+  }
+
+  /* Overlay layout */
+  .overlay-layout .image-wrapper {
+    position: relative;
+  }
+
+  .overlay-layout .image-wrapper img {
+    width: 100%;
+    display: block;
+  }
+
+  .overlay-collapsibles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    max-width: var(--page-width);
+    margin: auto;
+    padding: 0 5rem;
+  }
+
+  .collapsible-item {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow: hidden;
+    color: #3C4043;
+  }
+
+  .collapsible-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+    padding: 15px 0;
+    text-align: left;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    color: #000;
+  }
+
+  .collapsible-btn:hover {
+    background: transparent;
+    color: #000;
+  }
+
+  /* Arrow styling and transition */
+  .collapsible-btn .arrow {
+    transition: transform 0.35s ease;
+  }
+
+  .collapsible-btn.active .arrow {
+    transform: rotate(180deg);
+  }
+
+  .collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .collapsible-content p {
+    font-weight: 400;
+  }
+
+  .collapsible-content.open {
+    max-height: 300px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .collapsible-image-section.side-by-side .collapsible-image__inner {
+      flex-wrap: wrap;
+      height: auto;
+    }
+
+    .collapsible-image__inner .column {
+      width: 100%;
+    }
+
+    .image-column img {
+      height: 300px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .collapsible-image-section.side-by-side .collapsibles-column {
+      padding: 24px 16px;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .overlay-layout .image-wrapper {
+      height: 600px;
+    }
+
+    .overlay-collapsibles {
+      padding: 0 1.5rem;
+    }
+
+    .overlay-layout .image-wrapper img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .slider-tab {
+    width: 100%;
+    overflow: hidden !important;
+  }
+</style>
+
+
+{% capture collapsibles %}
+    <div class="column collapsibles-column">
+        <h2>{{section.settings.title}}</h2>
+        <div class="collapsibles-column__description">
+            {{section.settings.paragraph}}
+        </div>
+    {% for block in section.blocks %}
+      <div class="collapsible-item">
+        <button class="collapsible-btn">
+          <span class="title-text">{{ block.settings.title }}</span>
+          <span class="arrow">
+            {% comment %}<svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.125 0.4375L16 2.3125L8 10.3125L0 2.3125L1.875 0.4375L8 6.5625L14.125 0.4375Z" fill="#5F6368"/>
+            </svg>{% endcomment %}
+            {% render 'icon-caret' %}
+          </span>
+        </button>
+        <div class="collapsible-content">
+          <p>{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  {% endcapture %}
+
+
+<div
+  id="collapsible-section-{{section.id}}"
+  class="collapsible-image-section {% if section.settings.side_by_side %}section side-by-side{% else %}overlay-layout{% endif %}"
+>
+
+  {% if section.settings.side_by_side %}
+    <div class="collapsible-image__inner">
+      <div class="column image-column">
+        {% if section.settings.background_image != blank %}
+          <img src="{{ section.settings.background_image | image_url: '2048' }}" alt="Background" loading="lazy">
+        {% endif %}
+      </div>
+
+      {{ collapsibles }}
+    </div>
+  {% else %}
+    <div class="image-wrapper">
+      {% if section.settings.background_image != blank %}
+        <img src="{{ section.settings.background_image | image_url: '2048' }}" alt="Background" loading="lazy">
+      {% endif %}
+      <div class="overlay-collapsibles">
+
+        {{ collapsibles }}
+
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sectionEl = document.getElementById('collapsible-section-{{ section.id }}');
+    if (sectionEl) {
+      const buttons = sectionEl.querySelectorAll('.collapsible-btn');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const content = btn.nextElementSibling;
+          if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            btn.classList.remove('active');
+            content.style.maxHeight = null;
+          } else {
+            content.classList.add('open');
+            btn.classList.add('active');
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collapsible with Image",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "AI Voice Control – Your Co-Pilot for the Road"
+    },
+    {
+        "type": "richtext",
+        "id": "paragraph",
+        "label": "Description",
+        "default": "<p>Stay focused on the road while Nano AI handles the details—so you can explore more, safely.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "side_by_side",
+      "label": "Enable Side by Side Layout (Image and Collapsibles)",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collapsible",
+      "name": "Collapsible Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collapsible Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Collapsible description content goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collapsible with Image"
+    }
+  ]
+}
+{% endschema %}

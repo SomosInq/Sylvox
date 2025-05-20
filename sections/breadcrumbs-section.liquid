@@ -1,0 +1,20 @@
+{%  style  %}
+  .section-breadcrumbs{
+    padding-block-end: 0;
+  }
+{% endstyle %}
+
+<div class="section section-full section-breadcrumbs">
+  {% render 'breadcrumbs' %}
+</div>
+
+{%  schema  %}
+{
+    "name": "Breadcrumbs",
+    "presets": [
+    {
+      "name": "Breadcrumbs"
+    }
+  ]
+}
+{% endschema %}

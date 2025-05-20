@@ -1,0 +1,247 @@
+{% style %}
+    .sticky-anchor {
+      z-index: 1000;
+      background-color: rgba(18, 18, 18, 0.1333);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sticky-anchor.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    
+    .anchor-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+    
+    .sticky-anchor__item {
+      display: inline-block;
+      padding: 0px;
+    }
+    
+    .sticky-anchor__link {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.65);
+      font-weight: 400;
+      padding: 20px;
+      font-family: BasicSans;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .sticky-anchor__link.active, .sticky-anchor__link:hover {
+        border-bottom: 3px solid #179C99;
+        color: #000;
+    }
+    
+    .hamburger-menu {
+      display: none; 
+      width: 30px;
+      height: 25px;
+      border: none;
+      background-color: transparent;
+      position: relative;
+      cursor: pointer;
+      z-index: 100; 
+      margin: auto;
+    }
+
+    .hamburger-menu:hover{
+        background-color: transparent;
+    }
+    
+    .hamburger-menu .line {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #333 !important;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    /* Hamburger animation when open */
+    .hamburger-menu.open .line1 {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.open .line2 {
+      opacity: 0;
+    }
+    .hamburger-menu.open .line3 {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    @media (max-width: 749px) {
+      .anchor-links {
+        display: none; 
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sticky-anchor{
+        background: transparent;
+        padding: 0 1.5rem;
+        box-shadow: none;
+        margin-top: 1rem;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+      }
+
+      .sticky-anchor__wrapper{
+        background: #ddd;
+        padding: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .sticky-anchor.open .anchor-links {
+        display: flex;
+      }
+
+      .hamburger-menu {
+        display: block;
+      }
+
+      .sticky-anchor__link{
+        padding: 0;
+      }
+    }
+    {% endstyle %}
+
+<div id="sticky-anchor" class="sticky-anchor">
+    <div class="sticky-anchor__wrapper">
+  <!-- Hamburger menu button -->
+  <div id="hamburger-btn" class="hamburger-menu" aria-label="Menu">
+    <span class="line line1"></span>
+    <span class="line line2"></span>
+    <span class="line line3"></span>
+  </div>
+  
+  <!-- Anchor links container -->
+  <div class="anchor-links">
+    {% for block in section.blocks %}
+      <div class="sticky-anchor__item">
+        <a href="#{{ block.settings.target_id }}" class="sticky-anchor__link">
+          {{ block.settings.anchor_title }}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var stickyAnchor = document.getElementById('sticky-anchor');
+    var hamburgerBtn = document.getElementById('hamburger-btn');
+    var anchorLinks = stickyAnchor.querySelectorAll('.sticky-anchor__link');
+    
+    // Toggle open class on hamburger click
+    hamburgerBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      stickyAnchor.classList.toggle('open');
+      hamburgerBtn.classList.toggle('open');
+    });
+    
+    // Hide the menu when any anchor link is clicked (on mobile)
+    anchorLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        stickyAnchor.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+      });
+    });
+    
+    // Simulate sticky behavior with JavaScript
+    var stickyOffset = stickyAnchor.getBoundingClientRect().top + window.scrollY;
+    
+    function checkSticky() {
+      if (window.pageYOffset >= stickyOffset) {
+        stickyAnchor.classList.add('fixed');
+      } else {
+        stickyAnchor.classList.remove('fixed');
+      }
+    }
+    
+    // Update the active anchor based on scroll position
+    function updateActiveAnchor() {
+      var scrollPos = window.pageYOffset;
+      var activeLink = null;
+      var maxOffset = -Infinity;
+      
+      anchorLinks.forEach(function(link) {
+        var targetId = link.getAttribute('href').substring(1);
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          var offset = targetEl.offsetTop;
+          // Activate the link when the page has scrolled past the target (with a 10px tolerance)
+          if (scrollPos >= offset - 10 && offset > maxOffset) {
+            activeLink = link;
+            maxOffset = offset;
+          }
+        }
+      });
+      
+      // Remove active class from all links, then add to the current active link
+      anchorLinks.forEach(function(link) {
+        link.classList.remove('active');
+      });
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+    }
+    
+    window.addEventListener('scroll', function() {
+      checkSticky();
+      updateActiveAnchor();
+    });
+    
+    window.addEventListener('resize', function() {
+  stickyOffset = stickyAnchor.getBoundingClientRect().top + window.scrollY;
+  checkSticky();
+  updateActiveAnchor();
+});
+    
+    checkSticky();
+    updateActiveAnchor();
+  });
+</script>
+
+{%  schema  %}
+{
+    "name": "Sticky Anchor",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Sticky Anchor",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "anchor_title",
+                    "label": "Anchor Title",
+                    "default": "Overview"
+                },
+                {
+                    "type": "text",
+                    "id": "target_id",
+                    "label": "Target section id"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Sticky Anchor"
+        }
+    ]
+}
+{% endschema %}

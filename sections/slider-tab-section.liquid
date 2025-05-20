@@ -1,0 +1,293 @@
+{{ 'section-slider-tabs.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+    /* .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  } */
+
+  .slider-tab {
+    width: 100%;
+    overflow: hidden !important;
+  }
+/* 
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  } */
+{% endstyle %}
+
+
+
+{%- if section.settings.background_gradient != blank -%}
+  {%- assign gradient_first_stop = section.settings.background_gradient | split: 'rgba(' | last | split: ')' | first | remove: ',' | split: ' ' -%}
+
+  {%- capture class -%}{{ class }} bg-gradient{%- endcapture -%}
+  {%- capture style_attributes -%}{{ style_attributes }} --gradient: {{ section.settings.background_gradient }}; --background: rgba({{ gradient_first_stop[0] }}, {{ gradient_first_stop[1] }}, {{ gradient_first_stop[2] }}, 1);{%- endcapture -%}
+{%- else -%}
+  {%- capture class -%}{{ class }} bg-custom{%- endcapture -%}
+  {%- capture style_attributes -%}{{ style_attributes }} --background: {{ section.settings.background.rgb }};{%- endcapture -%}
+{%- endif -%}
+
+<div class="section-full {{ class }}" style="{{ style_attributes }} --section-text-color: {{ section.settings.text_color }}; padding-inline-start: 0; padding-inline-end: 0;">
+<div class="slider-tab-section section-{{section.id}} section-{{ section.id }}-padding">
+  <div class="slider-tab__title">
+    <h2>{{section.settings.heading}}</h2>
+    <div class="slider-tab__description hide-small">{{ section.settings.paragraph }}</div>
+    <div class="slider-tab__top">
+      {% for block in section.blocks %}
+        <button
+          class="slider-tab__button"
+          onclick="goToSlide({{ forloop.index0 }})"
+          id="button-slide-{{ forloop.index }}"
+        >
+          {{ block.settings.tab_title }}
+        </button>
+      {% endfor %}
+    </div>
+    {% comment %} <div class="slider-tab__right">
+      {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+        <a class="new-btn btn--inverse" href="{{section.settings.button_link}}">
+          {{ section.settings.button_text }}
+          <span class="hide-small">{% render 'icon-arrow-next' %}</span>
+        </a>
+      {% endif %}
+    </div> {% endcomment %}
+  </div>
+  <div class="slider-tab swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide slider-tab__item">
+          {% if block.settings.link %}
+            <a href="{{block.settings.link}}" class="slider-tab__item-inner">
+          {% else %}
+            <div class="slider-tab__item-inner">
+          {% endif %}
+          {% if block.settings.image != blank %}
+            <img
+              class="slider-tab__item-img"
+              src="{{ block.settings.image | image_url }}"
+              alt="{{ block.settings.item_title }}"
+              loading="eager"
+              height="400"
+              width="480"
+            >
+          {% endif %}
+          <div class="slider-tab__item-content">
+            <h2>{{ block.settings.item_title }}</h2>
+            <p>{{ block.settings.item_description }}</p>
+          </div>
+          {% if block.settings.link %}
+            </a>
+          {% else %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="slider-tab__control">
+      <div class="swiper-pagination swiper-pagination-{{section.id}}"></div>
+      {% comment %} <div class="slider-tab__arrow">
+        <div class="swiper-button-prev slider-tab-prev">
+          {% render 'icon-arrow-next' %}
+        </div>
+        <div class="swiper-button-next slider-tab-next">
+          {% render 'icon-arrow-next' %}
+        </div>
+      </div> {% endcomment %}
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var sliderTab = new Swiper('.section-{{section.id}} .slider-tab', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        centeredSlides: true,
+        pagination: {
+            el: '.swiper-pagination-{{section.id}}',
+            clickable: true,
+        },
+        // navigation: {
+        //     nextEl: '.slider-tab-next',
+        //     prevEl: '.slider-tab-prev',
+        // },
+        breakpoints: {
+            768: {
+                slidesPerView: 1.2,
+                spaceBetween: 32,
+            },
+            992: {
+                slidesPerView: 1.8,
+                spaceBetween: 40,
+            },
+        },
+        on: {
+            init: function () {
+                updateActiveButton(this.realIndex); 
+            },
+            slideChange: function () {
+                updateActiveButton(this.realIndex); 
+            },
+        },
+    });
+
+    setTimeout(() => {
+        sliderTab.update();
+        sliderTab.slideToLoop(0, 0); 
+    }, 100);
+
+    function goToSlide(index) {
+        // console.log("Navigating to slide:", index); 
+        if (sliderTab && sliderTab.slideToLoop) {
+            sliderTab.slideToLoop(index, 500); 
+        } else {
+            console.error("Swiper instance not found or not initialized properly.");
+        }
+    }
+
+    function updateActiveButton(realIndex) {
+        const buttons = document.querySelectorAll('.section-{{section.id}} .slider-tab__button');
+        
+        if (buttons.length === 0) return; 
+
+        buttons.forEach(button => button.classList.remove('active'));
+
+        if (realIndex < buttons.length) {
+            buttons[realIndex].classList.add('active');
+        }
+    }
+
+    // Make `goToSlide` accessible from the inline `onclick` attributes
+    window.goToSlide = goToSlide;
+
+
+});
+
+</script>
+{% schema %}
+{
+  "name": "Slider tabs section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Wireless CarPlay & Android Auto"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Description",
+      "default": "<p>Your car should work for you, not against you. Say goodbye to tangled wires and hello to effortless connection.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "column_size",
+      "label": "Column size",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full width"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "narrow",
+          "label": "Narrow"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Tab",
+      "type": "tab",
+      "settings": [
+        {
+          "type": "html",
+          "id": "tab_title",
+          "label": "Tab title"
+        },
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item title",
+          "default": "No More Cables"
+        },
+        {
+          "type": "text",
+          "id": "item_description",
+          "label": "Item description",
+          "default": "Simplifies the car interior, eliminating clutter."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider with tabs"
+    }
+  ]
+}
+{% endschema %}
