@@ -34,10 +34,33 @@
             "background": "",
             "btn_text_color": ""
           }
+        },
+        "tab_eAADP6": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Label 2",
+            "title": "Heading",
+            "heading_tag": "h2",
+            "inline_title": "Series",
+            "description": "",
+            "content_max_width": 780,
+            "text_color": "#000000",
+            "collection": "",
+            "product": "",
+            "product_title": "New Nano AI",
+            "product_description": "The new Nano AI is the most powerful device we've ever created.",
+            "product_2": "",
+            "product_title_2": "New Nano AI",
+            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
+            "featured_text_color": "",
+            "background": "",
+            "btn_text_color": ""
+          }
         }
       },
       "block_order": [
-        "tab_MjRrMX"
+        "tab_MjRrMX",
+        "tab_eAADP6"
       ],
       "name": "Tab products",
       "settings": {
