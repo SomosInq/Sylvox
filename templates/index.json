@@ -203,7 +203,7 @@
         "values_AhWiEe": {
           "type": "values",
           "settings": {
-            "product": "",
+            "product": "100-difference",
             "value_1": "<p>Value 1</p>",
             "value_2": "<p>Value 2</p>",
             "value_3": "<p>Value 3</p>",
