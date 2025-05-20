@@ -1,0 +1,229 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+BUY BUTTONS
+----------------------------------------------------------------------------------------------------------------------
+
+This component is used to show the buy buttons
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product from which to show the buttons
+* show_payment_button: if we show or not the dynamic checkout button
+* show_gift_card_recipient: for gift card products, an optional message/email to be sent to the recipient
+* button_size: the size of the button (default to xl if none is passed)
+* atc_button_background: the background of the ATC button
+* atc_button_text_color: the text color of the ATC button
+* payment_button_background: the custom dynamic checkout button background
+* payment_button_text_color: the custom dynamic checkout button text color
+* form_id: if specified, define the form ID linked to this input
+{%- endcomment -%}
+
+{%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+
+{%- assign recipient_feature_active = false -%}
+
+{%- if product.gift_card? and show_gift_card_recipient -%}
+  {%- assign recipient_feature_active = true -%}
+  {%- assign show_payment_button = false -%}
+{%- endif -%}
+
+{%- form 'product', product, is: 'product-form', id: form_id -%}
+  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+  {%- assign button_disabled = false -%}
+  {%- assign button_size = button_size | default: 'xl' -%}
+
+  {%- if product.selected_or_first_available_variant == nil -%}
+    {%- capture button_content -%}{{ 'product.general.unavailable_button' | t }}{%- endcapture -%}
+    {%- assign button_disabled = true -%}
+  {%- elsif product.selected_or_first_available_variant.available -%}
+    {%- if product.template_suffix contains 'pre-order' -%}
+      {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
+    {%- else -%}
+      {%- capture button_content -%}{{ 'product.general.add_to_cart_button' | t }}{%- endcapture -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- capture button_content -%}{{ 'product.general.sold_out_button' | t }}{%- endcapture -%}
+    {%- assign button_disabled = true -%}
+  {%- endif -%}
+
+
+
+
+  <div class="v-stack gap-4">
+    <div class="upsell-section add-ons-blocks">
+      <h4>Upsell products</h4>
+  
+      {% for product in upsell_products %}
+        <div class="addon-checkbox-wrapper">
+   
+            <input
+              type="checkbox"
+              class="addon-checkbox"
+              data-upsell-id="{{ product.variants.first.id }}"
+              data-upsell-qty="1"
+            >
+            <div>
+              <img src="{{ product.featured_image.src | image_url: '200x' }}" alt="{{ product.featured_image.alt }}" width="65" height="65">
+            </div>
+            <label>
+            {{ product.title }}
+            </label>
+            <div class="addon-checkbox-icon">
+              <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.95502 3.4576C7.95502 6.20287 4.69009 6.31309 4.69009 8.46591V8.73458L2.58533 8.82414V8.15935C2.56822 5.41408 5.49092 5.17985 5.49092 3.61949C5.49092 2.88237 4.97414 2.28991 4.04668 2.28991C3.22531 2.28991 2.67431 2.75836 2.67431 3.50927C2.67431 3.7056 2.70854 3.83305 2.74618 3.95705L0.501113 4.31872C0.501113 4.31872 0.39502 3.76072 0.39502 3.29571C0.39502 1.44945 1.85637 0.119873 4.0501 0.119873C6.77773 0.119873 7.95502 1.8249 7.95502 3.4576ZM5.06655 11.3558C5.06655 12.1102 4.44368 12.7199 3.69418 12.7199C2.94468 12.7199 2.33892 12.1102 2.33892 11.3558C2.33892 10.6015 2.94468 9.9746 3.69418 9.9746C4.44368 9.9746 5.06655 10.5843 5.06655 11.3558Z" fill="white"/>
+              </svg>
+              <div class="addon-checkbox-tooltip">{{product.description | escape | truncatewords: 31 }}</div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+
+
+  <div class="warranty-section add-ons-blocks">
+    <h4>Warranty products</h4>
+
+    {% for product in warranty_products %}
+      <div class="addon-checkbox-wrapper">
+ 
+          <input
+            type="checkbox"
+            class="addon-checkbox"
+            data-upsell-id="{{ product.variants.first.id }}"
+            data-upsell-qty="1"
+          >
+          <label>
+          {{ product.title }}
+          </label>
+            <div class="addon-checkbox-icon-warranty">
+          <svg width="41" height="48" viewBox="0 0 41 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40.6748 5.97777V36.1886C40.6748 38.9599 38.4244 41.2264 35.6728 41.2264H32.3239C33.9557 38.1865 34.8409 34.7814 34.8409 31.226V24.5769C34.8409 23.1321 34.2223 21.7572 33.1558 20.8012C32.0893 19.8452 30.6708 19.3941 29.2417 19.5767C28.4258 19.6787 27.5939 19.6787 26.794 19.5767C25.4928 19.4102 24.261 19.0074 23.0931 18.3521C21.5787 17.5143 19.7763 17.5143 18.2458 18.3682C17.0939 19.0074 15.8621 19.4102 14.577 19.5767C13.7611 19.6787 12.9292 19.6787 12.1293 19.5767C10.6948 19.3941 9.26032 19.8452 8.1938 20.8012C7.12728 21.7572 6.50869 23.1321 6.50869 24.5769V31.226C6.50869 34.7814 7.39391 38.1919 9.02569 41.2264H5.6768C2.92517 41.2264 0.674805 38.9599 0.674805 36.1886V5.97777C0.680137 3.20643 2.9305 0.939941 5.68214 0.939941H14.0117V9.54936C14.0117 10.79 14.6943 11.934 15.7768 12.5194C16.2621 12.7718 16.8113 12.9061 17.3446 12.9061C17.9952 12.9061 18.6297 12.7235 19.195 12.3529L20.6775 11.3432L22.1599 12.3529C23.1785 13.0404 24.4956 13.0941 25.5781 12.5194C26.6607 11.934 27.3432 10.79 27.3432 9.54936V0.939941H35.6728C38.4244 0.939941 40.6748 3.20643 40.6748 5.97777ZM24.0104 4.2967V0.939941H17.3446V9.54936L19.7603 7.93811C20.0269 7.7555 20.3575 7.65346 20.6775 7.65346C20.9974 7.65346 21.3281 7.7555 21.5947 7.93811L24.0104 9.54936H24.0264L24.0104 4.2967ZM31.508 24.5715V31.2206C31.508 33.9705 30.8894 36.6075 29.7269 39.0083C28.5591 41.3929 26.858 43.509 24.6929 45.2169L21.712 47.5855C21.4134 47.8218 21.0454 47.9399 20.6775 47.9399C20.3095 47.9399 19.9416 47.8218 19.6429 47.5855L16.662 45.2169C12.3319 41.8118 9.84692 36.7096 9.84692 31.2206V24.5715C9.84692 24.0828 10.0496 23.6316 10.4122 23.3148C10.7641 22.9979 11.2281 22.8421 11.7133 22.8958C12.7959 23.0301 13.8944 23.0301 14.9769 22.8958C16.694 22.6917 18.3258 22.1547 19.8616 21.3007C20.3788 21.016 20.9761 21.016 21.4934 21.3007C23.0291 22.1547 24.6609 22.6917 26.378 22.8958C27.4606 23.0301 28.5591 23.0301 29.6416 22.8958C30.1109 22.8475 30.5908 22.9979 30.9428 23.3148C31.3107 23.6316 31.508 24.0882 31.508 24.5715ZM19.7283 32.8318L19.0937 32.2088C18.4271 31.5536 17.3766 31.5697 16.726 32.241C16.0914 32.8963 16.1074 33.9543 16.758 34.6096L18.5924 36.4249C18.923 36.7418 19.3443 36.8975 19.7603 36.8975C20.1762 36.8975 20.6081 36.7472 20.9281 36.4249L24.5969 32.7996C25.2475 32.1605 25.2635 31.0863 24.6289 30.4311C23.9784 29.7758 22.9278 29.7597 22.2613 30.3989L19.8456 32.7835L19.7283 32.8318ZM19.8456 32.7781L19.7283 32.8265L19.8456 32.7781ZM19.8456 32.7781L19.7603 32.8641L19.7283 32.8318" fill="#F2F2F2"/>
+          </svg>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+
+
+
+    {%- if recipient_feature_active -%}
+      <gift-card-recipient class="gift-card-recipient v-stack gap-3">
+        {%- assign checkbox_label = 'gift_card.recipient.checkbox' | t -%}
+        {%- render 'checkbox', label: checkbox_label, name: 'properties[__shopify_send_gift_card_to_recipient]' -%}
+
+        <div class="gift-card-recipient__fields" hidden>
+          <div class="fieldset">
+            {%- liquid
+              assign recipient_email_label = 'gift_card.recipient.email_label' | t
+              render 'input', type: 'email', label: recipient_email_label, name: 'properties[Recipient email]', value: form.email, required: true, maxlength: 138
+
+              assign recipient_name_label = 'gift_card.recipient.name_label' | t
+              render 'input', label: recipient_name_label, name: 'properties[Recipient name]', value: form.name
+
+              assign send_on_label = 'gift_card.recipient.send_on_label' | t
+              render 'input', type: 'date', label: send_on_label, name: 'properties[Send on]', value: form.send_on, pattern: '\d{4}-\d{2}-\d{2}'
+              render 'input', type: 'hidden', name: 'properties[__shopify_offset]'
+
+              assign message_label = 'gift_card.recipient.message_label' | t
+              render 'input', label: message_label, name: 'properties[Message]', value: form.message, multiline: 3, maxlength: 200, show_max_characters_count: true
+            -%}
+          </div>
+        </div>
+      </gift-card-recipient>
+    {%- endif -%}
+
+    <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--multiple{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
+      {%- render 'button', content: button_content, type: 'submit', size: button_size, disabled: button_disabled, secondary: show_payment_button, subdued: button_disabled, background: atc_button_background, text_color: atc_button_text_color, is_atc: true -%}
+
+      {%- if show_payment_button -%}
+        {{- form | payment_button -}}
+
+        <style>
+          #{{ form_id }} .shopify-payment-button {
+            {%- unless product.selected_or_first_available_variant.available -%}
+              display: none;
+            {%- endunless -%}
+
+            {%- if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' -%}
+              --button-background: {{ payment_button_background.rgb }};
+            {%- endif -%}
+
+            {%- if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' -%}
+              --button-text-color: {{ payment_button_text_color.rgb }};
+            {%- endif -%}
+          }
+        </style>
+      {%- endif -%}
+    </buy-buttons>
+  </div>
+{%- endform -%}
+
+
+{% if upsell_products != blank and warranty_products != blank %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var productFormId = '{{ form_id }}';
+      var productForm = document.getElementById(productFormId);
+      if (!productForm) {
+        console.error('Product form not found with ID:', productFormId);
+        return;
+      }
+
+      // console.log("Product form found with ID:", productFormId);
+
+      var addToCartButton = productForm.querySelector('button.add-to-cart-btn');
+      if (!addToCartButton) {
+        console.error('Add-to-cart button not found in the product form');
+        return;
+      }
+
+      // console.log("Add-to-cart button found");
+
+      addToCartButton.addEventListener('click', function (e) {
+        // console.log("Add-to-cart button clicked");
+        e.preventDefault();
+
+        // Remove any previously added upsell hidden inputs
+        var oldHiddenInputs = productForm.querySelectorAll('.temp-upsell-input');
+        // console.log("Removing " + oldHiddenInputs.length + " old upsell hidden inputs");
+        oldHiddenInputs.forEach(function (input) {
+          input.remove();
+        });
+
+        // For each checked upsell checkbox, create hidden fields
+        var upsellCheckboxes = productForm.querySelectorAll('.addon-checkbox:checked');
+        // console.log("Found " + upsellCheckboxes.length + " checked upsell checkbox(es)");
+        upsellCheckboxes.forEach(function (checkbox) {
+          var upsellId = checkbox.getAttribute('data-upsell-id');
+          var upsellQty = checkbox.getAttribute('data-upsell-qty') || '1';
+          console.log("Appending upsell with ID: " + upsellId + " and quantity: " + upsellQty);
+
+          // Create hidden input for the variant ID
+          var idField = document.createElement('input');
+          idField.type = 'hidden';
+          idField.name = 'items[][id]';
+          idField.value = upsellId;
+          idField.classList.add('temp-upsell-input');
+
+          // Create hidden input for the quantity
+          var qtyField = document.createElement('input');
+          qtyField.type = 'hidden';
+          qtyField.name = 'items[][quantity]';
+          qtyField.value = upsellQty;
+          qtyField.classList.add('temp-upsell-input');
+
+          productForm.appendChild(idField);
+          productForm.appendChild(qtyField);
+        });
+
+        var newHiddenInputs = productForm.querySelectorAll('.temp-upsell-input');
+        // console.log("Total upsell hidden inputs now in form: " + newHiddenInputs.length);
+
+        productForm.submit();
+      });
+    });
+  </script>
+{% endif %}

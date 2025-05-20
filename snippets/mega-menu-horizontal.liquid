@@ -1,0 +1,264 @@
+{%- if link.links.size > 0 -%}
+  <style>
+    @media screen and (min-width: 1150px) {
+      #mega-menu-{{ mega_menu_block.id }} {
+        --mega-menu-nav-column-max-width: {% if mega_menu_block.settings.submenu_style == 'bold_text' %}{% if link.links.size <= 2 %}240px{% else %}200px{% endif %}{% else %}{% if link.links.size <= 2 %}180px{% else %}160px{% endif %}{% endif %};
+        --mega-menu-justify-content: {% if link.links.size == 0 or mega_menu_block.settings.layout == 'horizontal_center' and mega_menu_block.settings.stretch_promo == false %}center{% else %}space-between{% endif %};
+        --mega-menu-nav-gap: {% if mega_menu_block.settings.stretch_promo %}var(--spacing-12){% else %}var(--spacing-8){% endif %};
+
+        {% if link.links.size > 3 %}
+          --column-list-max-width: 75%;
+        {% endif %}
+      }
+    }
+
+    @media screen and (min-width: 1400px) {
+      #mega-menu-{{ mega_menu_block.id }} {
+        --mega-menu-nav-column-max-width: {% if mega_menu_block.settings.submenu_style == 'bold_text' %}{% if link.links.size == 1 %}260px{% elsif link.links.size == 2 %}240px{% else %}210px{% endif %}{% else %}{% if link.links.size == 1 %}220px{% elsif link.links.size == 2 %}200px{% else %}180px{% endif %}{% endif %};
+        --mega-menu-nav-gap: {% if mega_menu_block.settings.layout == 'horizontal_center' %}var(--spacing-12){% else %}var(--spacing-16){% endif %};
+
+        {% if link.links.size > 4 %}
+          --column-list-max-width: 75%;
+        {% else %}
+          --column-list-max-width: max-content;
+        {% endif %}
+      }
+    }
+
+    @media screen and (min-width: 1600px) {
+      #mega-menu-{{ mega_menu_block.id }} {
+        --mega-menu-nav-gap: var(--spacing-16);
+      }
+    }
+
+    @media screen and (min-width: 1800px) {
+      #mega-menu-{{ mega_menu_block.id }} {
+        --mega-menu-nav-gap: var(--spacing-20);
+      }
+    }
+  </style>
+{%- endif -%}
+
+{% case mega_menu_block.type %}
+  {% when 'mega_menu' %}
+    <div
+      id="mega-menu-{{ mega_menu_block.id }}"
+      class="mega-menu {% if link.links.size == 0 %}justify-center{% endif %}"
+    >
+      {%- if link.links.size > 0 -%}
+        <ul class="mega-menu__nav" role="list">
+          {%- for sub_link in link.links -%}
+            <li class="mega-menu__nav-links v-stack gap-4 justify-items-start">
+              <a
+                {% if sub_link.url != '#' %}
+                  href="{{ sub_link.url }}"
+                {% endif %}
+                class="{% if mega_menu_block.settings.submenu_style == 'bold_heading' %}h5{% endif %}"
+                {% if sub_link.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                <span
+                  {% if sub_link.url != '#' %}
+                    class="{% if mega_menu_block.settings.submenu_style == 'bold_text' %}link-faded{% else %}reversed-link hover:show{% endif %}"
+                  {% endif %}
+                >
+                  {{- sub_link.title -}}
+                </span>
+              </a>
+
+              {%- if sub_link.levels > 0 -%}
+                <ul class="v-stack gap-2 justify-items-start" role="list">
+                  {%- for sub_sub_link in sub_link.links -%}
+                    <li>
+                      <a
+                        href="{{ sub_sub_link.url }}"
+                        class="{% if mega_menu_block.settings.submenu_style == 'bold_text' %}h5{% else %}link-faded{% endif %}"
+                      >
+                        <span
+                          {% if mega_menu_block.settings.submenu_style == 'bold_text' %}
+                            class="reversed-link hover:show"
+                          {% endif %}
+                        >
+                          {{- sub_sub_link.title -}}
+                        </span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {% liquid
+        # To maximize space, we force a carousel mode depending on the actual content
+
+        assign promo_item_count = 0
+        assign use_carousel_fallback_until = ''
+
+        for i in (1..3)
+          assign image_setting = 'image_' | append: i
+
+          if mega_menu_block.settings[image_setting] != blank
+            assign promo_item_count = promo_item_count | plus: 1
+          endif
+        endfor
+
+        if mega_menu_block.settings.product != blank
+          assign promo_item_count = promo_item_count | plus: 1
+        endif
+
+        if link.links.size > 0 and promo_item_count == 4 or mega_menu_block.settings.promo_content_layout == 'carousel'
+          assign force_carousel_mode = true
+        else
+          if link.links.size == 2
+            if promo_item_count == 3 and mega_menu_block.settings.layout == 'grid'
+              assign use_carousel_fallback_until = 'xl'
+            endif
+          elsif link.links.size >= 3 and promo_item_count == 3
+            if use_promo_collage
+              assign use_carousel_fallback_until = 'xl'
+            else
+              assign use_carousel_fallback_until = '2xl'
+            endif
+          endif
+        endif
+      %}
+
+      {%- if force_carousel_mode -%}
+        {%- render 'navigation-promo-block',
+          mega_menu_block: mega_menu_block,
+          force_carousel_mode: force_carousel_mode
+        -%}
+      {% else %}
+        {%- if use_carousel_fallback_until != '' -%}
+          {%- render 'navigation-promo-block',
+            navigation_layout: navigation_layout,
+            mega_menu_block: mega_menu_block,
+            link_col: link.links.size,
+            is_navigation_drawer: false,
+            use_carousel_fallback_until: use_carousel_fallback_until
+          -%}
+        {%- endif -%}
+
+        {%- render 'navigation-promo-block',
+          navigation_layout: navigation_layout,
+          mega_menu_block: mega_menu_block,
+          link_col: link.links.size,
+          is_navigation_drawer: false,
+          hide_promo_until: use_carousel_fallback_until
+        -%}
+      {%- endif -%}
+    </div>
+
+  {% when 'mega_menu_collapse' %}
+
+
+    <div
+      id="mega-menu-{{ mega_menu_block.id }}"
+      class="mega-menu {% if link.links.size == 0 %}justify-center{% endif %}"
+    >
+      <div class="mega-menu__tabs">
+        <!-- Left Side (Submenu Titles as Buttons) -->
+        <div class="mega-menu__tabs-left">
+          {% for sub_link in link.links %}
+            {% assign collections_handle = sub_link.url | remove: '/collections/' %}
+            {% assign collection = collections[collections_handle] %}
+            {% if sub_link.links.size > 0 %}
+              <button
+                class="tab-btn sub-link {% if collection.image == blank%}no-img{% endif %} {% if forloop.first %}active{% endif %}"
+                data-target="tab-{{ sub_link.title | handle }}"
+              >
+                {% if collection.image != blank %}
+                  <img src="{{ collection.image | image_url: 'medium' }}" alt="{{ sub_link.title }}">
+                {% endif %}
+                <span>{{ sub_link.title }}</span>
+              </button>
+            {% else %}
+              <a href="{{ sub_link.url }}" class="sub-link {% if collection.image == blank%}no-img{% endif %}">
+                {% if collection.image != blank%}
+                  <img src="{{ collection.image | image_url: 'medium' }}" alt="{{ sub_link.title }}">
+                {% endif %}
+                <span>{{ sub_link.title -}}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+
+          <div class="mega-menu__tabs-btn-compare">
+          <a class="button button--md" href="{{ mega_menu_block.settings.button_url }}">
+            <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 13C0 11.8954 0.895431 11 2 11H3.33333C4.4379 11 5.33333 11.8954 5.33333 13V20C5.33333 21.1046 4.4379 22 3.33333 22H2C0.895432 22 0 21.1046 0 20V13Z" fill="white"/>
+            <path d="M9.33333 2C9.33333 0.89543 10.2288 0 11.3333 0H12.6667C13.7712 0 14.6667 0.895431 14.6667 2V20C14.6667 21.1046 13.7712 22 12.6667 22H11.3333C10.2288 22 9.33333 21.1046 9.33333 20V2Z" fill="white"/>
+            <path d="M18.6667 18.5C18.6667 17.3954 19.5621 16.5 20.6667 16.5H22C23.1046 16.5 24 17.3954 24 18.5V20C24 21.1046 23.1046 22 22 22H20.6667C19.5621 22 18.6667 21.1046 18.6667 20V18.5Z" fill="white"/>
+            </svg>
+
+            {{ mega_menu_block.settings.button_text }}
+          </a>
+          </div>
+        </div>
+
+        <!-- Right Side (Submenu Title & Sub-Links Content) -->
+        <div class="mega-menu__tabs-right-wrapper">
+          {% for sub_link in link.links %}
+            {% assign collections_handle = sub_link.url | remove: '/collections/' %}
+            {% assign collection = collections[collections_handle] %}
+            <div id="tab-{{ sub_link.title | handle }}" class="mega-menu__tabs-right {% if forloop.first %}active{% endif %}">
+              <div class="mega-menu__tabs-content">
+                <div class="mega-menu__tabs-title">
+                  <h2>{{ sub_link.title }}</h2>
+                  {% if collection.description != blank %}
+                  <p>{{ collection.description }}</p>
+                  {% endif %}
+                </div>
+                <div class="mega-menu__tabs-view-all">
+                  {% comment %} <a class="button button--md" href="{{ sublink.url }}">View all</a> {% endcomment %}
+   
+                    {% render 'button', content: "View All", href: collection.url, size: 'sm,', background: section.settings.button_background, text_color: section.settings.button_text_color, style: 'outline' %}
+
+                </div>
+              </div>
+              <!-- Display Submenu Title -->
+              {% if sub_link.links.size > 4 %}
+                  <div class="mega-menu__tabs-content-grid" style="display:flex;">
+                    {% for sub_sub_link in sub_link.links %}
+                      {% assign product_handle = sub_sub_link.url | remove: '/products/' %}
+                      {% assign product = all_products[product_handle] %} <!-- Corrected 'products' -->
+              
+                      <div class="mega-menu__tabs-content-grid-item">
+                        <a href="{{ sub_sub_link.url }}">
+                          {% if product.featured_image %}
+                            <img src="{{ product.featured_image | image_url: 'medium' }}" alt="{{ sub_sub_link.title }}">
+                          {% endif %}
+                          <span>{{ sub_sub_link.title }}</span>
+                        </a>
+                      </div>
+                    {% endfor %}
+                  </div>
+              {% elsif sub_link.links.size > 0 %}
+                <ul class="mega-menu__tabs-items">
+                  {% for sub_sub_link in sub_link.links %}
+                    {% assign product_handle = sub_sub_link.url | remove: '/products/' %}
+                    {% assign product = all_products[product_handle] %} <!-- Corrected 'products' -->
+            
+                    <li>
+                      <a href="{{ sub_sub_link.url }}">
+                        {% if product.featured_image %}
+                          <img src="{{ product.featured_image | image_url: 'medium' }}" alt="{{ sub_sub_link.title }}">
+                        {% endif %}
+                        {{ sub_sub_link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  
+                </ul>
+              {% else %}
+                <p>No additional links available.</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endcase %}
