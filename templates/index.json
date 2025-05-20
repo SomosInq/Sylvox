@@ -9,6 +9,79 @@
  */
 {
   "sections": {
+    "f325ea2c-0ca3-4a54-bb01-5a913eec98c7": {
+      "type": "slideshow",
+      "blocks": {
+        "hero_ENCXGB": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Mother’s Day Sale</p>",
+            "title_size": 58,
+            "subheading": "Let Her Be Herself This Moment",
+            "link": "shopify://pages/mother-day-sale-2025",
+            "link_text": "Shop now",
+            "link_2": "shopify://pages/sylvox-2025-easter-sale",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/2900_00000-4-22_6c4a6321-c322-46c3-9299-291fb54efd6d.jpg",
+            "image_mobile": "shopify://shop_images/1000_00000-R_fc800601-b70b-4536-9f37-701ab0f0937f.jpg",
+            "overlay_opacity": 6
+          }
+        },
+        "c6e06cf1-25c9-425b-9d93-79130c2a1a11": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>IP55 Waterproof Outdoor TVs</p>",
+            "title_size": 65,
+            "subheading": "Withstand All Weather",
+            "link": "shopify://collections/outdoor-tv",
+            "link_text": "Shop Now",
+            "link_2": "shopify://collections/outdoor-tv",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/20240716133738.png",
+            "image_mobile": "shopify://shop_images/20240716133744.png",
+            "overlay_opacity": 8
+          }
+        },
+        "hero_yNnGUW": {
+          "type": "hero",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Cyber Monday Sale</p>",
+            "title_size": 50,
+            "subheading": "The Last Chance for the Best Deals of the Year!",
+            "link": "shopify://pages/black-friday-deals",
+            "link_text": "Shop Now",
+            "link_2": "shopify://pages/black-friday-deals",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/666_cd4d3500-a312-4f37-856a-d964f48f374a.jpg",
+            "image_mobile": "shopify://shop_images/666-2_29b0507c-0657-492d-bdb8-09c8b0d36c4c.jpg",
+            "overlay_opacity": 6
+          }
+        }
+      },
+      "block_order": [
+        "hero_ENCXGB",
+        "c6e06cf1-25c9-425b-9d93-79130c2a1a11",
+        "hero_yNnGUW"
+      ],
+      "settings": {
+        "full_width": true,
+        "desktop_size": -10,
+        "mobile_size": 20,
+        "style": "minimal",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
     "tab_products_i4fR76": {
       "type": "tab-products",
       "blocks": {
@@ -79,81 +152,7 @@
         "image_size": "auto",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
-        "tabs_position": 18
-      }
-    },
-    "f325ea2c-0ca3-4a54-bb01-5a913eec98c7": {
-      "type": "slideshow",
-      "blocks": {
-        "hero_ENCXGB": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "<p>Mother’s Day Sale</p>",
-            "title_size": 58,
-            "subheading": "Let Her Be Herself This Moment",
-            "link": "shopify://pages/mother-day-sale-2025",
-            "link_text": "Shop now",
-            "link_2": "shopify://pages/sylvox-2025-easter-sale",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-center",
-            "image": "shopify://shop_images/2900_00000-4-22_6c4a6321-c322-46c3-9299-291fb54efd6d.jpg",
-            "image_mobile": "shopify://shop_images/1000_00000-R_fc800601-b70b-4536-9f37-701ab0f0937f.jpg",
-            "overlay_opacity": 6
-          }
-        },
-        "c6e06cf1-25c9-425b-9d93-79130c2a1a11": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "<p>IP55 Waterproof Outdoor TVs</p>",
-            "title_size": 65,
-            "subheading": "Withstand All Weather",
-            "link": "shopify://collections/outdoor-tv",
-            "link_text": "Shop Now",
-            "link_2": "shopify://collections/outdoor-tv",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-center",
-            "image": "shopify://shop_images/20240716133738.png",
-            "image_mobile": "shopify://shop_images/20240716133744.png",
-            "overlay_opacity": 8
-          }
-        },
-        "hero_yNnGUW": {
-          "type": "hero",
-          "disabled": true,
-          "settings": {
-            "top_subheading": "",
-            "title": "<p>Cyber Monday Sale</p>",
-            "title_size": 50,
-            "subheading": "The Last Chance for the Best Deals of the Year!",
-            "link": "shopify://pages/black-friday-deals",
-            "link_text": "Shop Now",
-            "link_2": "shopify://pages/black-friday-deals",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-center",
-            "image": "shopify://shop_images/666_cd4d3500-a312-4f37-856a-d964f48f374a.jpg",
-            "image_mobile": "shopify://shop_images/666-2_29b0507c-0657-492d-bdb8-09c8b0d36c4c.jpg",
-            "overlay_opacity": 6
-          }
-        }
-      },
-      "block_order": [
-        "hero_ENCXGB",
-        "c6e06cf1-25c9-425b-9d93-79130c2a1a11",
-        "hero_yNnGUW"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "desktop_size": -10,
-        "mobile_size": 20,
-        "style": "minimal",
-        "autoplay": true,
-        "autoplay_speed": 7
+        "tabs_position": 41
       }
     },
     "featured_collections_XJWX4m": {
@@ -690,8 +689,8 @@
     }
   },
   "order": [
-    "tab_products_i4fR76",
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
+    "tab_products_i4fR76",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
     "70b62ca6-065a-45cd-a481-2704f5dc26c0",
