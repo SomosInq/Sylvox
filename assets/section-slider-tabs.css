@@ -1,0 +1,229 @@
+.slider-tab__item-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+  }
+  
+  .swiper-slide-active .slider-tab__item-inner {
+    opacity: 1;
+  } 
+  
+  .slider-tab__item-inner::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      rgba(23, 156, 153, 0) 8.07%,
+      #179c99 104.97%
+    );
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 16px;
+  }
+  
+  .slider-tab__item-inner img {
+    width: 100%;
+    height: 480px;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+  
+  .slider-tab {
+    margin-top: 32px;
+  }
+  
+  .slider-tab__item-content {
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 40px;
+    width: 100%;
+    /* height: 100%; */
+    text-align: left;
+    color: #fff;
+    z-index: 1;
+  }
+  
+  .slider-tab__item-content a {
+    justify-content: center;
+  }
+  
+  .slider-tab__item-content h2 {
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  
+  .slider-tab__description p {
+    font-size: 20px;
+  }
+  
+  .slider-tab__item-content p {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .slider-tab__title {
+    text-align: center;
+  }
+  
+  .slider-tab__title h2 {
+    font-size: 48px;
+  }
+  
+  .slider-tab__top {
+    width: max-content;
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 16px;
+    justify-content: center;
+    background: #e3e3e3;
+    padding: 4px 6px;
+    border-radius: 68px;
+  }
+  
+  .slider-tab__description {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+  
+  .slider-tab__button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #000;
+    width: max-content;
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 68px;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .slider-tab__button.active,
+  .slider-tab__button:hover {
+    color: #fff;
+    background: #179c99;
+  }
+  
+  .slider-tab__control {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+  }
+  
+  .slider-tab-section .swiper-pagination {
+    position: relative;
+    text-align: center;
+    bottom: 0;
+  }
+  
+  .slider-tab-section .slider-tab__arrow {
+    width: 120px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .slider-tab-section .swiper-pagination-bullet {
+    background: #179c99;
+    opacity: 0.3;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .slider-tab-section .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 72px;
+    border-radius: 20px;
+  }
+  
+  .slider-tab-section .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+  
+  .slider-tab-section .slider-tab-next svg {
+    transform: rotate(180deg);
+  }
+  
+  .slider-tab-section .slider-tab-next,
+  .slider-tab-section .slider-tab-prev {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    top: unset;
+    left: unset;
+    right: unset;
+    position: relative;
+    background-color: #666666;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .slider-tab-section .slider-tab-next.swiper-button-disabled,
+  .slider-tab-section .slider-tab-prev.swiper-button-disabled {
+    opacity: 1;
+    background-color: #e2e2e2;
+    color: #525252;
+  }
+  
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .slider-tab__item-content {
+      padding: 24px;
+    }
+  }
+  
+  @media screen and (max-width: 749px) {
+    .slider-tab__top {
+      column-gap: 4px;
+      padding: 4px 6px;
+    }
+  
+    .slider-tab__item-content h2 {
+      font-size: 24px;
+    }
+  
+    .slider-tab__button {
+      font-size: 9px;
+      opacity: 0.65;
+      padding: 0px 4px;
+      width: 66px;
+    }
+  
+    .slider-tab__control {
+      margin: 20px 0 0 0;
+    }
+  
+    .slider-tab-section .slider-tab-next,
+    .slider-tab-section .slider-tab-prev {
+      width: 32px;
+      height: 32px;
+    }
+  
+    .slider-tab-section .slider-tab__arrow {
+      width: 100px;
+    }
+  
+    .slider-tab__item-inner img {
+      height: 200px;
+    }
+
+    .slider-tab__title h2{
+      font-size: 24px;
+    }
+  }
+  

@@ -1,0 +1,229 @@
+
+.map-controls {
+  margin-bottom: 10px;
+}
+
+.country-button-wrapper{
+  display: flex;
+  gap: 50px;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.map-controls h3{
+    font-size: 36px;
+    font-weight: 400;
+}
+.location-map #map {
+  border-radius: 10px;
+  z-index: 0;
+  height: 500px;
+}
+.tabs-continent {
+  margin: 20px 0;
+}
+
+
+
+.tab-buttons {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+}
+.tab-buttons li {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #808080;
+}
+
+.tab-buttons li.hidden {
+  display: none;
+}
+.tab-buttons li.active,
+.tab-buttons li:hover {
+  color: #000;
+}
+.tab {
+  display: none;
+}
+
+.tab-title {
+  display: flex;
+  align-items: center;
+  margin: 40px 0 20px;
+}
+.tab.active {
+  display: block;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0;
+}
+
+.leaflet-popup-content {
+  margin: 10px;
+  width: 200px;
+  font-family: 'BasicSans', sans-serif;
+}
+
+.popup-item {
+  display: flex;
+  align-items: center;
+}
+
+.tab-content-locations ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tab-content__item p {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.tab-content__item .infos {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #808080;
+  font-size: 16px;
+}
+
+.tab-content__item .infos a{
+    color: #221551;
+}
+
+.tab-content__item .infos svg{
+    width: 27px;
+}
+
+.leaflet-popup{
+    margin-bottom: 30px;
+}
+
+.leaflet-popup-content a{
+    color: #179C99;
+}
+
+.custom-marker-icon svg{
+    filter: drop-shadow(4px 6px 6px rgba(0, 0, 0, 0.3));
+
+}
+
+.hidden-select {
+    display: none;
+  }
+  
+  .country-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 352px;
+  }
+
+  .country-select-wrapper .arrow{
+    position: absolute;
+    right: 10px;
+    top:10px;
+  }
+
+  .country-select-wrapper .clear-btn{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+  }
+  
+  .country-dropdown-toggle {
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #B1B1B1;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Kanit";
+  }
+  
+  .country-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 10;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  @media screen and (max-width: 749px) {
+    .map-controls {
+        flex-direction: column;
+    }
+
+    .map-controls h3{
+        width: 100%;
+        font-size: 24px;
+    }
+
+    .country-select-wrapper{
+        max-width: 100%;
+        margin: 32px 0 20px;
+    }
+
+    .location-map #map {
+      height: 350px;
+    }
+
+    .tabs-continent h3{
+        font-size: 24px;
+    }
+
+    .tab-content-locations li {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .tab-buttons-wrapper{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        -ms-overflow-style: none;
+    }
+
+    .tab-buttons{
+        gap: 0;
+    }
+
+    .tab-buttons li{
+        width: max-content;
+    }
+  }

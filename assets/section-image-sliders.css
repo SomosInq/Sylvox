@@ -1,0 +1,126 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-slider .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 200px !important; */
+  }
+
+  /* Pagination Progress */
+  .image-slider .swiper-pagination {
+    bottom: unset !important;
+    position: relative;
+    margin-top: 60px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-slider .swiper-pagination-bullet {
+    position: relative;
+    width: 100px !important;
+    height: 4px;
+    background: transparent;
+    /* overflow: hidden; */
+    border-radius: 4px;
+  }
+
+  .image-slider .swiper-pagination-bullet .bullet-text {
+    font-size: 12px;
+    color: #333;
+    z-index: 2;
+    white-space: nowrap;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    top: -26px;
+  }
+
+  .image-slider .swiper-pagination-bullet-active {
+    background: #e8e8e8;
+  }
+
+  .image-slider .swiper-pagination-bullet .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: #00c767;
+    transition: width 0.1s linear;
+    border-radius: 4px;
+  }
+
+  .image-slide__info{
+    max-width: var(--image-slide__info-max-width) !important;
+    color: var(--image-slide__info-text-color);
+  }
+
+  .image-slide__info h4 {
+    font-size: 60px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .image-slide__info p {
+    font-size: 35px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .image-slide__info-top{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .image-slide__info-badge{
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    background: var(--info-badge-bg);
+    color: var(--info-badge-color);;
+    border-radius: 100px;
+  }
+
+
+  .image-slide__info-other{
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  @media screen and (max-width: 699px){
+    .image-slide__info{
+        max-width: 100%;
+    }
+
+    .image-slide__info h4 {
+        font-size: 32px;
+    }
+
+    .image-slide__info p{
+        font-size: 16px;
+    }
+
+    .image-slide__info-badge{
+        font-size: 8px;
+        padding: 6px 12px;
+    }
+
+    .image-slide__info-other{
+        font-size: 12px;
+    }
+  }
