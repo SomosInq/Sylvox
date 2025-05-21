@@ -2813,6 +2813,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
+  */
 
 .product-card {
   --product-card-badge-spacing: var(--spacing-2);
@@ -2982,7 +2983,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
     transform: translateY(0);
   }
 }
-
+/*
 .model-viewer {
   position: relative;
 }
