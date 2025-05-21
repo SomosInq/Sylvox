@@ -2651,7 +2651,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
 .range-group .range:last-child:is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
   right: 0;
 } */
-
+/* 
 .input-group {
   align-items: center;
   column-gap: 20px;
@@ -4495,7 +4495,6 @@ width: 100%; height: 200px; background: #ddd;
   grid: var(--article-banner-grid);
   column-gap: var(--article-banner-column-gap);
   align-items: var(--article-banner-horizontal-alignement, center);
-  /* max-width: var(--article-banner-max-width); */
   box-sizing: content-box;
   justify-items: center;
   margin-inline-start: auto;
@@ -4552,10 +4551,6 @@ width: 100%; height: 200px; background: #ddd;
 }
 
 @media screen and (min-width: 1150px) {
-  .article-banner {
-    /* padding-inline-start: var(--container-gutter);
-    padding-inline-end: var(--container-gutter); */
-  }
 
   .article-banner__content {
     grid-area: var(--article-banner-grid-area, content);
@@ -6917,9 +6912,9 @@ width: 100%; height: 200px; background: #ddd;
   .images-scrolling-desktop {
     display: none;
   }
-}
+} */
 
-.impact-text {
+/* .impact-text {
   --impact-text-spacing: var(--spacing-10);
   gap: var(--impact-text-spacing);
   align-items: start;
@@ -7152,7 +7147,7 @@ width: 100%; height: 200px; background: #ddd;
   .multi-column {
     --multi-column-list-column-max-gap: var(--multi-column-list-gap);
   }
-}
+} */
 
 .multiple-images-with-text {
   grid-template-columns: var(--multiple-images-with-text-grid-template-columns, none);
