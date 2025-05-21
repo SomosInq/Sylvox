@@ -269,6 +269,41 @@
         "btn_text_color": ""
       }
     },
+    "product_slider_xhpnwt": {
+      "type": "product-slider",
+      "blocks": {
+        "product_xCR4gq": {
+          "type": "product",
+          "settings": {
+            "product": "sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
+          }
+        },
+        "product_CKiJ7q": {
+          "type": "product",
+          "settings": {
+            "product": "100-difference"
+          }
+        },
+        "product_mXPQn6": {
+          "type": "product",
+          "settings": {
+            "product": "sylvox-official-extended-warranty-for-deck-pro-75-2-years-total-3-years"
+          }
+        }
+      },
+      "block_order": [
+        "product_xCR4gq",
+        "product_CKiJ7q",
+        "product_mXPQn6"
+      ],
+      "name": "Best Sellers Slider",
+      "settings": {
+        "left_image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+        "heading": "Best Sellers",
+        "subheading": "Customer Favorites",
+        "shop_all_url": ""
+      }
+    },
     "comparison_table_CGzkY3": {
       "type": "comparison-table",
       "blocks": {
@@ -955,6 +990,7 @@
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
     "tab_products_i4fR76",
     "info_section_JEKir6",
+    "product_slider_xhpnwt",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
