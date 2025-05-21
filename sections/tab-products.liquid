@@ -162,7 +162,7 @@
       <div class="tabs-product__grid">
         <div class="section-stack">
           {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
-          {% comment %} {%- render 'section-header',
+          {%- render 'section-header',
             subheading: section.settings.subheading,
             heading: section.settings.title,
             heading_color: section.settings.heading_color,
@@ -170,7 +170,7 @@
             content: section.settings.content,
             link_text: section.settings.link_text,
             link_url: link_url
-          -%} {% endcomment %}
+          -%}
 
           <div class="floating-controls-container">
             {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
