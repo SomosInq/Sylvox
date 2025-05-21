@@ -23,6 +23,28 @@
       "type": "url",
       "id": "shop_all_url",
       "label": "Shop All Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show slider arrows",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "50% Width"
+        },
+        {
+          "value": "full",
+          "label": "Full Width"
+        }
+      ]
     }
   ],
   "blocks": [
@@ -47,7 +69,7 @@
   "presets": [
     {
       "name": "Collection Tabs Slider",
-      "category": "Custom"
+      "category": "Somos Custom"
     }
   ]
 }
@@ -59,12 +81,15 @@
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
   padding: 2rem 0;
+  margin: 0 auto;
 }
 
-.left-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.collection-tabs-section.standard {
+  max-width: 1200px;
+}
+
+.collection-tabs-section.full {
+  max-width: 100%;
 }
 
 .left-image img {
@@ -84,9 +109,15 @@
   align-items: center;
 }
 
+.tab-title-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .tab-header h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666;
 }
 
@@ -97,32 +128,34 @@
 
 .shop-all-btn {
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.9rem;
   background-color: #000;
   color: #fff;
   border-radius: 4px;
-  margin-top: 1rem;
-  align-self: flex-end;
+  font-size: 0.85rem;
 }
 
 .tab-buttons {
   display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: 2rem;
+  margin: 1rem 0 1.5rem;
+  border-bottom: 2px solid #e5e5e5;
 }
 
 .tab-buttons button {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   background: none;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 1rem;
   font-weight: 600;
+  cursor: pointer;
+  color: #333;
 }
 
 .tab-buttons button.active {
-  background-color: #000;
-  color: #fff;
+  border-bottom: 2px solid #000;
+  color: #000;
 }
 
 .product-carousel {
@@ -138,7 +171,7 @@
 }
 
 .flickity-slider > .product-card {
-  width: 250px;
+  width: 220px;
   margin-right: 20px;
 }
 
@@ -146,9 +179,20 @@
   width: 100%;
   border-radius: 8px;
 }
+
+.product-card h4 {
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0.3rem;
+}
+
+.product-card p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
 {% endstylesheet %}
 
-<section class="collection-tabs-section">
+<section class="collection-tabs-section {{ section.settings.section_width }}">
   <div class="left-image">
     {% if section.settings.left_image != blank %}
       <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Left Image">
@@ -157,9 +201,14 @@
 
   <div class="right-content">
     <div class="tab-header">
-      <div>
-        <h3>{{ section.settings.subheading }}</h3>
-        <h2>{{ section.settings.heading }}</h2>
+      <div class="tab-title-group">
+        <div>
+          <h3>{{ section.settings.subheading }}</h3>
+          <h2>{{ section.settings.heading }}</h2>
+        </div>
+        {% if section.settings.shop_all_url %}
+          <a href="{{ section.settings.shop_all_url }}" class="shop-all-btn">Shop All</a>
+        {% endif %}
       </div>
     </div>
 
@@ -175,7 +224,16 @@
 
     {% for block in section.blocks %}
       {% assign collection = collections[block.settings.collection] %}
-      <div class="product-carousel js-flickity {% if forloop.first %}active{% endif %}" data-tab="tab-{{ forloop.index }}" data-flickity-options='{"contain": true, "wrapAround": true, "pageDots": false}'>
+      <div
+        class="product-carousel js-flickity {% if forloop.first %}active{% endif %}"
+        data-tab="tab-{{ forloop.index }}"
+        data-flickity-options='{
+          "contain": true,
+          "wrapAround": true,
+          "pageDots": false,
+          "prevNextButtons": {{ section.settings.show_arrows }}
+        }'
+      >
         {% for product in collection.products limit: 10 %}
           <div class="product-card">
             <a href="{{ product.url }}">
@@ -187,10 +245,6 @@
         {% endfor %}
       </div>
     {% endfor %}
-
-    {% if section.settings.shop_all_url %}
-      <a href="{{ section.settings.shop_all_url }}" class="shop-all-btn">Shop All</a>
-    {% endif %}
   </div>
 </section>
 
