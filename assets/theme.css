@@ -825,7 +825,7 @@ scroll-carousel {
   position: relative;
 }
 
-.content-over-media {
+/* .content-over-media {
   grid-template: 0 minmax(0, 1fr) 0 / minmax(0, 1fr) minmax(0, min(var(--container-max-width), 100% - var(--content-over-media-gap, var(--content-over-media-column-gap, var(--container-gutter))) * 2)) minmax(0, 1fr);
   gap: var(--content-over-media-row-gap, var(--content-over-media-gap, var(--container-gutter))) var(--content-over-media-column-gap, var(--content-over-media-gap, var(--container-gutter)));
   place-items: center;
@@ -966,7 +966,7 @@ scroll-carousel {
   .content-over-media--lg {
     --content-over-media-height: 720px;
   }
-}
+} */
 
 .page-dots {
   justify-content: center;
