@@ -272,15 +272,23 @@
     "product_slider_xhpnwt": {
       "type": "product-slider",
       "blocks": {
-        "tab_BhYH4G": {
+        "tab_EaHJ7G": {
           "type": "tab",
           "settings": {
             "tab_name": "Best Sellers",
-            "collection": "12v-tv"
+            "collection": "rv-tv"
+          }
+        },
+        "tab_BhYH4G": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "New Arrivals",
+            "collection": "new-outdoor-tv"
           }
         }
       },
       "block_order": [
+        "tab_EaHJ7G",
         "tab_BhYH4G"
       ],
       "name": "Best Sellers Slider",
