@@ -162,7 +162,7 @@
       <div class="tabs-product__grid">
         <div class="section-stack">
           {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
-          {%- render 'section-header',
+          {%- render 'section-header-tabs',
             subheading: section.settings.subheading,
             heading: section.settings.title,
             heading_color: section.settings.heading_color,

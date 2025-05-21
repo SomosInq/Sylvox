@@ -2100,7 +2100,7 @@ scroll-carousel {
     --calculated-section-spacing-block-end: min(64px, var(--section-spacing-block-end, var(--section-spacing-block, var(--context-section-spacing-block-end, 0px))));
   }
 }
-
+*/
 .section-header {
   gap: var(--spacing-4);
   justify-items: start;
@@ -2118,7 +2118,7 @@ scroll-carousel {
     grid-column-start: 2;
   }
 }
-
+/*
 .section-stack {
   gap: var(--section-stack-spacing-block, 0px) var(--section-stack-spacing-inline, 0px);
   grid-auto-columns: minmax(0, 1fr);
