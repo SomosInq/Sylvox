@@ -388,6 +388,7 @@
         "values_NRJ9KQ",
         "values_NHDEdh"
       ],
+      "disabled": true,
       "name": "Comparison table",
       "settings": {
         "full_width": true,
