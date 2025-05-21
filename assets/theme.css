@@ -2719,7 +2719,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
     row-gap: 18px;
     padding-block-start: 10px;
   }
-}
+} */
 
 .product-list {
   grid: var(--product-list-grid);
@@ -2761,7 +2761,7 @@ model-media model-viewer, model-media .shopify-model-viewer-ui {
     }
   }
 }
-
+/*
 .rating {
   align-items: center;
   gap: var(--spacing-1-5);
@@ -4071,7 +4071,7 @@ tfoot td {
   opacity: 1;
   background: rgb(var(--text-color) / .1);
 }
-
+*/
 .floating-controls-container {
   position: relative;
 }
@@ -4109,7 +4109,7 @@ tfoot td {
     transform: scale(1);
   }
 }
-
+/*
 .icon {
   vertical-align: middle;
   display: block;
