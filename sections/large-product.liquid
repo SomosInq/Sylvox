@@ -100,13 +100,13 @@
     {% endif %}
   </div>
   
-  <div class="sylvox-products">
-    <select name="product-option">
-      {% for product in section.settings.products %}
-        <option value="{{ product }}">{{ all_products[product].title }}</option>
-      {% endfor %}
-    </select>
-  </div>
+<div class="sylvox-products">
+  <select name="product-option">
+    {% for product in section.settings.products %}
+      <option value="{{ product.handle }}">{{ product.title }}</option>
+    {% endfor %}
+  </select>
+</div>
 
   <p>{{ section.settings.price_text }}</p>
   <a href="{{ section.settings.button_link }}" class="button">
