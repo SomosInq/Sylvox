@@ -481,6 +481,19 @@
         "button_text": "Learn More"
       }
     },
+    "image_text_JLzmXH": {
+      "type": "image-text",
+      "name": "Image with Text Flex",
+      "settings": {
+        "title": "Bright & Beautiful 4K UHD",
+        "text": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
+        "image": "shopify://shop_images/Nits.png",
+        "image_position": "above",
+        "alignment": "center",
+        "button_text": "Learn More",
+        "button_link": ""
+      }
+    },
     "comparison_table_CGzkY3": {
       "type": "comparison-table",
       "blocks": {
@@ -1172,6 +1185,7 @@
     "image_with_text_overlay_heWpQE",
     "rich_text_g7wbE4",
     "box_section_NjjNqW",
+    "image_text_JLzmXH",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
