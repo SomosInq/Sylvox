@@ -553,9 +553,28 @@
       ],
       "name": "New Banner Slider",
       "settings": {
+        "text_alignment": "left",
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
         "show_arrows": true
+      }
+    },
+    "large_product_BDXMM6": {
+      "type": "large-product",
+      "name": "Large Product",
+      "settings": {
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "title": "Sylvox Deck Pro 2.0",
+        "icon1": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
+        "icon2": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
+        "icon3": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
+        "products": [
+          "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-75-total-3-years",
+          "sylvox-official-extended-warranty-for-deck-pro-55-2-years-total-3-years"
+        ],
+        "price_text": "From USD $1,149.00",
+        "button_link": "",
+        "button_label": "Buy Now"
       }
     },
     "comparison_table_CGzkY3": {
@@ -1251,6 +1270,7 @@
     "box_section_NjjNqW",
     "image_text_dE7fr8",
     "new_banner_slider_D3WkxM",
+    "large_product_BDXMM6",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
