@@ -1,34 +1,7 @@
 {% schema %}
 {
-  "name": "Image with Text Flex",
+  "name": "Image/Text Flex Blocks",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Bright & Beautiful 4K UHD"
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Description",
-      "default": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight."
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
-    {
-      "type": "select",
-      "id": "image_position",
-      "label": "Image Position",
-      "default": "above",
-      "options": [
-        { "value": "above", "label": "Above Text" },
-        { "value": "below", "label": "Below Text" }
-      ]
-    },
     {
       "type": "select",
       "id": "alignment",
@@ -39,65 +12,107 @@
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title Text",
+          "default": "Your Section Title"
+        }
+      ]
     },
     {
       "type": "text",
-      "id": "button_text",
-      "label": "Button Text"
+      "name": "Text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Paragraph Text",
+          "default": "Some supporting content that explains your product or story."
+        }
+      ]
     },
     {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Image with Text Flex",
-      "category": "Somos Custom"
+      "name": "Image/Text Flex Blocks",
+      "category": "Somos Custom",
+      "blocks": [
+        { "type": "image" },
+        { "type": "title" },
+        { "type": "text" },
+        { "type": "button" }
+      ]
     }
   ]
 }
 {% endschema %}
 
-{% assign alignment_class = settings.alignment | prepend: 'text-' %}
+{% assign alignment_class = settings.alignment | prepend: "text-" %}
 
-<div class="image-with-text-flex {{ alignment_class }} px-4 md:px-8 py-6">
-  {% if settings.image_position == 'above' and settings.image %}
-    <img
-      src="{{ settings.image | image_url: width: 1200 }}"
-      alt="{{ settings.title | escape }}"
-      class="w-full mb-4"
-      loading="lazy"
-    />
-  {% endif %}
-
-  <div class="content">
-    {% if settings.title != blank %}
-      <h2 class="text-2xl md:text-4xl font-bold mb-2">{{ settings.title }}</h2>
-    {% endif %}
-    {% if settings.text != blank %}
-      <p class="mb-4">{{ settings.text }}</p>
-    {% endif %}
-    {% if settings.button_text and settings.button_link %}
-      <a href="{{ settings.button_link }}" class="inline-block bg-black text-white py-2 px-4 rounded hover:bg-gray-800">
-        {{ settings.button_text }}
-      </a>
-    {% endif %}
-  </div>
-
-  {% if settings.image_position == 'below' and settings.image %}
-    <img
-      src="{{ settings.image | image_url: width: 1200 }}"
-      alt="{{ settings.title | escape }}"
-      class="w-full mt-4"
-      loading="lazy"
-    />
-  {% endif %}
+<div class="image-text-blocks-section {{ alignment_class }} px-4 md:px-8 py-6">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'image' %}
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            alt="Section image"
+            class="w-full mb-4"
+            loading="lazy"
+          />
+        {% endif %}
+      {% when 'title' %}
+        <h2 class="text-2xl md:text-4xl font-bold mb-2">{{ block.settings.title }}</h2>
+      {% when 'text' %}
+        <p class="mb-4">{{ block.settings.text }}</p>
+      {% when 'button' %}
+        {% if block.settings.button_text and block.settings.button_link %}
+          <a href="{{ block.settings.button_link }}" class="inline-block bg-black text-white py-2 px-4 rounded hover:bg-gray-800">
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+    {% endcase %}
+  {% endfor %}
 </div>
 
 <style>
-.image-with-text-flex.text-left { text-align: left; }
-.image-with-text-flex.text-center { text-align: center; }
-.image-with-text-flex.text-right { text-align: right; }
+.image-text-blocks-section.text-left { text-align: left; }
+.image-text-blocks-section.text-center { text-align: center; }
+.image-text-blocks-section.text-right { text-align: right; }
 </style>
