@@ -1205,6 +1205,31 @@
         "description": "inspiration, and our beautiful technology.",
         "show_arrows": true
       }
+    },
+    "support_8DECdw": {
+      "type": "support",
+      "blocks": {
+        "link_item_CmmQ8K": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact",
+            "url": ""
+          }
+        },
+        "link_item_dGLY4N": {
+          "type": "link_item",
+          "settings": {
+            "text": "FAQs",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_item_CmmQ8K",
+        "link_item_dGLY4N"
+      ],
+      "name": "Support",
+      "settings": {}
     }
   },
   "order": [
@@ -1231,6 +1256,7 @@
     "promo_grid_dp4feF",
     "usp_grid_mBqiLF",
     "2f70f0d4-86f7-4eb7-bf83-05295e841830",
-    "video_grid_FUaEwe"
+    "video_grid_FUaEwe",
+    "support_8DECdw"
   ]
 }
