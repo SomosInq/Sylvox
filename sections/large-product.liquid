@@ -1,6 +1,6 @@
 {% schema %}
 {
-  "name": "Large Product",
+  "name": "Large product",
   "settings": [
     {
       "type": "text",
@@ -9,7 +9,7 @@
       "default": "Outdoor Entertainment, Perfected"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "title",
       "label": "Title",
       "default": "Sylvox Deck Pro 2.0"
@@ -54,7 +54,7 @@
   ],
   "presets": [
     {
-      "name": "Large Product",
+      "name": "Large product",
       "category": "Somos Custom"
     }
   ]
@@ -66,10 +66,18 @@
   text-align: center;
   padding: 40px 20px;
 }
+
+.sylvox-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
 .sylvox-icons img {
   height: 30px;
-  margin: 0 10px;
 }
+
 .sylvox-products select {
   margin-top: 20px;
   padding: 8px;
@@ -78,7 +86,7 @@
 
 <div class="sylvox-section">
   <p>{{ section.settings.subtitle }}</p>
-  <h2>{{ section.settings.title }}</h2>
+  <h2>{{ section.settings.title | newline_to_br }}</h2>
   
   <div class="sylvox-icons">
     {% if section.settings.icon1 %}
