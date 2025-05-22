@@ -481,17 +481,44 @@
         "button_text": "Learn More"
       }
     },
-    "image_text_JLzmXH": {
+    "image_text_dE7fr8": {
       "type": "image-text",
-      "name": "Image with Text Flex",
+      "blocks": {
+        "title_w6ifMh": {
+          "type": "title",
+          "settings": {
+            "title": "Your Section Title"
+          }
+        },
+        "text_gAtfdn": {
+          "type": "text",
+          "settings": {
+            "text": "Some supporting content that explains your product or story."
+          }
+        },
+        "button_LAAcrH": {
+          "type": "button",
+          "settings": {
+            "button_text": "Learn More",
+            "button_link": ""
+          }
+        },
+        "image_ckK6ng": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Nits.png"
+          }
+        }
+      },
+      "block_order": [
+        "title_w6ifMh",
+        "text_gAtfdn",
+        "button_LAAcrH",
+        "image_ckK6ng"
+      ],
+      "name": "Image/Text Flex Blocks",
       "settings": {
-        "title": "Bright & Beautiful 4K UHD",
-        "text": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
-        "image": "shopify://shop_images/Nits.png",
-        "image_position": "above",
-        "alignment": "center",
-        "button_text": "Learn More",
-        "button_link": ""
+        "alignment": "center"
       }
     },
     "comparison_table_CGzkY3": {
@@ -1185,7 +1212,7 @@
     "image_with_text_overlay_heWpQE",
     "rich_text_g7wbE4",
     "box_section_NjjNqW",
-    "image_text_JLzmXH",
+    "image_text_dE7fr8",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
