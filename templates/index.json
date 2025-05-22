@@ -296,7 +296,58 @@
         "left_image": "shopify://shop_images/long-forest-path.jpg",
         "subheading": "Customer Favorites",
         "heading": "Best Sellers",
-        "shop_all_url": ""
+        "shop_all_url": "",
+        "show_arrows": true,
+        "section_width": "standard"
+      }
+    },
+    "image_blocks_xQffGw": {
+      "type": "image-blocks",
+      "blocks": {
+        "scenario_iKkMc9": {
+          "type": "scenario",
+          "settings": {
+            "image": "shopify://shop_images/fog-on-dark-waters-edge.jpg",
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        },
+        "scenario_gjBgAR": {
+          "type": "scenario",
+          "settings": {
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        },
+        "scenario_3mpzX7": {
+          "type": "scenario",
+          "settings": {
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        },
+        "scenario_WfHD6f": {
+          "type": "scenario",
+          "settings": {
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "scenario_iKkMc9",
+        "scenario_gjBgAR",
+        "scenario_3mpzX7",
+        "scenario_WfHD6f"
+      ],
+      "name": "Image Blocks",
+      "settings": {
+        "section_title": "Shop by Outdoor Scenarios",
+        "section_description": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors."
       }
     },
     "image_with_text_overlay_heWpQE": {
@@ -1028,6 +1079,7 @@
     "tab_products_i4fR76",
     "info_section_JEKir6",
     "product_slider_xhpnwt",
+    "image_blocks_xQffGw",
     "image_with_text_overlay_heWpQE",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
