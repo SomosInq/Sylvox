@@ -1173,12 +1173,30 @@
             "video_url": "",
             "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
+        },
+        "video_bij4X4": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
+          }
+        },
+        "video_yVXhPe": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
+          }
         }
       },
       "block_order": [
         "video_fKfz69",
         "video_dcBxFx",
-        "video_GbCEXC"
+        "video_GbCEXC",
+        "video_bij4X4",
+        "video_yVXhPe"
       ],
       "name": "Video Grid",
       "settings": {
