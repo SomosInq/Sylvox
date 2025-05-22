@@ -43,62 +43,32 @@
     {% endfor %}
   </div>
 </div>
+
 {% schema %}
 {
-  "name": "Support",
+  "name": "Large product",
   "settings": [],
   "blocks": [
     {
       "type": "link_item",
       "name": "Link Item",
-      "settings": {
-        "text": "Contact Us",
-        "url": "#"
-      }
-    },
-    {
-      "type": "link_item",
-      "name": "Link Item",
-      "settings": {
-        "text": "FAQs",
-        "url": "#"
-      }
-    },
-    {
-      "type": "link_item",
-      "name": "Link Item",
-      "settings": {
-        "text": "Compare",
-        "url": "#"
-      }
-    },
-    {
-      "type": "link_item",
-      "name": "Link Item",
-      "settings": {
-        "text": "User Manual",
-        "url": "#"
-      }
-    },
-    {
-      "type": "link_item",
-      "name": "Link Item",
-      "settings": {
-        "text": "Become a Reseller",
-        "url": "#"
-      }
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
     }
-  ],
-  "block_order": [
-    "link_item",
-    "link_item",
-    "link_item",
-    "link_item",
-    "link_item"
   ],
   "presets": [
     {
-      "name": "Support",
+      "name": "Large product",
       "category": "Somos Custom"
     }
   ]
