@@ -53,53 +53,128 @@
 {% endschema %}
 
 {% stylesheet %}
+.outdoor-carousel-section {
+  padding: 3rem 1rem;
+  text-align: center;
+}
 .flickity-carousel {
-  margin-top: 30px;
+  position: relative;
 }
 .carousel-cell {
+  width: 70%;
+  margin: 0 15%;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.carousel-cell.is-selected {
+  opacity: 1;
+}
+.carousel-cell:not(.is-selected) {
+  opacity: 0.3;
+}
+.carousel-cell img {
   width: 100%;
-  position: relative;
+  border-radius: 8px;
 }
 .carousel-caption {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(0, 0, 0, 0.5);
+  bottom: 15px;
+  left: 20px;
+  background: rgba(0,0,0,0.6);
   color: white;
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
+}
+.flickity-button {
+  background: transparent;
+  fill: #333;
+}
+.carousel-arrows {
+  position: absolute;
+  bottom: -30px;
+  right: 10px;
+  display: flex;
+  gap: 0.5rem;
+}
+.flickity-page-dots {
+  text-align: left;
+  padding-left: 15px;
+  margin-top: 1.5rem;
+}
+.flickity-page-dots .dot {
+  height: 2px;
+  width: 20px;
+  margin: 0 4px;
+  background: #000;
+  border-radius: 0;
+  opacity: 0.3;
+}
+.flickity-page-dots .dot.is-selected {
+  opacity: 1;
 }
 {% endstylesheet %}
 
 <section class="outdoor-carousel-section">
-  <div class="text-center mb-6">
+  <div class="max-w-4xl mx-auto">
     <h2>{{ section.settings.heading }}</h2>
     <p>{{ section.settings.subheading }}</p>
   </div>
 
-  <div class="flickity-carousel"
-       data-flickity='{
-         "wrapAround": true,
-         "imagesLoaded": true,
-         "pageDots": true,
-         "prevNextButtons": {{ section.settings.show_arrows }}
-       }'>
-    {% for block in section.blocks %}
-      <div class="carousel-cell">
-        {% if block.settings.image %}
-          <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
-        {% endif %}
-        {% if block.settings.caption %}
-          <div class="carousel-caption">{{ block.settings.caption }}</div>
-        {% endif %}
+  <div class="relative">
+    <div class="flickity-carousel"
+         data-flickity='{
+           "wrapAround": true,
+           "imagesLoaded": true,
+           "pageDots": true,
+           "prevNextButtons": false,
+           "cellAlign": "center",
+           "contain": true
+         }'>
+      {% for block in section.blocks %}
+        <div class="carousel-cell relative">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
+          {% endif %}
+          {% if block.settings.caption %}
+            <div class="carousel-caption">{{ block.settings.caption }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_arrows %}
+      <div class="carousel-arrows">
+        <button class="flickity-prev-next-button previous" aria-label="Previous">&#10094;</button>
+        <button class="flickity-prev-next-button next" aria-label="Next">&#10095;</button>
       </div>
-    {% endfor %}
+    {% endif %}
   </div>
 </section>
 
 {% javascript %}
 <script>
-  // If needed, initialize Flickity via JS manually
-  // $('.flickity-carousel').flickity();
+  document.addEventListener("DOMContentLoaded", function () {
+    var carousel = document.querySelector('.flickity-carousel');
+    var flkty = new Flickity(carousel, {
+      wrapAround: true,
+      imagesLoaded: true,
+      pageDots: true,
+      prevNextButtons: false,
+      cellAlign: "center",
+      contain: true
+    });
+
+    {% if section.settings.show_arrows %}
+    document.querySelector('.flickity-prev-next-button.previous')
+      .addEventListener('click', function () {
+        flkty.previous();
+      });
+
+    document.querySelector('.flickity-prev-next-button.next')
+      .addEventListener('click', function () {
+        flkty.next();
+      });
+    {% endif %}
+  });
 </script>
 {% endjavascript %}
