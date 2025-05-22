@@ -434,6 +434,53 @@
         "divider": false
       }
     },
+    "box_section_NjjNqW": {
+      "type": "box-section",
+      "blocks": {
+        "feature_box_BzP3zw": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/2_8a69deeb-ce29-4ae0-863d-311d1f707a5f.png",
+            "title": "Box Title",
+            "text": "Box description text goes here."
+          }
+        },
+        "feature_box_EVXEkF": {
+          "type": "feature_box",
+          "settings": {
+            "title": "Box Title",
+            "text": "Box description text goes here."
+          }
+        },
+        "feature_box_9FX97w": {
+          "type": "feature_box",
+          "settings": {
+            "title": "Box Title",
+            "text": "Box description text goes here."
+          }
+        },
+        "feature_box_LYgamW": {
+          "type": "feature_box",
+          "settings": {
+            "title": "Box Title",
+            "text": "Box description text goes here."
+          }
+        }
+      },
+      "block_order": [
+        "feature_box_BzP3zw",
+        "feature_box_EVXEkF",
+        "feature_box_9FX97w",
+        "feature_box_LYgamW"
+      ],
+      "name": "Box Section",
+      "settings": {
+        "main_title": "Effortless Entertainment, Rain or Shine.",
+        "description": "Add a short description about this section.",
+        "button_link": "",
+        "button_text": "Learn More"
+      }
+    },
     "comparison_table_CGzkY3": {
       "type": "comparison-table",
       "blocks": {
@@ -1124,6 +1171,7 @@
     "image_blocks_xQffGw",
     "image_with_text_overlay_heWpQE",
     "rich_text_g7wbE4",
+    "box_section_NjjNqW",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
