@@ -1229,7 +1229,10 @@
         "link_item_dGLY4N"
       ],
       "name": "Support",
-      "settings": {}
+      "settings": {
+        "button_label": "See All",
+        "button_link": "shopify://collections"
+      }
     }
   },
   "order": [
