@@ -65,7 +65,7 @@
 <div class="image-with-text-flex {{ alignment_class }} px-4 md:px-8 py-6">
   {% if settings.image_position == 'above' and settings.image != blank %}
     <img
-      src="{{ settings.image | image_url }}"
+      src="{{ settings.image | img_url: 'master' }}"
       alt="{{ settings.title | escape }}"
       loading="lazy"
       class="w-full mb-4"
@@ -82,7 +82,7 @@
 
   {% if settings.image_position == 'below' and settings.image != blank %}
     <img
-      src="{{ settings.image | image_url }}"
+      src="{{ settings.image | img_url: 'master' }}"
       alt="{{ settings.title | escape }}"
       loading="lazy"
       class="w-full mt-4"
