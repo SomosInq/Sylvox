@@ -1,0 +1,107 @@
+{% schema %}
+{
+  "name": "Large Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Outdoor Entertainment, Perfected"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Sylvox Deck Pro 2.0"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon1",
+      "label": "Icon 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon2",
+      "label": "Icon 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon3",
+      "label": "Icon 3"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Product options"
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price Text",
+      "default": "From USD $1,149.00"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Buy Now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Large Product",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.sylvox-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+.sylvox-icons img {
+  height: 30px;
+  margin: 0 10px;
+}
+.sylvox-products select {
+  margin-top: 20px;
+  padding: 8px;
+}
+{% endstylesheet %}
+
+<div class="sylvox-section">
+  <p>{{ section.settings.subtitle }}</p>
+  <h2>{{ section.settings.title }}</h2>
+  
+  <div class="sylvox-icons">
+    {% if section.settings.icon1 %}
+      <img src="{{ section.settings.icon1 | image_url }}" alt="Icon 1" />
+    {% endif %}
+    {% if section.settings.icon2 %}
+      <img src="{{ section.settings.icon2 | image_url }}" alt="Icon 2" />
+    {% endif %}
+    {% if section.settings.icon3 %}
+      <img src="{{ section.settings.icon3 | image_url }}" alt="Icon 3" />
+    {% endif %}
+  </div>
+  
+  <div class="sylvox-products">
+    <select name="product-option">
+      {% for product in section.settings.products %}
+        <option value="{{ product }}">{{ all_products[product].title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <p>{{ section.settings.price_text }}</p>
+  <a href="{{ section.settings.button_link }}" class="button">
+    {{ section.settings.button_label }}
+  </a>
+</div>
