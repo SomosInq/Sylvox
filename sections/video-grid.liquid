@@ -1,7 +1,29 @@
 {% schema %}
 {
   "name": "Video Grid",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    }
+  ],
   "blocks": [
     {
       "type": "video",
@@ -9,14 +31,18 @@
       "settings": [
         {
           "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
+          "id": "youtube_url",
+          "label": "YouTube Video URL"
         },
         {
-        "type": "text",
-        "id": "thumbnail",
-        "label": "Thumbnail (optional)",
-        "default": "https://via.placeholder.com/300x530?text=Video"
+          "type": "video_url",
+          "id": "uploaded_video",
+          "label": "Uploaded Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "fallback_image",
+          "label": "Fallback Image (if no video)"
         }
       ]
     }
@@ -30,17 +56,40 @@
 }
 {% endschema %}
 
-<div class="video-grid-section">
-  <div class="video-carousel" data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false}'>
+<div class="video-grid-section page-width">
+  <div class="video-header">
+    {% if section.settings.title != blank %}
+      <h2>{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <h3>{{ section.settings.subtitle }}</h3>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p>{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.settings.show_arrows %}
+    <div class="flickity-nav">
+      <button class="flickity-prev">←</button>
+      <button class="flickity-next">→</button>
+    </div>
+  {% endif %}
+
+  <div class="video-carousel" data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false}'>
     {% for block in section.blocks %}
-      {% if block.type == 'video' and block.settings.video_url != blank %}
-        <div class="carousel-cell">
-          <div class="video-thumbnail" data-video="{{ block.settings.video_url }}">
-            <img src="{{ block.settings.thumbnail | default: 'https://via.placeholder.com/300x530?text=Video' }}" alt="Video thumbnail">
+      <div class="carousel-cell">
+        <div class="video-box" data-video="{{ block.settings.youtube_url | default: block.settings.uploaded_video }}">
+          {% if block.settings.youtube_url %}
+            <img src="https://img.youtube.com/vi/{{ block.settings.youtube_url | split: 'v=' | last }}/hqdefault.jpg" alt="YouTube Thumbnail">
             <div class="play-button">▶</div>
-          </div>
+          {% elsif block.settings.uploaded_video %}
+            <video src="{{ block.settings.uploaded_video }}" muted playsinline preload="metadata"></video>
+          {% elsif block.settings.fallback_image %}
+            <img src="{{ block.settings.fallback_image | image_url: width: 800 }}" alt="Fallback Image">
+          {% endif %}
         </div>
-      {% endif %}
+      </div>
     {% endfor %}
   </div>
 </div>
@@ -56,15 +105,31 @@
 </div>
 
 <style>
+.video-grid-section {
+  margin: 40px auto;
+}
+.video-header h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.video-header h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.video-header p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
 .video-carousel .carousel-cell {
   width: 300px;
   margin-right: 15px;
 }
-.video-thumbnail {
+.video-box {
   position: relative;
   cursor: pointer;
 }
-.video-thumbnail img {
+.video-box img, .video-box video {
   width: 100%;
   border-radius: 10px;
 }
@@ -114,6 +179,24 @@
   font-weight: bold;
   cursor: pointer;
 }
+.flickity-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.flickity-nav button {
+  background: #f1f1f1;
+  border-radius: 50%;
+  border: none;
+  padding: 10px 14px;
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.flickity-nav button:hover {
+  background: #ddd;
+}
 </style>
 
 <script>
@@ -122,10 +205,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const videoFrame = document.getElementById("video-frame");
   const closeButton = document.querySelector(".close-button");
 
-  document.querySelectorAll(".video-thumbnail").forEach(thumbnail => {
-    thumbnail.addEventListener("click", function () {
-      const videoUrl = this.dataset.video;
-      videoFrame.src = videoUrl + "?autoplay=1";
+  document.querySelectorAll(".video-box").forEach(box => {
+    box.addEventListener("click", function () {
+      const videoSrc = this.dataset.video;
+      if (videoSrc.includes("youtube.com") || videoSrc.includes("youtu.be")) {
+        videoFrame.src = videoSrc + "?autoplay=1";
+      } else {
+        videoFrame.src = videoSrc;
+      }
       modal.style.display = "block";
     });
   });
@@ -141,5 +228,10 @@ document.addEventListener("DOMContentLoaded", function () {
       videoFrame.src = "";
     }
   });
+
+  // Arrow controls
+  const flkty = document.querySelector(".video-carousel")?.flickityInstance;
+  document.querySelector(".flickity-prev")?.addEventListener("click", () => flkty?.previous());
+  document.querySelector(".flickity-next")?.addEventListener("click", () => flkty?.next());
 });
 </script>
