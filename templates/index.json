@@ -371,14 +371,25 @@
           "settings": {
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
+        },
+        "button_EkCTVr": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Button text",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
         }
       },
       "block_order": [
         "subheading_BAYCNe",
         "heading_qaDTg9",
-        "richtext_xmgkfM"
+        "richtext_xmgkfM",
+        "button_EkCTVr"
       ],
-      "disabled": true,
       "name": "Image with text overlay",
       "settings": {
         "full_width": true,
