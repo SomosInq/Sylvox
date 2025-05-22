@@ -1,52 +1,75 @@
-<!-- Flickity CSS -->
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<!-- Flickity JS -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 <section class="usp-grid-section">
   {% if section.settings.heading != blank %}
-    <h2 class="usp-heading">{{ section.settings.heading }}</h2>
+    <div class="usp-heading-wrapper" style="text-align: {{ section.settings.heading_alignment }};">
+      <h2 class="usp-heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.subtext != blank %}
+        <div class="usp-subtext">{{ section.settings.subtext }}</div>
+      {% endif %}
+    </div>
   {% endif %}
 
-  <div 
-    class="usp-slider js-flickity" 
-    data-flickity='{ 
-      "wrapAround": true,
-      "pageDots": false,
-      "contain": true,
-      "prevNextButtons": {{ section.settings.show_arrows }},
-      "cellAlign": "left"
-    }'>
-    
-    {% for block in section.blocks %}
-      <a href="{{ block.settings.link | default: '#' }}" class="usp-box carousel-cell" {{ block.shopify_attributes }}>
-        {% if block.settings.icon %}
-          <img src="{{ block.settings.icon | img_url: '60x60' }}" alt="{{ block.settings.title }}">
-        {% endif %}
-        <h3 class="usp-title">{{ block.settings.title }}</h3>
-        <p class="usp-text">{{ block.settings.text }}</p>
-      </a>
-    {% endfor %}
+  <div class="usp-slider-wrapper">
+    {% if section.settings.show_arrows %}
+      <div class="usp-arrows">
+        <button class="usp-arrow prev" aria-label="Previous">‹</button>
+        <button class="usp-arrow next" aria-label="Next">›</button>
+      </div>
+    {% endif %}
+
+    <div 
+      class="usp-slider js-flickity" 
+      data-flickity='{
+        "wrapAround": true,
+        "pageDots": false,
+        "contain": true,
+        "prevNextButtons": false,
+        "cellAlign": "left"
+      }'>
+      
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" class="usp-box carousel-cell" {{ block.shopify_attributes }}>
+          {% if block.settings.icon %}
+            <img src="{{ block.settings.icon | img_url: '60x60' }}" alt="{{ block.settings.title }}">
+          {% endif %}
+          <h3 class="usp-title">{{ block.settings.title }}</h3>
+          <p class="usp-text">{{ block.settings.text }}</p>
+        </a>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 <style>
 .usp-grid-section {
   padding: 2rem;
-  text-align: center;
+}
+.usp-heading-wrapper {
+  margin-bottom: 1rem;
 }
 .usp-heading {
   font-size: 1.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.usp-subtext {
+  font-size: 1rem;
+  color: #555;
+}
+.usp-slider-wrapper {
+  position: relative;
 }
 .usp-slider {
-  display: flex;
   overflow: hidden;
+}
+.carousel-cell {
+  width: 220px;
+  margin-right: 16px;
 }
 .usp-box {
   display: block;
   padding: 1rem;
-  margin: 0 0.5rem;
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
@@ -62,7 +85,40 @@
   font-size: 0.875rem;
   color: #555;
 }
+.usp-arrows {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  display: flex;
+  gap: 8px;
+}
+.usp-arrow {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  padding: 11px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  border: 1px solid var(--Black, #1D1D1B);
+  background: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var flkty = new Flickity('.js-flickity');
+    var prevBtn = document.querySelector('.usp-arrow.prev');
+    var nextBtn = document.querySelector('.usp-arrow.next');
+
+    if (prevBtn && nextBtn && flkty) {
+      prevBtn.addEventListener('click', () => flkty.previous());
+      nextBtn.addEventListener('click', () => flkty.next());
+    }
+  });
+</script>
 
 {% schema %}
 {
@@ -73,6 +129,23 @@
       "id": "heading",
       "label": "Section Heading",
       "default": "Sylvox’s exclusive advantages"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext Below Heading",
+      "default": "Explore our core benefits below"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "default": "center",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "right" }
+      ]
     },
     {
       "type": "checkbox",
@@ -118,4 +191,5 @@
     }
   ]
 }
-{% endschema %}
+
+{%  endschema %}
