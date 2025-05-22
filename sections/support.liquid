@@ -1,0 +1,106 @@
+<style>
+  .support-section {
+    background-color: #20413B;
+    color: white;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .support-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .support-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .support-link a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+  }
+</style>
+
+<div class="support-section">
+  <div class="support-title">
+    Sylvox Support
+  </div>
+  <div class="support-links">
+    {% for block in section.blocks %}
+      <div class="support-link">
+        <a href="{{ block.settings.url }}">
+          {{ block.settings.text }}
+          <span>→</span>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{
+  "name": "Support",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "link_item",
+      "name": "Link Item",
+      "settings": {
+        "text": "Contact Us",
+        "url": "#"
+      }
+    },
+    {
+      "type": "link_item",
+      "name": "Link Item",
+      "settings": {
+        "text": "FAQs",
+        "url": "#"
+      }
+    },
+    {
+      "type": "link_item",
+      "name": "Link Item",
+      "settings": {
+        "text": "Compare",
+        "url": "#"
+      }
+    },
+    {
+      "type": "link_item",
+      "name": "Link Item",
+      "settings": {
+        "text": "User Manual",
+        "url": "#"
+      }
+    },
+    {
+      "type": "link_item",
+      "name": "Link Item",
+      "settings": {
+        "text": "Become a Reseller",
+        "url": "#"
+      }
+    }
+  ],
+  "block_order": [
+    "link_item",
+    "link_item",
+    "link_item",
+    "link_item",
+    "link_item"
+  ],
+  "presets": [
+    {
+      "name": "Support",
+      "category": "Somos Custom"
+    }
+  ]
+}
