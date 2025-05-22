@@ -43,8 +43,8 @@
               "label": "YouTube"
             },
             {
-              "value": "upload",
-              "label": "Uploaded File"
+              "value": "hosted",
+              "label": "External Hosted Video"
             }
           ]
         },
@@ -89,18 +89,18 @@
     </div>
   {% endif %}
 
-  <div class="video-carousel"
-    data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false}'>
+  <div class="video-carousel" data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false}'>
     {% for block in section.blocks %}
-      {% assign is_youtube = block.settings.video_type == 'youtube' %}
+      {% assign video_type = block.settings.video_type %}
       {% assign video_url = block.settings.video_url %}
+
       <div class="carousel-cell">
-        {% if video_url != blank %}
-          <div class="video-thumbnail" data-video="{{ video_url }}" data-type="{{ block.settings.video_type }}">
+        {% if video_url %}
+          <div class="video-thumbnail" data-video="{{ video_url }}" data-type="{{ video_type }}">
             <img src="{{ block.settings.thumbnail | img_url: '800x' | default: 'https://via.placeholder.com/300x530?text=Video' }}" alt="Video thumbnail">
             <div class="play-button">▶</div>
           </div>
-        {% elsif block.settings.fallback_image != blank %}
+        {% elsif block.settings.fallback_image %}
           <img src="{{ block.settings.fallback_image | img_url: '800x' }}" alt="Fallback image" class="fallback-image">
         {% endif %}
       </div>
@@ -167,7 +167,7 @@
 }
 .slider-arrows {
   position: absolute;
-  top: -20px;
+  top: -40px;
   right: 20px;
   display: flex;
   gap: 10px;
@@ -231,10 +231,12 @@ document.addEventListener("DOMContentLoaded", function () {
       let embedUrl = "";
 
       if (type === "youtube") {
-        const youtubeId = videoUrl.split("v=")[1]?.split("&")[0] || videoUrl.split("/").pop();
+        const youtubeId = videoUrl.includes("v=")
+          ? videoUrl.split("v=")[1].split("&")[0]
+          : videoUrl.split("/").pop();
         embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
       } else {
-        embedUrl = `${videoUrl}#t=0.1`; // autoplay fallback
+        embedUrl = `${videoUrl}#t=0.1`;
       }
 
       videoFrame.src = embedUrl;
@@ -254,11 +256,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Flickity arrows
-  const flkty = document.querySelector(".video-carousel").flickityInstance;
-  if (flkty) {
-    document.querySelector(".flickity-prev").addEventListener("click", () => flkty.previous());
-    document.querySelector(".flickity-next").addEventListener("click", () => flkty.next());
+  const flickityEl = document.querySelector(".video-carousel");
+  const prevBtn = document.querySelector(".flickity-prev");
+  const nextBtn = document.querySelector(".flickity-next");
+  if (window.Flickity && flickityEl && Flickity.data(flickityEl)) {
+    const flkty = Flickity.data(flickityEl);
+    prevBtn?.addEventListener("click", () => flkty.previous());
+    nextBtn?.addEventListener("click", () => flkty.next());
   }
 });
 </script>
