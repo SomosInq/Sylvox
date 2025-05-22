@@ -1,0 +1,145 @@
+{% schema %}
+{
+  "name": "Video Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "thumbnail",
+          "label": "Thumbnail (optional)",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Grid",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="video-grid-section">
+  <div class="video-carousel" data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false}'>
+    {% for block in section.blocks %}
+      {% if block.type == 'video' and block.settings.video_url != blank %}
+        <div class="carousel-cell">
+          <div class="video-thumbnail" data-video="{{ block.settings.video_url }}">
+            <img src="{{ block.settings.thumbnail | default: 'https://via.placeholder.com/300x530?text=Video' }}" alt="Video thumbnail">
+            <div class="play-button">▶</div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="video-modal" class="video-modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <div class="modal-video-wrapper">
+      <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<style>
+.video-carousel .carousel-cell {
+  width: 300px;
+  margin-right: 15px;
+}
+.video-thumbnail {
+  position: relative;
+  cursor: pointer;
+}
+.video-thumbnail img {
+  width: 100%;
+  border-radius: 10px;
+}
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  padding: 10px 15px;
+}
+.video-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 800px;
+}
+.modal-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.modal-video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("video-modal");
+  const videoFrame = document.getElementById("video-frame");
+  const closeButton = document.querySelector(".close-button");
+
+  document.querySelectorAll(".video-thumbnail").forEach(thumbnail => {
+    thumbnail.addEventListener("click", function () {
+      const videoUrl = this.dataset.video;
+      videoFrame.src = videoUrl + "?autoplay=1";
+      modal.style.display = "block";
+    });
+  });
+
+  closeButton.addEventListener("click", function () {
+    modal.style.display = "none";
+    videoFrame.src = "";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      videoFrame.src = "";
+    }
+  });
+});
+</script>
