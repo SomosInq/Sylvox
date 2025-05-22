@@ -19,7 +19,7 @@
 <div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
   {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
 
-  <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
+  <image-banner reveal-on-scroll="true" class="h-full" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
     {%- if section.settings.image != blank -%}
       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
       {%- capture fetch_priority -%}{% if section.index == 1 %}high{% else %}low{% endif %}{%- endcapture -%}
@@ -41,8 +41,9 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}">
-        <div class="prose">
+  <div class="grid h-full w-full">
+    <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }} prose self-center p-6">
+
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'subheading' -%}
@@ -101,7 +102,7 @@
 
 {% schema %}
 {
-  "name": "Image with text overlay",
+  "name": "Banner Overlay",
   "class": "shopify-section--image-with-text-overlay",
   "tag": "section",
   "disabled_on": {
@@ -474,7 +475,8 @@
   ],
   "presets": [
     {
-      "name": "Image with text overlay",
+      "name": "Banner Overlay",
+      "category": "Somos Custom",
       "blocks": [
         {
           "type": "subheading",
