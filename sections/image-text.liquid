@@ -1,0 +1,93 @@
+{% schema %}
+{
+  "name": "Image with Text Flex",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Bright & Beautiful 4K UHD"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "above",
+      "options": [
+        { "value": "above", "label": "Above Text" },
+        { "value": "below", "label": "Below Text" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text Flex",
+      "category": "Somos Custom",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign alignment_class = settings.alignment | prepend: 'text-' %}
+
+<div class="image-with-text-flex {{ alignment_class }}">
+  {% if settings.image_position == 'above' %}
+    {% if settings.image %}
+      <img src="{{ settings.image | img_url: 'master' }}" alt="Image" class="w-full mb-4" />
+    {% endif %}
+  {% endif %}
+
+  <div class="content px-4 md:px-8 py-6">
+    <h2 class="text-2xl md:text-4xl font-bold mb-2">{{ settings.title }}</h2>
+    <p class="mb-4">{{ settings.text }}</p>
+    {% if settings.button_text and settings.button_link %}
+      <a href="{{ settings.button_link }}" class="inline-block bg-black text-white py-2 px-4 rounded hover:bg-gray-800">{{ settings.button_text }}</a>
+    {% endif %}
+  </div>
+
+  {% if settings.image_position == 'below' %}
+    {% if settings.image %}
+      <img src="{{ settings.image | img_url: 'master' }}" alt="Image" class="w-full mt-4" />
+    {% endif %}
+  {% endif %}
+</div>
+
+<style>
+.image-with-text-flex.text-left { text-align: left; }
+.image-with-text-flex.text-center { text-align: center; }
+.image-with-text-flex.text-right { text-align: right; }
+</style>
