@@ -297,7 +297,7 @@
         "subheading": "Customer Favorites",
         "heading": "Best Sellers",
         "shop_all_url": "",
-        "show_arrows": true,
+        "show_arrows": false,
         "section_width": "standard"
       }
     },
