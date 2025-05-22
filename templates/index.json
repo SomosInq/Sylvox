@@ -1080,6 +1080,8 @@
       "name": "USP Grid",
       "settings": {
         "heading": "Sylvox’s exclusive advantages",
+        "subtext": "Explore our core benefits below",
+        "heading_alignment": "center",
         "show_arrows": true
       }
     },
@@ -1144,6 +1146,39 @@
         "heading_position": "center",
         "divider": false
       }
+    },
+    "video_grid_FUaEwe": {
+      "type": "video-grid",
+      "blocks": {
+        "video_fKfz69": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://youtu.be/Ih3KTaFiV9E?feature=shared",
+            "thumbnail": "https://via.placeholder.com/300x530?text=Video"
+          }
+        },
+        "video_dcBxFx": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://youtu.be/Ih3KTaFiV9E?feature=shared",
+            "thumbnail": "https://via.placeholder.com/300x530?text=Video"
+          }
+        },
+        "video_GbCEXC": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://youtu.be/Ih3KTaFiV9E?feature=shared",
+            "thumbnail": "https://via.placeholder.com/300x530?text=Video"
+          }
+        }
+      },
+      "block_order": [
+        "video_fKfz69",
+        "video_dcBxFx",
+        "video_GbCEXC"
+      ],
+      "name": "Video Grid",
+      "settings": {}
     }
   },
   "order": [
@@ -1169,6 +1204,7 @@
     "text_columns_cyYkiA",
     "promo_grid_dp4feF",
     "usp_grid_mBqiLF",
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830"
+    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
+    "video_grid_FUaEwe"
   ]
 }
