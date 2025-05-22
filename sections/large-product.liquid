@@ -30,9 +30,9 @@
       "label": "Icon 3"
     },
     {
-      "type": "product_list",
-      "id": "products",
-      "label": "Product options"
+      "type": "product",
+      "id": "product",
+      "label": "Product"
     },
     {
       "type": "text",
@@ -78,16 +78,15 @@
   height: 30px;
 }
 
-.sylvox-products select {
+.sylvox-products {
   margin-top: 20px;
-  padding: 8px;
 }
 {% endstylesheet %}
 
 <div class="sylvox-section">
   <p>{{ section.settings.subtitle }}</p>
   <h2>{{ section.settings.title | newline_to_br }}</h2>
-  
+
   <div class="sylvox-icons">
     {% if section.settings.icon1 %}
       <img src="{{ section.settings.icon1 | image_url }}" alt="Icon 1" />
@@ -99,14 +98,12 @@
       <img src="{{ section.settings.icon3 | image_url }}" alt="Icon 3" />
     {% endif %}
   </div>
-  
-<div class="sylvox-products">
-  <select name="product-option">
-    {% for product in section.settings.products %}
-      <option value="{{ product.handle }}">{{ product.title }}</option>
-    {% endfor %}
-  </select>
-</div>
+
+  <div class="sylvox-products">
+    {% if section.settings.product %}
+      <p><strong>Selected Product:</strong> {{ section.settings.product.title }}</p>
+    {% endif %}
+  </div>
 
   <p>{{ section.settings.price_text }}</p>
   <a href="{{ section.settings.button_link }}" class="button">
