@@ -378,6 +378,7 @@
         "heading_qaDTg9",
         "richtext_xmgkfM"
       ],
+      "disabled": true,
       "name": "Image with text overlay",
       "settings": {
         "full_width": true,
