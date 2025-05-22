@@ -396,12 +396,42 @@
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/golden-autumn-leaves.jpg",
+        "image": "shopify://shop_images/ocean-water-with-swimmers.jpg",
         "mobile_text_position": "place-self-start-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "desktop_text_position": "sm:place-self-end-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
+      }
+    },
+    "rich_text_g7wbE4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mm9kKm": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text",
+            "heading_size": "h2"
+          }
+        },
+        "text_N4bfW4": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mm9kKm",
+        "text_N4bfW4"
+      ],
+      "name": "t:labels.rich_text",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
       }
     },
     "comparison_table_CGzkY3": {
@@ -1093,6 +1123,7 @@
     "product_slider_xhpnwt",
     "image_blocks_xQffGw",
     "image_with_text_overlay_heWpQE",
+    "rich_text_g7wbE4",
     "comparison_table_CGzkY3",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
