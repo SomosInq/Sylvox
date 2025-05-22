@@ -11,6 +11,17 @@
   "type": "footer",
   "name": "t:sections.footer-group.name",
   "sections": {
+    "signup_newsletter_iPeWaE": {
+      "type": "signup-newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "background_image": "shopify://shop_images/Image_Placeholder.png",
+        "heading": "Join Our Newsletter",
+        "subheading": "Be the first to know about product launches and all things inside Sylvox.",
+        "email_placeholder": "Email address",
+        "button_label": "Sign Up"
+      }
+    },
     "advanced_content_xHiJr8": {
       "type": "advanced-content",
       "blocks": {
@@ -143,6 +154,7 @@
     }
   },
   "order": [
+    "signup_newsletter_iPeWaE",
     "advanced_content_xHiJr8",
     "advanced_content_JdEdQd",
     "footer-promotions",
