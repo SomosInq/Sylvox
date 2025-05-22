@@ -7,39 +7,86 @@
     justify-content: space-between;
     flex-wrap: wrap;
   }
+
+  .support-left {
+    max-width: 300px;
+  }
+
   .support-title {
     font-size: 24px;
     font-weight: bold;
+    margin-bottom: 20px;
   }
+
+  .support-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+
   .support-links {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
-  .support-link a {
+
+  .support-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
     color: white;
     text-decoration: none;
+  }
+
+  .support-link .text {
+    font-size: 16px;
+  }
+
+  .support-link .icon-box {
     border: 1px solid white;
-    padding: 10px 15px;
+    padding: 10px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 250px;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .support-link img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
   }
 </style>
 
 <div class="support-section">
-  <div class="support-title">
-    Support
+  <div class="support-left">
+    <div class="support-title">Sylvox Support</div>
+    {% if section.settings.button_label and section.settings.button_link %}
+      <div class="support-button">
+        <a href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+      </div>
+    {% endif %}
   </div>
+
   <div class="support-links">
     {% for block in section.blocks %}
-      <div class="support-link">
-        <a href="{{ block.settings.url }}">
-          {{ block.settings.text }}
-          <span>→</span>
-        </a>
-      </div>
+      <a class="support-link" href="{{ block.settings.url }}">
+        <div class="text">{{ block.settings.text }}</div>
+        <div class="icon-box">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | image_url: width: 32 }}" alt="icon">
+          {% else %}
+            <span>→</span>
+          {% endif %}
+        </div>
+      </a>
     {% endfor %}
   </div>
 </div>
@@ -47,7 +94,19 @@
 {% schema %}
 {
   "name": "Support",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "See All"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
   "blocks": [
     {
       "type": "link_item",
@@ -56,12 +115,18 @@
         {
           "type": "text",
           "id": "text",
-          "label": "Link Text"
+          "label": "Link Text",
+          "default": "Contact Us"
         },
         {
           "type": "url",
           "id": "url",
           "label": "Link URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
         }
       ]
     }
