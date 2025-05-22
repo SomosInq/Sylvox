@@ -569,161 +569,146 @@
         "icon2": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
         "icon3": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
         "products": [
-          "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-75-total-3-years",
-          "sylvox-official-extended-warranty-for-deck-pro-55-2-years-total-3-years"
+          "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years"
         ],
         "price_text": "From USD $1,149.00",
         "button_link": "",
         "button_label": "Buy Now"
       }
     },
-    "comparison_table_CGzkY3": {
-      "type": "comparison-table",
+    "banner_Bj8UdV": {
+      "type": "banner",
       "blocks": {
-        "headings_qjaGNe": {
-          "type": "headings",
+        "subheading_fgg9hV": {
+          "type": "subheading",
           "settings": {
-            "heading_1": "Heading 1",
-            "heading_2": "Heading 2",
-            "heading_3": "Heading 3",
-            "heading_4": "",
-            "heading_5": "",
-            "heading_6": "",
-            "heading_7": "",
-            "heading_8": "",
-            "heading_9": "",
-            "heading_10": "",
-            "heading_11": "",
-            "heading_12": "",
-            "heading_13": "",
-            "heading_14": "",
-            "heading_15": "",
-            "heading_16": "",
-            "heading_17": "",
-            "heading_18": "",
-            "heading_19": "",
-            "heading_20": ""
+            "text": "Subheading"
           }
         },
-        "values_AhWiEe": {
-          "type": "values",
+        "heading_i8zTNn": {
+          "type": "heading",
           "settings": {
-            "product": "100-difference",
-            "value_1": "<p>Value 1</p>",
-            "value_2": "<p>Value 2</p>",
-            "value_3": "<p>Value 3</p>",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
           }
         },
-        "values_NRJ9KQ": {
-          "type": "values",
+        "richtext_RBXLiy": {
+          "type": "richtext",
           "settings": {
-            "product": "",
-            "value_1": "<p>Value 1</p>",
-            "value_2": "<p>Value 2</p>",
-            "value_3": "<p>Value 3</p>",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
-          }
-        },
-        "values_NHDEdh": {
-          "type": "values",
-          "settings": {
-            "product": "",
-            "value_1": "<p>Value 1</p>",
-            "value_2": "<p>Value 2</p>",
-            "value_3": "<p>Value 3</p>",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         }
       },
       "block_order": [
-        "headings_qjaGNe",
-        "values_AhWiEe",
-        "values_NRJ9KQ",
-        "values_NHDEdh"
+        "subheading_fgg9hV",
+        "heading_i8zTNn",
+        "richtext_RBXLiy"
       ],
-      "disabled": true,
-      "name": "Comparison table",
+      "name": "Banner Overlay",
       "settings": {
         "full_width": true,
-        "subheading": "Compare",
-        "title": "Product comparison",
-        "content": "<p>Give your customers useful information about your products and showcase differences between them.</p>",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "max_rows": 5,
-        "view_all_text": "View all",
-        "view_less_text": "View less",
-        "view_product": "View",
-        "show_product_info": true,
-        "show_product_image": true,
-        "show_product_swatch": true,
-        "viewing_product": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "chart_background": "",
-        "chart_text_color": "",
-        "chart_true_false_color": ""
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-start-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "rich_text_cbmRYc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3m8b3q": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text",
+            "heading_size": "h2"
+          }
+        },
+        "text_fTjTPj": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_BEFJ9i": {
+          "type": "button",
+          "settings": {
+            "link": "",
+            "link_text": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3m8b3q",
+        "text_fTjTPj",
+        "button_BEFJ9i"
+      ],
+      "name": "t:labels.rich_text",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    },
+    "logo_list_aViWB6": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_image_LJdUnM": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_6tKnN4": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_piLYAK": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_4QUiwq": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_rNbLng": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_image_YHndGm": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_LJdUnM",
+        "logo_image_6tKnN4",
+        "logo_image_piLYAK",
+        "logo_image_4QUiwq",
+        "logo_image_rNbLng",
+        "logo_image_YHndGm"
+      ],
+      "name": "t:labels.logo_list",
+      "settings": {
+        "title": "Our brands",
+        "heading_size": "h2",
+        "heading_position": "center",
+        "divider": false
       }
     },
     "featured_collections_XJWX4m": {
@@ -1083,180 +1068,6 @@
         "heading_position": "center",
         "divider": false
       }
-    },
-    "831c2a51-0103-421d-a88d-089e215019b5": {
-      "type": "text-columns",
-      "blocks": {
-        "template--15150643707965__831c2a51-0103-421d-a88d-089e215019b5-167702947765d7ee38-0": {
-          "type": "text_block",
-          "disabled": true,
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/303246822.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "More than 13 years of specialty in the TV industry",
-            "text": "<p>Sylvox is created for TV. Over a period of 13 years, our capabilities for innovation, through independent research and development, make products that complete and fulfifill all living areas.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15150643707965__831c2a51-0103-421d-a88d-089e215019b5-167702947765d7ee38-1": {
-          "type": "text_block",
-          "disabled": true,
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/141755738.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Global industrial layout, devoted to global leadership",
-            "text": "<p>Headquartered in the United States, Sylvox currently has 4 major branches and multiple offifices around the world, covering many countries and regions like Canada, Japan, Hong Kong, Germany, etc.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15150643707965__831c2a51-0103-421d-a88d-089e215019b5-167702947765d7ee38-2": {
-          "type": "text_block",
-          "disabled": true,
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/20230222102240.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Excellent R&D team with many years of industry experience",
-            "text": "<p>Sylvox not only has its own top R&D team, but also has long-term cooperation with several research and development institutions and laboratories.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "52bbf58b-b465-476e-961d-c5cd33ffdc39": {
-          "type": "text_block",
-          "disabled": true,
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/20230222102259.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Become a Premier Amazon Franchise Partner Supplier",
-            "text": "<p>Trusted by the Amazon and preferred to be the exclusive partner supplier for its product quali\u0002ty beyond the peers, its service tenet of consideration for users and its global distribution system. Top 3 US sales in the same category in only 2 months of cooperation</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "4f7a3b64-8929-44c8-ba8a-cafb614c5588": {
-          "type": "text_block",
-          "disabled": true,
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/20230222103125.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Fashionable, modern and creative personalized design",
-            "text": "<p>Maintaining imagination is the highest vision of life. As Sylvox's advertising slogan \"see the future\", from imagination to seeing, from the present to expect the future.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "0a8c7150-ef88-4e4a-af20-bc1c502c884d": {
-          "type": "text_block",
-          "disabled": true,
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/20230222102255.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Google TV licensed brand",
-            "text": "<p>Sylvox has teamed up with Google and, after obtaining the offificial authorization of Google TV, has become the world's fifirst full-scene TV brand carrying Google TV system.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15150643707965__831c2a51-0103-421d-a88d-089e215019b5-167702947765d7ee38-0",
-        "template--15150643707965__831c2a51-0103-421d-a88d-089e215019b5-167702947765d7ee38-1",
-        "template--15150643707965__831c2a51-0103-421d-a88d-089e215019b5-167702947765d7ee38-2",
-        "52bbf58b-b465-476e-961d-c5cd33ffdc39",
-        "4f7a3b64-8929-44c8-ba8a-cafb614c5588",
-        "0a8c7150-ef88-4e4a-af20-bc1c502c884d"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "align_text": "center",
-        "divider": false,
-        "color_scheme": "none"
-      }
-    },
-    "9f154551-1b10-4a4c-98c7-4e7a0a6811fd": {
-      "type": "text-with-icons",
-      "blocks": {
-        "template--15059620692029__9f154551-1b10-4a4c-98c7-4e7a0a6811fd-166634474763348e12-0": {
-          "type": "text_block",
-          "settings": {
-            "icon": "truck",
-            "title": "Fast & Free Delivery",
-            "text": "<p>Free FedEx, DHL,UPS or express shipping, Free shipping on all continental US orders</p>"
-          }
-        },
-        "text_block_Def7re": {
-          "type": "text_block",
-          "settings": {
-            "icon": "cart",
-            "title": "Support 24/7",
-            "text": "<p>Contact us any time via service@sylvoxtv.com</p>"
-          }
-        },
-        "template--15059620692029__9f154551-1b10-4a4c-98c7-4e7a0a6811fd-166634474763348e12-1": {
-          "type": "text_block",
-          "settings": {
-            "icon": "bills",
-            "title": "Hassle-free Warranty",
-            "text": "<p>We've got you covered with a full 1 years warranty</p>"
-          }
-        },
-        "1c470e18-993f-47ed-baa4-6bf4141ce4a9": {
-          "type": "text_block",
-          "settings": {
-            "icon": "wallet",
-            "title": "Secure Payment",
-            "text": "<p>Pay by debit or credit card, PayPal, bank transfer and more</p>"
-          }
-        }
-      },
-      "block_order": [
-        "template--15059620692029__9f154551-1b10-4a4c-98c7-4e7a0a6811fd-166634474763348e12-0",
-        "text_block_Def7re",
-        "template--15059620692029__9f154551-1b10-4a4c-98c7-4e7a0a6811fd-166634474763348e12-1",
-        "1c470e18-993f-47ed-baa4-6bf4141ce4a9"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "You Can Count On Us",
-        "align_text": "center",
-        "desktop_columns_per_row": 4,
-        "icon_color": "#000000",
-        "button_label": "",
-        "button_link": "",
-        "divider": false
-      }
-    },
-    "blog_posts_qPiVK8": {
-      "type": "blog-posts",
-      "disabled": true,
-      "settings": {
-        "title": "From the blog",
-        "heading_size": "h2",
-        "heading_position": "left",
-        "blog": "news",
-        "blog_show_tags": true,
-        "blog_show_date": true,
-        "blog_show_comments": false,
-        "blog_show_author": false,
-        "blog_show_excerpt": false,
-        "blog_image_size": "wide",
-        "divider": false
-      }
     }
   },
   "order": [
@@ -1271,7 +1082,9 @@
     "image_text_dE7fr8",
     "new_banner_slider_D3WkxM",
     "large_product_BDXMM6",
-    "comparison_table_CGzkY3",
+    "banner_Bj8UdV",
+    "rich_text_cbmRYc",
+    "logo_list_aViWB6",
     "featured_collections_XJWX4m",
     "hero_video_3DCK7E",
     "70b62ca6-065a-45cd-a481-2704f5dc26c0",
@@ -1279,9 +1092,6 @@
     "713ec5d8-14d7-46f8-8111-a91cbc5efca7",
     "text_columns_cyYkiA",
     "promo_grid_dp4feF",
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
-    "831c2a51-0103-421d-a88d-089e215019b5",
-    "9f154551-1b10-4a4c-98c7-4e7a0a6811fd",
-    "blog_posts_qPiVK8"
+    "2f70f0d4-86f7-4eb7-bf83-05295e841830"
   ]
 }
