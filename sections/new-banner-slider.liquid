@@ -3,7 +3,7 @@
 
 {% schema %}
 {
-  "name": "Outdoor TV Carousel",
+  "name": "New Banner Slider",
   "settings": [
     {
       "type": "select",
@@ -56,8 +56,8 @@
   ],
   "presets": [
     {
-      "name": "Outdoor TV Carousel",
-      "category": "Custom"
+      "name": "New Banner Slider",
+      "category": "Somos Custom"
     }
   ]
 }
@@ -167,7 +167,7 @@
            "pageDots": true,
            "prevNextButtons": false,
            "cellAlign": "center",
-           "contain": true',
+           "contain": true,
            "selectedAttraction": 0.01,
            "friction": 0.15
          }'>
@@ -196,22 +196,25 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var carousel = document.querySelector('.flickity-carousel');
-    var flkty = new Flickity(carousel, {
-      wrapAround: true,
-      imagesLoaded: true,
-      pageDots: true,
-      prevNextButtons: false,
-      cellAlign: "center",
-      contain: true,
-      selectedAttraction: 0.01,
-      friction: 0.15
-    });
+    var flkty = Flickity.data(carousel);
+
+    if (!flkty) {
+      flkty = new Flickity(carousel, {
+        wrapAround: true,
+        imagesLoaded: true,
+        pageDots: true,
+        prevNextButtons: false,
+        cellAlign: "center",
+        contain: true,
+        selectedAttraction: 0.01,
+        friction: 0.15
+      });
+    }
 
     {% if section.settings.show_arrows %}
-    document.querySelector('.carousel-prev').addEventListener('click', () => flkty.previous());
-    document.querySelector('.carousel-next').addEventListener('click', () => flkty.next());
+    document.querySelector('.carousel-prev')?.addEventListener('click', () => flkty.previous());
+    document.querySelector('.carousel-next')?.addEventListener('click', () => flkty.next());
     {% endif %}
   });
 </script>
 {% endjavascript %}
-
