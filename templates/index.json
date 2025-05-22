@@ -1153,22 +1153,25 @@
         "video_fKfz69": {
           "type": "video",
           "settings": {
-            "video_url": "https://youtu.be/Ih3KTaFiV9E?feature=shared",
-            "thumbnail": "https://via.placeholder.com/300x530?text=Video"
+            "video_type": "youtube",
+            "video_url": "",
+            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
         },
         "video_dcBxFx": {
           "type": "video",
           "settings": {
-            "video_url": "https://youtu.be/Ih3KTaFiV9E?feature=shared",
-            "thumbnail": "https://via.placeholder.com/300x530?text=Video"
+            "video_type": "youtube",
+            "video_url": "",
+            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
         },
         "video_GbCEXC": {
           "type": "video",
           "settings": {
-            "video_url": "https://youtu.be/Ih3KTaFiV9E?feature=shared",
-            "thumbnail": "https://via.placeholder.com/300x530?text=Video"
+            "video_type": "youtube",
+            "video_url": "",
+            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
         }
       },
@@ -1178,7 +1181,12 @@
         "video_GbCEXC"
       ],
       "name": "Video Grid",
-      "settings": {}
+      "settings": {
+        "top_title": "Sylvox Community",
+        "subtitle": "A home for all Sylvox fans to experience content,",
+        "description": "inspiration, and our beautiful technology.",
+        "show_arrows": true
+      }
     }
   },
   "order": [
