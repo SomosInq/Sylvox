@@ -71,7 +71,7 @@
   "presets": [
     {
       "name": "Image/Text Flex Blocks",
-      "category": "Somos Custom",
+      "category": "Custom",
       "blocks": [
         { "type": "image" },
         { "type": "title" },
@@ -83,7 +83,9 @@
 }
 {% endschema %}
 
-<div class="image-text-blocks-section px-4 md:px-8 py-6" style="text-align: {{ settings.alignment }};">
+{% assign text_align = settings.alignment | default: 'center' %}
+
+<div class="image-text-blocks-section px-4 md:px-8 py-6" style="text-align: {{ text_align }};">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'image' %}
@@ -107,7 +109,13 @@
           <div>
             <a href="{{ block.settings.button_link }}"
                class="inline-block bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
-               style="{% if settings.alignment == 'center' %} display: block; margin-left: auto; margin-right: auto; {% elsif settings.alignment == 'right' %} display: block; margin-left: auto; {% endif %}">
+               style="
+                 {% if text_align == 'center' %}
+                   display: block; margin-left: auto; margin-right: auto;
+                 {% elsif text_align == 'right' %}
+                   display: block; margin-left: auto;
+                 {% endif %}
+               ">
               {{ block.settings.button_text }}
             </a>
           </div>

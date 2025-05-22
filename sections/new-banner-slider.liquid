@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+{% schema %}
+{
+  "name": "New Banner Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Outdoor Oasis, Upgraded."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "Outdoor Dining Area"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Banner Slider",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.flickity-carousel {
+  margin-top: 30px;
+}
+.carousel-cell {
+  width: 100%;
+  position: relative;
+}
+.carousel-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+{% endstylesheet %}
+
+<section class="outdoor-carousel-section">
+  <div class="text-center mb-6">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="flickity-carousel"
+       data-flickity='{
+         "wrapAround": true,
+         "imagesLoaded": true,
+         "pageDots": true,
+         "prevNextButtons": {{ section.settings.show_arrows }}
+       }'>
+    {% for block in section.blocks %}
+      <div class="carousel-cell">
+        {% if block.settings.image %}
+          <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
+        {% endif %}
+        {% if block.settings.caption %}
+          <div class="carousel-caption">{{ block.settings.caption }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% javascript %}
+<script>
+  // If needed, initialize Flickity via JS manually
+  // $('.flickity-carousel').flickity();
+</script>
+{% endjavascript %}
