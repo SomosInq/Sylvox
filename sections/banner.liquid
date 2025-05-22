@@ -1,0 +1,112 @@
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Sylvox Deck Pro 2.0"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "A next-level outdoor TV designed to perform in sunlight, rain, or snow."
+    },
+    {
+      "type": "text",
+      "id": "button1_text",
+      "label": "Button 1 Text",
+      "default": "Watch Video"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "button2_text",
+      "label": "Button 2 Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "Enable Parallax",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal Alignment",
+      "default": "center",
+      "options": [
+        { "value": "start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "default": "center",
+      "options": [
+        { "value": "start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Bottom" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner",
+      "category": "Somos Custom"
+    }
+  ]
+}
+
+{% assign container_class = section.settings.full_width == true ? 'w-full' : 'max-w-7xl mx-auto' %}
+{% assign vertical_align = section.settings.vertical_alignment %}
+{% assign horizontal_align = section.settings.horizontal_alignment %}
+
+<div class="relative {{ container_class }} {{ section.settings.parallax and 'bg-fixed' }}">
+  <div
+    class="relative bg-cover bg-center h-[600px] flex items-{{ vertical_align }} justify-{{ horizontal_align }}"
+    style="background-image: url({{ section.settings.background_image | image_url }});"
+  >
+    <div class="text-white text-center p-6">
+      <h1 class="text-4xl font-bold">{{ section.settings.title }}</h1>
+      <p class="mt-4 text-lg">{{ section.settings.text }}</p>
+      <div class="mt-6 space-x-4">
+        {% if section.settings.button1_text != blank %}
+          <a href="{{ section.settings.button1_link }}" class="bg-white text-black px-5 py-2 rounded font-semibold">
+            {{ section.settings.button1_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.button2_text != blank %}
+          <a href="{{ section.settings.button2_link }}" class="bg-transparent border border-white text-white px-5 py-2 rounded font-semibold">
+            {{ section.settings.button2_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
