@@ -537,17 +537,25 @@
             "image": "shopify://shop_images/16_1.jpg",
             "caption": "Outdoor Dining Area"
           }
+        },
+        "slide_hbD7ck": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3_ce632318-1afa-4804-af92-9fa0bfd88259.jpg",
+            "caption": "Outdoor Dining Area"
+          }
         }
       },
       "block_order": [
         "slide_ktPLKQ",
-        "slide_M46t3f"
+        "slide_M46t3f",
+        "slide_hbD7ck"
       ],
       "name": "New Banner Slider",
       "settings": {
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
-        "show_arrows": false
+        "show_arrows": true
       }
     },
     "comparison_table_CGzkY3": {
