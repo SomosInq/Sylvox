@@ -137,10 +137,61 @@
 }
 {% endschema %}
 
-{% stylesheet %}
-/* Add basic styles if needed */
-{% endstylesheet %}
+<div class="comparison-table-section {{ section.settings.full_width | default: false | ifelse: 'w-full', 'max-w-screen-md mx-auto' }}"
+     style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;{% endif %}">
 
-{% javascript %}
-/* Add interactivity if needed */
-{% endjavascript %}
+  {% if section.settings.title != blank %}
+    <h2 class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  {% if section.settings.description != blank %}
+    <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
+  {% endif %}
+
+  <div class="grid grid-cols-2 gap-8 my-8">
+    {% for block in section.blocks %}
+      {% if block.type == 'product' %}
+        {% assign p = block.settings.product %}
+        <div class="product-block">
+          {% if block.settings.show_image and p.featured_image %}
+            <img src="{{ p.featured_image | img_url: '400x' }}" alt="{{ p.title }}" class="mb-4">
+          {% endif %}
+          <h3 class="font-bold mb-2">{{ p.title }}</h3>
+          {% if block.settings.show_price %}
+            <p class="mb-2">{{ p.price | money }}</p>
+          {% endif %}
+          {% if block.settings.show_options %}
+            <p class="mb-2">{{ p.options_with_values | join: ', ' }}</p>
+          {% endif %}
+          {% if block.settings.button_link %}
+            <a href="{{ block.settings.button_link }}" class="inline-block bg-green-700 text-white px-4 py-2 rounded">
+              {{ block.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="comparison-rows space-y-4">
+    {% for block in section.blocks %}
+      {% if block.type == 'row' %}
+        <div class="grid grid-cols-3 gap-4 items-center p-4 bg-white shadow rounded">
+          <div>
+            {% if block.settings.row_image %}
+              <img src="{{ block.settings.row_image | img_url: '100x' }}" alt="" class="mx-auto">
+            {% endif %}
+          </div>
+          <div>
+            <h4 class="font-semibold">{{ block.settings.row_title }}</h4>
+            <p>{{ block.settings.left_text }}</p>
+          </div>
+          <div>
+            <p>{{ block.settings.right_text }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</div>
