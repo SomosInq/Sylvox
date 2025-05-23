@@ -1213,14 +1213,16 @@
           "type": "link_item",
           "settings": {
             "text": "Contact",
-            "url": ""
+            "url": "",
+            "icon": "shopify://shop_images/Vector.png"
           }
         },
         "link_item_dGLY4N": {
           "type": "link_item",
           "settings": {
             "text": "FAQs",
-            "url": ""
+            "url": "",
+            "icon": "shopify://shop_images/Vector.png"
           }
         }
       },
