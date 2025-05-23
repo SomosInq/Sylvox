@@ -22,6 +22,11 @@
       "default": "Be the first to know about product launches and all things inside Sylvox."
     },
     {
+      "type": "image_picker",
+      "id": "envelope_icon",
+      "label": "Envelope Icon"
+    },
+    {
       "type": "text",
       "id": "email_placeholder",
       "label": "Email Placeholder",
@@ -32,6 +37,16 @@
       "id": "button_label",
       "label": "Button Label",
       "default": "Sign Up"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_arrow_icon",
+      "label": "Button Arrow Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "overlay_image",
+      "label": "Bottom Right Overlay Image"
     }
   ],
   "presets": [
@@ -48,8 +63,9 @@
   background-image: url({{ section.settings.background_image | image_url }});
   background-size: cover;
   background-position: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
+  position: relative;
   color: #1a1a1a;
 }
 
@@ -64,44 +80,87 @@
   color: #555;
 }
 
-.newsletter-form {
+.newsletter-form-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0 auto;
   gap: 10px;
 }
 
-.newsletter-form input[type="email"] {
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
   padding: 10px;
-  font-size: 1rem;
-  width: 300px;
-  max-width: 90%;
-  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
   border-radius: 4px;
+}
+
+.newsletter-form .icon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.newsletter-form input[type="email"] {
+  border: none;
+  flex-grow: 1;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.newsletter-form input:focus {
+  outline: none;
 }
 
 .newsletter-form button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #1a1a1a;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  background: none;
   border: none;
-  border-radius: 4px;
+  color: #1a1a1a;
+  font-size: 1rem;
   cursor: pointer;
 }
-{% endstyle %}
 
-{% javascript %}
-// No additional JavaScript needed for this section
-{% endjavascript %}
+.newsletter-form button img {
+  width: 16px;
+  margin-left: 5px;
+}
+
+.overlay-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 100px;
+  pointer-events: none;
+}
+{% endstyle %}
 
 <div class="newsletter-section">
   <h2>{{ section.settings.heading }}</h2>
   <p>{{ section.settings.subheading }}</p>
-  <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
-    <input type="hidden" name="form_type" value="customer">
-    <input type="hidden" name="utf8" value="✓">
-    <input type="email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}" required>
-    <button type="submit">{{ section.settings.button_label }}</button>
-  </form>
+  <div class="newsletter-form-wrapper">
+    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      {% if section.settings.envelope_icon != blank %}
+        <img class="icon" src="{{ section.settings.envelope_icon | image_url }}" alt="Email Icon">
+      {% endif %}
+      <input type="email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}" required>
+      <button type="submit">
+        {{ section.settings.button_label }}
+        {% if section.settings.button_arrow_icon != blank %}
+          <img src="{{ section.settings.button_arrow_icon | image_url }}" alt="Arrow">
+        {% endif %}
+      </button>
+    </form>
+  </div>
+  {% if section.settings.overlay_image != blank %}
+    <img class="overlay-image" src="{{ section.settings.overlay_image | image_url }}" alt="Overlay">
+  {% endif %}
 </div>
