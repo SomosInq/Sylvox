@@ -63,10 +63,22 @@
   background-image: url({{ section.settings.background_image | image_url }});
   background-size: cover;
   background-position: center;
-  padding: 80px 20px;
-  text-align: center;
   position: relative;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
   color: #1a1a1a;
+}
+
+.newsletter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  width: 100%;
 }
 
 .newsletter-section h2 {
@@ -80,25 +92,15 @@
   color: #555;
 }
 
-.newsletter-form-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 600px;
-  margin: 0 auto;
-  gap: 10px;
-}
-
 .newsletter-form {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  background-color: #fff;
   padding: 10px;
+  border-radius: 4px;
   width: 100%;
   max-width: 500px;
-  background-color: #fff;
-  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
 .newsletter-form .icon {
@@ -142,9 +144,9 @@
 {% endstyle %}
 
 <div class="newsletter-section">
-  <h2>{{ section.settings.heading }}</h2>
-  <p>{{ section.settings.subheading }}</p>
-  <div class="newsletter-form-wrapper">
+  <div class="newsletter-content">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
     <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
       <input type="hidden" name="form_type" value="customer">
       <input type="hidden" name="utf8" value="✓">
