@@ -18,8 +18,11 @@
         "background_image": "shopify://shop_images/Image_Placeholder.png",
         "heading": "Join Our Newsletter",
         "subheading": "Be the first to know about product launches and all things inside Sylvox.",
+        "envelope_icon": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
         "email_placeholder": "Email address",
-        "button_label": "Sign Up"
+        "button_label": "Sign Up",
+        "button_arrow_icon": "shopify://shop_images/Vector.png",
+        "overlay_image": "shopify://shop_images/Group_1321319952.png"
       }
     },
     "advanced_content_xHiJr8": {
