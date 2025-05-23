@@ -203,10 +203,10 @@
           "type": "product",
           "settings": {
             "product": "100-difference",
-            "show_title": true,
+            "show_title": false,
             "show_image": true,
-            "show_price": true,
-            "show_options": true,
+            "show_price": false,
+            "show_options": false,
             "button_link": "",
             "button_label": "Learn More"
           }
