@@ -1,22 +1,26 @@
 {% comment %}
-  Updated Tab Products Section with:
-  - Filters (All / Full Sun / Partial Sun)
-  - Corrected text over image positioning
-  - Background, margin, padding support
-  - Individual text styling (color, size)
-  - Adjustable image size and source
+  Complete Tab Products Section with:
+  - Filters (All / Full Sun / Partial Sun with icons)
+  - Fully adjustable text placement, color, and font size
+  - Image with adjustable size
+  - Background image or color with margin and padding controls
 {% endcomment %}
 
 <div class="tab-products section section-blends section-full text-custom"
   style="
-    background: {{ section.settings.background_image != blank ? 'url(' | append: section.settings.background_image | append: ')' : section.settings.background_color }};
+    background: {% if section.settings.background_image != blank %}url('{{ section.settings.background_image | image_url }}'){% else %}{{ section.settings.background_color }}{% endif %};
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
   "
   data-section-id="{{ section.id }}">
 
-  <div class="product-filters">
-    <button class="filter-btn active" data-filter="all">All</button>
+  <div class="section-header">
+    <h2 style="color: {{ section.settings.heading_color }}; font-size: {{ section.settings.heading_font_size }}px;">{{ section.settings.title }}</h2>
+    <p style="color: {{ section.settings.content_color }}; font-size: {{ section.settings.content_font_size }}px;">{{ section.settings.content }}</p>
+  </div>
+
+  <div class="product-filters" style="margin: 1rem 0;">
+    <button class="filter-btn active" data-filter="all">🔍 All</button>
     <button class="filter-btn" data-filter="full-sun">☀ Full Sun</button>
     <button class="filter-btn" data-filter="partial-sun">⛅ Partial Sun</button>
   </div>
@@ -31,26 +35,26 @@
 
   {% for block in section.blocks %}
     <div class="tab-product-content" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
-      <image-banner style="position: relative; display: block; overflow: hidden;">
+      <div style="position: relative; display: block; overflow: hidden;">
         {% if block.settings.image %}
           <img src="{{ block.settings.image | image_url }}" style="width: {{ block.settings.image_width }}%; height: auto;" />
         {% endif %}
 
-        <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
-             style="
-               position: absolute;
-               z-index: 2;
-               max-width: {{ block.settings.content_max_width }}px;
-               color: {{ block.settings.text_color }};
-               font-size: {{ block.settings.heading_size }}px;
-               padding: 1rem;">
+        <div style="
+          position: absolute;
+          top: {{ block.settings.text_position_top }}%;
+          left: {{ block.settings.text_position_left }}%;
+          transform: translate(-{{ block.settings.text_position_left }}%, -{{ block.settings.text_position_top }}%);
+          color: {{ block.settings.text_color }};
+          font-size: {{ block.settings.heading_size }}px;
+          max-width: {{ block.settings.content_max_width }}px;
+          padding: 1rem;
+          z-index: 2;">
           <h3 style="margin: 0;">{{ block.settings.title }}</h3>
-          {% if block.settings.inline_title != blank %}
-            <span>{{ block.settings.inline_title }}</span>
-          {% endif %}
+          {% if block.settings.inline_title != blank %}<span>{{ block.settings.inline_title }}</span>{% endif %}
           <div>{{ block.settings.description }}</div>
         </div>
-      </image-banner>
+      </div>
 
       <product-list class="product-list">
         {% assign products = block.settings.collection.products %}
