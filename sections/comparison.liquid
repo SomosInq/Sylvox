@@ -52,12 +52,33 @@
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background Color"
+      "label": "Table Background Color",
+      "default": "#F6F6F6"
     },
     {
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "default": 40,
+      "step": 4,
+      "unit": "px"
     }
   ],
   "blocks": [
@@ -69,6 +90,12 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_title",
+          "label": "Show Product Title",
+          "default": true
         },
         {
           "type": "checkbox",
@@ -111,9 +138,19 @@
           "label": "Row Title"
         },
         {
+          "type": "image_picker",
+          "id": "title_image",
+          "label": "Title Icon (Optional)"
+        },
+        {
           "type": "text",
           "id": "left_text",
           "label": "Left Column Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "Left Column Image (Optional)"
         },
         {
           "type": "text",
@@ -122,8 +159,8 @@
         },
         {
           "type": "image_picker",
-          "id": "row_image",
-          "label": "Optional Image"
+          "id": "right_image",
+          "label": "Right Column Image (Optional)"
         }
       ]
     }
@@ -137,61 +174,75 @@
 }
 {% endschema %}
 
-<div class="comparison-table-section {{ section.settings.full_width | default: false | ifelse: 'w-full', 'max-w-screen-md mx-auto' }}"
-     style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;{% endif %}">
+<div class="comparison-table-wrapper {% if section.settings.full_width %}w-full{% else %}max-w-screen-lg mx-auto{% endif %}"
+     style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;
+            background-color: {{ section.settings.background_color }};
+            {% if section.settings.background_image %}
+              background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;
+            {% endif %}">
 
-  {% if section.settings.title != blank %}
+  {% if section.settings.title %}
     <h2 class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.title }}</h2>
   {% endif %}
 
-  {% if section.settings.description != blank %}
+  {% if section.settings.description %}
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  <div class="grid grid-cols-2 gap-8 my-8">
-    {% for block in section.blocks %}
-      {% if block.type == 'product' %}
-        {% assign p = block.settings.product %}
-        <div class="product-block">
-          {% if block.settings.show_image and p.featured_image %}
-            <img src="{{ p.featured_image | img_url: '400x' }}" alt="{{ p.title }}" class="mb-4">
-          {% endif %}
-          <h3 class="font-bold mb-2">{{ p.title }}</h3>
-          {% if block.settings.show_price %}
-            <p class="mb-2">{{ p.price | money }}</p>
-          {% endif %}
-          {% if block.settings.show_options %}
-            <p class="mb-2">{{ p.options_with_values | join: ', ' }}</p>
-          {% endif %}
-          {% if block.settings.button_link %}
-            <a href="{{ block.settings.button_link }}" class="inline-block bg-green-700 text-white px-4 py-2 rounded">
-              {{ block.settings.button_label }}
-            </a>
-          {% endif %}
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start my-8">
+    <div class="col-span-2 space-y-4">
+      {% for block in section.blocks %}
+        {% if block.type == 'row' %}
+          <div class="grid grid-cols-3 items-center bg-white rounded-lg shadow p-4">
+            <div class="flex flex-col items-center">
+              {% if block.settings.title_image %}
+                <img src="{{ block.settings.title_image | img_url: '80x' }}" class="mb-2">
+              {% endif %}
+              <strong>{{ block.settings.row_title }}</strong>
+            </div>
+            <div class="text-center">
+              {% if block.settings.left_image %}
+                <img src="{{ block.settings.left_image | img_url: '60x' }}" class="mx-auto mb-2">
+              {% endif %}
+              <p>{{ block.settings.left_text }}</p>
+            </div>
+            <div class="text-center">
+              {% if block.settings.right_image %}
+                <img src="{{ block.settings.right_image | img_url: '60x' }}" class="mx-auto mb-2">
+              {% endif %}
+              <p>{{ block.settings.right_text }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
 
-  <div class="comparison-rows space-y-4">
-    {% for block in section.blocks %}
-      {% if block.type == 'row' %}
-        <div class="grid grid-cols-3 gap-4 items-center p-4 bg-white shadow rounded">
-          <div>
-            {% if block.settings.row_image %}
-              <img src="{{ block.settings.row_image | img_url: '100x' }}" alt="" class="mx-auto">
+    <div class="space-y-8">
+      {% for block in section.blocks %}
+        {% if block.type == 'product' %}
+          {% assign p = block.settings.product %}
+          <div class="product-box text-center bg-white p-4 rounded-lg shadow">
+            {% if block.settings.show_image and p.featured_image %}
+              <img src="{{ p.featured_image | img_url: '400x' }}" class="mb-4 w-full h-auto rounded-md" alt="{{ p.title }}">
+            {% endif %}
+            {% if block.settings.show_title %}
+              <h3 class="text-lg font-semibold mb-2">{{ p.title }}</h3>
+            {% endif %}
+            {% if block.settings.show_price %}
+              <p class="mb-2">{{ p.price | money }}</p>
+            {% endif %}
+            {% if block.settings.show_options %}
+              <p class="mb-2 text-sm">{{ p.options_with_values | join: ', ' }}</p>
+            {% endif %}
+            {% if block.settings.button_link %}
+              <a href="{{ block.settings.button_link }}"
+                 class="inline-block px-5 py-2 rounded-full bg-[#20413B] text-white hover:opacity-90 transition">
+                {{ block.settings.button_label }}
+              </a>
             {% endif %}
           </div>
-          <div>
-            <h4 class="font-semibold">{{ block.settings.row_title }}</h4>
-            <p>{{ block.settings.left_text }}</p>
-          </div>
-          <div>
-            <p>{{ block.settings.right_text }}</p>
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
-
 </div>
