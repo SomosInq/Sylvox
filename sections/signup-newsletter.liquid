@@ -1,134 +1,37 @@
-<style>
-  .support-section {
-    background-color: #20413B;
-    color: white;
-    padding: 40px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  .support-left {
-    max-width: 300px;
-  }
-
-  .support-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  .support-button a {
-    display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    border: 1px solid white;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 14px;
-  }
-
-  .support-links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .support-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 300px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .support-link .text {
-    font-size: 16px;
-  }
-
-  .support-link .icon-box {
-    border: 1px solid white;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-  }
-
-  .support-link img {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-  }
-</style>
-
-<div class="support-section">
-  <div class="support-left">
-    <div class="support-title">Sylvox Support</div>
-    {% if section.settings.button_label and section.settings.button_link %}
-      <div class="support-button">
-        <a href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
-      </div>
-    {% endif %}
-  </div>
-
-  <div class="support-links">
-    {% for block in section.blocks %}
-      <a class="support-link" href="{{ block.settings.url }}">
-        <div class="text">{{ block.settings.text }}</div>
-        <div class="icon-box">
-          {% if block.settings.icon != blank %}
-            <img src="{{ block.settings.icon | image_url: width: 32 }}" alt="icon">
-          {% else %}
-            <span>→</span>
-          {% endif %}
-        </div>
-      </a>
-    {% endfor %}
-  </div>
-</div>
-
 {% schema %}
 {
   "name": "Newsletter",
+  "tag": "section",
+  "class": "newsletter-section",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join Our Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Be the first to know about product launches and all things inside Sylvox."
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
+      "default": "Email address"
+    },
     {
       "type": "text",
       "id": "button_label",
-      "label": "Button label",
-      "default": "See All"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button link"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "link_item",
-      "name": "Link Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Link Text",
-          "default": "Contact Us"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link URL"
-        },
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
-        }
-      ]
+      "label": "Button Label",
+      "default": "Sign Up"
     }
   ],
   "presets": [
@@ -139,3 +42,66 @@
   ]
 }
 {% endschema %}
+
+{% style %}
+.newsletter-section {
+  background-image: url({{ section.settings.background_image | image_url }});
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+.newsletter-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-section p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 10px;
+  font-size: 1rem;
+  width: 300px;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.newsletter-form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+{% endstyle %}
+
+{% javascript %}
+// No additional JavaScript needed for this section
+{% endjavascript %}
+
+<div class="newsletter-section">
+  <h2>{{ section.settings.heading }}</h2>
+  <p>{{ section.settings.subheading }}</p>
+  <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
+    <input type="hidden" name="form_type" value="customer">
+    <input type="hidden" name="utf8" value="✓">
+    <input type="email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}" required>
+    <button type="submit">{{ section.settings.button_label }}</button>
+  </form>
+</div>
