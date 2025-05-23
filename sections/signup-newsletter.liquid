@@ -72,13 +72,10 @@
   text-align: center;
 }
 
-.newsletter-section .newsletter-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 700px;
-  width: 100%;
+.newsletter-content {
   z-index: 2;
+  max-width: 600px;
+  width: 100%;
 }
 
 .newsletter-section h2 {
@@ -96,22 +93,21 @@
   display: flex;
   align-items: center;
   background-color: #fff;
-  padding: 10px 15px;
   border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 500px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: 100%;
 }
 
 .newsletter-form .icon {
-  width: 20px;
+  width: 18px;
   margin-right: 10px;
 }
 
 .newsletter-form input[type="email"] {
   border: none;
-  flex-grow: 1;
   font-size: 1rem;
+  flex-grow: 1;
   padding: 8px;
 }
 
@@ -122,23 +118,25 @@
 .newsletter-form button {
   display: flex;
   align-items: center;
-  background: none;
   border: none;
+  background: none;
   font-size: 1rem;
-  cursor: pointer;
+  font-weight: 500;
   color: #333;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .newsletter-form button img {
-  width: 16px;
-  margin-left: 5px;
+  width: 14px;
+  margin-left: 6px;
 }
 
 .overlay-image {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  max-width: 100px;
+  max-width: 80px;
   z-index: 1;
 }
 {% endstyle %}
@@ -157,12 +155,12 @@
       <button type="submit">
         {{ section.settings.button_label }}
         {% if section.settings.button_arrow_icon != blank %}
-          <img src="{{ section.settings.button_arrow_icon | image_url }}" alt="Arrow">
+          <img src="{{ section.settings.button_arrow_icon | image_url }}" alt="Arrow Icon">
         {% endif %}
       </button>
     </form>
   </div>
   {% if section.settings.overlay_image != blank %}
-    <img class="overlay-image" src="{{ section.settings.overlay_image | image_url }}" alt="Overlay">
+    <img class="overlay-image" src="{{ section.settings.overlay_image | image_url }}" alt="Overlay Image">
   {% endif %}
 </div>
