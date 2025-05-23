@@ -146,7 +146,7 @@
 }
 {% endschema %}
 
-<div class="comparison-wrapper {% if section.settings.full_width %}w-full{% else %}max-w-screen-xl mx-auto{% endif %}"
+<div class="{% if section.settings.full_width %}w-full{% else %}max-w-screen-xl mx-auto{% endif %}"
      style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: {{ section.settings.background_color }};">
 
   {% if section.settings.title %}
@@ -156,19 +156,22 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  <div class="flex flex-col sm:flex-row justify-center gap-20 mt-10 mb-12 text-center">
-    {% assign products = 'product_one,product_two' | split: ',' %}
-    {% for key in products %}
-      {% assign product = all_products[section.settings[key]] %}
+  <!-- Products aligned right -->
+  {% assign products = '' | split: ',' %}
+  {% assign products = products | push: all_products[section.settings.product_one] %}
+  {% assign products = products | push: all_products[section.settings.product_two] %}
+
+  <div class="flex justify-end gap-12 text-center mt-12 mb-12">
+    {% for product in products %}
       {% if product %}
-        <div class="w-full sm:w-60 flex flex-col items-center">
+        <div class="flex flex-col items-center max-w-xs">
           {% if section.settings.show_image and product.featured_image %}
-            <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.title }}" class="mb-3 rounded">
+            <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.title }}" class="mb-2 rounded">
           {% endif %}
           {% if section.settings.show_title %}
-            <h3 class="text-base font-semibold mb-1">{{ product.title }}</h3>
+            <h3 class="text-sm font-medium mb-2">{{ product.title }}</h3>
           {% endif %}
-          <a href="{{ product.url }}" class="inline-block mt-2 px-6 py-2 text-white bg-[#20413B] rounded-full hover:opacity-90 transition">
+          <a href="{{ product.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">
             Learn More
           </a>
         </div>
@@ -176,23 +179,29 @@
     {% endfor %}
   </div>
 
-  <div class="rounded-lg px-4 py-6 sm:px-6" style="background-color: {{ section.settings.table_background_color }};">
+  <!-- Table -->
+  <div class="rounded-lg px-4 sm:px-6 py-6" style="background-color: {{ section.settings.table_background_color }};">
     {% for block in section.blocks %}
       {% if block.type == "comparison_table" %}
-        <div class="grid grid-cols-3 sm:grid-cols-[200px_1fr_1fr] items-center py-4 border-b border-gray-200 last:border-0 text-center text-sm">
-          <div>
+        <div class="grid grid-cols-3 items-center py-5 border-b border-gray-200 last:border-0">
+          <!-- Label Column -->
+          <div class="text-left flex items-center space-x-2">
             {% if block.settings.label_icon %}
-              <img src="{{ block.settings.label_icon | img_url: '32x' }}" class="mx-auto mb-1" />
+              <img src="{{ block.settings.label_icon | img_url: '32x' }}" class="inline-block" />
             {% endif %}
-            <p class="font-medium">{{ block.settings.label }}</p>
+            <span class="font-medium text-sm">{{ block.settings.label }}</span>
           </div>
-          <div>
+
+          <!-- Left Value -->
+          <div class="text-center text-sm">
             {% if block.settings.left_icon %}
               <img src="{{ block.settings.left_icon | img_url: '32x' }}" class="mx-auto mb-1" />
             {% endif %}
             <p>{{ block.settings.left_text }}</p>
           </div>
-          <div>
+
+          <!-- Right Value -->
+          <div class="text-center text-sm">
             {% if block.settings.right_icon %}
               <img src="{{ block.settings.right_icon | img_url: '32x' }}" class="mx-auto mb-1" />
             {% endif %}
