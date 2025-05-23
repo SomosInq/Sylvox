@@ -171,9 +171,15 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  {% assign products = '' | split: ',' %}
-  {% assign products = products | push: all_products[section.settings.product_one] %}
-  {% assign products = products | push: all_products[section.settings.product_two] %}
+  {%- assign products = '' | split: ',' -%}
+  {% if section.settings.product_one != blank %}
+    {% assign product_one = all_products[section.settings.product_one] %}
+    {% assign products = products | push: product_one %}
+  {% endif %}
+  {% if section.settings.product_two != blank %}
+    {% assign product_two = all_products[section.settings.product_two] %}
+    {% assign products = products | push: product_two %}
+  {% endif %}
 
   <div class="flex justify-end gap-12 text-center mt-12 mb-12">
     {% for product in products %}

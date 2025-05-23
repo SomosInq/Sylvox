@@ -1,11 +1,12 @@
 {{ 'section-tab-products.css' | asset_url | stylesheet_tag }}
 
 {% comment %}
-  Complete Tab Products Section with:
+  Complete and fixed Tab Products Section with:
   - Filters (All / Full Sun / Partial Sun with icons)
-  - Fully adjustable text placement, color, and font size
-  - Image with adjustable size
+  - Adjustable text placement, color, and font size
+  - Adjustable image width and proper rendering
   - Background image or color with margin and padding controls
+  - Collection products rendering correctly
 {% endcomment %}
 
 <div class="tab-products section section-blends section-full text-custom"
@@ -39,7 +40,12 @@
     <div class="tab-product-content" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
       <div style="position: relative; display: block; overflow: hidden;">
         {% if block.settings.image %}
-          <img src="{{ block.settings.image | image_url }}" style="width: {{ block.settings.image_width }}%; height: auto;" />
+          <img
+            src="{{ block.settings.image | image_url: width: block.settings.image.width }}"
+            alt="{{ block.settings.title }}"
+            style="width: {{ block.settings.image_width | default: 100 }}%; height: auto;"
+            loading="lazy"
+          />
         {% endif %}
 
         <div style="
@@ -58,14 +64,17 @@
         </div>
       </div>
 
-      <product-list class="product-list">
-        {% assign products = block.settings.collection.products %}
-        {% for product in products %}
-          <div class="product-card {% if product.tags contains 'Full Sun' %}full-sun{% elsif product.tags contains 'Partial Sun' %}partial-sun{% endif %}">
-            {% render 'product-card', product: product %}
-          </div>
-        {% endfor %}
-      </product-list>
+      <div class="product-list">
+        {% if block.settings.collection and block.settings.collection.products_count > 0 %}
+          {% for product in block.settings.collection.products %}
+            <div class="product-card {% if product.tags contains 'Full Sun' %}full-sun{% elsif product.tags contains 'Partial Sun' %}partial-sun{% endif %}">
+              {% render 'product-card', product: product %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No products available in this collection.</p>
+        {% endif %}
+      </div>
     </div>
   {% endfor %}
 </div>
@@ -82,6 +91,7 @@
     });
   });
 </script>
+
 
 
 
