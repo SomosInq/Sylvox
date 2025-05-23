@@ -25,6 +25,17 @@
         "overlay_image": "shopify://shop_images/Group_1321319952.png"
       }
     },
+    "join_community_NEVzTD": {
+      "type": "join-community",
+      "name": "Join Community",
+      "settings": {
+        "logo_image": "shopify://shop_images/Logo-Green.png",
+        "heading": "Join Sylvox Community",
+        "heading_link": "http://www.facebook.com",
+        "subheading": "Facebook Community",
+        "community_image": "shopify://shop_images/image-1.png"
+      }
+    },
     "advanced_content_xHiJr8": {
       "type": "advanced-content",
       "blocks": {
@@ -158,6 +169,7 @@
   },
   "order": [
     "signup_newsletter_iPeWaE",
+    "join_community_NEVzTD",
     "advanced_content_xHiJr8",
     "advanced_content_JdEdQd",
     "footer-promotions",
