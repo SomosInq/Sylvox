@@ -203,16 +203,16 @@
           "type": "comparison_table",
           "settings": {
             "label": "text",
-            "left_text": "",
-            "right_text": ""
+            "left_text": "text",
+            "right_text": "text"
           }
         },
         "comparison_table_JGBMNX": {
           "type": "comparison_table",
           "settings": {
             "label": "text 2",
-            "left_text": "",
-            "right_text": ""
+            "left_text": "text2",
+            "right_text": "text 2"
           }
         }
       },
