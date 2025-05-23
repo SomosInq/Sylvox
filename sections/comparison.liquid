@@ -123,33 +123,33 @@
       "settings": [
         {
           "type": "text",
-          "id": "col_title",
-          "label": "Row Title"
+          "id": "label",
+          "label": "Row Label"
         },
         {
           "type": "image_picker",
-          "id": "col_icon",
-          "label": "Row Icon"
+          "id": "icon",
+          "label": "Icon (optional)"
         },
         {
           "type": "text",
-          "id": "col_left",
-          "label": "Left Column Text"
+          "id": "left_content",
+          "label": "Left Column Content"
         },
         {
           "type": "image_picker",
-          "id": "img_left",
-          "label": "Left Image"
+          "id": "left_image",
+          "label": "Left Column Image (optional)"
         },
         {
           "type": "text",
-          "id": "col_right",
-          "label": "Right Column Text"
+          "id": "right_content",
+          "label": "Right Column Content"
         },
         {
           "type": "image_picker",
-          "id": "img_right",
-          "label": "Right Image"
+          "id": "right_image",
+          "label": "Right Column Image (optional)"
         }
       ]
     }
@@ -166,7 +166,9 @@
 <div class="{% if section.settings.full_width %}w-full{% else %}max-w-screen-lg mx-auto{% endif %}"
      style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;
             background-color: {{ section.settings.background_color }};
-            {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;{% endif %}">
+            {% if section.settings.background_image %}
+              background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;
+            {% endif %}">
 
   {% if section.settings.title %}
     <h2 class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.title }}</h2>
@@ -175,10 +177,10 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
+  {% assign sides = 'product_one,product_two' | split: ',' %}
   <div class="grid grid-cols-2 gap-6 my-8">
-    {% assign products = section.settings %}
-    {% for side in 'product_one,product_two' | split: ',' %}
-      {% assign product = all_products[products[side]] %}
+    {% for side in sides %}
+      {% assign product = all_products[section.settings[side]] %}
       {% if product %}
         <div class="bg-white p-4 rounded shadow text-center">
           {% if section.settings.show_image and product.featured_image %}
@@ -193,7 +195,9 @@
           {% if section.settings.show_options %}
             <p class="text-xs text-gray-500">{{ product.options_with_values | join: ', ' }}</p>
           {% endif %}
-          <a href="{{ product.url }}" class="inline-block mt-3 px-5 py-2 text-white bg-[#20413B] rounded-full hover:opacity-90 transition">Learn More</a>
+          <a href="{{ product.url }}" class="inline-block mt-3 px-5 py-2 text-white bg-[#20413B] rounded-full hover:opacity-90 transition">
+            Learn More
+          </a>
         </div>
       {% endif %}
     {% endfor %}
@@ -202,24 +206,24 @@
   <div class="space-y-4 mt-10">
     {% for block in section.blocks %}
       {% if block.type == "comparison_table" %}
-        <div class="grid grid-cols-3 bg-white shadow-sm rounded-lg p-4 items-center">
-          <div class="text-center">
-            {% if block.settings.col_icon %}
-              <img src="{{ block.settings.col_icon | img_url: '60x' }}" class="mx-auto mb-2">
+        <div class="grid grid-cols-3 bg-white shadow-sm rounded-lg p-6 items-center text-center">
+          <div>
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | img_url: '40x' }}" class="mx-auto mb-2">
             {% endif %}
-            <p class="font-semibold">{{ block.settings.col_title }}</p>
+            <p class="font-semibold text-sm">{{ block.settings.label }}</p>
           </div>
-          <div class="text-center">
-            {% if block.settings.img_left %}
-              <img src="{{ block.settings.img_left | img_url: '60x' }}" class="mx-auto mb-2">
+          <div>
+            {% if block.settings.left_image %}
+              <img src="{{ block.settings.left_image | img_url: '60x' }}" class="mx-auto mb-2">
             {% endif %}
-            <p>{{ block.settings.col_left }}</p>
+            <p class="text-sm">{{ block.settings.left_content }}</p>
           </div>
-          <div class="text-center">
-            {% if block.settings.img_right %}
-              <img src="{{ block.settings.img_right | img_url: '60x' }}" class="mx-auto mb-2">
+          <div>
+            {% if block.settings.right_image %}
+              <img src="{{ block.settings.right_image | img_url: '60x' }}" class="mx-auto mb-2">
             {% endif %}
-            <p>{{ block.settings.col_right }}</p>
+            <p class="text-sm">{{ block.settings.right_content }}</p>
           </div>
         </div>
       {% endif %}
