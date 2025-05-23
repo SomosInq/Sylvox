@@ -269,6 +269,19 @@
         "btn_text_color": ""
       }
     },
+    "comparison_FUGpmd": {
+      "type": "comparison",
+      "name": "Comparison Table",
+      "settings": {
+        "title": "Partial Sun Area VS. Full Sun Area",
+        "description": "",
+        "font_color": "",
+        "font_size": "text-base",
+        "text_alignment": "text-center",
+        "full_width": false,
+        "background_color": ""
+      }
+    },
     "product_slider_xhpnwt": {
       "type": "product-slider",
       "blocks": {
@@ -1205,42 +1218,13 @@
         "description": "inspiration, and our beautiful technology.",
         "show_arrows": true
       }
-    },
-    "support_8DECdw": {
-      "type": "support",
-      "blocks": {
-        "link_item_CmmQ8K": {
-          "type": "link_item",
-          "settings": {
-            "text": "Contact",
-            "url": "",
-            "icon": "shopify://shop_images/Vector.png"
-          }
-        },
-        "link_item_dGLY4N": {
-          "type": "link_item",
-          "settings": {
-            "text": "FAQs",
-            "url": "",
-            "icon": "shopify://shop_images/Vector.png"
-          }
-        }
-      },
-      "block_order": [
-        "link_item_CmmQ8K",
-        "link_item_dGLY4N"
-      ],
-      "name": "Support",
-      "settings": {
-        "button_label": "See All",
-        "button_link": "shopify://collections"
-      }
     }
   },
   "order": [
     "f325ea2c-0ca3-4a54-bb01-5a913eec98c7",
     "tab_products_i4fR76",
     "info_section_JEKir6",
+    "comparison_FUGpmd",
     "product_slider_xhpnwt",
     "image_blocks_xQffGw",
     "image_with_text_overlay_heWpQE",
@@ -1261,7 +1245,6 @@
     "promo_grid_dp4feF",
     "usp_grid_mBqiLF",
     "2f70f0d4-86f7-4eb7-bf83-05295e841830",
-    "video_grid_FUaEwe",
-    "support_8DECdw"
+    "video_grid_FUaEwe"
   ]
 }
