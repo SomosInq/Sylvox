@@ -44,12 +44,6 @@
       "default": "text-center"
     },
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full Width",
-      "default": false
-    },
-    {
       "type": "color",
       "id": "background_color",
       "label": "Section Background Color",
@@ -102,18 +96,6 @@
       "id": "show_image",
       "label": "Show Product Image",
       "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_price",
-      "label": "Show Product Price",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "show_options",
-      "label": "Show Product Options",
-      "default": false
     }
   ],
   "blocks": [
@@ -129,13 +111,13 @@
         },
         {
           "type": "image_picker",
-          "id": "icon",
+          "id": "label_icon",
           "label": "Label Icon"
         },
         {
           "type": "text",
           "id": "left_text",
-          "label": "Left Product Value"
+          "label": "Left Value"
         },
         {
           "type": "image_picker",
@@ -145,7 +127,7 @@
         {
           "type": "text",
           "id": "right_text",
-          "label": "Right Product Value"
+          "label": "Right Value"
         },
         {
           "type": "image_picker",
@@ -164,7 +146,7 @@
 }
 {% endschema %}
 
-<div class="{% if section.settings.full_width %}w-full{% else %}max-w-screen-xl mx-auto{% endif %}"
+<div class="comparison-wrapper {% if section.settings.full_width %}w-full{% else %}max-w-screen-xl mx-auto{% endif %}"
      style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: {{ section.settings.background_color }};">
 
   {% if section.settings.title %}
@@ -174,25 +156,19 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  <div class="flex flex-wrap justify-center items-start gap-12 mt-8 mb-12">
+  <div class="flex flex-col sm:flex-row justify-center gap-20 mt-10 mb-12 text-center">
     {% assign products = 'product_one,product_two' | split: ',' %}
     {% for key in products %}
       {% assign product = all_products[section.settings[key]] %}
       {% if product %}
-        <div class="w-full sm:w-72 text-center">
+        <div class="w-full sm:w-60 flex flex-col items-center">
           {% if section.settings.show_image and product.featured_image %}
-            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" class="mx-auto mb-3 rounded-md">
+            <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.title }}" class="mb-3 rounded">
           {% endif %}
           {% if section.settings.show_title %}
-            <h3 class="text-lg font-semibold">{{ product.title }}</h3>
+            <h3 class="text-base font-semibold mb-1">{{ product.title }}</h3>
           {% endif %}
-          {% if section.settings.show_price %}
-            <p class="text-sm">{{ product.price | money }}</p>
-          {% endif %}
-          {% if section.settings.show_options %}
-            <p class="text-xs text-gray-500">{{ product.options_with_values | join: ', ' }}</p>
-          {% endif %}
-          <a href="{{ product.url }}" class="mt-3 inline-block px-6 py-2 text-white bg-[#20413B] rounded-full hover:opacity-90 transition">
+          <a href="{{ product.url }}" class="inline-block mt-2 px-6 py-2 text-white bg-[#20413B] rounded-full hover:opacity-90 transition">
             Learn More
           </a>
         </div>
@@ -200,25 +176,25 @@
     {% endfor %}
   </div>
 
-  <div class="rounded-lg p-6" style="background-color: {{ section.settings.table_background_color }}">
+  <div class="rounded-lg px-4 py-6 sm:px-6" style="background-color: {{ section.settings.table_background_color }};">
     {% for block in section.blocks %}
       {% if block.type == "comparison_table" %}
-        <div class="grid grid-cols-3 gap-4 items-center py-4 border-b border-gray-200 last:border-0 text-center">
+        <div class="grid grid-cols-3 sm:grid-cols-[200px_1fr_1fr] items-center py-4 border-b border-gray-200 last:border-0 text-center text-sm">
           <div>
-            {% if block.settings.icon %}
-              <img src="{{ block.settings.icon | img_url: '40x' }}" class="mx-auto mb-1">
+            {% if block.settings.label_icon %}
+              <img src="{{ block.settings.label_icon | img_url: '32x' }}" class="mx-auto mb-1" />
             {% endif %}
             <p class="font-medium">{{ block.settings.label }}</p>
           </div>
           <div>
             {% if block.settings.left_icon %}
-              <img src="{{ block.settings.left_icon | img_url: '40x' }}" class="mx-auto mb-1">
+              <img src="{{ block.settings.left_icon | img_url: '32x' }}" class="mx-auto mb-1" />
             {% endif %}
             <p>{{ block.settings.left_text }}</p>
           </div>
           <div>
             {% if block.settings.right_icon %}
-              <img src="{{ block.settings.right_icon | img_url: '40x' }}" class="mx-auto mb-1">
+              <img src="{{ block.settings.right_icon | img_url: '32x' }}" class="mx-auto mb-1" />
             {% endif %}
             <p>{{ block.settings.right_text }}</p>
           </div>
