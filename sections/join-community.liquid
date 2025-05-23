@@ -1,0 +1,87 @@
+{% schema %}
+{
+  "name": "Join Community",
+  "tag": "section",
+  "class": "join-community-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join Sylvox Community"
+    },
+    {
+      "type": "url",
+      "id": "heading_link",
+      "label": "Heading Link"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Facebook Community"
+    },
+    {
+      "type": "image_picker",
+      "id": "community_image",
+      "label": "Community Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Join Community",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %} 
+.join-community-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: #fff;
+}
+.join-community-left img {
+  max-height: 40px;
+}
+.join-community-center {
+  text-align: center;
+}
+.join-community-right img {
+  max-width: 100px;
+  height: auto;
+}
+{% endstylesheet %}
+
+<div class="join-community-wrapper">
+  <div class="join-community-left">
+    {% if section.settings.logo_image %}
+      <img src="{{ section.settings.logo_image | image_url }}" alt="Logo">
+    {% endif %}
+  </div>
+  <div class="join-community-center">
+    {% if section.settings.subheading %}
+      <small>{{ section.settings.subheading }}</small><br>
+    {% endif %}
+    {% if section.settings.heading_link %}
+      <a href="{{ section.settings.heading_link }}" class="heading-link">
+        {{ section.settings.heading }}
+      </a>
+    {% else %}
+      <span class="heading">{{ section.settings.heading }}</span>
+    {% endif %}
+  </div>
+  <div class="join-community-right">
+    {% if section.settings.community_image %}
+      <img src="{{ section.settings.community_image | image_url }}" alt="Community Image">
+    {% endif %}
+  </div>
+</div>
