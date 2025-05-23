@@ -220,11 +220,21 @@
             "button_link": "",
             "button_label": "Learn More"
           }
+        },
+        "row_AYyePn": {
+          "type": "row",
+          "settings": {
+            "row_title": "Best For",
+            "left_text": "Shaded patios, covered decks, semi-outdoor entertainment areas",
+            "right_text": "Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants",
+            "row_image": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png"
+          }
         }
       },
       "block_order": [
         "product_qYrPxy",
-        "product_YjNHxU"
+        "product_YjNHxU",
+        "row_AYyePn"
       ],
       "name": "Comparison Table",
       "settings": {
