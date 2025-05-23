@@ -271,15 +271,43 @@
     },
     "comparison_FUGpmd": {
       "type": "comparison",
+      "blocks": {
+        "product_qYrPxy": {
+          "type": "product",
+          "settings": {
+            "product": "100-difference",
+            "show_image": true,
+            "show_price": true,
+            "show_options": true,
+            "button_link": "",
+            "button_label": "Learn More"
+          }
+        },
+        "product_YjNHxU": {
+          "type": "product",
+          "settings": {
+            "product": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+            "show_image": true,
+            "show_price": true,
+            "show_options": true,
+            "button_link": "",
+            "button_label": "Learn More"
+          }
+        }
+      },
+      "block_order": [
+        "product_qYrPxy",
+        "product_YjNHxU"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
-        "font_color": "",
+        "font_color": "#000000",
         "font_size": "text-base",
         "text_alignment": "text-center",
         "full_width": false,
-        "background_color": ""
+        "background_color": "#ba4444"
       }
     },
     "product_slider_xhpnwt": {
