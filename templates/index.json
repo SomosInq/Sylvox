@@ -12,6 +12,28 @@
     "tab_products_i4fR76": {
       "type": "tab-products",
       "blocks": {
+        "tab_qyccGT": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "",
+            "title": "",
+            "heading_tag": "h2",
+            "inline_title": "Series",
+            "description": "",
+            "content_max_width": 600,
+            "text_color": "#000000",
+            "collection": "",
+            "product": "",
+            "product_title": "New Nano AI",
+            "product_description": "The new Nano AI is the most powerful device we've ever created.",
+            "product_2": "",
+            "product_title_2": "New Nano AI",
+            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
+            "featured_text_color": "",
+            "background": "",
+            "btn_text_color": ""
+          }
+        },
         "tab_MjRrMX": {
           "type": "tab",
           "settings": {
@@ -153,6 +175,7 @@
         }
       },
       "block_order": [
+        "tab_qyccGT",
         "tab_MjRrMX",
         "tab_eAADP6",
         "tab_8BH7qW",
@@ -203,16 +226,16 @@
           "type": "comparison_table",
           "settings": {
             "label": "text",
-            "left_content": "text",
-            "right_content": "text"
+            "left_text": "",
+            "right_text": ""
           }
         },
         "comparison_table_JGBMNX": {
           "type": "comparison_table",
           "settings": {
             "label": "text 2",
-            "left_content": "text 2",
-            "right_content": "text 2"
+            "left_text": "",
+            "right_text": ""
           }
         }
       },
@@ -227,16 +250,14 @@
         "font_color": "#000000",
         "font_size": "text-base",
         "text_alignment": "text-center",
-        "full_width": false,
         "background_color": "#ffffff",
+        "table_background_color": "#f6f6f6",
         "padding_top": 40,
         "padding_bottom": 40,
-        "product_one": "1-year-extended-warranty-for-sylvox-cinema-pro-75-tv-total-3-years",
+        "product_one": "1-year-extended-warranty-for-sylvox-cinema-pro-86-tv-total-3-years",
         "product_two": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
         "show_title": false,
-        "show_image": true,
-        "show_price": false,
-        "show_options": false
+        "show_image": true
       }
     },
     "product_slider_xhpnwt": {
