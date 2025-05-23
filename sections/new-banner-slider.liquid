@@ -1,6 +1,11 @@
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
 {% schema %}
 {
-  "name": "Outdoor TV Carousel",
+  "name": "New Banner Slider",
   "settings": [
     {
       "type": "select",
@@ -30,6 +35,17 @@
       "id": "show_arrows",
       "label": "Show Arrows",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "slide_size",
+      "label": "Slide Image Size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "large"
     }
   ],
   "blocks": [
@@ -53,8 +69,8 @@
   ],
   "presets": [
     {
-      "name": "Outdoor TV Carousel",
-      "category": "Custom"
+      "name": "New Banner Slider",
+      "category": "Somos Custom"
     }
   ]
 }
@@ -85,13 +101,14 @@
 
 .carousel-wrapper {
   position: relative;
+  max-width: 100%;
 }
 .flickity-carousel {
   overflow: visible;
 }
+
 .carousel-cell {
-  width: 65%;
-  margin: 0 10px;
+  margin-right: 20px;
   opacity: 0.3;
   transform: scale(0.94);
   transition: all 0.3s ease;
@@ -104,6 +121,17 @@
   width: 100%;
   border-radius: 8px;
 }
+
+.carousel-cell.size-small {
+  width: 40%;
+}
+.carousel-cell.size-medium {
+  width: 55%;
+}
+.carousel-cell.size-large {
+  width: 70%;
+}
+
 .carousel-caption {
   position: absolute;
   bottom: 1rem;
@@ -165,7 +193,7 @@
            "contain": true
          }'>
       {% for block in section.blocks %}
-        <div class="carousel-cell relative">
+        <div class="carousel-cell size-{{ section.settings.slide_size }} relative">
           {% if block.settings.image %}
             <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
           {% endif %}
@@ -188,8 +216,8 @@
 {% javascript %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var carousel = document.querySelector('.flickity-carousel');
-    var flkty = Flickity.data(carousel);
+    const carousel = document.querySelector('.flickity-carousel');
+    let flkty = Flickity.data(carousel);
     if (!flkty) {
       flkty = new Flickity(carousel, {
         wrapAround: true,
@@ -201,10 +229,8 @@
       });
     }
 
-    {% if section.settings.show_arrows %}
     document.querySelector('.carousel-prev')?.addEventListener('click', () => flkty.previous());
     document.querySelector('.carousel-next')?.addEventListener('click', () => flkty.next());
-    {% endif %}
   });
 </script>
 {% endjavascript %}
