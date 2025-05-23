@@ -206,10 +206,19 @@
             "left_content": "text",
             "right_content": "text"
           }
+        },
+        "comparison_table_JGBMNX": {
+          "type": "comparison_table",
+          "settings": {
+            "label": "text 2",
+            "left_content": "text 2",
+            "right_content": "text 2"
+          }
         }
       },
       "block_order": [
-        "comparison_table_kK99U6"
+        "comparison_table_kK99U6",
+        "comparison_table_JGBMNX"
       ],
       "name": "Comparison Table",
       "settings": {
