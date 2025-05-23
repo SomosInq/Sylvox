@@ -203,6 +203,7 @@
           "type": "product",
           "settings": {
             "product": "100-difference",
+            "show_title": true,
             "show_image": true,
             "show_price": true,
             "show_options": true,
@@ -214,6 +215,7 @@
           "type": "product",
           "settings": {
             "product": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+            "show_title": true,
             "show_image": true,
             "show_price": true,
             "show_options": true,
@@ -225,9 +227,9 @@
           "type": "row",
           "settings": {
             "row_title": "Best For",
+            "title_image": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png",
             "left_text": "Shaded patios, covered decks, semi-outdoor entertainment areas",
-            "right_text": "Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants",
-            "row_image": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png"
+            "right_text": "Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants"
           }
         }
       },
@@ -244,7 +246,9 @@
         "font_size": "text-base",
         "text_alignment": "text-center",
         "full_width": false,
-        "background_color": "#ba4444"
+        "background_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "product_slider_xhpnwt": {
