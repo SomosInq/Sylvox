@@ -171,32 +171,40 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  {%- assign products = '' | split: ',' -%}
-  {% if section.settings.product_one != blank %}
-    {% assign product_one = all_products[section.settings.product_one] %}
-    {% assign products = products | push: product_one %}
-  {% endif %}
-  {% if section.settings.product_two != blank %}
-    {% assign product_two = all_products[section.settings.product_two] %}
-    {% assign products = products | push: product_two %}
-  {% endif %}
-
   <div class="flex justify-end gap-12 text-center mt-12 mb-12">
-    {% for product in products %}
-      {% if product %}
+    {% if section.settings.product_one != blank %}
+      {% assign product_one = all_products[section.settings.product_one] %}
+      {% if product_one %}
         <div class="flex flex-col items-center max-w-xs">
-          {% if section.settings.show_image and product.featured_image %}
-            <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.title }}" class="mb-2 rounded">
+          {% if section.settings.show_image and product_one.featured_image %}
+            <img src="{{ product_one.featured_image | img_url: '300x' }}" alt="{{ product_one.title }}" class="mb-2 rounded">
           {% endif %}
           {% if section.settings.show_title %}
-            <h3 class="text-sm font-medium mb-2">{{ product.title }}</h3>
+            <h3 class="text-sm font-medium mb-2">{{ product_one.title }}</h3>
           {% endif %}
-          <a href="{{ product.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">
+          <a href="{{ product_one.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">
             Learn More
           </a>
         </div>
       {% endif %}
-    {% endfor %}
+    {% endif %}
+
+    {% if section.settings.product_two != blank %}
+      {% assign product_two = all_products[section.settings.product_two] %}
+      {% if product_two %}
+        <div class="flex flex-col items-center max-w-xs">
+          {% if section.settings.show_image and product_two.featured_image %}
+            <img src="{{ product_two.featured_image | img_url: '300x' }}" alt="{{ product_two.title }}" class="mb-2 rounded">
+          {% endif %}
+          {% if section.settings.show_title %}
+            <h3 class="text-sm font-medium mb-2">{{ product_two.title }}</h3>
+          {% endif %}
+          <a href="{{ product_two.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">
+            Learn More
+          </a>
+        </div>
+      {% endif %}
+    {% endif %}
   </div>
 
   <div class="rounded-lg px-4 sm:px-6 py-6" style="background-color: {{ section.settings.table_background_color }};">
