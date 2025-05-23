@@ -52,7 +52,7 @@
     {
       "type": "color",
       "id": "background_color",
-      "label": "Table Background Color",
+      "label": "Background Color",
       "default": "#F6F6F6"
     },
     {
@@ -79,88 +79,77 @@
       "default": 40,
       "step": 4,
       "unit": "px"
+    },
+    {
+      "type": "product",
+      "id": "product_one",
+      "label": "Left Product"
+    },
+    {
+      "type": "product",
+      "id": "product_two",
+      "label": "Right Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show Product Title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Product Image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Product Price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_options",
+      "label": "Show Product Options",
+      "default": true
     }
   ],
   "blocks": [
     {
-      "type": "product",
-      "name": "Compare Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_title",
-          "label": "Show Product Title",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "show_image",
-          "label": "Show Image",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "show_price",
-          "label": "Show Price",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "show_options",
-          "label": "Show Options",
-          "default": true
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button Link"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button Label",
-          "default": "Learn More"
-        }
-      ]
-    },
-    {
-      "type": "row",
-      "name": "Comparison Row",
+      "type": "comparison_table",
+      "name": "Comparison Table Row",
+      "limit": 20,
       "settings": [
         {
           "type": "text",
-          "id": "row_title",
+          "id": "col_title",
           "label": "Row Title"
         },
         {
           "type": "image_picker",
-          "id": "title_image",
-          "label": "Title Icon (Optional)"
+          "id": "col_icon",
+          "label": "Row Icon"
         },
         {
           "type": "text",
-          "id": "left_text",
+          "id": "col_left",
           "label": "Left Column Text"
         },
         {
           "type": "image_picker",
-          "id": "left_image",
-          "label": "Left Column Image (Optional)"
+          "id": "img_left",
+          "label": "Left Image"
         },
         {
           "type": "text",
-          "id": "right_text",
+          "id": "col_right",
           "label": "Right Column Text"
         },
         {
           "type": "image_picker",
-          "id": "right_image",
-          "label": "Right Column Image (Optional)"
+          "id": "img_right",
+          "label": "Right Image"
         }
       ]
     }
@@ -174,75 +163,66 @@
 }
 {% endschema %}
 
-<div class="comparison-table-wrapper {% if section.settings.full_width %}w-full{% else %}max-w-screen-lg mx-auto{% endif %}"
+<div class="{% if section.settings.full_width %}w-full{% else %}max-w-screen-lg mx-auto{% endif %}"
      style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;
             background-color: {{ section.settings.background_color }};
-            {% if section.settings.background_image %}
-              background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;
-            {% endif %}">
+            {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: '1600x' }}); background-size: cover; background-position: center;{% endif %}">
 
   {% if section.settings.title %}
     <h2 class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.title }}</h2>
   {% endif %}
-
   {% if section.settings.description %}
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start my-8">
-    <div class="col-span-2 space-y-4">
-      {% for block in section.blocks %}
-        {% if block.type == 'row' %}
-          <div class="grid grid-cols-3 items-center bg-white rounded-lg shadow p-4">
-            <div class="flex flex-col items-center">
-              {% if block.settings.title_image %}
-                <img src="{{ block.settings.title_image | img_url: '80x' }}" class="mb-2">
-              {% endif %}
-              <strong>{{ block.settings.row_title }}</strong>
-            </div>
-            <div class="text-center">
-              {% if block.settings.left_image %}
-                <img src="{{ block.settings.left_image | img_url: '60x' }}" class="mx-auto mb-2">
-              {% endif %}
-              <p>{{ block.settings.left_text }}</p>
-            </div>
-            <div class="text-center">
-              {% if block.settings.right_image %}
-                <img src="{{ block.settings.right_image | img_url: '60x' }}" class="mx-auto mb-2">
-              {% endif %}
-              <p>{{ block.settings.right_text }}</p>
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
+  <div class="grid grid-cols-2 gap-6 my-8">
+    {% assign products = section.settings %}
+    {% for side in 'product_one,product_two' | split: ',' %}
+      {% assign product = all_products[products[side]] %}
+      {% if product %}
+        <div class="bg-white p-4 rounded shadow text-center">
+          {% if section.settings.show_image and product.featured_image %}
+            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" class="mx-auto mb-2 rounded-md">
+          {% endif %}
+          {% if section.settings.show_title %}
+            <h3 class="text-lg font-bold">{{ product.title }}</h3>
+          {% endif %}
+          {% if section.settings.show_price %}
+            <p class="text-sm mb-1">{{ product.price | money }}</p>
+          {% endif %}
+          {% if section.settings.show_options %}
+            <p class="text-xs text-gray-500">{{ product.options_with_values | join: ', ' }}</p>
+          {% endif %}
+          <a href="{{ product.url }}" class="inline-block mt-3 px-5 py-2 text-white bg-[#20413B] rounded-full hover:opacity-90 transition">Learn More</a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 
-    <div class="space-y-8">
-      {% for block in section.blocks %}
-        {% if block.type == 'product' %}
-          {% assign p = block.settings.product %}
-          <div class="product-box text-center bg-white p-4 rounded-lg shadow">
-            {% if block.settings.show_image and p.featured_image %}
-              <img src="{{ p.featured_image | img_url: '400x' }}" class="mb-4 w-full h-auto rounded-md" alt="{{ p.title }}">
+  <div class="space-y-4 mt-10">
+    {% for block in section.blocks %}
+      {% if block.type == "comparison_table" %}
+        <div class="grid grid-cols-3 bg-white shadow-sm rounded-lg p-4 items-center">
+          <div class="text-center">
+            {% if block.settings.col_icon %}
+              <img src="{{ block.settings.col_icon | img_url: '60x' }}" class="mx-auto mb-2">
             {% endif %}
-            {% if block.settings.show_title %}
-              <h3 class="text-lg font-semibold mb-2">{{ p.title }}</h3>
-            {% endif %}
-            {% if block.settings.show_price %}
-              <p class="mb-2">{{ p.price | money }}</p>
-            {% endif %}
-            {% if block.settings.show_options %}
-              <p class="mb-2 text-sm">{{ p.options_with_values | join: ', ' }}</p>
-            {% endif %}
-            {% if block.settings.button_link %}
-              <a href="{{ block.settings.button_link }}"
-                 class="inline-block px-5 py-2 rounded-full bg-[#20413B] text-white hover:opacity-90 transition">
-                {{ block.settings.button_label }}
-              </a>
-            {% endif %}
+            <p class="font-semibold">{{ block.settings.col_title }}</p>
           </div>
-        {% endif %}
-      {% endfor %}
-    </div>
+          <div class="text-center">
+            {% if block.settings.img_left %}
+              <img src="{{ block.settings.img_left | img_url: '60x' }}" class="mx-auto mb-2">
+            {% endif %}
+            <p>{{ block.settings.col_left }}</p>
+          </div>
+          <div class="text-center">
+            {% if block.settings.img_right %}
+              <img src="{{ block.settings.img_right | img_url: '60x' }}" class="mx-auto mb-2">
+            {% endif %}
+            <p>{{ block.settings.col_right }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
