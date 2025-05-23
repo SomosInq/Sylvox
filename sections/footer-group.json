@@ -11,6 +11,34 @@
   "type": "footer",
   "name": "t:sections.footer-group.name",
   "sections": {
+    "support_aMcTiV": {
+      "type": "support",
+      "blocks": {
+        "link_item_ekeTHk": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact Us",
+            "url": ""
+          }
+        },
+        "link_item_f8TzGR": {
+          "type": "link_item",
+          "settings": {
+            "text": "FAQs",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_item_ekeTHk",
+        "link_item_f8TzGR"
+      ],
+      "name": "Support",
+      "settings": {
+        "button_label": "See All",
+        "button_link": ""
+      }
+    },
     "signup_newsletter_iPeWaE": {
       "type": "signup-newsletter",
       "name": "Newsletter",
@@ -30,9 +58,10 @@
       "name": "Join Community",
       "settings": {
         "logo_image": "shopify://shop_images/Logo-Green.png",
+        "logo_size": 100,
+        "subheading": "Facebook Community",
         "heading": "Join Sylvox Community",
         "heading_link": "http://www.facebook.com",
-        "subheading": "Facebook Community",
         "community_image": "shopify://shop_images/image-1.png"
       }
     },
@@ -168,6 +197,7 @@
     }
   },
   "order": [
+    "support_aMcTiV",
     "signup_newsletter_iPeWaE",
     "join_community_NEVzTD",
     "advanced_content_xHiJr8",
