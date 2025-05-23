@@ -199,44 +199,17 @@
     "comparison_FUGpmd": {
       "type": "comparison",
       "blocks": {
-        "product_qYrPxy": {
-          "type": "product",
+        "comparison_table_kK99U6": {
+          "type": "comparison_table",
           "settings": {
-            "product": "100-difference",
-            "show_title": false,
-            "show_image": true,
-            "show_price": false,
-            "show_options": false,
-            "button_link": "",
-            "button_label": "Learn More"
-          }
-        },
-        "product_YjNHxU": {
-          "type": "product",
-          "settings": {
-            "product": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-            "show_title": true,
-            "show_image": true,
-            "show_price": true,
-            "show_options": true,
-            "button_link": "",
-            "button_label": "Learn More"
-          }
-        },
-        "row_AYyePn": {
-          "type": "row",
-          "settings": {
-            "row_title": "Best For",
-            "title_image": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png",
-            "left_text": "Shaded patios, covered decks, semi-outdoor entertainment areas",
-            "right_text": "Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants"
+            "label": "text",
+            "left_content": "text",
+            "right_content": "text"
           }
         }
       },
       "block_order": [
-        "product_qYrPxy",
-        "product_YjNHxU",
-        "row_AYyePn"
+        "comparison_table_kK99U6"
       ],
       "name": "Comparison Table",
       "settings": {
@@ -248,7 +221,13 @@
         "full_width": false,
         "background_color": "#ffffff",
         "padding_top": 40,
-        "padding_bottom": 40
+        "padding_bottom": 40,
+        "product_one": "1-year-extended-warranty-for-sylvox-cinema-pro-75-tv-total-3-years",
+        "product_two": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+        "show_title": false,
+        "show_image": true,
+        "show_price": false,
+        "show_options": false
       }
     },
     "product_slider_xhpnwt": {
