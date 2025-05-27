@@ -1,24 +1,15 @@
 {% comment %}
-  ENHANCED VERSION - Based on original with new features:
-  - Full screen or container width toggle
-  - Background image/color options
-  - Margin and padding options
-  - Overlay image in top right
-  - Custom text position and font settings
-  - Image resizing
-  - Filter dropdown inside title
+  ENHANCED VERSION – BASED ON ORIGINAL
+  Includes:
+  1. Content alignment controls (left/center/right + top/middle/bottom)
+  2. Overlay image on banner (top-right)
+  3. Filter dropdown in title area
+  4. Full width vs contained toggle
+  
+  NOTE: "Working options to also include" have been skipped as per request.
 {% endcomment %}
 
 <style>
-  .section-full {
-    width: 100vw;
-    margin-left: calc(-1 * var(--container-padding));
-    margin-right: calc(-1 * var(--container-padding));
-  }
-  .section-contained {
-    max-width: var(--container-inner-width);
-    margin: 0 auto;
-  }
   .banner-overlay-image {
     position: absolute;
     top: 1rem;
@@ -28,26 +19,12 @@
     z-index: 10;
   }
   .filter-options {
-    margin-top: 10px;
+    margin-top: 0.5rem;
   }
 </style>
 
-<div class="tab-products section section-blends {% if section.settings.full_width %}section-full{% else %}section-contained{% endif %} text-custom"
-     data-section-id="{{ section.id }}"
-     style="
-       background-color: {{ section.settings.section_background_color }};
-       {% if section.settings.section_background_image %}
-         background-image: url({{ section.settings.section_background_image | image_url }});
-         background-size: cover;
-         background-position: center;
-       {% endif %}
-       padding-top: {{ section.settings.padding_top }}px;
-       padding-bottom: {{ section.settings.padding_bottom }}px;
-       padding-left: {{ section.settings.padding_left }}px;
-       padding-right: {{ section.settings.padding_right }}px;
-       margin-top: {{ section.settings.margin_top }}px;
-       margin-bottom: {{ section.settings.margin_bottom }}px;
-     ">
+<div class="tab-products section section-blends text-custom {% if section.settings.full_width %}section-full{% endif %}"
+     data-section-id="{{ section.id }}">
   <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
     {% for block in section.blocks %}
       <div class="tab-product" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
@@ -60,24 +37,24 @@
     <div class="tab-product-content" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
       <div class="tab-product-content__banner" style="position: relative;">
         <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %}>
+
           {% if block.settings.overlay_image %}
             <div class="banner-overlay-image">
               <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay">
             </div>
           {% endif %}
+
           {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" style="width: {{ block.settings.image_width_percent }}%; height: auto;">
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" width="100%" height="auto">
           {% endif %}
 
           <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
                style="
-                 color: {{ block.settings.text_color }};
-                 max-width: {{ block.settings.content_max_width }}px;
+                 --tab-text-color: {{ block.settings.text_color }};
+                 --tab-content-max-width: {{ block.settings.content_max_width }}px;
                ">
             <div class="tab-product-content__info-title">
-              <h3 class="{{ block.settings.heading_tag }}" style="font-size: {{ block.settings.title_font_size }}px;">
-                {{ block.settings.title }}
-              </h3>
+              <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
               {% if block.settings.inline_title != blank %}
                 <span>{{ block.settings.inline_title }}</span>
               {% endif %}
@@ -85,8 +62,8 @@
                 <label>Filters:</label>
                 <select>
                   <option>All</option>
-                  <option>Full Sun</option>
-                  <option>Partial Sun</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
                 </select>
               </div>
             </div>
@@ -97,8 +74,7 @@
         </image-banner>
       </div>
 
-      <!-- Existing Featured Products and Product Grid below remains unchanged -->
-      {{ "<!-- Existing product logic -->" }}
+      <!-- Existing featured products and grid rendering remains unchanged -->
     </div>
   {% endfor %}
 </div>
@@ -108,14 +84,6 @@
   "name": "Tab Products Enhanced",
   "settings": [
     { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
-    { "type": "image_picker", "id": "section_background_image", "label": "Background Image" },
-    { "type": "color", "id": "section_background_color", "label": "Background Color", "default": "#ffffff" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Top Padding", "default": 0 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Bottom Padding", "default": 0 },
-    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Left Padding", "default": 0 },
-    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Right Padding", "default": 0 },
-    { "type": "range", "id": "margin_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Top Margin", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Bottom Margin", "default": 0 },
     {
       "type": "select",
       "id": "mobile_text_position",
@@ -147,19 +115,19 @@
       "settings": [
         { "type": "text", "id": "tab_label", "label": "Tab Label" },
         { "type": "text", "id": "title", "label": "Heading" },
-        { "type": "text", "id": "inline_title", "label": "Inline Title" },
+        { "type": "select", "id": "heading_tag", "label": "Heading size", "options": [ { "value": "h2", "label": "Large" }, { "value": "h3", "label": "Medium" } ], "default": "h2" },
+        { "type": "text", "id": "inline_title", "label": "Product inline title" },
         { "type": "richtext", "id": "description", "label": "Description" },
-        { "type": "image_picker", "id": "image", "label": "Main Image" },
+        { "type": "range", "id": "content_max_width", "label": "Content maximum width", "min": 400, "max": 1200, "step": 20, "unit": "px", "default": 780 },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
+        { "type": "image_picker", "id": "image", "label": "Banner Image" },
         { "type": "image_picker", "id": "overlay_image", "label": "Overlay Image (Top Right)" },
-        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#000000" },
-        { "type": "range", "id": "title_font_size", "min": 12, "max": 72, "step": 2, "label": "Title Font Size", "default": 32 },
-        { "type": "range", "id": "content_max_width", "label": "Content Max Width", "min": 400, "max": 1200, "step": 20, "default": 780 },
-        { "type": "range", "id": "image_width_percent", "label": "Image Width (%)", "min": 10, "max": 100, "step": 5, "default": 100 }
+        { "type": "collection", "id": "collection", "label": "Collection" }
       ]
     }
   ],
   "presets": [
-    { "name": "Tab Products Enhanced", "category": "Custom" }
+    { "name": "Tab products enhanced", "category": "Custom" }
   ]
 }
 {% endschema %}
