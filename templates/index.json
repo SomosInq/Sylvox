@@ -35,35 +35,10 @@
             "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
             "image_size": 100
           }
-        },
-        "slide_pygGYg": {
-          "type": "slide",
-          "settings": {
-            "subheading": "Outdoor Entertainment, Perfected",
-            "heading": "<h1>Sylvox Pool Pro 2.0</h1>",
-            "description": "This is a description box.",
-            "button_text_1": "Learn More",
-            "button_link_1": "shopify://collections/2024-summer-sale-pool-series",
-            "button_1_bg": "#ffffff",
-            "button_1_text": "#000000",
-            "button_1_border": "#000000",
-            "button_text_2": "WATCH VIDEO",
-            "button_link_2": "shopify://products/sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
-            "button_2_bg": "#ffffff",
-            "button_2_text": "#000000",
-            "button_2_border": "#000000",
-            "horizontal_align": "left",
-            "vertical_align": "middle",
-            "text_color": "#ffffff",
-            "font_size": 24,
-            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
-            "image_size": 100
-          }
         }
       },
       "block_order": [
-        "slide_U4WUax",
-        "slide_pygGYg"
+        "slide_U4WUax"
       ],
       "name": "Somos Slider",
       "settings": {
@@ -783,6 +758,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
@@ -792,6 +768,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-1.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -801,6 +778,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-2.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -810,6 +788,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-4.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -819,22 +798,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-5.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_8XgpYH": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_w7whJE": {
-          "type": "usp_item",
-          "settings": {
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -846,9 +810,7 @@
         "usp_item_e3nJLx",
         "usp_item_WExUKh",
         "usp_item_9KGR88",
-        "usp_item_dbAXpY",
-        "usp_item_8XgpYH",
-        "usp_item_w7whJE"
+        "usp_item_dbAXpY"
       ],
       "name": "USP Grid",
       "settings": {
@@ -927,7 +889,8 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
-            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
+            "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg",
+            "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg"
           }
         },
         "video_dcBxFx": {
@@ -935,7 +898,7 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
-            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
+            "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg"
           }
         },
         "video_GbCEXC": {
