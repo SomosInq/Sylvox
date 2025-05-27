@@ -783,6 +783,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
@@ -792,6 +793,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-1.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -801,6 +803,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-2.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -810,6 +813,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-4.png",
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -819,22 +823,7 @@
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-5.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_8XgpYH": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_w7whJE": {
-          "type": "usp_item",
-          "settings": {
+            "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
             "link": ""
@@ -846,9 +835,7 @@
         "usp_item_e3nJLx",
         "usp_item_WExUKh",
         "usp_item_9KGR88",
-        "usp_item_dbAXpY",
-        "usp_item_8XgpYH",
-        "usp_item_w7whJE"
+        "usp_item_dbAXpY"
       ],
       "name": "USP Grid",
       "settings": {
