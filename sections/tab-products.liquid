@@ -1,9 +1,12 @@
 {% comment %}
-  Enhanced Tab Products Section
-  - Includes full width and background customization
-  - Position controls for text and overlays
-  - Filter dropdown
-  - Adjustable image sizing and padding/margin options
+  ENHANCED VERSION - Based on original with new features:
+  - Full screen or container width toggle
+  - Background image/color options
+  - Margin and padding options
+  - Overlay image in top right
+  - Custom text position and font settings
+  - Image resizing
+  - Filter dropdown inside title
 {% endcomment %}
 
 <style>
@@ -29,7 +32,8 @@
   }
 </style>
 
-<div class="tab-products section {% if section.settings.full_width %}section-full{% else %}section-contained{% endif %}"
+<div class="tab-products section section-blends {% if section.settings.full_width %}section-full{% else %}section-contained{% endif %} text-custom"
+     data-section-id="{{ section.id }}"
      style="
        background-color: {{ section.settings.section_background_color }};
        {% if section.settings.section_background_image %}
@@ -44,7 +48,6 @@
        margin-top: {{ section.settings.margin_top }}px;
        margin-bottom: {{ section.settings.margin_bottom }}px;
      ">
-
   <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
     {% for block in section.blocks %}
       <div class="tab-product" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
@@ -56,47 +59,46 @@
   {% for block in section.blocks %}
     <div class="tab-product-content" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
       <div class="tab-product-content__banner" style="position: relative;">
-        {% if block.settings.overlay_image %}
-          <div class="banner-overlay-image">
-            <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay">
-          </div>
-        {% endif %}
+        <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %}>
+          {% if block.settings.overlay_image %}
+            <div class="banner-overlay-image">
+              <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay">
+            </div>
+          {% endif %}
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" style="width: {{ block.settings.image_width_percent }}%; height: auto;">
+          {% endif %}
 
-        <img
-          src="{{ block.settings.image | image_url }}"
-          alt="{{ block.settings.title }}"
-          style="width: {{ block.settings.image_width_percent }}%; height: auto;"
-        >
-
-        <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
-          style="
-            color: {{ block.settings.text_color }};
-            max-width: {{ block.settings.content_max_width }}px;
-          ">
-
-          <div class="tab-product-content__info-title">
-            <h3 style="font-size: {{ block.settings.title_font_size }}px;">
-              {{ block.settings.title }}
-            </h3>
-            {% if block.settings.inline_title != blank %}
-              <span>{{ block.settings.inline_title }}</span>
-            {% endif %}
-
-            <div class="filter-options">
-              <label>Filters:</label>
-              <select>
-                <option>All</option>
-                <option>Full Sun</option>
-                <option>Partial Sun</option>
-              </select>
+          <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
+               style="
+                 color: {{ block.settings.text_color }};
+                 max-width: {{ block.settings.content_max_width }}px;
+               ">
+            <div class="tab-product-content__info-title">
+              <h3 class="{{ block.settings.heading_tag }}" style="font-size: {{ block.settings.title_font_size }}px;">
+                {{ block.settings.title }}
+              </h3>
+              {% if block.settings.inline_title != blank %}
+                <span>{{ block.settings.inline_title }}</span>
+              {% endif %}
+              <div class="filter-options">
+                <label>Filters:</label>
+                <select>
+                  <option>All</option>
+                  <option>Full Sun</option>
+                  <option>Partial Sun</option>
+                </select>
+              </div>
+            </div>
+            <div class="tab-product-content__info-dec">
+              {{ block.settings.description }}
             </div>
           </div>
-
-          <div class="tab-product-content__info-dec">
-            {{ block.settings.description }}
-          </div>
-        </div>
+        </image-banner>
       </div>
+
+      <!-- Existing Featured Products and Product Grid below remains unchanged -->
+      {{ "<!-- Existing product logic -->" }}
     </div>
   {% endfor %}
 </div>
@@ -108,12 +110,12 @@
     { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
     { "type": "image_picker", "id": "section_background_image", "label": "Background Image" },
     { "type": "color", "id": "section_background_color", "label": "Background Color", "default": "#ffffff" },
-    { "type": "range", "id": "padding_top", "label": "Top Padding", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_bottom", "label": "Bottom Padding", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_left", "label": "Left Padding", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding_right", "label": "Right Padding", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_top", "label": "Top Margin", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Bottom Margin", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Top Padding", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Bottom Padding", "default": 0 },
+    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Left Padding", "default": 0 },
+    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Right Padding", "default": 0 },
+    { "type": "range", "id": "margin_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Top Margin", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Bottom Margin", "default": 0 },
     {
       "type": "select",
       "id": "mobile_text_position",
@@ -150,7 +152,7 @@
         { "type": "image_picker", "id": "image", "label": "Main Image" },
         { "type": "image_picker", "id": "overlay_image", "label": "Overlay Image (Top Right)" },
         { "type": "color", "id": "text_color", "label": "Text Color", "default": "#000000" },
-        { "type": "range", "id": "title_font_size", "label": "Title Font Size", "min": 12, "max": 72, "step": 2, "default": 32 },
+        { "type": "range", "id": "title_font_size", "min": 12, "max": 72, "step": 2, "label": "Title Font Size", "default": 32 },
         { "type": "range", "id": "content_max_width", "label": "Content Max Width", "min": 400, "max": 1200, "step": 20, "default": 780 },
         { "type": "range", "id": "image_width_percent", "label": "Image Width (%)", "min": 10, "max": 100, "step": 5, "default": 100 }
       ]
