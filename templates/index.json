@@ -25,7 +25,7 @@
             "vertical_align": "middle",
             "text_color": "#000000",
             "font_size": 24,
-            "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_03_04_03.Still019.jpg",
+            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
             "image_size": 100
           }
         },
@@ -73,7 +73,7 @@
         "show_arrows": true,
         "background_color": "#ffffff",
         "padding_top": 0,
-        "padding_bottom": 25,
+        "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0
       }
