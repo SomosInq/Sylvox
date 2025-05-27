@@ -17,8 +17,8 @@
           "settings": {
             "subheading": "Tell your story",
             "heading": "<h2>Slide heading</h2>",
-            "button_text_1": "",
-            "button_link_1": "",
+            "button_text_1": "text",
+            "button_link_1": "shopify://collections/rv-tv",
             "button_text_2": "",
             "button_link_2": "",
             "horizontal_align": "center",
