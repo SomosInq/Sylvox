@@ -914,7 +914,8 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
-            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
+            "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg",
+            "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg"
           }
         },
         "video_dcBxFx": {
@@ -922,7 +923,7 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
-            "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
+            "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg"
           }
         },
         "video_GbCEXC": {
