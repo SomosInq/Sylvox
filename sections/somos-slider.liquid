@@ -1,5 +1,5 @@
 {%- comment -%}
-Somos Slider: Full Section with Height Control
+Somos Slider: Unified Slide Height + Full Width Images
 {%- endcomment -%}
 
 <style>
@@ -14,6 +14,7 @@ Somos Slider: Full Section with Height Control
   }
   .somos-slide {
     flex: 0 0 100%;
+    height: var(--slide-height);
   }
   .somos-slide__media-wrapper {
     position: relative;
@@ -22,7 +23,8 @@ Somos Slider: Full Section with Height Control
   }
   .somos-slide__media-wrapper img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
   .somos-slide__content {
@@ -80,13 +82,13 @@ Somos Slider: Full Section with Height Control
   }
 </style>
 
-<div class="somos-slider" style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px">
+<div class="somos-slider" style="--slide-height: {{ section.settings.slide_height }}px; background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px">
   <div class="somos-slider__wrapper" id="somos-slider-wrapper-{{ section.id }}">
     {% for block in section.blocks %}
-      <div class="somos-slide" id="block-{{ block.id }}" style="height: {{ block.settings.slide_height }}px">
+      <div class="somos-slide" id="block-{{ block.id }}">
         <div class="somos-slide__media-wrapper">
           {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url }}" style="width: 100%;" alt="Slide Image">
+            <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
           {% endif %}
           <div class="somos-slide__content {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             {% if block.settings.subheading %}
@@ -167,6 +169,7 @@ Somos Slider: Full Section with Height Control
   ],
   "settings": [
     {"type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true},
+    {"type": "range", "id": "slide_height", "label": "Slide height", "min": 200, "max": 1000, "step": 50, "default": 500, "unit": "px"},
     {"type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff"},
     {"type": "image_picker", "id": "background_image", "label": "Background image"},
     {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
@@ -198,8 +201,7 @@ Somos Slider: Full Section with Height Control
         {"type": "color", "id": "text_color", "label": "Text color", "default": "#000000"},
         {"type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px"},
         {"type": "image_picker", "id": "image", "label": "Image"},
-        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"},
-        {"type": "range", "id": "slide_height", "label": "Slide height", "min": 200, "max": 1000, "step": 50, "default": 500, "unit": "px"}
+        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"}
       ]
     }
   ]
