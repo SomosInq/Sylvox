@@ -86,13 +86,13 @@
           "settings": {
             "tab_label": "Outdoor TV",
             "title": "Outdoor TV",
+            "heading_tag": "h2",
             "inline_title": "",
             "description": "<p>More Time Outdoors. More Moments Together.</p>",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_color": "#ffffff",
-            "title_font_size": 32,
             "content_max_width": 780,
-            "image_width_percent": 100
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+            "collection": ""
           }
         },
         "tab_eAADP6": {
@@ -100,13 +100,13 @@
           "settings": {
             "tab_label": "Kitchen TV",
             "title": "Kitchen TV",
+            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_color": "#ffffff",
-            "title_font_size": 32,
             "content_max_width": 780,
-            "image_width_percent": 100
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+            "collection": ""
           }
         },
         "tab_8BH7qW": {
@@ -114,13 +114,13 @@
           "settings": {
             "tab_label": "RV TV",
             "title": "RV TV",
+            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_color": "#ffffff",
-            "title_font_size": 32,
             "content_max_width": 780,
-            "image_width_percent": 100
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+            "collection": ""
           }
         },
         "tab_6xwwW6": {
@@ -128,13 +128,13 @@
           "settings": {
             "tab_label": "Bathroom TV",
             "title": "Bathroom TV",
+            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_color": "#ffffff",
-            "title_font_size": 32,
             "content_max_width": 780,
-            "image_width_percent": 100
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+            "collection": ""
           }
         },
         "tab_d48U69": {
@@ -142,13 +142,13 @@
           "settings": {
             "tab_label": "Commercial TV",
             "title": "Commercial TV",
+            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_color": "#ffffff",
-            "title_font_size": 32,
             "content_max_width": 780,
-            "image_width_percent": 100
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+            "collection": ""
           }
         },
         "tab_zY9MrJ": {
@@ -156,13 +156,13 @@
           "settings": {
             "tab_label": "Accessories",
             "title": "Accessories",
+            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_color": "#ffffff",
-            "title_font_size": 32,
             "content_max_width": 780,
-            "image_width_percent": 100
+            "text_color": "#ffffff",
+            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
+            "collection": ""
           }
         }
       },
@@ -174,16 +174,10 @@
         "tab_d48U69",
         "tab_zY9MrJ"
       ],
+      "disabled": true,
       "name": "Tab products",
       "settings": {
         "full_width": false,
-        "section_background_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "tabs_position": 44
@@ -197,14 +191,14 @@
           "settings": {
             "tab_label": "test",
             "title": "head",
+            "heading_tag": "h2",
             "inline_title": "inline",
             "description": "<p>desc</p>",
+            "content_max_width": 780,
+            "text_color": "#000000",
             "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_03_04_03.Still019.jpg",
             "overlay_image": "shopify://shop_images/Group_1321319952.png",
-            "text_color": "#000000",
-            "title_font_size": 32,
-            "content_max_width": 780,
-            "image_width_percent": 100
+            "collection": ""
           }
         }
       },
@@ -214,13 +208,6 @@
       "name": "Tab Products Enhanced",
       "settings": {
         "full_width": false,
-        "section_background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 55,
-        "padding_left": 50,
-        "padding_right": 50,
-        "margin_top": 45,
-        "margin_bottom": 40,
         "mobile_text_position": "place-self-start text-start",
         "desktop_text_position": "sm:place-self-start sm:text-start",
         "tabs_position": 30
