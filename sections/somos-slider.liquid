@@ -1,0 +1,136 @@
+{%- comment -%}
+Somos Slider: Modular Shopify Section with Extensive Customization
+{%- endcomment -%}
+
+<style>
+  .somos-slider {
+    position: relative;
+    overflow: hidden;
+  }
+  .somos-slide {
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+  .somos-slider__arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  .somos-slider__dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .somos-slider__dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+  }
+  .somos-slider__dots button[aria-current="true"] {
+    background: #000;
+    width: 24px;
+    border-radius: 20px;
+  }
+</style>
+
+<div class="somos-slider" style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px">
+  <div class="somos-slider__wrapper">
+    {% for block in section.blocks %}
+      <div class="somos-slide" id="block-{{ block.id }}" style="justify-content: {{ block.settings.vertical_align }}; text-align: {{ block.settings.horizontal_align }}; color: {{ block.settings.text_color }};">
+        {% if block.settings.image %}
+          <img src="{{ block.settings.image | image_url }}" style="width: {{ block.settings.image_size }}%;" alt="Slide Image">
+        {% endif %}
+
+        {% if block.settings.subheading != blank %}
+          <p style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.subheading }}</p>
+        {% endif %}
+
+        {% if block.settings.heading != blank %}
+          <div class="heading" style="font-size: {{ block.settings.font_size }}px;">
+            {{ block.settings.heading }}
+          </div>
+        {% endif %}
+
+        <div class="buttons">
+          {% if block.settings.button_text_1 and block.settings.button_link_1 %}
+            <a href="{{ block.settings.button_link_1 }}" class="button">{{ block.settings.button_text_1 }}</a>
+          {% endif %}
+          {% if block.settings.button_text_2 and block.settings.button_link_2 %}
+            <a href="{{ block.settings.button_link_2 }}" class="button">{{ block.settings.button_text_2 }}</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_arrows %}
+    <div class="somos-slider__arrows">
+      <button class="prev" aria-label="Previous">&larr;</button>
+      <button class="next" aria-label="Next">&rarr;</button>
+    </div>
+  {% endif %}
+
+  <div class="somos-slider__dots">
+    {% for block in section.blocks %}
+      <button type="button" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Somos Slider",
+  "class": "shopify-section--slideshow",
+  "tag": "section",
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Somos Slider",
+      "category": "Somos Custom"
+    }
+  ],
+  "settings": [
+    {"type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true},
+    {"type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff"},
+    {"type": "image_picker", "id": "background_image", "label": "Background image"},
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {"type": "text", "id": "subheading", "label": "Subheading", "default": "Tell your story"},
+        {"type": "richtext", "id": "heading", "label": "Heading", "default": "<h2>Slide heading</h2>"},
+        {"type": "text", "id": "button_text_1", "label": "Button 1 text"},
+        {"type": "url", "id": "button_link_1", "label": "Button 1 link"},
+        {"type": "text", "id": "button_text_2", "label": "Button 2 text"},
+        {"type": "url", "id": "button_link_2", "label": "Button 2 link"},
+        {"type": "select", "id": "horizontal_align", "label": "Horizontal alignment", "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Center"},
+          {"value": "right", "label": "Right"}
+        ], "default": "center"},
+        {"type": "select", "id": "vertical_align", "label": "Vertical alignment", "options": [
+          {"value": "top", "label": "Top"},
+          {"value": "middle", "label": "Middle"},
+          {"value": "bottom", "label": "Bottom"}
+        ], "default": "middle"},
+        {"type": "color", "id": "text_color", "label": "Text color", "default": "#000000"},
+        {"type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px"},
+        {"type": "image_picker", "id": "image", "label": "Image"},
+        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"}
+      ]
+    }
+  ]
+}
+{% endschema %}
