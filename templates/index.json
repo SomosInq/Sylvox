@@ -776,6 +776,88 @@
         "divider": false
       }
     },
+    "usp_grid_mBqiLF": {
+      "type": "usp-grid",
+      "blocks": {
+        "usp_item_dd8zNx": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
+          }
+        },
+        "usp_item_e3nJLx": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-1.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_WExUKh": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-2.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_9KGR88": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-4.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_dbAXpY": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-5.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_8XgpYH": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_w7whJE": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_dd8zNx",
+        "usp_item_e3nJLx",
+        "usp_item_WExUKh",
+        "usp_item_9KGR88",
+        "usp_item_dbAXpY",
+        "usp_item_8XgpYH",
+        "usp_item_w7whJE"
+      ],
+      "name": "USP Grid",
+      "settings": {
+        "heading": "Sylvox’s exclusive advantages",
+        "subtext": "Explore our core benefits below",
+        "heading_alignment": "center",
+        "show_arrows": true
+      }
+    },
     "2f70f0d4-86f7-4eb7-bf83-05295e841830": {
       "type": "logo-list",
       "blocks": {
@@ -835,86 +917,6 @@
         "heading_size": "h2",
         "heading_position": "center",
         "divider": false
-      }
-    },
-    "usp_grid_mBqiLF": {
-      "type": "usp-grid",
-      "blocks": {
-        "usp_item_dd8zNx": {
-          "type": "usp_item",
-          "settings": {
-            "icon": "shopify://shop_images/20240705203727.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
-          }
-        },
-        "usp_item_e3nJLx": {
-          "type": "usp_item",
-          "settings": {
-            "icon": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_WExUKh": {
-          "type": "usp_item",
-          "settings": {
-            "icon": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_9KGR88": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_dbAXpY": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_8XgpYH": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_w7whJE": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "usp_item_dd8zNx",
-        "usp_item_e3nJLx",
-        "usp_item_WExUKh",
-        "usp_item_9KGR88",
-        "usp_item_dbAXpY",
-        "usp_item_8XgpYH",
-        "usp_item_w7whJE"
-      ],
-      "name": "USP Grid",
-      "settings": {
-        "heading": "Sylvox’s exclusive advantages",
-        "subtext": "Explore our core benefits below",
-        "heading_alignment": "center",
-        "show_arrows": true
       }
     },
     "video_grid_FUaEwe": {
@@ -993,8 +995,8 @@
     "large_product_BDXMM6",
     "banner_Bj8UdV",
     "rich_text_cbmRYc",
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
     "usp_grid_mBqiLF",
+    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
     "video_grid_FUaEwe"
   ]
 }
