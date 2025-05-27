@@ -523,7 +523,7 @@
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
-        "mobile_text_position": "place-self-center text-center",
+        "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-end-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#ffffff",
@@ -566,7 +566,7 @@
         "feature_box_BzP3zw": {
           "type": "feature_box",
           "settings": {
-            "icon": "shopify://shop_images/2_8a69deeb-ce29-4ae0-863d-311d1f707a5f.png",
+            "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -574,6 +574,7 @@
         "feature_box_EVXEkF": {
           "type": "feature_box",
           "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -581,6 +582,7 @@
         "feature_box_9FX97w": {
           "type": "feature_box",
           "settings": {
+            "icon": "shopify://shop_images/ca314dad77247b21eb7f517308b7087576d1f2ac.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -588,6 +590,7 @@
         "feature_box_LYgamW": {
           "type": "feature_box",
           "settings": {
+            "icon": "shopify://shop_images/f59bbc268948c9e1d1174fb09be93e8ea4e2dc3b.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -653,21 +656,21 @@
         "slide_ktPLKQ": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/2_cc95da1e-82e9-479e-a50c-3729598ce6c0.png",
+            "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
             "caption": "Outdoor Dining Area"
           }
         },
         "slide_M46t3f": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/16_1.jpg",
+            "image": "shopify://shop_images/14e05d62ebe767f82f77c31d300c9d2e33bc554e.jpg",
             "caption": "Outdoor Dining Area"
           }
         },
         "slide_hbD7ck": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/3_ce632318-1afa-4804-af92-9fa0bfd88259.jpg",
+            "image": "shopify://shop_images/74a1a00cf11556c67aff97a187c512eb9a149348.png",
             "caption": "Outdoor Dining Area"
           }
         }
@@ -732,10 +735,11 @@
       "name": "Banner Overlay",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
         "image_size": "auto",
-        "mobile_text_position": "place-self-start-center text-center",
+        "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
+        "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
@@ -748,28 +752,20 @@
         "heading_3m8b3q": {
           "type": "heading",
           "settings": {
-            "title": "Rich text",
+            "title": "Inspiring well-being throughaffordable outdoor technologythat bring relaxation, joy, andconnection to everyday outdoor living.",
             "heading_size": "h2"
-          }
-        },
-        "text_fTjTPj": {
-          "type": "text",
-          "settings": {
-            "enlarge_text": true,
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         },
         "button_BEFJ9i": {
           "type": "button",
           "settings": {
             "link": "",
-            "link_text": "Button"
+            "link_text": "Learn More"
           }
         }
       },
       "block_order": [
         "heading_3m8b3q",
-        "text_fTjTPj",
         "button_BEFJ9i"
       ],
       "name": "t:labels.rich_text",
@@ -778,6 +774,88 @@
         "narrow_column": true,
         "color_scheme": "1",
         "divider": false
+      }
+    },
+    "usp_grid_mBqiLF": {
+      "type": "usp-grid",
+      "blocks": {
+        "usp_item_dd8zNx": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
+          }
+        },
+        "usp_item_e3nJLx": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-1.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_WExUKh": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-2.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_9KGR88": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-4.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_dbAXpY": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-5.png",
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_8XgpYH": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        },
+        "usp_item_w7whJE": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Authenticity Guarantee",
+            "text": "100% Genuine, Quality Assured",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_dd8zNx",
+        "usp_item_e3nJLx",
+        "usp_item_WExUKh",
+        "usp_item_9KGR88",
+        "usp_item_dbAXpY",
+        "usp_item_8XgpYH",
+        "usp_item_w7whJE"
+      ],
+      "name": "USP Grid",
+      "settings": {
+        "heading": "Sylvox’s exclusive advantages",
+        "subtext": "Explore our core benefits below",
+        "heading_alignment": "left",
+        "show_arrows": true
       }
     },
     "2f70f0d4-86f7-4eb7-bf83-05295e841830": {
@@ -835,90 +913,10 @@
         "7168f6de-09d9-4361-9322-761adfbfbc41"
       ],
       "settings": {
-        "title": "Featured On",
+        "title": "As seen on",
         "heading_size": "h2",
         "heading_position": "center",
         "divider": false
-      }
-    },
-    "usp_grid_mBqiLF": {
-      "type": "usp-grid",
-      "blocks": {
-        "usp_item_dd8zNx": {
-          "type": "usp_item",
-          "settings": {
-            "icon": "shopify://shop_images/20240705203727.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
-          }
-        },
-        "usp_item_e3nJLx": {
-          "type": "usp_item",
-          "settings": {
-            "icon": "shopify://shop_images/1_649ba431-38fd-43e6-a17c-6833a9abd30c.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_WExUKh": {
-          "type": "usp_item",
-          "settings": {
-            "icon": "shopify://shop_images/3_ea637d4f-e2b8-4ad4-bc84-cfafce2c6fbc.png",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_9KGR88": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_dbAXpY": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_8XgpYH": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        },
-        "usp_item_w7whJE": {
-          "type": "usp_item",
-          "settings": {
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "usp_item_dd8zNx",
-        "usp_item_e3nJLx",
-        "usp_item_WExUKh",
-        "usp_item_9KGR88",
-        "usp_item_dbAXpY",
-        "usp_item_8XgpYH",
-        "usp_item_w7whJE"
-      ],
-      "name": "USP Grid",
-      "settings": {
-        "heading": "Sylvox’s exclusive advantages",
-        "subtext": "Explore our core benefits below",
-        "heading_alignment": "center",
-        "show_arrows": true
       }
     },
     "video_grid_FUaEwe": {
@@ -997,8 +995,8 @@
     "large_product_BDXMM6",
     "banner_Bj8UdV",
     "rich_text_cbmRYc",
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
     "usp_grid_mBqiLF",
+    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
     "video_grid_FUaEwe"
   ]
 }
