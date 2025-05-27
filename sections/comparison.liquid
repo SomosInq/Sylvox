@@ -171,11 +171,12 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  <div class="flex justify-end gap-12 text-center mt-12 mb-12">
+  <!-- Products Display -->
+  <div class="flex flex-row justify-end gap-12 mt-12 mb-12">
     {% if section.settings.product_one != blank %}
       {% assign product_one = all_products[section.settings.product_one] %}
       {% if product_one %}
-        <div class="flex flex-col items-center max-w-xs">
+        <div class="w-[220px] text-center flex flex-col items-center">
           {% if section.settings.show_image and product_one.featured_image %}
             <img src="{{ product_one.featured_image | img_url: '300x' }}" alt="{{ product_one.title }}" class="mb-2 rounded">
           {% endif %}
@@ -192,7 +193,7 @@
     {% if section.settings.product_two != blank %}
       {% assign product_two = all_products[section.settings.product_two] %}
       {% if product_two %}
-        <div class="flex flex-col items-center max-w-xs">
+        <div class="w-[220px] text-center flex flex-col items-center">
           {% if section.settings.show_image and product_two.featured_image %}
             <img src="{{ product_two.featured_image | img_url: '300x' }}" alt="{{ product_two.title }}" class="mb-2 rounded">
           {% endif %}
@@ -207,13 +208,14 @@
     {% endif %}
   </div>
 
+  <!-- Comparison Table -->
   <div class="rounded-lg px-4 sm:px-6 py-6" style="background-color: {{ section.settings.table_background_color }};">
     {% for block in section.blocks %}
       {% if block.type == "comparison_table" %}
-        <div class="grid grid-cols-3 items-center py-5 border-b border-gray-200 last:border-0">
-          <div class="text-left flex items-center space-x-2">
+        <div class="grid grid-cols-[180px_1fr_1fr] items-center py-5 border-b border-gray-200 last:border-0">
+          <div class="flex items-center gap-2 text-left">
             {% if block.settings.label_icon %}
-              <img src="{{ block.settings.label_icon | img_url: '32x' }}" class="inline-block" />
+              <img src="{{ block.settings.label_icon | img_url: '32x' }}" alt="" class="inline-block" />
             {% endif %}
             <span class="font-medium text-sm">{{ block.settings.label }}</span>
           </div>
