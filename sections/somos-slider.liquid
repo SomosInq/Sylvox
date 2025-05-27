@@ -1,5 +1,5 @@
 {%- comment -%}
-Somos Slider: Modular Shopify Section with Extensive Customization
+Somos Slider: Modular Shopify Section with JavaScript Slider Functionality
 {%- endcomment -%}
 
 <style>
@@ -7,10 +7,17 @@ Somos Slider: Modular Shopify Section with Extensive Customization
     position: relative;
     overflow: hidden;
   }
+  .somos-slider__wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
   .somos-slide {
+    flex: 0 0 100%;
     display: grid;
     place-items: center;
     text-align: center;
+    min-height: 400px;
   }
   .somos-slider__arrows {
     position: absolute;
@@ -19,6 +26,15 @@ Somos Slider: Modular Shopify Section with Extensive Customization
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .somos-slider__arrows button {
+    pointer-events: auto;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
   }
   .somos-slider__dots {
     display: flex;
@@ -31,6 +47,7 @@ Somos Slider: Modular Shopify Section with Extensive Customization
     height: 8px;
     border-radius: 50%;
     background: #ccc;
+    border: none;
   }
   .somos-slider__dots button[aria-current="true"] {
     background: #000;
@@ -40,7 +57,7 @@ Somos Slider: Modular Shopify Section with Extensive Customization
 </style>
 
 <div class="somos-slider" style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px">
-  <div class="somos-slider__wrapper">
+  <div class="somos-slider__wrapper" id="somos-slider-wrapper-{{ section.id }}">
     {% for block in section.blocks %}
       <div class="somos-slide" id="block-{{ block.id }}" style="justify-content: {{ block.settings.vertical_align }}; text-align: {{ block.settings.horizontal_align }}; color: {{ block.settings.text_color }};">
         {% if block.settings.image %}
@@ -71,17 +88,47 @@ Somos Slider: Modular Shopify Section with Extensive Customization
 
   {% if section.settings.show_arrows %}
     <div class="somos-slider__arrows">
-      <button class="prev" aria-label="Previous">&larr;</button>
-      <button class="next" aria-label="Next">&rarr;</button>
+      <button class="prev" aria-label="Previous" onclick="moveSomosSlide('{{ section.id }}', -1)">&larr;</button>
+      <button class="next" aria-label="Next" onclick="moveSomosSlide('{{ section.id }}', 1)">&rarr;</button>
     </div>
   {% endif %}
 
-  <div class="somos-slider__dots">
+  <div class="somos-slider__dots" id="somos-slider-dots-{{ section.id }}">
     {% for block in section.blocks %}
-      <button type="button" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+      <button type="button" onclick="goToSomosSlide('{{ section.id }}', {{ forloop.index0 }})" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
     {% endfor %}
   </div>
 </div>
+
+<script>
+  window.somosSliders = window.somosSliders || {};
+  window.somosSliders['{{ section.id }}'] = {
+    currentIndex: 0,
+    total: {{ section.blocks.size }}
+  };
+
+  function moveSomosSlide(id, direction) {
+    const slider = window.somosSliders[id];
+    slider.currentIndex = (slider.currentIndex + direction + slider.total) % slider.total;
+    updateSomosSlider(id);
+  }
+
+  function goToSomosSlide(id, index) {
+    const slider = window.somosSliders[id];
+    slider.currentIndex = index;
+    updateSomosSlider(id);
+  }
+
+  function updateSomosSlider(id) {
+    const slider = window.somosSliders[id];
+    const wrapper = document.getElementById('somos-slider-wrapper-' + id);
+    const dots = document.getElementById('somos-slider-dots-' + id).querySelectorAll('button');
+    wrapper.style.transform = 'translateX(' + (-slider.currentIndex * 100) + '%)';
+    dots.forEach((dot, i) => {
+      dot.setAttribute('aria-current', i === slider.currentIndex ? 'true' : 'false');
+    });
+  }
+</script>
 
 {% schema %}
 {
