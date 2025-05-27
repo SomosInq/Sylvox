@@ -418,7 +418,7 @@
         "scenario_iKkMc9": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/fog-on-dark-waters-edge.jpg",
+            "image": "shopify://shop_images/Section_1.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -427,6 +427,7 @@
         "scenario_gjBgAR": {
           "type": "scenario",
           "settings": {
+            "image": "shopify://shop_images/Section_2.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -435,6 +436,7 @@
         "scenario_3mpzX7": {
           "type": "scenario",
           "settings": {
+            "image": "shopify://shop_images/Section_3.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -443,6 +445,7 @@
         "scenario_WfHD6f": {
           "type": "scenario",
           "settings": {
+            "image": "shopify://shop_images/Section_4.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -507,11 +510,11 @@
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/ocean-water-with-swimmers.jpg",
-        "mobile_text_position": "place-self-start-center text-center",
+        "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
+        "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-end-center sm:text-center",
         "text_color": "#ffffff",
-        "overlay_color": "#000000",
+        "overlay_color": "#ffffff",
         "overlay_opacity": 30
       }
     },
