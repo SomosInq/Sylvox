@@ -1,5 +1,5 @@
 {%- comment -%}
-Somos Slider: Unified Slide Height + Full Width Images
+Somos Slider: Dots over slides + Description Box
 {%- endcomment -%}
 
 <style>
@@ -63,10 +63,18 @@ Somos Slider: Unified Slide Height + Full Width Images
     cursor: pointer;
   }
   .somos-slider__dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(7.5px);
+    z-index: 2;
   }
   .somos-slider__dots button {
     width: 8px;
@@ -96,6 +104,9 @@ Somos Slider: Unified Slide Height + Full Width Images
             {% endif %}
             {% if block.settings.heading %}
               <div class="heading" style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.heading }}</div>
+            {% endif %}
+            {% if block.settings.description %}
+              <div class="description" style="font-size: {{ block.settings.font_size | minus: 2 }}px;">{{ block.settings.description }}</div>
             {% endif %}
             <div class="buttons">
               {% if block.settings.button_text_1 and block.settings.button_link_1 %}
@@ -184,6 +195,7 @@ Somos Slider: Unified Slide Height + Full Width Images
       "settings": [
         {"type": "text", "id": "subheading", "label": "Subheading", "default": "Tell your story"},
         {"type": "richtext", "id": "heading", "label": "Heading", "default": "<h2>Slide heading</h2>"},
+        {"type": "textarea", "id": "description", "label": "Description", "default": "This is a description box."},
         {"type": "text", "id": "button_text_1", "label": "Button 1 text"},
         {"type": "url", "id": "button_link_1", "label": "Button 1 link"},
         {"type": "text", "id": "button_text_2", "label": "Button 2 text"},
