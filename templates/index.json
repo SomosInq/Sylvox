@@ -35,35 +35,10 @@
             "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
             "image_size": 100
           }
-        },
-        "slide_pygGYg": {
-          "type": "slide",
-          "settings": {
-            "subheading": "Outdoor Entertainment, Perfected",
-            "heading": "<h1>Sylvox Pool Pro 2.0</h1>",
-            "description": "This is a description box.",
-            "button_text_1": "Learn More",
-            "button_link_1": "shopify://collections/2024-summer-sale-pool-series",
-            "button_1_bg": "#ffffff",
-            "button_1_text": "#000000",
-            "button_1_border": "#000000",
-            "button_text_2": "WATCH VIDEO",
-            "button_link_2": "shopify://products/sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
-            "button_2_bg": "#ffffff",
-            "button_2_text": "#000000",
-            "button_2_border": "#000000",
-            "horizontal_align": "left",
-            "vertical_align": "middle",
-            "text_color": "#ffffff",
-            "font_size": 24,
-            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
-            "image_size": 100
-          }
         }
       },
       "block_order": [
-        "slide_U4WUax",
-        "slide_pygGYg"
+        "slide_U4WUax"
       ],
       "name": "Somos Slider",
       "settings": {
