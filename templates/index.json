@@ -9,6 +9,58 @@
  */
 {
   "sections": {
+    "somos_slider_PRQtHJ": {
+      "type": "somos-slider",
+      "blocks": {
+        "slide_U4WUax": {
+          "type": "slide",
+          "settings": {
+            "subheading": "Tell your story",
+            "heading": "<h2>Slide heading</h2>",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "horizontal_align": "center",
+            "vertical_align": "middle",
+            "text_color": "#000000",
+            "font_size": 24,
+            "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_03_04_03.Still019.jpg",
+            "image_size": 100
+          }
+        },
+        "slide_pygGYg": {
+          "type": "slide",
+          "settings": {
+            "subheading": "Tell your story",
+            "heading": "<h2>Slide heading</h2>",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "horizontal_align": "center",
+            "vertical_align": "middle",
+            "text_color": "#000000",
+            "font_size": 24,
+            "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_03_30_19.Still025.jpg",
+            "image_size": 100
+          }
+        }
+      },
+      "block_order": [
+        "slide_U4WUax",
+        "slide_pygGYg"
+      ],
+      "name": "Somos Slider",
+      "settings": {
+        "show_arrows": true,
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0
+      }
+    },
     "tab_products_i4fR76": {
       "type": "tab-products",
       "blocks": {
@@ -524,7 +576,8 @@
         "text_alignment": "left",
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
-        "show_arrows": true
+        "show_arrows": true,
+        "slide_size": "large"
       }
     },
     "large_product_BDXMM6": {
@@ -1176,6 +1229,7 @@
     }
   },
   "order": [
+    "somos_slider_PRQtHJ",
     "tab_products_i4fR76",
     "info_section_JEKir6",
     "comparison_FUGpmd",
