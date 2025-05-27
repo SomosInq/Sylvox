@@ -1,12 +1,10 @@
 {% comment %}
-  ENHANCED VERSION – BASED ON ORIGINAL
-  Includes:
-  1. Content alignment controls (left/center/right + top/middle/bottom)
-  2. Overlay image on banner (top-right)
-  3. Filter dropdown in title area
-  4. Full width vs contained toggle
-  
-  NOTE: "Working options to also include" have been skipped as per request.
+  FULL SECTION: Original + Enhancements
+  Enhancements:
+  - Text position controls (top/middle/bottom + left/center/right)
+  - Overlay image top-right on banner
+  - Filter dropdown near title
+  - Full width toggle
 {% endcomment %}
 
 <style>
@@ -15,7 +13,6 @@
     top: 1rem;
     right: 1rem;
     width: 80px;
-    height: auto;
     z-index: 10;
   }
   .filter-options {
@@ -23,8 +20,7 @@
   }
 </style>
 
-<div class="tab-products section section-blends text-custom {% if section.settings.full_width %}section-full{% endif %}"
-     data-section-id="{{ section.id }}">
+<div class="tab-products section section-blends {% if section.settings.full_width %}section-full{% endif %} text-custom" data-section-id="{{ section.id }}">
   <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
     {% for block in section.blocks %}
       <div class="tab-product" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
@@ -40,33 +36,34 @@
 
           {% if block.settings.overlay_image %}
             <div class="banner-overlay-image">
-              <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay">
+              <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay Image">
             </div>
           {% endif %}
 
-          {% if block.settings.image %}
+          {% if block.settings.image != blank %}
             <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" width="100%" height="auto">
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
           {% endif %}
 
           <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
-               style="
-                 --tab-text-color: {{ block.settings.text_color }};
-                 --tab-content-max-width: {{ block.settings.content_max_width }}px;
-               ">
+            style="--tab-text-color: {{ block.settings.text_color }}; --tab-content-max-width: {{ block.settings.content_max_width }}px;">
+
             <div class="tab-product-content__info-title">
               <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
               {% if block.settings.inline_title != blank %}
                 <span>{{ block.settings.inline_title }}</span>
               {% endif %}
               <div class="filter-options">
-                <label>Filters:</label>
+                <label>Filter:</label>
                 <select>
                   <option>All</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
+                  <option>Popular</option>
+                  <option>New</option>
                 </select>
               </div>
             </div>
+
             <div class="tab-product-content__info-dec">
               {{ block.settings.description }}
             </div>
@@ -74,7 +71,65 @@
         </image-banner>
       </div>
 
-      <!-- Existing featured products and grid rendering remains unchanged -->
+      {% if block.settings.product != blank or block.settings.product_2 != blank %}
+        <div class="tab-products__featured">
+          {% if block.settings.product != blank %}
+            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{block.settings.featured_text_color}};">
+              <div class="tab-products__featured-info">
+                <h4>{{ block.settings.product_title }}</h4>
+                <p>From {{ block.settings.product.price | money_with_currency }}</p>
+              </div>
+              {% if block.settings.product_image %}
+                <img src="{{ block.settings.product_image | image_url }}" alt="{{ block.settings.product_title }}" width="100%" height="auto">
+              {% endif %}
+              <div class="tab-products__featured-price">
+                {% render 'button', content: "SHOP NOW", href: block.settings.product.url, size: "base", style: "outline", background: block.settings.background, text_color: block.settings.btn_text_color %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.product_2 != blank %}
+            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{block.settings.featured_text_color}};">
+              <div class="tab-products__featured-info">
+                <h4>{{ block.settings.product_title_2 }}</h4>
+                <p>From {{ block.settings.product_2.price | money_with_currency }}</p>
+              </div>
+              {% if block.settings.product_image_2 %}
+                <img src="{{ block.settings.product_image_2 | image_url }}" alt="{{ block.settings.product_title_2 }}" width="100%" height="auto">
+              {% endif %}
+              <div class="tab-products__featured-price">
+                {% render 'button', content: "SHOP NOW", href: block.settings.product_2.url, size: "base", style: "outline", background: block.settings.background, text_color: block.settings.btn_text_color %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="tabs-product__grid">
+        <div class="section-stack">
+          {% assign link_url = section.settings.link_url | default: section.settings.collection.url %}
+          {% render 'section-header-tabs', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: link_url %}
+
+          <div class="floating-controls-container">
+            {% assign scroll_area_id = 'scroll-area-' | append: section.id %}
+            <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+              <reveal-items selector=".product-list > *">
+                <product-list class="product-list">
+                  {% assign products = block.settings.collection.products %}
+                  {% for product in products limit: section.settings.products_count %}
+                    {% render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true %}
+                  {% else %}
+                    {% for i in (1..section.settings.products_count) %}
+                      {% capture placeholder_image %}product-{% cycle '1', '2', '3', '4', '5', '6' %}{% endcapture %}
+                      {% render 'product-card-placeholder', stacked: true, placeholder_image: placeholder_image, text_alignment: settings.product_info_alignment %}
+                    {% endfor %}
+                  {% endfor %}
+                </product-list>
+              </reveal-items>
+            </scroll-carousel>
+          </div>
+        </div>
+      </div>
     </div>
   {% endfor %}
 </div>
@@ -122,12 +177,23 @@
         { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
         { "type": "image_picker", "id": "image", "label": "Banner Image" },
         { "type": "image_picker", "id": "overlay_image", "label": "Overlay Image (Top Right)" },
-        { "type": "collection", "id": "collection", "label": "Collection" }
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "header", "content": "Featured product 1" },
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "product_title", "label": "Product title" },
+        { "type": "image_picker", "id": "product_image", "label": "Product image" },
+        { "type": "header", "content": "Featured product 2" },
+        { "type": "product", "id": "product_2", "label": "Product" },
+        { "type": "text", "id": "product_title_2", "label": "Product title" },
+        { "type": "image_picker", "id": "product_image_2", "label": "Product image" },
+        { "type": "color", "id": "featured_text_color", "label": "Featured text color" },
+        { "type": "color", "id": "background", "label": "Button Background" },
+        { "type": "color", "id": "btn_text_color", "label": "Button text color" }
       ]
     }
   ],
   "presets": [
-    { "name": "Tab products enhanced", "category": "Custom" }
+    { "name": "Tab Products Enhanced", "category": "Custom" }
   ]
 }
 {% endschema %}
