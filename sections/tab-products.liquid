@@ -91,6 +91,157 @@
   }
 </style>
 
+<div class="tab-products section section-blends section-full text-custom" data-section-id="{{ section.id }}">
+  <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
+    {% for block in section.blocks %}
+      <div class="tab-product {% if forloop.first %}active{% endif %}" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
+        {{ block.settings.tab_label }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% for block in section.blocks %}
+    <div class="tab-product-content {% if forloop.first %}active{% endif %}" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
+      <div class="tab-product-content__banner">
+        {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+        <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
+
+          {% if block.settings.overlay_image %}
+            <div class="overlay-image">
+              <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay">
+            </div>
+          {% endif %}
+
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: block.settings.image.width | image_tag }}
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
+          {% endif %}
+
+          <div class="tab-product-content__info place-{{ block.settings.text_align }} align-{{ block.settings.text_vertical }} {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
+               style="--tab-text-color: {{ block.settings.text_color }}; --tab-content-max-width: {{ block.settings.content_max_width }}px;">
+            <div class="tab-product-content__info-title">
+              <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
+              {% if block.settings.inline_title != blank %}<span>{{ block.settings.inline_title }}</span>{% endif %}
+              <div class="product-filter-buttons">
+                <button class="filter-btn" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="full-sun">Full Sun</button>
+                <button class="filter-btn" data-filter="partial-sun">Partial Sun</button>
+              </div>
+            </div>
+            <div class="tab-product-content__info-dec">
+              {{ block.settings.description }}
+            </div>
+          </div>
+        </image-banner>
+      </div>
+
+      {% if block.settings.product or block.settings.product_2 %}
+        <div class="tab-products__featured">
+          {% if block.settings.product %}
+            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{ block.settings.featured_text_color }};">
+              <div class="tab-products__featured-info">
+                <h4>{{ block.settings.product_title }}</h4>
+                <p>From {{ block.settings.product.price | money_with_currency }}</p>
+              </div>
+              {% if block.settings.product_image %}
+                <img src="{{ block.settings.product_image | image_url }}" alt="{{ block.settings.product_title }}">
+              {% endif %}
+              <div class="tab-products__featured-price">
+                {% render 'button', content: "SHOP NOW", href: block.settings.product.url, size: "base", style: "outline", background: block.settings.background, text_color: block.settings.btn_text_color %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.product_2 %}
+            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{ block.settings.featured_text_color }};">
+              <div class="tab-products__featured-info">
+                <h4>{{ block.settings.product_title_2 }}</h4>
+                <p>From {{ block.settings.product_2.price | money_with_currency }}</p>
+              </div>
+              {% if block.settings.product_image_2 %}
+                <img src="{{ block.settings.product_image_2 | image_url }}" alt="{{ block.settings.product_title_2 }}">
+              {% endif %}
+              <div class="tab-products__featured-price">
+                {% render 'button', content: "SHOP NOW", href: block.settings.product_2.url, size: "base", style: "outline", background: block.settings.background, text_color: block.settings.btn_text_color %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="tabs-product__grid">
+        <div class="section-stack">
+          {% assign link_url = section.settings.link_url | default: section.settings.collection.url %}
+          {% render 'section-header-tabs', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: link_url %}
+
+          <div class="floating-controls-container">
+            {% assign scroll_area_id = 'scroll-area-' | append: section.id %}
+            <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+              <reveal-items selector=".product-list > *">
+                <product-list class="product-list">
+                  {% assign products = block.settings.collection.products %}
+                  {% for product in products limit: section.settings.products_count %}
+                    {% render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true %}
+                  {% else %}
+                    {% for i in (1..section.settings.products_count) %}
+                      {% capture placeholder_image %}product-{% cycle '1', '2', '3', '4', '5', '6' %}{% endcapture %}
+                      {% render 'product-card-placeholder', stacked: true, placeholder_image: placeholder_image, text_alignment: settings.product_info_alignment %}
+                    {% endfor %}
+                  {% endfor %}
+                </product-list>
+              </reveal-items>
+            </scroll-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  function initializeTabbedSection(sectionId) {
+    const section = document.querySelector(`[data-section-id='${sectionId}']`);
+    if (!section) return;
+
+    const tabs = section.querySelectorAll('.tab-product');
+    const contents = section.querySelectorAll('.tab-product-content');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', function () {
+        const tabId = tab.getAttribute('data-tab-id');
+
+        tabs.forEach((t) => t.classList.remove('active'));
+        contents.forEach((c) => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        section.querySelector(`#tab-product-content-${sectionId}-${tabId}`).classList.add('active');
+      });
+    });
+
+    if (tabs.length > 0) {
+      tabs[0].classList.add('active');
+      contents[0].classList.add('active');
+    }
+  }
+
+  function initializeAllTabbedSections() {
+    document.querySelectorAll('.tab-products').forEach((section) => {
+      initializeTabbedSection(section.getAttribute('data-section-id'));
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initializeAllTabbedSections);
+
+  document.addEventListener('shopify:section:load', function (event) {
+    const section = event.target.querySelector('.tab-products');
+    if (section) {
+      const sectionId = section.getAttribute('data-section-id');
+      initializeTabbedSection(sectionId);
+    }
+  });
+</script>
+
 {% schema %}
 {
   "name": "Tab Products",
