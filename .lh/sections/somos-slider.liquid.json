@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1748358488114,
@@ -16,6 +16,14 @@
                 {
                     "date": 1748359790524,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {%- comment -%}\n-Somos Slider: Unified Slide Height + Full Width Images\n+Somos Slider: Dots over slides + Description Box\n {%- endcomment -%}\n \n <style>\n   .somos-slider {\n@@ -62,12 +62,20 @@\n     padding: 10px;\n     cursor: pointer;\n   }\n   .somos-slider__dots {\n+    position: absolute;\n+    bottom: 10px;\n+    left: 50%;\n+    transform: translateX(-50%);\n     display: flex;\n     justify-content: center;\n     gap: 10px;\n-    margin-top: 20px;\n+    padding: 10px 20px;\n+    border-radius: 30px;\n+    background: rgba(0, 0, 0, 0.10);\n+    backdrop-filter: blur(7.5px);\n+    z-index: 2;\n   }\n   .somos-slider__dots button {\n     width: 8px;\n     height: 8px;\n@@ -96,8 +104,11 @@\n             {% endif %}\n             {% if block.settings.heading %}\n               <div class=\"heading\" style=\"font-size: {{ block.settings.font_size }}px;\">{{ block.settings.heading }}</div>\n             {% endif %}\n+            {% if block.settings.description %}\n+              <div class=\"description\" style=\"font-size: {{ block.settings.font_size | minus: 2 }}px;\">{{ block.settings.description }}</div>\n+            {% endif %}\n             <div class=\"buttons\">\n               {% if block.settings.button_text_1 and block.settings.button_link_1 %}\n                 <a href=\"{{ block.settings.button_link_1 }}\" class=\"button\">{{ block.settings.button_text_1 }}</a>\n               {% endif %}\n@@ -183,8 +194,9 @@\n       \"name\": \"Slide\",\n       \"settings\": [\n         {\"type\": \"text\", \"id\": \"subheading\", \"label\": \"Subheading\", \"default\": \"Tell your story\"},\n         {\"type\": \"richtext\", \"id\": \"heading\", \"label\": \"Heading\", \"default\": \"<h2>Slide heading</h2>\"},\n+        {\"type\": \"textarea\", \"id\": \"description\", \"label\": \"Description\", \"default\": \"This is a description box.\"},\n         {\"type\": \"text\", \"id\": \"button_text_1\", \"label\": \"Button 1 text\"},\n         {\"type\": \"url\", \"id\": \"button_link_1\", \"label\": \"Button 1 link\"},\n         {\"type\": \"text\", \"id\": \"button_text_2\", \"label\": \"Button 2 text\"},\n         {\"type\": \"url\", \"id\": \"button_link_2\", \"label\": \"Button 2 link\"},\n"
+                },
+                {
+                    "date": 1748359933365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,8 +60,10 @@\n     color: #fff;\n     border: none;\n     padding: 10px;\n     cursor: pointer;\n+        border-radius: 80%;\n+    width: 45px;\n   }\n   .somos-slider__dots {\n     position: absolute;\n     bottom: 10px;\n"
+                },
+                {
+                    "date": 1748359972727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n     background: #ccc;\n     border: none;\n   }\n   .somos-slider__dots button[aria-current=\"true\"] {\n-    background: #000;\n+    background: #DB4B97;\n     width: 24px;\n     border-radius: 20px;\n   }\n </style>\n"
                 }
             ],
             "date": 1748358488114,
