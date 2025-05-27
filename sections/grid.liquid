@@ -227,18 +227,15 @@
         {% endstyle %}
         <div class="grid__item grid__item--{{ block.settings.image_width }}" id="grid-item-{{ block.id }}">
         {% if block.settings.image != blank %}
-          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="{% if block.settings.mobile_image != blank %}hidden sm:block{% endif %}" loading="lazy">
-        {% if block.settings.mobile_image != blank %}
-          <img class="block sm:hidden" src="{{ block.settings.mobile_image | image_url }}" alt="{{ block.settings.title }}">
-        {% endif %}
-        {% else %}
-        {% if block.settings.show_placeholder %}
-          {{ 'image' | placeholder_svg_tag: 'placeholder-class' }}
-        {% endif %}
-        {% else %}
-            <div class="block_settings_mobile_image"></div>
-        {% endif %}
-        {% endif %}
+  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="{% if block.settings.mobile_image != blank %}hidden sm:block{% endif %}" loading="lazy">
+  {% if block.settings.mobile_image != blank %}
+    <img class="block sm:hidden" src="{{ block.settings.mobile_image | image_url }}" alt="{{ block.settings.title }}">
+  {% endif %}
+{% elsif block.settings.show_placeholder %}
+  {{ 'image' | placeholder_svg_tag: 'placeholder-class' }}
+{% else %}
+  <div class="block_settings_mobile_image"></div>
+{% endif %}
 
           
           <div class="grid__item-content {% if section.settings.content_overlap %}grid__item-content--overlap {{section.settings.mobile_text_position}} {{section.settings.desktop_text_position}}{% endif %}">
