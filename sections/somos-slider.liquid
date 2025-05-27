@@ -1,5 +1,5 @@
 {%- comment -%}
-Somos Slider: Full Section with Working Slider & Text Overlay
+Somos Slider: Full Section with Height Control
 {%- endcomment -%}
 
 <style>
@@ -14,7 +14,6 @@ Somos Slider: Full Section with Working Slider & Text Overlay
   }
   .somos-slide {
     flex: 0 0 100%;
-    min-height: 400px;
   }
   .somos-slide__media-wrapper {
     position: relative;
@@ -84,7 +83,7 @@ Somos Slider: Full Section with Working Slider & Text Overlay
 <div class="somos-slider" style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px">
   <div class="somos-slider__wrapper" id="somos-slider-wrapper-{{ section.id }}">
     {% for block in section.blocks %}
-      <div class="somos-slide" id="block-{{ block.id }}">
+      <div class="somos-slide" id="block-{{ block.id }}" style="height: {{ block.settings.slide_height }}px">
         <div class="somos-slide__media-wrapper">
           {% if block.settings.image %}
             <img src="{{ block.settings.image | image_url }}" style="width: 100%;" alt="Slide Image">
@@ -199,7 +198,8 @@ Somos Slider: Full Section with Working Slider & Text Overlay
         {"type": "color", "id": "text_color", "label": "Text color", "default": "#000000"},
         {"type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px"},
         {"type": "image_picker", "id": "image", "label": "Image"},
-        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"}
+        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"},
+        {"type": "range", "id": "slide_height", "label": "Slide height", "min": 200, "max": 1000, "step": 50, "default": 500, "unit": "px"}
       ]
     }
   ]
