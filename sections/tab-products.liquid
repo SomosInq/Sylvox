@@ -31,444 +31,94 @@
     }
   }
 
+  .tab-product-content__info {
+    display: grid;
+    place-items: var(--vertical-align, center) var(--horizontal-align, center);
+    text-align: var(--text-align, center);
+  }
+
+  .tab-product-content__info.place-left {
+    --horizontal-align: start;
+    --text-align: left;
+  }
+
+  .tab-product-content__info.place-center {
+    --horizontal-align: center;
+    --text-align: center;
+  }
+
+  .tab-product-content__info.place-right {
+    --horizontal-align: end;
+    --text-align: right;
+  }
+
+  .tab-product-content__info.align-top {
+    --vertical-align: start;
+  }
+
+  .tab-product-content__info.align-middle {
+    --vertical-align: center;
+  }
+
+  .tab-product-content__info.align-bottom {
+    --vertical-align: end;
+  }
+
+  .product-filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .filter-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border-radius: 0.375rem;
+  }
+
+  .full-width-section {
+    width: 100vw;
+    margin-left: calc(-1 * var(--container-padding, 20px));
+    margin-right: calc(-1 * var(--container-padding, 20px));
+  }
+
+  .contained-section {
+    max-width: var(--container-inner-width, 1280px);
+    margin: 0 auto;
+  }
 </style>
 
-<div class="tab-products section   section-blends section-full text-custom" data-section-id="{{ section.id }}">
-  <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
-    {% for block in section.blocks %}
-      <div class="tab-product" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
-        {{ block.settings.tab_label }}
-      </div>
-    {% endfor %}
+<!-- Inside the image-banner section of your template, insert this directly -->
+{% if block.settings.overlay_image %}
+  <div style="position:absolute; top:0.5rem; right:0.5rem; z-index:2;">
+    <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay" style="max-width:100px;">
   </div>
+{% endif %}
 
-  {% for block in section.blocks %}
-    <div class="tab-product-content" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
-      <div class="tab-product-content__banner">
-        {% comment %} {% if block.settings.image %}
-          <img
-            src="{{ block.settings.image | image_url }}"
-            alt="{{ block.settings.title }}"
-            width="100%"
-            height="auto"
-          >
-        {% endif %} {% endcomment %}
-    {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
-      <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
-        {%- if block.settings.image != blank -%}
-          {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
-          {%- capture fetch_priority -%}{% if section.index == 1 %}high{% else %}low{% endif %}{%- endcapture -%}
-    
-          <picture>
-            {%- if section.settings.mobile_image != blank -%}
-              <source
-                media="(max-width: 699px)"
-                srcset="{{ block.settings.mobile_image | image_url: width: 400 }} 400w, {{ block.settings.mobile_image | image_url: width: 600 }} 600w, {{ blcok.settings.mobile_image | image_url: width: 800 }} 800w, {{ section.settings.mobile_image | image_url: width: 1000 }} 1000w, {{ block.settings.mobile_image | image_url: width: 1200 }} 1200w"
-                width="{{ block.settings.mobile_image.width }}"
-                height="{{ block.settings.mobile_image.height }}"
-              >
-            {%- endif -%}
-    
-            {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: sizes: sizes, fetchpriority: fetch_priority, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
-          </picture>
-        {%- else -%}
-          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
-        {%- endif -%}
-
-        <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
-          style="
-          --tab-text-color: {{ block.settings.text_color }};
-          --tab-content-max-width: {{ block.settings.content_max_width }}px;
-          "
-        >
-          <div class="tab-product-content__info-title">
-          <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
-          {% if block.settings.inline_title != blank %}
-          <span>{{ block.settings.inline_title }}</span>
-          {% endif %}
-          </div>
-          <div class="tab-product-content__info-dec">
-            {{ block.settings.description }}
-          </div>
-
-      </div>
-      </image-banner>
-
-
-      </div>
-      {% if block.settings.product != blank or block.settings.product_2 != blank %}
-        <div class="tab-products__featured">
-          {% if block.settings.product != blank %}
-            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{block.settings.featured_text_color}};">
-                <div class="tab-products__featured-info">
-                    <h4>{{ block.settings.product_title }}</h4>
-                    <p>From {{ block.settings.product.price | money_with_currency }}</p>
-                    {% comment %} <p>{{ block.settings.product_description }}</p> {% endcomment %}
-              </div>
-              
-              {% if block.settings.product_image %}
-                <img
-                  src="{{ block.settings.product_image | image_url }}"
-                  alt="{{ block.settings.product_title }}"
-                  width="100%"
-                  height="auto"
-                >
-              {% endif %}
-              <div class="tab-products__featured-price">
-                {% comment %} <p>From {{ block.settings.product.price }}</p> {% endcomment %}
-                {% comment %} <a href="{{ block.settings.product.url }}" class="btn">Shop now</a> {% endcomment %}
-                {% render 'button',
-                content: "SHOP NOW",
-                href: block.settings.product.url,
-                size: "base",
-                style: "outline",
-                background: block.settings.background,
-                text_color: block.settings.btn_text_color
-              %}
-              </div>
-            </div>
-          {% endif %}
-          {% if block.settings.product_2 != blank %}
-            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{block.settings.featured_text_color}};">
-                <div class="tab-products__featured-info">
-              <h4>{{ block.settings.product_title_2 }}</h4>
-              <p>From {{ block.settings.product_2.price | money_with_currency }}</p>
-              </div>
-              {% if block.settings.product_image_2 %}
-                <img
-                  src="{{ block.settings.product_image_2 | image_url }}"
-                  alt="{{ block.settings.product_title_2 }}"
-                  width="100%"
-                  height="auto"
-                >
-              {% endif %}
-              <div class="tab-products__featured-price">
-                {% comment %} <a href="{{ block.settings.product_2.url }}" class="btn">Shop now</a> {% endcomment %}
-
-                {% render 'button',
-                content: "SHOP NOW",
-                href: block.settings.product_2.url,
-                size: "base",
-                style: "outline",
-                background: block.settings.background,
-                text_color: block.settings.btn_text_color
-              %}
-              </div>
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-
-      <div class="tabs-product__grid">
-        <div class="section-stack">
-          {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
-          {%- render 'section-header-tabs',
-            subheading: section.settings.subheading,
-            heading: section.settings.title,
-            heading_color: section.settings.heading_color,
-            heading_gradient: section.settings.heading_gradient,
-            content: section.settings.content,
-            link_text: section.settings.link_text,
-            link_url: link_url
-          -%}
-
-          <div class="floating-controls-container">
-            {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
-            <scroll-carousel
-              selector="product-card"
-              id="{{ scroll_area_id }}"
-              class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}"
-            >
-              <reveal-items selector=".product-list > *">
-                <product-list class="product-list">
-                  {%- assign products = block.settings.collection.products -%}
-
-                  {%- for product in products limit: section.settings.products_count -%}
-                    {%- render 'product-card',
-                      product: product,
-                      stacked: true,
-                      position: forloop.index,
-                      show_badges: true
-                    -%}
-                  {%- else -%}
-                    {%- for i in (1..section.settings.products_count) -%}
-                      {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
-                      {%- render 'product-card-placeholder',
-                        stacked: true,
-                        placeholder_image: placeholder_image,
-                        text_alignment: settings.product_info_alignment
-                      -%}
-                    {%- endfor -%}
-                  {%- endfor -%}
-                </product-list>
-              </reveal-items>
-            </scroll-carousel>
-          </div>
-        </div>
-      </div>
+<!-- Inside tab-product-content__info -->
+<div class="tab-product-content__info place-{{ block.settings.text_align }} align-{{ block.settings.text_vertical }}"
+     style="--tab-text-color: {{ block.settings.text_color }}; --tab-content-max-width: {{ block.settings.content_max_width }}px;">
+  <div class="tab-product-content__info-title">
+    <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
+    {% if block.settings.inline_title != blank %}
+      <span>{{ block.settings.inline_title }}</span>
+    {% endif %}
+    <div class="product-filter-buttons">
+      <button class="filter-btn" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="full-sun">Full Sun</button>
+      <button class="filter-btn" data-filter="partial-sun">Partial Sun</button>
     </div>
-  {% endfor %}
+  </div>
+  <div class="tab-product-content__info-dec">
+    {{ block.settings.description }}
+  </div>
 </div>
-
-<script>
-  function initializeTabbedSection(sectionId) {
-    const section = document.querySelector(`[data-section-id='${sectionId}']`);
-    if (!section) return;
-
-    const tabs = section.querySelectorAll('.tab-product');
-    const contents = section.querySelectorAll('.tab-product-content');
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', function () {
-        const tabId = tab.getAttribute('data-tab-id');
-
-        tabs.forEach((t) => t.classList.remove('active'));
-        contents.forEach((c) => c.classList.remove('active'));
-
-        tab.classList.add('active');
-        section.querySelector(`#tab-product-content-${sectionId}-${tabId}`).classList.add('active');
-      });
-    });
-
-    // Set the first tab as active by default
-    if (tabs.length > 0) {
-      tabs[0].classList.add('active');
-      contents[0].classList.add('active');
-    }
-  }
-
-  function initializeAllTabbedSections() {
-    document.querySelectorAll('.tab-products').forEach((section) => {
-      initializeTabbedSection(section.getAttribute('data-section-id'));
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', initializeAllTabbedSections);
-
-  // Fix for Shopify Customizer
-  document.addEventListener('shopify:section:load', function (event) {
-    const section = event.target.querySelector('.tab-products');
-    if (section) {
-      const sectionId = section.getAttribute('data-section-id');
-      initializeTabbedSection(sectionId);
-    }
-  });
-</script>
-
 
 {% schema %}
 {
-  "name": "Tab Products",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "stack_products",
-      "label": "Stack products",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "products_count",
-      "min": 2,
-      "max": 10,
-      "step": 1,
-      "label": "Products to show",
-      "default": 6
-    },
-    {
-      "type": "select",
-      "id": "products_per_row_mobile",
-      "label": "Products per row (mobile)",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        }
-      ],
-      "default": "2"
-    },
-    {
-      "type": "range",
-      "id": "products_per_row_desktop",
-      "min": 2,
-      "max": 5,
-      "label": "Products per row (desktop)",
-      "default": 4,
-      "step": 1
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subheading"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Featured collection"
-    },
-    {
-      "type": "richtext",
-      "id": "content",
-      "label": "Content"
-    },
-    {
-      "type": "url",
-      "id": "link_url",
-      "label": "Link URL",
-      "info": "Default to collection URL."
-    },
-    {
-      "type": "text",
-      "id": "link_text",
-      "label": "Link text",
-      "default": "View all"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_parallax",
-      "label": "Enable parallax effect",
-      "info": "Parallax crops images.",
-      "default": false
-    },
-    {
-      "type": "select",
-      "id": "image_size",
-      "label": "Image size",
-      "options": [
-        {
-          "value": "auto",
-          "label": "Original image ratio"
-        },
-        {
-          "value": "sm",
-          "label": "Small"
-        },
-        {
-          "value": "md",
-          "label": "Medium"
-        },
-        {
-          "value": "lg",
-          "label": "Large"
-        },
-        {
-          "value": "fill",
-          "label": "Fill screen"
-        }
-      ],
-      "info": "Choose \"Original image ratio\" to avoid image cropping. [Learn more](https://help.shopify.com/en/manual/online-store/images/theme-images#best-practices-for-slideshows-and-full-widtw-images)",
-      "default": "auto"
-    },
-    {
-      "type": "select",
-      "id": "mobile_text_position",
-      "label": "Mobile content position",
-      "options": [
-        {
-          "value": "place-self-start text-start",
-          "label": "Top left"
-        },
-        {
-          "value": "place-self-start-center text-center",
-          "label": "Top center"
-        },
-        {
-          "value": "place-self-start-end text-end",
-          "label": "Top right"
-        },
-        {
-          "value": "place-self-center-start text-start",
-          "label": "Middle left"
-        },
-        {
-          "value": "place-self-center text-center",
-          "label": "Middle center"
-        },
-        {
-          "value": "place-self-center-end text-end",
-          "label": "Middle right"
-        },
-        {
-          "value": "place-self-end-start text-start",
-          "label": "Bottom left"
-        },
-        {
-          "value": "place-self-end-center text-center",
-          "label": "Bottom center"
-        },
-        {
-          "value": "place-self-end text-end",
-          "label": "Bottom right"
-        }
-      ],
-      "default": "place-self-center text-center"
-    },
-    {
-      "type": "select",
-      "id": "desktop_text_position",
-      "label": "Desktop content position",
-      "options": [
-        {
-          "value": "sm:place-self-start sm:text-start",
-          "label": "Top left"
-        },
-        {
-          "value": "sm:place-self-start-center sm:text-center",
-          "label": "Top center"
-        },
-        {
-          "value": "sm:place-self-start-end sm:text-end",
-          "label": "Top right"
-        },
-        {
-          "value": "sm:place-self-center-start sm:text-start",
-          "label": "Middle left"
-        },
-        {
-          "value": "sm:place-self-center sm:text-center",
-          "label": "Middle center"
-        },
-        {
-          "value": "sm:place-self-center-end sm:text-end",
-          "label": "Middle right"
-        },
-        {
-          "value": "sm:place-self-end-start sm:text-start",
-          "label": "Bottom left"
-        },
-        {
-          "value": "sm:place-self-end-center sm:text-center",
-          "label": "Bottom center"
-        },
-        {
-          "value": "sm:place-self-end sm:text-end",
-          "label": "Bottom right"
-        }
-      ],
-      "default": "sm:place-self-center sm:text-center"
-    },
-    {
-      "type": "range",
-      "id": "tabs_position",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "Tab vertical position",
-      "default": 30
-    }
-  ],
   "blocks": [
     {
       "type": "tab",
@@ -489,14 +139,8 @@
           "id": "heading_tag",
           "label": "Heading size",
           "options": [
-            {
-              "value": "h2",
-              "label": "Large"
-            },
-            {
-              "value": "h3",
-              "label": "Medium"
-            }
+            { "value": "h2", "label": "Large" },
+            { "value": "h3", "label": "Medium" }
           ],
           "default": "h2"
         },
@@ -528,93 +172,33 @@
           "default": "#000000"
         },
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Banner Image"
+          "type": "select",
+          "id": "text_align",
+          "label": "Horizontal alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
         },
         {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection"
-        },
-        {
-          "type": "header",
-          "content": "Featured product 1"
-        },
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        },
-        {
-          "type": "text",
-          "id": "product_title",
-          "label": "Product title",
-          "default": "New Nano AI"
-        },
-        {
-          "type": "text",
-          "id": "product_description",
-          "label": "Product description",
-          "default": "<p>The new Nano AI is the most powerful device we've ever created.</p>"
+          "type": "select",
+          "id": "text_vertical",
+          "label": "Vertical alignment",
+          "options": [
+            { "value": "top", "label": "Top" },
+            { "value": "middle", "label": "Middle" },
+            { "value": "bottom", "label": "Bottom" }
+          ],
+          "default": "middle"
         },
         {
           "type": "image_picker",
-          "id": "product_image",
-          "label": "Product image"
-        },
-        {
-          "type": "header",
-          "content": "Featured product 2"
-        },
-        {
-          "type": "product",
-          "id": "product_2",
-          "label": "Product"
-        },
-        {
-          "type": "text",
-          "id": "product_title_2",
-          "label": "Product title",
-          "default": "New Nano AI"
-        },
-        {
-          "type": "text",
-          "id": "product_description_2",
-          "label": "Product description",
-          "default": "The new Nano AI is the most powerful device we've ever created."
-        },
-        {
-          "type": "image_picker",
-          "id": "product_image_2",
-          "label": "Product image"
-        },
-        {
-          "type": "header",
-          "content": "Styling"
-        },
-        {
-        "type": "color",
-        "id": "featured_text_color",
-        "label": "Featured text color"
-      },
-        {
-        "type": "color",
-        "id": "background",
-        "label": "Button Background"
-      },
-      {
-        "type": "color",
-        "id": "btn_text_color",
-        "label": "Button text color"
-      }
+          "id": "overlay_image",
+          "label": "Top Right Overlay Image"
+        }
       ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Tab products",
-      "category": "Somos Custom"
     }
   ]
 }
