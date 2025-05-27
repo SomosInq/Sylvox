@@ -4,104 +4,29 @@
   "tag": "section",
   "class": "comparison-table",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Partial Sun Area VS. Full Sun Area"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description"
-    },
-    {
-      "type": "color",
-      "id": "font_color",
-      "label": "Font Color"
-    },
-    {
-      "type": "select",
-      "id": "font_size",
-      "label": "Font Size",
-      "options": [
-        { "value": "text-sm", "label": "Small" },
-        { "value": "text-base", "label": "Base" },
-        { "value": "text-lg", "label": "Large" },
-        { "value": "text-xl", "label": "Extra Large" }
-      ],
-      "default": "text-base"
-    },
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "Text Alignment",
-      "options": [
-        { "value": "text-left", "label": "Left" },
-        { "value": "text-center", "label": "Center" },
-        { "value": "text-right", "label": "Right" }
-      ],
-      "default": "text-center"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Section Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Section Background Image"
-    },
-    {
-      "type": "color",
-      "id": "table_background_color",
-      "label": "Table Background Color",
-      "default": "#f6f6f6"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top",
-      "min": 0,
-      "max": 100,
-      "default": 40,
-      "step": 4,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom",
-      "min": 0,
-      "max": 100,
-      "default": 40,
-      "step": 4,
-      "unit": "px"
-    },
-    {
-      "type": "product",
-      "id": "product_one",
-      "label": "Left Product"
-    },
-    {
-      "type": "product",
-      "id": "product_two",
-      "label": "Right Product"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_title",
-      "label": "Show Product Title",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_image",
-      "label": "Show Product Image",
-      "default": true
-    }
+    { "type": "text", "id": "title", "label": "Title", "default": "Partial Sun Area VS. Full Sun Area" },
+    { "type": "textarea", "id": "description", "label": "Description" },
+    { "type": "color", "id": "font_color", "label": "Font Color" },
+    { "type": "select", "id": "font_size", "label": "Font Size", "options": [
+      { "value": "text-sm", "label": "Small" },
+      { "value": "text-base", "label": "Base" },
+      { "value": "text-lg", "label": "Large" },
+      { "value": "text-xl", "label": "Extra Large" }
+    ], "default": "text-base" },
+    { "type": "select", "id": "text_alignment", "label": "Text Alignment", "options": [
+      { "value": "text-left", "label": "Left" },
+      { "value": "text-center", "label": "Center" },
+      { "value": "text-right", "label": "Right" }
+    ], "default": "text-center" },
+    { "type": "color", "id": "background_color", "label": "Section Background Color", "default": "#ffffff" },
+    { "type": "image_picker", "id": "background_image", "label": "Section Background Image" },
+    { "type": "color", "id": "table_background_color", "label": "Table Background Color", "default": "#f6f6f6" },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 40, "step": 4, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 40, "step": 4, "unit": "px" },
+    { "type": "product", "id": "product_one", "label": "Left Product" },
+    { "type": "product", "id": "product_two", "label": "Right Product" },
+    { "type": "checkbox", "id": "show_title", "label": "Show Product Title", "default": true },
+    { "type": "checkbox", "id": "show_image", "label": "Show Product Image", "default": true }
   ],
   "blocks": [
     {
@@ -109,44 +34,17 @@
       "name": "Comparison Table Row",
       "limit": 20,
       "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Row Label"
-        },
-        {
-          "type": "image_picker",
-          "id": "label_icon",
-          "label": "Label Icon"
-        },
-        {
-          "type": "text",
-          "id": "left_text",
-          "label": "Left Value"
-        },
-        {
-          "type": "image_picker",
-          "id": "left_icon",
-          "label": "Left Icon"
-        },
-        {
-          "type": "text",
-          "id": "right_text",
-          "label": "Right Value"
-        },
-        {
-          "type": "image_picker",
-          "id": "right_icon",
-          "label": "Right Icon"
-        }
+        { "type": "text", "id": "label", "label": "Row Label" },
+        { "type": "image_picker", "id": "label_icon", "label": "Label Icon" },
+        { "type": "text", "id": "left_text", "label": "Left Value" },
+        { "type": "image_picker", "id": "left_icon", "label": "Left Icon" },
+        { "type": "text", "id": "right_text", "label": "Right Value" },
+        { "type": "image_picker", "id": "right_icon", "label": "Right Icon" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Comparison Table",
-      "category": "Somos Custom"
-    }
+    { "name": "Comparison Table", "category": "Somos Custom" }
   ]
 }
 {% endschema %}
@@ -171,68 +69,51 @@
     <p class="{{ section.settings.font_size }} {{ section.settings.text_alignment }}" style="color: {{ section.settings.font_color }}">{{ section.settings.description }}</p>
   {% endif %}
 
-  <!-- Products Display -->
-  <div class="flex flex-row justify-end gap-12 mt-12 mb-12">
-    {% if section.settings.product_one != blank %}
-      {% assign product_one = all_products[section.settings.product_one] %}
-      {% if product_one %}
-        <div class="w-[220px] text-center flex flex-col items-center">
-          {% if section.settings.show_image and product_one.featured_image %}
-            <img src="{{ product_one.featured_image | img_url: '300x' }}" alt="{{ product_one.title }}" class="mb-2 rounded">
-          {% endif %}
-          {% if section.settings.show_title %}
-            <h3 class="text-sm font-medium mb-2">{{ product_one.title }}</h3>
-          {% endif %}
-          <a href="{{ product_one.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">
-            Learn More
-          </a>
-        </div>
-      {% endif %}
+  <!-- Products Side-by-Side -->
+  <div class="grid grid-cols-2 gap-12 justify-end mt-12 mb-12">
+    {% assign product_one = all_products[section.settings.product_one] %}
+    {% assign product_two = all_products[section.settings.product_two] %}
+
+    {% if product_one %}
+      <div class="max-w-[240px] text-center flex flex-col items-center">
+        {% if section.settings.show_image and product_one.featured_image %}
+          <img src="{{ product_one.featured_image | img_url: '300x' }}" alt="{{ product_one.title }}" class="mb-2 rounded">
+        {% endif %}
+        {% if section.settings.show_title %}<h3 class="text-sm font-medium mb-2">{{ product_one.title }}</h3>{% endif %}
+        <a href="{{ product_one.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">Learn More</a>
+      </div>
     {% endif %}
 
-    {% if section.settings.product_two != blank %}
-      {% assign product_two = all_products[section.settings.product_two] %}
-      {% if product_two %}
-        <div class="w-[220px] text-center flex flex-col items-center">
-          {% if section.settings.show_image and product_two.featured_image %}
-            <img src="{{ product_two.featured_image | img_url: '300x' }}" alt="{{ product_two.title }}" class="mb-2 rounded">
-          {% endif %}
-          {% if section.settings.show_title %}
-            <h3 class="text-sm font-medium mb-2">{{ product_two.title }}</h3>
-          {% endif %}
-          <a href="{{ product_two.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">
-            Learn More
-          </a>
-        </div>
-      {% endif %}
+    {% if product_two %}
+      <div class="max-w-[240px] text-center flex flex-col items-center">
+        {% if section.settings.show_image and product_two.featured_image %}
+          <img src="{{ product_two.featured_image | img_url: '300x' }}" alt="{{ product_two.title }}" class="mb-2 rounded">
+        {% endif %}
+        {% if section.settings.show_title %}<h3 class="text-sm font-medium mb-2">{{ product_two.title }}</h3>{% endif %}
+        <a href="{{ product_two.url }}" class="mt-1 inline-block px-5 py-2 bg-[#20413B] text-white rounded-full hover:opacity-90 transition">Learn More</a>
+      </div>
     {% endif %}
   </div>
 
   <!-- Comparison Table -->
-  <div class="rounded-lg px-4 sm:px-6 py-6" style="background-color: {{ section.settings.table_background_color }};">
-    {% for block in section.blocks %}
-      {% if block.type == "comparison_table" %}
-        <div class="grid grid-cols-[180px_1fr_1fr] items-center py-5 border-b border-gray-200 last:border-0">
-          <div class="flex items-center gap-2 text-left">
-            {% if block.settings.label_icon %}
-              <img src="{{ block.settings.label_icon | img_url: '32x' }}" alt="" class="inline-block" />
-            {% endif %}
-            <span class="font-medium text-sm">{{ block.settings.label }}</span>
+  <div class="w-full mt-10" style="background-color: {{ section.settings.table_background_color }};">
+    <div class="grid grid-cols-3 text-sm text-center font-normal">
+      {% for block in section.blocks %}
+        {% if block.type == "comparison_table" %}
+          <div class="border-b border-gray-200 py-5 flex items-center justify-start px-4 text-left">
+            {% if block.settings.label_icon %}<img src="{{ block.settings.label_icon | img_url: '32x' }}" alt="" class="mr-2" />{% endif %}
+            <span>{{ block.settings.label }}</span>
           </div>
-          <div class="text-center text-sm">
-            {% if block.settings.left_icon %}
-              <img src="{{ block.settings.left_icon | img_url: '32x' }}" class="mx-auto mb-1" />
-            {% endif %}
+          <div class="border-b border-gray-200 py-5 px-4">
+            {% if block.settings.left_icon %}<img src="{{ block.settings.left_icon | img_url: '32x' }}" class="mx-auto mb-1" />{% endif %}
             <p>{{ block.settings.left_text }}</p>
           </div>
-          <div class="text-center text-sm">
-            {% if block.settings.right_icon %}
-              <img src="{{ block.settings.right_icon | img_url: '32x' }}" class="mx-auto mb-1" />
-            {% endif %}
+          <div class="border-b border-gray-200 py-5 px-4">
+            {% if block.settings.right_icon %}<img src="{{ block.settings.right_icon | img_url: '32x' }}" class="mx-auto mb-1" />{% endif %}
             <p>{{ block.settings.right_text }}</p>
           </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>
