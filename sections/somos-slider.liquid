@@ -1,5 +1,5 @@
 {%- comment -%}
-Somos Slider: Dots over slides + Description Box
+Somos Slider: Button Color Controls + Border Radius
 {%- endcomment -%}
 
 <style>
@@ -61,8 +61,6 @@ Somos Slider: Dots over slides + Description Box
     border: none;
     padding: 10px;
     cursor: pointer;
-        border-radius: 80%;
-    width: 45px;
   }
   .somos-slider__dots {
     position: absolute;
@@ -86,9 +84,17 @@ Somos Slider: Dots over slides + Description Box
     border: none;
   }
   .somos-slider__dots button[aria-current="true"] {
-    background: #DB4B97;
+    background: #000;
     width: 24px;
     border-radius: 20px;
+  }
+  .somos-slide .button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50%;
+    border: 2px solid;
   }
 </style>
 
@@ -112,10 +118,10 @@ Somos Slider: Dots over slides + Description Box
             {% endif %}
             <div class="buttons">
               {% if block.settings.button_text_1 and block.settings.button_link_1 %}
-                <a href="{{ block.settings.button_link_1 }}" class="button">{{ block.settings.button_text_1 }}</a>
+                <a href="{{ block.settings.button_link_1 }}" class="button" style="background: {{ block.settings.button_bg_color }}; color: {{ block.settings.button_text_color }}; border-color: {{ block.settings.button_border_color }}">{{ block.settings.button_text_1 }}</a>
               {% endif %}
               {% if block.settings.button_text_2 and block.settings.button_link_2 %}
-                <a href="{{ block.settings.button_link_2 }}" class="button">{{ block.settings.button_text_2 }}</a>
+                <a href="{{ block.settings.button_link_2 }}" class="button" style="background: {{ block.settings.button_bg_color }}; color: {{ block.settings.button_text_color }}; border-color: {{ block.settings.button_border_color }}">{{ block.settings.button_text_2 }}</a>
               {% endif %}
             </div>
           </div>
@@ -202,6 +208,9 @@ Somos Slider: Dots over slides + Description Box
         {"type": "url", "id": "button_link_1", "label": "Button 1 link"},
         {"type": "text", "id": "button_text_2", "label": "Button 2 text"},
         {"type": "url", "id": "button_link_2", "label": "Button 2 link"},
+        {"type": "color", "id": "button_bg_color", "label": "Button background color", "default": "#ffffff"},
+        {"type": "color", "id": "button_text_color", "label": "Button text color", "default": "#000000"},
+        {"type": "color", "id": "button_border_color", "label": "Button border color", "default": "#000000"},
         {"type": "select", "id": "horizontal_align", "label": "Horizontal alignment", "options": [
           {"value": "left", "label": "Left"},
           {"value": "center", "label": "Center"},
