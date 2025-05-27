@@ -735,7 +735,7 @@
       "name": "Banner Overlay",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
@@ -752,28 +752,20 @@
         "heading_3m8b3q": {
           "type": "heading",
           "settings": {
-            "title": "Rich text",
+            "title": "Inspiring well-being throughaffordable outdoor technologythat bring relaxation, joy, andconnection to everyday outdoor living.",
             "heading_size": "h2"
-          }
-        },
-        "text_fTjTPj": {
-          "type": "text",
-          "settings": {
-            "enlarge_text": true,
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         },
         "button_BEFJ9i": {
           "type": "button",
           "settings": {
             "link": "",
-            "link_text": "Button"
+            "link_text": "Learn More"
           }
         }
       },
       "block_order": [
         "heading_3m8b3q",
-        "text_fTjTPj",
         "button_BEFJ9i"
       ],
       "name": "t:labels.rich_text",
