@@ -854,7 +854,7 @@
       "settings": {
         "heading": "Sylvox’s exclusive advantages",
         "subtext": "Explore our core benefits below",
-        "heading_alignment": "center",
+        "heading_alignment": "left",
         "show_arrows": true
       }
     },
