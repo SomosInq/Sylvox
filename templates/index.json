@@ -523,7 +523,7 @@
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
-        "mobile_text_position": "place-self-center text-center",
+        "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-end-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#ffffff",
@@ -566,7 +566,7 @@
         "feature_box_BzP3zw": {
           "type": "feature_box",
           "settings": {
-            "icon": "shopify://shop_images/2_8a69deeb-ce29-4ae0-863d-311d1f707a5f.png",
+            "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -574,6 +574,7 @@
         "feature_box_EVXEkF": {
           "type": "feature_box",
           "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -581,6 +582,7 @@
         "feature_box_9FX97w": {
           "type": "feature_box",
           "settings": {
+            "icon": "shopify://shop_images/ca314dad77247b21eb7f517308b7087576d1f2ac.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -588,6 +590,7 @@
         "feature_box_LYgamW": {
           "type": "feature_box",
           "settings": {
+            "icon": "shopify://shop_images/f59bbc268948c9e1d1174fb09be93e8ea4e2dc3b.png",
             "title": "Box Title",
             "text": "Box description text goes here."
           }
@@ -653,21 +656,21 @@
         "slide_ktPLKQ": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/2_cc95da1e-82e9-479e-a50c-3729598ce6c0.png",
+            "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
             "caption": "Outdoor Dining Area"
           }
         },
         "slide_M46t3f": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/16_1.jpg",
+            "image": "shopify://shop_images/14e05d62ebe767f82f77c31d300c9d2e33bc554e.jpg",
             "caption": "Outdoor Dining Area"
           }
         },
         "slide_hbD7ck": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/3_ce632318-1afa-4804-af92-9fa0bfd88259.jpg",
+            "image": "shopify://shop_images/74a1a00cf11556c67aff97a187c512eb9a149348.png",
             "caption": "Outdoor Dining Area"
           }
         }
