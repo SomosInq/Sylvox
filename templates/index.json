@@ -45,11 +45,28 @@
             "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_03_30_19.Still025.jpg",
             "image_size": 100
           }
+        },
+        "slide_P48RUh": {
+          "type": "slide",
+          "settings": {
+            "subheading": "Tell your story",
+            "heading": "<h2>Slide heading</h2>",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "horizontal_align": "center",
+            "vertical_align": "middle",
+            "text_color": "#000000",
+            "font_size": 24,
+            "image_size": 100
+          }
         }
       },
       "block_order": [
         "slide_U4WUax",
-        "slide_pygGYg"
+        "slide_pygGYg",
+        "slide_P48RUh"
       ],
       "name": "Somos Slider",
       "settings": {
@@ -69,23 +86,13 @@
           "settings": {
             "tab_label": "Outdoor TV",
             "title": "Outdoor TV",
-            "heading_tag": "h2",
             "inline_title": "",
             "description": "<p>More Time Outdoors. More Moments Together.</p>",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "collection": "12v-tv",
-            "product": "100-difference",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_image": "shopify://shop_images/4-3_32d5dcaf-27b5-46d3-93fd-411433c2f331.jpg",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "text_color": "#ffffff",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
           }
         },
         "tab_eAADP6": {
@@ -93,22 +100,13 @@
           "settings": {
             "tab_label": "Kitchen TV",
             "title": "Kitchen TV",
-            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "collection": "2024-deck-pro-qled-spring-sale",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "text_color": "#ffffff",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
           }
         },
         "tab_8BH7qW": {
@@ -116,22 +114,13 @@
           "settings": {
             "tab_label": "RV TV",
             "title": "RV TV",
-            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "text_color": "#ffffff",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
           }
         },
         "tab_6xwwW6": {
@@ -139,22 +128,13 @@
           "settings": {
             "tab_label": "Bathroom TV",
             "title": "Bathroom TV",
-            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "text_color": "#ffffff",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
           }
         },
         "tab_d48U69": {
@@ -162,22 +142,13 @@
           "settings": {
             "tab_label": "Commercial TV",
             "title": "Commercial TV",
-            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "text_color": "#ffffff",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
           }
         },
         "tab_zY9MrJ": {
@@ -185,22 +156,13 @@
           "settings": {
             "tab_label": "Accessories",
             "title": "Accessories",
-            "heading_tag": "h2",
             "inline_title": "",
             "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "text_color": "#ffffff",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
           }
         }
       },
@@ -215,20 +177,53 @@
       "name": "Tab products",
       "settings": {
         "full_width": false,
-        "stack_products": true,
-        "products_count": 4,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "Outdoor TV",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "enable_parallax": false,
-        "image_size": "auto",
+        "section_background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "tabs_position": 44
+      }
+    },
+    "tab_products_HbieDA": {
+      "type": "tab-products",
+      "blocks": {
+        "tab_etG7V6": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "test",
+            "title": "head",
+            "inline_title": "inline",
+            "description": "<p>desc</p>",
+            "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_03_04_03.Still019.jpg",
+            "overlay_image": "shopify://shop_images/Group_1321319952.png",
+            "text_color": "#000000",
+            "title_font_size": 32,
+            "content_max_width": 780,
+            "image_width_percent": 100
+          }
+        }
+      },
+      "block_order": [
+        "tab_etG7V6"
+      ],
+      "name": "Tab Products Enhanced",
+      "settings": {
+        "full_width": false,
+        "section_background_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 55,
+        "padding_left": 50,
+        "padding_right": 50,
+        "margin_top": 45,
+        "margin_bottom": 40,
+        "mobile_text_position": "place-self-start text-start",
+        "desktop_text_position": "sm:place-self-start sm:text-start",
+        "tabs_position": 30
       }
     },
     "info_section_JEKir6": {
@@ -674,356 +669,65 @@
         "divider": false
       }
     },
-    "logo_list_aViWB6": {
+    "2f70f0d4-86f7-4eb7-bf83-05295e841830": {
       "type": "logo-list",
       "blocks": {
-        "logo_image_LJdUnM": {
+        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-1": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify://shop_images/1703494383743.png",
+            "link": "https://www.pcmag.com/reviews/sylvox-55-inch-pool-series-full-sun-outdoor-tv"
           }
         },
-        "logo_image_6tKnN4": {
+        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-2": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify://shop_images/1703494393979.png",
+            "link": "https://the-gadgeteer.com/2023/01/25/sylvox-43-inch-4k-outdoor-tv-review-be-entertained-in-the-great-outdoors/"
           }
         },
-        "logo_image_piLYAK": {
+        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-3": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify://shop_images/1703494405819.png",
+            "link": "https://www.hightechdad.com/2022/10/20/big-screen-digital-entertainment-outside-55-qled-sylvox-deck-pro-outdoor-tv-review/"
           }
         },
-        "logo_image_4QUiwq": {
+        "bf5989da-b35d-4fb2-b9b5-8436344ccd7b": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify://shop_images/1703494449414.png",
+            "link": "https://nerdtechy.com/sylvox-outdoor-tv-review"
           }
         },
-        "logo_image_rNbLng": {
+        "118b9aa1-07fc-488f-a44b-f333ab6e99ca": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify://shop_images/1703494462724.png",
+            "link": "https://www.trustedreviews.com/reviews/sylvox-43-inch-deck-pro-outdoor-tv"
           }
         },
-        "logo_image_YHndGm": {
+        "7168f6de-09d9-4361-9322-761adfbfbc41": {
           "type": "logo_image",
           "settings": {
-            "link": ""
+            "image": "shopify://shop_images/1703494470833.png",
+            "link": "https://www.makeuseof.com/sylvox-55-deck-pro-outdoor-tv-review/"
           }
         }
       },
       "block_order": [
-        "logo_image_LJdUnM",
-        "logo_image_6tKnN4",
-        "logo_image_piLYAK",
-        "logo_image_4QUiwq",
-        "logo_image_rNbLng",
-        "logo_image_YHndGm"
+        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-1",
+        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-2",
+        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-3",
+        "bf5989da-b35d-4fb2-b9b5-8436344ccd7b",
+        "118b9aa1-07fc-488f-a44b-f333ab6e99ca",
+        "7168f6de-09d9-4361-9322-761adfbfbc41"
       ],
-      "name": "t:labels.logo_list",
       "settings": {
-        "title": "Our brands",
+        "title": "Featured On",
         "heading_size": "h2",
         "heading_position": "center",
         "divider": false
-      }
-    },
-    "featured_collections_XJWX4m": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_FaKiL8": {
-          "type": "collection",
-          "settings": {
-            "collection": "outdoor-tv",
-            "title": ""
-          }
-        },
-        "collection_DAtgjy": {
-          "type": "collection",
-          "settings": {
-            "collection": "outdoor-tv-lift-cabinet",
-            "title": ""
-          }
-        },
-        "collection_pTNkxH": {
-          "type": "collection",
-          "settings": {
-            "collection": "12v-tv",
-            "title": ""
-          }
-        },
-        "collection_VAjAWA": {
-          "type": "collection",
-          "settings": {
-            "collection": "mirror-tv",
-            "title": ""
-          }
-        },
-        "collection_NYRc6N": {
-          "type": "collection",
-          "settings": {
-            "collection": "kitchen-tv",
-            "title": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_FaKiL8",
-        "collection_DAtgjy",
-        "collection_pTNkxH",
-        "collection_VAjAWA",
-        "collection_NYRc6N"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Sylvox popular categories",
-        "heading_size": "h2",
-        "heading_position": "center",
-        "divider": false
-      }
-    },
-    "hero_video_3DCK7E": {
-      "type": "hero-video",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "title": "Live from CES 2025",
-        "title_size": 70,
-        "subheading": "",
-        "link_text": "",
-        "link": "",
-        "color_accent": "#ffffff",
-        "text_align": "vertical-bottom horizontal-center",
-        "video_url": "https://www.youtube.com/watch?v=XwR70mAv9l4",
-        "overlay_opacity": 0,
-        "height": 650,
-        "height_mobile": 300
-      }
-    },
-    "70b62ca6-065a-45cd-a481-2704f5dc26c0": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15419224457277__70b62ca6-065a-45cd-a481-2704f5dc26c0-heading-1": {
-          "type": "heading",
-          "settings": {
-            "title": "Why Choose Sylvox Outdoor TVs",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "template--15419224457277__70b62ca6-065a-45cd-a481-2704f5dc26c0-heading-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "color_scheme": "none",
-        "divider": false
-      }
-    },
-    "3956e3d9-d0fd-4621-9223-b4bcd0ba599c": {
-      "type": "text-columns",
-      "blocks": {
-        "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-1": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/07e7d50cfc079991c520aed349ba6b7a.webp",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "IP55 Waterproof",
-            "text": "<p>Sylvox outdoor TVs are specifically designed to handle rain, snow, dust, insects, salt air, humidity and extreme temperatures. </p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-2": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/OUT1.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "All Metal Housing-Long Lifespan",
-            "text": "<p>Scratch-resistant aluminum metal, withstand temperatures ranging from -22° to 122°F (-30° to 50°C), 99% Dustproof</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-0": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/38a38d8bfca8c2f13ad09cf8b5a6bacf.webp",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Higher Brightness",
-            "text": "<p>Sylvox Outdoor TVs are 3-5 times higher brightness than many typical indoor TVs. This provides an ideal viewing experience in brighter outdoor environments.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-1",
-        "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-2",
-        "template--15059620692029__3956e3d9-d0fd-4621-9223-b4bcd0ba599c-1666683838933880fa-0"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "none"
-      }
-    },
-    "713ec5d8-14d7-46f8-8111-a91cbc5efca7": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15059620692029__713ec5d8-14d7-46f8-8111-a91cbc5efca7-166668383724424d4d-0": {
-          "type": "heading",
-          "settings": {
-            "title": "Sylvox has outdoor TVs to fit your space",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "template--15059620692029__713ec5d8-14d7-46f8-8111-a91cbc5efca7-166668383724424d4d-0"
-      ],
-      "disabled": true,
-      "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "color_scheme": "none",
-        "divider": false
-      }
-    },
-    "text_columns_cyYkiA": {
-      "type": "text-columns",
-      "blocks": {
-        "text_block_Nmk4Jm": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/03_00000_315f5377-3c7d-45e2-b0cc-21b80082499d.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Partial Sun Series",
-            "text": "<p>Enjoy true-to-life 4K picture quality in your favorite shaded or partially-shaded outdoor space.</p>",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/partial-sun-outdoor-tv"
-          }
-        },
-        "text_block_tA98UW": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/Pool_pro2_00000_4ae7bbff-8b17-4583-b9de-70d2e0684a6f.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Full Sun Series",
-            "text": "<p>Direct sun protection and an anti-glare screen allows bright, brilliant 4K resolution in direct sunlight.</p>",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/full-sun-outdoor-tv"
-          }
-        }
-      },
-      "block_order": [
-        "text_block_Nmk4Jm",
-        "text_block_tA98UW"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "1"
-      }
-    },
-    "promo_grid_dp4feF": {
-      "type": "promo-grid",
-      "blocks": {
-        "banner_z8YXPn": {
-          "type": "banner",
-          "settings": {
-            "heading": "2025 Sylvox CES",
-            "text": "",
-            "link": "",
-            "label": "",
-            "color_scheme": "none"
-          }
-        },
-        "advanced_6e64kQ": {
-          "type": "advanced",
-          "settings": {
-            "subheading": "",
-            "heading": "",
-            "textarea": "",
-            "cta_text1": "",
-            "cta_link1": "",
-            "cta_text2": "",
-            "cta_link2": "",
-            "image": "shopify://shop_images/SXX00073-opq3426371328.jpg",
-            "video_url": "",
-            "width": "100",
-            "height": 500,
-            "text_align": "vertical-center horizontal-center",
-            "color_accent": "#ffffff"
-          }
-        },
-        "advanced_chUB4P": {
-          "type": "advanced",
-          "settings": {
-            "subheading": "",
-            "heading": "",
-            "textarea": "",
-            "cta_text1": "",
-            "cta_link1": "",
-            "cta_text2": "",
-            "cta_link2": "",
-            "image": "shopify://shop_images/SXX00100-opq3426358653.jpg",
-            "video_url": "",
-            "width": "50",
-            "height": 500,
-            "text_align": "vertical-center horizontal-center",
-            "color_accent": "#ffffff"
-          }
-        },
-        "advanced_VRffLM": {
-          "type": "advanced",
-          "settings": {
-            "subheading": "",
-            "heading": "",
-            "textarea": "",
-            "cta_text1": "",
-            "cta_link1": "",
-            "cta_text2": "",
-            "cta_link2": "",
-            "image": "shopify://shop_images/SXX00908-opq3426395815.jpg",
-            "video_url": "",
-            "width": "50",
-            "height": 500,
-            "text_align": "vertical-center horizontal-center",
-            "color_accent": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "banner_z8YXPn",
-        "advanced_6e64kQ",
-        "advanced_chUB4P",
-        "advanced_VRffLM"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "gutter_size": 20,
-        "space_above": true,
-        "space_below": true
       }
     },
     "usp_grid_mBqiLF": {
@@ -1106,68 +810,6 @@
         "show_arrows": true
       }
     },
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830": {
-      "type": "logo-list",
-      "blocks": {
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-1": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/1703494383743.png",
-            "link": "https://www.pcmag.com/reviews/sylvox-55-inch-pool-series-full-sun-outdoor-tv"
-          }
-        },
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-2": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/1703494393979.png",
-            "link": "https://the-gadgeteer.com/2023/01/25/sylvox-43-inch-4k-outdoor-tv-review-be-entertained-in-the-great-outdoors/"
-          }
-        },
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-3": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/1703494405819.png",
-            "link": "https://www.hightechdad.com/2022/10/20/big-screen-digital-entertainment-outside-55-qled-sylvox-deck-pro-outdoor-tv-review/"
-          }
-        },
-        "bf5989da-b35d-4fb2-b9b5-8436344ccd7b": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/1703494449414.png",
-            "link": "https://nerdtechy.com/sylvox-outdoor-tv-review"
-          }
-        },
-        "118b9aa1-07fc-488f-a44b-f333ab6e99ca": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/1703494462724.png",
-            "link": "https://www.trustedreviews.com/reviews/sylvox-43-inch-deck-pro-outdoor-tv"
-          }
-        },
-        "7168f6de-09d9-4361-9322-761adfbfbc41": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify://shop_images/1703494470833.png",
-            "link": "https://www.makeuseof.com/sylvox-55-deck-pro-outdoor-tv-review/"
-          }
-        }
-      },
-      "block_order": [
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-1",
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-2",
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-3",
-        "bf5989da-b35d-4fb2-b9b5-8436344ccd7b",
-        "118b9aa1-07fc-488f-a44b-f333ab6e99ca",
-        "7168f6de-09d9-4361-9322-761adfbfbc41"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Featured On",
-        "heading_size": "h2",
-        "heading_position": "center",
-        "divider": false
-      }
-    },
     "video_grid_FUaEwe": {
       "type": "video-grid",
       "blocks": {
@@ -1231,6 +873,7 @@
   "order": [
     "somos_slider_PRQtHJ",
     "tab_products_i4fR76",
+    "tab_products_HbieDA",
     "info_section_JEKir6",
     "comparison_FUGpmd",
     "product_slider_xhpnwt",
@@ -1243,16 +886,8 @@
     "large_product_BDXMM6",
     "banner_Bj8UdV",
     "rich_text_cbmRYc",
-    "logo_list_aViWB6",
-    "featured_collections_XJWX4m",
-    "hero_video_3DCK7E",
-    "70b62ca6-065a-45cd-a481-2704f5dc26c0",
-    "3956e3d9-d0fd-4621-9223-b4bcd0ba599c",
-    "713ec5d8-14d7-46f8-8111-a91cbc5efca7",
-    "text_columns_cyYkiA",
-    "promo_grid_dp4feF",
-    "usp_grid_mBqiLF",
     "2f70f0d4-86f7-4eb7-bf83-05295e841830",
+    "usp_grid_mBqiLF",
     "video_grid_FUaEwe"
   ]
 }
