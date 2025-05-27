@@ -70,12 +70,12 @@
   {% endif %}
 
   <!-- Products Side-by-Side -->
-  <div class="flex flex-wrap justify-end gap-12 mt-12 mb-12">
+  <div class="grid grid-cols-2 gap-12 mt-12 mb-12">
     {% assign product_one = all_products[section.settings.product_one] %}
     {% assign product_two = all_products[section.settings.product_two] %}
 
     {% if product_one %}
-      <div class="w-[220px] text-center flex flex-col items-center">
+      <div class="w-full max-w-sm text-center flex flex-col items-center mx-auto">
         {% if section.settings.show_image and product_one.featured_image %}
           <img src="{{ product_one.featured_image | img_url: '300x' }}" alt="{{ product_one.title }}" class="mb-2 rounded">
         {% endif %}
@@ -85,7 +85,7 @@
     {% endif %}
 
     {% if product_two %}
-      <div class="w-[220px] text-center flex flex-col items-center">
+      <div class="w-full max-w-sm text-center flex flex-col items-center mx-auto">
         {% if section.settings.show_image and product_two.featured_image %}
           <img src="{{ product_two.featured_image | img_url: '300x' }}" alt="{{ product_two.title }}" class="mb-2 rounded">
         {% endif %}
@@ -97,23 +97,23 @@
 
   <!-- Comparison Table -->
   <div class="w-full mt-10" style="background-color: {{ section.settings.table_background_color }};">
-    {% for block in section.blocks %}
-      {% if block.type == "comparison_table" %}
-        <div class="grid grid-cols-3 gap-4 items-center text-sm border-b border-gray-200 py-5 px-4">
-          <div class="flex items-center justify-start text-left gap-2">
+    <div class="grid grid-cols-3">
+      {% for block in section.blocks %}
+        {% if block.type == "comparison_table" %}
+          <div class="col-span-1 border-b border-gray-200 py-5 flex items-center gap-2 px-4 text-left">
             {% if block.settings.label_icon %}<img src="{{ block.settings.label_icon | img_url: '32x' }}" alt="" class="inline-block" />{% endif %}
-            <span class="font-medium">{{ block.settings.label }}</span>
+            <span class="font-medium text-sm">{{ block.settings.label }}</span>
           </div>
-          <div class="text-center">
+          <div class="col-span-1 border-b border-gray-200 py-5 px-4 text-center">
             {% if block.settings.left_icon %}<img src="{{ block.settings.left_icon | img_url: '32x' }}" class="mx-auto mb-1" />{% endif %}
             <p>{{ block.settings.left_text }}</p>
           </div>
-          <div class="text-center">
+          <div class="col-span-1 border-b border-gray-200 py-5 px-4 text-center">
             {% if block.settings.right_icon %}<img src="{{ block.settings.right_icon | img_url: '32x' }}" class="mx-auto mb-1" />{% endif %}
             <p>{{ block.settings.right_text }}</p>
           </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>
