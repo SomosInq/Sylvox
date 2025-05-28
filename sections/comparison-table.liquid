@@ -36,16 +36,16 @@
     {% endif %}
 
     <div class="comparison-table" style="background-color: {{ section.settings.table_background }};">
-      <div class="comparison-row">
-        <div class="comparison-heading"></div>
+      <div class="comparison-row grid grid-cols-{{ section.blocks.size | plus: 1 }} gap-4">
+        <div class="comparison-heading font-bold">&nbsp;</div>
         {% for block in section.blocks %}
           <div class="comparison-column text-center">
             {% if block.settings.main_image %}
-              <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
+              <img src="{{ block.settings.main_image | image_url }}" alt="Main image" class="mx-auto mb-2" style="max-width: 100%;">
             {% endif %}
-            <div class="icon-title-wrapper">
+            <div class="icon-title-wrapper flex items-center justify-center gap-2">
               {% if block.settings.icon %}
-                <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px; display: inline-block; margin-right: 6px;">
+                <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
               {% endif %}
               <strong>{{ block.settings.title }}</strong>
             </div>
@@ -58,8 +58,8 @@
 
       {% for i in (1..20) %}
         {% assign heading_key = 'heading_' | append: i %}
-        <div class="comparison-row">
-          <div class="comparison-heading">
+        <div class="comparison-row grid grid-cols-{{ section.blocks.size | plus: 1 }} gap-4 py-4 border-t border-gray-200 items-start">
+          <div class="comparison-heading font-medium text-left">
             {{ section.settings[heading_key] }}
           </div>
           {% for block in section.blocks %}
@@ -67,7 +67,7 @@
             {% assign image_key = 'value_image_' | append: i %}
             <div class="comparison-column text-center">
               {% if block.settings[image_key] %}
-                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" class="mx-auto mb-2" style="max-width: 100%; height: auto;">
               {% endif %}
               <div>{{ block.settings[value_key] }}</div>
             </div>
