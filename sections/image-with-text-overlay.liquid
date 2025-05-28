@@ -100,7 +100,10 @@
 
                   {%- when 'button' -%}
                     {%- if block.settings.text != blank -%}
-                      {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
+                      <a href="{{ block.settings.url }}" class="btn btn--{{ block.settings.style }} btn--{{ block.settings.size }}" style="background-color: {{ block.settings.background }}; color: {{ block.settings.text_color }};" {{ block.shopify_attributes }}>
+  {{ block.settings.text | escape }}
+</a>
+
                     {%- endif -%}
 
                   {%- when 'image' -%}

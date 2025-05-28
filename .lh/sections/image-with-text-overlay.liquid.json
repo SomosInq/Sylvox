@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1748360636080,
@@ -48,6 +48,10 @@
                 {
                     "date": 1748435007266,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,10 @@\n \n     {%- if section.blocks.size > 0 -%}\n      <div class=\"grid w-full h-full\">\n   <div class=\"grid-content-wrapper\">\n-          <div class=\"p-4 {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}\" style=\"color: {{ section.settings.text_color }};\">\n+            <div class=\"p-4 {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}\" style=\"color: {{ section.settings.text_color }};\">\n+\n             <div class=\"prose\">\n               {%- for block in section.blocks -%}\n                 {%- case block.type -%}\n                   {%- when 'subheading' -%}\n"
+                },
+                {
+                    "date": 1748435541494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,9 +99,12 @@\n                     {%- endif -%}\n \n                   {%- when 'button' -%}\n                     {%- if block.settings.text != blank -%}\n-                      {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}\n+                      <a href=\"{{ block.settings.url }}\" class=\"btn btn--{{ block.settings.style }} btn--{{ block.settings.size }}\" style=\"background-color: {{ block.settings.background }}; color: {{ block.settings.text_color }};\" {{ block.shopify_attributes }}>\n+  {{ block.settings.text | escape }}\n+</a>\n+\n                     {%- endif -%}\n \n                   {%- when 'image' -%}\n                     {%- if block.settings.image != blank -%}\n"
                 }
             ],
             "date": 1748360636080,
