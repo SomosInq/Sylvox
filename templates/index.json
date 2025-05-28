@@ -735,47 +735,35 @@
         "icon2": "shopify://shop_images/Partial_Sun_147b558b-d06e-4a79-be58-4c8a0056d2b8.png",
         "icon3": "shopify://shop_images/Dolby-Atmos-Logo_1.png",
         "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
+        "show_title": true,
         "price_text": "From USD $1,149.00",
         "button_link": "",
         "button_label": "Buy Now"
       }
     },
-    "banner_Bj8UdV": {
-      "type": "banner",
+    "image_with_text_overlay_4yErEx": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_fgg9hV": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_i8zTNn": {
+        "heading_EyXPFe": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "Feel Good, Live Outdoors.",
             "heading_tag": "h1"
-          }
-        },
-        "richtext_RBXLiy": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         }
       },
       "block_order": [
-        "subheading_fgg9hV",
-        "heading_i8zTNn",
-        "richtext_RBXLiy"
+        "heading_EyXPFe"
       ],
+      "name": "Image with text overlay",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": true,
+        "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "image": "shopify://shop_images/640e161a1ba8abdd8ded2d12f863c72e324fa04b.jpg",
+        "mobile_text_position": "pos-middle-center",
+        "desktop_text_position": "sm:pos-middle-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
@@ -1013,7 +1001,7 @@
     "image_text_dE7fr8",
     "new_banner_slider_D3WkxM",
     "large_product_BDXMM6",
-    "banner_Bj8UdV",
+    "image_with_text_overlay_4yErEx",
     "rich_text_cbmRYc",
     "usp_grid_mBqiLF",
     "2f70f0d4-86f7-4eb7-bf83-05295e841830",
