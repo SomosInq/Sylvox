@@ -54,6 +54,22 @@
           "label": "Video URL"
         },
         {
+          "type": "select",
+          "id": "interaction_type",
+          "label": "Click Action",
+          "default": "modal",
+          "options": [
+            {
+              "value": "modal",
+              "label": "Open in Modal"
+            },
+            {
+              "value": "external",
+              "label": "Open External Link"
+            }
+          ]
+        },
+        {
           "type": "image_picker",
           "id": "fallback_image",
           "label": "Fallback Image (if no video)"
@@ -91,14 +107,15 @@
     {% endif %}
   </div>
 
-  <div class="video-carousel" data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false}'>
+  <div class="video-carousel" data-flickity='{"cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false, "draggable": false}'>
     {% for block in section.blocks %}
       {% assign video_type = block.settings.video_type %}
       {% assign video_url = block.settings.video_url %}
+      {% assign interaction_type = block.settings.interaction_type %}
 
       <div class="carousel-cell">
         {% if video_url %}
-          <div class="video-thumbnail" data-video="{{ video_url }}" data-type="{{ video_type }}">
+          <div class="video-thumbnail" data-video="{{ video_url }}" data-type="{{ video_type }}" data-interaction="{{ interaction_type }}">
             <img src="{{ block.settings.thumbnail | img_url: '800x' | default: 'https://via.placeholder.com/300x530?text=Video' }}" alt="Video thumbnail">
             <div class="play-button">▶</div>
           </div>
@@ -178,6 +195,7 @@
   background: rgba(0,0,0,0.5);
   border-radius: 50%;
   padding: 10px 15px;
+  pointer-events: none;
 }
 .slider-arrows {
   display: flex;
@@ -243,7 +261,13 @@ document.addEventListener("DOMContentLoaded", function () {
     thumbnail.addEventListener("click", function () {
       const videoUrl = this.dataset.video;
       const type = this.dataset.type;
+      const interaction = this.dataset.interaction || 'modal';
       let embedUrl = "";
+
+      if (interaction === "external") {
+        window.open(videoUrl, "_blank");
+        return;
+      }
 
       if (type === "youtube") {
         const youtubeId = videoUrl.includes("v=")
