@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1748438366014,
@@ -12,6 +12,10 @@
                 {
                     "date": 1748438517109,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,14 +34,23 @@\n       \"id\": \"product\",\n       \"label\": \"Product\"\n     },\n     {\n-  \"type\": \"checkbox\",\n-  \"id\": \"show_title\",\n-  \"label\": \"Show product title\",\n-  \"default\": true\n-},\n+      \"type\": \"checkbox\",\n+      \"id\": \"show_title\",\n+      \"label\": \"Show product title\",\n+      \"default\": true\n+    },\n     {\n+      \"type\": \"range\",\n+      \"id\": \"product_image_width\",\n+      \"label\": \"Product Image Width (px)\",\n+      \"min\": 100,\n+      \"max\": 800,\n+      \"step\": 10,\n+      \"default\": 400\n+    },\n+    {\n       \"type\": \"text\",\n       \"id\": \"price_text\",\n       \"label\": \"Price Text\",\n       \"default\": \"From USD $1,149.00\"\n@@ -86,8 +95,13 @@\n \n .sylvox-products {\n   margin-top: 20px;\n }\n+\n+.sylvox-products img {\n+  max-width: 100%;\n+  height: auto;\n+}\n {% endstylesheet %}\n \n <div class=\"sylvox-section\">\n   <p>{{ section.settings.subtitle }}</p>\n@@ -106,18 +120,20 @@\n   </div>\n \n   <div class=\"sylvox-products\">\n     {% if section.settings.product %}\n-  <div class=\"product-display\">\n-    {% if section.settings.product.featured_image %}\n-      <img src=\"{{ section.settings.product.featured_image | image_url }}\" alt=\"{{ section.settings.product.title }}\">\n+      {% if section.settings.product.featured_image %}\n+        <img \n+          src=\"{{ section.settings.product.featured_image | image_url }}\" \n+          alt=\"{{ section.settings.product.title }}\" \n+          style=\"width: {{ section.settings.product_image_width }}px;\"\n+        >\n+      {% endif %}\n+      {% if section.settings.show_title %}\n+        <p><strong>{{ section.settings.product.title }}</strong></p>\n+      {% endif %}\n     {% endif %}\n-    {% if section.settings.show_title %}\n-      <p><strong>{{ section.settings.product.title }}</strong></p>\n-    {% endif %}\n   </div>\n-{% endif %}\n-  </div>\n \n   <p>{{ section.settings.price_text }}</p>\n   <a href=\"{{ section.settings.button_link }}\" class=\"button\">\n     {{ section.settings.button_label }}\n"
+                },
+                {
+                    "date": 1748439807070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,8 +99,9 @@\n \n .sylvox-products img {\n   max-width: 100%;\n   height: auto;\n+  margin: 0 auto;\n }\n {% endstylesheet %}\n \n <div class=\"sylvox-section\">\n"
                 }
             ],
             "date": 1748438366014,
