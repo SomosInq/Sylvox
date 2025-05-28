@@ -35,11 +35,20 @@
       "label": "Product"
     },
     {
-  "type": "checkbox",
-  "id": "show_title",
-  "label": "Show product title",
-  "default": true
-},
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show product title",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "product_image_width",
+      "label": "Product Image Width (px)",
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "default": 400
+    },
     {
       "type": "text",
       "id": "price_text",
@@ -87,6 +96,11 @@
 .sylvox-products {
   margin-top: 20px;
 }
+
+.sylvox-products img {
+  max-width: 100%;
+  height: auto;
+}
 {% endstylesheet %}
 
 <div class="sylvox-section">
@@ -107,15 +121,17 @@
 
   <div class="sylvox-products">
     {% if section.settings.product %}
-  <div class="product-display">
-    {% if section.settings.product.featured_image %}
-      <img src="{{ section.settings.product.featured_image | image_url }}" alt="{{ section.settings.product.title }}">
+      {% if section.settings.product.featured_image %}
+        <img 
+          src="{{ section.settings.product.featured_image | image_url }}" 
+          alt="{{ section.settings.product.title }}" 
+          style="width: {{ section.settings.product_image_width }}px;"
+        >
+      {% endif %}
+      {% if section.settings.show_title %}
+        <p><strong>{{ section.settings.product.title }}</strong></p>
+      {% endif %}
     {% endif %}
-    {% if section.settings.show_title %}
-      <p><strong>{{ section.settings.product.title }}</strong></p>
-    {% endif %}
-  </div>
-{% endif %}
   </div>
 
   <p>{{ section.settings.price_text }}</p>
