@@ -337,7 +337,22 @@
             "value_2": "<p>Value 2</p>",
             "value_3": "<p>Value 3</p>",
             "value_4": "",
-            "value_5": ""
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": ""
           }
         },
         "values_hKRnzg": {
@@ -352,7 +367,22 @@
             "value_2": "<p>Value 2</p>",
             "value_3": "<p>Value 3</p>",
             "value_4": "",
-            "value_5": ""
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": ""
           }
         }
       },
@@ -372,12 +402,12 @@
         "title_size": 28,
         "text_size": 16,
         "button_size": 16,
-        "background_color": "",
+        "background_color": "#ffffff",
         "padding_top": 20,
         "padding_bottom": 20,
         "padding_left": 0,
         "padding_right": 0,
-        "heading_1": "",
+        "heading_1": "test",
         "heading_2": "",
         "heading_3": "",
         "heading_4": "",
@@ -397,46 +427,6 @@
         "heading_18": "",
         "heading_19": "",
         "heading_20": ""
-      }
-    },
-    "comparison_FUGpmd": {
-      "type": "comparison",
-      "blocks": {
-        "comparison_table_kK99U6": {
-          "type": "comparison_table",
-          "settings": {
-            "label": "text",
-            "left_text": "text",
-            "right_text": "text"
-          }
-        },
-        "comparison_table_JGBMNX": {
-          "type": "comparison_table",
-          "settings": {
-            "label": "text 2",
-            "left_text": "text2",
-            "right_text": "text 2"
-          }
-        }
-      },
-      "block_order": [
-        "comparison_table_kK99U6",
-        "comparison_table_JGBMNX"
-      ],
-      "settings": {
-        "title": "Partial Sun Area VS. Full Sun Area",
-        "description": "",
-        "font_color": "#000000",
-        "font_size": "text-base",
-        "text_alignment": "text-center",
-        "background_color": "#ffffff",
-        "table_background_color": "#f6f6f6",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "product_one": "1-year-extended-warranty-for-sylvox-cinema-pro-86-tv-total-3-years",
-        "product_two": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-        "show_title": false,
-        "show_image": true
       }
     },
     "product_slider_xhpnwt": {
@@ -1008,7 +998,6 @@
     "tab_products_i4fR76",
     "info_section_JEKir6",
     "comparison_table_eVYTCb",
-    "comparison_FUGpmd",
     "product_slider_xhpnwt",
     "image_blocks_xQffGw",
     "image_with_text_overlay_heWpQE",
