@@ -518,30 +518,41 @@
         "subheading_BAYCNe": {
           "type": "subheading",
           "settings": {
-            "text": "Subheading"
+            "text": "Outdoor Entertainment, Perfected"
           }
         },
         "heading_qaDTg9": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "Sylvox Deck Pro 2.0",
             "heading_tag": "h1"
           }
         },
         "richtext_xmgkfM": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "content": "<p>A next-level outdoor TV designed to perform in sunlight, rain, or snow.</p>"
           }
         },
         "button_EkCTVr": {
           "type": "button",
           "settings": {
+            "style": "outline",
+            "size": "lg",
+            "text": "Watch Video",
+            "url": "shopify://pages/about-us-1",
+            "background": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "button_39wxXB": {
+          "type": "button",
+          "settings": {
             "style": "fill",
             "size": "lg",
-            "text": "Button text",
-            "url": "",
-            "background": "",
+            "text": "Learn More",
+            "url": "shopify://pages/about-us-1",
+            "background": "#ffffff",
             "text_color": ""
           }
         }
@@ -550,7 +561,8 @@
         "subheading_BAYCNe",
         "heading_qaDTg9",
         "richtext_xmgkfM",
-        "button_EkCTVr"
+        "button_EkCTVr",
+        "button_39wxXB"
       ],
       "settings": {
         "full_width": true,
@@ -558,8 +570,8 @@
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
-        "mobile_text_position": "place-self-end-center text-center",
-        "desktop_text_position": "sm:place-self-end-center sm:text-center",
+        "mobile_text_position": "pos-middle-center",
+        "desktop_text_position": "sm:pos-middle-center",
         "text_color": "#ffffff",
         "overlay_color": "#ffffff",
         "overlay_opacity": 30
