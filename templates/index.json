@@ -542,7 +542,8 @@
             "text": "Watch Video",
             "url": "shopify://pages/about-us-1",
             "background": "",
-            "text_color": "#ffffff"
+            "text_color": "#ffffff",
+            "outline_color": "#ffffff"
           }
         },
         "button_39wxXB": {
@@ -553,7 +554,8 @@
             "text": "Learn More",
             "url": "shopify://pages/about-us-1",
             "background": "#ffffff",
-            "text_color": ""
+            "text_color": "#000000",
+            "outline_color": ""
           }
         }
       },
