@@ -1,185 +1,154 @@
 {%- render 'section-spacing-collapsing' -%}
 
-{%- assign text_position = section.settings.text_position -%}
-{%- assign values_column_count = section.blocks | where: 'type', 'values' | size -%}
-
-<style>
-  #shopify-section-{{ section.id }} {
-    --feature-chart-values-columns-count: {{ values_column_count }};
-    {% if section.settings.container_background_image != blank %}
-      background-image: url({{ section.settings.container_background_image | image_url }});
-      background-size: cover;
-      background-position: center;
-    {% elsif section.settings.container_background_color != blank %}
-      background-color: {{ section.settings.container_background_color }};
+<div class="comparison-section" style="
+  {% if section.settings.background_image != blank %}
+    background-image: url({{ section.settings.background_image | image_url }});
+    background-size: cover;
+    background-position: center;
+  {% elsif section.settings.background_color != blank %}
+    background-color: {{ section.settings.background_color }};
+  {% endif %}
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  padding-left: {{ section.settings.padding_left }}px;
+  padding-right: {{ section.settings.padding_right }}px;
+">
+  <div class="container text-{{ section.settings.text_alignment }}">
+    {% if section.settings.title != blank %}
+      <h2 style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.title_size }}px;">
+        {{ section.settings.title }}
+      </h2>
     {% endif %}
-    padding-top: {{ section.settings.padding_top | default: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | default: 0 }}px;
-    padding-left: {{ section.settings.padding_left | default: 0 }}px;
-    padding-right: {{ section.settings.padding_right | default: 0 }}px;
-  }
-  .feature-chart__product img {
-    width: {{ section.settings.image_width_percent | default: 80 }}%;
-  }
-</style>
-
-<div {% render 'section-properties' %}>
-  <div class="section-stack {% if text_position == 'center' %}section-stack--center{% elsif text_position == 'end' %}section-stack--reverse{% endif %}">
-    {%- if section.settings.subheading != blank or section.settings.title != blank or section.settings.content != blank or section.settings.button_text != blank -%}
-      <div class="section-stack__intro">
-        <div class="prose {% if text_position == 'center' %}text-center{% elsif text_position == 'end' %}text-right{% endif %}" style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.text_font_size | default: 16 }}px;">
-          {%- if section.settings.subheading != blank -%}
-            <p class="subheading">{{ section.settings.subheading | escape }}</p>
-          {%- endif -%}
-
-          {%- if section.settings.title != blank -%}
-            <h2 class="h2" style="color: {{ section.settings.heading_color }}; font-size: {{ section.settings.title_font_size | default: 24 }}px;">
-              {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
-            </h2>
-          {%- endif -%}
-
-          {{- section.settings.content -}}
-
-          {%- if section.settings.button_text != blank -%}
-            {%- render 'button', size: 'lg', href: section.settings.button_url, content: section.settings.button_text, background: section.settings.button_background, text_color: section.settings.button_text_color, style: 'font-size: ' | append: section.settings.button_font_size | append: 'px' -%}
-          {%- endif -%}
-        </div>
+    {% if section.settings.description != blank %}
+      <div style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.text_size }}px;">
+        {{ section.settings.description }}
       </div>
-    {%- endif -%}
+    {% endif %}
+    {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+      <a href="{{ section.settings.button_url }}" class="btn" style="
+        color: {{ section.settings.button_text_color }};
+        background-color: {{ section.settings.button_background }};
+        font-size: {{ section.settings.button_size }}px;
+      ">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
 
-    <div class="section-stack__main">
-      {%- assign text_color = section.settings.chart_text_color | default: settings.text_color -%}
-      {%- assign background_color = section.settings.chart_background -%}
-      {%- if background_color == blank or background_color == 'rgba(0,0,0,0)' -%}
-        {%- assign background_color = settings.background | color_mix: text_color, 95 -%}
-      {%- endif -%}
-
-      <feature-chart max-rows="{{ section.settings.max_rows }}" {% render 'surface', class: 'feature-chart', background: background_color, text_color: text_color %}>
-        <div class="feature-chart__table {% if values_column_count > 1 %}feature-chart__table--multi-columns{% endif %} feature-chart__table--product divide-y scroll-area">
-
-          {%- assign headings_block = section.blocks | where: 'type', 'headings' | first -%}
-          {%- assign values_blocks = section.blocks | where: 'type', 'values' -%}
-
-          {%- assign product_row -%}
-            {%- capture product_row -%}
-              {%- for product_column in values_blocks -%}
-                {%- if product_column.settings.product != blank -%}
-                  {%- assign chart_product = product_column.settings.product -%}
-                  <div class="feature-chart__product">
-                    {%- if section.settings.viewing_product != blank and request.page_type == 'product' and product == chart_product -%}
-                      <span class="badge">{{ section.settings.viewing_product }}</span>
-                    {%- endif -%}
-
-                    {%- if section.settings.show_product_image and chart_product.featured_media -%}
-                      <a href="{{ chart_product.url }}">
-                        {{- chart_product.featured_image | image_url: width: chart_product.featured_image.width | image_tag: widths: '80,150,160,300' -}}
-                      </a>
-                    {%- endif -%}
-
-                    <div class="v-stack">
-                      <div class="v-stack gap-2">
-                        <div class="v-stack sm:gap-0.5">
-                          {%- if section.settings.show_product_title -%}
-                            <a href="{{ chart_product.url }}" class="bold line-clamp">{{ chart_product.title }}</a>
-                          {%- endif -%}
-                          {%- render 'price-list', product: chart_product, hide_unit_price: true -%}
-                          {%- if section.settings.show_product_description -%}
-                            <p>{{ chart_product.description | strip_html | truncatewords: 20 }}</p>
-                          {%- endif -%}
-                        </div>
-
-                        {%- if section.settings.show_product_options -%}
-                          {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
-                          {%- for color_label in color_label_list -%}
-                            {%- if chart_product.options_by_name[color_label] != blank -%}
-                              <div class="h-stack gap-2">
-                                {%- for option_value in chart_product.options_by_name[color_label].values -%}
-                                  {%- render 'option-value', type: 'swatch', option_value: option_value, url: option_value.variant.url, size: 'sm' -%}
-                                {%- endfor -%}
-                              </div>
-                              {%- break -%}
-                            {%- endif -%}
-                          {%- endfor -%}
-                        {%- endif -%}
-                      </div>
-
-                      {%- if section.settings.view_product != blank -%}
-                        <div class="feature-chart__view-button-container hidden justify-self-start md:block">
-                          {%- render 'button', href: chart_product.url, content: section.settings.view_product, background: product_column.settings.view_button_background, text_color: product_column.settings.view_button_text_color, subdued: true -%}
-                        </div>
-                      {%- endif -%}
-                    </div>
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endcapture -%}
-          {%- endassign -%}
-
-          {%- if section.settings.show_product_info -%}
-            <div class="feature-chart__table-row feature-chart__table-row--product">
-              {{- product_row -}}
+    <div class="comparison-table">
+      <div class="comparison-row">
+        {% for block in section.blocks %}
+          <div class="comparison-column text-center">
+            {% if block.settings.main_image %}
+              <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%;">
+            {% endif %}
+            <div class="icon-title-wrapper">
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px; display: inline-block; margin-right: 6px;">
+              {% endif %}
+              <strong>{{ block.settings.title }}</strong>
             </div>
-          {%- endif -%}
+            {% if block.settings.button_label and block.settings.button_link %}
+              <a href="{{ block.settings.button_link }}" class="btn mt-2">{{ block.settings.button_label }}</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% for i in (1..20) %}
+        <div class="comparison-row">
+          <div class="comparison-heading">
+            {% assign heading_key = 'heading_' | append: i %}{{ section.settings[heading_key] }}
+          </div>
+          {% for block in section.blocks %}
+            {% assign value_key = 'value_' | append: i %}
+            {% assign image_key = 'value_image_' | append: i %}
+            <div class="comparison-column">
+              {% if block.settings[image_key] %}
+                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 100%; height: auto;" />
+              {% endif %}
+              <div>{{ block.settings[value_key] }}</div>
+            </div>
+          {% endfor %}
         </div>
-      </feature-chart>
+      {% endfor %}
     </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Comparison table",
+  "name": "Comparison Table",
   "settings": [
-    {"type": "text", "id": "subheading", "label": "Subheading"},
     {"type": "text", "id": "title", "label": "Title"},
-    {"type": "richtext", "id": "content", "label": "Content"},
+    {"type": "richtext", "id": "description", "label": "Description"},
     {"type": "text", "id": "button_text", "label": "Button Text"},
     {"type": "url", "id": "button_url", "label": "Button URL"},
-
-    {"type": "select", "id": "text_position", "label": "Text Alignment", "options": [
-      {"value": "start", "label": "Left"},
+    {"type": "select", "id": "text_alignment", "label": "Text Alignment", "options": [
+      {"value": "left", "label": "Left"},
       {"value": "center", "label": "Center"},
-      {"value": "end", "label": "Right"}
-    ], "default": "start"},
-
-    {"type": "image_picker", "id": "container_background_image", "label": "Background Image"},
-    {"type": "color", "id": "container_background_color", "label": "Background Color"},
-
-    {"type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0},
-    {"type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 0},
-    {"type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0},
-    {"type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0},
-
+      {"value": "right", "label": "Right"}
+    ], "default": "left"},
     {"type": "color", "id": "text_color", "label": "Text Color"},
-    {"type": "color", "id": "heading_color", "label": "Heading Color"},
     {"type": "color", "id": "button_background", "label": "Button Background Color"},
     {"type": "color", "id": "button_text_color", "label": "Button Text Color"},
-
-    {"type": "range", "id": "image_width_percent", "label": "Product Image Width (%)", "min": 10, "max": 100, "default": 80},
-
-    {"type": "checkbox", "id": "show_product_title", "label": "Show Product Title", "default": true},
-    {"type": "checkbox", "id": "show_product_description", "label": "Show Product Description", "default": false},
-    {"type": "checkbox", "id": "show_product_options", "label": "Show Product Options", "default": true},
-    {"type": "checkbox", "id": "show_product_image", "label": "Show Product Image", "default": true},
-
-    {"type": "range", "id": "title_font_size", "label": "Title Font Size", "min": 10, "max": 48, "default": 24},
-    {"type": "range", "id": "text_font_size", "label": "Text Font Size", "min": 10, "max": 30, "default": 16},
-    {"type": "range", "id": "button_font_size", "label": "Button Font Size", "min": 10, "max": 30, "default": 16}
+    {"type": "range", "id": "title_size", "label": "Title Font Size", "min": 16, "max": 48, "default": 28},
+    {"type": "range", "id": "text_size", "label": "Text Font Size", "min": 12, "max": 30, "default": 16},
+    {"type": "range", "id": "button_size", "label": "Button Font Size", "min": 10, "max": 30, "default": 16},
+    {"type": "image_picker", "id": "background_image", "label": "Background Image"},
+    {"type": "color", "id": "background_color", "label": "Background Color"},
+    {"type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 20},
+    {"type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 20},
+    {"type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0},
+    {"type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0},
+    {"type": "header", "content": "Row Headings"},
+    {"type": "text", "id": "heading_1", "label": "Heading 1"},
+    {"type": "text", "id": "heading_2", "label": "Heading 2"},
+    {"type": "text", "id": "heading_3", "label": "Heading 3"},
+    {"type": "text", "id": "heading_4", "label": "Heading 4"},
+    {"type": "text", "id": "heading_5", "label": "Heading 5"},
+    {"type": "text", "id": "heading_6", "label": "Heading 6"},
+    {"type": "text", "id": "heading_7", "label": "Heading 7"},
+    {"type": "text", "id": "heading_8", "label": "Heading 8"},
+    {"type": "text", "id": "heading_9", "label": "Heading 9"},
+    {"type": "text", "id": "heading_10", "label": "Heading 10"},
+    {"type": "text", "id": "heading_11", "label": "Heading 11"},
+    {"type": "text", "id": "heading_12", "label": "Heading 12"},
+    {"type": "text", "id": "heading_13", "label": "Heading 13"},
+    {"type": "text", "id": "heading_14", "label": "Heading 14"},
+    {"type": "text", "id": "heading_15", "label": "Heading 15"},
+    {"type": "text", "id": "heading_16", "label": "Heading 16"},
+    {"type": "text", "id": "heading_17", "label": "Heading 17"},
+    {"type": "text", "id": "heading_18", "label": "Heading 18"},
+    {"type": "text", "id": "heading_19", "label": "Heading 19"},
+    {"type": "text", "id": "heading_20", "label": "Heading 20"}
   ],
   "blocks": [
     {
       "type": "values",
-      "name": "Product",
+      "name": "Column",
       "settings": [
-        {"type": "product", "id": "product", "label": "Select Product"}
+        {"type": "image_picker", "id": "main_image", "label": "Main Image"},
+        {"type": "image_picker", "id": "icon", "label": "Icon beside title"},
+        {"type": "text", "id": "title", "label": "Title"},
+        {"type": "text", "id": "button_label", "label": "Button Label"},
+        {"type": "url", "id": "button_link", "label": "Button URL"},
+        {"type": "header", "content": "Row Values"},
+        {"type": "richtext", "id": "value_1", "label": "Value 1"},
+        {"type": "image_picker", "id": "value_image_1", "label": "Image above Value 1"},
+        {"type": "richtext", "id": "value_2", "label": "Value 2"},
+        {"type": "image_picker", "id": "value_image_2", "label": "Image above Value 2"},
+        {"type": "richtext", "id": "value_3", "label": "Value 3"},
+        {"type": "image_picker", "id": "value_image_3", "label": "Image above Value 3"},
+        {"type": "richtext", "id": "value_4", "label": "Value 4"},
+        {"type": "image_picker", "id": "value_image_4", "label": "Image above Value 4"},
+        {"type": "richtext", "id": "value_5", "label": "Value 5"},
+        {"type": "image_picker", "id": "value_image_5", "label": "Image above Value 5"}
+        // Add up to value_20 as needed
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Comparison table",
-      "blocks": []
-    }
+    { "name": "Comparison Table", "blocks": [] }
   ]
 }
 {% endschema %}
