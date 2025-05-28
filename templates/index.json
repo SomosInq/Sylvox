@@ -585,21 +585,13 @@
         "heading_mm9kKm": {
           "type": "heading",
           "settings": {
-            "title": "Rich text",
+            "title": "A weatherproof, ultra-bright 4K TV designed for the outdoors. Whether you’re hosting game night, watching a movie under the stars, or just unwinding after a long day, the Deck Pro 2.0 delivers a viewing experience that feels as good as it looks.",
             "heading_size": "h2"
-          }
-        },
-        "text_N4bfW4": {
-          "type": "text",
-          "settings": {
-            "enlarge_text": true,
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         }
       },
       "block_order": [
-        "heading_mm9kKm",
-        "text_N4bfW4"
+        "heading_mm9kKm"
       ],
       "settings": {
         "align_text": "center",
@@ -615,32 +607,32 @@
           "type": "feature_box",
           "settings": {
             "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c.png",
-            "title": "Box Title",
-            "text": "Box description text goes here."
+            "title": "Engineered for Outdoor Life",
+            "text": "IP55 Waterproof, heatproof, and weatherproof. No worries, rain or shine."
           }
         },
         "feature_box_EVXEkF": {
           "type": "feature_box",
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "title": "Box Title",
-            "text": "Box description text goes here."
+            "title": "Feel-Good Audio",
+            "text": "Dolby Atmos delivers immersive, cinematic sound."
           }
         },
         "feature_box_9FX97w": {
           "type": "feature_box",
           "settings": {
             "icon": "shopify://shop_images/ca314dad77247b21eb7f517308b7087576d1f2ac.png",
-            "title": "Box Title",
-            "text": "Box description text goes here."
+            "title": "Smart & Simple Entertainment",
+            "text": "Google TV, Apple AirPlay, and Chromecast built-in for seamless streaming."
           }
         },
         "feature_box_LYgamW": {
           "type": "feature_box",
           "settings": {
             "icon": "shopify://shop_images/f59bbc268948c9e1d1174fb09be93e8ea4e2dc3b.png",
-            "title": "Box Title",
-            "text": "Box description text goes here."
+            "title": "Built to Last",
+            "text": "Corrosion-resistant, full-metal durability for long-term outdoor use."
           }
         }
       },
@@ -652,7 +644,7 @@
       ],
       "settings": {
         "main_title": "Effortless Entertainment, Rain or Shine.",
-        "description": "Add a short description about this section.",
+        "description": "",
         "button_link": "",
         "button_text": "Learn More"
       }
