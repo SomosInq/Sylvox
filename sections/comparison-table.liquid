@@ -34,42 +34,42 @@
       </a>
     {% endif %}
 
-    <div class="comparison-table">
-      <div class="comparison-row">
-        {% for block in section.blocks %}
-          <div class="comparison-column text-center">
-            {% if block.settings.main_image %}
-              <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%;">
+    <div class="comparison-table" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
+      <!-- Headings column -->
+      <div></div>
+      {% for block in section.blocks %}
+        <div class="text-center">
+          {% if block.settings.main_image %}
+            <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%;">
+          {% endif %}
+          <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
             {% endif %}
-            <div class="icon-title-wrapper">
-              {% if block.settings.icon %}
-                <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px; display: inline-block; margin-right: 6px;">
-              {% endif %}
-              <strong>{{ block.settings.title }}</strong>
-            </div>
-            {% if block.settings.button_label and block.settings.button_link %}
-              <a href="{{ block.settings.button_link }}" class="btn mt-2">{{ block.settings.button_label }}</a>
-            {% endif %}
+            <strong>{{ block.settings.title }}</strong>
           </div>
-        {% endfor %}
-      </div>
+          {% if block.settings.button_label and block.settings.button_link %}
+            <a href="{{ block.settings.button_link }}" class="btn mt-2">{{ block.settings.button_label }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
 
       {% for i in (1..20) %}
-        <div class="comparison-row">
-          <div class="comparison-heading">
-            {% assign heading_key = 'heading_' | append: i %}{{ section.settings[heading_key] }}
-          </div>
+        {% assign heading_key = 'heading_' | append: i %}
+        {% if section.settings[heading_key] != blank %}
+          <!-- Row Heading -->
+          <div><strong>{{ section.settings[heading_key] }}</strong></div>
           {% for block in section.blocks %}
             {% assign value_key = 'value_' | append: i %}
             {% assign image_key = 'value_image_' | append: i %}
-            <div class="comparison-column">
+            <div class="text-center">
               {% if block.settings[image_key] %}
-                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 100%; height: auto;" />
+                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 100%; height: auto; margin-bottom: 0.5rem;" />
               {% endif %}
               <div>{{ block.settings[value_key] }}</div>
             </div>
           {% endfor %}
-        </div>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -142,8 +142,17 @@
         {"type": "richtext", "id": "value_4", "label": "Value 4"},
         {"type": "image_picker", "id": "value_image_4", "label": "Image above Value 4"},
         {"type": "richtext", "id": "value_5", "label": "Value 5"},
-        {"type": "image_picker", "id": "value_image_5", "label": "Image above Value 5"}
-        // Add up to value_20 as needed
+        {"type": "image_picker", "id": "value_image_5", "label": "Image above Value 5"},
+        {"type": "richtext", "id": "value_6", "label": "Value 6"},
+        {"type": "image_picker", "id": "value_image_6", "label": "Image above Value 6"},
+        {"type": "richtext", "id": "value_7", "label": "Value 7"},
+        {"type": "image_picker", "id": "value_image_7", "label": "Image above Value 7"},
+        {"type": "richtext", "id": "value_8", "label": "Value 8"},
+        {"type": "image_picker", "id": "value_image_8", "label": "Image above Value 8"},
+        {"type": "richtext", "id": "value_9", "label": "Value 9"},
+        {"type": "image_picker", "id": "value_image_9", "label": "Image above Value 9"},
+        {"type": "richtext", "id": "value_10", "label": "Value 10"},
+        {"type": "image_picker", "id": "value_image_10", "label": "Image above Value 10"}
       ]
     }
   ],
