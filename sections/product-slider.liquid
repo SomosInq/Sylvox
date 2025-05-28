@@ -249,7 +249,7 @@
 </section>
 
 {% javascript %}
-  document.addEventListener('DOMContentLoaded', function () {
+  function initializeTabs() {
     const buttons = document.querySelectorAll('.tab-buttons button');
     const carousels = document.querySelectorAll('.product-carousel');
 
@@ -269,11 +269,31 @@
         });
       });
     });
-  });
-
-  if (typeof Flickity === 'undefined') {
-    const flickityScript = document.createElement('script');
-    flickityScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
-    document.head.appendChild(flickityScript);
   }
+
+  function initializeFlickity() {
+    const flickityElems = document.querySelectorAll('.js-flickity');
+    flickityElems.forEach(el => {
+      if (!el.classList.contains('flickity-enabled')) {
+        new Flickity(el, JSON.parse(el.getAttribute('data-flickity-options')));
+      }
+    });
+  }
+
+  function loadFlickityAndInit() {
+    if (typeof Flickity === 'undefined') {
+      const flickityScript = document.createElement('script');
+      flickityScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
+      flickityScript.onload = () => {
+        initializeFlickity();
+        initializeTabs();
+      };
+      document.head.appendChild(flickityScript);
+    } else {
+      initializeFlickity();
+      initializeTabs();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadFlickityAndInit);
 {% endjavascript %}
