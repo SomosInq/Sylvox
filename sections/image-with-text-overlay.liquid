@@ -42,8 +42,8 @@
 
     {%- if section.blocks.size > 0 -%}
       <div class="grid w-full h-full">
-        <div class="grid w-full h-full">
-          <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
+        <div class="grid w-full h-full min-h-full place-items-stretch">
+          <div class="p-4 {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
             <div class="prose">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
@@ -109,11 +109,6 @@
   "name": "Image with text overlay",
   "class": "shopify-section--image-with-text-overlay",
   "tag": "section",
-  "disabled_on": {
-    "templates": ["password"],
-    "groups": ["header", "custom.overlay"]
-  },
-  "max_blocks": 6,
   "settings": [
     {
       "type": "checkbox",
@@ -125,14 +120,12 @@
       "type": "checkbox",
       "id": "allow_transparent_header",
       "label": "Allow transparent header",
-      "info": "This setting only applies when this section is the first one.",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "enable_parallax",
       "label": "Enable parallax effect",
-      "info": "Parallax crops images.",
       "default": false
     },
     {
@@ -223,13 +216,25 @@
     {
       "type": "subheading",
       "name": "Subheading",
-      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Subheading" }]
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading"
+        }
+      ]
     },
     {
       "type": "heading",
       "name": "Heading",
       "settings": [
-        { "type": "text", "id": "text", "label": "Text", "default": "Heading" },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading"
+        },
         {
           "type": "select",
           "id": "heading_tag",
@@ -324,26 +329,55 @@
       "type": "link",
       "name": "Link Url",
       "settings": [
-        { "type": "url", "id": "link_url", "label": "Link URL" },
-        { "type": "text", "id": "link_text", "label": "Link Text", "default": "Link" }
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Link"
+        }
       ]
     },
     {
       "type": "image",
       "name": "Image",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "number", "id": "width", "label": "Image width (Unit: px)" }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "number",
+          "id": "width",
+          "label": "Image width (Unit: px)"
+        }
       ]
     }
   ],
   "presets": [
     {
       "name": "Image with text overlay",
+      "category": "Somos Custom",
       "blocks": [
-        { "type": "subheading", "settings": { "text": "Subheading" } },
-        { "type": "heading", "settings": { "text": "Image with text overlay", "heading_tag": "h1" } },
-        { "type": "richtext" }
+        {
+          "type": "subheading",
+          "settings": { "text": "Subheading" }
+        },
+        {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
+          }
+        },
+        {
+          "type": "richtext"
+        }
       ]
     }
   ]
