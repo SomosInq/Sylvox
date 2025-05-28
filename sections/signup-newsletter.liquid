@@ -2,11 +2,11 @@
 {
   "name": "Newsletter",
   "tag": "section",
-  "class": "newsletter-section",
+  "class": "newsletter-section-wrapper",
   "settings": [
     {
       "type": "image_picker",
-      "id": "bg_image_custom",
+      "id": "background_image",
       "label": "Background Image"
     },
     {
@@ -59,10 +59,7 @@
 {% endschema %}
 
 {% style %}
-.newsletter-section {
-  {% if section.settings.bg_image_custom != blank %}
-    background-image: url({{ section.settings.bg_image_custom | image_url }});
-  {% endif %}
+.newsletter-section-wrapper {
   background-size: cover;
   background-position: center;
   position: relative;
@@ -80,12 +77,12 @@
   width: 100%;
 }
 
-.newsletter-section h2 {
+.newsletter-content h2 {
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-.newsletter-section p {
+.newsletter-content p {
   font-size: 1rem;
   margin-bottom: 30px;
   color: #555;
@@ -143,26 +140,33 @@
 }
 {% endstyle %}
 
-<div class="newsletter-section">
-  <div class="newsletter-content">
-    <h2>{{ section.settings.heading }}</h2>
-    <p>{{ section.settings.subheading }}</p>
-    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
-      <input type="hidden" name="form_type" value="customer">
-      <input type="hidden" name="utf8" value="✓">
-      {% if section.settings.envelope_icon != blank %}
-        <img class="icon" src="{{ section.settings.envelope_icon | image_url }}" alt="Email Icon">
-      {% endif %}
-      <input type="email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}" required>
-      <button type="submit">
-        {{ section.settings.button_label }}
-        {% if section.settings.button_arrow_icon != blank %}
-          <img src="{{ section.settings.button_arrow_icon | image_url }}" alt="Arrow Icon">
-        {% endif %}
-      </button>
-    </form>
-  </div>
-  {% if section.settings.overlay_image != blank %}
-    <img class="overlay-image" src="{{ section.settings.overlay_image | image_url }}" alt="Overlay Image">
+<section
+  class="newsletter-section-wrapper"
+  {% if section.settings.background_image != blank %}
+    style="background-image: url({{ section.settings.background_image | image_url }});"
   {% endif %}
-</div>
+>
+  <div class="newsletter-section">
+    <div class="newsletter-content">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+      <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        {% if section.settings.envelope_icon != blank %}
+          <img class="icon" src="{{ section.settings.envelope_icon | image_url }}" alt="Email Icon">
+        {% endif %}
+        <input type="email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}" required>
+        <button type="submit">
+          {{ section.settings.button_label }}
+          {% if section.settings.button_arrow_icon != blank %}
+            <img src="{{ section.settings.button_arrow_icon | image_url }}" alt="Arrow Icon">
+          {% endif %}
+        </button>
+      </form>
+    </div>
+    {% if section.settings.overlay_image != blank %}
+      <img class="overlay-image" src="{{ section.settings.overlay_image | image_url }}" alt="Overlay Image">
+    {% endif %}
+  </div>
+</section>
