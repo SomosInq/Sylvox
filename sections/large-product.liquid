@@ -35,6 +35,12 @@
       "label": "Product"
     },
     {
+  "type": "checkbox",
+  "id": "show_title",
+  "label": "Show product title",
+  "default": true
+},
+    {
       "type": "text",
       "id": "price_text",
       "label": "Price Text",
@@ -101,8 +107,15 @@
 
   <div class="sylvox-products">
     {% if section.settings.product %}
-      <p><strong>Selected Product:</strong> {{ section.settings.product.title }}</p>
+  <div class="product-display">
+    {% if section.settings.product.featured_image %}
+      <img src="{{ section.settings.product.featured_image | image_url }}" alt="{{ section.settings.product.title }}">
     {% endif %}
+    {% if section.settings.show_title %}
+      <p><strong>{{ section.settings.product.title }}</strong></p>
+    {% endif %}
+  </div>
+{% endif %}
   </div>
 
   <p>{{ section.settings.price_text }}</p>

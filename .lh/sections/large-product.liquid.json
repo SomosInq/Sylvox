@@ -1,0 +1,18 @@
+{
+    "sourceFile": "sections/large-product.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1748438366014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1748438366014,
+            "name": "Commit-0",
+            "content": "{% schema %}\n{\n  \"name\": \"Large product\",\n  \"settings\": [\n    {\n      \"type\": \"text\",\n      \"id\": \"subtitle\",\n      \"label\": \"Subtitle\",\n      \"default\": \"Outdoor Entertainment, Perfected\"\n    },\n    {\n      \"type\": \"textarea\",\n      \"id\": \"title\",\n      \"label\": \"Title\",\n      \"default\": \"Sylvox Deck Pro 2.0\"\n    },\n    {\n      \"type\": \"image_picker\",\n      \"id\": \"icon1\",\n      \"label\": \"Icon 1\"\n    },\n    {\n      \"type\": \"image_picker\",\n      \"id\": \"icon2\",\n      \"label\": \"Icon 2\"\n    },\n    {\n      \"type\": \"image_picker\",\n      \"id\": \"icon3\",\n      \"label\": \"Icon 3\"\n    },\n    {\n      \"type\": \"product\",\n      \"id\": \"product\",\n      \"label\": \"Product\"\n    },\n    {\n  \"type\": \"checkbox\",\n  \"id\": \"show_title\",\n  \"label\": \"Show product title\",\n  \"default\": true\n},\n    {\n      \"type\": \"text\",\n      \"id\": \"price_text\",\n      \"label\": \"Price Text\",\n      \"default\": \"From USD $1,149.00\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"button_link\",\n      \"label\": \"Button Link\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"button_label\",\n      \"label\": \"Button Label\",\n      \"default\": \"Buy Now\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Large product\",\n      \"category\": \"Somos Custom\"\n    }\n  ]\n}\n{% endschema %}\n\n{% stylesheet %}\n.sylvox-section {\n  text-align: center;\n  padding: 40px 20px;\n}\n\n.sylvox-icons {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n  margin: 20px 0;\n}\n\n.sylvox-icons img {\n  height: 30px;\n}\n\n.sylvox-products {\n  margin-top: 20px;\n}\n{% endstylesheet %}\n\n<div class=\"sylvox-section\">\n  <p>{{ section.settings.subtitle }}</p>\n  <h2>{{ section.settings.title | newline_to_br }}</h2>\n\n  <div class=\"sylvox-icons\">\n    {% if section.settings.icon1 %}\n      <img src=\"{{ section.settings.icon1 | image_url }}\" alt=\"Icon 1\" />\n    {% endif %}\n    {% if section.settings.icon2 %}\n      <img src=\"{{ section.settings.icon2 | image_url }}\" alt=\"Icon 2\" />\n    {% endif %}\n    {% if section.settings.icon3 %}\n      <img src=\"{{ section.settings.icon3 | image_url }}\" alt=\"Icon 3\" />\n    {% endif %}\n  </div>\n\n  <div class=\"sylvox-products\">\n    {% if section.settings.product %}\n  <div class=\"product-display\">\n    {% if section.settings.product.featured_image %}\n      <img src=\"{{ section.settings.product.featured_image | image_url }}\" alt=\"{{ section.settings.product.title }}\">\n    {% endif %}\n    {% if section.settings.show_title %}\n      <p><strong>{{ section.settings.product.title }}</strong></p>\n    {% endif %}\n  </div>\n{% endif %}\n  </div>\n\n  <p>{{ section.settings.price_text }}</p>\n  <a href=\"{{ section.settings.button_link }}\" class=\"button\">\n    {{ section.settings.button_label }}\n  </a>\n</div>\n"
+        }
+    ]
+}
