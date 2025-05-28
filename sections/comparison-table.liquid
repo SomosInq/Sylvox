@@ -12,6 +12,7 @@
   padding-bottom: {{ section.settings.padding_bottom }}px;
   padding-left: {{ section.settings.padding_left }}px;
   padding-right: {{ section.settings.padding_right }}px;
+  margin-top: {{ section.settings.margin_top }}px;
 ">
   <div class="container text-{{ section.settings.text_alignment }}">
     {% if section.settings.title != blank %}
@@ -34,46 +35,44 @@
       </a>
     {% endif %}
 
-    <div class="comparison-table" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
-      <!-- Headings row -->
-      <div></div>
-      {% for block in section.blocks %}
-        <div class="text-center">
-          {% if block.settings.main_image %}
-            <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
-          {% endif %}
-          <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-            {% if block.settings.icon %}
-              <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
+    <div class="comparison-table" style="background-color: {{ section.settings.table_background }};">
+      <div class="comparison-row">
+        <div class="comparison-heading"></div>
+        {% for block in section.blocks %}
+          <div class="comparison-column text-center">
+            {% if block.settings.main_image %}
+              <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
             {% endif %}
-            <strong>{{ block.settings.title }}</strong>
+            <div class="icon-title-wrapper">
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px; display: inline-block; margin-right: 6px;">
+              {% endif %}
+              <strong>{{ block.settings.title }}</strong>
+            </div>
+            {% if block.settings.button_label and block.settings.button_link %}
+              <a href="{{ block.settings.button_link }}" class="btn mt-2">{{ block.settings.button_label }}</a>
+            {% endif %}
           </div>
-          {% if block.settings.button_label and block.settings.button_link %}
-            <a href="{{ block.settings.button_link }}" class="btn mt-2">{{ block.settings.button_label }}</a>
-          {% endif %}
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
 
-      <!-- Rows -->
       {% for i in (1..20) %}
         {% assign heading_key = 'heading_' | append: i %}
-        {% if section.settings[heading_key] != blank %}
-          <div><strong>{{ section.settings[heading_key] }}</strong></div>
+        <div class="comparison-row">
+          <div class="comparison-heading">
+            {{ section.settings[heading_key] }}
+          </div>
           {% for block in section.blocks %}
             {% assign value_key = 'value_' | append: i %}
             {% assign image_key = 'value_image_' | append: i %}
-            <div class="text-center">
+            <div class="comparison-column text-center">
               {% if block.settings[image_key] %}
-                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 80%; display: block; margin: 0 auto 0.5rem;" />
+                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
               {% endif %}
-              {% if block.settings[value_key] != blank %}
-                <div>{{ block.settings[value_key] }}</div>
-              {% else %}
-                <div>—</div>
-              {% endif %}
+              <div>{{ block.settings[value_key] }}</div>
             </div>
           {% endfor %}
-        {% endif %}
+        </div>
       {% endfor %}
     </div>
   </div>
@@ -100,10 +99,12 @@
     {"type": "range", "id": "button_size", "label": "Button Font Size", "min": 10, "max": 30, "default": 16},
     {"type": "image_picker", "id": "background_image", "label": "Background Image"},
     {"type": "color", "id": "background_color", "label": "Background Color"},
+    {"type": "color", "id": "table_background", "label": "Table Background Color"},
     {"type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 20},
     {"type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 20},
     {"type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0},
     {"type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0},
+    {"type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "default": 0},
     {"type": "header", "content": "Row Headings"},
     {"type": "text", "id": "heading_1", "label": "Heading 1"},
     {"type": "text", "id": "heading_2", "label": "Heading 2"},
@@ -137,52 +138,51 @@
         {"type": "text", "id": "button_label", "label": "Button Label"},
         {"type": "url", "id": "button_link", "label": "Button URL"},
         {"type": "header", "content": "Row Values"},
-        { "type": "richtext", "id": "value_1", "label": "Value 1" },
-{ "type": "image_picker", "id": "value_image_1", "label": "Image above Value 1" },
-{ "type": "richtext", "id": "value_2", "label": "Value 2" },
-{ "type": "image_picker", "id": "value_image_2", "label": "Image above Value 2" },
-{ "type": "richtext", "id": "value_3", "label": "Value 3" },
-{ "type": "image_picker", "id": "value_image_3", "label": "Image above Value 3" },
-{ "type": "richtext", "id": "value_4", "label": "Value 4" },
-{ "type": "image_picker", "id": "value_image_4", "label": "Image above Value 4" },
-{ "type": "richtext", "id": "value_5", "label": "Value 5" },
-{ "type": "image_picker", "id": "value_image_5", "label": "Image above Value 5" },
-{ "type": "richtext", "id": "value_6", "label": "Value 6" },
-{ "type": "image_picker", "id": "value_image_6", "label": "Image above Value 6" },
-{ "type": "richtext", "id": "value_7", "label": "Value 7" },
-{ "type": "image_picker", "id": "value_image_7", "label": "Image above Value 7" },
-{ "type": "richtext", "id": "value_8", "label": "Value 8" },
-{ "type": "image_picker", "id": "value_image_8", "label": "Image above Value 8" },
-{ "type": "richtext", "id": "value_9", "label": "Value 9" },
-{ "type": "image_picker", "id": "value_image_9", "label": "Image above Value 9" },
-{ "type": "richtext", "id": "value_10", "label": "Value 10" },
-{ "type": "image_picker", "id": "value_image_10", "label": "Image above Value 10" },
-{ "type": "richtext", "id": "value_11", "label": "Value 11" },
-{ "type": "image_picker", "id": "value_image_11", "label": "Image above Value 11" },
-{ "type": "richtext", "id": "value_12", "label": "Value 12" },
-{ "type": "image_picker", "id": "value_image_12", "label": "Image above Value 12" },
-{ "type": "richtext", "id": "value_13", "label": "Value 13" },
-{ "type": "image_picker", "id": "value_image_13", "label": "Image above Value 13" },
-{ "type": "richtext", "id": "value_14", "label": "Value 14" },
-{ "type": "image_picker", "id": "value_image_14", "label": "Image above Value 14" },
-{ "type": "richtext", "id": "value_15", "label": "Value 15" },
-{ "type": "image_picker", "id": "value_image_15", "label": "Image above Value 15" },
-{ "type": "richtext", "id": "value_16", "label": "Value 16" },
-{ "type": "image_picker", "id": "value_image_16", "label": "Image above Value 16" },
-{ "type": "richtext", "id": "value_17", "label": "Value 17" },
-{ "type": "image_picker", "id": "value_image_17", "label": "Image above Value 17" },
-{ "type": "richtext", "id": "value_18", "label": "Value 18" },
-{ "type": "image_picker", "id": "value_image_18", "label": "Image above Value 18" },
-{ "type": "richtext", "id": "value_19", "label": "Value 19" },
-{ "type": "image_picker", "id": "value_image_19", "label": "Image above Value 19" },
-{ "type": "richtext", "id": "value_20", "label": "Value 20" },
-{ "type": "image_picker", "id": "value_image_20", "label": "Image above Value 20" }
-
+        {"type": "richtext", "id": "value_1", "label": "Value 1"},
+        {"type": "image_picker", "id": "value_image_1", "label": "Image above Value 1"},
+        {"type": "richtext", "id": "value_2", "label": "Value 2"},
+        {"type": "image_picker", "id": "value_image_2", "label": "Image above Value 2"},
+        {"type": "richtext", "id": "value_3", "label": "Value 3"},
+        {"type": "image_picker", "id": "value_image_3", "label": "Image above Value 3"},
+        {"type": "richtext", "id": "value_4", "label": "Value 4"},
+        {"type": "image_picker", "id": "value_image_4", "label": "Image above Value 4"},
+        {"type": "richtext", "id": "value_5", "label": "Value 5"},
+        {"type": "image_picker", "id": "value_image_5", "label": "Image above Value 5"},
+        {"type": "richtext", "id": "value_6", "label": "Value 6"},
+        {"type": "image_picker", "id": "value_image_6", "label": "Image above Value 6"},
+        {"type": "richtext", "id": "value_7", "label": "Value 7"},
+        {"type": "image_picker", "id": "value_image_7", "label": "Image above Value 7"},
+        {"type": "richtext", "id": "value_8", "label": "Value 8"},
+        {"type": "image_picker", "id": "value_image_8", "label": "Image above Value 8"},
+        {"type": "richtext", "id": "value_9", "label": "Value 9"},
+        {"type": "image_picker", "id": "value_image_9", "label": "Image above Value 9"},
+        {"type": "richtext", "id": "value_10", "label": "Value 10"},
+        {"type": "image_picker", "id": "value_image_10", "label": "Image above Value 10"},
+        {"type": "richtext", "id": "value_11", "label": "Value 11"},
+        {"type": "image_picker", "id": "value_image_11", "label": "Image above Value 11"},
+        {"type": "richtext", "id": "value_12", "label": "Value 12"},
+        {"type": "image_picker", "id": "value_image_12", "label": "Image above Value 12"},
+        {"type": "richtext", "id": "value_13", "label": "Value 13"},
+        {"type": "image_picker", "id": "value_image_13", "label": "Image above Value 13"},
+        {"type": "richtext", "id": "value_14", "label": "Value 14"},
+        {"type": "image_picker", "id": "value_image_14", "label": "Image above Value 14"},
+        {"type": "richtext", "id": "value_15", "label": "Value 15"},
+        {"type": "image_picker", "id": "value_image_15", "label": "Image above Value 15"},
+        {"type": "richtext", "id": "value_16", "label": "Value 16"},
+        {"type": "image_picker", "id": "value_image_16", "label": "Image above Value 16"},
+        {"type": "richtext", "id": "value_17", "label": "Value 17"},
+        {"type": "image_picker", "id": "value_image_17", "label": "Image above Value 17"},
+        {"type": "richtext", "id": "value_18", "label": "Value 18"},
+        {"type": "image_picker", "id": "value_image_18", "label": "Image above Value 18"},
+        {"type": "richtext", "id": "value_19", "label": "Value 19"},
+        {"type": "image_picker", "id": "value_image_19", "label": "Image above Value 19"},
+        {"type": "richtext", "id": "value_20", "label": "Value 20"},
+        {"type": "image_picker", "id": "value_image_20", "label": "Image above Value 20"}
       ]
     }
   ],
   "presets": [
-    { "name": "Comparison Table", "blocks": [] }
+    {"name": "Comparison Table", "blocks": []}
   ]
 }
 {% endschema %}
