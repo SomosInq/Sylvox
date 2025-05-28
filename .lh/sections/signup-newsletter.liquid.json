@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1748438806281,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748438949911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \"class\": \"newsletter-section\",\n   \"settings\": [\n     {\n       \"type\": \"image_picker\",\n-      \"id\": \"background_image\",\n+      \"id\": \"bg_image_custom\",\n       \"label\": \"Background Image\"\n     },\n     {\n       \"type\": \"text\",\n@@ -59,8 +59,11 @@\n {% endschema %}\n \n {% style %}\n .newsletter-section {\n+  {% if section.settings.bg_image_custom != blank %}\n+    background-image: url({{ section.settings.bg_image_custom | image_url }});\n+  {% endif %}\n   background-size: cover;\n   background-position: center;\n   position: relative;\n   min-height: 500px;\n"
                 }
             ],
             "date": 1748438806281,

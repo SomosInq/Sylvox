@@ -6,7 +6,7 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "background_image",
+      "id": "bg_image_custom",
       "label": "Background Image"
     },
     {
@@ -60,6 +60,9 @@
 
 {% style %}
 .newsletter-section {
+  {% if section.settings.bg_image_custom != blank %}
+    background-image: url({{ section.settings.bg_image_custom | image_url }});
+  {% endif %}
   background-size: cover;
   background-position: center;
   position: relative;
