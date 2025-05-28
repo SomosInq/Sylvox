@@ -104,9 +104,7 @@
   </image-banner>
 </div>
 
-
 {% schema %}
-
 {
   "name": "Image with text overlay",
   "class": "shopify-section--image-with-text-overlay",
@@ -142,83 +140,38 @@
       "id": "image_size",
       "label": "Image size",
       "options": [
-        {
-          "value": "auto",
-          "label": "Original image ratio"
-        },
-        {
-          "value": "sm",
-          "label": "Small"
-        },
-        {
-          "value": "md",
-          "label": "Medium"
-        },
-        {
-          "value": "lg",
-          "label": "Large"
-        },
-        {
-          "value": "fill",
-          "label": "Fill screen"
-        }
+        { "value": "auto", "label": "Original image ratio" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "fill", "label": "Fill screen" }
       ],
-      "info": "Choose \"Original image ratio\" to avoid image cropping. [Learn more](https://help.shopify.com/en/manual/online-store/images/theme-images#best-practices-for-slideshows-and-full-widtw-images)",
       "default": "auto"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image",
-      "info": "3200 x 1600px .jpg recommended"
+      "label": "Image"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Mobile image",
-      "info": "1300 x 1500px .jpg recommended. Default to desktop image."
+      "label": "Mobile image"
     },
     {
       "type": "select",
       "id": "mobile_text_position",
       "label": "Mobile content position",
       "options": [
-        {
-          "value": "place-self-start text-start",
-          "label": "Top left"
-        },
-        {
-          "value": "place-self-start-center text-center",
-          "label": "Top center"
-        },
-        {
-          "value": "place-self-start-end text-end",
-          "label": "Top right"
-        },
-        {
-          "value": "place-self-center-start text-start",
-          "label": "Middle left"
-        },
-        {
-          "value": "place-self-center text-center",
-          "label": "Middle center"
-        },
-        {
-          "value": "place-self-center-end text-end",
-          "label": "Middle right"
-        },
-        {
-          "value": "place-self-end-start text-start",
-          "label": "Bottom left"
-        },
-        {
-          "value": "place-self-end-center text-center",
-          "label": "Bottom center"
-        },
-        {
-          "value": "place-self-end text-end",
-          "label": "Bottom right"
-        }
+        { "value": "place-self-start text-start", "label": "Top left" },
+        { "value": "place-self-start text-center", "label": "Top center" },
+        { "value": "place-self-start text-end", "label": "Top right" },
+        { "value": "place-self-center text-start", "label": "Middle left" },
+        { "value": "place-self-center text-center", "label": "Middle center" },
+        { "value": "place-self-center text-end", "label": "Middle right" },
+        { "value": "place-self-end text-start", "label": "Bottom left" },
+        { "value": "place-self-end text-center", "label": "Bottom center" },
+        { "value": "place-self-end text-end", "label": "Bottom right" }
       ],
       "default": "place-self-center text-center"
     },
@@ -227,42 +180,15 @@
       "id": "desktop_text_position",
       "label": "Desktop content position",
       "options": [
-        {
-          "value": "sm:place-self-start sm:text-start",
-          "label": "Top left"
-        },
-        {
-          "value": "sm:place-self-start-center sm:text-center",
-          "label": "Top center"
-        },
-        {
-          "value": "sm:place-self-start-end sm:text-end",
-          "label": "Top right"
-        },
-        {
-          "value": "sm:place-self-center-start sm:text-start",
-          "label": "Middle left"
-        },
-        {
-          "value": "sm:place-self-center sm:text-center",
-          "label": "Middle center"
-        },
-        {
-          "value": "sm:place-self-center-end sm:text-end",
-          "label": "Middle right"
-        },
-        {
-          "value": "sm:place-self-end-start sm:text-start",
-          "label": "Bottom left"
-        },
-        {
-          "value": "sm:place-self-end-center sm:text-center",
-          "label": "Bottom center"
-        },
-        {
-          "value": "sm:place-self-end sm:text-end",
-          "label": "Bottom right"
-        }
+        { "value": "sm:place-self-start sm:text-start", "label": "Top left" },
+        { "value": "sm:place-self-start sm:text-center", "label": "Top center" },
+        { "value": "sm:place-self-start sm:text-end", "label": "Top right" },
+        { "value": "sm:place-self-center sm:text-start", "label": "Middle left" },
+        { "value": "sm:place-self-center sm:text-center", "label": "Middle center" },
+        { "value": "sm:place-self-center sm:text-end", "label": "Middle right" },
+        { "value": "sm:place-self-end sm:text-start", "label": "Bottom left" },
+        { "value": "sm:place-self-end sm:text-center", "label": "Bottom center" },
+        { "value": "sm:place-self-end sm:text-end", "label": "Bottom right" }
       ],
       "default": "sm:place-self-center sm:text-center"
     },
@@ -297,58 +223,25 @@
     {
       "type": "subheading",
       "name": "Subheading",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Subheading"
-        }
-      ]
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Subheading" }]
     },
     {
       "type": "heading",
       "name": "Heading",
       "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Heading"
-        },
+        { "type": "text", "id": "text", "label": "Text", "default": "Heading" },
         {
           "type": "select",
           "id": "heading_tag",
           "label": "Style",
           "options": [
-            {
-              "value": "h0",
-              "label": "XX-Large"
-            },
-            {
-              "value": "h1",
-              "label": "X-Large"
-            },
-            {
-              "value": "h2",
-              "label": "Large"
-            },
-            {
-              "value": "h3",
-              "label": "Medium"
-            },
-            {
-              "value": "h4",
-              "label": "Small"
-            },
-            {
-              "value": "h5",
-              "label": "X-Small"
-            },
-            {
-              "value": "h6",
-              "label": "XX-Small"
-            }
+            { "value": "h0", "label": "XX-Large" },
+            { "value": "h1", "label": "X-Large" },
+            { "value": "h2", "label": "Large" },
+            { "value": "h3", "label": "Medium" },
+            { "value": "h4", "label": "Small" },
+            { "value": "h5", "label": "X-Small" },
+            { "value": "h6", "label": "XX-Small" }
           ],
           "default": "h1"
         }
@@ -387,14 +280,8 @@
           "id": "style",
           "label": "Style",
           "options": [
-            {
-              "value": "outline",
-              "label": "Outline"
-            },
-            {
-              "value": "fill",
-              "label": "Fill"
-            }
+            { "value": "outline", "label": "Outline" },
+            { "value": "fill", "label": "Fill" }
           ],
           "default": "fill"
         },
@@ -403,22 +290,10 @@
           "id": "size",
           "label": "Size",
           "options": [
-            {
-              "value": "sm",
-              "label": "Small"
-            },
-            {
-              "value": "base",
-              "label": "Medium"
-            },
-            {
-              "value": "lg",
-              "label": "Large"
-            },
-            {
-              "value": "xl",
-              "label": "X-Large"
-            }
+            { "value": "sm", "label": "Small" },
+            { "value": "base", "label": "Medium" },
+            { "value": "lg", "label": "Large" },
+            { "value": "xl", "label": "X-Large" }
           ],
           "default": "lg"
         },
@@ -449,33 +324,16 @@
       "type": "link",
       "name": "Link Url",
       "settings": [
-        {
-          "type": "url",
-          "id": "link_url",
-          "label": "Link URL"
-        },
-        {
-          "type": "text",
-          "id": "link_text",
-          "label": "Link Text",
-          "default": "Link"
-        }
+        { "type": "url", "id": "link_url", "label": "Link URL" },
+        { "type": "text", "id": "link_text", "label": "Link Text", "default": "Link" }
       ]
     },
     {
       "type": "image",
       "name": "Image",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "number",
-          "id": "width",
-          "label": "Image width (Unit: px)"
-        }
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "number", "id": "width", "label": "Image width (Unit: px)" }
       ]
     }
   ],
@@ -483,22 +341,9 @@
     {
       "name": "Image with text overlay",
       "blocks": [
-        {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        {
-          "type": "heading",
-          "settings": {
-            "text": "Image with text overlay",
-            "heading_tag": "h1"
-          }
-        },
-        {
-          "type": "richtext"
-        }
+        { "type": "subheading", "settings": { "text": "Subheading" } },
+        { "type": "heading", "settings": { "text": "Image with text overlay", "heading_tag": "h1" } },
+        { "type": "richtext" }
       ]
     }
   ]
