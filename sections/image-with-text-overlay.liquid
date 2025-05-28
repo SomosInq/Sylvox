@@ -100,11 +100,29 @@
 
                   {%- when 'button' -%}
                     {%- if block.settings.text != blank -%}
-                      <a href="{{ block.settings.url }}" class="btn btn--{{ block.settings.style }} btn--{{ block.settings.size }}" style="background-color: {{ block.settings.background }}; color: {{ block.settings.text_color }};" {{ block.shopify_attributes }}>
-  {{ block.settings.text | escape }}
-</a>
+  {% assign style = block.settings.style %}
+  {% assign text_color = block.settings.text_color %}
+  {% assign background = block.settings.background %}
+  {% assign outline_color = block.settings.outline_color %}
+  {% assign border_style = '' %}
+  {% assign button_style = '' %}
 
-                    {%- endif -%}
+  {% if style == 'outline' %}
+    {% assign button_style = 'background-color: transparent;' %}
+    {% if outline_color %}
+      {% assign border_style = 'border: 2px solid ' | append: outline_color | append: ';' %}
+    {% else %}
+      {% assign border_style = 'border: 2px solid currentColor;' %}
+    {% endif %}
+    {% assign button_style = button_style | append: ' color: ' | append: text_color | append: '; ' | append: border_style %}
+  {% else %}
+    {% assign button_style = 'background-color: ' | append: background | append: '; color: ' | append: text_color %}
+  {% endif %}
+
+  <a href="{{ block.settings.url }}" class="btn btn--{{ style }} btn--{{ block.settings.size }}" style="{{ button_style }}" {{ block.shopify_attributes }}>
+    {{ block.settings.text | escape }}
+  </a>
+{%- endif -%}
 
                   {%- when 'image' -%}
                     {%- if block.settings.image != blank -%}
@@ -350,7 +368,12 @@
           "type": "color",
           "id": "text_color",
           "label": "Text"
-        }
+        },
+        {
+  "type": "color",
+  "id": "outline_color",
+  "label": "Outline color"
+}
       ]
     },
     {
