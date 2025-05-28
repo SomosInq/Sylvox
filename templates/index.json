@@ -404,12 +404,10 @@
         "text_size": 16,
         "button_size": 16,
         "background_color": "#ffffff",
-        "table_background": "",
         "padding_top": 20,
         "padding_bottom": 20,
         "padding_left": 0,
         "padding_right": 0,
-        "margin_top": 0,
         "heading_1": "Test",
         "heading_2": "",
         "heading_3": "",
@@ -458,7 +456,7 @@
         "left_image": "shopify://shop_images/long-forest-path.jpg",
         "subheading": "Customer Favorites",
         "heading": "Best Sellers",
-        "shop_all_url": "",
+        "shop_all_url": "shopify://collections",
         "show_arrows": false,
         "section_width": "standard"
       }
