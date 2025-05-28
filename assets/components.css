@@ -2767,7 +2767,7 @@ html input[disabled] {
 .btn,
 .rte .btn,
 .shopify-payment-button .shopify-payment-button__button--unbranded {
-  border-radius: 50px;
+  border-radius: 50px !important;
   line-height: 1.42;
   -webkit-text-decoration: none;
   text-decoration: none;
