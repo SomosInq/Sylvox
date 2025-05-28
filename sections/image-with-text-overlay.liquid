@@ -14,6 +14,30 @@
       margin-block-start: calc(-1 * var(--header-height) * var(--section-is-first));
     {%- endif -%}
   }
+
+  #shopify-section-{{ section.id }} .grid-content-wrapper {
+    display: grid;
+    grid-template-areas:
+      "top-left top-center top-right"
+      "middle-left middle-center middle-right"
+      "bottom-left bottom-center bottom-right";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
+    width: 100%;
+  }
+
+  .pos-top-left { grid-area: top-left; text-align: left; }
+  .pos-top-center { grid-area: top-center; text-align: center; }
+  .pos-top-right { grid-area: top-right; text-align: right; }
+
+  .pos-middle-left { grid-area: middle-left; text-align: left; }
+  .pos-middle-center { grid-area: middle-center; text-align: center; }
+  .pos-middle-right { grid-area: middle-right; text-align: right; }
+
+  .pos-bottom-left { grid-area: bottom-left; text-align: left; }
+  .pos-bottom-center { grid-area: bottom-center; text-align: center; }
+  .pos-bottom-right { grid-area: bottom-right; text-align: right; }
 </style>
 
 <div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
@@ -41,9 +65,10 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="grid w-full h-full">
-  <div class="grid w-full h-full grid-rows-3 grid-cols-3">
-          <div class="p-4 {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
+     <div class="grid w-full h-full">
+  <div class="grid-content-wrapper">
+            <div class="p-4 {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
+
             <div class="prose">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
@@ -152,39 +177,39 @@
       "label": "Mobile image"
     },
     {
-      "type": "select",
-      "id": "mobile_text_position",
-      "label": "Mobile content position",
-      "options": [
-        { "value": "place-self-start text-start", "label": "Top left" },
-        { "value": "place-self-start text-center", "label": "Top center" },
-        { "value": "place-self-start text-end", "label": "Top right" },
-        { "value": "place-self-center text-start", "label": "Middle left" },
-        { "value": "place-self-center text-center", "label": "Middle center" },
-        { "value": "place-self-center text-end", "label": "Middle right" },
-        { "value": "place-self-end text-start", "label": "Bottom left" },
-        { "value": "place-self-end text-center", "label": "Bottom center" },
-        { "value": "place-self-end text-end", "label": "Bottom right" }
-      ],
-      "default": "place-self-center text-center"
-    },
+  "type": "select",
+  "id": "mobile_text_position",
+  "label": "Mobile content position",
+  "options": [
+    { "value": "pos-top-left", "label": "Top left" },
+    { "value": "pos-top-center", "label": "Top center" },
+    { "value": "pos-top-right", "label": "Top right" },
+    { "value": "pos-middle-left", "label": "Middle left" },
+    { "value": "pos-middle-center", "label": "Middle center" },
+    { "value": "pos-middle-right", "label": "Middle right" },
+    { "value": "pos-bottom-left", "label": "Bottom left" },
+    { "value": "pos-bottom-center", "label": "Bottom center" },
+    { "value": "pos-bottom-right", "label": "Bottom right" }
+  ],
+  "default": "pos-middle-center"
+},
     {
-      "type": "select",
-      "id": "desktop_text_position",
-      "label": "Desktop content position",
-      "options": [
-        { "value": "sm:place-self-start sm:text-start", "label": "Top left" },
-        { "value": "sm:place-self-start sm:text-center", "label": "Top center" },
-        { "value": "sm:place-self-start sm:text-end", "label": "Top right" },
-        { "value": "sm:place-self-center sm:text-start", "label": "Middle left" },
-        { "value": "sm:place-self-center sm:text-center", "label": "Middle center" },
-        { "value": "sm:place-self-center sm:text-end", "label": "Middle right" },
-        { "value": "sm:place-self-end sm:text-start", "label": "Bottom left" },
-        { "value": "sm:place-self-end sm:text-center", "label": "Bottom center" },
-        { "value": "sm:place-self-end sm:text-end", "label": "Bottom right" }
-      ],
-      "default": "sm:place-self-center sm:text-center"
-    },
+  "type": "select",
+  "id": "desktop_text_position",
+  "label": "Desktop content position",
+  "options": [
+    { "value": "sm:pos-top-left", "label": "Top left" },
+    { "value": "sm:pos-top-center", "label": "Top center" },
+    { "value": "sm:pos-top-right", "label": "Top right" },
+    { "value": "sm:pos-middle-left", "label": "Middle left" },
+    { "value": "sm:pos-middle-center", "label": "Middle center" },
+    { "value": "sm:pos-middle-right", "label": "Middle right" },
+    { "value": "sm:pos-bottom-left", "label": "Bottom left" },
+    { "value": "sm:pos-bottom-center", "label": "Bottom center" },
+    { "value": "sm:pos-bottom-right", "label": "Bottom right" }
+  ],
+  "default": "sm:pos-middle-center"
+},
     {
       "type": "header",
       "content": "Colors"
