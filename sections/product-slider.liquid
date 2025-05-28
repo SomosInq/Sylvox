@@ -249,19 +249,22 @@
 </section>
 
 {% javascript %}
-function initCollectionTabsSlider(sectionEl) {
-  const buttons = sectionEl.querySelectorAll('.tab-buttons button');
-  const carousels = sectionEl.querySelectorAll('.product-carousel');
+function initCollectionTabsSlider(section) {
+  if (!section) return;
 
+  const buttons = section.querySelectorAll('.tab-buttons button');
+  const carousels = section.querySelectorAll('.product-carousel');
+
+  // Attach tab click events
   buttons.forEach(button => {
-    button.addEventListener('click', function () {
-      const tab = this.dataset.tab;
+    button.addEventListener('click', () => {
+      const targetTab = button.dataset.tab;
 
       buttons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
+      button.classList.add('active');
 
       carousels.forEach(carousel => {
-        if (carousel.dataset.tab === tab) {
+        if (carousel.dataset.tab === targetTab) {
           carousel.classList.add('active');
         } else {
           carousel.classList.remove('active');
@@ -270,41 +273,39 @@ function initCollectionTabsSlider(sectionEl) {
     });
   });
 
-  const flickityElems = sectionEl.querySelectorAll('.js-flickity');
-  flickityElems.forEach(el => {
-    if (!el.classList.contains('flickity-enabled')) {
-      new Flickity(el, JSON.parse(el.getAttribute('data-flickity-options')));
-    }
-  });
+  // Init Flickity if available
+  if (typeof Flickity !== 'undefined') {
+    carousels.forEach(carousel => {
+      if (!carousel.classList.contains('flickity-enabled')) {
+        new Flickity(carousel, JSON.parse(carousel.getAttribute('data-flickity-options')));
+      }
+    });
+  }
 }
 
-function loadFlickityAndInitAllSections() {
-  const sectionEls = document.querySelectorAll('.collection-tabs-section');
-  sectionEls.forEach(initCollectionTabsSlider);
-}
-
-function loadFlickityLibrary(callback) {
+function loadFlickityAndInitSection(section) {
   if (typeof Flickity === 'undefined') {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
-    script.onload = callback;
+    script.onload = () => initCollectionTabsSlider(section);
     document.head.appendChild(script);
   } else {
-    callback();
+    initCollectionTabsSlider(section);
   }
 }
 
-// Initial run
-document.addEventListener('DOMContentLoaded', function () {
-  loadFlickityLibrary(loadFlickityAndInitAllSections);
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.collection-tabs-section').forEach(section => {
+    loadFlickityAndInitSection(section);
+  });
 });
 
-// Re-init after section is loaded in Theme Customizer
-document.addEventListener('shopify:section:load', function (e) {
-  const sectionEl = e.target.querySelector('.collection-tabs-section');
-  if (sectionEl) {
-    loadFlickityLibrary(() => initCollectionTabsSlider(sectionEl));
-  }
+// Theme Editor: Reinit on section load
+document.addEventListener('shopify:section:load', (event) => {
+  const section = event.target.querySelector('.collection-tabs-section');
+  loadFlickityAndInitSection(section);
 });
 {% endjavascript %}
+
 
