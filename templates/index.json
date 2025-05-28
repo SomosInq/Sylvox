@@ -353,7 +353,7 @@
         "values_X7RbGx": {
           "type": "values",
           "settings": {
-            "product": "",
+            "product": "43-120hz-waterproof-outdoor-tv-2025-gaming-series-tv",
             "value_1": "<p>Value 1</p>",
             "value_2": "<p>Value 2</p>",
             "value_3": "<p>Value 3</p>",
@@ -405,43 +405,13 @@
             "view_button_background": "",
             "view_button_text_color": ""
           }
-        },
-        "values_pVpnfK": {
-          "type": "values",
-          "settings": {
-            "product": "",
-            "value_1": "<p>Value 1</p>",
-            "value_2": "<p>Value 2</p>",
-            "value_3": "<p>Value 3</p>",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
-          }
         }
       },
       "block_order": [
         "headings_zRWQHN",
         "values_X7RbGx",
-        "values_hKRnzg",
-        "values_pVpnfK"
+        "values_hKRnzg"
       ],
-      "name": "Comparison table",
       "settings": {
         "full_width": true,
         "subheading": "Compare",
