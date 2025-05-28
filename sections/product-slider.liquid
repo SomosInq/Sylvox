@@ -223,7 +223,7 @@
     </div>
 
     {% for block in section.blocks %}
-      {% assign collection = collections[block.settings.collection] %}
+      {% assign block_collection = collections[block.settings.collection] %}
       <div
         class="product-carousel js-flickity {% if forloop.first %}active{% endif %}"
         data-tab="tab-{{ forloop.index }}"
@@ -234,19 +234,24 @@
           "prevNextButtons": {{ section.settings.show_arrows }}
         }'
       >
-        {% for product in collection.products limit: 10 %}
-          <div class="product-card">
-            <a href="{{ product.url }}">
-              <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
-              <h4>{{ product.title }}</h4>
-              <p>From {{ product.price | money }}</p>
-            </a>
-          </div>
-        {% endfor %}
+        {% if block_collection != blank %}
+          {% for product in block_collection.products limit: 10 %}
+            <div class="product-card">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
+                <h4>{{ product.title }}</h4>
+                <p>From {{ product.price | money }}</p>
+              </a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No products found in this collection.</p>
+        {% endif %}
       </div>
     {% endfor %}
   </div>
 </section>
+
 
 {% javascript %}
 function initCollectionTabsSlider(section) {
@@ -255,7 +260,7 @@ function initCollectionTabsSlider(section) {
   const buttons = section.querySelectorAll('.tab-buttons button');
   const carousels = section.querySelectorAll('.product-carousel');
 
-  // Attach tab click events
+  // Attach tab switching
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const targetTab = button.dataset.tab;
@@ -273,7 +278,7 @@ function initCollectionTabsSlider(section) {
     });
   });
 
-  // Init Flickity if available
+  // Initialize Flickity if not already initialized
   if (typeof Flickity !== 'undefined') {
     carousels.forEach(carousel => {
       if (!carousel.classList.contains('flickity-enabled')) {
@@ -294,18 +299,16 @@ function loadFlickityAndInitSection(section) {
   }
 }
 
-// Initial load
+// Normal load
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.collection-tabs-section').forEach(section => {
     loadFlickityAndInitSection(section);
   });
 });
 
-// Theme Editor: Reinit on section load
+// Theme editor support
 document.addEventListener('shopify:section:load', (event) => {
   const section = event.target.querySelector('.collection-tabs-section');
   loadFlickityAndInitSection(section);
 });
 {% endjavascript %}
-
-
