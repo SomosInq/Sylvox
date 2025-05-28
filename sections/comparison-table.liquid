@@ -1,6 +1,21 @@
 {%- render 'section-spacing-collapsing' -%}
 
-<div class="comparison-section" style="
+{% style %}
+    .section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+    .section_width_full {
+  width: 100%;
+}
+
+.section_width_standard {
+  margin: 0 auto;
+  width: 90%;
+}
+{% endstyle %}
+
+<div class="comparison-section section_width_{{ section.settings.section_width }}" style="
   {% if section.settings.background_image != blank %}
     background-image: url({{ section.settings.background_image | image_url }});
     background-size: cover;
@@ -83,22 +98,22 @@
 {
   "name": "Comparison Table",
   "settings": [
+     {
+  "type": "select",
+  "id": "section_width",
+  "label": "Section Width",
+  "default": "standard",
+  "options": [
     {
-      "type": "select",
-      "id": "section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        {
-          "value": "standard",
-          "label": "50% Width"
-        },
-        {
-          "value": "full",
-          "label": "Full Width"
-        }
-      ]
+      "value": "standard",
+      "label": "50% Width"
     },
+    {
+      "value": "full",
+      "label": "Full Width"
+    }
+  ]
+},
     {"type": "text", "id": "title", "label": "Title"},
     {"type": "richtext", "id": "description", "label": "Description"},
     {"type": "text", "id": "button_text", "label": "Button Text"},
