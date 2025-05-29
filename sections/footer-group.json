@@ -33,15 +33,22 @@
         "link_item_ekeTHk",
         "link_item_f8TzGR"
       ],
-      "name": "Support",
       "settings": {
+        "section_width": "full",
         "button_label": "See All",
-        "button_link": ""
+        "button_link": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "signup_newsletter_iPeWaE": {
       "type": "signup-newsletter",
-      "name": "Newsletter",
       "settings": {
         "background_image": "shopify://shop_images/Image_Placeholder.png",
         "heading": "Join Our Newsletter",
@@ -55,7 +62,6 @@
     },
     "join_community_NEVzTD": {
       "type": "join-community",
-      "name": "Join Community",
       "settings": {
         "logo_image": "shopify://shop_images/Logo-Green.png",
         "logo_size": 100,
@@ -90,7 +96,6 @@
         "image_G3Uf7t",
         "liquid_TD4NGj"
       ],
-      "name": "t:labels.custom_content",
       "settings": {
         "full_width": false,
         "space_around": false
