@@ -15,7 +15,8 @@ width: 90%;
 }
 {% endstyle %}
 
-<div class="section info-section section_width_{{ section.settings.section_width }}"
+<div class="section info-section section_width_{{ section.settings.section_width }}
+  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px"
     style="
         --info-section-bg: {{ section.settings.bg }};
         --info-section-text-color: {{ section.settings.text_color }};
@@ -65,6 +66,14 @@ width: 90%;
     }
   ]
 },
+{"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {
       "type": "html",
       "id": "icon",
@@ -163,7 +172,8 @@ width: 90%;
   ],
   "presets": [
     {
-      "name": "Info section"
+      "name": "Info section",
+      "category": "Somos Custom"
     }
   ]
 }
