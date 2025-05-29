@@ -35,7 +35,7 @@
       <!-- Headings row -->
       <div class="header"></div>
       {% for block in section.blocks %}
-        <div class="text-center">
+        <div class="text-center header">
           {% if block.settings.main_image %}
             <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
           {% endif %}

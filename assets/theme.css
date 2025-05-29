@@ -964,12 +964,14 @@ a.button {
 }
 
 .table-value {
+  padding: 5%;
 }
 .header {
   background: #ffffff;
 }
 .head {
   text-align: left;
+  padding: 5%;
 }
 
 /* Grid */
