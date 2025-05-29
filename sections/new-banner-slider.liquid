@@ -122,9 +122,13 @@
       {% if section.settings.show_arrows %}
         <!-- Arrows on the right -->
         <div class="carousel-arrows">
-          <button class="carousel-prev" aria-label="Previous">&#10094;</button>
-          <button class="carousel-next" aria-label="Next">&#10095;</button>
-        </div>
+  <button class="carousel-prev" aria-label="Previous">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="carousel-next" aria-label="Next">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
       {% endif %}
     </div>
   </div>
