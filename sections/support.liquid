@@ -33,23 +33,20 @@
     background-color: #20413B;
     color: white;
     padding: 40px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
   .support-container {
     display: flex;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .support-left {
+    flex: 0 0 auto;
     max-width: 300px;
-    flex-shrink: 0;
   }
 
   .support-title {
@@ -69,20 +66,19 @@
   }
 
   .support-links {
-    margin-left: auto; /* pushes it to the far right */
+    flex: 0 0 auto;
+    margin-left: auto;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
   .support-link {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
-    color: white;
-    text-decoration: none;
     padding: 16px 0;
+    text-decoration: none;
+    color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 

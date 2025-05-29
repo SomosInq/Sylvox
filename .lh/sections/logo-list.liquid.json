@@ -1,0 +1,18 @@
+{
+    "sourceFile": "sections/logo-list.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1748535229561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1748535229561,
+            "name": "Commit-0",
+            "content": "{%- render 'section-logo-list' -%}\n\n{% schema %}\n{\n  \"name\": \"t:labels.logo_list\",\n  \"class\": \"index-section\",\n  \"max_blocks\": 12,\n  \"settings\": [\n     {\n  \"type\": \"select\",\n  \"id\": \"section_width\",\n  \"label\": \"Section Width\",\n  \"default\": \"standard\",\n  \"options\": [\n    {\n      \"value\": \"standard\",\n      \"label\": \"50% Width\"\n    },\n    {\n      \"value\": \"full\",\n      \"label\": \"Full Width\"\n    }\n  ]\n},\n    {\n      \"type\": \"text\",\n      \"id\": \"title\",\n      \"label\": \"t:labels.heading\",\n      \"default\": \"Our brands\"\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"heading_size\",\n      \"label\": \"t:labels.heading_size\",\n      \"default\": \"h2\",\n      \"options\": [\n        {\n          \"value\": \"h3\",\n          \"label\": \"t:labels.sizes.small\"\n        },\n        {\n          \"value\": \"h2\",\n          \"label\": \"t:labels.sizes.medium\"\n        },\n        {\n          \"value\": \"h1\",\n          \"label\": \"t:labels.sizes.large\"\n        },\n        {\n          \"value\": \"h0\",\n          \"label\": \"t:labels.sizes.extra_large\"\n        }\n      ]\n    },\n    {\n      \"type\": \"select\",\n      \"id\": \"heading_position\",\n      \"label\": \"t:labels.heading_position\",\n      \"default\": \"left\",\n      \"options\": [\n        {\n          \"value\": \"left\",\n          \"label\": \"t:labels.alignments.left\"\n        },\n        {\n          \"value\": \"center\",\n          \"label\": \"t:labels.alignments.center\"\n        },\n        {\n          \"value\": \"right\",\n          \"label\": \"t:labels.alignments.right\"\n        }\n      ]\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"divider\",\n      \"label\": \"t:actions.show_section_divider\",\n      \"default\": false\n    }\n  ],\n  \"blocks\": [\n    {\n      \"type\": \"logo_image\",\n      \"name\": \"t:labels.logo\",\n      \"settings\": [\n        {\n          \"type\": \"image_picker\",\n          \"id\": \"image\",\n          \"label\": \"t:labels.image\",\n          \"info\": \"t:actions.add_alt_text\"\n        },\n        {\n          \"type\": \"url\",\n          \"id\": \"link\",\n          \"label\": \"t:labels.link\",\n          \"info\": \"t:labels.optional\"\n        }\n      ]\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"t:labels.logo_list\",\n      \"blocks\": [\n        {\n          \"type\": \"logo_image\"\n        },\n        {\n          \"type\": \"logo_image\"\n        },\n        {\n          \"type\": \"logo_image\"\n        },\n        {\n          \"type\": \"logo_image\"\n        },\n        {\n          \"type\": \"logo_image\"\n        },\n        {\n          \"type\": \"logo_image\"\n        }\n      ]\n    }\n  ],\n  \"disabled_on\": {\n    \"groups\": [\"footer\", \"header\", \"custom.popups\"]\n  }\n}\n{% endschema %}\n"
+        }
+    ]
+}

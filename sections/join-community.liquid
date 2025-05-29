@@ -4,6 +4,22 @@
   "tag": "section",
   "class": "join-community-section",
   "settings": [
+     {
+  "type": "select",
+  "id": "section_width",
+  "label": "Section Width",
+  "default": "standard",
+  "options": [
+    {
+      "value": "standard",
+      "label": "50% Width"
+    },
+    {
+      "value": "full",
+      "label": "Full Width"
+    }
+  ]
+},
     {
       "type": "image_picker",
       "id": "logo_image",
@@ -51,7 +67,7 @@
 {% endschema %}
 
 
-<div class="join-community-wrapper">
+<div class="join-community-wrapper section_width_{{ section.settings.section_width }}">
   <div class="join-community-left" style="max-width: {{ section.settings.logo_size }}%;">
     {% if section.settings.logo_image %}
       <img src="{{ section.settings.logo_image | image_url }}" alt="Logo">
