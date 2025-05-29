@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 39,
+            "activePatchIndex": 40,
             "patches": [
                 {
                     "date": 1748424308697,
@@ -164,6 +164,10 @@
                 {
                     "date": 1748537783260,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,10 @@\n     {% endif %}\n \n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n+\n+      <div class=\"comparison-table-header\">\n       <div class=\"header\"></div>\n       {% for block in section.blocks %}\n         <div class=\"text-center header\">\n           {% if block.settings.main_image %}\n@@ -49,8 +51,9 @@\n             <a href=\"{{ block.settings.button_link }}\" class=\"btn mt-2\">{{ block.settings.button_label }}</a>\n           {% endif %}\n         </div>\n       {% endfor %}\n+        </div>\n \n       <!-- Rows -->\n       <div class=\"comparison-table-main\">\n       {% for i in (1..20) %}\n"
+                },
+                {
+                    "date": 1748538125164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,8 @@\n \n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n \n-      <div class=\"comparison-table-header\">\n       <div class=\"header\"></div>\n       {% for block in section.blocks %}\n         <div class=\"text-center header\">\n           {% if block.settings.main_image %}\n@@ -51,12 +50,10 @@\n             <a href=\"{{ block.settings.button_link }}\" class=\"btn mt-2\">{{ block.settings.button_label }}</a>\n           {% endif %}\n         </div>\n       {% endfor %}\n-        </div>\n \n       <!-- Rows -->\n-      <div class=\"comparison-table-main\">\n       {% for i in (1..20) %}\n         {% assign heading_key = 'heading_' | append: i %}\n         {% if section.settings[heading_key] != blank %}\n           <div class=\"head\"><strong>{{ section.settings[heading_key] }}</strong></div>\n@@ -75,9 +72,8 @@\n             </div>\n           {% endfor %}\n         {% endif %}\n       {% endfor %}\n-      </div>\n     </div>\n   </div>\n </div>\n \n"
                 }
             ],
             "date": 1748424308697,

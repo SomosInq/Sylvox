@@ -34,7 +34,6 @@
     <div class="comparison-table" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
       <!-- Headings row -->
 
-      <div class="comparison-table-header">
       <div class="header"></div>
       {% for block in section.blocks %}
         <div class="text-center header">
@@ -52,10 +51,8 @@
           {% endif %}
         </div>
       {% endfor %}
-        </div>
 
       <!-- Rows -->
-      <div class="comparison-table-main">
       {% for i in (1..20) %}
         {% assign heading_key = 'heading_' | append: i %}
         {% if section.settings[heading_key] != blank %}
@@ -76,7 +73,6 @@
           {% endfor %}
         {% endif %}
       {% endfor %}
-      </div>
     </div>
   </div>
 </div>
