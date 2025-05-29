@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1748438366014,
@@ -24,6 +24,22 @@
                 {
                     "date": 1748516332441,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -139,9 +139,9 @@\n   margin: 0 auto;\n }\n {% endstylesheet %}\n \n-<div class=\"sylvox-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+<div class=\"sylvox-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <p>{{ section.settings.subtitle }}</p>\n   <h2>{{ section.settings.title | newline_to_br }}</h2>\n \n   <div class=\"sylvox-icons\">\n"
+                },
+                {
+                    "date": 1748524826069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -125,9 +125,9 @@\n   margin: 20px 0;\n }\n \n .sylvox-icons img {\n-  height: 30px;\n+  height: 20px;\n }\n \n .sylvox-products {\n   margin-top: 20px;\n"
+                },
+                {
+                    "date": 1748525018821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -124,8 +124,17 @@\n   gap: 20px;\n   margin: 20px 0;\n }\n \n+a.button {\n+    border-radius: 60px;\n+    background: var(--Dark-Green, #20413B);\n+    padding: 12px 44.18px 11px 43.82px;\n+    justify-content: center;\n+    align-items: center;\n+    flex-shrink: 0;\n+}\n+\n .sylvox-icons img {\n   height: 20px;\n }\n \n"
+                },
+                {
+                    "date": 1748525039904,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,8 +131,9 @@\n     padding: 12px 44.18px 11px 43.82px;\n     justify-content: center;\n     align-items: center;\n     flex-shrink: 0;\n+    color: white;\n }\n \n .sylvox-icons img {\n   height: 20px;\n"
+                },
+                {
+                    "date": 1748525047048,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -130,9 +130,8 @@\n     background: var(--Dark-Green, #20413B);\n     padding: 12px 44.18px 11px 43.82px;\n     justify-content: center;\n     align-items: center;\n-    flex-shrink: 0;\n     color: white;\n }\n \n .sylvox-icons img {\n"
                 }
             ],
             "date": 1748438366014,
