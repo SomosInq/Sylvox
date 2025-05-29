@@ -118,20 +118,6 @@
 }
 {% endschema %}
 
-{% style %}
-.section_width_standard,
-.section_width_full {
-  transition: all 0.3s ease;
-}
-.section_width_full {
-  width: 100%;
-}
-.section_width_standard {
-margin: 0 auto !important;
-  width: 90%;
-}
-{% endstyle %}
-
 {% assign text_align = settings.alignment | default: 'center' %}
 
 <div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }}"

@@ -100,54 +100,7 @@
 }
 {% endschema %}
 
-{% stylesheet %}
-.section_width_standard,
-.section_width_full {
-transition: all 0.3s ease;
-}
-.section_width_full {
-width: 100%;
-}
 
-.section_width_standard {
-margin: 0 auto !important;
-width: 90%;
-}
-.sylvox-section {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.sylvox-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-a.button {
-    border-radius: 60px;
-    background: var(--Dark-Green, #20413B);
-    padding: 12px 44.18px 11px 43.82px;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-.sylvox-icons img {
-  height: 20px;
-}
-
-.sylvox-products {
-  margin-top: 20px;
-}
-
-.sylvox-products img {
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-{% endstylesheet %}
 
 <div class="sylvox-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <p>{{ section.settings.subtitle }}</p>

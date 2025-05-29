@@ -1,49 +1,5 @@
 {{ 'section-tab-products.css' | asset_url | stylesheet_tag }}
 
-<style>
-  .tab-product-content__info {
-    display: grid;
-    place-items: var(--vertical-align, center) var(--horizontal-align, center);
-    text-align: var(--text-align, center);
-  }
-  .tab-product-content__info.place-left {
-    --horizontal-align: start;
-    --text-align: left;
-  }
-  .tab-product-content__info.place-center {
-    --horizontal-align: center;
-    --text-align: center;
-  }
-  .tab-product-content__info.place-right {
-    --horizontal-align: end;
-    --text-align: right;
-  }
-  .tab-product-content__info.align-top { --vertical-align: start; }
-  .tab-product-content__info.align-middle { --vertical-align: center; }
-  .tab-product-content__info.align-bottom { --vertical-align: end; }
-
-  .overlay-image {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
-  }
-
-  .product-filter-buttons {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .filter-btn {
-    background: white;
-    border: 1px solid #ccc;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-</style>
-
 <div class="tab-products section section-full text-custom" data-section-id="{{ section.id }}">
   <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
     {% for block in section.blocks %}

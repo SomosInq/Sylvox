@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1748516419279,
@@ -12,6 +12,10 @@
                 {
                     "date": 1748526323885,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,10 @@\n     object-fit: contain;\n   }\n </style>\n \n-<div class=\"support-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+<div class=\"support-section\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+  <div class=\"section_width_{{ section.settings.section_width }}\">\n   <div class=\"support-left\">\n     <div class=\"support-title\">Sylvox Support</div>\n     {% if section.settings.button_label and section.settings.button_link %}\n       <div class=\"support-button\">\n@@ -100,8 +101,9 @@\n         </div>\n       </a>\n     {% endfor %}\n   </div>\n+  </div>\n </div>\n \n {% schema %}\n {\n"
+                },
+                {
+                    "date": 1748527196167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,83 +1,6 @@\n-<style>\n-  .section_width_standard,\n-.section_width_full {\n-transition: all 0.3s ease;\n-}\n-.section_width_full {\n-width: 100%;\n-}\n \n-.section_width_standard {\n-margin: 0 auto;\n-width: 90%;\n-}\n-  .support-section {\n-    background-color: #20413B;\n-    color: white;\n-    padding: 40px;\n-    display: flex;\n-    justify-content: space-between;\n-    flex-wrap: wrap;\n-  }\n \n-  .support-left {\n-    max-width: 300px;\n-  }\n-\n-  .support-title {\n-    font-size: 24px;\n-    font-weight: bold;\n-    margin-bottom: 20px;\n-  }\n-\n-  .support-button a {\n-    display: inline-block;\n-    padding: 10px 20px;\n-    color: white;\n-    border: 1px solid white;\n-    text-decoration: none;\n-    border-radius: 20px;\n-    font-size: 14px;\n-  }\n-\n-  .support-links {\n-    display: flex;\n-    flex-direction: column;\n-    gap: 20px;\n-  }\n-\n-  .support-link {\n-    display: flex;\n-    justify-content: space-between;\n-    align-items: center;\n-    width: 300px;\n-    color: white;\n-    text-decoration: none;\n-  }\n-\n-  .support-link .text {\n-    font-size: 16px;\n-  }\n-\n-  .support-link .icon-box {\n-    border: 1px solid white;\n-    padding: 10px;\n-    border-radius: 4px;\n-    display: flex;\n-    align-items: center;\n-    justify-content: center;\n-    width: 40px;\n-    height: 40px;\n-  }\n-\n-  .support-link img {\n-    width: 16px;\n-    height: 16px;\n-    object-fit: contain;\n-  }\n-</style>\n-\n <div class=\"support-section\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <div class=\"section_width_{{ section.settings.section_width }}\">\n   <div class=\"support-left\">\n     <div class=\"support-title\">Sylvox Support</div>\n"
                 }
             ],
             "date": 1748516419279,

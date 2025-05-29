@@ -1,27 +1,5 @@
 {{ 'section-info.css' | asset_url | stylesheet_tag }}
 
-{% style %}
-.section_width_standard,
-.section_width_full {
-  transition: all 0.3s ease;
-}
-
-.section_width_full {
-  width: 100%;
-}
-
-.section_width_standard {
-  margin: 0 auto;
-  width: 90%;
-}
-
-/* Apply background and text color using custom properties */
-.info-section {
-  background-color: var(--info-section-bg);
-  color: var(--info-section-text-color);
-}
-{% endstyle %}
-
 <div class="section info-section section_width_{{ section.settings.section_width }}" style="
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;

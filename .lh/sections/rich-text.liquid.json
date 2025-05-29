@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1748525330074,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748527022237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,6 @@\n {%- render 'section-rich-text' -%}\n \n-{% style %}\n-a.button {\n-    border-radius: 60px;\n-    background: var(--Dark-Green, #20413B);\n-    padding: 12px 44.18px 11px 43.82px;\n-    justify-content: center;\n-    align-items: center;\n-    color: white;\n-}\n-{% endstyle %}\n-\n {% schema %}\n {\n   \"name\": \"t:labels.rich_text\",\n   \"settings\": [\n"
                 }
             ],
             "date": 1748525330073,

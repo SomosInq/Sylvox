@@ -1,0 +1,18 @@
+{
+    "sourceFile": "sections/join-community.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1748527248644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1748527248644,
+            "name": "Commit-0",
+            "content": "{% schema %}\n{\n  \"name\": \"Join Community\",\n  \"tag\": \"section\",\n  \"class\": \"join-community-section\",\n  \"settings\": [\n    {\n      \"type\": \"image_picker\",\n      \"id\": \"logo_image\",\n      \"label\": \"Logo Image\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"logo_size\",\n      \"label\": \"Logo Size (%)\",\n      \"min\": 10,\n      \"max\": 100,\n      \"step\": 5,\n      \"default\": 100\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"subheading\",\n      \"label\": \"Subheading\",\n      \"default\": \"Facebook Community\"\n    },\n    {\n      \"type\": \"text\",\n      \"id\": \"heading\",\n      \"label\": \"Heading\",\n      \"default\": \"Join Sylvox Community\"\n    },\n    {\n      \"type\": \"url\",\n      \"id\": \"heading_link\",\n      \"label\": \"Heading Link\"\n    },\n    {\n      \"type\": \"image_picker\",\n      \"id\": \"community_image\",\n      \"label\": \"Community Image\"\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"Join Community\",\n      \"category\": \"Somos Custom\"\n    }\n  ]\n}\n{% endschema %}\n\n\n<div class=\"join-community-wrapper\">\n  <div class=\"join-community-left\" style=\"max-width: {{ section.settings.logo_size }}%;\">\n    {% if section.settings.logo_image %}\n      <img src=\"{{ section.settings.logo_image | image_url }}\" alt=\"Logo\">\n    {% endif %}\n  </div>\n  <div class=\"join-community-center\">\n    {% if section.settings.subheading %}\n      <small>{{ section.settings.subheading }}</small>\n    {% endif %}\n    {% if section.settings.heading_link %}\n      <a href=\"{{ section.settings.heading_link }}\">{{ section.settings.heading }}</a>\n    {% else %}\n      <span class=\"heading\">{{ section.settings.heading }}</span>\n    {% endif %}\n  </div>\n  <div class=\"join-community-right\">\n    {% if section.settings.community_image %}\n      <img src=\"{{ section.settings.community_image | image_url }}\" alt=\"Community Image\">\n    {% endif %}\n  </div>\n</div>\n"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 19,
             "patches": [
                 {
                     "date": 1748349377145,
@@ -80,6 +80,10 @@
                 {
                     "date": 1748432562452,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -192,9 +192,9 @@\n         { \"value\": \"md\", \"label\": \"Medium\" },\n         { \"value\": \"lg\", \"label\": \"Large\" },\n         { \"value\": \"fill\", \"label\": \"Fill screen\" }\n       ],\n-      \"info\": \"Choose \\\"Original image ratio\\\" to avoid image cropping.\"\n+      \"info\": \"Choose \\\"Original image ratio\\\" to avoid image cropping.\",\n       \"default\": \"auto\"\n     },\n     {\n       \"type\": \"select\",\n"
+                },
+                {
+                    "date": 1748527377372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,50 +1,6 @@\n {{ 'section-tab-products.css' | asset_url | stylesheet_tag }}\n \n-<style>\n-  .tab-product-content__info {\n-    display: grid;\n-    place-items: var(--vertical-align, center) var(--horizontal-align, center);\n-    text-align: var(--text-align, center);\n-  }\n-  .tab-product-content__info.place-left {\n-    --horizontal-align: start;\n-    --text-align: left;\n-  }\n-  .tab-product-content__info.place-center {\n-    --horizontal-align: center;\n-    --text-align: center;\n-  }\n-  .tab-product-content__info.place-right {\n-    --horizontal-align: end;\n-    --text-align: right;\n-  }\n-  .tab-product-content__info.align-top { --vertical-align: start; }\n-  .tab-product-content__info.align-middle { --vertical-align: center; }\n-  .tab-product-content__info.align-bottom { --vertical-align: end; }\n-\n-  .overlay-image {\n-    position: absolute;\n-    top: 1rem;\n-    right: 1rem;\n-    z-index: 10;\n-  }\n-\n-  .product-filter-buttons {\n-    display: flex;\n-    gap: 0.5rem;\n-    margin-top: 1rem;\n-  }\n-\n-  .filter-btn {\n-    background: white;\n-    border: 1px solid #ccc;\n-    padding: 0.5rem 1rem;\n-    border-radius: 5px;\n-    cursor: pointer;\n-  }\n-</style>\n-\n <div class=\"tab-products section section-full text-custom\" data-section-id=\"{{ section.id }}\">\n   <div class=\"tabs\" style=\"--tab-position: {{ section.settings.tabs_position }}%;\">\n     {% for block in section.blocks %}\n       <div class=\"tab-product {% if forloop.first %}active{% endif %}\" data-tab-id=\"{{ forloop.index0 }}\" data-section-id=\"{{ section.id }}\">\n"
                 }
             ],
             "date": 1748349377144,
