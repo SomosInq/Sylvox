@@ -1,6 +1,6 @@
 {% schema %}
 {
-  "name": "Collection Tabs Slider",
+  "name": "Product Slider",
   "settings": [
     {
   "type": "select",
@@ -45,7 +45,15 @@
       "id": "show_arrows",
       "label": "Show slider arrows",
       "default": true
-    }
+    },
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
   ],
   "blocks": [
     {
@@ -68,7 +76,7 @@
   ],
   "presets": [
     {
-      "name": "Collection Tabs Slider",
+      "name": "Product Slider",
       "category": "Somos Custom"
     }
   ]
@@ -204,7 +212,7 @@ width: 90%;
 }
 {% endstylesheet %}
 
-<section class="collection-tabs-section section_width_{{ section.settings.section_width }}">
+<section class="collection-tabs-section section_width_{{ section.settings.section_width }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <div class="left-image">
     {% if section.settings.left_image != blank %}
       <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Left Image">

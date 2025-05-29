@@ -29,7 +29,15 @@
       "id": "section_description",
       "label": "Section Description",
       "default": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors."
-    }
+    },
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
   ],
   "blocks": [
     {
@@ -117,7 +125,7 @@ width: 90%;
 }
 {% endstylesheet %}
 
-<div class="outdoor-scenario-section section_width_{{ section.settings.section_width }}">
+<div class="outdoor-scenario-section section_width_{{ section.settings.section_width }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <h2>{{ section.settings.section_title }}</h2>
   <p>{{ section.settings.section_description }}</p>
 

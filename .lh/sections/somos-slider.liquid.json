@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 17,
+            "activePatchIndex": 18,
             "patches": [
                 {
                     "date": 1748358488114,
@@ -76,6 +76,10 @@
                 {
                     "date": 1748509426208,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -242,9 +242,9 @@\n       \"value\": \"full\",\n       \"label\": \"Full Width\"\n     }\n   ]\n-}\n+},\n     {\"type\": \"checkbox\", \"id\": \"show_arrows\", \"label\": \"Show arrows\", \"default\": true},\n     {\"type\": \"range\", \"id\": \"slide_height\", \"label\": \"Slide height\", \"min\": 200, \"max\": 1000, \"step\": 50, \"default\": 500, \"unit\": \"px\"},\n     {\"type\": \"color\", \"id\": \"background_color\", \"label\": \"Background color\", \"default\": \"#ffffff\"},\n     {\"type\": \"image_picker\", \"id\": \"background_image\", \"label\": \"Background image\"},\n@@ -254,9 +254,9 @@\n     {\"type\": \"range\", \"id\": \"padding_right\", \"label\": \"Padding right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n     {\"type\": \"range\", \"id\": \"margin_top\", \"label\": \"Margin top\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n     {\"type\": \"range\", \"id\": \"margin_bottom\", \"label\": \"Margin bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n     {\"type\": \"range\", \"id\": \"margin_left\", \"label\": \"Margin left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n-    {\"type\": \"range\", \"id\": \"margin_right\", \"label\": \"Margin right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"margin_right\", \"label\": \"Margin right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"}\n   ],\n   \"blocks\": [\n     {\n       \"type\": \"slide\",\n"
+                },
+                {
+                    "date": 1748509593855,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -230,9 +230,9 @@\n     },\n      {\n   \"type\": \"select\",\n   \"id\": \"content_section_width\",\n-  \"label\": \"Section Width\",\n+  \"label\": \"Content Width\",\n   \"default\": \"standard\",\n   \"options\": [\n     {\n       \"value\": \"standard\",\n"
                 }
             ],
             "date": 1748358488114,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1748444248463,
@@ -12,6 +12,10 @@
                 {
                     "date": 1748444273007,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,8 +71,20 @@\n }\n {% endschema %}\n \n {% stylesheet %}\n+.section_width_standard,\n+.section_width_full {\n+transition: all 0.3s ease;\n+}\n+.section_width_full {\n+width: 100%;\n+}\n+\n+.section_width_standard {\n+margin: 0 auto;\n+width: 90%;\n+}\n .outdoor-scenario-section {\n   text-align: center;\n   padding: 50px 20px;\n }\n@@ -104,9 +116,9 @@\n   text-align: left;\n }\n {% endstylesheet %}\n \n-<div class=\"outdoor-scenario-section\">\n+<div class=\"outdoor-scenario-section section_width_{{ section.settings.section_width }}\">\n   <h2>{{ section.settings.section_title }}</h2>\n   <p>{{ section.settings.section_description }}</p>\n \n   <div class=\"outdoor-scenario-grid\">\n"
+                },
+                {
+                    "date": 1748509809106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,17 @@\n       \"type\": \"textarea\",\n       \"id\": \"section_description\",\n       \"label\": \"Section Description\",\n       \"default\": \"Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors.\"\n-    }\n+    },\n+    {\"type\": \"range\", \"id\": \"padding_top\", \"label\": \"Padding top\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"padding_bottom\", \"label\": \"Padding bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"padding_left\", \"label\": \"Padding left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"padding_right\", \"label\": \"Padding right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"margin_top\", \"label\": \"Margin top\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"margin_bottom\", \"label\": \"Margin bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"margin_left\", \"label\": \"Margin left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"},\n+    {\"type\": \"range\", \"id\": \"margin_right\", \"label\": \"Margin right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\"}\n   ],\n   \"blocks\": [\n     {\n       \"type\": \"scenario\",\n@@ -116,9 +124,9 @@\n   text-align: left;\n }\n {% endstylesheet %}\n \n-<div class=\"outdoor-scenario-section section_width_{{ section.settings.section_width }}\">\n+<div class=\"outdoor-scenario-section section_width_{{ section.settings.section_width }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <h2>{{ section.settings.section_title }}</h2>\n   <p>{{ section.settings.section_description }}</p>\n \n   <div class=\"outdoor-scenario-grid\">\n"
                 }
             ],
             "date": 1748444248463,
