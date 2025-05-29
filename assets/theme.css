@@ -509,7 +509,7 @@ a.button {
 }
 
 /* Support */
-  .support-section {
+    .support-section {
     background-color: #20413B;
     color: white;
     padding: 40px;
@@ -518,8 +518,17 @@ a.button {
     flex-wrap: wrap;
   }
 
+  .support-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
   .support-left {
     max-width: 300px;
+    flex: 1;
+    min-width: 200px;
   }
 
   .support-title {
@@ -539,9 +548,10 @@ a.button {
   }
 
   .support-links {
+    flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0; /* Remove original 20px to allow border lines instead */
   }
 
   .support-link {
@@ -551,6 +561,12 @@ a.button {
     width: 300px;
     color: white;
     text-decoration: none;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .support-link.last {
+    border-bottom: none;
   }
 
   .support-link .text {

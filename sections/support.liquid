@@ -28,60 +28,6 @@
   </div>
 </div>
 
-<style>
-  .support-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-
-  .support-left {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .support-links {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .support-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-    text-decoration: none;
-    color: inherit;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .support-link.last {
-    border-bottom: none;
-  }
-
-  .support-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 12px;
-  }
-
-  .support-button a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #000;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-
-  .icon-box img {
-    width: 32px;
-    height: auto;
-  }
-</style>
-
 {% schema %}
 {
   "name": "Support",
@@ -92,14 +38,8 @@
       "label": "Section Width",
       "default": "standard",
       "options": [
-        {
-          "value": "standard",
-          "label": "50% Width"
-        },
-        {
-          "value": "full",
-          "label": "Full Width"
-        }
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
       ]
     },
     {
@@ -127,22 +67,9 @@
       "type": "link_item",
       "name": "Link Item",
       "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Link Text",
-          "default": "Contact Us"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link URL"
-        },
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
-        }
+        { "type": "text", "id": "text", "label": "Link Text", "default": "Contact Us" },
+        { "type": "url", "id": "url", "label": "Link URL" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" }
       ]
     }
   ],
