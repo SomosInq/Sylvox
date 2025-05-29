@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 37,
+            "activePatchIndex": 38,
             "patches": [
                 {
                     "date": 1748424308697,
@@ -156,6 +156,10 @@
                 {
                     "date": 1748537232372,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,9 @@\n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n       <div class=\"header\"></div>\n       {% for block in section.blocks %}\n-        <div class=\"text-center\">\n+        <div class=\"text-center header\">\n           {% if block.settings.main_image %}\n             <img src=\"{{ block.settings.main_image | image_url }}\" alt=\"Main image\" style=\"max-width: 100%; display: block; margin: 0 auto;\">\n           {% endif %}\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n"
+                },
+                {
+                    "date": 1748537540172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,8 +51,9 @@\n         </div>\n       {% endfor %}\n \n       <!-- Rows -->\n+      <div class=\"comparison-table-main\">\n       {% for i in (1..20) %}\n         {% assign heading_key = 'heading_' | append: i %}\n         {% if section.settings[heading_key] != blank %}\n           <div class=\"head\"><strong>{{ section.settings[heading_key] }}</strong></div>\n@@ -71,8 +72,9 @@\n             </div>\n           {% endfor %}\n         {% endif %}\n       {% endfor %}\n+      </div>\n     </div>\n   </div>\n </div>\n \n"
                 }
             ],
             "date": 1748424308697,

@@ -52,6 +52,7 @@
       {% endfor %}
 
       <!-- Rows -->
+      <div class="comparison-table-main">
       {% for i in (1..20) %}
         {% assign heading_key = 'heading_' | append: i %}
         {% if section.settings[heading_key] != blank %}
@@ -72,6 +73,7 @@
           {% endfor %}
         {% endif %}
       {% endfor %}
+      </div>
     </div>
   </div>
 </div>
