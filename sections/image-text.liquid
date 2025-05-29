@@ -144,21 +144,20 @@
         {% if block.settings.image %}
 {% assign image_align = block.settings.image_alignment | default: 'center' %}
 
-<img
-  src="{{ block.settings.image | image_url: width: 1200 }}"
-  alt="Section image"
-  class="mb-4"
-  style="
-    display: block;
-    {% if image_align == 'center' %}
-      margin-left: auto; margin-right: auto;
-    {% elsif image_align == 'right' %}
-      margin-left: auto; margin-right: 0;
-    {% elsif image_align == 'left' %}
-      margin-right: auto;
-    {% endif %}
-  "
-/>
+<div style="
+  text-align: 
+    {% if image_align == 'left' %} left
+    {% elsif image_align == 'right' %} right
+    {% else %} center
+    {% endif %};
+">
+  <img
+    src="{{ block.settings.image | image_url: width: 1200 }}"
+    alt="Section image"
+    class="mb-4 inline-block"
+    loading="lazy"
+  />
+</div>
         {% endif %}
 
       {% when 'title' %}
