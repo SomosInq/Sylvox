@@ -864,14 +864,15 @@ a.button {
 
 /* Comparion Table */
 .comparison-table {
-  background: var(--Off-White, #FAFAFA);
 }
 
 .table-value {
+  background: var(--Off-White, #FAFAFA);
 }
 .header {
 }
 .head {
+  background: var(--Off-White, #FAFAFA);
   text-align: left;
 }
 
