@@ -87,11 +87,11 @@
 
 h1, h2, h3, p {
   font-family: 'neurial_groteskmedium', sans-serif;
-  color: #636363;
+  /* color: #636363;
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
-line-height: normal;
+line-height: normal; */
 }
 
 
@@ -960,15 +960,15 @@ a.button {
 
 /* Comparion Table */
 .comparison-table {
+  background: var(--Off-White, #FAFAFA);
 }
 
 .table-value {
-  background: var(--Off-White, #FAFAFA);
 }
 .header {
+  background: #ffffff;
 }
 .head {
-  background: var(--Off-White, #FAFAFA);
   text-align: left;
 }
 
