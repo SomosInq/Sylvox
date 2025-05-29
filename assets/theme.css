@@ -862,6 +862,16 @@ a.button {
   z-index: 1;
 }
 
+/* Comparion Table */
+
+.table-value {
+  background: var(--Off-White, #FAFAFA);
+}
+
+.head {
+  text-align: left;
+}
+
 /* Grid */
     .grid {
         display: flex;

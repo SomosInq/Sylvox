@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -92,6 +92,18 @@
                 {
                     "date": 1748530070996,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -508,19 +508,28 @@\n   cursor: pointer;\n }\n \n /* Support */\n-  .support-section {\n+    .support-section {\n     background-color: #20413B;\n     color: white;\n     padding: 40px;\n     display: flex;\n     justify-content: space-between;\n     flex-wrap: wrap;\n   }\n \n+  .support-container {\n+    display: flex;\n+    justify-content: space-between;\n+    gap: 40px;\n+    flex-wrap: wrap;\n+  }\n+\n   .support-left {\n     max-width: 300px;\n+    flex: 1;\n+    min-width: 200px;\n   }\n \n   .support-title {\n     font-size: 24px;\n@@ -538,11 +547,12 @@\n     font-size: 14px;\n   }\n \n   .support-links {\n+    flex: 2;\n     display: flex;\n     flex-direction: column;\n-    gap: 20px;\n+    gap: 0; /* Remove original 20px to allow border lines instead */\n   }\n \n   .support-link {\n     display: flex;\n@@ -550,10 +560,16 @@\n     align-items: center;\n     width: 300px;\n     color: white;\n     text-decoration: none;\n+    padding: 16px 0;\n+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);\n   }\n \n+  .support-link.last {\n+    border-bottom: none;\n+  }\n+\n   .support-link .text {\n     font-size: 16px;\n   }\n \n"
+                },
+                {
+                    "date": 1748535771281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -861,8 +861,14 @@\n   max-width: 80px;\n   z-index: 1;\n }\n \n+/* Comparion Table */\n+\n+.head {\n+  \n+}\n+\n /* Grid */\n     .grid {\n         display: flex;\n         flex-wrap: wrap;\n"
+                },
+                {
+                    "date": 1748535785808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -864,9 +864,9 @@\n \n /* Comparion Table */\n \n .head {\n-  \n+  text-align: left;\n }\n \n /* Grid */\n     .grid {\n"
+                },
+                {
+                    "date": 1748536018453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -863,8 +863,12 @@\n }\n \n /* Comparion Table */\n \n+.table-value {\n+  background: var(--Off-White, #FAFAFA);\n+}\n+\n .head {\n   text-align: left;\n }\n \n"
                 }
             ],
             "date": 1748526641710,

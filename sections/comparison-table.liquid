@@ -33,9 +33,9 @@
 
     <div class="comparison-table" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
       <!-- Headings row -->
-      <div></div>
+      <div class="head"></div>
       {% for block in section.blocks %}
-        <div class="text-center">
+        <div class="text-center table-value">
           {% if block.settings.main_image %}
             <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
           {% endif %}

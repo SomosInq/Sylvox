@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 33,
+            "activePatchIndex": 35,
             "patches": [
                 {
                     "date": 1748424308697,
@@ -140,6 +140,14 @@
                 {
                     "date": 1748527385156,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,21 +1,6 @@\n {%- render 'section-spacing-collapsing' -%}\n \n-{% style %}\n-    .section_width_standard,\n-.section_width_full {\n-  transition: all 0.3s ease;\n-}\n-    .section_width_full {\n-  width: 100%;\n-}\n-\n-.section_width_standard {\n-margin: 0 auto !important;\n-  width: 90%;\n-}\n-{% endstyle %}\n-\n <div class=\"comparison-section section_width_{{ section.settings.section_width }}\" style=\"\n   {% if section.settings.background_image != blank %}\n     background-image: url({{ section.settings.background_image | image_url }});\n     background-size: cover;\n"
+                },
+                {
+                    "date": 1748535712880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n     {% endif %}\n \n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n-      <div></div>\n+      <div class=\"head\"></div>\n       {% for block in section.blocks %}\n         <div class=\"text-center\">\n           {% if block.settings.main_image %}\n             <img src=\"{{ block.settings.main_image | image_url }}\" alt=\"Main image\" style=\"max-width: 100%; display: block; margin: 0 auto;\">\n"
+                },
+                {
+                    "date": 1748535991430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,9 @@\n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n       <div class=\"head\"></div>\n       {% for block in section.blocks %}\n-        <div class=\"text-center\">\n+        <div class=\"text-center table-value\">\n           {% if block.settings.main_image %}\n             <img src=\"{{ block.settings.main_image | image_url }}\" alt=\"Main image\" style=\"max-width: 100%; display: block; margin: 0 auto;\">\n           {% endif %}\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n"
                 }
             ],
             "date": 1748424308697,
