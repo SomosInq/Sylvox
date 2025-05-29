@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1748516419279,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748526323885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,10 @@\n     object-fit: contain;\n   }\n </style>\n \n-<div class=\"support-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+<div class=\"support-section\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+  <div class=\"section_width_{{ section.settings.section_width }}\">\n   <div class=\"support-left\">\n     <div class=\"support-title\">Sylvox Support</div>\n     {% if section.settings.button_label and section.settings.button_link %}\n       <div class=\"support-button\">\n@@ -100,8 +101,9 @@\n         </div>\n       </a>\n     {% endfor %}\n   </div>\n+  </div>\n </div>\n \n {% schema %}\n {\n"
                 }
             ],
             "date": 1748516419279,
