@@ -1,3 +1,101 @@
+/* General */
+
+/* Fonts */
+
+color: #636363;
+font-family: "Neurial Grotesk";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+
+
+@font-face {
+    font-family: 'neurial_groteskbold';
+    src: url('fontspring-demo-neurialgrotesk-bold-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_groteskbold_italic';
+    src: url('fontspring-demo-neurialgrotesk-bolditalic-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_groteskextrabold';
+    src: url('fontspring-demo-neurialgrotesk-extrabold-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-extrabold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_groteskXBdIt';
+    src: url('fontspring-demo-neurialgrotesk-extrabolditalic-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-extrabolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_groteskregular_italic';
+    src: url('fontspring-demo-neurialgrotesk-italic-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_grotesklight';
+    src: url('fontspring-demo-neurialgrotesk-light-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_grotesklight_italic';
+    src: url('fontspring-demo-neurialgrotesk-lightitalic-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_groteskmedium';
+    src: url('fontspring-demo-neurialgrotesk-medium-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'neurial_groteskmedium_italic';
+    src: url('fontspring-demo-neurialgrotesk-mediumitalic-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'fontspring_demo_-_neurial_gRg';
+    src: url('fontspring-demo-neurialgrotesk-regular-webfont.woff2') format('woff2'),
+         url('fontspring-demo-neurialgrotesk-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2, h3, p {
+  font-family: 'Neurial Grotesk Bold', sans-serif;
+}
+
 
 /* Homepage */
 
