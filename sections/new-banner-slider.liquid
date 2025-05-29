@@ -104,6 +104,10 @@
 
   .flickity-page-dots .dot.is-selected {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23DB4B97"/></svg>');
+    opacity: 1;
+    background-color: transparent;
+    width: 24px;
+    height: 25px;
   }
 
   .carousel-arrows {
@@ -115,7 +119,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #000;
+    border: 1px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,13 +173,13 @@
     <!-- Custom dots + arrows wrapper -->
     <div class="dots-arrows-wrapper section_width_{{ section.settings.section_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
       <!-- Dots on the left -->
-      <div class="carousel-dots-container">
+      <div class="carousel-dots-container section_width_{{ section.settings.section_width }}">
         <div class="carousel-dots"></div>
       </div>
 
       {% if section.settings.show_arrows %}
         <!-- Arrows on the right -->
-        <div class="carousel-arrows">
+        <div class="carousel-arrows section_width_{{ section.settings.section_width }}">
   <button class="carousel-prev" aria-label="Previous">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
   </button>

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -52,6 +52,14 @@
                 {
                     "date": 1748529297354,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,8 +83,62 @@\n   ]\n }\n {% endschema %}\n \n+{% style %}\n+<style>\n+  .flickity-page-dots {\n+    display: flex !important;\n+    gap: 8px;\n+    justify-content: flex-start;\n+  }\n+\n+  .flickity-page-dots .dot {\n+    all: unset;\n+    display: block;\n+    width: 24px;\n+    height: 25px;\n+    background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n+    background-size: contain;\n+    cursor: pointer;\n+  }\n+\n+  .flickity-page-dots .dot.is-selected {\n+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n+  }\n+\n+  .carousel-arrows {\n+    display: flex;\n+    gap: 10px;\n+  }\n+\n+  .carousel-arrows button {\n+    width: 40px;\n+    height: 40px;\n+    border-radius: 50%;\n+    border: 2px solid #000;\n+    display: flex;\n+    align-items: center;\n+    justify-content: center;\n+    background: white;\n+    cursor: pointer;\n+    transition: border-color 0.3s;\n+  }\n+\n+  .carousel-arrows button:hover {\n+    border-color: #999;\n+  }\n+\n+  .carousel-arrows button svg {\n+    width: 16px;\n+    height: 16px;\n+    fill: #333;\n+  }\n+\n+</style>\n+{% endstyle %}\n+\n+\n <section class=\"outdoor-carousel-section\">\n   <div class=\"outdoor-carousel-text section_width_{{ section.settings.section_width }} {{ section.settings.text_alignment }}\">\n     <div class=\"small-heading\">{{ section.settings.heading }}</div>\n     <div class=\"main-heading\">{{ section.settings.subheading }}</div>\n"
+                },
+                {
+                    "date": 1748529426351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -103,8 +103,12 @@\n   }\n \n   .flickity-page-dots .dot.is-selected {\n     background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n+    opacity: 1;\n+    background-color: transparent;\n+    width: 24px;\n+    height: 25px;\n   }\n \n   .carousel-arrows {\n     display: flex;\n@@ -114,9 +118,9 @@\n   .carousel-arrows button {\n     width: 40px;\n     height: 40px;\n     border-radius: 50%;\n-    border: 2px solid #000;\n+    border: 1px solid #000;\n     display: flex;\n     align-items: center;\n     justify-content: center;\n     background: white;\n"
+                },
+                {
+                    "date": 1748529507743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -172,15 +172,15 @@\n \n     <!-- Custom dots + arrows wrapper -->\n     <div class=\"dots-arrows-wrapper section_width_{{ section.settings.section_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n       <!-- Dots on the left -->\n-      <div class=\"carousel-dots-container\">\n+      <div class=\"carousel-dots-container section_width_{{ section.settings.section_width }}\">\n         <div class=\"carousel-dots\"></div>\n       </div>\n \n       {% if section.settings.show_arrows %}\n         <!-- Arrows on the right -->\n-        <div class=\"carousel-arrows\">\n+        <div class=\"carousel-arrows section_width_{{ section.settings.section_width }}\">\n   <button class=\"carousel-prev\" aria-label=\"Previous\">\n     <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M15 18l-6-6 6-6\"/></svg>\n   </button>\n   <button class=\"carousel-next\" aria-label=\"Next\">\n"
                 }
             ],
             "date": 1748527236205,
