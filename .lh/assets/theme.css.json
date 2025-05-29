@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -60,6 +60,10 @@
                 {
                     "date": 1748527403131,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin: 0 auto;\n+margin: 0 auto !important;\n width: 90%;\n }\n \n /* Product Slider */\n@@ -1135,8 +1135,10 @@\n     border-radius: 5px;\n     cursor: pointer;\n   }\n \n+\n+\n /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */\n /* *, :before, :after {\n   box-sizing: border-box;\n   border-style: solid;\n"
+                },
+                {
+                    "date": 1748528390806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -576,9 +576,9 @@\n \n   /* New Banner Slider */\n   .outdoor-carousel-section {\n   padding: 2rem 1rem;\n-  overflow-x: hidden;\n+  /* overflow-x: hidden; */\n }\n .outdoor-carousel-text {\n   max-width: 960px;\n   margin: 0 auto 2rem;\n"
                 }
             ],
             "date": 1748526641710,

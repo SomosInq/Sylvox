@@ -577,7 +577,7 @@ a.button {
   /* New Banner Slider */
   .outdoor-carousel-section {
   padding: 2rem 1rem;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 .outdoor-carousel-text {
   max-width: 960px;
