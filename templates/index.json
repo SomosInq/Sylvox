@@ -484,7 +484,7 @@
       ],
       "settings": {
         "section_width": "standard",
-        "left_image": "shopify://shop_images/long-forest-path.jpg",
+        "left_image": "shopify://shop_images/Sylvox_5.png",
         "subheading": "Customer Favorites",
         "heading": "Best Sellers",
         "shop_all_url": "shopify://collections",
@@ -505,7 +505,7 @@
         "scenario_iKkMc9": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Section_1.png",
+            "image": "shopify://shop_images/Sylvox_1.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -514,7 +514,7 @@
         "scenario_gjBgAR": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Section_2.png",
+            "image": "shopify://shop_images/Sylvox_2.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -523,7 +523,7 @@
         "scenario_3mpzX7": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Section_3.png",
+            "image": "shopify://shop_images/Sylvox_3.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -532,7 +532,7 @@
         "scenario_WfHD6f": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Section_4.png",
+            "image": "shopify://shop_images/Sylvox_4.png",
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -837,7 +837,7 @@
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/640e161a1ba8abdd8ded2d12f863c72e324fa04b.jpg",
+        "image": "shopify://shop_images/Sylvox_6.png",
         "mobile_text_position": "pos-middle-center",
         "desktop_text_position": "sm:pos-middle-center",
         "text_color": "#ffffff",
