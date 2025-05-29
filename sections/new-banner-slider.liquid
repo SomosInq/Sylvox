@@ -11,14 +11,8 @@
       "label": "Section Width",
       "default": "standard",
       "options": [
-        {
-          "value": "standard",
-          "label": "50% Width"
-        },
-        {
-          "value": "full",
-          "label": "Full Width"
-        }
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
       ]
     },
     {
@@ -118,20 +112,54 @@
       {% endfor %}
     </div>
 
-    <!-- Custom Dots Container -->
-    <div class="carousel-dots-container section_width_{{ section.settings.section_width }}">
-      <div class="carousel-dots"></div>
-    </div>
-
-    {% if section.settings.show_arrows %}
-      <!-- Custom Arrows Container -->
-      <div class="carousel-arrows section_width_{{ section.settings.section_width }}">
-        <button class="carousel-prev" aria-label="Previous">&#10094;</button>
-        <button class="carousel-next" aria-label="Next">&#10095;</button>
+    <!-- Custom dots + arrows wrapper -->
+    <div class="dots-arrows-wrapper section_width_{{ section.settings.section_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+      <!-- Dots on the left -->
+      <div class="carousel-dots-container">
+        <div class="carousel-dots"></div>
       </div>
-    {% endif %}
+
+      {% if section.settings.show_arrows %}
+        <!-- Arrows on the right -->
+        <div class="carousel-arrows">
+          <button class="carousel-prev" aria-label="Previous">&#10094;</button>
+          <button class="carousel-next" aria-label="Next">&#10095;</button>
+        </div>
+      {% endif %}
+    </div>
   </div>
 </section>
+
+{% style %}
+<style>
+  .flickity-page-dots {
+    display: flex !important;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .flickity-page-dots .dot {
+    width: 24px;
+    height: 25px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23636363"/></svg>') no-repeat center center;
+    background-size: contain;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .flickity-page-dots .dot.is-selected {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23DB4B97"/></svg>');
+  }
+
+  .carousel-arrows button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+</style>
+{% endstyle %}
 
 {% javascript %}
 <script>
@@ -150,14 +178,14 @@
       });
     }
 
-    // Move Flickity-generated page dots into custom container
+    // Move Flickity-generated dots to custom container
     const flickityDots = carousel.querySelector('.flickity-page-dots');
     const customDotsContainer = document.querySelector('.carousel-dots');
     if (flickityDots && customDotsContainer) {
       customDotsContainer.appendChild(flickityDots);
     }
 
-    // Arrows
+    // Handle arrow clicks
     document.querySelector('.carousel-prev')?.addEventListener('click', () => flkty.previous());
     document.querySelector('.carousel-next')?.addEventListener('click', () => flkty.next());
   });
