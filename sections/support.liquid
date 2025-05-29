@@ -1,53 +1,107 @@
-
-
 <div class="support-section" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <div class="section_width_{{ section.settings.section_width }}">
-  <div class="support-left">
-    <div class="support-title">Sylvox Support</div>
-    {% if section.settings.button_label and section.settings.button_link %}
-      <div class="support-button">
-        <a href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+    <div class="support-container">
+      <div class="support-left">
+        <div class="support-title">Sylvox Support</div>
+        {% if section.settings.button_label and section.settings.button_link %}
+          <div class="support-button">
+            <a href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
-  </div>
 
-  <div class="support-links">
-    {% for block in section.blocks %}
-      <a class="support-link" href="{{ block.settings.url }}">
-        <div class="text">{{ block.settings.text }}</div>
-        <div class="icon-box">
-          {% if block.settings.icon != blank %}
-            <img src="{{ block.settings.icon | image_url: width: 32 }}" alt="icon">
-          {% else %}
-            <span>→</span>
-          {% endif %}
-        </div>
-      </a>
-    {% endfor %}
-  </div>
+      <div class="support-links">
+        {% for block in section.blocks %}
+          <a class="support-link{% if forloop.last %} last{% endif %}" href="{{ block.settings.url }}">
+            <div class="text">{{ block.settings.text }}</div>
+            <div class="icon-box">
+              {% if block.settings.icon != blank %}
+                <img src="{{ block.settings.icon | image_url: width: 32 }}" alt="icon">
+              {% else %}
+                <span>→</span>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  .support-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .support-left {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .support-links {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .support-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .support-link.last {
+    border-bottom: none;
+  }
+
+  .support-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  .support-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .icon-box img {
+    width: 32px;
+    height: auto;
+  }
+</style>
 
 {% schema %}
 {
   "name": "Support",
   "settings": [
     {
-  "type": "select",
-  "id": "section_width",
-  "label": "Section Width",
-  "default": "standard",
-  "options": [
-    {
-      "value": "standard",
-      "label": "50% Width"
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "50% Width"
+        },
+        {
+          "value": "full",
+          "label": "Full Width"
+        }
+      ]
     },
-    {
-      "value": "full",
-      "label": "Full Width"
-    }
-  ]
-},
     {
       "type": "text",
       "id": "button_label",
@@ -59,14 +113,14 @@
       "id": "button_link",
       "label": "Button link"
     },
-    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
   ],
   "blocks": [
     {

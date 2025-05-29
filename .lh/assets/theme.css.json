@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -80,6 +80,14 @@
                 {
                     "date": 1748529234439,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -596,51 +596,58 @@\n   font-size: 1.625rem;\n   font-weight: 500;\n }\n \n-.flickity-page-dots {\n-  display: flex !important;\n-  gap: 8px;\n-  justify-content: flex-start;\n-}\n+ .flickity-page-dots {\n+    display: flex !important;\n+    gap: 8px;\n+    justify-content: flex-start;\n+  }\n \n-.flickity-page-dots .dot {\n-  all: unset;\n-  display: block;\n-  width: 24px;\n-  height: 25px;\n-  background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n-  background-size: contain;\n-  cursor: pointer;\n-}\n+  .flickity-page-dots .dot {\n+    all: unset;\n+    display: block;\n+    width: 24px;\n+    height: 25px;\n+    background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n+    background-size: contain;\n+    cursor: pointer;\n+  }\n \n-.flickity-page-dots .dot.is-selected {\n-  background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n-}\n+  .flickity-page-dots .dot.is-selected {\n+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n+  }\n \n-.carousel-arrows button {\n-  width: 40px;\n-  height: 40px;\n-  border-radius: 50%;\n-  border: 2px solid #000;\n-  display: flex;\n-  align-items: center;\n-  justify-content: center;\n-  background: white;\n-  cursor: pointer;\n-  transition: border-color 0.3s;\n-}\n+  .carousel-arrows {\n+    display: flex;\n+    gap: 10px;\n+  }\n \n-.carousel-arrows button:hover {\n-  border-color: #999;\n-}\n+  .carousel-arrows button {\n+    width: 40px;\n+    height: 40px;\n+    border-radius: 50%;\n+    border: 2px solid #000;\n+    display: flex;\n+    align-items: center;\n+    justify-content: center;\n+    background: white;\n+    cursor: pointer;\n+    transition: border-color 0.3s;\n+  }\n \n-.carousel-arrows button svg {\n-  width: 16px;\n-  height: 16px;\n-  fill: #333;\n-}\n+  .carousel-arrows button:hover {\n+    border-color: #999;\n+  }\n \n+  .carousel-arrows button svg {\n+    width: 16px;\n+    height: 16px;\n+    fill: #333;\n+  }\n+\n+\n+\n .carousel-wrapper {\n   position: relative;\n   max-width: 100%;\n }\n"
+                },
+                {
+                    "date": 1748529615775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -656,9 +656,9 @@\n }\n \n .carousel-cell {\n   margin-right: 20px;\n-  opacity: 0.3;\n+  /* opacity: 0.3; */\n   transform: scale(0.94);\n   transition: all 0.3s ease;\n }\n .carousel-cell.is-selected {\n"
+                },
+                {
+                    "date": 1748529639006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -656,9 +656,9 @@\n }\n \n .carousel-cell {\n   margin-right: 20px;\n-  /* opacity: 0.3; */\n+  opacity: 0.3;\n   transform: scale(0.94);\n   transition: all 0.3s ease;\n }\n .carousel-cell.is-selected {\n"
                 }
             ],
             "date": 1748526641710,
