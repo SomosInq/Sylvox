@@ -1232,7 +1232,7 @@ width: 90%;
     background: rgba(0,0,0,0.5);
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 50%;
   }

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 35,
+            "activePatchIndex": 36,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -148,6 +148,10 @@
                 {
                     "date": 1748538383120,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -958,9 +958,9 @@\n   z-index: 1;\n }\n \n /* Comparion Table */\n-.comparison-table-main {\n+.comparison-table {\n   background: var(--Off-White, #FAFAFA);\n }\n \n .table-value {\n"
+                },
+                {
+                    "date": 1748538635375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1231,9 +1231,9 @@\n     pointer-events: auto;\n     background: rgba(0,0,0,0.5);\n     color: #fff;\n     border: none;\n-    padding: 10px;\n+    padding: 10px 15px;\n     cursor: pointer;\n     border-radius: 50%;\n   }\n   .somos-slider__dots {\n"
                 }
             ],
             "date": 1748526641710,
