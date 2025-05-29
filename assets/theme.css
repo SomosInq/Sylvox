@@ -2,13 +2,6 @@
 
 /* Fonts */
 
-color: #636363;
-font-family: "Neurial Grotesk";
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
 
 
 @font-face {
@@ -93,7 +86,12 @@ line-height: normal;
 }
 
 h1, h2, h3, p {
-  font-family: 'Neurial Grotesk Bold', sans-serif;
+  font-family: 'neurial_groteskmedium', sans-serif;
+  color: #636363;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 
