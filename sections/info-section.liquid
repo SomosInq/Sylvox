@@ -3,24 +3,32 @@
 {% style %}
 .section_width_standard,
 .section_width_full {
-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
+
 .section_width_full {
-width: 100%;
+  width: 100%;
 }
 
 .section_width_standard {
-margin: 0 auto;
-width: 90%;
+  margin: 0 auto;
+  width: 90%;
+}
+
+/* Apply background and text color using custom properties */
+.info-section {
+  background-color: var(--info-section-bg);
+  color: var(--info-section-text-color);
 }
 {% endstyle %}
 
-<div class="section info-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px 
-        --info-section-bg: {{ section.settings.bg }};
-        --info-section-text-color: {{ section.settings.text_color }};
-    "
->
-  <div class="info-section-wrapper section-{{section.id}}">
+<div class="section info-section section_width_{{ section.settings.section_width }}" style="
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    --info-section-bg: {{ section.settings.bg }};
+    --info-section-text-color: {{ section.settings.text_color }};
+">
+  <div class="info-section-wrapper section-{{ section.id }}">
     <div class="info-section__inner">
       <div class="info-section__header-icon">
         {{ section.settings.icon }}
@@ -48,30 +56,30 @@ width: 90%;
 {
   "name": "Info section",
   "settings": [
-     {
-  "type": "select",
-  "id": "section_width",
-  "label": "Section Width",
-  "default": "standard",
-  "options": [
     {
-      "value": "standard",
-      "label": "50% Width"
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "50% Width"
+        },
+        {
+          "value": "full",
+          "label": "Full Width"
+        }
+      ]
     },
-    {
-      "value": "full",
-      "label": "Full Width"
-    }
-  ]
-},
-{"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     {
       "type": "html",
       "id": "icon",

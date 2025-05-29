@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1748513151997,
@@ -32,6 +32,10 @@
                 {
                     "date": 1748516321389,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,9 +101,9 @@\n }\n {% endschema %}\n \n \n-<div class=\"box-section-wrapper section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+<div class=\"box-section-wrapper section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <div class=\"container\">\n     {% if section.settings.main_title != blank %}\n       <h2 class=\"box-section-title\">{{ section.settings.main_title }}</h2>\n     {% endif %}\n"
+                },
+                {
+                    "date": 1748526055027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -140,9 +140,9 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin: 0 auto;\n+margin: 0 auto !important;\n width: 90%;\n }\n .box-section-wrapper {\n   padding: 60px 20px;\n"
                 }
             ],
             "date": 1748513151997,

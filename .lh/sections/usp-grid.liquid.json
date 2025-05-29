@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1748362828535,
@@ -28,6 +28,10 @@
                 {
                     "date": 1748525451091,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -153,9 +153,9 @@\n   </div>\n </section>\n \n <style>\n-  .section_width_standard,\n+.section_width_standard,\n .section_width_full {\n transition: all 0.3s ease;\n }\n .section_width_full {\n"
+                },
+                {
+                    "date": 1748525855986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -162,10 +162,10 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin: 0 auto;\n-width: 90%;\n+margin: 0 auto !important;\n+width: 80%;\n }\n .usp-grid-section {\n   padding: 2rem;\n }\n"
                 }
             ],
             "date": 1748362828535,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1748444519032,
@@ -40,6 +40,10 @@
                 {
                     "date": 1748517297762,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -143,23 +143,22 @@\n       {% when 'image' %}\n         {% if block.settings.image %}\n {% assign image_align = block.settings.image_alignment | default: 'center' %}\n \n-<img\n-  src=\"{{ block.settings.image | image_url: width: 1200 }}\"\n-  alt=\"Section image\"\n-  class=\"mb-4\"\n-  style=\"\n-    display: block;\n-    {% if image_align == 'center' %}\n-      margin-left: auto; margin-right: auto;\n-    {% elsif image_align == 'right' %}\n-      margin-left: auto; margin-right: 0;\n-    {% elsif image_align == 'left' %}\n-      margin-right: auto;\n-    {% endif %}\n-  \"\n-/>\n+<div style=\"\n+  text-align: \n+    {% if image_align == 'left' %} left\n+    {% elsif image_align == 'right' %} right\n+    {% else %} center\n+    {% endif %};\n+\">\n+  <img\n+    src=\"{{ block.settings.image | image_url: width: 1200 }}\"\n+    alt=\"Section image\"\n+    class=\"mb-4 inline-block\"\n+    loading=\"lazy\"\n+  />\n+</div>\n         {% endif %}\n \n       {% when 'title' %}\n         <h2 class=\"text-2xl md:text-4xl font-bold mb-2\">{{ block.settings.title }}</h2>\n"
+                },
+                {
+                    "date": 1748525999981,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -126,9 +126,9 @@\n .section_width_full {\n   width: 100%;\n }\n .section_width_standard {\n-  margin: 0 auto;\n+margin: 0 auto !important;\n   width: 90%;\n }\n {% endstyle %}\n \n"
                 }
             ],
             "date": 1748444519032,

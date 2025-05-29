@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1748445205268,
@@ -24,6 +24,10 @@
                 {
                     "date": 1748516314174,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -114,9 +114,9 @@\n   ]\n }\n {% endschema %}\n \n-<div class=\"video-grid-wrapper\">\n+<div class=\"video-grid-wrapper section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <div class=\"top-bar\">\n     <div class=\"top-text\">\n       <h4>{{ section.settings.top_title }}</h4>\n       <h2>{{ section.settings.subtitle }}</h2>\n"
+                },
+                {
+                    "date": 1748525960694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -170,9 +170,9 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin: 0 auto;\n+margin: 0 auto !important;\n width: 90%;\n }\n .video-grid-wrapper {\n   position: relative;\n"
                 }
             ],
             "date": 1748445205267,
