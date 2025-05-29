@@ -42,6 +42,7 @@
       ],
       "settings": {
         "section_width": "standard",
+        "content_section_width": "standard",
         "show_arrows": true,
         "slide_height": 500,
         "background_color": "#ffffff",
@@ -315,6 +316,15 @@
     "info_section_JEKir6": {
       "type": "info-section",
       "settings": {
+        "section_width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "icon": "<svg width=\"81\" height=\"81\" viewbox=\"0 0 81 81\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<rect width=\"81\" height=\"81\" fill=\"url(#pattern0_2870_6437)\"></rect>\n<defs>\n<pattern id=\"pattern0_2870_6437\" patterncontentunits=\"objectBoundingBox\" width=\"1\" height=\"1\">\n<use xlink:href=\"#image0_2870_6437\" transform=\"scale(0.00531915)\"></use>\n</pattern>\n<image id=\"image0_2870_6437\" width=\"188\" height=\"188\" preserveaspectratio=\"none\" xlink:href=\"data:image/png;base64,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\"></image>\n</defs>\n</svg>",
         "title": "Not Sure What Outdoor TV Fits you Best?",
         "description": "Outdoor TV finder tool",
@@ -414,6 +424,10 @@
         "padding_bottom": 20,
         "padding_left": 0,
         "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "heading_1": "Test",
         "heading_2": "",
         "heading_3": "",
@@ -459,12 +473,20 @@
         "tab_BhYH4G"
       ],
       "settings": {
+        "section_width": "standard",
         "left_image": "shopify://shop_images/long-forest-path.jpg",
         "subheading": "Customer Favorites",
         "heading": "Best Sellers",
         "shop_all_url": "shopify://collections",
         "show_arrows": false,
-        "section_width": "standard"
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "image_blocks_xQffGw": {
@@ -514,8 +536,17 @@
         "scenario_WfHD6f"
       ],
       "settings": {
+        "section_width": "standard",
         "section_title": "Shop by Outdoor Scenarios",
-        "section_description": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors."
+        "section_description": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors.",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "image_with_text_overlay_heWpQE": {
@@ -649,10 +680,19 @@
         "feature_box_LYgamW"
       ],
       "settings": {
+        "section_width": "standard",
         "main_title": "Effortless Entertainment, Rain or Shine.",
         "description": "",
         "button_link": "",
-        "button_text": "Learn More"
+        "button_text": "Learn More",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "image_text_dE7fr8": {
@@ -691,7 +731,16 @@
         "image_ckK6ng"
       ],
       "settings": {
-        "alignment": "center"
+        "section_width": "standard",
+        "alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "new_banner_slider_D3WkxM": {
@@ -735,6 +784,7 @@
     "large_product_BDXMM6": {
       "type": "large-product",
       "settings": {
+        "section_width": "standard",
         "subtitle": "Outdoor Entertainment, Perfected",
         "title": "Sylvox Deck Pro 2.0",
         "icon1": "shopify://shop_images/gtv-dark_1.png",
@@ -745,7 +795,15 @@
         "product_image_width": 400,
         "price_text": "From USD $1,149.00",
         "button_link": "",
-        "button_label": "Buy Now"
+        "button_label": "Buy Now",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "image_with_text_overlay_4yErEx": {
@@ -866,10 +924,19 @@
         "usp_item_dbAXpY"
       ],
       "settings": {
+        "section_width": "standard",
         "heading": "Sylvox’s exclusive advantages",
         "subtext": "Explore our core benefits below",
         "heading_alignment": "left",
-        "show_arrows": true
+        "show_arrows": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "2f70f0d4-86f7-4eb7-bf83-05295e841830": {
@@ -940,7 +1007,8 @@
           "type": "video",
           "settings": {
             "video_type": "youtube",
-            "video_url": "",
+            "video_url": "https://youtu.be/B8w71jFwWXI?feature=shared",
+            "interaction_type": "modal",
             "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg",
             "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg"
           }
@@ -950,6 +1018,7 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
+            "interaction_type": "modal",
             "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg"
           }
         },
@@ -958,6 +1027,7 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
+            "interaction_type": "modal",
             "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
         },
@@ -966,6 +1036,7 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
+            "interaction_type": "modal",
             "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
         },
@@ -974,6 +1045,7 @@
           "settings": {
             "video_type": "youtube",
             "video_url": "",
+            "interaction_type": "modal",
             "fallback_image": "shopify://shop_images/Background_013985aa-4603-417f-83ca-324d3e0c535f.png"
           }
         }
@@ -986,10 +1058,19 @@
         "video_yVXhPe"
       ],
       "settings": {
+        "section_width": "standard",
         "top_title": "Sylvox Community",
         "subtitle": "A home for all Sylvox fans to experience content,",
         "description": "inspiration, and our beautiful technology.",
-        "show_arrows": true
+        "show_arrows": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     }
   },
