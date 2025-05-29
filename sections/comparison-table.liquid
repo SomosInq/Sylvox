@@ -33,9 +33,9 @@
 
     <div class="comparison-table" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
       <!-- Headings row -->
-      <div class="head"></div>
+      <div class="header"></div>
       {% for block in section.blocks %}
-        <div class="text-center table-value">
+        <div class="text-center">
           {% if block.settings.main_image %}
             <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
           {% endif %}
@@ -55,11 +55,11 @@
       {% for i in (1..20) %}
         {% assign heading_key = 'heading_' | append: i %}
         {% if section.settings[heading_key] != blank %}
-          <div><strong>{{ section.settings[heading_key] }}</strong></div>
+          <div class="head"><strong>{{ section.settings[heading_key] }}</strong></div>
           {% for block in section.blocks %}
             {% assign value_key = 'value_' | append: i %}
             {% assign image_key = 'value_image_' | append: i %}
-            <div class="text-center">
+            <div class="text-center table-value">
               {% if block.settings[image_key] %}
                 <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 80%; display: block; margin: 0 auto 0.5rem;" />
               {% endif %}

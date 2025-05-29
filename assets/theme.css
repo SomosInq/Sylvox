@@ -863,11 +863,14 @@ a.button {
 }
 
 /* Comparion Table */
-
-.table-value {
+.comparison-table {
   background: var(--Off-White, #FAFAFA);
 }
 
+.table-value {
+}
+.header {
+}
 .head {
   text-align: left;
 }

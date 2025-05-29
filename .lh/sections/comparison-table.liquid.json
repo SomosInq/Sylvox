@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 35,
+            "activePatchIndex": 36,
             "patches": [
                 {
                     "date": 1748424308697,
@@ -148,6 +148,10 @@
                 {
                     "date": 1748535991430,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,9 @@\n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n       <div class=\"head\"></div>\n       {% for block in section.blocks %}\n-        <div class=\"text-center\">\n+        <div class=\"text-center table-value\">\n           {% if block.settings.main_image %}\n             <img src=\"{{ block.settings.main_image | image_url }}\" alt=\"Main image\" style=\"max-width: 100%; display: block; margin: 0 auto;\">\n           {% endif %}\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n"
+                },
+                {
+                    "date": 1748536190773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,11 +32,11 @@\n     {% endif %}\n \n     <div class=\"comparison-table\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;\">\n       <!-- Headings row -->\n-      <div class=\"head\"></div>\n+      <div class=\"header\"></div>\n       {% for block in section.blocks %}\n-        <div class=\"text-center table-value\">\n+        <div class=\"text-center\">\n           {% if block.settings.main_image %}\n             <img src=\"{{ block.settings.main_image | image_url }}\" alt=\"Main image\" style=\"max-width: 100%; display: block; margin: 0 auto;\">\n           {% endif %}\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n@@ -54,13 +54,13 @@\n       <!-- Rows -->\n       {% for i in (1..20) %}\n         {% assign heading_key = 'heading_' | append: i %}\n         {% if section.settings[heading_key] != blank %}\n-          <div><strong>{{ section.settings[heading_key] }}</strong></div>\n+          <div class=\"head\"><strong>{{ section.settings[heading_key] }}</strong></div>\n           {% for block in section.blocks %}\n             {% assign value_key = 'value_' | append: i %}\n             {% assign image_key = 'value_image_' | append: i %}\n-            <div class=\"text-center\">\n+            <div class=\"text-center table-value\">\n               {% if block.settings[image_key] %}\n                 <img src=\"{{ block.settings[image_key] | image_url }}\" alt=\"Value image\" style=\"max-width: 80%; display: block; margin: 0 auto 0.5rem;\" />\n               {% endif %}\n               {% if block.settings[value_key] != blank %}\n"
                 }
             ],
             "date": 1748424308697,

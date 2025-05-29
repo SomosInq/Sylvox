@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 24,
+            "activePatchIndex": 26,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -104,6 +104,14 @@
                 {
                     "date": 1748536018453,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -863,8 +863,12 @@\n }\n \n /* Comparion Table */\n \n+.table-value {\n+  background: var(--Off-White, #FAFAFA);\n+}\n+\n .head {\n   text-align: left;\n }\n \n"
+                },
+                {
+                    "date": 1748536071315,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -862,11 +862,13 @@\n   z-index: 1;\n }\n \n /* Comparion Table */\n+.comparison-table {\n+  background: var(--Off-White, #FAFAFA);\n+}\n \n .table-value {\n-  background: var(--Off-White, #FAFAFA);\n }\n \n .head {\n   text-align: left;\n"
+                },
+                {
+                    "date": 1748536156338,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -868,9 +868,10 @@\n }\n \n .table-value {\n }\n-\n+.header {\n+}\n .head {\n   text-align: left;\n }\n \n"
                 }
             ],
             "date": 1748526641710,
