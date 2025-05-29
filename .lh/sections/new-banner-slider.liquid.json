@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -36,6 +36,10 @@
                 {
                     "date": 1748528430388,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,10 +83,10 @@\n   ]\n }\n {% endschema %}\n \n-<section class=\"outdoor-carousel-section section_width_{{ section.settings.section_width }}\">\n-  <div class=\"outdoor-carousel-text {{ section.settings.text_alignment }}\">\n+<section class=\"outdoor-carousel-section\">\n+  <div class=\"outdoor-carousel-text section_width_{{ section.settings.section_width }} {{ section.settings.text_alignment }}\">\n     <div class=\"small-heading\">{{ section.settings.heading }}</div>\n     <div class=\"main-heading\">{{ section.settings.subheading }}</div>\n   </div>\n \n"
+                },
+                {
+                    "date": 1748528903891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -148,10 +148,10 @@\n     cursor: pointer;\n   }\n \n   .flickity-page-dots .dot.is-selected {\n-    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"#DB4B97\"/></svg>');\n-    background-color: #DB4B97;\n+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n+  background-color: #DB4B97;\n   }\n \n   .carousel-arrows button {\n     background: none;\n"
                 }
             ],
             "date": 1748527236205,
