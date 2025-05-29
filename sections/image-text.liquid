@@ -47,7 +47,18 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-        }
+        },
+{
+  "type": "select",
+  "id": "image_alignment",
+  "label": "Image Alignment",
+  "default": "center",
+  "options": [
+    { "value": "left", "label": "Left" },
+    { "value": "center", "label": "Center" },
+    { "value": "right", "label": "Right" }
+  ]
+}
       ]
     },
     {
@@ -131,19 +142,23 @@
 
       {% when 'image' %}
         {% if block.settings.image %}
-          <img
-            src="{{ block.settings.image | image_url: width: 1200 }}"
-            alt="Section image"
-            class="mb-4"
-            style="
-              display: block;
-              {% if text_align == 'center' %}
-                margin-left: auto; margin-right: auto;
-              {% elsif text_align == 'right' %}
-                margin-left: auto;
-              {% endif %}
-            "
-          />
+{% assign image_align = block.settings.image_alignment | default: 'center' %}
+
+<img
+  src="{{ block.settings.image | image_url: width: 1200 }}"
+  alt="Section image"
+  class="mb-4"
+  style="
+    display: block;
+    {% if image_align == 'center' %}
+      margin-left: auto; margin-right: auto;
+    {% elsif image_align == 'right' %}
+      margin-left: auto; margin-right: 0;
+    {% elsif image_align == 'left' %}
+      margin-right: auto;
+    {% endif %}
+  "
+/>
         {% endif %}
 
       {% when 'title' %}
