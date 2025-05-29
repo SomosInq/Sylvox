@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -40,6 +40,10 @@
                 {
                     "date": 1748528903891,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -148,10 +148,10 @@\n     cursor: pointer;\n   }\n \n   .flickity-page-dots .dot.is-selected {\n-    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"#DB4B97\"/></svg>');\n-    background-color: #DB4B97;\n+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n+  background-color: #DB4B97;\n   }\n \n   .carousel-arrows button {\n     background: none;\n"
+                },
+                {
+                    "date": 1748529109295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -129,40 +129,9 @@\n     </div>\n   </div>\n </section>\n \n-{% style %}\n-<style>\n-  .flickity-page-dots {\n-    display: flex !important;\n-    gap: 8px;\n-    justify-content: flex-start;\n-  }\n \n-  .flickity-page-dots .dot {\n-    width: 24px;\n-    height: 25px;\n-    background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n-    background-size: contain;\n-    border: none;\n-    padding: 0;\n-    cursor: pointer;\n-  }\n-\n-  .flickity-page-dots .dot.is-selected {\n-    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n-  background-color: #DB4B97;\n-  }\n-\n-  .carousel-arrows button {\n-    background: none;\n-    border: none;\n-    font-size: 24px;\n-    cursor: pointer;\n-  }\n-</style>\n-{% endstyle %}\n-\n {% javascript %}\n <script>\n   document.addEventListener(\"DOMContentLoaded\", function () {\n     const carousel = document.querySelector('.flickity-carousel');\n"
                 }
             ],
             "date": 1748527236205,

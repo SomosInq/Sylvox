@@ -597,6 +597,50 @@ a.button {
   font-weight: 500;
 }
 
+  .flickity-page-dots {
+    display: flex !important;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .flickity-page-dots .dot {
+    width: 24px;
+    height: 25px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23636363"/></svg>') no-repeat center center;
+    background-size: contain;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .flickity-page-dots .dot.is-selected {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23DB4B97"/></svg>');
+  background-color: #DB4B97;
+  }
+
+.carousel-arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.carousel-arrows button:hover {
+  border-color: #999;
+}
+
+.carousel-arrows button svg {
+  width: 16px;
+  height: 16px;
+  fill: #333;
+}
+
 .carousel-wrapper {
   position: relative;
   max-width: 100%;

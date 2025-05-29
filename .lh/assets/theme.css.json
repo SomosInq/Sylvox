@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 14,
+            "activePatchIndex": 16,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -64,6 +64,14 @@
                 {
                     "date": 1748528390806,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -576,9 +576,9 @@\n \n   /* New Banner Slider */\n   .outdoor-carousel-section {\n   padding: 2rem 1rem;\n-  overflow-x: hidden;\n+  /* overflow-x: hidden; */\n }\n .outdoor-carousel-text {\n   max-width: 960px;\n   margin: 0 auto 2rem;\n"
+                },
+                {
+                    "date": 1748529102708,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -596,8 +596,36 @@\n   font-size: 1.625rem;\n   font-weight: 500;\n }\n \n+  .flickity-page-dots {\n+    display: flex !important;\n+    gap: 8px;\n+    justify-content: flex-start;\n+  }\n+\n+  .flickity-page-dots .dot {\n+    width: 24px;\n+    height: 25px;\n+    background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n+    background-size: contain;\n+    border: none;\n+    padding: 0;\n+    cursor: pointer;\n+  }\n+\n+  .flickity-page-dots .dot.is-selected {\n+    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n+  background-color: #DB4B97;\n+  }\n+\n+  .carousel-arrows button {\n+    background: none;\n+    border: none;\n+    font-size: 24px;\n+    cursor: pointer;\n+  }\n+\n .carousel-wrapper {\n   position: relative;\n   max-width: 100%;\n }\n"
+                },
+                {
+                    "date": 1748529129531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -617,15 +617,31 @@\n     background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n   background-color: #DB4B97;\n   }\n \n-  .carousel-arrows button {\n-    background: none;\n-    border: none;\n-    font-size: 24px;\n-    cursor: pointer;\n-  }\n+.carousel-arrows button {\n+  width: 40px;\n+  height: 40px;\n+  border-radius: 50%;\n+  border: 2px solid #000;\n+  display: flex;\n+  align-items: center;\n+  justify-content: center;\n+  background: white;\n+  cursor: pointer;\n+  transition: border-color 0.3s;\n+}\n \n+.carousel-arrows button:hover {\n+  border-color: #999;\n+}\n+\n+.carousel-arrows button svg {\n+  width: 16px;\n+  height: 16px;\n+  fill: #333;\n+}\n+\n .carousel-wrapper {\n   position: relative;\n   max-width: 100%;\n }\n"
                 }
             ],
             "date": 1748526641710,
