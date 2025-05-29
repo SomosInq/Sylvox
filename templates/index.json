@@ -775,6 +775,7 @@
         "slide_hbD7ck"
       ],
       "settings": {
+        "section_width": "standard",
         "text_alignment": "left",
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
@@ -797,8 +798,8 @@
         "price_text": "From USD $1,149.00",
         "button_link": "",
         "button_label": "Buy Now",
-        "padding_top": 20,
-        "padding_bottom": 30,
+        "padding_top": 55,
+        "padding_bottom": 50,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -841,7 +842,7 @@
           "type": "heading",
           "settings": {
             "title": "Inspiring well-being throughaffordable outdoor technologythat bring relaxation, joy, andconnection to everyday outdoor living.",
-            "heading_size": "h2"
+            "heading_size": "h3"
           }
         },
         "button_BEFJ9i": {
