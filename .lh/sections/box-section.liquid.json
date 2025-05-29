@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1748513151997,
@@ -12,6 +12,14 @@
                 {
                     "date": 1748513204999,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,9 +84,9 @@\n   ]\n }\n {% endschema %}\n \n-<div class=\"box-section-wrapper padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n+<div class=\"box-section-wrapper; section_width_{{ section.settings.section_width }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <div class=\"container\">\n     {% if section.settings.main_title != blank %}\n       <h2 class=\"box-section-title\">{{ section.settings.main_title }}</h2>\n     {% endif %}\n@@ -114,8 +114,20 @@\n   </div>\n </div>\n \n <style>\n+  .section_width_standard,\n+.section_width_full {\n+transition: all 0.3s ease;\n+}\n+.section_width_full {\n+width: 100%;\n+}\n+\n+.section_width_standard {\n+margin: 0 auto;\n+width: 90%;\n+}\n .box-section-wrapper {\n   padding: 60px 20px;\n   background-color: #fff;\n   text-align: center;\n"
+                },
+                {
+                    "date": 1748515703652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,25 @@\n   \"name\": \"Box Section\",\n   \"tag\": \"section\",\n   \"class\": \"box-section\",\n   \"settings\": [\n+     {\n+  \"type\": \"select\",\n+  \"id\": \"section_width\",\n+  \"label\": \"Section Width\",\n+  \"default\": \"standard\",\n+  \"options\": [\n     {\n+      \"value\": \"standard\",\n+      \"label\": \"50% Width\"\n+    },\n+    {\n+      \"value\": \"full\",\n+      \"label\": \"Full Width\"\n+    }\n+  ]\n+},\n+    {\n       \"type\": \"text\",\n       \"id\": \"main_title\",\n       \"label\": \"Main Title\",\n       \"default\": \"Effortless Entertainment, Rain or Shine.\"\n@@ -114,9 +130,9 @@\n   </div>\n </div>\n \n <style>\n-  .section_width_standard,\n+.section_width_standard,\n .section_width_full {\n transition: all 0.3s ease;\n }\n .section_width_full {\n"
+                },
+                {
+                    "date": 1748515798616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,8 +100,9 @@\n   ]\n }\n {% endschema %}\n \n+\n <div class=\"box-section-wrapper; section_width_{{ section.settings.section_width }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <div class=\"container\">\n     {% if section.settings.main_title != blank %}\n       <h2 class=\"box-section-title\">{{ section.settings.main_title }}</h2>\n"
                 }
             ],
             "date": 1748513151997,

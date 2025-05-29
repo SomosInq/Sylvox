@@ -4,6 +4,22 @@
   "tag": "section",
   "class": "box-section",
   "settings": [
+     {
+  "type": "select",
+  "id": "section_width",
+  "label": "Section Width",
+  "default": "standard",
+  "options": [
+    {
+      "value": "standard",
+      "label": "50% Width"
+    },
+    {
+      "value": "full",
+      "label": "Full Width"
+    }
+  ]
+},
     {
       "type": "text",
       "id": "main_title",
@@ -85,6 +101,7 @@
 }
 {% endschema %}
 
+
 <div class="box-section-wrapper; section_width_{{ section.settings.section_width }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <div class="container">
     {% if section.settings.main_title != blank %}
@@ -115,7 +132,7 @@
 </div>
 
 <style>
-  .section_width_standard,
+.section_width_standard,
 .section_width_full {
 transition: all 0.3s ease;
 }
