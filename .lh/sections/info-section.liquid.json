@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1748444157099,
@@ -16,6 +16,14 @@
                 {
                     "date": 1748509294536,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -171,9 +171,10 @@\n     }\n   ],\n   \"presets\": [\n     {\n-      \"name\": \"Info section\"\n+      \"name\": \"Info section\",\n+      \"category\": \"Somos Custom\"\n     }\n   ]\n }\n {% endschema %}\n"
+                },
+                {
+                    "date": 1748516175703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,9 @@\n width: 90%;\n }\n {% endstyle %}\n \n-<div class=\"section info-section section_width_{{ section.settings.section_width }}\n-  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\"\n-    style=\"\n+<div class=\"section info-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px \n         --info-section-bg: {{ section.settings.bg }};\n         --info-section-text-color: {{ section.settings.text_color }};\n     \"\n >\n"
+                },
+                {
+                    "date": 1748516336933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n width: 90%;\n }\n {% endstyle %}\n \n-<div class=\"section info-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px \n+<div class=\"section info-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px \n         --info-section-bg: {{ section.settings.bg }};\n         --info-section-text-color: {{ section.settings.text_color }};\n     \"\n >\n"
                 }
             ],
             "date": 1748444157099,

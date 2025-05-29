@@ -124,7 +124,7 @@ width: 90%;
 
 {% assign text_align = settings.alignment | default: 'center' %}
 
-<div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px" style="text-align: {{ text_align }};">
+<div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'image' %}
