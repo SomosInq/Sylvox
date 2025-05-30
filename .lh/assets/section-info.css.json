@@ -1,0 +1,30 @@
+{
+    "sourceFile": "assets/section-info.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1748592784908,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748592820869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,28 @@\n   padding-top: 0;\n   padding-bottom: 0;\n }\n \n+.section_width_standard,\n+.section_width_full {\n+  transition: all 0.3s ease;\n+}\n+\n+.section_width_full {\n+  width: 100%;\n+}\n+\n+.section_width_standard {\n+  margin: 0 auto;\n+  width: 90%;\n+}\n+\n+/* Apply background and text color using custom properties */\n+.info-section {\n+  background-color: var(--info-section-bg);\n+  color: var(--info-section-text-color);\n+}\n+\n .info-section-wrapper {\n   display: flex;\n   justify-content: space-between;\n   align-items: center;\n@@ -44,9 +64,9 @@\n }\n \n .info-section__header-icon {\n   /* background: #9ce3d9; */\n-  border-radius: 50%;\n+  /* border-radius: 50%; */\n   width: 52px;\n   height: 52px;\n   display: flex;\n   justify-content: center;\n"
+                },
+                {
+                    "date": 1748592878312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,18 @@\n   background-color: var(--info-section-bg);\n   color: var(--info-section-text-color);\n }\n \n+.button {\n+  display: flex;\n+padding: 15px 24px;\n+justify-content: center;\n+align-items: center;\n+gap: 10px;\n+  border-radius: 9999px;\n+background: var(--Mid-Green, #336256);\n+}\n+\n .info-section-wrapper {\n   display: flex;\n   justify-content: space-between;\n   align-items: center;\n"
+                },
+                {
+                    "date": 1748593004117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n   background-color: var(--info-section-bg);\n   color: var(--info-section-text-color);\n }\n \n-.button {\n+.info-section .button {\n   display: flex;\n padding: 15px 24px;\n justify-content: center;\n align-items: center;\n@@ -32,8 +32,13 @@\n   border-radius: 9999px;\n background: var(--Mid-Green, #336256);\n }\n \n+.info-section .button-icon {\n+  display: inline-flex;\n+  align-items: center;\n+}\n+\n .info-section-wrapper {\n   display: flex;\n   justify-content: space-between;\n   align-items: center;\n"
+                }
+            ],
+            "date": 1748592784908,
+            "name": "Commit-0",
+            "content": ".info-section {\n  padding-top: 0;\n  padding-bottom: 0;\n}\n\n.info-section-wrapper {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: var(--info-section-bg);\n  padding: 12px 20px;\n  border-radius: 16px;\n  width: 100%;\n  opacity: 1;\n  transform: translateY(0);\n  transition: opacity 0.5s ease, transform 0.5s ease;\n  color: var(--info-section-text-color);\n}\n\n.info-section p {\n  margin: 0;\n}\n\n.info-section__inner {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n}\n\n.info-section.hidden {\n  opacity: 0;\n  transform: translateY(-20px);\n  pointer-events: none;\n}\n\n.info-section__title {\n  font-size: 16px;\n  font-weight: 700;\n  position: relative;\n}\n\n.info-section__desc {\n  font-size: 14px;\n}\n\n.info-section__header-icon {\n  /* background: #9ce3d9; */\n  border-radius: 50%;\n  width: 52px;\n  height: 52px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.info-section__header {\n  display: flex;\n  align-items: center;\n  gap: 50px;\n  position: relative;\n}\n\n.info-section__header .info-section__title:after {\n  content: \"\";\n  width: 1px;\n  height: 50px;\n  background: #fff;\n  right: -25px;\n  top: 50%;\n  transform: translateY(-50%);\n  position: absolute;\n}\n\n@media screen and (max-width: 749px) {\n  .info-section-wrapper {\n    padding: 12px;\n    align-items: center;\n  }\n  .info-section__inner {\n    gap: 4px;\n  }\n\n  .info-section__desc {\n    font-size: 12px;\n  }\n\n  .info-section__title {\n    font-size: 12px;\n  }\n\n  .info-section__header .info-section__title:after {\n    content: none;\n  }\n\n  .info-section__header {\n    display: flex;\n    align-items: flex-start;\n    flex-direction: column;\n    gap: 0;\n  }\n\n  .info-section .button{\n    padding-inline-start: 10px;\n    padding-inline-end: 10px;\n  }\n\n  .info-section button svg {\n    width: 20px;\n  }\n}\n"
+        }
+    ]
+}

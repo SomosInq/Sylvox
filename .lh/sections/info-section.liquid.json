@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1748444157099,
@@ -40,6 +40,10 @@
                 {
                     "date": 1748592543674,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,13 +59,12 @@\n     { \"type\": \"range\", \"id\": \"margin_bottom\", \"label\": \"Margin bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n     { \"type\": \"range\", \"id\": \"margin_left\", \"label\": \"Margin left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n     { \"type\": \"range\", \"id\": \"margin_right\", \"label\": \"Margin right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n     {\n-      \"type\": \"html\",\n-      \"id\": \"icon\",\n-      \"label\": \"SVG icon\",\n-      \"info\": \"Paste svg code in here\"\n-    },\n+  \"type\": \"image_picker\",\n+  \"id\": \"icon\",\n+  \"label\": \"Icon image\"\n+},\n     {\n       \"type\": \"text\",\n       \"id\": \"title\",\n       \"label\": \"Title\",\n"
+                },
+                {
+                    "date": 1748593039019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,16 +18,18 @@\n         <p class=\"info-section__desc\">{{ section.settings.description }}</p>\n       </div>\n     </div>\n     {%- if section.settings.button_text != blank -%}\n-      {% render 'button',\n-        content: section.settings.button_text,\n-        href: section.settings.url,\n-        size: section.settings.size,\n-        style: section.settings.style,\n-        background: section.settings.background,\n-        text_color: section.settings.btn_text_color\n-      %}\n+      <a href=\"{{ section.settings.url }}\"\n+   class=\"button button--{{ section.settings.style }} button--{{ section.settings.size }}\"\n+   style=\"background-color: {{ section.settings.background }}; color: {{ section.settings.btn_text_color }};\">\n+  {{ section.settings.button_text }}\n+  <span class=\"button-icon\" aria-hidden=\"true\" style=\"margin-left: 0.5em;\">\n+    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"17\" viewBox=\"0 0 16 17\" fill=\"none\">\n+      <path d=\"M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z\" fill=\"#C6C6C6\"/>\n+    </svg>\n+  </span>\n+</a>\n     {%- endif -%}\n   </div>\n </div>\n \n"
                 }
             ],
             "date": 1748444157099,

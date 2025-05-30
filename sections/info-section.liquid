@@ -19,14 +19,16 @@
       </div>
     </div>
     {%- if section.settings.button_text != blank -%}
-      {% render 'button',
-        content: section.settings.button_text,
-        href: section.settings.url,
-        size: section.settings.size,
-        style: section.settings.style,
-        background: section.settings.background,
-        text_color: section.settings.btn_text_color
-      %}
+      <a href="{{ section.settings.url }}"
+   class="button button--{{ section.settings.style }} button--{{ section.settings.size }}"
+   style="background-color: {{ section.settings.background }}; color: {{ section.settings.btn_text_color }};">
+  {{ section.settings.button_text }}
+  <span class="button-icon" aria-hidden="true" style="margin-left: 0.5em;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+      <path d="M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z" fill="#C6C6C6"/>
+    </svg>
+  </span>
+</a>
     {%- endif -%}
   </div>
 </div>

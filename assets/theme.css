@@ -378,27 +378,6 @@ a.button {
   margin: 0 auto;
 }
 
-/* Info Section */
-.section_width_standard,
-.section_width_full {
-  transition: all 0.3s ease;
-}
-
-.section_width_full {
-  width: 100%;
-}
-
-.section_width_standard {
-  margin: 0 auto;
-  width: 90%;
-}
-
-/* Apply background and text color using custom properties */
-.info-section {
-  background-color: var(--info-section-bg);
-  color: var(--info-section-text-color);
-}
-
 /* USP Grid */
 .usp-grid-section {
   padding: 2rem;

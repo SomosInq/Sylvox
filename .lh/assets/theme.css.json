@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 39,
+            "activePatchIndex": 40,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -164,6 +164,10 @@
                 {
                     "date": 1748538806542,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n \n }\n \n h1, h2, h3, p {\n-  font-family: 'neurial_groteskmedium', sans-serif !important;\n+  font-family: 'fontspring_demo_-_neurial_gRg', Arial, Helvetica, sans-serif !important;\n font-weight: 400;\n }\n \n \n"
+                },
+                {
+                    "date": 1748592826772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -377,29 +377,8 @@\n   height: auto;\n   margin: 0 auto;\n }\n \n-/* Info Section */\n-.section_width_standard,\n-.section_width_full {\n-  transition: all 0.3s ease;\n-}\n-\n-.section_width_full {\n-  width: 100%;\n-}\n-\n-.section_width_standard {\n-  margin: 0 auto;\n-  width: 90%;\n-}\n-\n-/* Apply background and text color using custom properties */\n-.info-section {\n-  background-color: var(--info-section-bg);\n-  color: var(--info-section-text-color);\n-}\n-\n /* USP Grid */\n .usp-grid-section {\n   padding: 2rem;\n }\n"
                 }
             ],
             "date": 1748526641710,
