@@ -186,7 +186,7 @@
       ],
       "name": "Somos Banner",
       "settings": {
-        "section_width": "full",
+        "section_width": "standard",
         "section_content_width": "standard",
         "background_image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
         "background_color": "#ffffff",
