@@ -918,14 +918,14 @@ a.button {
   background: var(--Off-White, #FAFAFA);
 }
 
-.table-value {
+.comparison-values .table-value {
   padding: 5%;
 }
-.header-blank {
+.comparison-header .header-blank {
   background: #ffffff;
       width: 200px;
 }
-.head {
+.comparison-values .head {
   text-align: left;
   padding: 5%;
 }
