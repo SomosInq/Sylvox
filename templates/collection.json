@@ -198,14 +198,14 @@
       "settings": {
         "section_width": "standard",
         "section_content_width": "standard",
+        "text_alignment": "left",
         "section_height": 330,
         "background_image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
         "background_color": "#ffffff",
-        "padding_top": 0,
+        "padding_top": 60,
         "padding_bottom": 0,
         "padding_left": 0,
-        "padding_right": 0,
-        "content_position": "pos-middle-left"
+        "padding_right": 0
       }
     },
     "comparison_iL7Hza": {
