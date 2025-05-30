@@ -63,6 +63,7 @@
     },
     "4a962589-0f2a-4893-bdcc-d506e6110e8d": {
       "type": "text-and-image",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/index3.webp",
         "image_mask": "none",
@@ -85,6 +86,7 @@
     },
     "collection-header": {
       "type": "collection-header",
+      "disabled": true,
       "settings": {
         "enable": false,
         "collection_image_enable": true,
