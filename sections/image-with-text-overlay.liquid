@@ -29,9 +29,7 @@ width: 90% !important;
 }
 
   #shopify-section-{{ section.id }} {
-    {%- if section.settings.full_width -%}
-      --section-outer-spacing-block: 0;
-    {%- endif -%}
+ 
 
     --content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};
 
