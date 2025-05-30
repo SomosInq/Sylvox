@@ -958,6 +958,21 @@ a.button {
   padding: 5%;
 }
 
+.comparison-section .btn {
+  display: flex;
+padding: 15px 24px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+  border-radius: 9999px;
+background: var(--Mid-Green, #336256);
+}
+
+.comparison-section .btn img {
+  display: inline-flex;
+  align-items: center;
+}
+
 /* Grid */
     .grid {
         display: flex;
