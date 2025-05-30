@@ -47,8 +47,14 @@
             <strong>{{ block.settings.title }}</strong>
           </div>
           {% if block.settings.button_label and block.settings.button_link %}
-            <a href="{{ block.settings.button_link }}" class="btn mt-2">{{ block.settings.button_label }}</a>
-          {% endif %}
+  <a href="{{ block.settings.button_link }}" class="btn mt-2" style="display: inline-flex; align-items: center; gap: 0.5em;">
+    <span>{{ block.settings.button_label }}</span>
+    {% if block.settings.button_image %}
+      <img src="{{ block.settings.button_image | image_url }}" alt="" style="height: 1em; width: auto;" />
+    {% endif %}
+  </a>
+{% endif %}
+
         </div>
       {% endfor %}
 
@@ -154,6 +160,8 @@
         {"type": "text", "id": "title", "label": "Title"},
         {"type": "text", "id": "button_label", "label": "Button Label"},
         {"type": "url", "id": "button_link", "label": "Button URL"},
+        { "type": "image_picker", "id": "button_image", "label": "Button Image (shown to the right of text)" },
+
         {"type": "header", "content": "Row Values"},
         { "type": "richtext", "id": "value_1", "label": "Value 1" },
 { "type": "image_picker", "id": "value_image_1", "label": "Image above Value 1" },
