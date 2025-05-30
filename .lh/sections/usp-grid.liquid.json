@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1748362828535,
@@ -40,6 +40,10 @@
                 {
                     "date": 1748529673218,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -159,8 +159,12 @@\n margin: 0 auto !important;\n width: 80%;\n }\n \n+#shopify-section-{{ section.id }} .carousel-cell {\n+  opacity: 1 !important;\n+}\n+\n </style>\n \n <script>\n   document.addEventListener('DOMContentLoaded', function () {\n"
+                },
+                {
+                    "date": 1748598943211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -154,13 +154,8 @@\n </section>\n \n <style>\n \n-#shopify-section-{{ section.id }} .section_width_standard {\n-margin: 0 auto !important;\n-width: 80%;\n-}\n-\n #shopify-section-{{ section.id }} .carousel-cell {\n   opacity: 1 !important;\n }\n \n"
                 }
             ],
             "date": 1748362828535,

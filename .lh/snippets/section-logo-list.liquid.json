@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1748535273231,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748599082332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n {%- if divider -%}<div class=\"section--divider\">{%- endif -%}\n \n <div class=\"page-width{% if color_scheme != blank %} color-scheme-{{ color_scheme }}{% endif %} section_width_{{ section.settings.section_width }}\">\n   {%- if title != blank -%}\n-    <div class=\"section-header text-{{ heading_position }}\">\n+    <div class=\"section-header header-title text-{{ heading_position }}\">\n       <h2 class=\"section-header__title {{ heading_size }}\">{{ title | escape }}</h2>\n     </div>\n   {%- endif -%}\n \n"
+                },
+                {
+                    "date": 1748599089693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,10 +40,10 @@\n {%- if divider -%}<div class=\"section--divider\">{%- endif -%}\n \n <div class=\"page-width{% if color_scheme != blank %} color-scheme-{{ color_scheme }}{% endif %} section_width_{{ section.settings.section_width }}\">\n   {%- if title != blank -%}\n-    <div class=\"section-header header-title text-{{ heading_position }}\">\n-      <h2 class=\"section-header__title {{ heading_size }}\">{{ title | escape }}</h2>\n+    <div class=\"section-header  text-{{ heading_position }}\">\n+      <h2 class=\"header-title {{ heading_size }}\">{{ title | escape }}</h2>\n     </div>\n   {%- endif -%}\n \n   {%- if section.blocks.size > 0 -%}\n"
                 }
             ],
             "date": 1748535273231,

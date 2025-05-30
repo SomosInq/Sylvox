@@ -60,6 +60,11 @@ h1, h2, h3, p {
 font-weight: 400;
 }
 
+.header-title {
+      font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
 
 /* Homepage */
 
@@ -345,7 +350,7 @@ a.button {
 }
 
 .sylvox-icons img {
-  height: 20px;
+  height: 15px;
 }
 
 .sylvox-products {

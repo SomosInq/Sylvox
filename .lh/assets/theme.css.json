@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 51,
+            "activePatchIndex": 53,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -212,6 +212,14 @@
                 {
                     "date": 1748598491183,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -713,8 +713,12 @@\n   }\n \n \n \n+.carousel-wrapper {\n+  position: relative;\n+  max-width: 100%;\n+}\n .carousel-arrows-wrapper {\n   display: flex;\n   justify-content: flex-end;\n }\n"
+                },
+                {
+                    "date": 1748598592739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -344,9 +344,9 @@\n     color: white;\n }\n \n .sylvox-icons img {\n-  height: 20px;\n+  height: 15px;\n }\n \n .sylvox-products {\n   margin-top: 20px;\n"
+                },
+                {
+                    "date": 1748599049297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,14 @@\n   font-family: 'neurial_grotesklight', Arial, Helvetica, sans-serif !important;\n font-weight: 400;\n }\n \n+.header-title {\n+      font-size: 1.75rem;\n+    margin-bottom: 0.5rem;\n+}\n \n+\n /* Homepage */\n \n /* General */\n a.button {\n"
                 }
             ],
             "date": 1748526641710,
