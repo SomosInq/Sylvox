@@ -9,9 +9,10 @@
   <div class="info-section-wrapper section-{{ section.id }}">
     <div class="info-section__inner">
       <div class="info-section__header-icon">
-        {{ section.settings.icon }}
-        {% comment %} <p class="info-section__title hide-medium hide-large-up">{{ section.settings.title }}</p> {% endcomment %}
-      </div>
+  {% if section.settings.icon != blank %}
+    <img src="{{ section.settings.icon | image_url }}" alt="Icon" />
+  {% endif %}
+</div>
       <div class="info-section__header">
         <p class="info-section__title">{{ section.settings.title }}</p>
         <p class="info-section__desc">{{ section.settings.description }}</p>
@@ -59,11 +60,10 @@
     { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     {
-      "type": "html",
-      "id": "icon",
-      "label": "SVG icon",
-      "info": "Paste svg code in here"
-    },
+  "type": "image_picker",
+  "id": "icon",
+  "label": "Icon image"
+},
     {
       "type": "text",
       "id": "title",
