@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 19,
             "patches": [
                 {
                     "date": 1748360636080,
@@ -80,6 +80,10 @@
                 {
                     "date": 1748605233716,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,11 +28,9 @@\n width: 90% !important;\n }\n \n   #shopify-section-{{ section.id }} {\n-    {%- if section.settings.full_width -%}\n-      --section-outer-spacing-block: 0;\n-    {%- endif -%}\n+ \n \n     --content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};\n \n     {%- if section.settings.allow_transparent_header -%}\n"
+                },
+                {
+                    "date": 1748606908114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n-{%- unless section.settings.full_width -%}\n+{% comment %} {%- unless section.settings.full_width -%}\n   {%- render 'section-spacing-collapsing' -%}\n-{%- endunless -%}\n+{%- endunless -%} {% endcomment %}\n \n <style>\n   .section_width_standard,\n .section_width_full {\n@@ -51,9 +51,9 @@\n   }\n </style>\n \n <div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} class=\"section_width_{{ section.settings.section_width }}\" style=\"--slide-height: {{ section.settings.slide_height }}px;\">\n-  {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}\n+  \n \n   <image-banner reveal-on-scroll=\"true\" {% if section.settings.enable_parallax %}parallax=\"0.3\"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>\n     {%- if section.settings.image != blank -%}\n       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}\n"
                 }
             ],
             "date": 1748360636080,
