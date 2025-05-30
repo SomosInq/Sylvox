@@ -65,6 +65,16 @@ font-weight: 400;
     margin-bottom: 0.5rem;
 } */
 
+.tla {
+  text-align: left;
+}
+.tca {
+  text-align: center;
+}
+.tra {
+  text-align: right;
+}
+
 
 /* Homepage */
 

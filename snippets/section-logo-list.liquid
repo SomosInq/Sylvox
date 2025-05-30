@@ -39,10 +39,10 @@
 
 {%- if divider -%}<div class="section--divider">{%- endif -%}
 
-<div class="page-width{% if color_scheme != blank %} color-scheme-{{ color_scheme }}{% endif %} section_width_{{ section.settings.section_width }}">
+<div class="{% if color_scheme != blank %} color-scheme-{{ color_scheme }}{% endif %} section_width_{{ section.settings.section_width }}">
   {%- if title != blank -%}
     <div class="section-header  text-{{ heading_position }}">
-      <h2 class="header-title {{ heading_size }}">{{ title | escape }}</h2>
+      <h2 class="header-title tca {{ heading_size }}">{{ title | escape }}</h2>
     </div>
   {%- endif -%}
 
