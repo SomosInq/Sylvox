@@ -208,36 +208,117 @@
         "padding_right": 0
       }
     },
-    "comparison_iL7Hza": {
-      "type": "comparison",
+    "comparison_table_prb7MT": {
+      "type": "comparison-table",
       "blocks": {
-        "comparison_table_zCBdTj": {
-          "type": "comparison_table",
+        "values_cTXTRc": {
+          "type": "values",
           "settings": {
-            "label": "row",
-            "left_text": "row",
-            "right_text": "row"
+            "main_image": "shopify://shop_images/1_8cb44b38-c04a-4d97-915e-ee6d3f78b6c9.jpg",
+            "icon": "shopify://shop_images/Icons-1_a8276d13-b406-42e0-8367-dc1870c79980.png",
+            "title": "Partial Sun",
+            "button_label": "Learn More",
+            "button_link": "shopify://collections/2024-summer-sale-pool-series",
+            "value_1": "<p>Value</p>",
+            "value_2": "<p>Value</p>",
+            "value_3": "<p>Value</p>",
+            "value_4": "<p>Value</p>",
+            "value_5": "<p>Value</p>",
+            "value_6": "<p>Value</p>",
+            "value_7": "<p>Value</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": ""
+          }
+        },
+        "values_bE8dXt": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_08c58724-0891-44f3-b536-ada53ca17206.png",
+            "icon": "shopify://shop_images/Icons-3_38b39895-e177-42f6-bb0b-1031e1bf1953.png",
+            "title": "Full Sun",
+            "button_label": "Learn More",
+            "button_link": "shopify://collections/2024-summer-sale-pool-pro-2-0",
+            "value_1": "<p>Value</p>",
+            "value_2": "<p>Value</p>",
+            "value_3": "<p>Value</p>",
+            "value_4": "<p>Value</p>",
+            "value_5": "<p>Value</p>",
+            "value_6": "<p>Value</p>",
+            "value_7": "<p>Value</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": ""
           }
         }
       },
       "block_order": [
-        "comparison_table_zCBdTj"
+        "values_cTXTRc",
+        "values_bE8dXt"
       ],
       "name": "Comparison Table",
       "settings": {
-        "title": "Partial Sun Area VS. Full Sun Area",
+        "section_width": "standard",
+        "title": "",
         "description": "",
-        "font_color": "",
-        "font_size": "text-base",
-        "text_alignment": "text-center",
-        "background_color": "#ffffff",
-        "table_background_color": "#f6f6f6",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "product_one": "19-waterproof-smart-magic-mirror-tv-for-bathroomon-wall-model",
-        "product_two": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-65-total-3-years",
-        "show_title": true,
-        "show_image": true
+        "button_text": "",
+        "button_url": "",
+        "text_alignment": "left",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "title_size": 28,
+        "text_size": 16,
+        "button_size": 16,
+        "background_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "heading_1": "Head",
+        "heading_2": "Head",
+        "heading_3": "Head",
+        "heading_4": "Head",
+        "heading_5": "Head",
+        "heading_6": "Head",
+        "heading_7": "Head",
+        "heading_8": "",
+        "heading_9": "",
+        "heading_10": "",
+        "heading_11": "",
+        "heading_12": "",
+        "heading_13": "",
+        "heading_14": "",
+        "heading_15": "",
+        "heading_16": "",
+        "heading_17": "",
+        "heading_18": "",
+        "heading_19": "",
+        "heading_20": ""
       }
     },
     "image_with_text_overlay_L9qbTC": {
@@ -307,7 +388,7 @@
     "main-collection",
     "recently-viewed",
     "somos_banner_zJ33mX",
-    "comparison_iL7Hza",
+    "comparison_table_prb7MT",
     "image_with_text_overlay_L9qbTC"
   ]
 }
