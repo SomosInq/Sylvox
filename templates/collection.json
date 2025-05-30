@@ -181,7 +181,7 @@
             "text": "Find the perfect TV",
             "url": "",
             "style": "fill",
-            "size": "sm",
+            "size": "base",
             "text_color": "#ffffff",
             "background": "#20413b",
             "outline_color": "#000000"
@@ -205,8 +205,7 @@
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "mobile_text_position": "pos-middle-left",
-        "desktop_text_position": "sm:pos-middle-center"
+        "content_position": "pos-middle-left"
       }
     },
     "image_with_text_overlay_L9qbTC": {
