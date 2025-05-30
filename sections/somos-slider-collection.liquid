@@ -25,12 +25,14 @@ Somos Slider: Individual Button Style Controls
           {% endif %}
           <div class="somos-slide__content content_section_width_{{ section.settings.section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             
-            {% if block.settings.show_collection_title %}
-              <h1 class="slide-collection-title">{{ collection.title }}</h1>
-            {% endif %}
+            
 
             {% if block.settings.subheading %}
               <p style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.subheading }}</p>
+            {% endif %}
+
+            {% if block.settings.show_collection_title %}
+              <h1 class="slide-collection-title">{{ collection.title }}</h1>
             {% endif %}
 
             {% if block.settings.heading %}
