@@ -1,0 +1,187 @@
+{%- comment -%}
+Somos Slider: Individual Button Style Controls
+{%- endcomment -%}
+
+<div class="somos-slider" style="--slide-height: {{ section.settings.slide_height }}px; background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %}  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; {{ section.settings.section_width }}">
+
+  <div class="collection-meta">
+    <h1 class="collection-title">{{ collection.title }}</h1>
+
+    {% if section.settings.collection_subheading %}
+      <p class="collection-subheading">{{ section.settings.collection_subheading }}</p>
+    {% endif %}
+
+    {% if section.settings.category_title %}
+      <h2 class="collection-category">{{ section.settings.category_title }}</h2>
+    {% endif %}
+
+    {% if collection.description != blank %}
+      <div class="collection-description">{{ collection.description }}</div>
+    {% endif %}
+  </div>
+
+  <div class="somos-slider__wrapper" id="somos-slider-wrapper-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="somos-slide" id="block-{{ block.id }}">
+        <div class="somos-slide__media-wrapper">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
+          {% endif %}
+          <div class="somos-slide__content content_section_width_{{ section.settings.section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
+            {% if block.settings.subheading %}
+              <p style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.subheading }}</p>
+            {% endif %}
+            {% if block.settings.heading %}
+              <div class="heading" style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.heading }}</div>
+            {% endif %}
+            {% if block.settings.description %}
+              <div class="description" style="font-size: {{ block.settings.font_size | minus: 2 }}px;">{{ block.settings.description }}</div>
+            {% endif %}
+            <div class="buttons">
+              {% if block.settings.button_text_1 and block.settings.button_link_1 %}
+                <a href="{{ block.settings.button_link_1 }}" class="button" style="background: {{ block.settings.button_1_bg }}; color: {{ block.settings.button_1_text }}; border-color: {{ block.settings.button_1_border }}">{{ block.settings.button_text_1 }}</a>
+              {% endif %}
+              {% if block.settings.button_text_2 and block.settings.button_link_2 %}
+                <a href="{{ block.settings.button_link_2 }}" class="button" style="background: {{ block.settings.button_2_bg }}; color: {{ block.settings.button_2_text }}; border-color: {{ block.settings.button_2_border }}">{{ block.settings.button_text_2 }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_arrows %}
+    <div class="somos-slider__arrows">
+      <button class="prev" aria-label="Previous" onclick="moveSomosSlide('{{ section.id }}', -1)">&larr;</button>
+      <button class="next" aria-label="Next" onclick="moveSomosSlide('{{ section.id }}', 1)">&rarr;</button>
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_dots %}
+    <div class="somos-slider__dots" id="somos-slider-dots-{{ section.id }}">
+      {% for block in section.blocks %}
+        <button type="button" onclick="goToSomosSlide('{{ section.id }}', {{ forloop.index0 }})" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  window.somosSliders = window.somosSliders || {};
+  window.somosSliders['{{ section.id }}'] = {
+    currentIndex: 0,
+    total: {{ section.blocks.size }}
+  };
+
+  function moveSomosSlide(id, direction) {
+    const slider = window.somosSliders[id];
+    slider.currentIndex = (slider.currentIndex + direction + slider.total) % slider.total;
+    updateSomosSlider(id);
+  }
+
+  function goToSomosSlide(id, index) {
+    const slider = window.somosSliders[id];
+    slider.currentIndex = index;
+    updateSomosSlider(id);
+  }
+
+  function updateSomosSlider(id) {
+    const slider = window.somosSliders[id];
+    const wrapper = document.getElementById('somos-slider-wrapper-' + id);
+    const dotsContainer = document.getElementById('somos-slider-dots-' + id);
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('button') : [];
+
+    wrapper.style.transform = 'translateX(' + (-slider.currentIndex * 100) + '%)';
+    dots.forEach((dot, i) => {
+      dot.setAttribute('aria-current', i === slider.currentIndex ? 'true' : 'false');
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Somos Slider Collection",
+  "class": "shopify-section--slideshow",
+  "tag": "section",
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Somos Slider Collection",
+      "category": "Somos Custom"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_section_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true },
+    { "type": "checkbox", "id": "show_dots", "label": "Show dots", "default": true },
+    { "type": "text", "id": "collection_subheading", "label": "Collection Subheading" },
+    { "type": "text", "id": "category_title", "label": "Category Title" },
+    { "type": "range", "id": "slide_height", "label": "Slide height", "min": 200, "max": 1000, "step": 50, "default": 500, "unit": "px" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff" },
+    { "type": "image_picker", "id": "background_image", "label": "Background image" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tell your story" },
+        { "type": "richtext", "id": "heading", "label": "Heading", "default": "<h2>Slide heading</h2>" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "This is a description box." },
+        { "type": "text", "id": "button_text_1", "label": "Button 1 text" },
+        { "type": "url", "id": "button_link_1", "label": "Button 1 link" },
+        { "type": "color", "id": "button_1_bg", "label": "Button 1 background", "default": "#ffffff" },
+        { "type": "color", "id": "button_1_text", "label": "Button 1 text color", "default": "#000000" },
+        { "type": "color", "id": "button_1_border", "label": "Button 1 border color", "default": "#000000" },
+        { "type": "text", "id": "button_text_2", "label": "Button 2 text" },
+        { "type": "url", "id": "button_link_2", "label": "Button 2 link" },
+        { "type": "color", "id": "button_2_bg", "label": "Button 2 background", "default": "#ffffff" },
+        { "type": "color", "id": "button_2_text", "label": "Button 2 text color", "default": "#000000" },
+        { "type": "color", "id": "button_2_border", "label": "Button 2 border color", "default": "#000000" },
+        { "type": "select", "id": "horizontal_align", "label": "Horizontal alignment", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ], "default": "center" },
+        { "type": "select", "id": "vertical_align", "label": "Vertical alignment", "options": [
+          { "value": "top", "label": "Top" },
+          { "value": "middle", "label": "Middle" },
+          { "value": "bottom", "label": "Bottom" }
+        ], "default": "middle" },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
+        { "type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%" }
+      ]
+    }
+  ]
+}
+{% endschema %}
