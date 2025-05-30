@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1748599393288,
@@ -12,6 +12,10 @@
                 {
                     "date": 1748599430061,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,12 +79,12 @@\n     --color-body-text: {{ settings.color_body_text | default: \"#1c1d1d\" }};\n     --color-body: {{ settings.color_body_bg | default: \"#fff\" }};\n     --color-bg: {{ settings.color_body_bg | default: \"#fff\" }};\n \n-    \n+\n     --type-header-primary: {{ settings.type_header_font_family.family }};\n     --type-header-fallback: {{ settings.type_header_font_family.fallback_families }};\n-    --type-header-size: {{ settings.type_header_base_size | default: '32' | append: 'px' }};\n+    --type-header-size: {{ settings.type_header_base_size | default: '1.75' | append: 'rem' }};\n     --type-header-weight: {{ settings.type_header_font_family.weight }};\n     --type-header-line-height: {{ settings.type_header_line_height | default: 1.4 }};\n     --type-header-spacing: {{ settings.type_header_spacing | default: '25' | divided_by: 1000.00 | append: 'em' }};\n \n"
+                },
+                {
+                    "date": 1748599511585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,12 +79,12 @@\n     --color-body-text: {{ settings.color_body_text | default: \"#1c1d1d\" }};\n     --color-body: {{ settings.color_body_bg | default: \"#fff\" }};\n     --color-bg: {{ settings.color_body_bg | default: \"#fff\" }};\n \n-\n+    \n     --type-header-primary: {{ settings.type_header_font_family.family }};\n     --type-header-fallback: {{ settings.type_header_font_family.fallback_families }};\n-    --type-header-size: {{ settings.type_header_base_size | default: '1.75' | append: 'rem' }};\n+    --type-header-size: {{ settings.type_header_base_size | default: '32' | append: 'px' }};\n     --type-header-weight: {{ settings.type_header_font_family.weight }};\n     --type-header-line-height: {{ settings.type_header_line_height | default: 1.4 }};\n     --type-header-spacing: {{ settings.type_header_spacing | default: '25' | divided_by: 1000.00 | append: 'em' }};\n \n"
                 }
             ],
             "date": 1748599393288,
