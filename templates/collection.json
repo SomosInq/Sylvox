@@ -156,45 +156,56 @@
         "subheading_tWFA9z": {
           "type": "subheading",
           "settings": {
-            "text": "text",
-            "color": "#000000",
-            "font_size": 18
+            "text": "Outdoor TV Finder",
+            "color": "#ffffff"
           }
         },
         "heading_TWpQCb": {
           "type": "heading",
           "settings": {
-            "text": "text",
+            "text": "Not Sure What Outdoor TV Fits you Best?",
             "heading_tag": "h2",
-            "color": "#000000",
-            "font_size": 24
+            "color": "#ffffff"
           }
         },
         "richtext_t8hnjr": {
           "type": "richtext",
           "settings": {
-            "content": "<p>text</p>",
-            "color": "#000000",
-            "font_size": 16
+            "content": "<p>About AR Outdoor tv finder</p>",
+            "color": "#ffffff"
+          }
+        },
+        "button_HMG69q": {
+          "type": "button",
+          "settings": {
+            "text": "Find the perfect TV",
+            "url": "",
+            "style": "fill",
+            "size": "sm",
+            "text_color": "#ffffff",
+            "background": "#20413b",
+            "outline_color": "#000000"
           }
         }
       },
       "block_order": [
         "subheading_tWFA9z",
         "heading_TWpQCb",
-        "richtext_t8hnjr"
+        "richtext_t8hnjr",
+        "button_HMG69q"
       ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "standard",
         "section_content_width": "standard",
+        "section_height": 330,
         "background_image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
         "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "mobile_text_position": "pos-middle-center",
+        "mobile_text_position": "pos-middle-left",
         "desktop_text_position": "sm:pos-middle-center"
       }
     },
