@@ -1,0 +1,186 @@
+{% schema %}
+{
+  "name": "Somos Banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "50% Width"
+        },
+        {
+          "value": "full",
+          "label": "Full Width"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard Width"
+        },
+        {
+          "value": "full",
+          "label": "Full Width"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Not Sure What Outdoor TV Fits you Best?"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "headline_font_size",
+      "label": "Headline Font Size",
+      "default": 24,
+      "min": 12,
+      "max": 64,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_align",
+      "label": "Vertical Alignment",
+      "default": "middle",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "content_image",
+      "label": "Content Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width_percent",
+      "label": "Image Width (%)",
+      "default": 100,
+      "min": 10,
+      "max": 100,
+      "unit": "%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Somos Banner",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90%;
+}
+{% endstyle %}
+
+<section class="section_width_{{ section.settings.section_width }}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: 'master' }});
+      background-size: cover;
+      background-position: center;
+    {% endif %}
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+  ">
+  <div class="content_width_{{ section.settings.content_width }} flex items-{{ section.settings.vertical_align }} justify-{{ section.settings.text_align }}">
+    <div style="color: {{ section.settings.headline_color }}; font-size: {{ section.settings.headline_font_size }}px;">
+      {{ section.settings.headline }}
+    </div>
+    {% if section.settings.content_image != blank %}
+      <img src="{{ section.settings.content_image | img_url: 'master' }}" style="width: {{ section.settings.image_width_percent }}%;">
+    {% endif %}
+  </div>
+</section>
