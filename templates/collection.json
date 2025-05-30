@@ -196,7 +196,7 @@
       ],
       "name": "Somos Banner",
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
         "text_alignment": "left",
         "section_height": 330,
@@ -278,7 +278,7 @@
       ],
       "name": "Comparison Table",
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "title": "",
         "description": "",
         "button_text": "",
