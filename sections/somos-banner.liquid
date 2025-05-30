@@ -24,11 +24,8 @@
   }
 
   #shopify-section-{{ section.id }} {
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-    padding-left: {{ section.settings.padding_left }}px;
-    padding-right: {{ section.settings.padding_right }}px;
     background-color: {{ section.settings.background_color }};
+    height: {{ section.settings.section_height }}px;
     {% if section.settings.background_image != blank %}
       background-image: url({{ section.settings.background_image | img_url: 'master' }});
       background-size: cover;
@@ -45,21 +42,21 @@
           {% case block.type %}
             {% when 'subheading' %}
               {% if block.settings.text != blank %}
-                <p class="bold" style="color: {{ block.settings.color }}; font-size: {{ block.settings.font_size }}px;" {{ block.shopify_attributes }}>
+                <p class="bold" style="color: {{ block.settings.color }};" {{ block.shopify_attributes }}>
                   {{ block.settings.text | escape }}
                 </p>
               {% endif %}
 
             {% when 'heading' %}
               {% if block.settings.text != blank %}
-                <p class="{{ block.settings.heading_tag }}" style="color: {{ block.settings.color }}; font-size: {{ block.settings.font_size }}px;" {{ block.shopify_attributes }}>
+                <p class="{{ block.settings.heading_tag }}" style="color: {{ block.settings.color }};" {{ block.shopify_attributes }}>
                   {{ block.settings.text | escape }}
                 </p>
               {% endif %}
 
             {% when 'richtext' %}
               {% if block.settings.content != blank %}
-                <div style="color: {{ block.settings.color }}; font-size: {{ block.settings.font_size }}px;" {{ block.shopify_attributes }}>
+                <div style="color: {{ block.settings.color }};" {{ block.shopify_attributes }}>
                   {{ block.settings.content }}
                 </div>
               {% endif %}
@@ -67,6 +64,13 @@
             {% when 'image' %}
               {% if block.settings.image != blank %}
                 <img src="{{ block.settings.image | image_url: '800x' }}" style="width: {{ block.settings.image_width }}%;" alt="{{ block.settings.image.alt | escape }}" {{ block.shopify_attributes }}>
+              {% endif %}
+
+            {% when 'button' %}
+              {% if block.settings.text != blank %}
+                <a href="{{ block.settings.url }}" class="btn btn--{{ block.settings.style }} btn--{{ block.settings.size }}" style="color: {{ block.settings.text_color }}; background-color: {{ block.settings.background }}; border: {% if block.settings.style == 'outline' %}2px solid {{ block.settings.outline_color }}{% else %}none{% endif %};" {{ block.shopify_attributes }}>
+                  {{ block.settings.text | escape }}
+                </a>
               {% endif %}
 
           {% endcase %}
@@ -100,6 +104,16 @@
         { "value": "full", "label": "Full Width" }
       ]
     },
+    {
+  "type": "range",
+  "id": "section_height",
+  "label": "Section Height",
+  "min": 200,
+  "max": 1000,
+  "step": 10,
+  "default": 500,
+  "unit": "px"
+},
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
@@ -147,8 +161,7 @@
       "name": "Subheading",
       "settings": [
         { "type": "text", "id": "text", "label": "Text" },
-        { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
-        { "type": "range", "id": "font_size", "label": "Font Size", "min": 12, "max": 64, "default": 18, "unit": "px" }
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" }
       ]
     },
     {
@@ -157,8 +170,7 @@
       "settings": [
         { "type": "text", "id": "text", "label": "Text" },
         { "type": "select", "id": "heading_tag", "label": "Tag", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" } ], "default": "h2" },
-        { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
-        { "type": "range", "id": "font_size", "label": "Font Size", "min": 12, "max": 64, "default": 24, "unit": "px" }
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" }
       ]
     },
     {
@@ -166,8 +178,7 @@
       "name": "Paragraph",
       "settings": [
         { "type": "richtext", "id": "content", "label": "Content" },
-        { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
-        { "type": "range", "id": "font_size", "label": "Font Size", "min": 12, "max": 64, "default": 16, "unit": "px" }
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" }
       ]
     },
     {
@@ -176,6 +187,19 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "range", "id": "image_width", "label": "Image Width (%)", "min": 10, "max": 100, "default": 100, "unit": "%" }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Button Text", "default": "Click Me" },
+        { "type": "url", "id": "url", "label": "Button Link" },
+        { "type": "select", "id": "style", "label": "Style", "options": [ { "value": "fill", "label": "Fill" }, { "value": "outline", "label": "Outline" } ], "default": "fill" },
+        { "type": "select", "id": "size", "label": "Size", "options": [ { "value": "sm", "label": "Small" }, { "value": "base", "label": "Medium" }, { "value": "lg", "label": "Large" } ], "default": "base" },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
+        { "type": "color", "id": "background", "label": "Background Color", "default": "#000000" },
+        { "type": "color", "id": "outline_color", "label": "Outline Color", "default": "#000000" }
       ]
     }
   ],
@@ -186,7 +210,8 @@
       "blocks": [
         { "type": "subheading", "settings": { "text": "Subheading" } },
         { "type": "heading", "settings": { "text": "Heading" } },
-        { "type": "richtext" }
+        { "type": "richtext" },
+        { "type": "button", "settings": { "text": "Click Me" } }
       ]
     }
   ]
