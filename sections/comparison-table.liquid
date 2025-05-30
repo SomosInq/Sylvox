@@ -31,55 +31,56 @@
       </a>
     {% endif %}
 
-    <div class="comparison-table" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
-      <!-- Headings row -->
-
-      <div class="header"></div>
-      {% for block in section.blocks %}
-        <div class="text-center header">
-          {% if block.settings.main_image %}
-            <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
+    <!-- Header Section -->
+<div class="comparison-header" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
+  <div class="header"></div>
+  {% for block in section.blocks %}
+    <div class="text-center header">
+      {% if block.settings.main_image %}
+        <img src="{{ block.settings.main_image | image_url }}" alt="Main image" style="max-width: 100%; display: block; margin: 0 auto;">
+      {% endif %}
+      <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+        {% if block.settings.icon %}
+          <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
+        {% endif %}
+        <strong>{{ block.settings.title }}</strong>
+      </div>
+      {% if block.settings.button_label and block.settings.button_link %}
+        <a href="{{ block.settings.button_link }}" class="btn mt-2" style="display: inline-flex; align-items: center; gap: 0.5em;">
+          <span>{{ block.settings.button_label }}</span>
+          {% if block.settings.button_image %}
+            <img src="{{ block.settings.button_image | image_url }}" alt="" style="height: 1em; width: auto;" />
           {% endif %}
-          <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-            {% if block.settings.icon %}
-              <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
-            {% endif %}
-            <strong>{{ block.settings.title }}</strong>
-          </div>
-          {% if block.settings.button_label and block.settings.button_link %}
-  <a href="{{ block.settings.button_link }}" class="btn mt-2" style="display: inline-flex; align-items: center; gap: 0.5em;">
-    <span>{{ block.settings.button_label }}</span>
-    {% if block.settings.button_image %}
-      <img src="{{ block.settings.button_image | image_url }}" alt="" style="height: 1em; width: auto;" />
-    {% endif %}
-  </a>
-{% endif %}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 
+<!-- Table Values Section -->
+<div class="comparison-values" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
+  {% for i in (1..20) %}
+    {% assign heading_key = 'heading_' | append: i %}
+    {% if section.settings[heading_key] != blank %}
+      <div class="head"><strong>{{ section.settings[heading_key] }}</strong></div>
+      {% for block in section.blocks %}
+        {% assign value_key = 'value_' | append: i %}
+        {% assign image_key = 'value_image_' | append: i %}
+        <div class="text-center table-value">
+          {% if block.settings[image_key] %}
+            <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 80%; display: block; margin: 0 auto 0.5rem;" />
+          {% endif %}
+          {% if block.settings[value_key] != blank %}
+            <div>{{ block.settings[value_key] }}</div>
+          {% else %}
+            <div>—</div>
+          {% endif %}
         </div>
       {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>
 
-      <!-- Rows -->
-      {% for i in (1..20) %}
-        {% assign heading_key = 'heading_' | append: i %}
-        {% if section.settings[heading_key] != blank %}
-          <div class="head"><strong>{{ section.settings[heading_key] }}</strong></div>
-          {% for block in section.blocks %}
-            {% assign value_key = 'value_' | append: i %}
-            {% assign image_key = 'value_image_' | append: i %}
-            <div class="text-center table-value">
-              {% if block.settings[image_key] %}
-                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 80%; display: block; margin: 0 auto 0.5rem;" />
-              {% endif %}
-              {% if block.settings[value_key] != blank %}
-                <div>{{ block.settings[value_key] }}</div>
-              {% else %}
-                <div>—</div>
-              {% endif %}
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-    </div>
   </div>
 </div>
 
