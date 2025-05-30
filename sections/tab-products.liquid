@@ -65,8 +65,17 @@
       <!-- Featured Products Grid -->
       <div class="tab-products-grid">
         {% if block.settings.collection %}
-          {% assign collection_handle = block.settings.collection %}
-          {% for product in collections[collection_handle].products %}
+          {% if block.settings.collection %}
+  {% for product in block.settings.collection.products %}
+    <div class="product-card {{ product.tags | join: ' ' | downcase }}">
+      <a href="{{ product.url }}">
+        <img src="{{ product.featured_image | image_url: '600x600' }}" alt="{{ product.title }}">
+        <h4>{{ product.title }}</h4>
+        <p>From {{ product.price | money }}</p>
+      </a>
+    </div>
+  {% endfor %}
+{% endif %}
             <div class="product-card {{ product.tags | join: ' ' | downcase }}">
               <a href="{{ product.url }}">
                 <img src="{{ product.featured_image | image_url: '600x600' }}" alt="{{ product.title }}">
