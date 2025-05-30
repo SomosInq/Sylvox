@@ -152,22 +152,50 @@
     },
     "somos_banner_zJ33mX": {
       "type": "somos-banner",
+      "blocks": {
+        "subheading_tWFA9z": {
+          "type": "subheading",
+          "settings": {
+            "text": "text",
+            "color": "#000000",
+            "font_size": 18
+          }
+        },
+        "heading_TWpQCb": {
+          "type": "heading",
+          "settings": {
+            "text": "text",
+            "heading_tag": "h2",
+            "color": "#000000",
+            "font_size": 24
+          }
+        },
+        "richtext_t8hnjr": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>text</p>",
+            "color": "#000000",
+            "font_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "subheading_tWFA9z",
+        "heading_TWpQCb",
+        "richtext_t8hnjr"
+      ],
       "name": "Somos Banner",
       "settings": {
-        "section_width": "full",
-        "content_width": "standard",
+        "section_width": "standard",
+        "section_content_width": "standard",
         "background_image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
         "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "headline": "Not Sure What Outdoor TV Fits you Best?",
-        "headline_color": "#000000",
-        "headline_font_size": 24,
-        "text_align": "left",
-        "vertical_align": "middle",
-        "image_width_percent": 100
+        "mobile_text_position": "pos-middle-center",
+        "desktop_text_position": "sm:pos-middle-center"
       }
     },
     "image_with_text_overlay_L9qbTC": {
@@ -211,6 +239,7 @@
         "richtext_gmyWHM",
         "button_MRkFcT"
       ],
+      "disabled": true,
       "name": "Image with text overlay",
       "settings": {
         "section_width": "standard",
