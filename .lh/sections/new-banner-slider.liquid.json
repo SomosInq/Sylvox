@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -60,6 +60,10 @@
                 {
                     "date": 1748529507743,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -172,15 +172,15 @@\n \n     <!-- Custom dots + arrows wrapper -->\n     <div class=\"dots-arrows-wrapper section_width_{{ section.settings.section_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n       <!-- Dots on the left -->\n-      <div class=\"carousel-dots-container\">\n+      <div class=\"carousel-dots-container section_width_{{ section.settings.section_width }}\">\n         <div class=\"carousel-dots\"></div>\n       </div>\n \n       {% if section.settings.show_arrows %}\n         <!-- Arrows on the right -->\n-        <div class=\"carousel-arrows\">\n+        <div class=\"carousel-arrows section_width_{{ section.settings.section_width }}\">\n   <button class=\"carousel-prev\" aria-label=\"Previous\">\n     <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M15 18l-6-6 6-6\"/></svg>\n   </button>\n   <button class=\"carousel-next\" aria-label=\"Next\">\n"
+                },
+                {
+                    "date": 1748598446511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -170,26 +170,29 @@\n       {% endfor %}\n     </div>\n \n     <!-- Custom dots + arrows wrapper -->\n-    <div class=\"dots-arrows-wrapper section_width_{{ section.settings.section_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n-      <!-- Dots on the left -->\n-      <div class=\"carousel-dots-container section_width_{{ section.settings.section_width }}\">\n-        <div class=\"carousel-dots\"></div>\n+<div class=\"dots-arrows-wrapper section_width_{{ section.settings.section_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n+  <!-- Dots on the left -->\n+  <div class=\"carousel-dots-container\">\n+    <div class=\"carousel-dots\"></div>\n+  </div>\n+\n+  {% if section.settings.show_arrows %}\n+    <!-- Arrows on the far right -->\n+    <div class=\"carousel-arrows-wrapper\" style=\"margin-left: auto;\">\n+      <div class=\"carousel-arrows\">\n+        <button class=\"carousel-prev\" aria-label=\"Previous\">\n+          <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M15 18l-6-6 6-6\"/></svg>\n+        </button>\n+        <button class=\"carousel-next\" aria-label=\"Next\">\n+          <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9 6l6 6-6 6\"/></svg>\n+        </button>\n       </div>\n+    </div>\n+  {% endif %}\n+</div>\n \n-      {% if section.settings.show_arrows %}\n-        <!-- Arrows on the right -->\n-        <div class=\"carousel-arrows section_width_{{ section.settings.section_width }}\">\n-  <button class=\"carousel-prev\" aria-label=\"Previous\">\n-    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M15 18l-6-6 6-6\"/></svg>\n-  </button>\n-  <button class=\"carousel-next\" aria-label=\"Next\">\n-    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9 6l6 6-6 6\"/></svg>\n-  </button>\n-</div>\n-      {% endif %}\n-    </div>\n   </div>\n </section>\n \n \n"
                 }
             ],
             "date": 1748527236205,

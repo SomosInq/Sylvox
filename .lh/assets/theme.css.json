@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 49,
+            "activePatchIndex": 51,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -204,6 +204,14 @@
                 {
                     "date": 1748595217757,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -917,16 +917,16 @@\n .comparison-values {\n   background: var(--Off-White, #FAFAFA);\n }\n \n-.table-value {\n+.comparison-values .table-value {\n   padding: 5%;\n }\n-.header-blank {\n+.comparison-header .header-blank {\n   background: #ffffff;\n       width: 200px;\n }\n-.head {\n+.comparison-values .head {\n   text-align: left;\n   padding: 5%;\n }\n \n"
+                },
+                {
+                    "date": 1748598484132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -713,11 +713,11 @@\n   }\n \n \n \n-.carousel-wrapper {\n-  position: relative;\n-  max-width: 100%;\n+.carousel-arrows-wrapper {\n+  display: flex;\n+  justify-content: flex-end;\n }\n .flickity-carousel {\n   overflow: visible;\n }\n"
+                },
+                {
+                    "date": 1748598491183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -713,8 +713,12 @@\n   }\n \n \n \n+.carousel-wrapper {\n+  position: relative;\n+  max-width: 100%;\n+}\n .carousel-arrows-wrapper {\n   display: flex;\n   justify-content: flex-end;\n }\n"
                 }
             ],
             "date": 1748526641710,

@@ -718,6 +718,10 @@ a.button {
   position: relative;
   max-width: 100%;
 }
+.carousel-arrows-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
 .flickity-carousel {
   overflow: visible;
 }

@@ -171,24 +171,27 @@
     </div>
 
     <!-- Custom dots + arrows wrapper -->
-    <div class="dots-arrows-wrapper section_width_{{ section.settings.section_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-      <!-- Dots on the left -->
-      <div class="carousel-dots-container section_width_{{ section.settings.section_width }}">
-        <div class="carousel-dots"></div>
-      </div>
+<div class="dots-arrows-wrapper section_width_{{ section.settings.section_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+  <!-- Dots on the left -->
+  <div class="carousel-dots-container">
+    <div class="carousel-dots"></div>
+  </div>
 
-      {% if section.settings.show_arrows %}
-        <!-- Arrows on the right -->
-        <div class="carousel-arrows section_width_{{ section.settings.section_width }}">
-  <button class="carousel-prev" aria-label="Previous">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-  <button class="carousel-next" aria-label="Next">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-  </button>
-</div>
-      {% endif %}
+  {% if section.settings.show_arrows %}
+    <!-- Arrows on the far right -->
+    <div class="carousel-arrows-wrapper" style="margin-left: auto;">
+      <div class="carousel-arrows">
+        <button class="carousel-prev" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-next" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
     </div>
+  {% endif %}
+</div>
+
   </div>
 </section>
 
