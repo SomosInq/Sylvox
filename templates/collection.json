@@ -208,6 +208,38 @@
         "content_position": "pos-middle-left"
       }
     },
+    "comparison_iL7Hza": {
+      "type": "comparison",
+      "blocks": {
+        "comparison_table_zCBdTj": {
+          "type": "comparison_table",
+          "settings": {
+            "label": "row",
+            "left_text": "row",
+            "right_text": "row"
+          }
+        }
+      },
+      "block_order": [
+        "comparison_table_zCBdTj"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "title": "Partial Sun Area VS. Full Sun Area",
+        "description": "",
+        "font_color": "",
+        "font_size": "text-base",
+        "text_alignment": "text-center",
+        "background_color": "#ffffff",
+        "table_background_color": "#f6f6f6",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "product_one": "19-waterproof-smart-magic-mirror-tv-for-bathroomon-wall-model",
+        "product_two": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-65-total-3-years",
+        "show_title": true,
+        "show_image": true
+      }
+    },
     "image_with_text_overlay_L9qbTC": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -275,6 +307,7 @@
     "main-collection",
     "recently-viewed",
     "somos_banner_zJ33mX",
+    "comparison_iL7Hza",
     "image_with_text_overlay_L9qbTC"
   ]
 }
