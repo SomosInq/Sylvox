@@ -9,15 +9,16 @@
  */
 {
   "sections": {
-    "somos_slider_RcMMKM": {
-      "type": "somos-slider",
+    "somos_slider_collection_q7NNiw": {
+      "type": "somos-slider-collection",
       "blocks": {
-        "slide_Wn8RKA": {
+        "slide_4PVewK": {
           "type": "slide",
           "settings": {
-            "subheading": "Tell your story",
-            "heading": "<p>Outdoor TV</p>",
-            "description": "This is a description box.",
+            "show_collection_title": true,
+            "subheading": "Shop by Category",
+            "heading": "",
+            "description": "Professionally IP55 waterproof outdoor TVs, 3-6 times brighter than indoor TVs, crafted with high-quality metal for enduring durability. These TVs can withstand all elements, ensuring an extended lifespan even in extreme weather conditions.",
             "button_text_1": "",
             "button_link_1": "",
             "button_1_bg": "#ffffff",
@@ -30,7 +31,7 @@
             "button_2_border": "#000000",
             "horizontal_align": "left",
             "vertical_align": "middle",
-            "text_color": "#000000",
+            "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
             "image_size": 100
@@ -38,13 +39,16 @@
         }
       },
       "block_order": [
-        "slide_Wn8RKA"
+        "slide_4PVewK"
       ],
-      "name": "Somos Slider",
+      "name": "Somos Slider Collection",
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "content_section_width": "standard",
         "show_arrows": false,
+        "show_dots": false,
+        "collection_subheading": "",
+        "category_title": "",
         "slide_height": 500,
         "background_color": "#ffffff",
         "padding_top": 0,
@@ -146,7 +150,7 @@
     }
   },
   "order": [
-    "somos_slider_RcMMKM",
+    "somos_slider_collection_q7NNiw",
     "4a962589-0f2a-4893-bdcc-d506e6110e8d",
     "collection-header",
     "advanced_content_nNKBQN",
