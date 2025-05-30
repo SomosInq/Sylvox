@@ -56,82 +56,6 @@
         "margin_right": 0
       }
     },
-    "tab_products_xKGnEU": {
-      "type": "tab-products",
-      "blocks": {
-        "tab_YFAxdB": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "label",
-            "title": "heading",
-            "heading_tag": "h2",
-            "inline_title": "Series",
-            "description": "<p>desc</p>",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/Valentine_Lewis_-_outdoor_tv_talking_head-001.00_02_17_04.Still014.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": "rv-tv",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
-          }
-        },
-        "tab_ya3RMy": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "LABEL 2",
-            "title": "test",
-            "heading_tag": "h2",
-            "inline_title": "Series",
-            "description": "",
-            "content_max_width": 780,
-            "text_color": "#000000",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "tab_YFAxdB",
-        "tab_ya3RMy"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "stack_products": true,
-        "products_count": 4,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "text",
-        "title": "Featured collection",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "enable_parallax": false,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "tabs_position": 30
-      }
-    },
     "tab_products_i4fR76": {
       "type": "tab-products",
       "blocks": {
@@ -148,16 +72,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": "",
-            "product": "100-difference",
-            "product_title": "New Nano AI",
-            "product_description": "The new Nano AI is the most powerful device we've ever created.",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "collection": ""
           }
         },
         "tab_eAADP6": {
@@ -173,16 +88,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "<p>The new Nano AI is the most powerful device we've ever created.</p>",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "collection": ""
           }
         },
         "tab_8BH7qW": {
@@ -198,16 +104,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "<p>The new Nano AI is the most powerful device we've ever created.</p>",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "collection": ""
           }
         },
         "tab_6xwwW6": {
@@ -223,16 +120,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "<p>The new Nano AI is the most powerful device we've ever created.</p>",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "collection": ""
           }
         },
         "tab_d48U69": {
@@ -248,16 +136,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "<p>The new Nano AI is the most powerful device we've ever created.</p>",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "collection": ""
           }
         },
         "tab_zY9MrJ": {
@@ -273,16 +152,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": "",
-            "product": "",
-            "product_title": "New Nano AI",
-            "product_description": "<p>The new Nano AI is the most powerful device we've ever created.</p>",
-            "product_2": "",
-            "product_title_2": "New Nano AI",
-            "product_description_2": "The new Nano AI is the most powerful device we've ever created.",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "collection": ""
           }
         }
       },
@@ -294,22 +164,8 @@
         "tab_d48U69",
         "tab_zY9MrJ"
       ],
-      "disabled": true,
       "settings": {
         "full_width": false,
-        "stack_products": true,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "Featured collection",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "enable_parallax": false,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
         "tabs_position": 44
       }
     },
@@ -1091,7 +947,6 @@
   },
   "order": [
     "somos_slider_PRQtHJ",
-    "tab_products_xKGnEU",
     "tab_products_i4fR76",
     "info_section_JEKir6",
     "comparison_table_eVYTCb",
