@@ -193,7 +193,9 @@
       ],
       "name": "Image with text overlay",
       "settings": {
-        "full_width": false,
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "slide_height": 350,
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
