@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 53,
+            "activePatchIndex": 55,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -220,6 +220,14 @@
                 {
                     "date": 1748599049297,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,14 @@\n   font-family: 'neurial_grotesklight', Arial, Helvetica, sans-serif !important;\n font-weight: 400;\n }\n \n+.header-title {\n+      font-size: 1.75rem;\n+    margin-bottom: 0.5rem;\n+}\n \n+\n /* Homepage */\n \n /* General */\n a.button {\n"
+                },
+                {
+                    "date": 1748599402312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -370,10 +370,10 @@\n .usp-heading-wrapper {\n   margin-bottom: 1rem;\n }\n .usp-heading {\n-  font-size: 1.75rem;\n-  margin-bottom: 0.5rem;\n+  /* font-size: 1.75rem;\n+  margin-bottom: 0.5rem; */\n }\n .usp-subtext {\n   font-size: 1rem;\n   color: #555;\n"
+                },
+                {
+                    "date": 1748599420692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,12 +59,12 @@\n   font-family: 'neurial_grotesklight', Arial, Helvetica, sans-serif !important;\n font-weight: 400;\n }\n \n-.header-title {\n+/* .header-title {\n       font-size: 1.75rem;\n     margin-bottom: 0.5rem;\n-}\n+} */\n \n \n /* Homepage */\n \n"
                 }
             ],
             "date": 1748526641710,

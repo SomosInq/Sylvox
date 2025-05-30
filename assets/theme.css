@@ -60,10 +60,10 @@ h1, h2, h3, p {
 font-weight: 400;
 }
 
-.header-title {
+/* .header-title {
       font-size: 1.75rem;
     margin-bottom: 0.5rem;
-}
+} */
 
 
 /* Homepage */
@@ -371,8 +371,8 @@ a.button {
   margin-bottom: 1rem;
 }
 .usp-heading {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  /* font-size: 1.75rem;
+  margin-bottom: 0.5rem; */
 }
 .usp-subtext {
   font-size: 1rem;
