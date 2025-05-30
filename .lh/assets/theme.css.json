@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 56,
+            "activePatchIndex": 57,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -232,6 +232,10 @@
                 {
                     "date": 1748599614371,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,19 @@\n       font-size: 1.75rem;\n     margin-bottom: 0.5rem;\n } */\n \n+.tla {\n+  text-align: left;\n+}\n+.tca {\n+  text-align: center;\n+}\n+.tra {\n+  text-align: right;\n+}\n \n+\n /* Homepage */\n \n /* General */\n a.button {\n"
+                },
+                {
+                    "date": 1748599889613,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,10 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin: 0 auto !important;\n+margin-left:auto !important;\n+margin-right:auto !important;\n width: 90%;\n }\n \n /* Product Slider */\n@@ -484,9 +485,9 @@\n   color: #666;\n   margin: 0 0 10px;\n }\n .top-bar .top-text h2 {\n-  font-size: 24px;\n+  /* font-size: 24px; */\n   margin: 0 0 10px;\n }\n .top-bar .top-text p {\n   max-width: 600px;\n@@ -660,12 +661,12 @@\n   .outdoor-carousel-section {\n   padding: 2rem 1rem;\n   /* overflow-x: hidden; */\n }\n-.outdoor-carousel-text {\n+/* .outdoor-carousel-text {\n   max-width: 960px;\n   margin: 0 auto 2rem;\n-}\n+} */\n .outdoor-carousel-text.left { text-align: left; }\n .outdoor-carousel-text.center { text-align: center; }\n .outdoor-carousel-text.right { text-align: right; }\n \n"
                 }
             ],
             "date": 1748526641710,

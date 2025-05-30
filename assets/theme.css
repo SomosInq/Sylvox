@@ -98,7 +98,8 @@ width: 100%;
 }
 
 .section_width_standard {
-margin: 0 auto !important;
+margin-left: auto !important;
+margin-right: auto !important;
 width: 90%;
 }
 
@@ -485,7 +486,7 @@ a.button {
   margin: 0 0 10px;
 }
 .top-bar .top-text h2 {
-  font-size: 24px;
+  /* font-size: 24px; */
   margin: 0 0 10px;
 }
 .top-bar .top-text p {
@@ -661,10 +662,10 @@ a.button {
   padding: 2rem 1rem;
   /* overflow-x: hidden; */
 }
-.outdoor-carousel-text {
+/* .outdoor-carousel-text {
   max-width: 960px;
   margin: 0 auto 2rem;
-}
+} */
 .outdoor-carousel-text.left { text-align: left; }
 .outdoor-carousel-text.center { text-align: center; }
 .outdoor-carousel-text.right { text-align: right; }
