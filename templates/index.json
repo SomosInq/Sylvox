@@ -72,7 +72,7 @@
             "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
             "text_align": "center",
             "text_vertical": "middle",
-            "collection": ""
+            "collection": "rv-tv"
           }
         },
         "tab_eAADP6": {
@@ -164,6 +164,7 @@
         "tab_d48U69",
         "tab_zY9MrJ"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "tabs_position": 44
