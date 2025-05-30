@@ -150,6 +150,26 @@
       "disabled": true,
       "settings": {}
     },
+    "somos_banner_zJ33mX": {
+      "type": "somos-banner",
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "content_width": "standard",
+        "background_image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "headline": "Not Sure What Outdoor TV Fits you Best?",
+        "headline_color": "#000000",
+        "headline_font_size": 24,
+        "text_align": "left",
+        "vertical_align": "middle",
+        "image_width_percent": 100
+      }
+    },
     "image_with_text_overlay_L9qbTC": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -215,6 +235,7 @@
     "advanced_content_nNKBQN",
     "main-collection",
     "recently-viewed",
+    "somos_banner_zJ33mX",
     "image_with_text_overlay_L9qbTC"
   ]
 }
