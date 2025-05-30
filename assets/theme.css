@@ -1308,7 +1308,7 @@ width: 90%;
     border-radius: 5px;
     cursor: pointer;
   }
-
+  
   .product-filter-buttons {
   display: flex;
   gap: 12px;
@@ -1349,7 +1349,6 @@ width: 90%;
 .product-card:hover {
   transform: scale(1.03);
 }
-
 
 
 
