@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 57,
+            "activePatchIndex": 60,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -236,6 +236,18 @@
                 {
                     "date": 1748599889613,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,10 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin: 0 auto !important;\n+margin-left:auto !important;\n+margin-right:auto !important;\n width: 90%;\n }\n \n /* Product Slider */\n@@ -484,9 +485,9 @@\n   color: #666;\n   margin: 0 0 10px;\n }\n .top-bar .top-text h2 {\n-  font-size: 24px;\n+  /* font-size: 24px; */\n   margin: 0 0 10px;\n }\n .top-bar .top-text p {\n   max-width: 600px;\n@@ -660,12 +661,12 @@\n   .outdoor-carousel-section {\n   padding: 2rem 1rem;\n   /* overflow-x: hidden; */\n }\n-.outdoor-carousel-text {\n+/* .outdoor-carousel-text {\n   max-width: 960px;\n   margin: 0 auto 2rem;\n-}\n+} */\n .outdoor-carousel-text.left { text-align: left; }\n .outdoor-carousel-text.center { text-align: center; }\n .outdoor-carousel-text.right { text-align: right; }\n \n"
+                },
+                {
+                    "date": 1748600241054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,10 +97,10 @@\n width: 100%;\n }\n \n .section_width_standard {\n-margin-left:auto !important;\n-margin-right:auto !important;\n+margin-left: auto !important;\n+margin-right: auto !important;\n width: 90%;\n }\n \n /* Product Slider */\n@@ -1255,12 +1255,12 @@\n   }\n   .somos-slide .button {\n     display: inline-block;\n     margin: 5px;\n-    padding: 10px 20px;\n+    padding: 5px 15px;\n     text-decoration: none;\n     border-radius: 50px;\n-    border: 2px solid;\n+    border: 1px solid;\n   }\n \n   /* Tab Products */\n     .tab-product-content__info {\n"
+                },
+                {
+                    "date": 1748600278527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -351,14 +351,15 @@\n   margin: 20px 0;\n }\n \n a.button {\n-    border-radius: 60px;\n     background: var(--Dark-Green, #20413B);\n-    padding: 12px 44.18px 11px 43.82px;\n     justify-content: center;\n     align-items: center;\n     color: white;\n+    padding: 5px 15px;\n+    text-decoration: none;\n+    border-radius: 50px;\n }\n \n .sylvox-icons img {\n   height: 15px;\n"
+                },
+                {
+                    "date": 1748600298189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,14 +79,17 @@\n /* Homepage */\n \n /* General */\n a.button {\n-    border-radius: 60px;\n     background: var(--Dark-Green, #20413B);\n-    padding: 12px 44.18px 11px 43.82px;\n     justify-content: center;\n     align-items: center;\n     color: white;\n+    display: inline-block;\n+    margin: 5px;\n+    padding: 5px 15px;\n+    text-decoration: none;\n+    border-radius: 50px;\n }\n \n /* Width */\n .section_width_standard,\n"
                 }
             ],
             "date": 1748526641710,
