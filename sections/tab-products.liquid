@@ -37,18 +37,24 @@
               {{ block.settings.description }}
             </div>
 
-            <!-- Filter buttons -->
+            <!-- Filter buttons with icons -->
             <div class="product-filter-buttons">
               <button class="filter-btn active" data-filter="all">
-                <img src="{{ 'all-icon.png' | asset_url }}" alt="All" />
+                {% if section.settings.filter_icon_all %}
+                  <img src="{{ section.settings.filter_icon_all | image_url }}" alt="All" />
+                {% endif %}
                 All
               </button>
               <button class="filter-btn" data-filter="full-sun">
-                <img src="{{ 'sun-icon.png' | asset_url }}" alt="Full Sun" />
+                {% if section.settings.filter_icon_full_sun %}
+                  <img src="{{ section.settings.filter_icon_full_sun | image_url }}" alt="Full Sun" />
+                {% endif %}
                 Full Sun
               </button>
               <button class="filter-btn" data-filter="partial-sun">
-                <img src="{{ 'shade-icon.png' | asset_url }}" alt="Partial Sun" />
+                {% if section.settings.filter_icon_partial_sun %}
+                  <img src="{{ section.settings.filter_icon_partial_sun | image_url }}" alt="Partial Sun" />
+                {% endif %}
                 Partial Sun
               </button>
             </div>
@@ -56,7 +62,7 @@
         </div>
       </div>
 
-      <!-- Featured Products Section -->
+      <!-- Featured Products Grid -->
       <div class="tab-products-grid">
         {% if block.settings.collection %}
           {% assign collection_handle = block.settings.collection %}
@@ -97,30 +103,30 @@
       tabs[0].classList.add('active');
       contents[0].classList.add('active');
     }
+
+    // Filtering logic
+    section.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const filter = this.dataset.filter;
+        const container = this.closest(".tab-product-content");
+
+        container.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+
+        container.querySelectorAll(".product-card").forEach(card => {
+          if (filter === "all" || card.classList.contains(filter)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.tab-products').forEach((section) => {
       initializeTabbedSection(section.getAttribute('data-section-id'));
-
-      // Filtering logic
-      section.querySelectorAll(".filter-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          const filter = this.dataset.filter;
-          const container = this.closest(".tab-product-content");
-
-          container.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-          this.classList.add("active");
-
-          container.querySelectorAll(".product-card").forEach(card => {
-            if (filter === "all" || card.classList.contains(filter)) {
-              card.style.display = "block";
-            } else {
-              card.style.display = "none";
-            }
-          });
-        });
-      });
     });
   });
 
@@ -132,3 +138,72 @@
     }
   });
 </script>
+
+{% schema %}
+{
+  "name": "Tab Products",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Filter Icons"
+    },
+    {
+      "type": "image_picker",
+      "id": "filter_icon_all",
+      "label": "All Filter Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "filter_icon_full_sun",
+      "label": "Full Sun Filter Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "filter_icon_partial_sun",
+      "label": "Partial Sun Filter Icon"
+    },
+    {
+      "type": "range",
+      "id": "tabs_position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Tab vertical position",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        { "type": "text", "id": "tab_label", "label": "Tab Label" },
+        { "type": "text", "id": "title", "label": "Heading" },
+        { "type": "select", "id": "heading_tag", "label": "Heading size", "options": [ { "value": "h2", "label": "Large" }, { "value": "h3", "label": "Medium" } ], "default": "h2" },
+        { "type": "text", "id": "inline_title", "label": "Product inline title", "default": "Series" },
+        { "type": "richtext", "id": "description", "label": "Description" },
+        { "type": "range", "id": "content_max_width", "label": "Content maximum width", "min": 400, "max": 1200, "step": 20, "unit": "px", "default": 780 },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
+        { "type": "image_picker", "id": "image", "label": "Banner Image" },
+        { "type": "image_picker", "id": "overlay_image", "label": "Top Right Overlay Image" },
+        { "type": "select", "id": "text_align", "label": "Horizontal alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "center" },
+        { "type": "select", "id": "text_vertical", "label": "Vertical alignment", "options": [ { "value": "top", "label": "Top" }, { "value": "middle", "label": "Middle" }, { "value": "bottom", "label": "Bottom" } ], "default": "middle" },
+        { "type": "collection", "id": "collection", "label": "Collection" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tab products",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
