@@ -322,7 +322,7 @@
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
-        "margin_bottom": 0,
+        "margin_bottom": 10,
         "margin_left": 0,
         "margin_right": 0,
         "icon": "shopify://shop_images/Icons_1.png",
