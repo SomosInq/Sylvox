@@ -23,40 +23,28 @@
     width: 90% !important;
   }
 
-  #shopify-section-{{ section.id }} {
-    background-color: {{ section.settings.background_color }};
-    height: {{ section.settings.section_height }}px;
-    {% if section.settings.background_image != blank %}
-      background-image: url({{ section.settings.background_image | img_url: 'master' }});
-      background-size: cover;
-      background-position: center;
-    {% endif %}
-  }
-
-  .content-position {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  .pos-top-left    { justify-content: flex-start; align-items: flex-start; }
-  .pos-top-center  { justify-content: center; align-items: flex-start; }
-  .pos-top-right   { justify-content: flex-end; align-items: flex-start; }
-  .pos-middle-left { justify-content: flex-start; align-items: center; }
-  .pos-middle-center { justify-content: center; align-items: center; }
-  .pos-middle-right { justify-content: flex-end; align-items: center; }
-  .pos-bottom-left  { justify-content: flex-start; align-items: flex-end; }
-  .pos-bottom-center { justify-content: center; align-items: flex-end; }
-  .pos-bottom-right { justify-content: flex-end; align-items: flex-end; }
-
   .btn--sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
   .btn--base { padding: 0.5rem 1rem; font-size: 1rem; }
   .btn--lg { padding: 0.75rem 1.5rem; font-size: 1.25rem; }
 </style>
 
 <div class="section_width_{{ section.settings.section_width }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }} content-position {{ section.settings.content_position }}">
-    <div class="prose text-center">
+  <div
+    style="
+      background-color: {{ section.settings.background_color }};
+      {% if section.settings.background_image != blank %}
+        background-image: url({{ section.settings.background_image | img_url: 'master' }});
+        background-size: cover;
+        background-position: center;
+      {% endif %}
+      height: {{ section.settings.section_height }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+    "
+  >
+    <div class="section_content_width_{{ section.settings.section_content_width }}" style="text-align: {{ section.settings.text_alignment }};">
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'subheading' %}
@@ -87,9 +75,11 @@
 
           {% when 'button' %}
             {% if block.settings.text != blank %}
-              <a href="{{ block.settings.url }}" class="btn btn--{{ block.settings.size }}" style="color: {{ block.settings.text_color }}; background-color: {{ block.settings.background }}; {% if block.settings.style == 'outline' %}border: 2px solid {{ block.settings.outline_color }}; background-color: transparent;{% endif %}" {{ block.shopify_attributes }}>
-                {{ block.settings.text | escape }}
-              </a>
+              <div style="text-align: {{ section.settings.text_alignment }};">
+                <a href="{{ block.settings.url }}" class="btn btn--{{ block.settings.size }}" style="color: {{ block.settings.text_color }}; background-color: {{ block.settings.background }}; {% if block.settings.style == 'outline' %}border: 2px solid {{ block.settings.outline_color }}; background-color: transparent;{% endif %}" {{ block.shopify_attributes }}>
+                  {{ block.settings.text | escape }}
+                </a>
+              </div>
             {% endif %}
 
         {% endcase %}
@@ -122,30 +112,24 @@
         { "value": "full", "label": "Full Width" }
       ]
     },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
     { "type": "range", "id": "section_height", "label": "Section Height", "min": 200, "max": 1000, "step": 10, "default": 500, "unit": "px" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0, "unit": "px" },
-    {
-      "type": "select",
-      "id": "content_position",
-      "label": "Content Position",
-      "default": "pos-middle-center",
-      "options": [
-        { "value": "pos-top-left", "label": "Top left" },
-        { "value": "pos-top-center", "label": "Top center" },
-        { "value": "pos-top-right", "label": "Top right" },
-        { "value": "pos-middle-left", "label": "Middle left" },
-        { "value": "pos-middle-center", "label": "Middle center" },
-        { "value": "pos-middle-right", "label": "Middle right" },
-        { "value": "pos-bottom-left", "label": "Bottom left" },
-        { "value": "pos-bottom-center", "label": "Bottom center" },
-        { "value": "pos-bottom-right", "label": "Bottom right" }
-      ]
-    }
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0, "unit": "px" }
   ],
   "blocks": [
     {
