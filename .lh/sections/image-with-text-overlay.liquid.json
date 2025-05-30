@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 15,
+            "activePatchIndex": 17,
             "patches": [
                 {
                     "date": 1748360636080,
@@ -68,6 +68,14 @@
                 {
                     "date": 1748604630884,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -169,14 +169,40 @@\n   \"class\": \"shopify-section--image-with-text-overlay\",\n   \"tag\": \"section\",\n   \"settings\": [\n     {\n-      \"type\": \"checkbox\",\n-      \"id\": \"full_width\",\n-      \"label\": \"Full width\",\n-      \"default\": true\n+  \"type\": \"select\",\n+  \"id\": \"section_width\",\n+  \"label\": \"Section Width\",\n+  \"default\": \"standard\",\n+  \"options\": [\n+    {\n+      \"value\": \"standard\",\n+      \"label\": \"50% Width\"\n     },\n     {\n+      \"value\": \"full\",\n+      \"label\": \"Full Width\"\n+    }\n+  ]\n+},\n+{\n+  \"type\": \"select\",\n+  \"id\": \"section_content_width\",\n+  \"label\": \"Section Width\",\n+  \"default\": \"standard\",\n+  \"options\": [\n+    {\n+      \"value\": \"standard\",\n+      \"label\": \"50% Width\"\n+    },\n+    {\n+      \"value\": \"full\",\n+      \"label\": \"Full Width\"\n+    }\n+  ]\n+},\n+    {\n       \"type\": \"checkbox\",\n       \"id\": \"allow_transparent_header\",\n       \"label\": \"Allow transparent header\",\n       \"default\": false\n"
+                },
+                {
+                    "date": 1748604774618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n }\n \n .section_width_standard {\n margin: 0 auto !important;\n-width: 90%;\n+width: 90% !important;\n }\n .section_content_width_standard,\n .section_content_width_full {\n transition: all 0.3s ease;\n@@ -24,9 +24,9 @@\n }\n \n .section_content_width_standard {\n margin: 0 auto !important;\n-width: 90%;\n+width: 90% !important;\n }\n \n   #shopify-section-{{ section.id }} {\n     {%- if section.settings.full_width -%}\n"
+                },
+                {
+                    "date": 1748604941122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n     width: 100%;\n   }\n </style>\n \n-<div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} class=\"section_width_{{ section.settings.section_width }}\">\n+<div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} class=\"section_width_{{ section.settings.section_width }}\" style=\"--slide-height: {{ section.settings.slide_height }}px;\">\n   {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}\n \n   <image-banner reveal-on-scroll=\"true\" {% if section.settings.enable_parallax %}parallax=\"0.3\"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>\n     {%- if section.settings.image != blank -%}\n@@ -200,8 +200,9 @@\n       \"label\": \"Full Width\"\n     }\n   ]\n },\n+{\"type\": \"range\", \"id\": \"slide_height\", \"label\": \"Height\", \"min\": 200, \"max\": 1000, \"step\": 50, \"default\": 500, \"unit\": \"px\"},\n     {\n       \"type\": \"checkbox\",\n       \"id\": \"allow_transparent_header\",\n       \"label\": \"Allow transparent header\",\n"
                 }
             ],
             "date": 1748360636080,
