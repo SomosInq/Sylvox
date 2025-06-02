@@ -26,6 +26,26 @@
       "label": "Button Link"
     },
     {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
@@ -71,10 +91,25 @@
           "default": 40
         },
         {
+          "type": "range",
+          "id": "content_width",
+          "label": "Content Width (%)",
+          "min": 10,
+          "max": 100,
+          "step": 5,
+          "default": 60
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Title",
           "default": "Smarter Way to Watch"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Google TV Built-In"
         },
         {
           "type": "textarea",
@@ -87,15 +122,6 @@
           "id": "text_color",
           "label": "Text Color",
           "default": "#000000"
-        },
-        {
-          "type": "range",
-          "id": "text_size",
-          "label": "Font Size (px)",
-          "min": 10,
-          "max": 40,
-          "step": 1,
-          "default": 16
         }
       ]
     }
@@ -121,40 +147,68 @@
   padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
   margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
 }
+
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+.section_content_width_standard,
+.section_content_width_full {
+  transition: all 0.3s ease;
+}
+.section_content_width_full {
+  width: 100%;
+}
+.section_content_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
 {% endstyle %}
 
-<section class="icon-grid">
-  <div class="icon-grid-heading" style="text-align: center; margin-bottom: 40px;">
-    <h2>{{ section.settings.heading }}</h2>
-    <p>{{ section.settings.description }}</p>
-    {% if section.settings.button_label != blank %}
-      <a href="{{ section.settings.button_link }}" class="button" style="display: inline-block; margin-top: 20px;">{{ section.settings.button_label }}</a>
-    {% endif %}
-  </div>
-
-  {% for block in section.blocks %}
-    <div class="icon-grid-row" style="display: flex; flex-wrap: wrap; align-items: center; margin: 30px 0;">
-      {% if block.settings.image_left %}
-        <div class="image-col" style="flex: 0 0 {{ block.settings.image_width }}%;">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
-          {% endif %}
-        </div>
-        <div class="text-col" style="flex: 1; padding-left: 20px; color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }}px;">
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
-        </div>
-      {% else %}
-        <div class="text-col" style="flex: 1; padding-right: 20px; color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }}px;">
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
-        </div>
-        <div class="image-col" style="flex: 0 0 {{ block.settings.image_width }}%;">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
-          {% endif %}
-        </div>
+<section class="section_width_{{ section.settings.section_width }}" id="shopify-section-{{ section.id }}">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    <div class="icon-grid-heading" style="text-align: center; margin-bottom: 40px;">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="button" style="display: inline-block; margin-top: 20px;">{{ section.settings.button_label }}</a>
       {% endif %}
     </div>
-  {% endfor %}
+
+    {% for block in section.blocks %}
+      <div class="icon-grid-row" style="display: flex; flex-wrap: wrap; align-items: center; margin: 30px 0;">
+        {% if block.settings.image_left %}
+          <div class="image-col" style="flex: 0 0 {{ block.settings.image_width }}%;">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+            {% endif %}
+          </div>
+          <div class="text-col" style="flex: 0 0 {{ block.settings.content_width }}%; padding-left: 20px; color: {{ block.settings.text_color }};">
+            <h3>{{ block.settings.title }}</h3>
+            <h4>{{ block.settings.subtitle }}</h4>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% else %}
+          <div class="text-col" style="flex: 0 0 {{ block.settings.content_width }}%; padding-right: 20px; color: {{ block.settings.text_color }};">
+            <h3>{{ block.settings.title }}</h3>
+            <h4>{{ block.settings.subtitle }}</h4>
+            <p>{{ block.settings.text }}</p>
+          </div>
+          <div class="image-col" style="flex: 0 0 {{ block.settings.image_width }}%;">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 </section>
