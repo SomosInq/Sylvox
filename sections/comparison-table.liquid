@@ -36,10 +36,10 @@
       <div class="header-blank"></div>
       {% for block in section.blocks %}
         <div class="text-center header">
-          <div class="top-title">{{ block.settings.header_title }}</div>
           {% if block.settings.main_image %}
   <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 100%; margin-bottom: 1rem; margin-left: auto; margin-right: auto;" />
 {% endif %}
+          <div class="top-title">{{ block.settings.header_title }}</div>
           <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
             {% if block.settings.icon %}
               <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
@@ -111,7 +111,7 @@
           const isHidden = btn.classList.toggle('expanded');
 
           rows.forEach((row, index) => {
-            if (index >= 4 * {{ section.blocks.size | plus: 1 }}) {
+            if (index >= 7 * {{ section.blocks.size | plus: 1 }}) {
               row.style.display = isHidden ? 'grid' : 'none';
             }
           });
@@ -357,7 +357,7 @@
       "name": "Column",
       "settings": [
         { "type": "image_picker", "id": "main_image", "label": "Main Image" },
-        { "type": "text", "id": "header_title", "label": "Top Title above Type" },
+        { "type": "text", "id": "header_title", "label": "Product Name" },
         { "type": "image_picker", "id": "icon", "label": "Icon beside title" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "text", "id": "price", "label": "Price Text" },
