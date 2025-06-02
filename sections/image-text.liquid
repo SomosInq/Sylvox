@@ -130,12 +130,12 @@
         {% if block.settings.image %}
 {% assign image_align = block.settings.image_alignment | default: 'center' %}
 
-<div style="
-  text-align: 
-    {% if image_align == 'left' %} left
-    {% elsif image_align == 'right' %} right
-    {% else %} center
-    {% endif %};
+<div class="
+  {% if image_align == 'left' %} justify-start
+  {% elsif image_align == 'right' %} justify-end
+  {% else %} justify-center
+  {% endif %}
+  flex mb-4
 ">
   <img
     src="{{ block.settings.image | image_url: width: 1200 }}"
