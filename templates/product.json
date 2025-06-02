@@ -124,76 +124,6 @@
         "max_width": true
       }
     },
-    "slideshow_rqHYVM": {
-      "type": "slideshow",
-      "blocks": {
-        "hero_PkHWfK": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "",
-            "title_size": 70,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/17266548932706.png",
-            "image_mobile": "shopify://shop_images/17266548932706.png",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "hero_PkHWfK"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "desktop_size": 0,
-        "mobile_size": 0,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
-    "9df5c85d-9b86-4dc1-b79f-989547d3475e": {
-      "type": "slideshow",
-      "blocks": {
-        "template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "<p>Dimension</p>",
-            "title_size": 70,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/17266549209638.png",
-            "image_mobile": "shopify://shop_images/17266549209638.png",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "desktop_size": 0,
-        "mobile_size": 0,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
     "somos_banner_aRxBYn": {
       "type": "somos-banner",
       "blocks": {
@@ -503,7 +433,7 @@
       ],
       "name": "Somos Content/Image",
       "settings": {
-        "parent_subtitle": "Explore Our Benefits",
+        "parent_subtitle": "",
         "heading": "",
         "description": "",
         "parent_alignment": "center",
@@ -727,35 +657,62 @@
             "icon_size": 27,
             "title": "Wireless Freedom",
             "title_color": "#000000",
-            "title_size": 18,
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
             "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
-            "body_color": "#333333",
-            "body_size": 14
+            "body_color": "#333333"
+          }
+        },
+        "feature_box_87hkMh": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_2.png",
+            "icon_size": 27,
+            "title": "Wireless Freedom",
+            "title_color": "#000000",
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
+            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body_color": "#333333"
+          }
+        },
+        "feature_box_9UhAeW": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_2.png",
+            "icon_size": 27,
+            "title": "Wireless Freedom",
+            "title_color": "#000000",
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
+            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body_color": "#333333"
           }
         }
       },
       "block_order": [
-        "feature_box_iDtj9V"
+        "feature_box_iDtj9V",
+        "feature_box_87hkMh",
+        "feature_box_9UhAeW"
       ],
       "name": "Various Grid",
       "settings": {
         "bg_color": "#ffffff",
-        "margin_top": "0",
-        "margin_right": "0",
-        "margin_bottom": "0",
-        "margin_left": "0",
-        "padding_top": "0",
-        "padding_right": "0",
-        "padding_bottom": "0",
-        "padding_left": "0",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 50,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "left_image": "shopify://shop_images/bf142379eb6346708d8cc63dc75ffe94.mp4.png",
         "left_image_width": 40,
+        "icon": "shopify://shop_images/Icons_2.png",
         "heading": "Stay Connected, Indoors or Out.",
         "heading_color": "#000000",
-        "heading_size": 24,
         "text": "No matter how you watch, listen, or play, your TV should keep up.",
         "text_color": "#333333",
-        "text_size": 16,
         "section_width": "full",
         "section_content_width": "standard"
       }
@@ -811,6 +768,69 @@
         "section_width": "standard",
         "top_title": "Sylvoz Community",
         "subtitle": "A home for all Sylvoz fans to experience content, inspiration, and our beautiful technology.",
+        "description": "",
+        "show_arrows": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "video_grid_gF4rY4": {
+      "type": "video-grid",
+      "blocks": {
+        "video_raY38R": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea_jpg.png"
+          }
+        },
+        "video_L9Kjxd": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea.jpg-1.png"
+          }
+        },
+        "video_B9hjeR": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea.jpg-2.png"
+          }
+        },
+        "video_8wjAPM": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea.jpg-3.png"
+          }
+        }
+      },
+      "block_order": [
+        "video_raY38R",
+        "video_L9Kjxd",
+        "video_B9hjeR",
+        "video_8wjAPM"
+      ],
+      "name": "Video Grid",
+      "settings": {
+        "section_width": "standard",
+        "top_title": "",
+        "subtitle": "Feel Good, Live Outdoors.",
         "description": "",
         "show_arrows": true,
         "padding_top": 40,
@@ -939,6 +959,34 @@
     },
     "accordian_fLLR39": {
       "type": "accordian",
+      "blocks": {
+        "question_n7E4fh": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_8LDg7c": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to setup an account to place an order?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_7K3mB4": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer gift wrapping",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        }
+      },
+      "block_order": [
+        "question_n7E4fh",
+        "question_8LDg7c",
+        "question_7K3mB4"
+      ],
       "name": "Accordian",
       "settings": {
         "heading": "Have a question ? We are here to help.",
@@ -948,6 +996,7 @@
         "heading_size": 24,
         "subheading_size": 16,
         "bg_color": "#ffffff",
+        "arrow_image": "shopify://shop_images/Overlay.png",
         "arrow_image_width": 10,
         "section_width": "standard",
         "padding_top": 0,
@@ -1000,8 +1049,6 @@
   "order": [
     "main",
     "sub",
-    "slideshow_rqHYVM",
-    "9df5c85d-9b86-4dc1-b79f-989547d3475e",
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
     "icon_grid_AeeJc6",
@@ -1014,6 +1061,7 @@
     "usp_accordion_4PkPyD",
     "various_grid_aXBbfz",
     "video_grid_aPiKfa",
+    "video_grid_gF4rY4",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
