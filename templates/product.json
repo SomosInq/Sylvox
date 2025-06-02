@@ -464,6 +464,46 @@
         "bottom_padding": true
       }
     },
+    "new_banner_slider_NmBRen": {
+      "type": "new-banner-slider",
+      "blocks": {
+        "slide_QqP7Lp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        },
+        "slide_bmLipF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        },
+        "slide_GjKyYM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        }
+      },
+      "block_order": [
+        "slide_QqP7Lp",
+        "slide_bmLipF",
+        "slide_GjKyYM"
+      ],
+      "name": "New Banner Slider",
+      "settings": {
+        "section_width": "standard",
+        "text_alignment": "center",
+        "heading": "Rain, Snow, or Heat - It Just Works.",
+        "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
+        "show_arrows": true,
+        "slide_size": "large"
+      }
+    },
     "video_grid_aPiKfa": {
       "type": "video-grid",
       "name": "Video Grid",
@@ -668,6 +708,7 @@
     "image_text_pBLTm3",
     "somos_banner_6wHtpL",
     "text_and_image_iARUKa",
+    "new_banner_slider_NmBRen",
     "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
