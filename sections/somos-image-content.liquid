@@ -4,6 +4,12 @@
   "settings": [
     {
       "type": "text",
+      "id": "parent_subtitle",
+      "label": "Parent Subtitle",
+      "default": "Explore Our Benefits"
+    },
+    {
+      "type": "text",
       "id": "heading",
       "label": "Parent Title",
       "default": "Discover What Sets Us Apart"
@@ -13,6 +19,17 @@
       "id": "description",
       "label": "Parent Description",
       "default": "Experience unmatched performance and innovation with every feature."
+    },
+    {
+      "type": "select",
+      "id": "parent_alignment",
+      "label": "Parent Content Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
     },
     {
       "type": "text",
@@ -215,7 +232,10 @@
 
 <section class="section_width_{{ section.settings.section_width }}" id="shopify-section-{{ section.id }}">
   <div class="section_content_width_{{ section.settings.section_content_width }}">
-    <div class="icon-grid-heading" style="text-align: center; margin-bottom: 40px;">
+    <div class="icon-grid-heading" style="text-align: {{ section.settings.parent_alignment }}; margin-bottom: 40px;">
+      {% if section.settings.parent_subtitle != blank %}
+        <p class="parent-subtitle" style="margin: 0 0 10px;">{{ section.settings.parent_subtitle }}</p>
+      {% endif %}
       <h2>{{ section.settings.heading }}</h2>
       <p>{{ section.settings.description }}</p>
       {% if section.settings.button_label != blank %}
@@ -230,8 +250,9 @@
         class="icon-grid-row"
         style="
           display: flex;
-          align-items: center;
           flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-between;
           margin-top: {{ block.settings.margin_top }}px;
           margin-bottom: {{ block.settings.margin_bottom }}px;
           padding-top: {{ block.settings.padding_top }}px;
@@ -240,23 +261,23 @@
         {{ block.shopify_attributes }}
       >
         {% if block.settings.image_left %}
-          <div class="image-col" style="flex: 0 0 {{ image_width }}%;">
+          <div class="image-col" style="flex: 0 0 {{ image_width }}%; min-width: 0;">
             {% if block.settings.image %}
               <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
             {% endif %}
           </div>
-          <div class="text-col" style="flex: 0 0 {{ content_width }}%; padding-left: 20px; color: {{ block.settings.text_color }};">
+          <div class="text-col" style="flex: 0 0 {{ content_width }}%; min-width: 0; padding-left: 20px; color: {{ block.settings.text_color }};">
             <h4>{{ block.settings.subtitle }}</h4>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
           </div>
         {% else %}
-          <div class="text-col" style="flex: 0 0 {{ content_width }}%; padding-right: 20px; color: {{ block.settings.text_color }};">
+          <div class="text-col" style="flex: 0 0 {{ content_width }}%; min-width: 0; padding-right: 20px; color: {{ block.settings.text_color }};">
             <h4>{{ block.settings.subtitle }}</h4>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
           </div>
-          <div class="image-col" style="flex: 0 0 {{ image_width }}%;">
+          <div class="image-col" style="flex: 0 0 {{ image_width }}%; min-width: 0;">
             {% if block.settings.image %}
               <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
             {% endif %}
