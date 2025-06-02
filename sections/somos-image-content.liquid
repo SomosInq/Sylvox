@@ -247,43 +247,48 @@
       {% assign image_width = block.settings.image_width | append: "%" %}
       {% assign content_width = block.settings.content_width | append: "%" %}
       <div
-        class="icon-grid-row"
-        style="
-          display: flex;
-          flex-wrap: nowrap;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: {{ block.settings.margin_top }}px;
-          margin-bottom: {{ block.settings.margin_bottom }}px;
-          padding-top: {{ block.settings.padding_top }}px;
-          padding-bottom: {{ block.settings.padding_bottom }}px;
-        "
-        {{ block.shopify_attributes }}
-      >
-        {% if block.settings.image_left %}
-          <div class="image-col" style="flex: 0 0 {{ image_width }}%; min-width: 0;">
-            {% if block.settings.image %}
-              <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
-            {% endif %}
-          </div>
-          <div class="text-col" style="flex: 0 0 {{ content_width }}%; min-width: 0; padding-left: 20px; color: {{ block.settings.text_color }};">
-            <h4>{{ block.settings.subtitle }}</h4>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </div>
-        {% else %}
-          <div class="text-col" style="flex: 0 0 {{ content_width }}%; min-width: 0; padding-right: 20px; color: {{ block.settings.text_color }};">
-            <h4>{{ block.settings.subtitle }}</h4>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </div>
-          <div class="image-col" style="flex: 0 0 {{ image_width }}%; min-width: 0;">
-            {% if block.settings.image %}
-              <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
-            {% endif %}
-          </div>
-        {% endif %}
-      </div>
+  class="icon-grid-row"
+  style="
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-top: {{ block.settings.margin_top }}px;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+    gap: 20px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {% assign image_width = block.settings.image_width | append: "%" %}
+  {% assign content_width = block.settings.content_width | append: "%" %}
+
+  {% if block.settings.image_left %}
+    <div class="image-col" style="flex: 0 0 {{ image_width }}; max-width: {{ image_width }};">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+      {% endif %}
+    </div>
+    <div class="text-col" style="flex: 0 0 {{ content_width }}; max-width: {{ content_width }}; color: {{ block.settings.text_color }};">
+      <h4>{{ block.settings.subtitle }}</h4>
+      <h3>{{ block.settings.title }}</h3>
+      <p>{{ block.settings.text }}</p>
+    </div>
+  {% else %}
+    <div class="text-col" style="flex: 0 0 {{ content_width }}; max-width: {{ content_width }}; color: {{ block.settings.text_color }};">
+      <h4>{{ block.settings.subtitle }}</h4>
+      <h3>{{ block.settings.title }}</h3>
+      <p>{{ block.settings.text }}</p>
+    </div>
+    <div class="image-col" style="flex: 0 0 {{ image_width }}; max-width: {{ image_width }};">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
     {% endfor %}
   </div>
 </section>
