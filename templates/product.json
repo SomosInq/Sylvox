@@ -253,262 +253,240 @@
         "divider": false
       }
     },
-    "slideshow_image_DKFV3T": {
-      "type": "slideshow-image",
+    "image_text_kBKTjn": {
+      "type": "image-text",
       "blocks": {
-        "image_j6TXYm": {
+        "image_LtxpWF": {
           "type": "image",
           "settings": {
-            "link": "",
-            "image": "shopify://shop_images/17266549274686.png",
-            "image_mobile": "shopify://shop_images/17266549274686.png"
-          }
-        }
-      },
-      "block_order": [
-        "image_j6TXYm"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
-    "slideshow_image_qeFmkp": {
-      "type": "slideshow-image",
-      "blocks": {
-        "image_6AdxcK": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify://shop_images/17266549015688.png",
-            "image_mobile": "shopify://shop_images/17266549015688.png"
-          }
-        }
-      },
-      "block_order": [
-        "image_6AdxcK"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
-    "rich_text_jNtap3": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_VxBjxy": {
-          "type": "heading",
-          "settings": {
-            "title": "Flexible Single Side TV Stand: Optimal Viewing Anywhere",
-            "heading_size": "h1"
+            "image_alignment": "center"
           }
         },
-        "text_n8QrqW": {
+        "title_tw8dJb": {
+          "type": "title",
+          "settings": {
+            "title": "Your Section Title"
+          }
+        },
+        "text_GaReWT": {
           "type": "text",
           "settings": {
-            "enlarge_text": true,
-            "text": "<p>The bracket rotates freely for flexible monitor movement, enhancing viewing comfort. It can be tucked close to the wall when not in use, saving space and keeping your home tidy.</p>"
+            "text": "Some supporting content that explains your product or story."
+          }
+        },
+        "button_BmmNPL": {
+          "type": "button",
+          "settings": {
+            "button_text": "Learn More",
+            "button_link": ""
           }
         }
       },
       "block_order": [
-        "heading_VxBjxy",
-        "text_n8QrqW"
+        "image_LtxpWF",
+        "title_tw8dJb",
+        "text_GaReWT",
+        "button_BmmNPL"
       ],
-      "disabled": true,
+      "name": "Image/Text Flex Blocks",
       "settings": {
-        "align_text": "center",
-        "narrow_column": false,
-        "color_scheme": "none",
-        "divider": false
+        "section_width": "standard",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
-    "ba31c1ae-04da-462d-97ce-75d90aaff2c2": {
-      "type": "text-columns",
+    "somos_banner_kjg4ca": {
+      "type": "somos-banner",
       "blocks": {
-        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-0": {
-          "type": "text_block",
+        "subheading_GqYEhQ": {
+          "type": "subheading",
           "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/17266548701076.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
+            "text": "Subheading",
+            "color": "#000000"
           }
         },
-        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-1": {
-          "type": "text_block",
+        "heading_44Umwp": {
+          "type": "heading",
           "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/17266548225176.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
+            "text": "Heading",
+            "heading_tag": "h2",
+            "color": "#000000"
           }
         },
-        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-2": {
-          "type": "text_block",
+        "richtext_MKaPwY": {
+          "type": "richtext",
           "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/17266548067499.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
+            "content": "",
+            "color": "#000000"
           }
         },
-        "fa02e90d-03bf-4341-95a5-ae5de24743e3": {
-          "type": "text_block",
+        "button_WhLbAD": {
+          "type": "button",
           "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/17266548793766.png",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
+            "text": "Click Me",
+            "url": "",
+            "style": "fill",
+            "size": "base",
+            "text_color": "#ffffff",
+            "background": "#000000",
+            "outline_color": "#000000"
           }
         }
       },
       "block_order": [
-        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-0",
-        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-1",
-        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-2",
-        "fa02e90d-03bf-4341-95a5-ae5de24743e3"
+        "subheading_GqYEhQ",
+        "heading_44Umwp",
+        "richtext_MKaPwY",
+        "button_WhLbAD"
       ],
-      "disabled": true,
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "text_alignment": "center",
+        "vertical_alignment": "center",
+        "section_height": 500,
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0
+      }
+    },
+    "new_banner_slider_V3QYBX": {
+      "type": "new-banner-slider",
+      "name": "New Banner Slider",
+      "settings": {
+        "section_width": "standard",
+        "text_alignment": "left",
+        "heading": "Your Outdoor Oasis, Upgraded.",
+        "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
+        "show_arrows": true,
+        "slide_size": "large"
+      }
+    },
+    "video_grid_aPiKfa": {
+      "type": "video-grid",
+      "name": "Video Grid",
+      "settings": {
+        "section_width": "standard",
+        "top_title": "Sylvox Community",
+        "subtitle": "A home for all Sylvox fans to experience content,",
+        "description": "inspiration, and our beautiful technology.",
+        "show_arrows": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "comparison_table_QTgTwz": {
+      "type": "comparison-table",
+      "name": "Comparison Table",
       "settings": {
         "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "none"
+        "description": "",
+        "button_text": "",
+        "button_url": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "title_size": 28,
+        "text_size": 16,
+        "button_size": 16,
+        "background_color": "",
+        "section_width": "standard",
+        "text_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "view_all_text": "View All Comparisons",
+        "view_all_url": "",
+        "heading_1": "",
+        "heading_2": "",
+        "heading_3": "",
+        "heading_4": "",
+        "heading_5": "",
+        "heading_6": "",
+        "heading_7": "",
+        "heading_8": "",
+        "heading_9": "",
+        "heading_10": "",
+        "heading_11": "",
+        "heading_12": "",
+        "heading_13": "",
+        "heading_14": "",
+        "heading_15": "",
+        "heading_16": "",
+        "heading_17": "",
+        "heading_18": "",
+        "heading_19": "",
+        "heading_20": ""
       }
     },
-    "slideshow_image_HaUXTf": {
-      "type": "slideshow-image",
-      "blocks": {
-        "image_qXMLYU": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify://shop_images/17266548592090.png"
-          }
-        }
-      },
-      "block_order": [
-        "image_qXMLYU"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
-    "84168e2e-bb2b-4ab7-9c90-c9580d43e629": {
-      "type": "text-columns",
-      "blocks": {
-        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-0": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/3_fa09dd38-3189-4c51-b0fa-22d331121d81.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-1": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/4_5a1d3fe0-198b-4fa8-8bbb-17144c021823.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-2": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/5_3271af1f-6b7b-4c0e-b9d7-3f619570619b.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-0",
-        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-1",
-        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-2"
-      ],
-      "disabled": true,
+    "comparison_table_eXcqh7": {
+      "type": "comparison-table",
+      "name": "Comparison Table",
       "settings": {
         "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "none"
-      }
-    },
-    "4a6de0ed-876f-4d11-b9ea-f3d3058a0103": {
-      "type": "slideshow",
-      "blocks": {
-        "template--15111045906493__4a6de0ed-876f-4d11-b9ea-f3d3058a0103-16758508814e4f289a-0": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "",
-            "title_size": 90,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-right",
-            "image": "shopify://shop_images/17266549097234.png",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--15111045906493__4a6de0ed-876f-4d11-b9ea-f3d3058a0103-16758508814e4f289a-0"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "desktop_size": 0,
-        "mobile_size": 0,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
+        "description": "",
+        "button_text": "",
+        "button_url": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "title_size": 28,
+        "text_size": 16,
+        "button_size": 16,
+        "background_color": "",
+        "section_width": "standard",
+        "text_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "view_all_text": "View All Comparisons",
+        "view_all_url": "",
+        "heading_1": "",
+        "heading_2": "",
+        "heading_3": "",
+        "heading_4": "",
+        "heading_5": "",
+        "heading_6": "",
+        "heading_7": "",
+        "heading_8": "",
+        "heading_9": "",
+        "heading_10": "",
+        "heading_11": "",
+        "heading_12": "",
+        "heading_13": "",
+        "heading_14": "",
+        "heading_15": "",
+        "heading_16": "",
+        "heading_17": "",
+        "heading_18": "",
+        "heading_19": "",
+        "heading_20": ""
       }
     },
     "judgeme_section_review_widget_5de7": {
@@ -522,15 +500,36 @@
       "block_order": [
         "judgeme_review_widget_5fe97322"
       ],
-      "disabled": true,
       "settings": {
         "full_width": false,
         "space_around": true
       }
     },
+    "accordian_fLLR39": {
+      "type": "accordian",
+      "name": "Accordian",
+      "settings": {
+        "heading": "Have a question ? We are here to help.",
+        "subheading": "Check out the most common questions our customers asked. Still have questions? Contact our customer support.",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "heading_size": 24,
+        "subheading_size": 16,
+        "bg_color": "#ffffff",
+        "arrow_image_width": 10,
+        "section_width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "more-products-vendor": {
       "type": "more-products-vendor",
-      "disabled": true,
       "settings": {
         "products_per_row": 3,
         "max_products": 5
@@ -573,14 +572,14 @@
     "9df5c85d-9b86-4dc1-b79f-989547d3475e",
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
-    "slideshow_image_DKFV3T",
-    "slideshow_image_qeFmkp",
-    "rich_text_jNtap3",
-    "ba31c1ae-04da-462d-97ce-75d90aaff2c2",
-    "slideshow_image_HaUXTf",
-    "84168e2e-bb2b-4ab7-9c90-c9580d43e629",
-    "4a6de0ed-876f-4d11-b9ea-f3d3058a0103",
+    "image_text_kBKTjn",
+    "somos_banner_kjg4ca",
+    "new_banner_slider_V3QYBX",
+    "video_grid_aPiKfa",
+    "comparison_table_QTgTwz",
+    "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
+    "accordian_fLLR39",
     "more-products-vendor",
     "more-products-collection",
     "recently-viewed",
