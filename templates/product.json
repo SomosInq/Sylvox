@@ -253,45 +253,30 @@
         "divider": false
       }
     },
-    "image_text_kBKTjn": {
-      "type": "image-text",
+    "usp_grid_MXD4Wf": {
+      "type": "usp-grid",
       "blocks": {
-        "image_LtxpWF": {
-          "type": "image",
+        "usp_item_mFtnpg": {
+          "type": "usp_item",
           "settings": {
-            "image_alignment": "center"
-          }
-        },
-        "title_tw8dJb": {
-          "type": "title",
-          "settings": {
-            "title": "Your Section Title"
-          }
-        },
-        "text_GaReWT": {
-          "type": "text",
-          "settings": {
-            "text": "Some supporting content that explains your product or story."
-          }
-        },
-        "button_BmmNPL": {
-          "type": "button",
-          "settings": {
-            "button_text": "Learn More",
-            "button_link": ""
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "image_size": "medium",
+            "title": "Feel-Good Audio",
+            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "image_LtxpWF",
-        "title_tw8dJb",
-        "text_GaReWT",
-        "button_BmmNPL"
+        "usp_item_mFtnpg"
       ],
-      "name": "Image/Text Flex Blocks",
+      "name": "USP Grid",
       "settings": {
         "section_width": "standard",
-        "alignment": "center",
+        "heading": "Outdoor-Ready Technology, Built to Perform.",
+        "subtext": "",
+        "heading_alignment": "center",
+        "show_arrows": true,
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -572,7 +557,7 @@
     "9df5c85d-9b86-4dc1-b79f-989547d3475e",
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
-    "image_text_kBKTjn",
+    "usp_grid_MXD4Wf",
     "somos_banner_kjg4ca",
     "new_banner_slider_V3QYBX",
     "video_grid_aPiKfa",
