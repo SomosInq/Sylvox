@@ -1003,9 +1003,37 @@
     },
     "comparison_table_eXcqh7": {
       "type": "comparison-table",
+      "blocks": {
+        "values_jnCGh7": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
+            "header_title": "",
+            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "title": "Partial Sun",
+            "price": "",
+            "button_label": "Learn More",
+            "button_link": "shopify://collections/2024-summer-sale-pool-pro-2-0",
+            "button_image": "shopify://shop_images/SVG_1.svg",
+            "value_1": "",
+            "value_2": "",
+            "value_3": "",
+            "value_4": "",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        }
+      },
+      "block_order": [
+        "values_jnCGh7"
+      ],
       "name": "Comparison Table",
       "settings": {
-        "title": "",
+        "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
         "button_text": "",
         "button_url": "",
@@ -1028,13 +1056,13 @@
         "margin_right": 0,
         "view_all_text": "View All Comparisons",
         "view_all_url": "",
-        "heading_1": "",
-        "heading_2": "",
-        "heading_3": "",
-        "heading_4": "",
-        "heading_5": "",
-        "heading_6": "",
-        "heading_7": "",
+        "heading_1": "Best For",
+        "heading_2": "Peak Brightness",
+        "heading_3": "Weather Resistance",
+        "heading_4": "Temperature Resistance",
+        "heading_5": "Color & Contrast",
+        "heading_6": "Smart Features",
+        "heading_7": "Recommended Usage",
         "heading_8": "",
         "heading_9": "",
         "heading_10": "",
