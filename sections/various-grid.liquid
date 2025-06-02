@@ -24,41 +24,41 @@
 }
 {% endstylesheet %}
 
-{% assign background_style = '' %}
+{% assign bg_styles = '' %}
 {% if section.settings.bg_image != blank %}
-  {% assign background_style = 'background-image: url(' | append: section.settings.bg_image | img_url: 'master' | append: ');' %}
+  {% assign bg_styles = 'background-image: url(' | append: section.settings.bg_image | img_url: 'master' | append: '); background-size: cover; background-repeat: no-repeat;' %}
 {% endif %}
 
 <div
   class="section_width_{{ section.settings.section_width }}"
-  style="background-color: {{ section.settings.bg_color }}; {{ background_style }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;"
+  style="background-color: {{ section.settings.bg_color }}; {{ bg_styles }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;"
 >
   <div class="section_content_width_{{ section.settings.section_content_width }}">
     <div class="flex flex-col md:flex-row items-center gap-10 md:gap-20">
-      <div class="w-full md:w-1/2">
-        <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Left Image" style="width: {{ section.settings.left_image_width }}%;">
+      <div class="w-full md:w-1/2 flex justify-center">
+        <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Left Image" style="width: {{ section.settings.left_image_width }}%; max-width: 100%;">
       </div>
-      <div class="w-full md:w-1/2 text-left">
+      <div class="w-full md:w-1/2">
         {% if section.settings.icon %}
           <img src="{{ section.settings.icon | img_url: 'master' }}" alt="Heading Icon" class="mb-4" style="width: 40px;">
         {% endif %}
-        <h2 style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
+        <h2 class="mb-2" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
         <p style="color: {{ section.settings.text_color }};">{{ section.settings.text }}</p>
       </div>
     </div>
 
     {% if section.blocks.size > 0 %}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
         {% for block in section.blocks %}
-          <div class="flex flex-col items-center text-center gap-3">
+          <div class="flex flex-col items-center text-center justify-start h-full p-4">
             {% if block.settings.icon %}
               <img src="{{ block.settings.icon | img_url: 'master' }}" alt="USP Icon" style="width: {{ block.settings.icon_size }}%;">
             {% endif %}
-            <h3 style="color: {{ block.settings.title_color }};">{{ block.settings.title }}</h3>
+            <h3 class="mt-4 mb-1" style="color: {{ block.settings.title_color }};">{{ block.settings.title }}</h3>
             {% if block.settings.subtitle %}
-              <p style="color: {{ block.settings.subtitle_color }}; font-style: italic; margin-top: -0.25rem;">{{ block.settings.subtitle }}</p>
+              <p style="color: {{ block.settings.subtitle_color }}; font-style: italic;">{{ block.settings.subtitle }}</p>
             {% endif %}
-            <p style="color: {{ block.settings.body_color }};">{{ block.settings.body }}</p>
+            <p class="mt-2" style="color: {{ block.settings.body_color }};">{{ block.settings.body }}</p>
           </div>
         {% endfor %}
       </div>
