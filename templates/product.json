@@ -441,6 +441,29 @@
         "padding_right": 0
       }
     },
+    "text_and_image_iARUKa": {
+      "type": "text-and-image",
+      "name": "t:labels.image_with_text",
+      "settings": {
+        "image": "shopify://shop_images/Img_-_Google_apps_and_partners.-2.png",
+        "image_mask": "none",
+        "image2_mask": "none",
+        "subtitle": "Google TV Built-In",
+        "title": "A Smarter Way to Watch",
+        "heading_size": "h2",
+        "text": "<p>No need for extra streaming boxes—Google TV gives you direct access to over 700,000 movies and TV episodes. From Netflix, YouTube, and Disney+ to sports and news, your entertainment is all in one place.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "image_width": "50",
+        "layout": "right",
+        "color_scheme": "none",
+        "divider": false,
+        "top_padding": true,
+        "bottom_padding": true
+      }
+    },
     "video_grid_aPiKfa": {
       "type": "video-grid",
       "name": "Video Grid",
@@ -644,6 +667,7 @@
     "icon_grid_AeeJc6",
     "image_text_pBLTm3",
     "somos_banner_6wHtpL",
+    "text_and_image_iARUKa",
     "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
