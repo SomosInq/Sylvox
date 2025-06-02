@@ -441,6 +441,42 @@
         "padding_right": 0
       }
     },
+    "somos_image_content_BqTAzw": {
+      "type": "somos-image-content",
+      "blocks": {
+        "grid_box_rbPzQT": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": true,
+            "image": "shopify://shop_images/Img_-_Google_apps_and_partners.-2.png",
+            "image_width": 40,
+            "title": "Smarter Way to Watch",
+            "text": "No need for extra streaming boxes—Google TV gives you access to over 700,000+ movies and shows.",
+            "text_color": "#000000",
+            "text_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "grid_box_rbPzQT"
+      ],
+      "name": "Somos Content/Image",
+      "settings": {
+        "heading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "background_color": "#f5f5f5",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "text_and_image_iARUKa": {
       "type": "text-and-image",
       "name": "t:labels.image_with_text",
@@ -793,6 +829,7 @@
     "icon_grid_AeeJc6",
     "image_text_pBLTm3",
     "somos_banner_6wHtpL",
+    "somos_image_content_BqTAzw",
     "text_and_image_iARUKa",
     "new_banner_slider_NmBRen",
     "image_text_UQFVkh",
