@@ -39,7 +39,7 @@
           <div class="top-title">{{ block.settings.header_title }}</div>
           <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
             {% if block.settings.icon %}
-              <img src="{{ block.settings.icon | image_url }}" alt="Icon" style="height: 24px;">
+              <img src="{{ block.settings.icon | image_url: 'master' }}" alt="Icon" style="height: 24px;">
             {% endif %}
             <strong>{{ block.settings.title }}</strong>
           </div>
@@ -50,7 +50,7 @@
             <a href="{{ block.settings.button_link }}" class="btn mt-2" style="font-size: {{ section.settings.button_size }}px;">
               {{ block.settings.button_label }}
               {% if block.settings.button_image %}
-                <img src="{{ block.settings.button_image | image_url }}" style="height: 1em; margin-left: 0.5em;" />
+                <img src="{{ block.settings.button_image | image_url: 'master' }}" style="height: 1em; margin-left: 0.5em;" />
               {% endif %}
             </a>
           {% endif %}
@@ -70,7 +70,7 @@
             {% assign image_key = 'value_image_' | append: i %}
             <div class="text-center table-value">
               {% if block.settings[image_key] %}
-                <img src="{{ block.settings[image_key] | image_url }}" alt="Value image" style="max-width: 80%; display: block; margin: 0 auto 0.5rem;" />
+                <img src="{{ block.settings[image_key] | image_url: 'master' }}" alt="Value image" style="max-width: 80%; display: block; margin: 0 auto 0.5rem;" />
               {% endif %}
               {% if block.settings[value_key] != blank %}
                 <div>{{ block.settings[value_key] }}</div>
@@ -127,7 +127,7 @@
       <a href="{{ section.settings.view_all_url }}" style="display: inline-flex; align-items: center; gap: 0.5em;">
         <span>{{ section.settings.view_all_text }}</span>
         {% if section.settings.view_all_icon %}
-          <img src="{{ section.settings.view_all_icon | image_url }}" style="height: 1em;" alt="icon">
+          <img src="{{ section.settings.view_all_icon | image_url: 'master' }}" style="height: 1em;" alt="icon">
         {% endif %}
       </a>
     </div>
