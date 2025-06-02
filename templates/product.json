@@ -1,1 +1,598 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title_RyMHkM":{"type":"title","settings":{"vendor_enable":false,"sku_enable":true}},"f30b01a8-3eae-4965-8bc3-af47ad84da34":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"variant_labels":true,"picker_type":"button","product_dynamic_variants_enable":true,"color_swatches":false}},"price":{"type":"price","settings":{}},"ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38":{"type":"description","settings":{"is_tab":false}},"tab_VMgkry":{"type":"tab","settings":{"title":"Shipping information","content":"<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.<\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p>","page":""}},"tab_rnPhnR":{"type":"tab","settings":{"title":"User Manual","content":"<p>Click <strong>here <\/strong>to download the mini kitchen manual<\/p>","page":""}},"1b07c23f-a116-48c6-9393-6b5ea55b7516":{"type":"quantity_selector","settings":{}},"inventory_status":{"type":"inventory_status","settings":{"inventory_threshold":10,"inventory_transfers_enable":true}},"sales_point_aMwrgV":{"type":"sales_point","settings":{"icon":"globe","text":"Free shipping"}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"surface_pickup_enable":true,"show_gift_card_recipient":false}},"38437c2f-41ad-4bbe-bc10-92a959a26719":{"type":"custom","settings":{"code":"<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0584\/6256\/8509\/files\/f994295577f46cc7fa059484967496c6_78845b32-1249-497f-88f5-deb969be2ab4.png?v=1730711873\">"}}},"block_order":["title_RyMHkM","f30b01a8-3eae-4965-8bc3-af47ad84da34","variant_picker","price","ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38","tab_VMgkry","tab_rnPhnR","1b07c23f-a116-48c6-9393-6b5ea55b7516","inventory_status","sales_point_aMwrgV","buy_buttons","38437c2f-41ad-4bbe-bc10-92a959a26719"],"settings":{"image_position":"left","image_container_size":"large","product_image_size":"square","product_zoom_enable":true,"thumbnail_position":"beside","thumbnail_height":"flexible","thumbnail_arrows":true,"mobile_layout":"partial","enable_video_looping":true,"product_video_style":"muted"}},"sub":{"type":"product-full-width","settings":{"max_width":true}},"slideshow_rqHYVM":{"type":"slideshow","blocks":{"hero_PkHWfK":{"type":"hero","settings":{"top_subheading":"","title":"","title_size":70,"subheading":"","link":"","link_text":"","link_2":"","link_text_2":"","color_accent":"#ffffff","text_align":"vertical-bottom horizontal-left","image":"shopify:\/\/shop_images\/17266548932706.png","image_mobile":"shopify:\/\/shop_images\/17266548932706.png","overlay_opacity":0}}},"block_order":["hero_PkHWfK"],"disabled":true,"settings":{"full_width":true,"desktop_size":0,"mobile_size":0,"style":"arrows","autoplay":true,"autoplay_speed":7}},"9df5c85d-9b86-4dc1-b79f-989547d3475e":{"type":"slideshow","blocks":{"template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1":{"type":"hero","settings":{"top_subheading":"","title":"<p>Dimension<\/p>","title_size":70,"subheading":"","link":"","link_text":"","link_2":"","link_text_2":"","color_accent":"#ffffff","text_align":"vertical-bottom horizontal-left","image":"shopify:\/\/shop_images\/17266549209638.png","image_mobile":"shopify:\/\/shop_images\/17266549209638.png","overlay_opacity":0}}},"block_order":["template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1"],"settings":{"full_width":false,"desktop_size":0,"mobile_size":0,"style":"arrows","autoplay":true,"autoplay_speed":7}},"74b3fd60-d752-4732-b2b3-12ea39fe6851":{"type":"rich-text","blocks":{"template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0":{"type":"heading","settings":{"title":"Sylvox Kitchen TV Gallery","heading_size":"h2"}},"90325576-e32d-458f-8589-cc29706237c8":{"type":"text","settings":{"enlarge_text":true,"text":"<p>Not just a kicthen TV<\/p>"}}},"block_order":["template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0","90325576-e32d-458f-8589-cc29706237c8"],"disabled":true,"settings":{"align_text":"center","narrow_column":true,"color_scheme":"1","divider":false}},"slideshow_image_DKFV3T":{"type":"slideshow-image","blocks":{"image_j6TXYm":{"type":"image","settings":{"link":"","image":"shopify:\/\/shop_images\/17266549274686.png","image_mobile":"shopify:\/\/shop_images\/17266549274686.png"}}},"block_order":["image_j6TXYm"],"settings":{"full_width":false,"style":"arrows","autoplay":true,"autoplay_speed":7}},"slideshow_image_qeFmkp":{"type":"slideshow-image","blocks":{"image_6AdxcK":{"type":"image","settings":{"link":"","image":"shopify:\/\/shop_images\/17266549015688.png","image_mobile":"shopify:\/\/shop_images\/17266549015688.png"}}},"block_order":["image_6AdxcK"],"settings":{"full_width":false,"style":"arrows","autoplay":true,"autoplay_speed":7}},"rich_text_jNtap3":{"type":"rich-text","blocks":{"heading_VxBjxy":{"type":"heading","settings":{"title":"Flexible Single Side TV Stand: Optimal Viewing Anywhere","heading_size":"h1"}},"text_n8QrqW":{"type":"text","settings":{"enlarge_text":true,"text":"<p>The bracket rotates freely for flexible monitor movement, enhancing viewing comfort. It can be tucked close to the wall when not in use, saving space and keeping your home tidy.<\/p>"}}},"block_order":["heading_VxBjxy","text_n8QrqW"],"settings":{"align_text":"center","narrow_column":false,"color_scheme":"none","divider":false}},"ba31c1ae-04da-462d-97ce-75d90aaff2c2":{"type":"text-columns","blocks":{"template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-0":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/17266548701076.png","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-1":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/17266548225176.png","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-2":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/17266548067499.png","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"fa02e90d-03bf-4341-95a5-ae5de24743e3":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/17266548793766.png","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}}},"block_order":["template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-0","template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-1","template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-2","fa02e90d-03bf-4341-95a5-ae5de24743e3"],"settings":{"title":"","align_text":"left","divider":false,"color_scheme":"none"}},"slideshow_image_HaUXTf":{"type":"slideshow-image","blocks":{"image_qXMLYU":{"type":"image","settings":{"link":"","image":"shopify:\/\/shop_images\/17266548592090.png"}}},"block_order":["image_qXMLYU"],"settings":{"full_width":false,"style":"arrows","autoplay":true,"autoplay_speed":7}},"84168e2e-bb2b-4ab7-9c90-c9580d43e629":{"type":"text-columns","blocks":{"template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-0":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/3_fa09dd38-3189-4c51-b0fa-22d331121d81.jpg","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-1":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/4_5a1d3fe0-198b-4fa8-8bbb-17144c021823.jpg","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}},"template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-2":{"type":"text_block","settings":{"enable_image":true,"image":"shopify:\/\/shop_images\/5_3271af1f-6b7b-4c0e-b9d7-3f619570619b.jpg","image_mask":"none","image_width":650,"title":"","text":"","button_label":"","button_link":""}}},"block_order":["template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-0","template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-1","template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-2"],"disabled":true,"settings":{"title":"","align_text":"left","divider":false,"color_scheme":"none"}},"4a6de0ed-876f-4d11-b9ea-f3d3058a0103":{"type":"slideshow","blocks":{"template--15111045906493__4a6de0ed-876f-4d11-b9ea-f3d3058a0103-16758508814e4f289a-0":{"type":"hero","settings":{"top_subheading":"","title":"","title_size":90,"subheading":"","link":"","link_text":"","link_2":"","link_text_2":"","color_accent":"#ffffff","text_align":"vertical-bottom horizontal-right","image":"shopify:\/\/shop_images\/17266549097234.png","overlay_opacity":0}}},"block_order":["template--15111045906493__4a6de0ed-876f-4d11-b9ea-f3d3058a0103-16758508814e4f289a-0"],"settings":{"full_width":false,"desktop_size":0,"mobile_size":0,"style":"arrows","autoplay":true,"autoplay_speed":7}},"judgeme_section_review_widget_5de7":{"type":"apps","blocks":{"judgeme_review_widget_5fe97322":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{}}},"block_order":["judgeme_review_widget_5fe97322"],"settings":{"full_width":false,"space_around":true}},"more-products-vendor":{"type":"more-products-vendor","disabled":true,"settings":{"products_per_row":3,"max_products":5}},"more-products-collection":{"type":"more-products-collection","disabled":true,"settings":{"products_per_row":3,"max_products":5}},"recently-viewed":{"type":"recently-viewed","disabled":true,"settings":{}},"collection-return":{"type":"collection-return","disabled":true,"settings":{"color_scheme":"none"}},"recommendations":{"type":"product-recommendations","disabled":true,"settings":{"product_recommendations_heading":"You may also like","related_count":5,"products_per_row":3}}},"order":["main","sub","slideshow_rqHYVM","9df5c85d-9b86-4dc1-b79f-989547d3475e","74b3fd60-d752-4732-b2b3-12ea39fe6851","slideshow_image_DKFV3T","slideshow_image_qeFmkp","rich_text_jNtap3","ba31c1ae-04da-462d-97ce-75d90aaff2c2","slideshow_image_HaUXTf","84168e2e-bb2b-4ab7-9c90-c9580d43e629","4a6de0ed-876f-4d11-b9ea-f3d3058a0103","judgeme_section_review_widget_5de7","more-products-vendor","more-products-collection","recently-viewed","collection-return","recommendations"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_RyMHkM": {
+          "type": "title",
+          "settings": {
+            "vendor_enable": false,
+            "sku_enable": true
+          }
+        },
+        "f30b01a8-3eae-4965-8bc3-af47ad84da34": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "tab_VMgkry": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping information",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "page": ""
+          }
+        },
+        "tab_rnPhnR": {
+          "type": "tab",
+          "settings": {
+            "title": "User Manual",
+            "content": "<p>Click <strong>here </strong>to download the mini kitchen manual</p>",
+            "page": ""
+          }
+        },
+        "1b07c23f-a116-48c6-9393-6b5ea55b7516": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "settings": {
+            "inventory_threshold": 10,
+            "inventory_transfers_enable": true
+          }
+        },
+        "sales_point_aMwrgV": {
+          "type": "sales_point",
+          "settings": {
+            "icon": "globe",
+            "text": "Free shipping"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "38437c2f-41ad-4bbe-bc10-92a959a26719": {
+          "type": "custom",
+          "settings": {
+            "code": "<img src=\"https://cdn.shopify.com/s/files/1/0584/6256/8509/files/f994295577f46cc7fa059484967496c6_78845b32-1249-497f-88f5-deb969be2ab4.png?v=1730711873\">"
+          }
+        }
+      },
+      "block_order": [
+        "title_RyMHkM",
+        "f30b01a8-3eae-4965-8bc3-af47ad84da34",
+        "variant_picker",
+        "price",
+        "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38",
+        "tab_VMgkry",
+        "tab_rnPhnR",
+        "1b07c23f-a116-48c6-9393-6b5ea55b7516",
+        "inventory_status",
+        "sales_point_aMwrgV",
+        "buy_buttons",
+        "38437c2f-41ad-4bbe-bc10-92a959a26719"
+      ],
+      "settings": {
+        "image_position": "left",
+        "image_container_size": "large",
+        "product_image_size": "square",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_height": "flexible",
+        "thumbnail_arrows": true,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "sub": {
+      "type": "product-full-width",
+      "settings": {
+        "max_width": true
+      }
+    },
+    "slideshow_rqHYVM": {
+      "type": "slideshow",
+      "blocks": {
+        "hero_PkHWfK": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify://shop_images/17266548932706.png",
+            "image_mobile": "shopify://shop_images/17266548932706.png",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "hero_PkHWfK"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "9df5c85d-9b86-4dc1-b79f-989547d3475e": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "<p>Dimension</p>",
+            "title_size": 70,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify://shop_images/17266549209638.png",
+            "image_mobile": "shopify://shop_images/17266549209638.png",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "74b3fd60-d752-4732-b2b3-12ea39fe6851": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Sylvox Kitchen TV Gallery",
+            "heading_size": "h2"
+          }
+        },
+        "90325576-e32d-458f-8589-cc29706237c8": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Not just a kicthen TV</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0",
+        "90325576-e32d-458f-8589-cc29706237c8"
+      ],
+      "disabled": true,
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    },
+    "slideshow_image_DKFV3T": {
+      "type": "slideshow-image",
+      "blocks": {
+        "image_j6TXYm": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify://shop_images/17266549274686.png",
+            "image_mobile": "shopify://shop_images/17266549274686.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_j6TXYm"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "slideshow_image_qeFmkp": {
+      "type": "slideshow-image",
+      "blocks": {
+        "image_6AdxcK": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify://shop_images/17266549015688.png",
+            "image_mobile": "shopify://shop_images/17266549015688.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_6AdxcK"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "rich_text_jNtap3": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VxBjxy": {
+          "type": "heading",
+          "settings": {
+            "title": "Flexible Single Side TV Stand: Optimal Viewing Anywhere",
+            "heading_size": "h1"
+          }
+        },
+        "text_n8QrqW": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>The bracket rotates freely for flexible monitor movement, enhancing viewing comfort. It can be tucked close to the wall when not in use, saving space and keeping your home tidy.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VxBjxy",
+        "text_n8QrqW"
+      ],
+      "disabled": true,
+      "settings": {
+        "align_text": "center",
+        "narrow_column": false,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "ba31c1ae-04da-462d-97ce-75d90aaff2c2": {
+      "type": "text-columns",
+      "blocks": {
+        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/17266548701076.png",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/17266548225176.png",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-2": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/17266548067499.png",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "fa02e90d-03bf-4341-95a5-ae5de24743e3": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/17266548793766.png",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-0",
+        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-1",
+        "template--15111045906493__ba31c1ae-04da-462d-97ce-75d90aaff2c2-1675850174a8b4e979-2",
+        "fa02e90d-03bf-4341-95a5-ae5de24743e3"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "align_text": "left",
+        "divider": false,
+        "color_scheme": "none"
+      }
+    },
+    "slideshow_image_HaUXTf": {
+      "type": "slideshow-image",
+      "blocks": {
+        "image_qXMLYU": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify://shop_images/17266548592090.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_qXMLYU"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "84168e2e-bb2b-4ab7-9c90-c9580d43e629": {
+      "type": "text-columns",
+      "blocks": {
+        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/3_fa09dd38-3189-4c51-b0fa-22d331121d81.jpg",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/4_5a1d3fe0-198b-4fa8-8bbb-17144c021823.jpg",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-2": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify://shop_images/5_3271af1f-6b7b-4c0e-b9d7-3f619570619b.jpg",
+            "image_mask": "none",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-0",
+        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-1",
+        "template--15111045906493__84168e2e-bb2b-4ab7-9c90-c9580d43e629-16733343855cc18417-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "align_text": "left",
+        "divider": false,
+        "color_scheme": "none"
+      }
+    },
+    "4a6de0ed-876f-4d11-b9ea-f3d3058a0103": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15111045906493__4a6de0ed-876f-4d11-b9ea-f3d3058a0103-16758508814e4f289a-0": {
+          "type": "hero",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 90,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-bottom horizontal-right",
+            "image": "shopify://shop_images/17266549097234.png",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--15111045906493__4a6de0ed-876f-4d11-b9ea-f3d3058a0103-16758508814e4f289a-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "desktop_size": 0,
+        "mobile_size": 0,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "judgeme_section_review_widget_5de7": {
+      "type": "apps",
+      "blocks": {
+        "judgeme_review_widget_5fe97322": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judgeme_review_widget_5fe97322"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "more-products-vendor": {
+      "type": "more-products-vendor",
+      "disabled": true,
+      "settings": {
+        "products_per_row": 3,
+        "max_products": 5
+      }
+    },
+    "more-products-collection": {
+      "type": "more-products-collection",
+      "disabled": true,
+      "settings": {
+        "products_per_row": 3,
+        "max_products": 5
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {}
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "none"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "product_recommendations_heading": "You may also like",
+        "related_count": 5,
+        "products_per_row": 3
+      }
+    },
+    "somos_banner_aRxBYn": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_8HaYdw": {
+          "type": "heading",
+          "settings": {
+            "text": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
+            "heading_tag": "h2",
+            "color": "#ffffff"
+          }
+        },
+        "subheading_xXEVGn": {
+          "type": "subheading",
+          "settings": {
+            "text": "No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.",
+            "color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8HaYdw",
+        "subheading_xXEVGn"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "text_alignment": "center",
+        "section_height": 500,
+        "background_image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9.jpg",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sub",
+    "slideshow_rqHYVM",
+    "9df5c85d-9b86-4dc1-b79f-989547d3475e",
+    "74b3fd60-d752-4732-b2b3-12ea39fe6851",
+    "slideshow_image_DKFV3T",
+    "slideshow_image_qeFmkp",
+    "rich_text_jNtap3",
+    "ba31c1ae-04da-462d-97ce-75d90aaff2c2",
+    "slideshow_image_HaUXTf",
+    "84168e2e-bb2b-4ab7-9c90-c9580d43e629",
+    "4a6de0ed-876f-4d11-b9ea-f3d3058a0103",
+    "judgeme_section_review_widget_5de7",
+    "more-products-vendor",
+    "more-products-collection",
+    "recently-viewed",
+    "collection-return",
+    "recommendations",
+    "somos_banner_aRxBYn"
+  ]
+}
