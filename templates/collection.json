@@ -332,76 +332,10 @@
             "value_9": "",
             "value_10": ""
           }
-        },
-        "values_WhCFE4": {
-          "type": "values",
-          "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_08c58724-0891-44f3-b536-ada53ca17206.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
-            "value_1": "",
-            "value_2": "",
-            "value_3": "",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": ""
-          }
-        },
-        "values_nWMFct": {
-          "type": "values",
-          "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_a5ccf323-e41a-4f98-b3fb-8555b499a5f6.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
-            "value_1": "",
-            "value_2": "",
-            "value_3": "",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": ""
-          }
-        },
-        "values_HD6JCW": {
-          "type": "values",
-          "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
-            "value_1": "",
-            "value_2": "",
-            "value_3": "",
-            "value_4": "",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": ""
-          }
         }
       },
       "block_order": [
-        "values_q3Lcya",
-        "values_WhCFE4",
-        "values_nWMFct",
-        "values_HD6JCW"
+        "values_q3Lcya"
       ],
       "name": "Comparison Table",
       "settings": {
