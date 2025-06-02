@@ -1,0 +1,235 @@
+{% schema %}
+{
+  "name": "USP Accordion",
+  "tag": "section",
+  "class": "usp-accordion-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Side Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "label": "Image Width (%)",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Quick & Simple Installation"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "No Professionals Required"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "label": "Font Size (px)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (Optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "USP Accordion",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+.usp-accordion-section {
+  background-color: {{ section.settings.background_color }};
+  {% if section.settings.background_image != blank %}
+    background-image: url({{ section.settings.background_image | image_url }});
+    background-size: cover;
+    background-position: center;
+  {% endif %}
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  margin-top: {{ section.settings.margin_top }}px;
+  margin-bottom: {{ section.settings.margin_bottom }}px;
+}
+.accordion {
+  background: #20413B;
+  color: {{ section.settings.text_color }};
+  font-size: {{ section.settings.font_size }}px;
+}
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+.accordion-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.accordion-icon {
+  transition: transform 0.3s ease;
+}
+.accordion-icon.rotate {
+  transform: rotate(180deg);
+}
+.accordion-content {
+  display: none;
+  padding: 0 1rem 1rem;
+}
+.accordion-content.active {
+  display: block;
+}
+{% endstyle %}
+
+<div class="section_width_{{ section.settings.section_width }}">
+  <div class="section_content_width_{{ section.settings.section_content_width }} usp-accordion-section" style="display: flex; gap: 2rem; align-items: stretch;">
+    {% if section.settings.left_image %}
+      <div style="flex: 1;">
+        <img src="{{ section.settings.left_image | image_url }}" style="width: {{ section.settings.image_width }}%;" alt="Left Image" />
+      </div>
+    {% endif %}
+    <div class="accordion" style="flex: 1; padding: 1rem;">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.text }}</p>
+      {% for block in section.blocks %}
+        <div class="accordion-item" data-index="{{ forloop.index }}">
+          <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
+            <span>{{ block.settings.question }}</span>
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | image_url }}" class="accordion-icon" id="icon-{{ forloop.index }}" width="20" />
+            {% else %}
+              <span class="accordion-icon" id="icon-{{ forloop.index }}">▼</span>
+            {% endif %}
+          </div>
+          <div class="accordion-content" id="content-{{ forloop.index }}">
+            {{ block.settings.answer }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAccordion(index) {
+    document.querySelectorAll('.accordion-content').forEach((content, i) => {
+      const icon = document.getElementById(`icon-${i + 1}`);
+      if (i + 1 === index) {
+        const isActive = content.classList.contains('active');
+        content.classList.toggle('active', !isActive);
+        icon?.classList.toggle('rotate', !isActive);
+      } else {
+        content.classList.remove('active');
+        icon?.classList.remove('rotate');
+      }
+    });
+  }
+</script>
