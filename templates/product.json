@@ -648,9 +648,9 @@
       "settings": {
         "heading": "Dolby Atmos Support",
         "description": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
-        "button_label": "Learn More",
+        "button_label": "",
         "button_link": "",
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 0,
