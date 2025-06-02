@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 49,
+            "activePatchIndex": 50,
             "patches": [
                 {
                     "date": 1748424308697,
@@ -204,6 +204,10 @@
                 {
                     "date": 1748856407873,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,8 +36,11 @@\n       <div class=\"header-blank\"></div>\n       {% for block in section.blocks %}\n         <div class=\"text-center header\">\n           <div class=\"top-title\">{{ block.settings.header_title }}</div>\n+          {% if block.settings.main_image %}\n+  <img src=\"{{ block.settings.main_image | image_url: width: 300 }}\" alt=\"Main image\" style=\"max-width: 100%; margin-bottom: 1rem;\" />\n+{% endif %}\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n             {% if block.settings.icon %}\n               <img src=\"{{ block.settings.icon | image_url }}\" alt=\"Icon\" style=\"height: 24px;\">\n             {% endif %}\n"
+                },
+                {
+                    "date": 1748856477837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n       {% for block in section.blocks %}\n         <div class=\"text-center header\">\n           <div class=\"top-title\">{{ block.settings.header_title }}</div>\n           {% if block.settings.main_image %}\n-  <img src=\"{{ block.settings.main_image | image_url: width: 300 }}\" alt=\"Main image\" style=\"max-width: 100%; margin-bottom: 1rem;\" />\n+  <img src=\"{{ block.settings.main_image | image_url: width: 300 }}\" alt=\"Main image\" style=\"max-width: 100%; margin-bottom: 1rem; margin-left: auto; margin-right: auto;\" />\n {% endif %}\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n             {% if block.settings.icon %}\n               <img src=\"{{ block.settings.icon | image_url }}\" alt=\"Icon\" style=\"height: 24px;\">\n"
                 }
             ],
             "date": 1748424308697,

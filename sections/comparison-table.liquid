@@ -38,7 +38,7 @@
         <div class="text-center header">
           <div class="top-title">{{ block.settings.header_title }}</div>
           {% if block.settings.main_image %}
-  <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 100%; margin-bottom: 1rem;" />
+  <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 100%; margin-bottom: 1rem; margin-left: auto; margin-right: auto;" />
 {% endif %}
           <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
             {% if block.settings.icon %}
