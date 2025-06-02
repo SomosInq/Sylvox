@@ -15,6 +15,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 30px;
 }
 
 .faq-left {
@@ -31,6 +32,15 @@
 .faq-item {
   border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.faq-question-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .faq-question {
@@ -38,10 +48,21 @@
   padding: 10px 0;
 }
 
+.faq-arrow {
+  transition: transform 0.3s ease;
+  width: auto;
+  height: auto;
+}
+
+.faq-item.active .faq-arrow {
+  transform: rotate(180deg);
+}
+
 .faq-answer {
   display: none;
   padding: 0 0 10px 0;
   color: #666;
+  transition: all 0.3s ease;
 }
 
 .faq-item.active .faq-answer {
@@ -50,7 +71,7 @@
 {% endstylesheet %}
 
 <section class="section_width_{{ section.settings.section_width }}" 
-style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | image_url }}); background-size: cover;{% endif %}">
+style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | image_url }}); background-size: cover; background-repeat: no-repeat; background-position: center;{% endif %}">
   <div class="faq-container">
     <div class="faq-left">
       <h2 style="color: {{ section.settings.heading_color }}; font-size: {{ section.settings.heading_size }}px;">
@@ -64,7 +85,17 @@ style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding
     <div class="faq-right">
       {% for block in section.blocks %}
         <div class="faq-item" onclick="this.classList.toggle('active')">
-          <div class="faq-question">{{ block.settings.question }}</div>
+          <div class="faq-question-row">
+            <div class="faq-question">{{ block.settings.question }}</div>
+            {% if section.settings.arrow_image != blank %}
+              <img
+                class="faq-arrow"
+                src="{{ section.settings.arrow_image | image_url }}"
+                alt="arrow"
+                style="width: {{ section.settings.arrow_image_width }}%; max-width: 30px;"
+              />
+            {% endif %}
+          </div>
           <div class="faq-answer">{{ block.settings.answer }}</div>
         </div>
       {% endfor %}
@@ -72,13 +103,15 @@ style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding
   </div>
 </section>
 
-<script>
+{% javascript %}
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', () => {
-      item.classList.toggle('active');
+    item.addEventListener('click', function () {
+      this.classList.toggle('active');
     });
   });
-</script>
+});
+{% endjavascript %}
 
 {% schema %}
 {
@@ -138,6 +171,20 @@ style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding
       "type": "image_picker",
       "id": "bg_image",
       "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_image",
+      "label": "Right Arrow Icon"
+    },
+    {
+      "type": "range",
+      "id": "arrow_image_width",
+      "label": "Arrow Image Width (%)",
+      "min": 5,
+      "max": 100,
+      "step": 1,
+      "default": 10
     },
     {
       "type": "select",
