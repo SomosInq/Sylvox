@@ -214,7 +214,7 @@
         "values_cTXTRc": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/1_8cb44b38-c04a-4d97-915e-ee6d3f78b6c9.jpg",
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
             "header_title": "",
             "icon": "shopify://shop_images/Icons-1_a8276d13-b406-42e0-8367-dc1870c79980.png",
             "title": "Partial Sun",
@@ -332,10 +332,82 @@
             "value_9": "",
             "value_10": ""
           }
+        },
+        "values_hXT8NR": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
+            "header_title": "Deck Pro 2.0",
+            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "title": "Full Shade, Partial Sun",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+            "value_1": "<p>Value</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Value</p>",
+            "value_3": "<p>Value</p>",
+            "value_4": "<p>Value</p>",
+            "value_5": "<p>Value</p>",
+            "value_6": "<p>Value</p>",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_xj3d9w": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
+            "header_title": "Deck Pro 2.0",
+            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "title": "Full Shade, Partial Sun",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+            "value_1": "<p>Value</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Value</p>",
+            "value_3": "<p>Value</p>",
+            "value_4": "<p>Value</p>",
+            "value_5": "<p>Value</p>",
+            "value_6": "<p>Value</p>",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_3Ck6Dr": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
+            "header_title": "Deck Pro 2.0",
+            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "title": "Full Shade, Partial Sun",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+            "value_1": "<p>Value</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Value</p>",
+            "value_3": "<p>Value</p>",
+            "value_4": "<p>Value</p>",
+            "value_5": "<p>Value</p>",
+            "value_6": "<p>Value</p>",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
         }
       },
       "block_order": [
-        "values_q3Lcya"
+        "values_q3Lcya",
+        "values_hXT8NR",
+        "values_xj3d9w",
+        "values_3Ck6Dr"
       ],
       "name": "Comparison Table",
       "settings": {
