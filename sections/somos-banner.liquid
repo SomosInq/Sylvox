@@ -31,6 +31,9 @@
 <div class="section_width_{{ section.settings.section_width }}">
   <div
     style="
+      display: flex;
+      flex-direction: column;
+      justify-content: {{ section.settings.vertical_alignment }};
       background-color: {{ section.settings.background_color }};
       {% if section.settings.background_image != blank %}
         background-image: url({{ section.settings.background_image | img_url: 'master' }});
@@ -123,6 +126,17 @@
         { "value": "right", "label": "Right" }
       ]
     },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ]
+    },
     { "type": "range", "id": "section_height", "label": "Section Height", "min": 200, "max": 1000, "step": 10, "default": 500, "unit": "px" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
@@ -145,7 +159,17 @@
       "name": "Heading",
       "settings": [
         { "type": "text", "id": "text", "label": "Text" },
-        { "type": "select", "id": "heading_tag", "label": "Tag", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" } ], "default": "h2" },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" }
+          ],
+          "default": "h2"
+        },
         { "type": "color", "id": "color", "label": "Color", "default": "#000000" }
       ]
     },
@@ -171,8 +195,27 @@
       "settings": [
         { "type": "text", "id": "text", "label": "Button Text", "default": "Click Me" },
         { "type": "url", "id": "url", "label": "Button Link" },
-        { "type": "select", "id": "style", "label": "Style", "options": [ { "value": "fill", "label": "Fill" }, { "value": "outline", "label": "Outline" } ], "default": "fill" },
-        { "type": "select", "id": "size", "label": "Size", "options": [ { "value": "sm", "label": "Small" }, { "value": "base", "label": "Medium" }, { "value": "lg", "label": "Large" } ], "default": "base" },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            { "value": "fill", "label": "Fill" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "fill"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            { "value": "sm", "label": "Small" },
+            { "value": "base", "label": "Medium" },
+            { "value": "lg", "label": "Large" }
+          ],
+          "default": "base"
+        },
         { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
         { "type": "color", "id": "background", "label": "Background Color", "default": "#000000" },
         { "type": "color", "id": "outline_color", "label": "Outline Color", "default": "#000000" }
