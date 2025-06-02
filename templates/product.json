@@ -124,76 +124,6 @@
         "max_width": true
       }
     },
-    "slideshow_rqHYVM": {
-      "type": "slideshow",
-      "blocks": {
-        "hero_PkHWfK": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "",
-            "title_size": 70,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/17266548932706.png",
-            "image_mobile": "shopify://shop_images/17266548932706.png",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "hero_PkHWfK"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "desktop_size": 0,
-        "mobile_size": 0,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
-    "9df5c85d-9b86-4dc1-b79f-989547d3475e": {
-      "type": "slideshow",
-      "blocks": {
-        "template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1": {
-          "type": "hero",
-          "settings": {
-            "top_subheading": "",
-            "title": "<p>Dimension</p>",
-            "title_size": 70,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/17266549209638.png",
-            "image_mobile": "shopify://shop_images/17266549209638.png",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--15237738594365__9df5c85d-9b86-4dc1-b79f-989547d3475e-hero-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "desktop_size": 0,
-        "mobile_size": 0,
-        "style": "arrows",
-        "autoplay": true,
-        "autoplay_speed": 7
-      }
-    },
     "somos_banner_aRxBYn": {
       "type": "somos-banner",
       "blocks": {
@@ -850,6 +780,69 @@
         "margin_right": 0
       }
     },
+    "video_grid_gF4rY4": {
+      "type": "video-grid",
+      "blocks": {
+        "video_raY38R": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea_jpg.png"
+          }
+        },
+        "video_L9Kjxd": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea.jpg-1.png"
+          }
+        },
+        "video_B9hjeR": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea.jpg-2.png"
+          }
+        },
+        "video_8wjAPM": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/Frame_1321319683_ec7eb3fd-deaf-4837-9bec-4d36d4ee7dea.jpg-3.png"
+          }
+        }
+      },
+      "block_order": [
+        "video_raY38R",
+        "video_L9Kjxd",
+        "video_B9hjeR",
+        "video_8wjAPM"
+      ],
+      "name": "Video Grid",
+      "settings": {
+        "section_width": "standard",
+        "top_title": "",
+        "subtitle": "Feel Good, Live Outdoors.",
+        "description": "",
+        "show_arrows": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "comparison_table_QTgTwz": {
       "type": "comparison-table",
       "name": "Comparison Table",
@@ -1027,8 +1020,6 @@
   "order": [
     "main",
     "sub",
-    "slideshow_rqHYVM",
-    "9df5c85d-9b86-4dc1-b79f-989547d3475e",
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
     "icon_grid_AeeJc6",
@@ -1041,6 +1032,7 @@
     "usp_accordion_4PkPyD",
     "various_grid_aXBbfz",
     "video_grid_aPiKfa",
+    "video_grid_gF4rY4",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
