@@ -403,16 +403,42 @@
         "margin_right": 0
       }
     },
-    "new_banner_slider_V3QYBX": {
-      "type": "new-banner-slider",
-      "name": "New Banner Slider",
+    "somos_banner_6wHtpL": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_kLc8Pa": {
+          "type": "heading",
+          "settings": {
+            "text": "Stream, Browse & Watch with Google TV.",
+            "heading_tag": "h2",
+            "color": "#ffffff"
+          }
+        },
+        "richtext_PFJ7Nt": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.</p>",
+            "color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kLc8Pa",
+        "richtext_PFJ7Nt"
+      ],
+      "name": "Somos Banner",
       "settings": {
-        "section_width": "standard",
-        "text_alignment": "left",
-        "heading": "Your Outdoor Oasis, Upgraded.",
-        "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
-        "show_arrows": true,
-        "slide_size": "large"
+        "section_width": "full",
+        "section_content_width": "standard",
+        "text_alignment": "center",
+        "vertical_alignment": "center",
+        "section_height": 500,
+        "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0
       }
     },
     "video_grid_aPiKfa": {
@@ -617,7 +643,7 @@
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
     "icon_grid_AeeJc6",
     "image_text_pBLTm3",
-    "new_banner_slider_V3QYBX",
+    "somos_banner_6wHtpL",
     "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
