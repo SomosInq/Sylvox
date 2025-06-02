@@ -667,6 +667,56 @@
         "margin_right": 0
       }
     },
+    "usp_accordion_4PkPyD": {
+      "type": "usp-accordion",
+      "blocks": {
+        "accordion_VTrC4r": {
+          "type": "accordion",
+          "settings": {
+            "question": "No Professionals Required",
+            "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
+            "icon": "shopify://shop_images/expand_more.png"
+          }
+        },
+        "accordion_rYtjQU": {
+          "type": "accordion",
+          "settings": {
+            "question": "5-Second Response Time",
+            "answer": "",
+            "icon": "shopify://shop_images/expand_more.png"
+          }
+        },
+        "accordion_F7EWHL": {
+          "type": "accordion",
+          "settings": {
+            "question": "60Hz Refresh Rate",
+            "answer": "",
+            "icon": "shopify://shop_images/expand_more.png"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_VTrC4r",
+        "accordion_rYtjQU",
+        "accordion_F7EWHL"
+      ],
+      "name": "USP Accordion",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "left_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png",
+        "image_width": 100,
+        "background_color": "#ffffff",
+        "title": "Quick & Simple Installation",
+        "text": "",
+        "text_color": "#ffffff",
+        "font_size": 16,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
     "video_grid_aPiKfa": {
       "type": "video-grid",
       "blocks": {
@@ -918,6 +968,7 @@
     "new_banner_slider_NmBRen",
     "image_text_UQFVkh",
     "somos_image_content_b794Jg",
+    "usp_accordion_4PkPyD",
     "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
