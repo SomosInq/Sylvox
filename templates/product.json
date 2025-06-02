@@ -561,7 +561,7 @@
       ],
       "name": "Somos Banner",
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
         "text_alignment": "center",
         "section_height": 500,
