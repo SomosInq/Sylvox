@@ -456,62 +456,70 @@
         "heading_20": ""
       }
     },
-    "image_with_text_overlay_L9qbTC": {
-      "type": "image-with-text-overlay",
+    "accordian_6Ea77K": {
+      "type": "accordian",
       "blocks": {
-        "subheading_X36HrK": {
-          "type": "subheading",
+        "question_WybaW9": {
+          "type": "question",
           "settings": {
-            "text": "Subheading"
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
-        "heading_YdYCRf": {
-          "type": "heading",
+        "question_XpiPtM": {
+          "type": "question",
           "settings": {
-            "text": "Image with text overlay",
-            "heading_tag": "h1"
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
-        "richtext_gmyWHM": {
-          "type": "richtext",
+        "question_wpgzGK": {
+          "type": "question",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
-        "button_MRkFcT": {
-          "type": "button",
+        "question_mfBW9c": {
+          "type": "question",
           "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "Button text",
-            "url": "",
-            "background": "",
-            "text_color": "",
-            "outline_color": ""
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_akNVjL": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         }
       },
       "block_order": [
-        "subheading_X36HrK",
-        "heading_YdYCRf",
-        "richtext_gmyWHM",
-        "button_MRkFcT"
+        "question_WybaW9",
+        "question_XpiPtM",
+        "question_wpgzGK",
+        "question_mfBW9c",
+        "question_akNVjL"
       ],
-      "disabled": true,
-      "name": "Image with text overlay",
+      "name": "Accordian",
       "settings": {
+        "heading": "Have a question ? We are here to help.",
+        "subheading": "Check out the most common questions our customers asked. Still have questions? Contact our customer support.",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "heading_size": 24,
+        "subheading_size": 16,
+        "bg_color": "#ffffff",
         "section_width": "standard",
-        "section_content_width": "standard",
-        "slide_height": 350,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
-        "mobile_text_position": "pos-middle-left",
-        "desktop_text_position": "sm:pos-middle-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     }
   },
@@ -525,6 +533,6 @@
     "somos_banner_zJ33mX",
     "comparison_table_prb7MT",
     "comparison_table_wy3rrk",
-    "image_with_text_overlay_L9qbTC"
+    "accordian_6Ea77K"
   ]
 }
