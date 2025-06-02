@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 52,
+            "activePatchIndex": 54,
             "patches": [
                 {
                     "date": 1748424308697,
@@ -216,6 +216,14 @@
                 {
                     "date": 1748857238122,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,12 +35,12 @@\n     <div class=\"comparison-header\" style=\"display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;\">\n       <div class=\"header-blank\"></div>\n       {% for block in section.blocks %}\n         <div class=\"text-center header\">\n-          <div class=\"top-title\">{{ block.settings.header_title }}</div>\n           {% if block.settings.main_image %}\n   <img src=\"{{ block.settings.main_image | image_url: width: 300 }}\" alt=\"Main image\" style=\"max-width: 100%; margin-bottom: 1rem; margin-left: auto; margin-right: auto;\" />\n {% endif %}\n+          <div class=\"top-title\">{{ block.settings.header_title }}</div>\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n             {% if block.settings.icon %}\n               <img src=\"{{ block.settings.icon | image_url }}\" alt=\"Icon\" style=\"height: 24px;\">\n             {% endif %}\n@@ -356,9 +356,9 @@\n       \"type\": \"values\",\n       \"name\": \"Column\",\n       \"settings\": [\n         { \"type\": \"image_picker\", \"id\": \"main_image\", \"label\": \"Main Image\" },\n-        { \"type\": \"text\", \"id\": \"header_title\", \"label\": \"Top Title above Type\" },\n+        { \"type\": \"text\", \"id\": \"header_title\", \"label\": \"Product Name\" },\n         { \"type\": \"image_picker\", \"id\": \"icon\", \"label\": \"Icon beside title\" },\n         { \"type\": \"text\", \"id\": \"title\", \"label\": \"Title\" },\n         { \"type\": \"text\", \"id\": \"price\", \"label\": \"Price Text\" },\n         { \"type\": \"text\", \"id\": \"button_label\", \"label\": \"Button Label\" },\n"
+                },
+                {
+                    "date": 1748858142907,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n           <div class=\"icon-title-wrapper\" style=\"display: flex; align-items: center; justify-content: center; gap: 0.5rem;\">\n             {% if block.settings.icon %}\n               <img src=\"{{ block.settings.icon | image_url }}\" alt=\"Icon\" style=\"height: 24px;\">\n             {% endif %}\n-            <strong>{{ block.settings.title }}</strong>\n+            <div class=\"top-title\">{{ block.settings.title }}</div>\n           </div>\n           <div class=\"price\" style=\"margin-top: 0.5rem;\">\n             {{ block.settings.price }}\n           </div>\n"
+                },
+                {
+                    "date": 1748858307929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n       {% assign max_rows = 20 %}\n       {% for i in (1..max_rows) %}\n         {% assign heading_key = 'heading_' | append: i %}\n         {% if section.settings[heading_key] != blank %}\n-          <div class=\"head\"><strong>{{ section.settings[heading_key] }}</strong></div>\n+          <div class=\"head\" style=\"display: flex; align-items: center;\"><strong>{{ section.settings[heading_key] }}</strong></div>\n           {% for block in section.blocks %}\n             {% assign value_key = 'value_' | append: i %}\n             {% assign image_key = 'value_image_' | append: i %}\n             <div class=\"text-center table-value\">\n"
                 }
             ],
             "date": 1748424308697,
