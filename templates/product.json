@@ -605,23 +605,26 @@
           "settings": {
             "question": "No Professionals Required",
             "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
-            "icon": "shopify://shop_images/expand_more.png"
+            "icon": "shopify://shop_images/expand_more.png",
+            "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png"
           }
         },
         "accordion_rYtjQU": {
           "type": "accordion",
           "settings": {
             "question": "5-Second Response Time",
-            "answer": "",
-            "icon": "shopify://shop_images/expand_more.png"
+            "answer": "Forget slow startup times. The Deck Pro 2.0 powers on in just 5 seconds, so you can start watching without delays.",
+            "icon": "shopify://shop_images/expand_more.png",
+            "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5_9bbf9670-c207-4c1f-bafc-14e19b4bf3e8.png"
           }
         },
         "accordion_F7EWHL": {
           "type": "accordion",
           "settings": {
             "question": "60Hz Refresh Rate",
-            "answer": "",
-            "icon": "shopify://shop_images/expand_more.png"
+            "answer": "Perfect for sports, movies, and gaming. With a 60Hz refresh rate, the Deck Pro 2.0 ensures buttery-smooth motion, reducing lag and blurring.",
+            "icon": "shopify://shop_images/expand_more.png",
+            "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5-1.png"
           }
         }
       },
@@ -634,8 +637,6 @@
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
-        "left_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png",
-        "image_width": 100,
         "background_color": "#ffffff",
         "title": "Quick & Simple Installation",
         "text": "",
