@@ -959,6 +959,34 @@
     },
     "accordian_fLLR39": {
       "type": "accordian",
+      "blocks": {
+        "question_n7E4fh": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_8LDg7c": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to setup an account to place an order?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_7K3mB4": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer gift wrapping",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        }
+      },
+      "block_order": [
+        "question_n7E4fh",
+        "question_8LDg7c",
+        "question_7K3mB4"
+      ],
       "name": "Accordian",
       "settings": {
         "heading": "Have a question ? We are here to help.",
@@ -968,6 +996,7 @@
         "heading_size": 24,
         "subheading_size": 16,
         "bg_color": "#ffffff",
+        "arrow_image": "shopify://shop_images/Overlay.png",
         "arrow_image_width": 10,
         "section_width": "standard",
         "padding_top": 0,
