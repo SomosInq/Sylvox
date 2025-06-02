@@ -89,7 +89,7 @@
   style="
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-    {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover;{% else %}background-color: {{ section.settings.background_color }};{% endif %}
+    {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;{% else %}background-color: {{ section.settings.background_color }};{% endif %}
   ">
   <div class="icon-grid__header">
     {% if section.settings.parent_title %}
@@ -98,7 +98,7 @@
     {% if section.settings.parent_description %}
       <p>{{ section.settings.parent_description }}</p>
     {% endif %}
-    {% if section.settings.parent_button_text %}
+    {% if section.settings.parent_button_text != blank and section.settings.parent_button_link != blank %}
       <a href="{{ section.settings.parent_button_link }}" class="icon-grid__button">{{ section.settings.parent_button_text }}</a>
     {% endif %}
     {% if section.settings.parent_image %}
@@ -110,7 +110,9 @@
     {% for block in section.blocks %}
       <a href="{{ block.settings.link | default: '#' }}" class="icon-grid__item" style="text-align: {{ block.settings.text_align }};">
         {% if block.settings.icon %}
-          <img src="{{ block.settings.icon | img_url: '150x' }}" style="width: {{ block.settings.icon_size }}%;" alt="{{ block.settings.title }}">
+          <div class="icon-container icon-align-{{ block.settings.text_align }}">
+            <img src="{{ block.settings.icon | img_url: '150x' }}" style="width: {{ block.settings.icon_size }}%;" alt="{{ block.settings.title }}">
+          </div>
         {% endif %}
         <h3 style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.font_size }}px;">
           {{ block.settings.title }}
@@ -132,8 +134,8 @@
 .icon-grid__item {
   text-decoration: none;
   padding: 1rem;
-  transition: transform 0.3s ease;
   border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 .icon-grid__item:hover {
   transform: translateY(-5px);
@@ -150,5 +152,18 @@
   color: white;
   text-decoration: none;
   border-radius: 5px;
+}
+.icon-container {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.icon-align-left {
+  justify-content: flex-start;
+}
+.icon-align-center {
+  justify-content: center;
+}
+.icon-align-right {
+  justify-content: flex-end;
 }
 </style>
