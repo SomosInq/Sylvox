@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 65,
+            "activePatchIndex": 67,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -268,6 +268,14 @@
                 {
                     "date": 1748858340868,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,12 +59,12 @@\n   font-family: 'neurial_grotesklight', Arial, Helvetica, sans-serif !important;\n font-weight: 400;\n }\n \n-/* .header-title {\n-      font-size: 1.75rem;\n-    margin-bottom: 0.5rem;\n-} */\n+.header-title {\n+display: flex;\n+  align-items: center;\n+}\n \n .tla {\n   text-align: left;\n }\n"
+                },
+                {
+                    "date": 1748859480919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -954,15 +954,17 @@\n   padding: 5%;\n }\n \n .comparison-section .btn {\n-  display: flex;\n-padding: 15px 24px;\n-justify-content: center;\n-align-items: center;\n-gap: 10px;\n-  border-radius: 9999px;\n-background: var(--Mid-Green, #336256);\n+display: flex;\n+    justify-content: center;\n+    align-items: center;\n+    gap: 10px;\n+    border-radius: 9999px;\n+    background: var(--Mid-Green, #336256);\n+    max-width: 200px;\n+    margin: 0 auto;\n+    padding: 0.5rem 1rem;\n }\n \n .comparison-section .btn img {\n   display: inline-flex;\n"
+                },
+                {
+                    "date": 1748859511317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -961,9 +961,9 @@\n     gap: 10px;\n     border-radius: 9999px;\n     background: var(--Mid-Green, #336256);\n     max-width: 200px;\n-    margin: 0 auto;\n+    margin: 20px auto 0 auto;\n     padding: 0.5rem 1rem;\n }\n \n .comparison-section .btn img {\n"
                 }
             ],
             "date": 1748526641710,

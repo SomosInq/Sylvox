@@ -955,13 +955,15 @@ a.button {
 }
 
 .comparison-section .btn {
-  display: flex;
-padding: 15px 24px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-  border-radius: 9999px;
-background: var(--Mid-Green, #336256);
+display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 9999px;
+    background: var(--Mid-Green, #336256);
+    max-width: 200px;
+    margin: 20px auto 0 auto;
+    padding: 0.5rem 1rem;
 }
 
 .comparison-section .btn img {
