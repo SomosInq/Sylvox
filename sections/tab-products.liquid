@@ -65,7 +65,6 @@
       <!-- Featured Products Grid -->
       <div class="tab-products-grid">
         {% if block.settings.collection %}
-          {% if block.settings.collection %}
   {% for product in block.settings.collection.products %}
     <div class="product-card {{ product.tags | join: ' ' | downcase }}">
       <a href="{{ product.url }}">
@@ -76,7 +75,7 @@
     </div>
   {% endfor %}
 {% endif %}
-            <div class="product-card {{ product.tags | join: ' ' | downcase }}">
+            {% comment %} <div class="product-card {{ product.tags | join: ' ' | downcase }}">
               <a href="{{ product.url }}">
                 <img src="{{ product.featured_image | image_url: '600x600' }}" alt="{{ product.title }}">
                 <h4>{{ product.title }}</h4>
@@ -84,7 +83,7 @@
               </a>
             </div>
           {% endfor %}
-        {% endif %}
+        {% endif %} {% endcomment %}
       </div>
     </div>
   {% endfor %}

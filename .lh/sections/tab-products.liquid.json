@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 22,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1748349377145,
@@ -96,6 +96,14 @@
                 {
                     "date": 1748603036992,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,10 +64,19 @@\n \n       <!-- Featured Products Grid -->\n       <div class=\"tab-products-grid\">\n         {% if block.settings.collection %}\n-          {% assign collection_handle = block.settings.collection %}\n-          {% for product in collections[collection_handle].products %}\n+          {% if block.settings.collection %}\n+  {% for product in block.settings.collection.products %}\n+    <div class=\"product-card {{ product.tags | join: ' ' | downcase }}\">\n+      <a href=\"{{ product.url }}\">\n+        <img src=\"{{ product.featured_image | image_url: '600x600' }}\" alt=\"{{ product.title }}\">\n+        <h4>{{ product.title }}</h4>\n+        <p>From {{ product.price | money }}</p>\n+      </a>\n+    </div>\n+  {% endfor %}\n+{% endif %}\n             <div class=\"product-card {{ product.tags | join: ' ' | downcase }}\">\n               <a href=\"{{ product.url }}\">\n                 <img src=\"{{ product.featured_image | image_url: '600x600' }}\" alt=\"{{ product.title }}\">\n                 <h4>{{ product.title }}</h4>\n"
+                },
+                {
+                    "date": 1748855282345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,8 @@\n \n       <!-- Featured Products Grid -->\n       <div class=\"tab-products-grid\">\n         {% if block.settings.collection %}\n-          {% if block.settings.collection %}\n   {% for product in block.settings.collection.products %}\n     <div class=\"product-card {{ product.tags | join: ' ' | downcase }}\">\n       <a href=\"{{ product.url }}\">\n         <img src=\"{{ product.featured_image | image_url: '600x600' }}\" alt=\"{{ product.title }}\">\n"
+                },
+                {
+                    "date": 1748855311082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,17 +74,17 @@\n       </a>\n     </div>\n   {% endfor %}\n {% endif %}\n-            <div class=\"product-card {{ product.tags | join: ' ' | downcase }}\">\n+            {% comment %} <div class=\"product-card {{ product.tags | join: ' ' | downcase }}\">\n               <a href=\"{{ product.url }}\">\n                 <img src=\"{{ product.featured_image | image_url: '600x600' }}\" alt=\"{{ product.title }}\">\n                 <h4>{{ product.title }}</h4>\n                 <p>From {{ product.price | money }}</p>\n               </a>\n             </div>\n           {% endfor %}\n-        {% endif %}\n+        {% endif %} {% endcomment %}\n       </div>\n     </div>\n   {% endfor %}\n </div>\n"
                 }
             ],
             "date": 1748349377144,
