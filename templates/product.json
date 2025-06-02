@@ -523,6 +523,48 @@
         "margin_right": 0
       }
     },
+    "image_text_UQFVkh": {
+      "type": "image-text",
+      "blocks": {
+        "title_GFaQcd": {
+          "type": "title",
+          "settings": {
+            "title": "Every Word, Every Note, Every Detail."
+          }
+        },
+        "text_qkpUEk": {
+          "type": "text",
+          "settings": {
+            "text": "From crisp dialogue to booming bass, experience movie theater-quality sound outdoors—no extra equipment required."
+          }
+        },
+        "image_N9az4U": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/797b8f0df03fdcd3f6294c17b924114874f7d62e.png",
+            "image_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "title_GFaQcd",
+        "text_qkpUEk",
+        "image_N9az4U"
+      ],
+      "name": "Image/Text Flex Blocks",
+      "settings": {
+        "section_width": "standard",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "comparison_table_QTgTwz": {
       "type": "comparison-table",
       "name": "Comparison Table",
@@ -710,6 +752,7 @@
     "text_and_image_iARUKa",
     "new_banner_slider_NmBRen",
     "video_grid_aPiKfa",
+    "image_text_UQFVkh",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
