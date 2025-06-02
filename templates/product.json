@@ -520,29 +520,6 @@
         "margin_right": 0
       }
     },
-    "text_and_image_iARUKa": {
-      "type": "text-and-image",
-      "name": "t:labels.image_with_text",
-      "settings": {
-        "image": "shopify://shop_images/Img_-_Google_apps_and_partners.-2.png",
-        "image_mask": "none",
-        "image2_mask": "none",
-        "subtitle": "Google TV Built-In",
-        "title": "A Smarter Way to Watch",
-        "heading_size": "h2",
-        "text": "<p>No need for extra streaming boxes—Google TV gives you direct access to over 700,000 movies and TV episodes. From Netflix, YouTube, and Disney+ to sports and news, your entertainment is all in one place.</p>",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "primary",
-        "align_text": "left",
-        "image_width": "50",
-        "layout": "right",
-        "color_scheme": "none",
-        "divider": false,
-        "top_padding": true,
-        "bottom_padding": true
-      }
-    },
     "new_banner_slider_NmBRen": {
       "type": "new-banner-slider",
       "blocks": {
@@ -615,6 +592,67 @@
       "settings": {
         "section_width": "standard",
         "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "somos_image_content_b794Jg": {
+      "type": "somos-image-content",
+      "blocks": {
+        "grid_box_3tryC3": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": true,
+            "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_1.png",
+            "image_width": 60,
+            "content_width": 40,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Full-Range Audio Without Extra Equipment",
+            "title": "2 x 10W Built-In Speakers",
+            "text": "Powerful, full-range speakers deliver rich, room-filling sound without the need for external sound systems. Optimized for outdoor acoustics, these speakers ensure you hear every detail—even in open-air spaces.",
+            "text_color": "#000000"
+          }
+        },
+        "grid_box_JxaDph": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": false,
+            "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_2.png",
+            "image_width": 40,
+            "content_width": 60,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Engineered for Open Spaces",
+            "title": "Instant, Wireless Streaming",
+            "text": "Outdoor environments can absorb sound, but the Pool Pro 2.0 is designed to overcome that challenge. Advanced audio engineering ensures voice clarity, deep bass, and dynamic sound projection, so every conversation, song, and dramatic scene is heard just as intended.",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "grid_box_3tryC3",
+        "grid_box_JxaDph"
+      ],
+      "name": "Somos Content/Image",
+      "settings": {
+        "heading": "Dolby Atmos Support",
+        "description": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
+        "button_label": "Learn More",
+        "button_link": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -873,9 +911,9 @@
     "image_text_pBLTm3",
     "somos_banner_6wHtpL",
     "somos_image_content_BqTAzw",
-    "text_and_image_iARUKa",
     "new_banner_slider_NmBRen",
     "image_text_UQFVkh",
+    "somos_image_content_b794Jg",
     "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
