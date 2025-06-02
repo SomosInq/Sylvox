@@ -346,62 +346,61 @@
         "margin_right": 0
       }
     },
-    "somos_banner_kjg4ca": {
-      "type": "somos-banner",
+    "image_text_pBLTm3": {
+      "type": "image-text",
       "blocks": {
-        "subheading_GqYEhQ": {
-          "type": "subheading",
+        "image_WqVGMb": {
+          "type": "image",
           "settings": {
-            "text": "Subheading",
-            "color": "#000000"
+            "image": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "image_alignment": "center"
           }
         },
-        "heading_44Umwp": {
-          "type": "heading",
+        "title_3Pc68k": {
+          "type": "title",
           "settings": {
-            "text": "Heading",
-            "heading_tag": "h2",
-            "color": "#000000"
+            "title": "3x Brighter Than Indoor TVs"
           }
         },
-        "richtext_MKaPwY": {
-          "type": "richtext",
+        "text_73JQGD": {
+          "type": "text",
           "settings": {
-            "content": "",
-            "color": "#000000"
+            "text": "1.000-Nit Peak Brightness"
           }
         },
-        "button_WhLbAD": {
-          "type": "button",
+        "image_jjR9ip": {
+          "type": "image",
           "settings": {
-            "text": "Click Me",
-            "url": "",
-            "style": "fill",
-            "size": "base",
-            "text_color": "#ffffff",
-            "background": "#000000",
-            "outline_color": "#000000"
+            "image": "shopify://shop_images/Nits.png",
+            "image_alignment": "center"
+          }
+        },
+        "text_yp8KpL": {
+          "type": "text",
+          "settings": {
+            "text": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp."
           }
         }
       },
       "block_order": [
-        "subheading_GqYEhQ",
-        "heading_44Umwp",
-        "richtext_MKaPwY",
-        "button_WhLbAD"
+        "image_WqVGMb",
+        "title_3Pc68k",
+        "text_73JQGD",
+        "image_jjR9ip",
+        "text_yp8KpL"
       ],
-      "name": "Somos Banner",
+      "name": "Image/Text Flex Blocks",
       "settings": {
         "section_width": "standard",
-        "section_content_width": "standard",
-        "text_alignment": "center",
-        "vertical_alignment": "center",
-        "section_height": 500,
-        "background_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
         "padding_left": 0,
-        "padding_right": 0
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "new_banner_slider_V3QYBX": {
@@ -617,7 +616,7 @@
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
     "icon_grid_AeeJc6",
-    "somos_banner_kjg4ca",
+    "image_text_pBLTm3",
     "new_banner_slider_V3QYBX",
     "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
