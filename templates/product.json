@@ -1026,10 +1026,34 @@
             "value_9": "",
             "value_10": ""
           }
+        },
+        "values_Brey8K": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
+            "header_title": "",
+            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "title": "Partial Sun",
+            "price": "",
+            "button_label": "Learn More",
+            "button_link": "shopify://collections/2024-summer-sale-pool-pro-2-0",
+            "button_image": "shopify://shop_images/SVG_1.svg",
+            "value_1": "",
+            "value_2": "",
+            "value_3": "",
+            "value_4": "",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
         }
       },
       "block_order": [
-        "values_jnCGh7"
+        "values_jnCGh7",
+        "values_Brey8K"
       ],
       "name": "Comparison Table",
       "settings": {
