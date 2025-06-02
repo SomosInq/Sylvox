@@ -503,7 +503,7 @@
       ],
       "name": "Somos Content/Image",
       "settings": {
-        "parent_subtitle": "Explore Our Benefits",
+        "parent_subtitle": "",
         "heading": "",
         "description": "",
         "parent_alignment": "center",
@@ -727,35 +727,61 @@
             "icon_size": 27,
             "title": "Wireless Freedom",
             "title_color": "#000000",
-            "title_size": 18,
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
             "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
-            "body_color": "#333333",
-            "body_size": 14
+            "body_color": "#333333"
+          }
+        },
+        "feature_box_87hkMh": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_2.png",
+            "icon_size": 27,
+            "title": "Wireless Freedom",
+            "title_color": "#000000",
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
+            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body_color": "#333333"
+          }
+        },
+        "feature_box_9UhAeW": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_2.png",
+            "icon_size": 27,
+            "title": "Wireless Freedom",
+            "title_color": "#000000",
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
+            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body_color": "#333333"
           }
         }
       },
       "block_order": [
-        "feature_box_iDtj9V"
+        "feature_box_iDtj9V",
+        "feature_box_87hkMh",
+        "feature_box_9UhAeW"
       ],
       "name": "Various Grid",
       "settings": {
         "bg_color": "#ffffff",
-        "margin_top": "0",
-        "margin_right": "0",
-        "margin_bottom": "0",
-        "margin_left": "0",
-        "padding_top": "0",
-        "padding_right": "0",
-        "padding_bottom": "0",
-        "padding_left": "0",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 50,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "left_image": "shopify://shop_images/bf142379eb6346708d8cc63dc75ffe94.mp4.png",
         "left_image_width": 40,
         "heading": "Stay Connected, Indoors or Out.",
         "heading_color": "#000000",
-        "heading_size": 24,
         "text": "No matter how you watch, listen, or play, your TV should keep up.",
         "text_color": "#333333",
-        "text_size": 16,
         "section_width": "full",
         "section_content_width": "standard"
       }
