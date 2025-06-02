@@ -202,8 +202,10 @@
           "type": "values",
           "settings": {
             "main_image": "shopify://shop_images/Icons-2_0279093f-72e5-4b22-b76d-8da469706fad.png",
+            "header_title": "",
             "icon": "shopify://shop_images/Icons-1_a8276d13-b406-42e0-8367-dc1870c79980.png",
             "title": "Partial Sun",
+            "price": "",
             "button_label": "Learn More",
             "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-65-tv-total-3-years",
             "button_image": "shopify://shop_images/SVG_1.svg",
@@ -221,25 +223,17 @@
             "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
             "value_8": "",
             "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": ""
+            "value_10": ""
           }
         },
         "values_BEzx44": {
           "type": "values",
           "settings": {
             "main_image": "shopify://shop_images/Icons_61e39666-0161-4daf-b797-9900d8b291c2.png",
+            "header_title": "",
             "icon": "shopify://shop_images/Icons-3_38b39895-e177-42f6-bb0b-1031e1bf1953.png",
             "title": "Full Sun",
+            "price": "",
             "button_label": "Learn More",
             "button_link": "shopify://products/sylvox-official-extended-warranty-for-deck-pro-55-2-years-total-3-years",
             "button_image": "shopify://shop_images/SVG_1.svg",
@@ -257,17 +251,7 @@
             "value_7": "<p>Resorts, amusement parks, stadiums, open-air restaurants, <br/>golf courses, city rooftop bars</p>",
             "value_8": "",
             "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": ""
+            "value_10": ""
           }
         }
       },
@@ -276,12 +260,10 @@
         "values_BEzx44"
       ],
       "settings": {
-        "section_width": "standard",
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
         "button_text": "",
         "button_url": "",
-        "text_alignment": "center",
         "text_color": "",
         "button_background": "",
         "button_text_color": "",
@@ -289,6 +271,8 @@
         "text_size": 16,
         "button_size": 16,
         "background_color": "#ffffff",
+        "section_width": "standard",
+        "text_alignment": "center",
         "padding_top": 45,
         "padding_bottom": 45,
         "padding_left": 0,
@@ -297,6 +281,9 @@
         "margin_bottom": 0,
         "margin_left": 0,
         "margin_right": 0,
+        "view_all_text": "View All Comparisons",
+        "view_all_url": "",
+        "view_all_icon": "shopify://shop_images/Icon.svg",
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
@@ -473,7 +460,9 @@
         "button_39wxXB"
       ],
       "settings": {
-        "full_width": true,
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "slide_height": 500,
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
@@ -692,7 +681,9 @@
         "heading_EyXPFe"
       ],
       "settings": {
-        "full_width": true,
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "slide_height": 500,
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
