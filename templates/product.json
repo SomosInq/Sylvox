@@ -253,74 +253,89 @@
         "divider": false
       }
     },
-    "usp_grid_MXD4Wf": {
-      "type": "usp-grid",
+    "icon_grid_AeeJc6": {
+      "type": "icon-grid",
       "blocks": {
-        "usp_item_mFtnpg": {
-          "type": "usp_item",
+        "grid_item_kjYECa": {
+          "type": "grid_item",
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "image_size": "medium",
+            "icon_size": 15,
             "title": "Feel-Good Audio",
-            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
             "link": ""
           }
         },
-        "usp_item_MMNCUN": {
-          "type": "usp_item",
+        "grid_item_R869MN": {
+          "type": "grid_item",
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "image_size": "medium",
+            "icon_size": 15,
             "title": "Feel-Good Audio",
-            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
             "link": ""
           }
         },
-        "usp_item_ktfyeA": {
-          "type": "usp_item",
+        "grid_item_3hTLDc": {
+          "type": "grid_item",
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "image_size": "medium",
+            "icon_size": 15,
             "title": "Feel-Good Audio",
-            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
             "link": ""
           }
         },
-        "usp_item_CMhVKp": {
-          "type": "usp_item",
+        "grid_item_7g4BxQ": {
+          "type": "grid_item",
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "image_size": "medium",
+            "icon_size": 15,
             "title": "Feel-Good Audio",
-            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
             "link": ""
           }
         },
-        "usp_item_Tg3CQh": {
-          "type": "usp_item",
+        "grid_item_8geVAG": {
+          "type": "grid_item",
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "image_size": "medium",
+            "icon_size": 15,
             "title": "Feel-Good Audio",
-            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
             "link": ""
           }
         }
       },
       "block_order": [
-        "usp_item_mFtnpg",
-        "usp_item_MMNCUN",
-        "usp_item_ktfyeA",
-        "usp_item_CMhVKp",
-        "usp_item_Tg3CQh"
+        "grid_item_kjYECa",
+        "grid_item_R869MN",
+        "grid_item_3hTLDc",
+        "grid_item_7g4BxQ",
+        "grid_item_8geVAG"
       ],
-      "name": "USP Grid",
+      "name": "Icon Grid",
       "settings": {
-        "section_width": "standard",
-        "heading": "Outdoor-Ready Technology, Built to Perform.",
-        "subtext": "",
-        "heading_alignment": "center",
-        "show_arrows": true,
+        "background_color": "#ffffff",
+        "parent_title": "Outdoor-Ready Technology, Built to Perform.",
+        "parent_description": "",
+        "parent_button_link": "",
+        "parent_button_text": "",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -601,7 +616,7 @@
     "9df5c85d-9b86-4dc1-b79f-989547d3475e",
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
-    "usp_grid_MXD4Wf",
+    "icon_grid_AeeJc6",
     "somos_banner_kjg4ca",
     "new_banner_slider_V3QYBX",
     "video_grid_aPiKfa",
