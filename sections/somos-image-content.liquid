@@ -100,16 +100,56 @@
           "default": 60
         },
         {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Smarter Way to Watch"
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
         },
         {
           "type": "text",
           "id": "subtitle",
           "label": "Subtitle",
           "default": "Google TV Built-In"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Smarter Way to Watch"
         },
         {
           "type": "textarea",
@@ -184,25 +224,39 @@
     </div>
 
     {% for block in section.blocks %}
-      <div class="icon-grid-row" style="display: flex; flex-wrap: wrap; align-items: center; margin: 30px 0;">
+      {% assign image_width = block.settings.image_width | append: "%" %}
+      {% assign content_width = block.settings.content_width | append: "%" %}
+      <div
+        class="icon-grid-row"
+        style="
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
+          margin-top: {{ block.settings.margin_top }}px;
+          margin-bottom: {{ block.settings.margin_bottom }}px;
+          padding-top: {{ block.settings.padding_top }}px;
+          padding-bottom: {{ block.settings.padding_bottom }}px;
+        "
+        {{ block.shopify_attributes }}
+      >
         {% if block.settings.image_left %}
-          <div class="image-col" style="flex: 0 0 {{ block.settings.image_width }}%;">
+          <div class="image-col" style="flex: 0 0 {{ image_width }}%;">
             {% if block.settings.image %}
               <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
             {% endif %}
           </div>
-          <div class="text-col" style="flex: 0 0 {{ block.settings.content_width }}%; padding-left: 20px; color: {{ block.settings.text_color }};">
-            <h3>{{ block.settings.title }}</h3>
+          <div class="text-col" style="flex: 0 0 {{ content_width }}%; padding-left: 20px; color: {{ block.settings.text_color }};">
             <h4>{{ block.settings.subtitle }}</h4>
+            <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
           </div>
         {% else %}
-          <div class="text-col" style="flex: 0 0 {{ block.settings.content_width }}%; padding-right: 20px; color: {{ block.settings.text_color }};">
-            <h3>{{ block.settings.title }}</h3>
+          <div class="text-col" style="flex: 0 0 {{ content_width }}%; padding-right: 20px; color: {{ block.settings.text_color }};">
             <h4>{{ block.settings.subtitle }}</h4>
+            <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
           </div>
-          <div class="image-col" style="flex: 0 0 {{ block.settings.image_width }}%;">
+          <div class="image-col" style="flex: 0 0 {{ image_width }}%;">
             {% if block.settings.image %}
               <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
             {% endif %}
