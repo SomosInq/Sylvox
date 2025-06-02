@@ -451,8 +451,12 @@
             "image": "shopify://shop_images/Img_-_Google_apps_and_partners.-2.png",
             "image_width": 40,
             "content_width": 40,
-            "title": "Smarter Way to Watch",
+            "margin_top": 0,
+            "margin_bottom": 60,
+            "padding_top": 0,
+            "padding_bottom": 0,
             "subtitle": "Google TV Built-In",
+            "title": "Smarter Way to Watch",
             "text": "No need for extra streaming boxes—Google TV gives you access to over 700,000+ movies and shows.",
             "text_color": "#000000"
           }
@@ -464,16 +468,38 @@
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4.png",
             "image_width": 40,
             "content_width": 40,
-            "title": "Instant, Wireless Streaming",
+            "margin_top": 0,
+            "margin_bottom": 60,
+            "padding_top": 0,
+            "padding_bottom": 0,
             "subtitle": "Works with Apple AirPlay & Chromecast",
+            "title": "Instant, Wireless Streaming",
             "text": "Seamlessly share content from your phone, tablet, or laptop. Whether you’re casting a movie, streaming music, or sharing vacation photos, wireless connectivity makes it effortless.",
+            "text_color": "#000000"
+          }
+        },
+        "grid_box_7tKYVJ": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": true,
+            "image": "shopify://shop_images/Voice_Control.png",
+            "image_width": 40,
+            "content_width": 60,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Free Browsing",
+            "title": "Voice Control for Hands",
+            "text": "Too relaxed to search manually? Just ask. With voice control compatibility, find shows, adjust volume, and open apps using simple commands.",
             "text_color": "#000000"
           }
         }
       },
       "block_order": [
         "grid_box_rbPzQT",
-        "grid_box_8ApDLM"
+        "grid_box_8ApDLM",
+        "grid_box_7tKYVJ"
       ],
       "name": "Somos Content/Image",
       "settings": {
