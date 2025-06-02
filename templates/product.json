@@ -194,29 +194,58 @@
         "autoplay_speed": 7
       }
     },
+    "somos_banner_aRxBYn": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_8HaYdw": {
+          "type": "heading",
+          "settings": {
+            "text": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
+            "heading_tag": "h2",
+            "color": "#ffffff"
+          }
+        },
+        "subheading_xXEVGn": {
+          "type": "subheading",
+          "settings": {
+            "text": "No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.",
+            "color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8HaYdw",
+        "subheading_xXEVGn"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "text_alignment": "center",
+        "vertical_alignment": "center",
+        "section_height": 500,
+        "background_image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9.jpg",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0
+      }
+    },
     "74b3fd60-d752-4732-b2b3-12ea39fe6851": {
       "type": "rich-text",
       "blocks": {
         "template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0": {
           "type": "heading",
           "settings": {
-            "title": "Sylvox Kitchen TV Gallery",
+            "title": "A weatherproof, ultra-bright 4K TV designed for the outdoors. Whether you’re hosting game night, watching a movie under the stars, or just unwinding after a long day, the Deck Pro 2.0 delivers a viewing experience that feels as good as it looks.",
             "heading_size": "h2"
-          }
-        },
-        "90325576-e32d-458f-8589-cc29706237c8": {
-          "type": "text",
-          "settings": {
-            "enlarge_text": true,
-            "text": "<p>Not just a kicthen TV</p>"
           }
         }
       },
       "block_order": [
-        "template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0",
-        "90325576-e32d-458f-8589-cc29706237c8"
+        "template--15059621085245__74b3fd60-d752-4732-b2b3-12ea39fe6851-1666946046365edee1-0"
       ],
-      "disabled": true,
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -535,43 +564,6 @@
         "related_count": 5,
         "products_per_row": 3
       }
-    },
-    "somos_banner_aRxBYn": {
-      "type": "somos-banner",
-      "blocks": {
-        "heading_8HaYdw": {
-          "type": "heading",
-          "settings": {
-            "text": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
-            "heading_tag": "h2",
-            "color": "#ffffff"
-          }
-        },
-        "subheading_xXEVGn": {
-          "type": "subheading",
-          "settings": {
-            "text": "No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.",
-            "color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_8HaYdw",
-        "subheading_xXEVGn"
-      ],
-      "name": "Somos Banner",
-      "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "text_alignment": "center",
-        "section_height": 500,
-        "background_image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9.jpg",
-        "background_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0
-      }
     }
   },
   "order": [
@@ -579,6 +571,7 @@
     "sub",
     "slideshow_rqHYVM",
     "9df5c85d-9b86-4dc1-b79f-989547d3475e",
+    "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
     "slideshow_image_DKFV3T",
     "slideshow_image_qeFmkp",
@@ -592,7 +585,6 @@
     "more-products-collection",
     "recently-viewed",
     "collection-return",
-    "recommendations",
-    "somos_banner_aRxBYn"
+    "recommendations"
   ]
 }
