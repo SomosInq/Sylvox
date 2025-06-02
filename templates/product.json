@@ -504,25 +504,6 @@
         "slide_size": "large"
       }
     },
-    "video_grid_aPiKfa": {
-      "type": "video-grid",
-      "name": "Video Grid",
-      "settings": {
-        "section_width": "standard",
-        "top_title": "Sylvox Community",
-        "subtitle": "A home for all Sylvox fans to experience content,",
-        "description": "inspiration, and our beautiful technology.",
-        "show_arrows": true,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0
-      }
-    },
     "image_text_UQFVkh": {
       "type": "image-text",
       "blocks": {
@@ -557,6 +538,69 @@
         "alignment": "center",
         "padding_top": 0,
         "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "video_grid_aPiKfa": {
+      "type": "video-grid",
+      "blocks": {
+        "video_qEzKKL": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png"
+          }
+        },
+        "video_DX4NP4": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster_png.png"
+          }
+        },
+        "video_fVnKEe": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-1.png"
+          }
+        },
+        "video_qEfQed": {
+          "type": "video",
+          "settings": {
+            "video_type": "youtube",
+            "video_url": "",
+            "interaction_type": "modal",
+            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-2.png"
+          }
+        }
+      },
+      "block_order": [
+        "video_qEzKKL",
+        "video_DX4NP4",
+        "video_fVnKEe",
+        "video_qEfQed"
+      ],
+      "name": "Video Grid",
+      "settings": {
+        "section_width": "standard",
+        "top_title": "Sylvoz Community",
+        "subtitle": "A home for all Sylvoz fans to experience content, inspiration, and our beautiful technology.",
+        "description": "",
+        "show_arrows": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -751,8 +795,8 @@
     "somos_banner_6wHtpL",
     "text_and_image_iARUKa",
     "new_banner_slider_NmBRen",
-    "video_grid_aPiKfa",
     "image_text_UQFVkh",
+    "video_grid_aPiKfa",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
