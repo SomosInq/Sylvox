@@ -265,10 +265,54 @@
             "text": "Dolby Atmos delivers immersive, cinematic sound.",
             "link": ""
           }
+        },
+        "usp_item_MMNCUN": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "image_size": "medium",
+            "title": "Feel-Good Audio",
+            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "link": ""
+          }
+        },
+        "usp_item_ktfyeA": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "image_size": "medium",
+            "title": "Feel-Good Audio",
+            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "link": ""
+          }
+        },
+        "usp_item_CMhVKp": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "image_size": "medium",
+            "title": "Feel-Good Audio",
+            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "link": ""
+          }
+        },
+        "usp_item_Tg3CQh": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "image_size": "medium",
+            "title": "Feel-Good Audio",
+            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "usp_item_mFtnpg"
+        "usp_item_mFtnpg",
+        "usp_item_MMNCUN",
+        "usp_item_ktfyeA",
+        "usp_item_CMhVKp",
+        "usp_item_Tg3CQh"
       ],
       "name": "USP Grid",
       "settings": {
