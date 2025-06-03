@@ -1215,6 +1215,13 @@ width: 90%;
   .center { align-items: center; text-align: center; }
   .right  { align-items: flex-end; text-align: right; }
 
+   .aligntop    { align-items: center; justify-content: flex-start; }
+  .alignmiddle { align-items: center; justify-content: center; }
+  .alignbottom { align-items: center; justify-content: flex-end; }
+  .alignleft   { align-items: flex-start;  }
+  .aligncenter { align-items: center;  }
+  .aligright  { align-items: flex-end;  }
+
   .somos-slider__arrows {
     position: absolute;
     top: 50%;

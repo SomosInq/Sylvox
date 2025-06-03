@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 68,
+            "activePatchIndex": 69,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -280,6 +280,10 @@
                 {
                     "date": 1748958727278,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1351,10 +1351,15 @@\n .product-card:hover {\n   transform: scale(1.03);\n }\n \n+/* Image text Flex Blocks */\n+.image-text-blocks-section img {\n+  margin: 0 auto;\n+}\n \n \n+\n /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */\n /* *, :before, :after {\n   box-sizing: border-box;\n   border-style: solid;\n"
+                },
+                {
+                    "date": 1748964274556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1214,8 +1214,15 @@\n   .left   { align-items: flex-start; text-align: left; }\n   .center { align-items: center; text-align: center; }\n   .right  { align-items: flex-end; text-align: right; }\n \n+   .aligntop    { align-items: center; justify-content: flex-start; }\n+  .alignmiddle { align-items: center; justify-content: center; }\n+  .alignbottom { align-items: center; justify-content: flex-end; }\n+  .alignleft   { align-items: flex-start;  }\n+  .aligncenter { align-items: center;  }\n+  .aligright  { align-items: flex-end;  }\n+\n   .somos-slider__arrows {\n     position: absolute;\n     top: 50%;\n     width: 100%;\n"
                 }
             ],
             "date": 1748526641710,

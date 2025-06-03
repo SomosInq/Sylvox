@@ -13,8 +13,8 @@
   justify-content: space-between;
   gap: 40px;
 }
-.various-grid-top .left,
-.various-grid-top .right {
+.various-grid-top .alignleft,
+.various-grid-top .alignright {
   flex: 1 1 48%;
 }
 .various-grid-top .left img {
@@ -71,12 +71,12 @@
 >
   <div class="various-grid-inner section_content_width_{{ section.settings.section_content_width }}">
     <div class="various-grid-top">
-      <div class="left">
+      <div class="alignleft">
         {% if section.settings.left_image %}
           <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Left Image" style="width: {{ section.settings.left_image_width }}%;">
         {% endif %}
       </div>
-      <div class="right">
+      <div class="aligright">
         {% if section.settings.icon %}
           <img src="{{ section.settings.icon | img_url: 'master' }}" alt="Heading Icon" style="width: 40px; margin-bottom: 10px;">
         {% endif %}
