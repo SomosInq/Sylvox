@@ -1352,6 +1352,11 @@ width: 90%;
   transform: scale(1.03);
 }
 
+/* Image text Flex Blocks */
+.image-text-blocks-section img {
+  margin: 0 auto;
+}
+
 
 
 /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
