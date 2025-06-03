@@ -1,0 +1,233 @@
+{% schema %}
+{
+  "name": "In The Box",
+  "tag": "section",
+  "class": "in-the-box-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left Title",
+      "default": "Deck Pro 2.0"
+    },
+    {
+      "type": "text",
+      "id": "left_quantity",
+      "label": "Left Quantity",
+      "default": "× 1"
+    },
+    {
+      "type": "range",
+      "id": "left_image_width",
+      "label": "Left Image Width (%)",
+      "min": 10,
+      "max": 100,
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "left_text_color",
+      "label": "Left Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "left_text_size",
+      "label": "Left Text Size (px)",
+      "min": 10,
+      "max": 40,
+      "default": 18
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Box Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "Item Image"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item Title"
+        },
+        {
+          "type": "text",
+          "id": "item_quantity",
+          "label": "Item Quantity"
+        },
+        {
+          "type": "range",
+          "id": "item_image_width",
+          "label": "Image Width (%)",
+          "min": 10,
+          "max": 100,
+          "default": 100
+        },
+        {
+          "type": "color",
+          "id": "item_text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "item_text_size",
+          "label": "Text Size (px)",
+          "min": 10,
+          "max": 30,
+          "default": 16
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "In The Box",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.in-the-box-section {
+  transition: all 0.3s ease;
+}
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+.section_content_width_standard,
+.section_content_width_full {
+  transition: all 0.3s ease;
+}
+.section_content_width_full {
+  width: 100%;
+}
+.section_content_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+{% endstylesheet %}
+
+{% style %}
+.in-the-box-section {
+  background-color: {{ section.settings.background_color }};
+  {% if section.settings.background_image != blank %}
+    background-image: url({{ section.settings.background_image | image_url }});
+    background-size: cover;
+    background-position: center;
+  {% endif %}
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  padding-left: {{ section.settings.padding_left }}px;
+  padding-right: {{ section.settings.padding_right }}px;
+}
+{% endstyle %}
+
+<div class="in-the-box-section section_width_{{ section.settings.section_width }}">
+  <div class="section_content_width_{{ section.settings.section_content_width }} flex flex-wrap gap-6">
+    <div class="w-full md:w-1/3 text-center">
+      {% if section.settings.left_image %}
+        <img src="{{ section.settings.left_image | image_url }}" style="width: {{ section.settings.left_image_width }}%;" alt="Main Item">
+      {% endif %}
+      <h2 style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size }}px;">{{ section.settings.left_title }}</h2>
+      <p style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size | minus: 2 }}px;">{{ section.settings.left_quantity }}</p>
+    </div>
+
+    <div class="w-full md:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-6">
+      {% for block in section.blocks %}
+        <div class="text-center">
+          {% if block.settings.item_image %}
+            <img src="{{ block.settings.item_image | image_url }}" style="width: {{ block.settings.item_image_width }}%;" alt="{{ block.settings.item_title }}">
+          {% endif %}
+          <h3 style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size }}px;">{{ block.settings.item_title }}</h3>
+          <p style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size | minus: 2 }}px;">{{ block.settings.item_quantity }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
