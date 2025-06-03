@@ -37,14 +37,37 @@
     },
     {
       "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Set Up in Minutes, Enjoy for Years."
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
       "id": "title",
-      "label": "Title",
+      "label": "Accordion Title",
       "default": "Quick & Simple Installation"
     },
     {
       "type": "textarea",
       "id": "text",
-      "label": "Text",
+      "label": "Accordion Description",
       "default": "No Professionals Required"
     },
     {
@@ -110,6 +133,11 @@
           "label": "Question"
         },
         {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle (Optional)"
+        },
+        {
           "type": "textarea",
           "id": "answer",
           "label": "Answer"
@@ -155,9 +183,6 @@
   color: {{ section.settings.text_color }};
   font-size: {{ section.settings.font_size }}px;
 }
-/* .accordion-item {
-  border-bottom: 1px solid #ddd;
-} */
 .accordion-header {
   cursor: pointer;
   display: flex;
@@ -178,31 +203,59 @@
 .accordion-content.active {
   display: block;
 }
+.accordion-subtitle {
+  font-size: 0.875rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
 {% endstyle %}
 
 <div class="section_width_{{ section.settings.section_width }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }} usp-accordion-section" style="display: flex; gap: 2rem; align-items: stretch;">
-    <div style="flex: 1;">
-      <img id="dynamic-accordion-image" src="{% for block in section.blocks limit: 1 %}{{ block.settings.associated_image | image_url }}{% endfor %}" style="width: 100%;" alt="Accordion Image" />
+  <div class="section_content_width_{{ section.settings.section_content_width }} usp-accordion-section">
+    
+    <!-- Section Heading, Description, and Button -->
+    <div class="usp-accordion-header" style="text-align: center; margin-bottom: 2rem;">
+      {% if section.settings.section_heading != blank %}
+        <h2 style="color: {{ section.settings.text_color }};">{{ section.settings.section_heading }}</h2>
+      {% endif %}
+      {% if section.settings.section_description != blank %}
+        <p style="color: {{ section.settings.text_color }};">{{ section.settings.section_description }}</p>
+      {% endif %}
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="usp-accordion-button" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: #20413B; color: white; text-decoration: none; border-radius: 4px;">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
     </div>
-    <div class="accordion" style="flex: 1; padding: 1rem;">
-      <h2>{{ section.settings.title }}</h2>
-      <p>{{ section.settings.text }}</p>
-      {% for block in section.blocks %}
-        <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}">
-          <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
-            <span>{{ block.settings.question }}</span>
-            {% if block.settings.icon %}
-              <img src="{{ block.settings.icon | image_url }}" class="accordion-icon" id="icon-{{ forloop.index }}" width="20" />
-            {% else %}
-              <span class="accordion-icon" id="icon-{{ forloop.index }}">▼</span>
-            {% endif %}
+
+    <!-- Two Column Layout -->
+    <div style="display: flex; gap: 2rem; align-items: stretch;">
+      <div style="flex: 1;">
+        <img id="dynamic-accordion-image" src="{% for block in section.blocks limit: 1 %}{{ block.settings.associated_image | image_url }}{% endfor %}" style="width: 100%;" alt="Accordion Image" />
+      </div>
+      <div class="accordion" style="flex: 1; padding: 1rem;">
+        <h2>{{ section.settings.title }}</h2>
+        <p>{{ section.settings.text }}</p>
+        {% for block in section.blocks %}
+          <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}">
+            <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
+              <span>{{ block.settings.question }}</span>
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | image_url }}" class="accordion-icon" id="icon-{{ forloop.index }}" width="20" />
+              {% else %}
+                <span class="accordion-icon" id="icon-{{ forloop.index }}">▼</span>
+              {% endif %}
+            </div>
+            <div class="accordion-content" id="content-{{ forloop.index }}">
+              {% if block.settings.subtitle != blank %}
+                <div class="accordion-subtitle" id="subtitle-{{ forloop.index }}">{{ block.settings.subtitle }}</div>
+              {% endif %}
+              <div>{{ block.settings.answer }}</div>
+            </div>
           </div>
-          <div class="accordion-content" id="content-{{ forloop.index }}">
-            {{ block.settings.answer }}
-          </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
