@@ -718,6 +718,101 @@
         "section_content_width": "standard"
       }
     },
+    "in_the_box_CcWA6g": {
+      "type": "in-the-box",
+      "blocks": {
+        "item_pnEXqX": {
+          "type": "item",
+          "settings": {
+            "item_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small.webp-1.png",
+            "item_title": "Voice Remote Control",
+            "item_quantity": "x1",
+            "item_image_width": 100,
+            "item_text_color": "#000000",
+            "item_text_size": 16
+          }
+        },
+        "item_DqriPP": {
+          "type": "item",
+          "settings": {
+            "item_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small.webp-2.png",
+            "item_title": "Power Card",
+            "item_quantity": "x1",
+            "item_image_width": 100,
+            "item_text_color": "#000000",
+            "item_text_size": 16
+          }
+        },
+        "item_g8jGCi": {
+          "type": "item",
+          "settings": {
+            "item_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small.webp-3.png",
+            "item_title": "Batteries (AAA)",
+            "item_quantity": "x2",
+            "item_image_width": 100,
+            "item_text_color": "#000000",
+            "item_text_size": 16
+          }
+        },
+        "item_6qTwmD": {
+          "type": "item",
+          "settings": {
+            "item_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small.webp-5.png",
+            "item_title": "Warranty Card",
+            "item_quantity": "x1",
+            "item_image_width": 100,
+            "item_text_color": "#000000",
+            "item_text_size": 16
+          }
+        },
+        "item_CMqwH6": {
+          "type": "item",
+          "settings": {
+            "item_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small.webp-6.png",
+            "item_title": "Screws",
+            "item_quantity": "x1",
+            "item_image_width": 100,
+            "item_text_color": "#000000",
+            "item_text_size": 16
+          }
+        },
+        "item_PnmkqN": {
+          "type": "item",
+          "settings": {
+            "item_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small.webp-4.png",
+            "item_title": "User’s Manual",
+            "item_quantity": "x1",
+            "item_image_width": 100,
+            "item_text_color": "#000000",
+            "item_text_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "item_pnEXqX",
+        "item_DqriPP",
+        "item_g8jGCi",
+        "item_6qTwmD",
+        "item_CMqwH6",
+        "item_PnmkqN"
+      ],
+      "name": "In The Box",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "left_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small_webp.png",
+        "left_title": "Deck Pro 2.0",
+        "left_quantity": "× 1",
+        "left_image_width": 27,
+        "left_text_color": "#000000",
+        "left_text_size": 18
+      }
+    },
     "video_grid_aPiKfa": {
       "type": "video-grid",
       "blocks": {
@@ -1221,6 +1316,7 @@
     "somos_image_content_b794Jg",
     "usp_accordion_4PkPyD",
     "various_grid_aXBbfz",
+    "in_the_box_CcWA6g",
     "video_grid_aPiKfa",
     "video_grid_gF4rY4",
     "comparison_table_QTgTwz",
