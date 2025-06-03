@@ -1,36 +1,57 @@
-{% stylesheet %}
-.section_width_standard,
-.section_width_full {
-  transition: all 0.3s ease;
-}
-.section_width_full {
+{% style %}
+.various-grid-container {
   width: 100%;
 }
-.section_width_standard {
-  margin: 0 auto !important;
-  width: 90% !important;
+.various-grid-inner {
+  max-width: 1600px;
+  margin: 0 auto;
 }
+.various-grid-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+.various-grid-main .image-col,
+.various-grid-main .text-col {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+.various-grid-main img {
+  max-width: 100%;
+  height: auto;
+}
+.usp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+.usp-item {
+  flex: 1 1 300px;
+  max-width: 33%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.usp-item img {
+  display: block;
+  margin: 0 auto 10px;
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .usp-item {
+    max-width: 100%;
+  }
+}
+{% endstyle %}
 
-.section_content_width_standard,
-.section_content_width_full {
-  transition: all 0.3s ease;
-}
-.section_content_width_full {
-  width: 100%;
-}
-.section_content_width_standard {
-  margin: 0 auto !important;
-  width: 90% !important;
-}
-{% endstylesheet %}
-
-{% assign has_bg_image = false %}
-{% if section.settings.bg_image != blank %}
-  {% assign has_bg_image = true %}
-{% endif %}
+{% assign has_bg_image = section.settings.bg_image != blank %}
 
 <div
-  class="section_width_{{ section.settings.section_width }}"
+  class="various-grid-container section_width_{{ section.settings.section_width }}"
   style="
     background-color: {{ section.settings.bg_color }};
     {% if has_bg_image %}
@@ -42,34 +63,34 @@
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
   "
 >
-  <div class="section_content_width_{{ section.settings.section_content_width }} max-w-[1600px] mx-auto">
-    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
-      <div class="w-full lg:w-1/2 flex justify-center">
-        {% if section.settings.left_image != blank %}
-          <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Left Image" style="width: {{ section.settings.left_image_width }}%; max-width: 100%;">
+  <div class="various-grid-inner section_content_width_{{ section.settings.section_content_width }}">
+    <div class="various-grid-main">
+      <div class="image-col">
+        {% if section.settings.left_image %}
+          <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Left Image" style="width: {{ section.settings.left_image_width }}%;">
         {% endif %}
       </div>
-      <div class="w-full lg:w-1/2">
+      <div class="text-col">
         {% if section.settings.icon %}
-          <img src="{{ section.settings.icon | img_url: 'master' }}" alt="Heading Icon" class="mb-4" style="width: 40px;">
+          <img src="{{ section.settings.icon | img_url: 'master' }}" alt="Heading Icon" style="width: 40px; margin-bottom: 10px;">
         {% endif %}
-        <h2 class="mb-2" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
+        <h2 style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
         <p style="color: {{ section.settings.text_color }};">{{ section.settings.text }}</p>
       </div>
     </div>
 
     {% if section.blocks.size > 0 %}
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+      <div class="usp-grid">
         {% for block in section.blocks %}
-          <div class="flex flex-col items-center text-center h-full p-4">
+          <div class="usp-item">
             {% if block.settings.icon %}
               <img src="{{ block.settings.icon | img_url: 'master' }}" alt="USP Icon" style="width: {{ block.settings.icon_size }}%;">
             {% endif %}
-            <h3 class="mt-4 mb-1" style="color: {{ block.settings.title_color }};">{{ block.settings.title }}</h3>
+            <h3 style="color: {{ block.settings.title_color }};">{{ block.settings.title }}</h3>
             {% if block.settings.subtitle %}
-              <p class="mb-1" style="color: {{ block.settings.subtitle_color }}; font-style: italic;">{{ block.settings.subtitle }}</p>
+              <p style="color: {{ block.settings.subtitle_color }}; font-style: italic;">{{ block.settings.subtitle }}</p>
             {% endif %}
-            <p class="mt-1" style="color: {{ block.settings.body_color }};">{{ block.settings.body }}</p>
+            <p style="color: {{ block.settings.body_color }};">{{ block.settings.body }}</p>
           </div>
         {% endfor %}
       </div>
