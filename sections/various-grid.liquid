@@ -103,3 +103,156 @@
     {% endif %}
   </div>
 </div>
+
+{% schema %}
+{
+  "name": "Various Grid",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "range",
+      "id": "left_image_width",
+      "label": "Left Image Width (%)",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 100
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Heading Icon"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay Connected, Indoors or Out."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "No matter how you watch, listen, or play, your TV should keep up."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_box",
+      "name": "USP Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Width (%)",
+          "min": 10,
+          "max": 100,
+          "default": 50
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Wireless Freedom"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#000000"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "WiFi, Bluetooth & Streaming Support"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle Color",
+          "default": "#666666"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "Ditch the cables and enjoy true wireless convenience."
+        },
+        {
+          "type": "color",
+          "id": "body_color",
+          "label": "Body Color",
+          "default": "#333333"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Various Grid",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
