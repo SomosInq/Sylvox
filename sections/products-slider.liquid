@@ -1,0 +1,198 @@
+{% schema %}
+{
+  "name": "Products Slider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "product_source",
+      "label": "Product Source",
+      "options": [
+        { "value": "related", "label": "Related Products" },
+        { "value": "recent", "label": "Recently Viewed" },
+        { "value": "collection", "label": "Choose Collection" }
+      ],
+      "default": "related"
+    },
+    {
+      "type": "collection",
+      "id": "manual_collection",
+      "label": "Select Collection (if chosen)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show Title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size (px)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#636363"
+    },
+    {
+      "type": "text",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": "0px"
+    },
+    {
+      "type": "text",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": "0px"
+    },
+    {
+      "type": "text",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "default": "0px"
+    },
+    {
+      "type": "text",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "default": "0px"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": "0px"
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "default": "0px"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Slider",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+.section_content_width_standard,
+.section_content_width_full {
+  transition: all 0.3s ease;
+}
+.section_content_width_full {
+  width: 100%;
+}
+.section_content_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+{% endstylesheet %}
+
+{% assign background_style = section.settings.background_image | image_url: width: 1600 %}
+<div class="section_width_{{ section.settings.section_width }}"
+     style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image != blank %}background-image: url('{{ background_style }}'); background-size: cover;{% endif %} padding: {{ section.settings.padding_top }} {{ section.settings.padding_right }} {{ section.settings.padding_bottom }} {{ section.settings.padding_left }}; margin: {{ section.settings.margin_top }} 0 {{ section.settings.margin_bottom }} 0;">
+
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    <div class="product-slider">
+      {% assign products = '' %}
+      {% if section.settings.product_source == 'related' %}
+        {% assign products = product.related_products %}
+      {% elsif section.settings.product_source == 'recent' %}
+        {% assign products = recommendations.products %}
+      {% else %}
+        {% assign products = section.settings.manual_collection.products %}
+      {% endif %}
+
+      <div class="slider{% if section.settings.show_arrows %} show-arrows{% endif %}">
+        {% for prod in products %}
+          <div class="product-card" style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.font_size }}px;">
+            <a href="{{ prod.url }}">
+              {% if section.settings.show_image %}
+                <div class="product-image" style="width: 100%;">
+                  <img src="{{ prod.featured_image | image_url: width: 400 }}" alt="{{ prod.title }}">
+                </div>
+              {% endif %}
+              {% if section.settings.show_title %}
+                <div class="product-title">{{ prod.title }}</div>
+              {% endif %}
+              {% if section.settings.show_price %}
+                <div class="product-price">{{ prod.price | money }}</div>
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
