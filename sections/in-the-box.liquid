@@ -165,7 +165,7 @@
 }
 {% endschema %}
 
-{% stylesheet %}
+{% style %}
 .section_width_standard,
 .section_width_full {
   transition: all 0.3s ease;
@@ -188,9 +188,7 @@
   margin: 0 auto !important;
   width: 90% !important;
 }
-{% endstylesheet %}
 
-{% style %}
 .in-the-box-section {
   background-color: {{ section.settings.background_color }};
   {% if section.settings.background_image != blank %}
@@ -203,13 +201,53 @@
   padding-left: {{ section.settings.padding_left }}px;
   padding-right: {{ section.settings.padding_right }}px;
 }
+
+.in-the-box-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .in-the-box-wrapper {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+.in-the-box-left,
+.in-the-box-right {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .in-the-box-left {
+    width: 33.33%;
+  }
+
+  .in-the-box-right {
+    width: 66.66%;
+  }
+}
+
+.in-the-box-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .in-the-box-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 {% endstyle %}
 
 <div class="in-the-box-section section_width_{{ section.settings.section_width }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }} flex flex-col md:flex-row gap-8 items-start">
+  <div class="section_content_width_{{ section.settings.section_content_width }} in-the-box-wrapper">
 
-    <!-- Left Column -->
-    <div class="w-full md:w-1/3 text-left">
+    <!-- Left Content -->
+    <div class="in-the-box-left">
       {% if section.settings.left_image %}
         <img src="{{ section.settings.left_image | image_url }}" style="width: {{ section.settings.left_image_width }}%;" alt="Main Item">
       {% endif %}
@@ -221,9 +259,9 @@
       </p>
     </div>
 
-    <!-- Right Column -->
-    <div class="w-full md:w-2/3">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-right">
+    <!-- Right Content -->
+    <div class="in-the-box-right">
+      <div class="in-the-box-grid">
         {% for block in section.blocks %}
           <div>
             {% if block.settings.item_image %}
