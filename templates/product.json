@@ -698,7 +698,7 @@
       ],
       "name": "Various Grid",
       "settings": {
-        "bg_color": "#ffffff",
+        "bg_color": "#fafafa",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -708,7 +708,7 @@
         "margin_left": 0,
         "margin_right": 0,
         "left_image": "shopify://shop_images/bf142379eb6346708d8cc63dc75ffe94.mp4.png",
-        "left_image_width": 40,
+        "left_image_width": 100,
         "icon": "shopify://shop_images/Icons_2.png",
         "heading": "Stay Connected, Indoors or Out.",
         "heading_color": "#000000",
@@ -798,6 +798,10 @@
       ],
       "name": "In The Box",
       "settings": {
+        "section_title": "What's In The Box",
+        "section_description": "<p>Here's everything you’ll receive with your order.</p>",
+        "button_label": "Learn More",
+        "button_link": "",
         "section_width": "full",
         "section_content_width": "standard",
         "background_color": "#ffffff",
