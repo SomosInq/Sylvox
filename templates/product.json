@@ -604,6 +604,7 @@
           "type": "accordion",
           "settings": {
             "question": "No Professionals Required",
+            "subtitle": "",
             "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
             "icon": "shopify://shop_images/expand_more.png",
             "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png"
@@ -613,6 +614,7 @@
           "type": "accordion",
           "settings": {
             "question": "5-Second Response Time",
+            "subtitle": "",
             "answer": "Forget slow startup times. The Deck Pro 2.0 powers on in just 5 seconds, so you can start watching without delays.",
             "icon": "shopify://shop_images/expand_more.png",
             "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5_9bbf9670-c207-4c1f-bafc-14e19b4bf3e8.png"
@@ -622,6 +624,7 @@
           "type": "accordion",
           "settings": {
             "question": "60Hz Refresh Rate",
+            "subtitle": "",
             "answer": "Perfect for sports, movies, and gaming. With a 60Hz refresh rate, the Deck Pro 2.0 ensures buttery-smooth motion, reducing lag and blurring.",
             "icon": "shopify://shop_images/expand_more.png",
             "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5-1.png"
@@ -638,6 +641,12 @@
         "section_width": "full",
         "section_content_width": "standard",
         "background_color": "#ffffff",
+        "section_heading": "Set Up in Minutes, Enjoy for Years.",
+        "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
+        "section_title_color": "#000000",
+        "section_description_color": "#000000",
+        "button_text": "Learn More",
+        "button_link": "",
         "title": "Quick & Simple Installation",
         "text": "",
         "text_color": "#ffffff",
