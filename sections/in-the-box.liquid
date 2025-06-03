@@ -5,6 +5,29 @@
   "class": "in-the-box-section",
   "settings": [
     {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "What's In The Box"
+    },
+    {
+      "type": "richtext",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "<p>Here's everything you’ll receive with your order.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
       "type": "select",
       "id": "section_width",
       "label": "Section Width",
@@ -202,15 +225,43 @@
   padding-right: {{ section.settings.padding_right }}px;
 }
 
+.in-the-box-heading {
+  font-size: 28px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.in-the-box-description {
+  font-size: 16px;
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.in-the-box-button {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.in-the-box-button .btn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 24px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
 .in-the-box-wrapper {
   display: flex;
   flex-direction: column;
+  gap: 40px;
 }
 
 @media (min-width: 768px) {
   .in-the-box-wrapper {
     flex-direction: row;
-    gap: 40px;
   }
 }
 
@@ -244,37 +295,53 @@
 {% endstyle %}
 
 <div class="in-the-box-section section_width_{{ section.settings.section_width }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }} in-the-box-wrapper">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
 
-    <!-- Left Content -->
-    <div class="in-the-box-left">
-      {% if section.settings.left_image %}
-        <img src="{{ section.settings.left_image | image_url }}" style="width: {{ section.settings.left_image_width }}%;" alt="Main Item">
-      {% endif %}
-      <h2 style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size }}px;">
-        {{ section.settings.left_title }}
-      </h2>
-      <p style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size | minus: 2 }}px;">
-        {{ section.settings.left_quantity }}
-      </p>
-    </div>
+    {% if section.settings.section_title != blank %}
+      <h2 class="in-the-box-heading">{{ section.settings.section_title }}</h2>
+    {% endif %}
 
-    <!-- Right Content -->
-    <div class="in-the-box-right">
-      <div class="in-the-box-grid">
-        {% for block in section.blocks %}
-          <div>
-            {% if block.settings.item_image %}
-              <img src="{{ block.settings.item_image | image_url }}" style="width: {{ block.settings.item_image_width }}%;" alt="{{ block.settings.item_title }}">
-            {% endif %}
-            <h3 style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size }}px;">
-              {{ block.settings.item_title }}
-            </h3>
-            <p style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size | minus: 2 }}px;">
-              {{ block.settings.item_quantity }}
-            </p>
-          </div>
-        {% endfor %}
+    {% if section.settings.section_description != blank %}
+      <div class="in-the-box-description">{{ section.settings.section_description }}</div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <div class="in-the-box-button">
+        <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_label }}</a>
+      </div>
+    {% endif %}
+
+    <div class="in-the-box-wrapper">
+      <!-- Left Column -->
+      <div class="in-the-box-left">
+        {% if section.settings.left_image %}
+          <img src="{{ section.settings.left_image | image_url }}" style="width: {{ section.settings.left_image_width }}%;" alt="Main Item">
+        {% endif %}
+        <h2 style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size }}px;">
+          {{ section.settings.left_title }}
+        </h2>
+        <p style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size | minus: 2 }}px;">
+          {{ section.settings.left_quantity }}
+        </p>
+      </div>
+
+      <!-- Right Column -->
+      <div class="in-the-box-right">
+        <div class="in-the-box-grid">
+          {% for block in section.blocks %}
+            <div>
+              {% if block.settings.item_image %}
+                <img src="{{ block.settings.item_image | image_url }}" style="width: {{ block.settings.item_image_width }}%;" alt="{{ block.settings.item_title }}">
+              {% endif %}
+              <h3 style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size }}px;">
+                {{ block.settings.item_title }}
+              </h3>
+              <p style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size | minus: 2 }}px;">
+                {{ block.settings.item_quantity }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
 
