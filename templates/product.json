@@ -664,7 +664,7 @@
           "type": "feature_box",
           "settings": {
             "icon": "shopify://shop_images/Icons_2.png",
-            "icon_size": 27,
+            "icon_size": 18,
             "title": "Wireless Freedom",
             "title_color": "#000000",
             "subtitle": "WiFi, Bluetooth & Streaming Support",
@@ -676,26 +676,26 @@
         "feature_box_87hkMh": {
           "type": "feature_box",
           "settings": {
-            "icon": "shopify://shop_images/Icons_2.png",
-            "icon_size": 27,
-            "title": "Wireless Freedom",
+            "icon": "shopify://shop_images/Icons_3.png",
+            "icon_size": 18,
+            "title": "HDMI, USB & AV Inputs",
             "title_color": "#000000",
-            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle": "The Ultimate Plug-and-Play Experience",
             "subtitle_color": "#666666",
-            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body": "Bring your entertainment outdoors. With multiple HDMI and USB ports, TV Tuner, RJ45, AV IN, and Earphone jacks, the Pool Pro 2.0 connects to gaming consoles, sound systems, streaming sticks, and more.",
             "body_color": "#333333"
           }
         },
         "feature_box_9UhAeW": {
           "type": "feature_box",
           "settings": {
-            "icon": "shopify://shop_images/Icons_2.png",
+            "icon": "shopify://shop_images/Icons_4.png",
             "icon_size": 27,
-            "title": "Wireless Freedom",
+            "title": "Expand Your Sound",
             "title_color": "#000000",
-            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle": "Easily Connect External Speakers & Soundbars",
             "subtitle_color": "#666666",
-            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body": "Take your audio to the next level. Whether you prefer Bluetooth speakers or a wired home theater system, Pool Pro 2.0 supports both—so you can customize your sound setup for any occasion.",
             "body_color": "#333333"
           }
         }
