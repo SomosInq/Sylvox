@@ -261,7 +261,7 @@
       ],
       "name": "Icon Grid",
       "settings": {
-        "section_width": "full",
+        "section_width": "standard",
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "parent_title": "Outdoor-Ready Technology, Built to Perform.",
