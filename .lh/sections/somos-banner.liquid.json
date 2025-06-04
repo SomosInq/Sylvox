@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1748607251090,
@@ -52,6 +52,14 @@
                 {
                     "date": 1749037139870,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -158,10 +158,11 @@\n     {% endfor %}\n   </div>\n </div>\n \n+{% schema %}\n {\n-  \"name\": \"USP Accordion\",\n+  \"name\": \"Somos Banner\",\n   \"settings\": [\n     {\n       \"type\": \"select\",\n       \"id\": \"section_width\",\n@@ -306,9 +307,10 @@\n     }\n   ],\n   \"presets\": [\n     {\n-      \"name\": \"USP Accordion\",\n+      \"name\": \"Somos Banner\",\n       \"category\": \"Somos Custom\"\n     }\n   ]\n }\n+{% endschema %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749037246497,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -182,8 +182,18 @@\n         { \"value\": \"standard\", \"label\": \"50% Width\" },\n         { \"value\": \"full\", \"label\": \"Full Width\" }\n       ]\n     },\n+    {\n+  \"type\": \"range\",\n+  \"id\": \"section_height\",\n+  \"label\": \"Section Height\",\n+  \"min\": 200,\n+  \"max\": 1200,\n+  \"step\": 10,\n+  \"default\": 500,\n+  \"unit\": \"px\"\n+},\n     { \"type\": \"color\", \"id\": \"background_color\", \"label\": \"Background Color\", \"default\": \"#ffffff\" },\n     { \"type\": \"image_picker\", \"id\": \"background_image\", \"label\": \"Background Image\" },\n     { \"type\": \"range\", \"id\": \"padding_top\", \"label\": \"Padding Top\", \"min\": 0, \"max\": 100, \"default\": 0, \"unit\": \"px\" },\n     { \"type\": \"range\", \"id\": \"padding_bottom\", \"label\": \"Padding Bottom\", \"min\": 0, \"max\": 100, \"default\": 0, \"unit\": \"px\" },\n"
+                },
+                {
+                    "date": 1749037280429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,8 +54,9 @@\n       background-image: url({{ section.settings.background_image | img_url: 'master' }});\n       background-size: cover;\n       background-position: center;\n     {% endif %}\n+     height: {{ section.settings.section_height }}px;\n     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;\n   \"\n >\n   <div class=\"section_content_width_{{ section.settings.section_content_width }}\" style=\"text-align: {{ section.settings.text_alignment }};\">\n"
                 }
             ],
             "date": 1748607251090,

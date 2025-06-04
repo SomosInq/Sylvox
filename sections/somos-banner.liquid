@@ -55,6 +55,7 @@
       background-size: cover;
       background-position: center;
     {% endif %}
+     height: {{ section.settings.section_height }}px;
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
   "
 >
@@ -183,6 +184,16 @@
         { "value": "full", "label": "Full Width" }
       ]
     },
+    {
+  "type": "range",
+  "id": "section_height",
+  "label": "Section Height",
+  "min": 200,
+  "max": 1200,
+  "step": 10,
+  "default": 500,
+  "unit": "px"
+},
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
