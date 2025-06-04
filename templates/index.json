@@ -58,116 +58,30 @@
     },
     "tab_products_i4fR76": {
       "type": "tab-products",
-      "blocks": {
-        "tab_MjRrMX": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Outdoor TV",
-            "title": "Outdoor TV",
-            "heading_tag": "h2",
-            "inline_title": "",
-            "description": "<p>More Time Outdoors. More Moments Together.</p>",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": "rv-tv"
-          }
-        },
-        "tab_eAADP6": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Kitchen TV",
-            "title": "Kitchen TV",
-            "heading_tag": "h2",
-            "inline_title": "",
-            "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": ""
-          }
-        },
-        "tab_8BH7qW": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "RV TV",
-            "title": "RV TV",
-            "heading_tag": "h2",
-            "inline_title": "",
-            "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": ""
-          }
-        },
-        "tab_6xwwW6": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Bathroom TV",
-            "title": "Bathroom TV",
-            "heading_tag": "h2",
-            "inline_title": "",
-            "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": ""
-          }
-        },
-        "tab_d48U69": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Commercial TV",
-            "title": "Commercial TV",
-            "heading_tag": "h2",
-            "inline_title": "",
-            "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": ""
-          }
-        },
-        "tab_zY9MrJ": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Accessories",
-            "title": "Accessories",
-            "heading_tag": "h2",
-            "inline_title": "",
-            "description": "",
-            "content_max_width": 780,
-            "text_color": "#ffffff",
-            "image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c.jpg",
-            "text_align": "center",
-            "text_vertical": "middle",
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "tab_MjRrMX",
-        "tab_eAADP6",
-        "tab_8BH7qW",
-        "tab_6xwwW6",
-        "tab_d48U69",
-        "tab_zY9MrJ"
-      ],
-      "disabled": true,
       "settings": {
-        "full_width": false,
-        "tabs_position": 44
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "height_desktop": 600,
+        "show_header": true,
+        "header_text": "Welcome Title",
+        "header_tag": "h2",
+        "header_color": "#000000",
+        "header_weight": "bold",
+        "header_align": "center",
+        "header_richtext": "",
+        "custom_class": "",
+        "custom_id": "",
+        "json_blocks": ""
       }
     },
     "info_section_JEKir6": {
