@@ -1,215 +1,160 @@
-{{ 'section-tab-products.css' | asset_url | stylesheet_tag }}
-
-<div class="tab-products section section-full text-custom" data-section-id="{{ section.id }}">
-  <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
-    {% for block in section.blocks %}
-      <div class="tab-product {% if forloop.first %}active{% endif %}" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
-        {{ block.settings.tab_label }}
-      </div>
-    {% endfor %}
-  </div>
-
-  {% for block in section.blocks %}
-    <div class="tab-product-content {% if forloop.first %}active{% endif %}" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
-      <div class="tab-product-content__banner" style="position: relative;">
-        <div class="content-over-media {% if section.settings.full_width %}full-bleed{% endif %}">
-          {% if block.settings.overlay_image %}
-            <div class="overlay-image">
-              <img src="{{ block.settings.overlay_image | image_url }}" alt="Overlay">
-            </div>
-          {% endif %}
-
-          {% if block.settings.image != blank %}
-            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" style="width: 100%;">
-          {% else %}
-            {{ 'lifestyle-1' | placeholder_svg_tag }}
-          {% endif %}
-
-          <div class="tab-product-content__info place-{{ block.settings.text_align }} align-{{ block.settings.text_vertical }}"
-               style="--tab-text-color: {{ block.settings.text_color }}; --tab-content-max-width: {{ block.settings.content_max_width }}px;">
-            <div class="tab-product-content__info-title" style="display: flex; flex-direction: column;">
-              <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
-              {% if block.settings.inline_title != blank %}
-                <span class="text-base font-medium">{{ block.settings.inline_title }}</span>
-              {% endif %}
-            </div>
-            <div class="tab-product-content__info-dec">
-              {{ block.settings.description }}
-            </div>
-
-            <!-- Filter buttons with icons -->
-            <div class="product-filter-buttons">
-              <button class="filter-btn active" data-filter="all">
-                {% if section.settings.filter_icon_all %}
-                  <img src="{{ section.settings.filter_icon_all | image_url }}" alt="All" />
-                {% endif %}
-                All
-              </button>
-              <button class="filter-btn" data-filter="full-sun">
-                {% if section.settings.filter_icon_full_sun %}
-                  <img src="{{ section.settings.filter_icon_full_sun | image_url }}" alt="Full Sun" />
-                {% endif %}
-                Full Sun
-              </button>
-              <button class="filter-btn" data-filter="partial-sun">
-                {% if section.settings.filter_icon_partial_sun %}
-                  <img src="{{ section.settings.filter_icon_partial_sun | image_url }}" alt="Partial Sun" />
-                {% endif %}
-                Partial Sun
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Featured Products Grid -->
-      <div class="tab-products-grid">
-        {% if block.settings.collection %}
-  {% for product in block.settings.collection.products %}
-    <div class="product-card {{ product.tags | join: ' ' | downcase }}">
-      <a href="{{ product.url }}">
-        <img src="{{ product.featured_image | image_url: '600x600' }}" alt="{{ product.title }}">
-        <h4>{{ product.title }}</h4>
-        <p>From {{ product.price | money }}</p>
-      </a>
-    </div>
-  {% endfor %}
-{% endif %}
-            {% comment %} <div class="product-card {{ product.tags | join: ' ' | downcase }}">
-              <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | image_url: '600x600' }}" alt="{{ product.title }}">
-                <h4>{{ product.title }}</h4>
-                <p>From {{ product.price | money }}</p>
-              </a>
-            </div>
-          {% endfor %}
-        {% endif %} {% endcomment %}
-      </div>
-    </div>
-  {% endfor %}
-</div>
-
-<script>
-  function initializeTabbedSection(sectionId) {
-    const section = document.querySelector(`[data-section-id='${sectionId}']`);
-    if (!section) return;
-
-    const tabs = section.querySelectorAll('.tab-product');
-    const contents = section.querySelectorAll('.tab-product-content');
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', function () {
-        const tabId = tab.getAttribute('data-tab-id');
-        tabs.forEach((t) => t.classList.remove('active'));
-        contents.forEach((c) => c.classList.remove('active'));
-        tab.classList.add('active');
-        section.querySelector(`#tab-product-content-${sectionId}-${tabId}`).classList.add('active');
-      });
-    });
-
-    if (tabs.length > 0) {
-      tabs[0].classList.add('active');
-      contents[0].classList.add('active');
-    }
-
-    // Filtering logic
-    section.querySelectorAll(".filter-btn").forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const filter = this.dataset.filter;
-        const container = this.closest(".tab-product-content");
-
-        container.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-        this.classList.add("active");
-
-        container.querySelectorAll(".product-card").forEach(card => {
-          if (filter === "all" || card.classList.contains(filter)) {
-            card.style.display = "block";
-          } else {
-            card.style.display = "none";
-          }
-        });
-      });
-    });
+<style>
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.tab-products').forEach((section) => {
-      initializeTabbedSection(section.getAttribute('data-section-id'));
-    });
-  });
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
 
-  document.addEventListener('shopify:section:load', function (event) {
-    const section = event.target.querySelector('.tab-products');
-    if (section) {
-      const sectionId = section.getAttribute('data-section-id');
-      initializeTabbedSection(sectionId);
-    }
-  });
-</script>
+  .hidden-desktop { display: none !important; }
+  .hidden-tablet { display: none !important; }
+  .hidden-mobile { display: none !important; }
+
+  @media (max-width: 1024px) {
+    .hidden-desktop { display: none !important; }
+    .show-tablet { display: block !important; }
+  }
+  @media (max-width: 768px) {
+    .hidden-mobile { display: none !important; }
+    .show-mobile { display: block !important; }
+  }
+</style>
+
+<div id="shopify-section-{{ section.id }}"
+     class="section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }}
+     {% if section.settings.hide_desktop %}hidden-desktop{% endif %}
+     {% if section.settings.hide_tablet %}hidden-tablet{% endif %}
+     {% if section.settings.hide_mobile %}hidden-mobile{% endif %}
+     {{ section.settings.custom_class }}"
+     style="
+     {% if section.settings.background_type == 'image' and section.settings.background_image != blank %}
+       background-image: url({{ section.settings.background_image | image_url }});
+       background-size: cover;
+       background-repeat: no-repeat;
+     {% else %}
+       background-color: {{ section.settings.background_color }};
+     {% endif %}
+     padding-top: {{ section.settings.padding_top }}px;
+     padding-bottom: {{ section.settings.padding_bottom }}px;
+     padding-left: {{ section.settings.padding_left }}px;
+     padding-right: {{ section.settings.padding_right }}px;
+     min-height: {{ section.settings.height_desktop }}px;
+     "
+     data-section-id="{{ section.id }}"
+     id="{{ section.settings.custom_id }}">
+
+  {% if section.settings.show_header %}
+    <div class="section-header">
+      <{{ section.settings.header_tag }} style="color: {{ section.settings.header_color }}; text-align: {{ section.settings.header_align }}; font-weight: {{ section.settings.header_weight }};">
+        {{ section.settings.header_text }}
+      </{{ section.settings.header_tag }}>
+      <div class="rich-text">{{ section.settings.header_richtext }}</div>
+    </div>
+  {% endif %}
+
+</div>
 
 {% schema %}
 {
-  "name": "Tab Products",
+      "name": "Tab Products",
+  "class": "custom-tab-section",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Filter Icons"
-    },
-    {
-      "type": "image_picker",
-      "id": "filter_icon_all",
-      "label": "All Filter Icon"
-    },
-    {
-      "type": "image_picker",
-      "id": "filter_icon_full_sun",
-      "label": "Full Sun Filter Icon"
-    },
-    {
-      "type": "image_picker",
-      "id": "filter_icon_partial_sun",
-      "label": "Partial Sun Filter Icon"
-    },
-    {
-      "type": "range",
-      "id": "tabs_position",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "Tab vertical position",
-      "default": 30
-    }
-  ],
-  "blocks": [
-    {
-      "type": "tab",
-      "name": "Tab",
-      "settings": [
-        { "type": "text", "id": "tab_label", "label": "Tab Label" },
-        { "type": "text", "id": "title", "label": "Heading" },
-        { "type": "select", "id": "heading_tag", "label": "Heading size", "options": [ { "value": "h2", "label": "Large" }, { "value": "h3", "label": "Medium" } ], "default": "h2" },
-        { "type": "text", "id": "inline_title", "label": "Product inline title", "default": "Series" },
-        { "type": "richtext", "id": "description", "label": "Description" },
-        { "type": "range", "id": "content_max_width", "label": "Content maximum width", "min": 400, "max": 1200, "step": 20, "unit": "px", "default": 780 },
-        { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
-        { "type": "image_picker", "id": "image", "label": "Banner Image" },
-        { "type": "image_picker", "id": "overlay_image", "label": "Top Right Overlay Image" },
-        { "type": "select", "id": "text_align", "label": "Horizontal alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "center" },
-        { "type": "select", "id": "text_vertical", "label": "Vertical alignment", "options": [ { "value": "top", "label": "Top" }, { "value": "middle", "label": "Middle" }, { "value": "bottom", "label": "Bottom" } ], "default": "middle" },
-        { "type": "collection", "id": "collection", "label": "Collection" }
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
       ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "default": "color",
+      "options": [
+        { "value": "color", "label": "Color" },
+        { "value": "image", "label": "Image" }
+      ]
+    },
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop", "default": false },
+    { "type": "checkbox", "id": "hide_tablet", "label": "Hide on Tablet", "default": false },
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile", "default": false },
+
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 200, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 200, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 200, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 200, "step": 5, "default": 0 },
+
+    { "type": "range", "id": "height_desktop", "label": "Height (Desktop)", "min": 0, "max": 1500, "step": 20, "default": 600 },
+
+    { "type": "checkbox", "id": "show_header", "label": "Show Header", "default": true },
+    { "type": "text", "id": "header_text", "label": "Header Text", "default": "Welcome Title" },
+    {
+      "type": "select",
+      "id": "header_tag",
+      "label": "Heading Tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" },
+        { "value": "p", "label": "Body Text" },
+        { "value": "i", "label": "Italic" }
+      ]
+    },
+    { "type": "color", "id": "header_color", "label": "Header Color", "default": "#000000" },
+    { "type": "select", "id": "header_weight", "label": "Header Weight", "default": "bold", "options": [ { "value": "normal", "label": "Normal" }, { "value": "bold", "label": "Bold" }, { "value": "lighter", "label": "Lighter" } ] },
+    { "type": "select", "id": "header_align", "label": "Header Alignment", "default": "center", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
+    { "type": "richtext", "id": "header_richtext", "label": "Header Rich Text" },
+
+    { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
+    { "type": "text", "id": "custom_id", "label": "Custom ID" },
+    {
+      "type": "textarea",
+      "id": "json_blocks",
+      "label": "Custom JSON Blocks",
+      "info": "Use this to define dynamic structures like card data."
     }
   ],
   "presets": [
     {
-      "name": "Tab products",
+      "name": "Tab Products",
       "category": "Somos Custom"
     }
   ]
