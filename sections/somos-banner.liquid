@@ -57,6 +57,9 @@
     {% endif %}
      height: {{ section.settings.section_height }}px;
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+     display: flex;
+    flex-direction: column;
+    justify-content: {{ section.settings.vertical_alignment }};
   "
 >
   <div class="section_content_width_{{ section.settings.section_content_width }}" style="text-align: {{ section.settings.text_alignment }};">
@@ -209,7 +212,18 @@
       { "value": "left", "label": "Left" },
       { "value": "center", "label": "Center" },
       { "value": "right", "label": "Right" }
-    ]}
+    ]},
+    {
+  "type": "select",
+  "id": "vertical_alignment",
+  "label": "Vertical Alignment",
+  "default": "center",
+  "options": [
+    { "value": "flex-start", "label": "Top" },
+    { "value": "center", "label": "Center" },
+    { "value": "flex-end", "label": "Bottom" }
+  ]
+}
   ],
   "blocks": [
     {
