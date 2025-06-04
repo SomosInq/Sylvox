@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1748513151997,
@@ -40,6 +40,10 @@
                 {
                     "date": 1748526952362,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,77 +131,10 @@\n   </div>\n </div>\n \n <style>\n-.section_width_standard,\n-.section_width_full {\n-transition: all 0.3s ease;\n-}\n-.section_width_full {\n-width: 100%;\n-}\n \n-.section_width_standard {\n+#shopify-section-{{ section.id }} .section_width_standard {\n margin: 0 auto !important;\n width: 90%;\n }\n-.box-section-wrapper {\n-  padding: 60px 20px;\n-  background-color: #fff;\n-  text-align: center;\n-}\n-\n-.box-section-title {\n-  font-size: 2rem;\n-  margin-bottom: 10px;\n-}\n-\n-.box-section-description {\n-  font-size: 1rem;\n-  color: #666;\n-  margin-bottom: 40px;\n-  max-width: 600px;\n-  margin-left: auto;\n-  margin-right: auto;\n-}\n-\n-.box-grid {\n-  display: grid;\n-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n-  gap: 30px;\n-}\n-\n-.box-item {\n-  max-width: 300px;\n-  margin: 0 auto;\n-}\n-\n-.box-icon {\n-  display: block;\n-  height: 50px;\n-  margin: 0 auto 15px auto;\n-}\n-\n-.box-title {\n-  font-size: 1.1rem;\n-  margin-bottom: 10px;\n-  color: #000;\n-}\n-\n-.box-text {\n-  font-size: 0.9rem;\n-  color: #666;\n-}\n-\n-.box-button-wrapper {\n-  margin-top: 40px;\n-}\n-\n-.box-button {\n-  display: inline-block;\n-  padding: 12px 24px;\n-  background-color: #000;\n-  color: #fff;\n-  text-decoration: none;\n-  border-radius: 4px;\n-}\n </style>\n"
+                },
+                {
+                    "date": 1749025208762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,8 @@\n   </div>\n </div>\n \n <style>\n-\n #shopify-section-{{ section.id }} .section_width_standard {\n margin: 0 auto !important;\n width: 90%;\n }\n"
                 }
             ],
             "date": 1748513151997,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 69,
+            "activePatchIndex": 70,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -284,6 +284,10 @@
                 {
                     "date": 1748964274556,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1214,8 +1214,15 @@\n   .left   { align-items: flex-start; text-align: left; }\n   .center { align-items: center; text-align: center; }\n   .right  { align-items: flex-end; text-align: right; }\n \n+   .aligntop    { align-items: center; justify-content: flex-start; }\n+  .alignmiddle { align-items: center; justify-content: center; }\n+  .alignbottom { align-items: center; justify-content: flex-end; }\n+  .alignleft   { align-items: flex-start;  }\n+  .aligncenter { align-items: center;  }\n+  .aligright  { align-items: flex-end;  }\n+\n   .somos-slider__arrows {\n     position: absolute;\n     top: 50%;\n     width: 100%;\n"
+                },
+                {
+                    "date": 1749025222146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -102,11 +102,23 @@\n \n .section_width_standard {\n margin-left: auto !important;\n margin-right: auto !important;\n-width: 90%;\n+width: 82%;\n }\n \n+.section_content_width_standard,\n+.section_content_width_full {\n+  transition: all 0.3s ease;\n+}\n+.section_content_width_full {\n+  width: 100%;\n+}\n+.section_content_width_standard {\n+  margin: 0 auto !important;\n+  width: 90% !important;\n+}\n+\n /* Product Slider */\n  .collection-tabs-section {\n     display: grid;\n     grid-template-columns: 1fr 2fr;\n"
                 }
             ],
             "date": 1748526641710,
