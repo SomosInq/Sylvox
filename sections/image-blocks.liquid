@@ -1,75 +1,118 @@
-{% schema %}
+<style>
+  .section_width_standard, .section_width_full { transition: all 0.3s ease; }
+  .section_width_full { width: 100%; }
+  .section_width_standard { margin: 0 auto !important; width: 90% !important; }
+
+  .section_content_width_standard, .section_content_width_full { transition: all 0.3s ease; }
+  .section_content_width_full { width: 100%; }
+  .section_content_width_standard { margin: 0 auto !important; width: 90% !important; }
+
+  .hidden-desktop { display: none !important; }
+  @media (max-width: 1024px) { .hidden-tablet { display: none !important; } }
+  @media (max-width: 768px) { .hidden-mobile { display: none !important; } }
+</style>
+
+<div
+  class="custom-section section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }}"
+  id="{{ section.settings.section_id }}"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | image_url }});{% endif %}
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    {% if section.settings.height_desktop %}@media(min-width:1025px){height:{{ section.settings.height_desktop }}px;} {% endif %}
+    {% if section.settings.height_tablet %}@media(min-width:768px) and (max-width:1024px){height:{{ section.settings.height_tablet }}px;} {% endif %}
+    {% if section.settings.height_mobile %}@media(max-width:767px){height:{{ section.settings.height_mobile }}px;} {% endif %}
+  "
+  {% if section.settings.hide_desktop %}class="hidden-desktop"{% endif %}
+  {% if section.settings.hide_tablet %}class="hidden-tablet"{% endif %}
+  {% if section.settings.hide_mobile %}class="hidden-mobile"{% endif %}
+>
+  {% if section.settings.section_title != blank %}
+    <h2 style="text-align: {{ section.settings.title_alignment }};">{{ section.settings.section_title }}</h2>
+  {% endif %}
+  {% if section.settings.section_description != blank %}
+    <div style="text-align: {{ section.settings.text_alignment }};">
+      {{ section.settings.section_description }}
+    </div>
+  {% endif %}
+
+  <div class="outdoor-scenario-grid">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'scenario' %}
+          <a href="{{ block.settings.link }}" class="outdoor-box">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url }}"
+                loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+                style="width:{{ block.settings.image_width }}%; aspect-ratio:{{ block.settings.image_ratio }};"
+                class="image-hover-{{ block.settings.image_hover_effect }}"
+              >
+            {% endif %}
+            <div style="background-color: {{ block.settings.overlay_color }}; opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};">
+              <h{{ block.settings.text_tag }} style="color: {{ block.settings.text_color }}; font-weight: {{ block.settings.text_weight }}; text-align: {{ block.settings.text_alignment }};">
+                {{ block.settings.title }}
+              </h{{ block.settings.text_tag }}>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          </a>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
 {
   "name": "Image Blocks",
   "settings": [
-     {
-  "type": "select",
-  "id": "section_width",
-  "label": "Section Width",
-  "default": "standard",
-  "options": [
-    {
-      "value": "standard",
-      "label": "50% Width"
-    },
-    {
-      "value": "full",
-      "label": "Full Width"
-    }
-  ]
-},
-    {
-      "type": "text",
-      "id": "section_title",
-      "label": "Section Title",
-      "default": "Shop by Outdoor Scenarios"
-    },
-    {
-      "type": "textarea",
-      "id": "section_description",
-      "label": "Section Description",
-      "default": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors."
-    },
-    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop" },
+    { "type": "checkbox", "id": "hide_tablet", "label": "Hide on Tablet" },
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile" },
+    { "type": "text", "id": "section_title", "label": "Section Title" },
+    { "type": "richtext", "id": "section_description", "label": "Section Description" },
+    { "type": "select", "id": "title_alignment", "label": "Title Alignment", "default": "center", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
+    { "type": "select", "id": "text_alignment", "label": "Text Alignment", "default": "center", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "text", "id": "section_id", "label": "Section ID (for anchors)" },
+    { "type": "text", "id": "custom_class", "label": "Custom Class" },
+    { "type": "range", "id": "height_desktop", "label": "Desktop Height", "min": 0, "max": 2000, "step": 10, "default": 0, "unit": "px" },
+    { "type": "range", "id": "height_tablet", "label": "Tablet Height", "min": 0, "max": 2000, "step": 10, "default": 0, "unit": "px" },
+    { "type": "range", "id": "height_mobile", "label": "Mobile Height", "min": 0, "max": 2000, "step": 10, "default": 0, "unit": "px" }
   ],
   "blocks": [
     {
       "type": "scenario",
       "name": "Scenario Tab",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Scenario Image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Scenario Title",
-          "default": "By the Pool"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Scenario Description",
-          "default": "Enjoy seamless 4K gaming like never before."
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        }
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "range", "id": "image_width", "label": "Image Width %", "min": 10, "max": 100, "step": 5, "default": 100 },
+        { "type": "select", "id": "image_ratio", "label": "Image Ratio", "default": "1 / 1", "options": [ { "value": "1 / 1", "label": "Square" }, { "value": "16 / 9", "label": "Landscape" }, { "value": "9 / 16", "label": "Portrait" } ] },
+        { "type": "checkbox", "id": "lazy_load", "label": "Lazy Load", "default": true },
+        { "type": "select", "id": "image_hover_effect", "label": "Hover Effect", "default": "none", "options": [ { "value": "none", "label": "None" }, { "value": "zoom", "label": "Zoom" }, { "value": "grayscale", "label": "Grayscale" }, { "value": "fade", "label": "Fade" } ] },
+        { "type": "color", "id": "overlay_color", "label": "Overlay Color", "default": "#000000" },
+        { "type": "range", "id": "overlay_opacity", "label": "Overlay Opacity (%)", "min": 0, "max": 100, "step": 5, "default": 50 },
+        { "type": "select", "id": "text_tag", "label": "Heading Type", "default": "h3", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }, { "value": "h5", "label": "H5" }, { "value": "h6", "label": "H6" }, { "value": "body", "label": "Body" }, { "value": "italic", "label": "Italic" } ] },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
+        { "type": "select", "id": "text_weight", "label": "Font Weight", "default": "400", "options": [ { "value": "300", "label": "Light" }, { "value": "400", "label": "Normal" }, { "value": "700", "label": "Bold" } ] },
+        { "type": "select", "id": "text_alignment", "label": "Text Alignment", "default": "center", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] }
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 12,
   "presets": [
     {
       "name": "Image Blocks",
@@ -77,25 +120,3 @@
     }
   ]
 }
-{% endschema %}
-
-<div class="outdoor-scenario-section section_width_{{ section.settings.section_width }} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
-  <h2>{{ section.settings.section_title }}</h2>
-  <p>{{ section.settings.section_description }}</p>
-
-  <div class="outdoor-scenario-grid">
-    {% for block in section.blocks %}
-      {% if block.type == 'scenario' %}
-        <a href="{{ block.settings.link }}" class="outdoor-box">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}">
-          {% endif %}
-          <div class="outdoor-box-overlay">
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.description }}</p>
-          </div>
-        </a>
-      {% endif %}
-    {% endfor %}
-  </div>
-</div>
