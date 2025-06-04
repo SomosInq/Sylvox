@@ -70,7 +70,7 @@
       "settings": {
         "main_menu_link_list": "header-menu",
         "hover_menu": true,
-        "main_menu_alignment": "left",
+        "main_menu_alignment": "left-center",
         "mega_products": true,
         "header_sticky": true,
         "header_footer_menu": true,
