@@ -58,9 +58,35 @@
     },
     "tab_products_i4fR76": {
       "type": "tab-products",
+      "blocks": {
+        "tab_ajBwUM": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "label",
+            "title": "heading",
+            "heading_tag": "h2",
+            "inline_title": "Series",
+            "description": "<p>desc</p>",
+            "content_max_width": 780,
+            "text_color": "#000000",
+            "image": "shopify://shop_images/index_image.webp",
+            "product": "sylvox-official-extended-warranty-for-deck-pro-65-2-years-total-3-years",
+            "product_title": "New Nano AI",
+            "product_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small_webp.png",
+            "product_2": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
+            "product_title_2": "New Nano AI",
+            "featured_text_color": "",
+            "background": "",
+            "btn_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_ajBwUM"
+      ],
       "settings": {
-        "section_width": "standard",
-        "section_content_width": "standard",
+        "section_width": "full",
+        "section_content_width": "full",
         "background_type": "color",
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
@@ -81,7 +107,12 @@
         "header_richtext": "",
         "custom_class": "",
         "custom_id": "",
-        "json_blocks": ""
+        "json_blocks": "",
+        "tabs_position": 42,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "enable_parallax": false
       }
     },
     "info_section_JEKir6": {
