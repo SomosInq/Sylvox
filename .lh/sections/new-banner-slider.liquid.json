@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 15,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -68,6 +68,26 @@
                 {
                     "date": 1748599743650,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,9 +144,9 @@\n \n <section class=\"outdoor-carousel-section\">\n   <div class=\"outdoor-carousel-text section_width_{{ section.settings.section_width }} {{ section.settings.text_alignment }}\">\n     <div class=\"small-heading\">{{ section.settings.heading }}</div>\n-    <div class=\"main-heading\">{{ section.settings.subheading }}</div>\n+    <h2>{{ section.settings.subheading }}</h2>\n   </div>\n \n   <div class=\"carousel-wrapper\">\n     <div class=\"flickity-carousel\"\n"
+                },
+                {
+                    "date": 1749130697891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,18 @@\n       ]\n     },\n     {\n       \"type\": \"select\",\n+      \"id\": \"section_content_width\",\n+      \"label\": \"Content Width\",\n+      \"default\": \"standard\",\n+      \"options\": [\n+        { \"value\": \"standard\", \"label\": \"50% Width\" },\n+        { \"value\": \"full\", \"label\": \"Full Width\" }\n+      ]\n+    },\n+    {\n+      \"type\": \"select\",\n       \"id\": \"text_alignment\",\n       \"label\": \"Text Alignment\",\n       \"options\": [\n         { \"value\": \"left\", \"label\": \"Left\" },\n@@ -170,9 +180,9 @@\n       {% endfor %}\n     </div>\n \n     <!-- Custom dots + arrows wrapper -->\n-<div class=\"dots-arrows-wrapper section_width_{{ section.settings.section_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n+<div class=\"dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n   <!-- Dots on the left -->\n   <div class=\"carousel-dots-container\">\n     <div class=\"carousel-dots\"></div>\n   </div>\n"
+                },
+                {
+                    "date": 1749130724828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -151,10 +151,10 @@\n </style>\n {% endstyle %}\n \n \n-<section class=\"outdoor-carousel-section\">\n-  <div class=\"outdoor-carousel-text section_width_{{ section.settings.section_width }} {{ section.settings.text_alignment }}\">\n+<section class=\"outdoor-carousel-section section_width_{{ section.settings.section_width }}\">\n+  <div class=\"outdoor-carousel-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}\">\n     <div class=\"small-heading\">{{ section.settings.heading }}</div>\n     <h2>{{ section.settings.subheading }}</h2>\n   </div>\n \n"
+                },
+                {
+                    "date": 1749130927162,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -157,9 +157,9 @@\n     <div class=\"small-heading\">{{ section.settings.heading }}</div>\n     <h2>{{ section.settings.subheading }}</h2>\n   </div>\n \n-  <div class=\"carousel-wrapper\">\n+  <div class=\"carousel-wrapper section_width_{{ section.settings.section_width }}\">\n     <div class=\"flickity-carousel\"\n          data-flickity='{\n            \"wrapAround\": true,\n            \"imagesLoaded\": true,\n"
+                },
+                {
+                    "date": 1749130981281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -179,8 +179,11 @@\n         </div>\n       {% endfor %}\n     </div>\n \n+\n+  </div>\n+  \n     <!-- Custom dots + arrows wrapper -->\n <div class=\"dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n   <!-- Dots on the left -->\n   <div class=\"carousel-dots-container\">\n@@ -200,10 +203,8 @@\n       </div>\n     </div>\n   {% endif %}\n </div>\n-\n-  </div>\n </section>\n \n \n {% javascript %}\n"
+                },
+                {
+                    "date": 1749131562930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -157,9 +157,9 @@\n     <div class=\"small-heading\">{{ section.settings.heading }}</div>\n     <h2>{{ section.settings.subheading }}</h2>\n   </div>\n \n-  <div class=\"carousel-wrapper section_width_{{ section.settings.section_width }}\">\n+  <div class=\"carousel-wrapper\">\n     <div class=\"flickity-carousel\"\n          data-flickity='{\n            \"wrapAround\": true,\n            \"imagesLoaded\": true,\n@@ -179,11 +179,8 @@\n         </div>\n       {% endfor %}\n     </div>\n \n-\n-  </div>\n-  \n     <!-- Custom dots + arrows wrapper -->\n <div class=\"dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 16px;\">\n   <!-- Dots on the left -->\n   <div class=\"carousel-dots-container\">\n@@ -203,8 +200,10 @@\n       </div>\n     </div>\n   {% endif %}\n </div>\n+\n+  </div>\n </section>\n \n \n {% javascript %}\n"
                 }
             ],
             "date": 1748527236205,

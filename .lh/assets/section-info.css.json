@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1748592784908,
@@ -20,6 +20,10 @@
                 {
                     "date": 1748593004117,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n   background-color: var(--info-section-bg);\n   color: var(--info-section-text-color);\n }\n \n-.button {\n+.info-section .button {\n   display: flex;\n padding: 15px 24px;\n justify-content: center;\n align-items: center;\n@@ -32,8 +32,13 @@\n   border-radius: 9999px;\n background: var(--Mid-Green, #336256);\n }\n \n+.info-section .button-icon {\n+  display: inline-flex;\n+  align-items: center;\n+}\n+\n .info-section-wrapper {\n   display: flex;\n   justify-content: space-between;\n   align-items: center;\n"
+                },
+                {
+                    "date": 1749126582540,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n }\n \n .info-section .button {\n   display: flex;\n-padding: 15px 24px;\n+padding: 10px 20px;\n justify-content: center;\n align-items: center;\n gap: 10px;\n   border-radius: 9999px;\n"
                 }
             ],
             "date": 1748592784908,

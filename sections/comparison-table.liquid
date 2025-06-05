@@ -12,12 +12,12 @@
 ">
   <div class="container text-{{ section.settings.text_alignment }} {{ section.settings.section_width }}">
     {% if section.settings.title != blank %}
-      <h2 style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.title_size }}px;">
+      <h2 style="color: {{ section.settings.text_color }};">
         {{ section.settings.title }}
       </h2>
     {% endif %}
     {% if section.settings.description != blank %}
-      <div style="color: {{ section.settings.text_color }}; font-size: {{ section.settings.text_size }}px;">
+      <div style="color: {{ section.settings.text_color }};">
         {{ section.settings.description }}
       </div>
     {% endif %}
@@ -67,7 +67,7 @@
       {% for i in (1..max_rows) %}
         {% assign heading_key = 'heading_' | append: i %}
         {% if section.settings[heading_key] != blank %}
-          <div class="head" style="display: flex; align-items: center;"><strong>{{ section.settings[heading_key] }}</strong></div>
+          <div class="head" style="display: flex; align-items: center;">{{ section.settings[heading_key] }}</div>
           {% for block in section.blocks %}
             {% assign value_key = 'value_' | append: i %}
             {% assign image_key = 'value_image_' | append: i %}
@@ -95,45 +95,65 @@
       {% endif %}
     {% endfor %}
 
-    {% if row_count > 4 %}
-      <div style="text-align: center; margin-top: 1rem;">
-        <button onclick="toggleSpecs()" id="specToggleBtn" style="background: none; border: none; cursor: pointer;">
-          <span>SEE ALL SPECS</span>
-          <span id="toggleArrow">▼</span>
-        </button>
-      </div>
+    {% if section.settings.show_see_all_specs and row_count > 4 %}
+  <div class="see-all" style="text-align: center;">
 
-      <script>
-        function toggleSpecs() {
-          const btn = document.getElementById('specToggleBtn');
-          const arrow = document.getElementById('toggleArrow');
-          const rows = document.querySelectorAll('.comparison-values > .head, .comparison-values > .table-value');
-          const isHidden = btn.classList.toggle('expanded');
-
-          rows.forEach((row, index) => {
-            if (index >= 7 * {{ section.blocks.size | plus: 1 }}) {
-              row.style.display = isHidden ? 'grid' : 'none';
-            }
-          });
-
-          arrow.textContent = isHidden ? '▲' : '▼';
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-          toggleSpecs();
-        });
-      </script>
+<button onclick="toggleSpecs()" id="specToggleBtn" style="background: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5em;">
+  <span>SEE ALL SPECS</span>
+  <span id="toggleArrow">
+    {% if section.settings.arrow_icon_down %}
+      <img id="arrowImage" src="{{ section.settings.arrow_icon_down | image_url }}" alt="Toggle arrow" style="height: 1em; transition: transform 0.3s ease;">
+    {% else %}
+      ▼
     {% endif %}
+  </span>
+</button>
+  </div>
+
+  <script>
+  function toggleSpecs() {
+    const btn = document.getElementById('specToggleBtn');
+    const arrowImage = document.getElementById('arrowImage');
+    const arrowSpan = document.getElementById('toggleArrow');
+    const rows = document.querySelectorAll('.comparison-values > .head, .comparison-values > .table-value');
+    const isExpanded = btn.classList.toggle('expanded');
+
+    rows.forEach((row, index) => {
+      if (index >= 7 * {{ section.blocks.size | plus: 1 }}) {
+        row.style.display = isExpanded ? 'grid' : 'none';
+      }
+    });
+
+    // Rotate the image or fallback to text
+    {% if section.settings.arrow_icon_down %}
+      if (arrowImage) {
+        arrowImage.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
+    {% else %}
+      arrowSpan.textContent = isExpanded ? '▲' : '▼';
+    {% endif %}
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    toggleSpecs();
+  });
+</script>
+
+{% endif %}
+
 
     <!-- View All Comparisons Link -->
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="{{ section.settings.view_all_url }}" style="display: inline-flex; align-items: center; gap: 0.5em;">
-        <span>{{ section.settings.view_all_text }}</span>
-        {% if section.settings.view_all_icon %}
-          <img src="{{ section.settings.view_all_icon | image_url }}" style="height: 1em;" alt="icon">
-        {% endif %}
-      </a>
-    </div>
+    {% if section.settings.show_view_all_comparisons %}
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ section.settings.view_all_url }}" style="display: inline-flex; align-items: center; gap: 0.5em;">
+      <span>{{ section.settings.view_all_text }}</span>
+      {% if section.settings.view_all_icon %}
+        <img src="{{ section.settings.view_all_icon | image_url }}" style="height: 1em;" alt="icon">
+      {% endif %}
+    </a>
+  </div>
+{% endif %}
+
 
   </div>
 </div>
@@ -176,22 +196,6 @@
       "type": "color",
       "id": "button_text_color",
       "label": "Button Text Color"
-    },
-    {
-      "type": "range",
-      "id": "title_size",
-      "label": "Title Font Size",
-      "min": 16,
-      "max": 48,
-      "default": 28
-    },
-    {
-      "type": "range",
-      "id": "text_size",
-      "label": "Text Font Size",
-      "min": 12,
-      "max": 30,
-      "default": 16
     },
     {
       "type": "range",
@@ -326,6 +330,23 @@
       "id": "view_all_icon",
       "label": "Icon for View All Comparisons"
     },
+    {
+  "type": "checkbox",
+  "id": "show_view_all_comparisons",
+  "label": "Show 'View All Comparisons' Link",
+  "default": true
+},
+{
+  "type": "checkbox",
+  "id": "show_see_all_specs",
+  "label": "Show 'See All Specs' Toggle",
+  "default": true
+},
+{
+  "type": "image_picker",
+  "id": "arrow_icon_down",
+  "label": "Arrow Down Icon (See All Specs)"
+},
     {
       "type": "header",
       "content": "Row Headings"

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1748439884206,
@@ -16,6 +16,14 @@
                 {
                     "date": 1748600085799,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1260,9 +1260,9 @@\n   }\n \n   h2,\n   .h2 {\n-    font-size: calc(var(--type-header-size) * 0.85);\n+    font-size: calc(var(--type-header-size) * 0.65);\n   }\n \n   h3,\n   .h3 {\n"
+                },
+                {
+                    "date": 1749126797327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1233,9 +1233,9 @@\n }\n \n h2,\n .h2 {\n-  font-size: calc(var(--type-header-size) * 0.63);\n+  font-size: calc(var(--type-header-size) * 0.85);\n }\n \n h3,\n .h3 {\n"
+                },
+                {
+                    "date": 1749126924049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1233,9 +1233,9 @@\n }\n \n h2,\n .h2 {\n-  font-size: calc(var(--type-header-size) * 0.85);\n+  font-size: calc(var(--type-header-size) * 0.63);\n }\n \n h3,\n .h3 {\n@@ -1260,9 +1260,9 @@\n   }\n \n   h2,\n   .h2 {\n-    font-size: calc(var(--type-header-size) * 0.65);\n+    font-size: calc(var(--type-header-size) * 0.85);\n   }\n \n   h3,\n   .h3 {\n"
                 }
             ],
             "date": 1748439884206,

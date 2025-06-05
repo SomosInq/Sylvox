@@ -13,7 +13,7 @@ Somos Slider: Individual Button Style Controls
           {% if block.settings.image %}
             <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
           {% endif %}
-          <div class="somos-slide__content content_section_width_{{ section.settings.section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
+          <div class="somos-slide__content content_section_width_{{ section.settings.content_section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             
             {% if section.settings.collection_subheading %}
     <p class="collection-subheading">{{ section.settings.collection_subheading }}</p>

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1748444519032,
@@ -52,6 +52,10 @@
                 {
                     "date": 1748869855522,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -129,14 +129,14 @@\n       {% when 'image' %}\n         {% if block.settings.image %}\n {% assign image_align = block.settings.image_alignment | default: 'center' %}\n \n-<div style=\"\n-  text-align: \n-    {% if image_align == 'left' %} left\n-    {% elsif image_align == 'right' %} right\n-    {% else %} center\n-    {% endif %};\n+<div class=\"\n+  {% if image_align == 'left' %} justify-start\n+  {% elsif image_align == 'right' %} justify-end\n+  {% else %} justify-center\n+  {% endif %}\n+  flex mb-4\n \">\n   <img\n     src=\"{{ block.settings.image | image_url: width: 1200 }}\"\n     alt=\"Section image\"\n"
+                },
+                {
+                    "date": 1749130593963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -149,9 +149,9 @@\n       {% when 'title' %}\n         <h2 class=\"text-2xl md:text-4xl font-bold mb-2\">{{ block.settings.title }}</h2>\n \n       {% when 'text' %}\n-        <p class=\"mb-4\">{{ block.settings.text }}</p>\n+        <p class=\"desc\">{{ block.settings.text }}</p>\n \n       {% when 'button' %}\n         {% if block.settings.button_text and block.settings.button_link %}\n           <div>\n"
                 }
             ],
             "date": 1748444519032,
