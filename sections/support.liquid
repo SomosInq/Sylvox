@@ -1,12 +1,17 @@
-<div class="support-section" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
-  <div class="section_width_{{ section.settings.section_width }}">
+<div class="support-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
     <div class="support-container">
       <div class="support-left">
         <div class="support-title">Sylvox Support</div>
         {% if section.settings.button_label and section.settings.button_link %}
           <div class="support-button">
-            <a href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
-          </div>
+  <a href="{{ section.settings.button_link }}">
+    {{ section.settings.button_label }}
+    {% if section.settings.button_icon != blank %}
+      <img src="{{ section.settings.button_icon | image_url: width: 20 }}" alt="icon" class="button-icon" />
+    {% endif %}
+  </a>
+</div>
         {% endif %}
       </div>
 
@@ -82,6 +87,18 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  .support-button a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* spacing between icon and text */
+}
+
+.support-button .button-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
   .support-link.last {
     border-bottom: none;
   }
@@ -123,6 +140,16 @@
       ]
     },
     {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
       "type": "text",
       "id": "button_label",
       "label": "Button label",
@@ -133,6 +160,11 @@
       "id": "button_link",
       "label": "Button link"
     },
+    {
+  "type": "image_picker",
+  "id": "button_icon",
+  "label": "Button Icon"
+},
     { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },

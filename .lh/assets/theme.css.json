@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 94,
+            "activePatchIndex": 102,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -384,6 +384,38 @@
                 {
                     "date": 1749130536631,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1336,8 +1336,11 @@\n   }\n  \n \n /* Image text Flex Blocks */\n+.image-text-blocks-section .desc {\n+  margin-bottom: 40px;\n+}\n .image-text-blocks-section img {\n   margin: 0 auto;\n }\n \n"
+                },
+                {
+                    "date": 1749134766681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -707,8 +707,11 @@\n /* .outdoor-carousel-text {\n   max-width: 960px;\n   margin: 0 auto 2rem;\n } */\n+ .controls {\n+  position: relative;\n+ }\n .outdoor-carousel-text.left { text-align: left; }\n .outdoor-carousel-text.center { text-align: center; }\n .outdoor-carousel-text.right { text-align: right; }\n \n"
+                },
+                {
+                    "date": 1749135636448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -724,13 +724,13 @@\n   font-size: 1.625rem;\n   font-weight: 500;\n }\n \n- .flickity-page-dots {\n+ /* .flickity-page-dots {\n     display: flex !important;\n     gap: 8px;\n     justify-content: flex-start;\n-  }\n+  } */\n \n   .flickity-page-dots .dot {\n     all: unset;\n     display: block;\n"
+                },
+                {
+                    "date": 1749135646029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -730,8 +730,16 @@\n     gap: 8px;\n     justify-content: flex-start;\n   } */\n \n+  .carousel-dots .flickity-page-dots {\n+  position: static !important;\n+  display: flex !important;\n+  gap: 8px;\n+  justify-content: flex-start;\n+  margin-top: 0;\n+}\n+\n   .flickity-page-dots .dot {\n     all: unset;\n     display: block;\n     width: 24px;\n"
+                },
+                {
+                    "date": 1749137182196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -699,171 +699,10 @@\n     object-fit: contain;\n   }\n \n   /* New Banner Slider */\n-  .outdoor-carousel-section {\n-  padding: 2rem 1rem;\n-  /* overflow-x: hidden; */\n-}\n-/* .outdoor-carousel-text {\n-  max-width: 960px;\n-  margin: 0 auto 2rem;\n-} */\n- .controls {\n-  position: relative;\n- }\n-.outdoor-carousel-text.left { text-align: left; }\n-.outdoor-carousel-text.center { text-align: center; }\n-.outdoor-carousel-text.right { text-align: right; }\n \n-.small-heading {\n-  font-size: 0.875rem;\n-  color: #888;\n-  margin-bottom: 0.25rem;\n-}\n-.main-heading {\n-  font-size: 1.625rem;\n-  font-weight: 500;\n-}\n \n- /* .flickity-page-dots {\n-    display: flex !important;\n-    gap: 8px;\n-    justify-content: flex-start;\n-  } */\n-\n-  .carousel-dots .flickity-page-dots {\n-  position: static !important;\n-  display: flex !important;\n-  gap: 8px;\n-  justify-content: flex-start;\n-  margin-top: 0;\n-}\n-\n-  .flickity-page-dots .dot {\n-    all: unset;\n-    display: block;\n-    width: 24px;\n-    height: 25px;\n-    background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n-    background-size: contain;\n-    cursor: pointer;\n-  }\n-\n-  .flickity-page-dots .dot.is-selected {\n-    background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23DB4B97\"/></svg>');\n-  }\n-\n-  .carousel-arrows {\n-    display: flex;\n-    gap: 10px;\n-  }\n-\n-  .carousel-arrows button {\n-    width: 40px;\n-    height: 40px;\n-    border-radius: 50%;\n-    border: 2px solid #000;\n-    display: flex;\n-    align-items: center;\n-    justify-content: center;\n-    background: white;\n-    cursor: pointer;\n-    transition: border-color 0.3s;\n-  }\n-\n-  .carousel-arrows button:hover {\n-    border-color: #999;\n-  }\n-\n-  .carousel-arrows button svg {\n-    width: 16px;\n-    height: 16px;\n-    fill: #333;\n-  }\n-\n-\n-\n-.carousel-wrapper {\n-  position: relative;\n-  max-width: 100%;\n-}\n-.carousel-arrows-wrapper {\n-  display: flex;\n-  justify-content: flex-end;\n-}\n-.flickity-carousel {\n-  overflow: visible;\n-}\n-\n-.carousel-cell {\n-  margin-right: 20px;\n-  opacity: 0.3;\n-  transform: scale(0.94);\n-  transition: all 0.3s ease;\n-}\n-.carousel-cell.is-selected {\n-  opacity: 1;\n-  transform: scale(1);\n-}\n-.carousel-cell img {\n-  width: 100%;\n-  border-radius: 8px;\n-}\n-\n-.carousel-cell.size-small {\n-  width: 40%;\n-}\n-.carousel-cell.size-medium {\n-  width: 55%;\n-}\n-.carousel-cell.size-large {\n-  width: 70%;\n-}\n-\n-.carousel-caption {\n-  position: absolute;\n-  bottom: 1rem;\n-  left: 1rem;\n-  font-size: 0.75rem;\n-  color: white;\n-  font-weight: 400;\n-}\n-\n-.carousel-arrows {\n-  position: absolute;\n-  bottom: -55px;\n-  right: 0;\n-  display: flex;\n-  gap: 0.5rem;\n-}\n-.carousel-arrows button {\n-  background: none;\n-  border: none;\n-  font-size: 24px;\n-  color: #333;\n-  cursor: pointer;\n-}\n-\n-.flickity-page-dots {\n-  display: flex;\n-  position: absolute;\n-  bottom: -55px;\n-  left: 0;\n-  gap: 6px;\n-}\n-.flickity-page-dots .dot {\n-  background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25' viewBox='0 0 24 25' fill='none'><rect x='4' y='11.9502' width='16' height='2' rx='1' fill='%23636363'/></svg>\");\n-  background-size: contain;\n-  background-repeat: no-repeat;\n-  width: 24px;\n-  height: 25px;\n-  opacity: 1;\n-}\n-.flickity-page-dots .dot.is-selected {\n-  background-image: url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25' viewBox='0 0 24 25' fill='none'><rect x='4' y='11.9502' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>\");\n-}\n-\n /* Join Community */\n .join-community-wrapper {\n   display: flex;\n   justify-content: space-between;\n"
+                },
+                {
+                    "date": 1749137305209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -575,8 +575,9 @@\n   width: 32px;\n   height: 32px;\n   font-size: 18px;\n   cursor: pointer;\n+  line-height: 8px;\n }\n .video-modal {\n   display: none;\n   position: fixed;\n"
+                },
+                {
+                    "date": 1749137508472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -683,11 +683,10 @@\n     font-size: 16px;\n   }\n \n   .support-link .icon-box {\n-    border: 1px solid white;\n+    border: 0.5px solid white;\n     padding: 10px;\n-    border-radius: 4px;\n     display: flex;\n     align-items: center;\n     justify-content: center;\n     width: 40px;\n"
+                },
+                {
+                    "date": 1749137728416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -641,10 +641,8 @@\n     min-width: 200px;\n   }\n \n   .support-title {\n-    font-size: 24px;\n-    font-weight: bold;\n     margin-bottom: 20px;\n   }\n \n   .support-button a {\n"
+                },
+                {
+                    "date": 1749138076967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -772,15 +772,16 @@\n   color: #555;\n }\n \n .newsletter-form {\n-  display: flex;\n-  align-items: center;\n-  background-color: #fff;\n-  border-radius: 6px;\n-  padding: 12px 16px;\n-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);\n-  max-width: 100%;\n+    display: flex;\n+    align-items: center;\n+    /* background-color: #fff; */\n+    /* border-radius: 6px; */\n+    padding: 12px 16px;\n+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); */\n+    max-width: 100%;\n+    border-bottom: 1px solid var(--neutral-0450, rgba(108, 114, 117, 0.50));\n }\n \n .newsletter-form .icon {\n   width: 18px;\n"
                 }
             ],
             "date": 1748526641710,

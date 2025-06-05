@@ -96,10 +96,37 @@
 
 {% style %}
 <style>
-  .flickity-page-dots {
+  .outdoor-carousel-section {
+    padding: 2rem 1rem;
+  }
+
+  .controls {
+    position: relative;
+  }
+
+  .outdoor-carousel-text.left { text-align: left; }
+  .outdoor-carousel-text.center { text-align: center; }
+  .outdoor-carousel-text.right { text-align: right; }
+
+  .small-heading {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+  }
+
+  .main-heading {
+    font-size: 1.625rem;
+    font-weight: 500;
+  }
+
+  .carousel-dots .flickity-page-dots {
+    position: static !important;
+    bottom: auto !important;
+    left: auto !important;
     display: flex !important;
-    gap: 8px;
     justify-content: flex-start;
+    gap: 8px;
+    margin-top: 0;
   }
 
   .flickity-page-dots .dot {
@@ -113,16 +140,63 @@
   }
 
   .flickity-page-dots .dot.is-selected {
+    width: 24px;
+    height: 25px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23DB4B97"/></svg>');
     opacity: 1;
     background-color: transparent;
-    width: 24px;
-    height: 25px;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    max-width: 100%;
+  }
+
+  .carousel-arrows-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .flickity-carousel {
+    overflow: visible;
+  }
+
+  .carousel-cell {
+    margin-right: 20px;
+    opacity: 0.3;
+    transform: scale(0.94);
+    transition: all 0.3s ease;
+  }
+
+  .carousel-cell.is-selected {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .carousel-cell img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .carousel-cell.size-small { width: 40%; }
+  .carousel-cell.size-medium { width: 55%; }
+  .carousel-cell.size-large { width: 70%; }
+
+  .carousel-caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 400;
   }
 
   .carousel-arrows {
     display: flex;
     gap: 10px;
+    position: absolute;
+    bottom: -55px;
+    right: 0;
   }
 
   .carousel-arrows button {
@@ -147,7 +221,6 @@
     height: 16px;
     fill: #333;
   }
-
 </style>
 {% endstyle %}
 
@@ -158,7 +231,7 @@
     <h2>{{ section.settings.subheading }}</h2>
   </div>
 
-  <div class="carousel-wrapper">
+  <div class="carousel-wrapper section_width_{{ section.settings.section_width }}">
     <div class="flickity-carousel"
          data-flickity='{
            "wrapAround": true,
@@ -179,17 +252,15 @@
         </div>
       {% endfor %}
     </div>
-
-    <!-- Custom dots + arrows wrapper -->
-<div class="dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-  <!-- Dots on the left -->
-  <div class="carousel-dots-container">
-    <div class="carousel-dots"></div>
   </div>
 
-  {% if section.settings.show_arrows %}
-    <!-- Arrows on the far right -->
-    <div class="carousel-arrows-wrapper" style="margin-left: auto;">
+  <!-- Dots and Arrows Container -->
+  <div class="controls dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+    <div class="carousel-dots-container">
+      <div class="carousel-dots"></div>
+    </div>
+
+    {% if section.settings.show_arrows %}
       <div class="carousel-arrows">
         <button class="carousel-prev" aria-label="Previous">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
@@ -198,41 +269,41 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
         </button>
       </div>
-    </div>
-  {% endif %}
-</div>
-
+    {% endif %}
   </div>
 </section>
-
 
 {% javascript %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const carousel = document.querySelector('.flickity-carousel');
-    let flkty = Flickity.data(carousel);
-
-    if (!flkty) {
-      flkty = new Flickity(carousel, {
-        wrapAround: true,
-        imagesLoaded: true,
-        pageDots: true,
-        prevNextButtons: false,
-        cellAlign: "center",
-        contain: true
-      });
-    }
-
-    // Move Flickity-generated dots to custom container
-    const flickityDots = carousel.querySelector('.flickity-page-dots');
     const customDotsContainer = document.querySelector('.carousel-dots');
-    if (flickityDots && customDotsContainer) {
-      customDotsContainer.appendChild(flickityDots);
-    }
 
-    // Handle arrow clicks
+    // Fully disable Flickity's default dot handling
+    let flkty = new Flickity(carousel, {
+      wrapAround: true,
+      imagesLoaded: true,
+      pageDots: false, // prevent auto-adding to DOM
+      prevNextButtons: false,
+      cellAlign: "center",
+      contain: true
+    });
+
+    // Manually generate page dots and move them inside .carousel-dots
+    flkty.on('ready', function () {
+      if (typeof flkty.createPageDots === 'function') {
+        flkty.createPageDots(); // create <ol class="flickity-page-dots">
+      }
+      if (flkty.pageDots && flkty.pageDots.element && customDotsContainer) {
+        customDotsContainer.appendChild(flkty.pageDots.element);
+      }
+    });
+
+    // Navigation arrows
     document.querySelector('.carousel-prev')?.addEventListener('click', () => flkty.previous());
     document.querySelector('.carousel-next')?.addEventListener('click', () => flkty.next());
   });
 </script>
 {% endjavascript %}
+
+
