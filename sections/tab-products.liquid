@@ -49,15 +49,15 @@
     border: none;
     cursor: pointer;
     padding: 6px 12px;
-    background: #f2f2f2;
+    {% comment %} background: #f2f2f2; {% endcomment %}
     border-radius: 4px;
     font-size: 14px;
   }
 
-  .filter-btn.active {
+  {% comment %} .filter-btn.active {
     background: #20413B;
     color: white;
-  }
+  } {% endcomment %}
 
   .product-filter-buttons {
     display: flex;
@@ -114,6 +114,77 @@
   .product-card:hover {
     transform: scale(1.03);
   }
+
+  .product-card {
+  border: none;
+  padding: 0;
+  text-align: left;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-card__top {
+  background: #f5f5f5;
+  padding: 10px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.product-sizes {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.product-size-option {
+  font-size: 12px;
+  padding: 4px 8px;
+  {% comment %} border: 1px solid #ccc; {% endcomment %}
+  {% comment %} border-radius: 4px; {% endcomment %}
+  {% comment %} background: white; {% endcomment %}
+}
+
+.product-meta-info {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.product-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.product-resolution {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.product-resolution img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 </style>
 
 <div class="tab-products section section_width_{{ section.settings.section_width }}"
@@ -146,8 +217,19 @@
           <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
         {% endif %}
 
-        <div class="tab-product-content__info place-{{ block.settings.horizontal_position }} {{ vertical_position_class }}"
-             style="color: {{ block.settings.text_color }}; font-weight: {{ block.settings.font_weight }};">
+        {% assign justify_class = '' %}
+{% if block.settings.horizontal_position == 'left' %}
+  {% assign justify_class = 'justify-start text-left' %}
+{% elsif block.settings.horizontal_position == 'center' %}
+  {% assign justify_class = 'justify-center text-center' %}
+{% elsif block.settings.horizontal_position == 'right' %}
+  {% assign justify_class = 'justify-end text-right' %}
+{% endif %}
+
+{% assign align_class = vertical_position_class %}
+<div class="tab-product-content__info {{ justify_class }} {{ align_class }}"
+     style="color: {{ block.settings.text_color }}; font-weight: {{ block.settings.font_weight }}; display: flex; align-items: center;">
+
           <div>
             {% if block.settings.inline_title %}
               <div class="tab-product-content__info-subtitle">
@@ -192,24 +274,56 @@
           <a href="{{ block.settings.collection.url }}" class="button">See All</a>
         </div>
 
-        <div class="tab-products-grid">
-          {% for product in block.settings.collection.products limit: section.settings.products_count %}
-            {% assign resolution = product.metafields.custom.outdoor_tv_resolution.value | strip %}
-{% assign res_handle = resolution | handleize %}
-<div class="product-card" data-resolution="{{ res_handle }}">
-              <a href="{{ product.url }}">
-                <div class="product-image">
-                  <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
-                </div>
-                {% if resolution %}
-                  <div class="product__filter-label">{{ resolution }}</div>
-                {% endif %}
-                <h4>{{ product.title }}</h4>
-                <p>{{ product.price | money_with_currency }}</p>
-              </a>
-            </div>
-          {% endfor %}
+       <div class="tab-products-grid">
+  {% for product in block.settings.collection.products limit: section.settings.products_count %}
+    {% assign resolution = product.metafields.custom.outdoor_tv_resolution.value | strip %}
+    {% assign res_handle = resolution | handleize %}
+    <div class="product-card" data-resolution="{{ res_handle }}">
+      <a href="{{ product.url }}">
+        <!-- Grey image block -->
+        <div class="product-card__top">
+          <div class="product-image">
+            <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+          </div>
+
+          <!-- Size options if using metafields tv_size -->
+{% assign tv_sizes = product.metafields.custom.tv_size.value %}
+{% if tv_sizes %}
+  <div class="product-sizes">
+    {% for size in tv_sizes %}
+      <span class="product-size-option">{{ size }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
+
         </div>
+
+        <!-- Meta info -->
+        <div class="product-meta-info">
+          <div class="product-meta-top">
+            <span class="product-collection">{{ block.settings.collection.title }}</span>
+           {% assign resolutions = product.metafields.custom.outdoor_tv_resolution.value %}
+{% if resolutions %}
+  {% for res in resolutions %}
+    {% assign res_handle = res | handleize %}
+    <span class="product-resolution">
+      <img src="{{ 'filter-' | append: res_handle | append: '.jpg' | asset_url }}" alt="{{ res }}" />
+      {{ res }}
+    </span>
+  {% endfor %}
+{% endif %}
+
+          </div>
+
+          <h4 class="product-title">{{ product.title }}</h4>
+          <p class="product-price">{{ product.price | money_with_currency }}</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+
       {% endif %}
 
       
