@@ -298,6 +298,16 @@
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "outdoor_tv_resolution",
+      "namespace": "custom",
+      "name": "Outdoor TV Resolution",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
     }
   ],
   "variant": [

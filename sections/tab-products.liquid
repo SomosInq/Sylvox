@@ -1,7 +1,8 @@
-{% comment %} Tab Products Section – With Global Custom Filters {% endcomment %}
+{% comment %} Tab Products Section – Metafield Filtering by outdoor_tv_resolution {% endcomment %}
 {{ 'section-tab-products.css' | asset_url | stylesheet_tag }}
 
 <style>
+  /* [Styling remains unchanged] */
   .tabs {
     position: absolute;
     left: 50%;
@@ -44,32 +45,24 @@
     margin-right: 20px;
   }
 
-  .filter-btn img {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
+  .filter-btn {
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    background: #f2f2f2;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .filter-btn.active {
+    background: #20413B;
+    color: white;
+  }
 
   .product-filter-buttons {
     display: flex;
     gap: 12px;
-  }
-
-  .filter-btn {
-    padding: 0 0 calc(var(--gutter) / 2) 0;
-    {% comment %} background: #f5f5f5; {% endcomment %}
-    border: none;
-    {% comment %} padding: 8px 12px; {% endcomment %}
-    display: flex;
     align-items: center;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-  }
-
-  .filter-btn.active {
-    {% comment %} background: #333; {% endcomment %}
-    color: white;
   }
 
   .tab-product-content__banner {
@@ -98,40 +91,9 @@
     pointer-events: none;
   }
 
-  .tab-product-content__info-title {
-    Margin: 0;
-  }
-  
   .tab-product-content__info-title h2 {
     font-size: 56px;
-    Margin: 0;
-  }
-
-  .tab-product-content__info.place-left {
-    --horizontal-align: start;
-    --text-align: left;
-  }
-
-  .tab-product-content__info.place-center {
-    --horizontal-align: center;
-    --text-align: center;
-  }
-
-  .tab-product-content__info.place-right {
-    --horizontal-align: end;
-    --text-align: right;
-  }
-
-  .tab-product-content__info.align-top {
-    --vertical-align: start;
-  }
-
-  .tab-product-content__info.align-middle {
-    --vertical-align: center;
-  }
-
-  .tab-product-content__info.align-bottom {
-    --vertical-align: end;
+    margin: 0;
   }
 
   .tab-products-grid {
@@ -166,8 +128,6 @@
     {% endfor %}
   </div>
 
-  {% assign filter_list = section.settings.filters | split: ',' %}
-
   {% for block in section.blocks %}
     {% assign vertical_position_class = '' %}
     {% if block.settings.vertical_position < 33 %}
@@ -189,22 +149,14 @@
         <div class="tab-product-content__info place-{{ block.settings.horizontal_position }} {{ vertical_position_class }}"
              style="color: {{ block.settings.text_color }}; font-weight: {{ block.settings.font_weight }};">
           <div>
-            {% if block.settings.inline_title != blank %}
+            {% if block.settings.inline_title %}
               <div class="tab-product-content__info-subtitle">
                 <span>{{ block.settings.inline_title }}</span>
               </div>
             {% endif %}
             <div class="tab-product-content__info-title">
-  {% case block.settings.heading_tag %}
-    {% when 'h1' %}<h1>{{ block.settings.title }}</h1>
-    {% when 'h2' %}<h2>{{ block.settings.title }}</h2>
-    {% when 'h3' %}<h3>{{ block.settings.title }}</h3>
-    {% when 'h4' %}<h4>{{ block.settings.title }}</h4>
-    {% when 'p'  %}<p>{{ block.settings.title }}</p>
-    {% when 'i'  %}<i>{{ block.settings.title }}</i>
-    {% else %}<h2>{{ block.settings.title }}</h2>
-  {% endcase %}
-</div>
+              <h2>{{ block.settings.title }}</h2>
+            </div>
             <div class="tab-product-content__info-dec">
               {{ block.settings.description }}
             </div>
@@ -213,47 +165,45 @@
       </div>
 
       {% if block.settings.collection %}
+        {%- assign all_resolutions = "All,Full Sun,Partial Sun" | split: "," -%}
+
         <div class="collection-title-row" style="color: {{ block.settings.collection_title_color }}">
           <div style="display: flex; align-items: center; gap: 20px;">
             <h3>{{ block.settings.collection.title }}</h3>
+            
             <div class="product-filter-buttons">
-              <p>Filters:</p>
-              {% assign filter_icons = section.settings.filter_icons | split: ',' %}
-{% for filter in filter_list %}
-  {% assign trimmed = filter | strip %}
-  {% assign image_url = '' %}
-  {% for pair in filter_icons %}
-    {% assign parts = pair | split: ':' %}
-    {% if parts[0] == trimmed %}
-      {% assign image_url = parts[1] %}
-    {% endif %}
+  <p>Filters:</p>
+  {% for res in all_resolutions %}
+    {% assign trimmed = res | strip %}
+    {% assign handle = trimmed | handleize %}
+    <button class="filter-btn{% if forloop.first %} active{% endif %}" data-filter="{{ handle }}">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        {% if trimmed != "All" %}
+          <img src="{{ 'filter-' | append: handle | append: '.jpg' | asset_url }}" alt="{{ trimmed }}" style="width:30px; height:auto; margin-bottom:4px;" />
+        {% endif %}
+        <span>{{ trimmed }}</span>
+      </div>
+    </button>
   {% endfor %}
-  <button class="filter-btn{% if forloop.first %} active{% endif %}" data-filter="{{ trimmed | downcase }}">
-    {% if image_url != '' %}
-      <img src="{{ image_url | strip }}" alt="{{ trimmed }}" />
-    {% endif %}
-    {{ trimmed }}
-  </button>
-{% endfor %}
+</div>
 
-            </div>
+            
           </div>
           <a href="{{ block.settings.collection.url }}" class="button">See All</a>
         </div>
 
         <div class="tab-products-grid">
           {% for product in block.settings.collection.products limit: section.settings.products_count %}
-            <div class="product-card" data-tags="{{ product.tags | join: ',' | downcase }}">
+            {% assign resolution = product.metafields.custom.outdoor_tv_resolution.value | strip %}
+{% assign res_handle = resolution | handleize %}
+<div class="product-card" data-resolution="{{ res_handle }}">
               <a href="{{ product.url }}">
-
                 <div class="product-image">
-                <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+                  <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
                 </div>
-                {% if product.metafields.custom.material %}
-  <div class="product__filter-label">
-    {{ product.metafields.custom.material.value }}
-  </div>
-{% endif %}
+                {% if resolution %}
+                  <div class="product__filter-label">{{ resolution }}</div>
+                {% endif %}
                 <h4>{{ product.title }}</h4>
                 <p>{{ product.price | money_with_currency }}</p>
               </a>
@@ -261,6 +211,8 @@
           {% endfor %}
         </div>
       {% endif %}
+
+      
     </div>
   {% endfor %}
 </div>
@@ -303,8 +255,8 @@
             btn.classList.add('active');
 
             products.forEach(product => {
-              const tags = product.getAttribute('data-tags');
-              if (filter === 'all' || (tags && tags.includes(filter))) {
+              const resolution = product.getAttribute('data-resolution');
+              if (filter === 'all' || (resolution && resolution.includes(filter))) {
                 product.style.display = '';
               } else {
                 product.style.display = 'none';
@@ -322,14 +274,6 @@
   "name": "Tab Products",
   "settings": [
     { "type": "checkbox", "id": "stack_products", "label": "Stack products", "default": true },
-    { "type": "textarea", "id": "filters", "label": "Filters (comma-separated)", "default": "All,Full Sun,Partial Sun", "info": "Product tags used as filters (case-sensitive)." },
-    { 
-  "type": "textarea", 
-  "id": "filter_icons", 
-  "label": "Filter icons (Label:URL, comma-separated)", 
-  "default": "All:/files/filter-all.png,Full Sun:/files/filter-fullsun.png,Partial Sun:/files/filter-partialsun.png" 
-},
-
     { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
     { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
     { "type": "range", "id": "products_count", "label": "Products to show", "min": 2, "max": 10, "step": 1, "default": 6 },
@@ -345,7 +289,7 @@
     { "type": "richtext", "id": "content", "label": "Content" },
     { "type": "url", "id": "link_url", "label": "Link URL", "info": "Defaults to collection URL." },
     { "type": "text", "id": "link_text", "label": "Link text", "default": "View all" },
-    { "type": "checkbox", "id": "enable_parallax", "label": "Enable parallax effect", "info": "Parallax crops images.", "default": false },
+    { "type": "checkbox", "id": "enable_parallax", "label": "Enable parallax effect", "default": false },
     {
       "type": "select", "id": "image_size", "label": "Image size", "default": "auto",
       "options": [
