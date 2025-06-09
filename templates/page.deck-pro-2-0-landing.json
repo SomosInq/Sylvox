@@ -198,12 +198,628 @@
         "margin_left": 0,
         "margin_right": 0
       }
+    },
+    "somos_banner_gLazR9": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_339rBV": {
+          "type": "heading",
+          "settings": {
+            "text": "Stream, Browse & Watch with Google TV.",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        },
+        "richtext_c9B6TT": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.</p>",
+            "color": "#ffffff",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_339rBV",
+        "richtext_c9B6TT"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "image_text_XdLFDc": {
+      "type": "image-text",
+      "blocks": {
+        "image_4A76MR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "image_alignment": "center"
+          }
+        },
+        "title_eaCfMw": {
+          "type": "title",
+          "settings": {
+            "title": "3x Brighter Than Indoor TVs"
+          }
+        },
+        "text_KeymhD": {
+          "type": "text",
+          "settings": {
+            "text": "1.000-Nit Peak Brightness"
+          }
+        },
+        "image_kQViJN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Nits.png",
+            "image_alignment": "center"
+          }
+        },
+        "text_hj4kVK": {
+          "type": "text",
+          "settings": {
+            "text": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp."
+          }
+        }
+      },
+      "block_order": [
+        "image_4A76MR",
+        "title_eaCfMw",
+        "text_KeymhD",
+        "image_kQViJN",
+        "text_hj4kVK"
+      ],
+      "name": "Image/Text Flex Blocks",
+      "settings": {
+        "section_width": "standard",
+        "alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "somos_banner_RMW7rJ": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_qPYaaN": {
+          "type": "heading",
+          "settings": {
+            "text": "Stream, Browse & Watch with Google TV.",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        },
+        "richtext_g7C6di": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.</p>",
+            "color": "#ffffff",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qPYaaN",
+        "richtext_g7C6di"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "somos_image_content_HHm83y": {
+      "type": "somos-image-content",
+      "blocks": {
+        "grid_box_4m3bhU": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": true,
+            "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_3.png",
+            "image_width": 40,
+            "content_width": 40,
+            "margin_top": 0,
+            "margin_bottom": 60,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Google TV Built-In",
+            "title": "Smarter Way to Watch",
+            "text": "No need for extra streaming boxes—Google TV gives you access to over 700,000+ movies and shows.",
+            "text_color": "#000000"
+          }
+        },
+        "grid_box_jHUB8q": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": false,
+            "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4.png",
+            "image_width": 40,
+            "content_width": 40,
+            "margin_top": 0,
+            "margin_bottom": 60,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Works with Apple AirPlay & Chromecast",
+            "title": "Instant, Wireless Streaming",
+            "text": "Seamlessly share content from your phone, tablet, or laptop. Whether you’re casting a movie, streaming music, or sharing vacation photos, wireless connectivity makes it effortless.",
+            "text_color": "#000000"
+          }
+        },
+        "grid_box_mejXwx": {
+          "type": "grid_box",
+          "settings": {
+            "image_left": true,
+            "image": "shopify://shop_images/Voice_Control.png",
+            "image_width": 40,
+            "content_width": 60,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Free Browsing",
+            "title": "Voice Control for Hands",
+            "text": "Too relaxed to search manually? Just ask. With voice control compatibility, find shows, adjust volume, and open apps using simple commands.",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "grid_box_4m3bhU",
+        "grid_box_jHUB8q",
+        "grid_box_mejXwx"
+      ],
+      "name": "Somos Content/Image",
+      "settings": {
+        "parent_subtitle": "",
+        "heading": "",
+        "description": "",
+        "parent_alignment": "center",
+        "button_label": "",
+        "button_link": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "background_color": "#f5f5f5",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "somos_banner_TWzKkD": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_gXrCtx": {
+          "type": "heading",
+          "settings": {
+            "text": "Stream, Browse & Watch with Google TV.",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        },
+        "richtext_YbeHfE": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.</p>",
+            "color": "#ffffff",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gXrCtx",
+        "richtext_YbeHfE"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "new_banner_slider_Wpr933": {
+      "type": "new-banner-slider",
+      "blocks": {
+        "slide_cp8N3f": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        },
+        "slide_mLrmVe": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        },
+        "slide_mjP8TE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        }
+      },
+      "block_order": [
+        "slide_cp8N3f",
+        "slide_mLrmVe",
+        "slide_mjP8TE"
+      ],
+      "name": "New Banner Slider",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "text_alignment": "center",
+        "heading": "Rain, Snow, or Heat - It Just Works.",
+        "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
+        "show_arrows": true,
+        "slide_size": "large"
+      }
+    },
+    "various_grid_9A7agj": {
+      "type": "various-grid",
+      "blocks": {
+        "feature_box_tATMEY": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_2.png",
+            "icon_size": 18,
+            "title": "Wireless Freedom",
+            "title_color": "#000000",
+            "subtitle": "WiFi, Bluetooth & Streaming Support",
+            "subtitle_color": "#666666",
+            "body": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
+            "body_color": "#333333"
+          }
+        },
+        "feature_box_MBwqK9": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_3.png",
+            "icon_size": 18,
+            "title": "HDMI, USB & AV Inputs",
+            "title_color": "#000000",
+            "subtitle": "The Ultimate Plug-and-Play Experience",
+            "subtitle_color": "#666666",
+            "body": "Bring your entertainment outdoors. With multiple HDMI and USB ports, TV Tuner, RJ45, AV IN, and Earphone jacks, the Pool Pro 2.0 connects to gaming consoles, sound systems, streaming sticks, and more.",
+            "body_color": "#333333"
+          }
+        },
+        "feature_box_Nw4hbd": {
+          "type": "feature_box",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_4.png",
+            "icon_size": 27,
+            "title": "Expand Your Sound",
+            "title_color": "#000000",
+            "subtitle": "Easily Connect External Speakers & Soundbars",
+            "subtitle_color": "#666666",
+            "body": "Take your audio to the next level. Whether you prefer Bluetooth speakers or a wired home theater system, Pool Pro 2.0 supports both—so you can customize your sound setup for any occasion.",
+            "body_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "feature_box_tATMEY",
+        "feature_box_MBwqK9",
+        "feature_box_Nw4hbd"
+      ],
+      "name": "Various Grid",
+      "settings": {
+        "bg_color": "#fafafa",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "left_image": "shopify://shop_images/bf142379eb6346708d8cc63dc75ffe94.mp4.png",
+        "left_image_width": 48,
+        "icon": "shopify://shop_images/Icons_2.png",
+        "heading": "Stay Connected, Indoors or Out.",
+        "heading_color": "#000000",
+        "text": "No matter how you watch, listen, or play, your TV should keep up.",
+        "text_color": "#333333",
+        "section_width": "full",
+        "section_content_width": "standard"
+      }
+    },
+    "usp_accordion_3MVwD3": {
+      "type": "usp-accordion",
+      "blocks": {
+        "accordion_3cHEDa": {
+          "type": "accordion",
+          "settings": {
+            "question": "No Professionals Required",
+            "subtitle": "",
+            "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
+            "icon": "shopify://shop_images/expand_more.png",
+            "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png"
+          }
+        },
+        "accordion_E8paNB": {
+          "type": "accordion",
+          "settings": {
+            "question": "5-Second Response Time",
+            "subtitle": "",
+            "answer": "Forget slow startup times. The Deck Pro 2.0 powers on in just 5 seconds, so you can start watching without delays.",
+            "icon": "shopify://shop_images/expand_more.png",
+            "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5_9bbf9670-c207-4c1f-bafc-14e19b4bf3e8.png"
+          }
+        },
+        "accordion_daPdJ8": {
+          "type": "accordion",
+          "settings": {
+            "question": "60Hz Refresh Rate",
+            "subtitle": "",
+            "answer": "Perfect for sports, movies, and gaming. With a 60Hz refresh rate, the Deck Pro 2.0 ensures buttery-smooth motion, reducing lag and blurring.",
+            "icon": "shopify://shop_images/expand_more.png",
+            "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5-1.png"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_3cHEDa",
+        "accordion_E8paNB",
+        "accordion_daPdJ8"
+      ],
+      "name": "USP Accordion",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "section_heading": "Set Up in Minutes, Enjoy for Years.",
+        "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
+        "section_title_color": "#000000",
+        "section_description_color": "#000000",
+        "button_text": "Learn More",
+        "button_link": "",
+        "title": "Quick & Simple Installation",
+        "text": "",
+        "text_color": "#ffffff",
+        "font_size": 16,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "comparison_table_nwWE3E": {
+      "type": "comparison-table",
+      "blocks": {
+        "values_X8DNQz": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
+            "header_title": "",
+            "title": "",
+            "price": "",
+            "button_label": "",
+            "button_link": "",
+            "value_1": "<p>Partial Sun</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Android TV</p>",
+            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_eQjGGX": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
+            "header_title": "",
+            "title": "",
+            "price": "",
+            "button_label": "",
+            "button_link": "",
+            "value_1": "<p>Partial Sun</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Android TV</p>",
+            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_9qF4Td": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
+            "header_title": "",
+            "title": "",
+            "price": "",
+            "button_label": "",
+            "button_link": "",
+            "value_1": "<p>Partial Sun</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Android TV</p>",
+            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_FiKyYL": {
+          "type": "values",
+          "settings": {
+            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
+            "header_title": "",
+            "title": "",
+            "price": "",
+            "button_label": "",
+            "button_link": "",
+            "value_1": "<p>Partial Sun</p>",
+            "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
+            "value_2": "<p>Android TV</p>",
+            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        }
+      },
+      "block_order": [
+        "values_X8DNQz",
+        "values_eQjGGX",
+        "values_9qF4Td",
+        "values_FiKyYL"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "title": "Which TV is the Best for You?",
+        "description": "",
+        "button_text": "",
+        "button_url": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "button_size": 16,
+        "background_color": "",
+        "section_width": "standard",
+        "text_alignment": "center",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "view_all_text": "View All Comparisons",
+        "view_all_url": "",
+        "show_view_all_comparisons": true,
+        "show_see_all_specs": true,
+        "heading_1": "Outdoor Areas",
+        "heading_2": "TV OS",
+        "heading_3": "Peak Brightness",
+        "heading_4": "Resolution",
+        "heading_5": "",
+        "heading_6": "",
+        "heading_7": "",
+        "heading_8": "",
+        "heading_9": "",
+        "heading_10": "",
+        "heading_11": "",
+        "heading_12": "",
+        "heading_13": "",
+        "heading_14": "",
+        "heading_15": "",
+        "heading_16": "",
+        "heading_17": "",
+        "heading_18": "",
+        "heading_19": "",
+        "heading_20": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_JByhYn",
     "rich_text_FhLDYX",
-    "icon_grid_f4ecNH"
+    "icon_grid_f4ecNH",
+    "somos_banner_gLazR9",
+    "image_text_XdLFDc",
+    "somos_banner_RMW7rJ",
+    "somos_image_content_HHm83y",
+    "somos_banner_TWzKkD",
+    "new_banner_slider_Wpr933",
+    "various_grid_9A7agj",
+    "usp_accordion_3MVwD3",
+    "comparison_table_nwWE3E"
   ]
 }
