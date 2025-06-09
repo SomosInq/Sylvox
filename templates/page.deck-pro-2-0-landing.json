@@ -510,7 +510,7 @@
       ],
       "name": "New Banner Slider",
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
         "text_alignment": "center",
         "heading": "Rain, Snow, or Heat - It Just Works.",
