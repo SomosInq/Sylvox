@@ -11,34 +11,65 @@
   "type": "footer",
   "name": "t:sections.footer-group.name",
   "sections": {
-    "support_aMcTiV": {
+    "support_VzArKF": {
       "type": "support",
       "blocks": {
-        "link_item_ekeTHk": {
+        "link_item_T3NYki": {
           "type": "link_item",
           "settings": {
             "text": "Contact Us",
-            "url": ""
+            "url": "",
+            "icon": "shopify://shop_images/SVG_2.svg"
           }
         },
-        "link_item_f8TzGR": {
+        "link_item_crVQwi": {
           "type": "link_item",
           "settings": {
             "text": "FAQs",
-            "url": ""
+            "url": "",
+            "icon": "shopify://shop_images/SVG_2.svg"
+          }
+        },
+        "link_item_MU4Hay": {
+          "type": "link_item",
+          "settings": {
+            "text": "Compare",
+            "url": "",
+            "icon": "shopify://shop_images/SVG_2.svg"
+          }
+        },
+        "link_item_4bNcVq": {
+          "type": "link_item",
+          "settings": {
+            "text": "User Manual",
+            "url": "",
+            "icon": "shopify://shop_images/SVG_2.svg"
+          }
+        },
+        "link_item_yQbYYV": {
+          "type": "link_item",
+          "settings": {
+            "text": "Become a Reseller",
+            "url": "",
+            "icon": "shopify://shop_images/SVG_2.svg"
           }
         }
       },
       "block_order": [
-        "link_item_ekeTHk",
-        "link_item_f8TzGR"
+        "link_item_T3NYki",
+        "link_item_crVQwi",
+        "link_item_MU4Hay",
+        "link_item_4bNcVq",
+        "link_item_yQbYYV"
       ],
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
+        "section_content_width": "standard",
         "button_label": "See All",
-        "button_link": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "button_link": "shopify://pages/contact-us",
+        "button_icon": "shopify://shop_images/SVG_1.png",
+        "padding_top": 30,
+        "padding_bottom": 30,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -63,6 +94,7 @@
     "join_community_NEVzTD": {
       "type": "join-community",
       "settings": {
+        "section_width": "standard",
         "logo_image": "shopify://shop_images/Logo-Green.png",
         "logo_size": 100,
         "subheading": "Facebook Community",
@@ -202,7 +234,7 @@
     }
   },
   "order": [
-    "support_aMcTiV",
+    "support_VzArKF",
     "signup_newsletter_iPeWaE",
     "join_community_NEVzTD",
     "advanced_content_xHiJr8",
