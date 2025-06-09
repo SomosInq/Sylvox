@@ -103,11 +103,107 @@
         "color_scheme": "1",
         "divider": false
       }
+    },
+    "icon_grid_f4ecNH": {
+      "type": "icon-grid",
+      "blocks": {
+        "grid_item_xYY44L": {
+          "type": "grid_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "icon_size": 15,
+            "title": "Feel-Good Audio",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
+            "link": ""
+          }
+        },
+        "grid_item_j4H7Dk": {
+          "type": "grid_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "icon_size": 15,
+            "title": "Feel-Good Audio",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
+            "link": ""
+          }
+        },
+        "grid_item_yFGPDX": {
+          "type": "grid_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "icon_size": 15,
+            "title": "Feel-Good Audio",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
+            "link": ""
+          }
+        },
+        "grid_item_KLMwA3": {
+          "type": "grid_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "icon_size": 15,
+            "title": "Feel-Good Audio",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
+            "link": ""
+          }
+        },
+        "grid_item_bFFWyC": {
+          "type": "grid_item",
+          "settings": {
+            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
+            "icon_size": 15,
+            "title": "Feel-Good Audio",
+            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "text_align": "center",
+            "text_color": "#000000",
+            "font_size": 16,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "grid_item_xYY44L",
+        "grid_item_j4H7Dk",
+        "grid_item_yFGPDX",
+        "grid_item_KLMwA3",
+        "grid_item_bFFWyC"
+      ],
+      "name": "Icon Grid",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "parent_title": "Outdoor-Ready Technology, Built to Perform.",
+        "parent_description": "",
+        "parent_button_link": "",
+        "parent_button_text": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_JByhYn",
-    "rich_text_FhLDYX"
+    "rich_text_FhLDYX",
+    "icon_grid_f4ecNH"
   ]
 }
