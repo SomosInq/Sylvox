@@ -14,21 +14,6 @@
       "disabled": true,
       "settings": {}
     },
-    "featured_collection_MhGPVG": {
-      "type": "featured-collection",
-      "name": "t:labels.featured_collection",
-      "settings": {
-        "title": "Featured collection",
-        "heading_size": "h2",
-        "heading_position": "left",
-        "home_featured_products": "",
-        "count": 6,
-        "products_per_row": 3,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "divider": false
-      }
-    },
     "image_with_text_overlay_JByhYn": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -101,7 +86,6 @@
   },
   "order": [
     "main",
-    "featured_collection_MhGPVG",
     "image_with_text_overlay_JByhYn"
   ]
 }
