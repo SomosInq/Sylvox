@@ -1,0 +1,26 @@
+{
+    "sourceFile": "snippets/section-more-products-vendor.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1749465124143,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749465180246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,9 @@\n     >\n       <div class=\"index-section index-section--sub-product\">\n         <div class=\"page-width\">\n           <header class=\"section-header\">\n+          <h1>Test</h1>\n             <div class=\"h3 section-header__title\">\n               {% assign labels_more_from_html = 'labels.more_from_html' | t: link: vendor_link %}\n               {%- capture fallback_labels_more_from_html -%}\n                 More from: {{ vendor_link }}\n@@ -43,9 +44,8 @@\n           </header>\n         </div>\n \n         <div class=\"page-width page-width--flush-small\">\n-          <h1>Test</h1>\n           <div\n             id=\"VendorProducts-{{ section.id }}\"\n             class=\"new-grid product-grid scrollable-grid--small\"\n             {% render 'grid-view-type' %}\n@@ -61,8 +61,9 @@\n         </div>\n       </div>\n     </vendor-products>\n \n+          <h1>Test</h1>\n     <template data-island>\n       <script type=\"module\">\n         import 'components/section-more-products-vendor'\n       </script>\n"
+                },
+                {
+                    "date": 1749465215741,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,8 @@\n     >\n       <div class=\"index-section index-section--sub-product\">\n         <div class=\"page-width\">\n           <header class=\"section-header\">\n-          <h1>Test</h1>\n             <div class=\"h3 section-header__title\">\n               {% assign labels_more_from_html = 'labels.more_from_html' | t: link: vendor_link %}\n               {%- capture fallback_labels_more_from_html -%}\n                 More from: {{ vendor_link }}\n@@ -61,9 +60,8 @@\n         </div>\n       </div>\n     </vendor-products>\n \n-          <h1>Test</h1>\n     <template data-island>\n       <script type=\"module\">\n         import 'components/section-more-products-vendor'\n       </script>\n"
+                }
+            ],
+            "date": 1749465124143,
+            "name": "Commit-0",
+            "content": "{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | \"Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)\" License  %}\n{%- comment -%}\n  Renders a section with a list of products from a vendor.\n\n  Accepts:\n  - product {product} - Product to display\n  - hydration {string} - Hydration strategy for the component\n\n  Usage:\n  {% render 'section-more-products-vendor' %}\n{%- endcomment -%}\n\n{%- liquid\n  assign product = product | default: section.settings.product\n  assign max_products = max_products | default: section.settings.max_products | default: 5\n  assign hydration = hydration | default: 'on:visible'\n-%}\n\n{%- if product.vendor -%}\n  {%- capture vendor_link -%}\n    {{ product.vendor | link_to_vendor }}\n  {%- endcapture -%}\n\n  <is-land {{ hydration }}>\n    <vendor-products\n      data-subsection\n      data-section-id=\"{{ section.id }}\"\n      data-section-type=\"vendor-products\"\n      data-product-id=\"{{ product.id }}\"\n      data-vendor-url=\"{{ product.vendor | url_for_vendor }}\"\n      data-max-products=\"{{ max_products }}\"\n    >\n      <div class=\"index-section index-section--sub-product\">\n        <div class=\"page-width\">\n          <header class=\"section-header\">\n            <div class=\"h3 section-header__title\">\n              {% assign labels_more_from_html = 'labels.more_from_html' | t: link: vendor_link %}\n              {%- capture fallback_labels_more_from_html -%}\n                More from: {{ vendor_link }}\n              {%- endcapture -%}\n              {% render 't_with_fallback', t: labels_more_from_html, fallback: fallback_labels_more_from_html %}\n            </div>\n          </header>\n        </div>\n\n        <div class=\"page-width page-width--flush-small\">\n          <h1>Test</h1>\n          <div\n            id=\"VendorProducts-{{ section.id }}\"\n            class=\"new-grid product-grid scrollable-grid--small\"\n            {% render 'grid-view-type' %}\n          >\n            {% comment %}\n              This content is visually hidden and replaced when recommended\n              products show up\n            {% endcomment %}\n            <div class=\"visually-invisible\">\n              {%- render 'product-grid-item', product: product -%}\n            </div>\n          </div>\n        </div>\n      </div>\n    </vendor-products>\n\n    <template data-island>\n      <script type=\"module\">\n        import 'components/section-more-products-vendor'\n      </script>\n    </template>\n  </is-land>\n{%- endif -%}\n"
+        }
+    ]
+}

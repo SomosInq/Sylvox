@@ -7,6 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
+ 
 {
   "general": {
     "page": "Page {{ page }}",
@@ -68,6 +69,7 @@
       "collection_title": "Collection"
     }
   },
+  
   "header": {
     "general": {
       "account": "Account",

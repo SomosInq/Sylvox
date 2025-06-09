@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 12,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1748516419279,
@@ -56,6 +56,10 @@
                 {
                     "date": 1749137994828,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,12 @@\n         <div class=\"support-title\">Sylvox Support</div>\n         {% if section.settings.button_label and section.settings.button_link %}\n           <div class=\"support-button\">\n   <a href=\"{{ section.settings.button_link }}\">\n+    {{ section.settings.button_label }}\n     {% if section.settings.button_icon != blank %}\n       <img src=\"{{ section.settings.button_icon | image_url: width: 20 }}\" alt=\"icon\" class=\"button-icon\" />\n     {% endif %}\n-    {{ section.settings.button_label }}\n   </a>\n </div>\n         {% endif %}\n       </div>\n"
+                },
+                {
+                    "date": 1749458488665,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,11 +43,11 @@\n   .support-container {\n     display: flex;\n     align-items: flex-start;\n     justify-content: space-between;\n-    max-width: 1200px;\n+    {% comment %} max-width: 1200px; {% endcomment %}\n     margin: 0 auto;\n-    width: 100%;\n+    {% comment %} width: 100%; {% endcomment %}\n   }\n \n   .support-left {\n     flex: 0 0 auto;\n"
                 }
             ],
             "date": 1748516419279,

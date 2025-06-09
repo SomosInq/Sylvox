@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 32,
+            "activePatchIndex": 33,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -136,6 +136,10 @@
                 {
                     "date": 1749136978765,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -276,29 +276,34 @@\n {% javascript %}\n <script>\n   document.addEventListener(\"DOMContentLoaded\", function () {\n     const carousel = document.querySelector('.flickity-carousel');\n+    const customDotsContainer = document.querySelector('.carousel-dots');\n \n-    // Initialize Flickity with pageDots: false\n+    // Fully disable Flickity's default dot handling\n     let flkty = new Flickity(carousel, {\n       wrapAround: true,\n       imagesLoaded: true,\n-      pageDots: false, // disable auto-insertion\n+      pageDots: false, // prevent auto-adding to DOM\n       prevNextButtons: false,\n       cellAlign: \"center\",\n       contain: true\n     });\n \n-    // Manually create and move dots\n-    const customDotsContainer = document.querySelector('.carousel-dots');\n-    if (customDotsContainer && typeof flkty.createPageDots === 'function') {\n-      flkty.createPageDots(); // create dot elements\n-      customDotsContainer.appendChild(flkty.pageDots.element); // move them into custom container\n-    }\n+    // Manually generate page dots and move them inside .carousel-dots\n+    flkty.on('ready', function () {\n+      if (typeof flkty.createPageDots === 'function') {\n+        flkty.createPageDots(); // create <ol class=\"flickity-page-dots\">\n+      }\n+      if (flkty.pageDots && flkty.pageDots.element && customDotsContainer) {\n+        customDotsContainer.appendChild(flkty.pageDots.element);\n+      }\n+    });\n \n-    // Arrows\n+    // Navigation arrows\n     document.querySelector('.carousel-prev')?.addEventListener('click', () => flkty.previous());\n     document.querySelector('.carousel-next')?.addEventListener('click', () => flkty.next());\n   });\n </script>\n {% endjavascript %}\n \n+\n"
+                },
+                {
+                    "date": 1749459614373,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -136,8 +136,9 @@\n     height: 25px;\n     background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"25\" viewBox=\"0 0 24 25\" fill=\"none\"><rect x=\"4\" y=\"11.9502\" width=\"16\" height=\"2\" rx=\"1\" fill=\"%23636363\"/></svg>') no-repeat center center;\n     background-size: contain;\n     cursor: pointer;\n+    float: left;\n   }\n \n   .flickity-page-dots .dot.is-selected {\n     width: 24px;\n"
                 }
             ],
             "date": 1748527236205,

@@ -1,0 +1,221 @@
+<style>
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+  .outdoor-tabs-section .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+  .outdoor-tabs-section .tab {
+    padding: 8px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #ccc;
+    transition: background 0.3s;
+  }
+  .outdoor-tabs-section .tab.active {
+    background: #20413B;
+    color: white;
+    border-color: #20413B;
+  }
+  .outdoor-tabs-section .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .outdoor-tabs-section .video-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .outdoor-tabs-section .video-card img,
+  .outdoor-tabs-section .video-card video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .outdoor-tabs-section .video-title {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .outdoor-tabs-section .header {
+    margin-bottom: 2rem;
+    text-align: var(--header-align, center);
+  }
+</style>
+
+<div class="outdoor-tabs-section section section_width_{{ section.settings.section_width }}"
+     style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');">
+  
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    <div class="header" style="--header-align: {{ section.settings.header_alignment }};">
+      {% if section.settings.heading %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+    </div>
+
+    <div class="tabs">
+      {% assign types = "Expert Reviews,Real User Stories,How-To Tutorials" | split: "," %}
+      {% for type in types %}
+        <div class="tab" data-tab-id="{{ type | handleize }}">{{ type }}</div>
+      {% endfor %}
+    </div>
+
+    {% for type in types %}
+      <div class="tab-content" id="{{ type | handleize }}" style="display: none;">
+        <div class="video-grid">
+          {% for block in section.blocks %}
+            {% if block.settings.video_type == type %}
+              <div class="video-card" data-modal-video="{{ block.settings.video_url }}">
+                {% if block.settings.video_thumbnail %}
+                  <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
+                {% endif %}
+                <div class="video-title">{{ block.settings.title }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div id="video-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center;">
+  <div style="max-width:90%; max-height:90%; position:relative;">
+    <iframe id="video-frame" src="" frameborder="0" allowfullscreen style="width:100%; height:100%;"></iframe>
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; font-size:24px; color:#fff; background:none; border:none; cursor:pointer;">&times;</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('.outdoor-tabs-section');
+    const tabs = section.querySelectorAll('.tab');
+    const contents = section.querySelectorAll('.tab-content');
+
+    function activateTab(tabId) {
+      contents.forEach(c => c.style.display = 'none');
+      tabs.forEach(t => t.classList.remove('active'));
+      section.querySelector(`#${tabId}`).style.display = 'block';
+      section.querySelector(`[data-tab-id="${tabId}"]`).classList.add('active');
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activateTab(tab.dataset.tabId);
+      });
+    });
+
+    if (tabs.length) activateTab(tabs[0].dataset.tabId);
+
+    // Modal handling
+    document.querySelectorAll('[data-modal-video]').forEach(el => {
+      el.addEventListener('click', () => {
+        document.getElementById('video-frame').src = el.dataset.modalVideo;
+        document.getElementById('video-modal').style.display = 'flex';
+      });
+    });
+  });
+
+  function closeModal() {
+    document.getElementById('video-modal').style.display = 'none';
+    document.getElementById('video-frame').src = '';
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Video Media",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
+    {
+      "type": "select", "id": "section_width", "label": "Section Width", "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Video Title" },
+        { "type": "url", "id": "video_url", "label": "Video URL (YouTube, Vimeo, or MP4)" },
+        { "type": "image_picker", "id": "video_thumbnail", "label": "Fallback Thumbnail" },
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "Video Category",
+          "default": "Expert Reviews",
+          "options": [
+            { "value": "Expert Reviews", "label": "Expert Reviews" },
+            { "value": "Real User Stories", "label": "Real User Stories" },
+            { "value": "How-To Tutorials", "label": "How-To Tutorials" }
+          ]
+        },
+        { "type": "url", "id": "link_url", "label": "Link URL (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Media",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
