@@ -805,6 +805,99 @@
         "heading_19": "",
         "heading_20": ""
       }
+    },
+    "new_banner_slider_w4q6Cq": {
+      "type": "new-banner-slider",
+      "blocks": {
+        "slide_GpEpTM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        },
+        "slide_R4FdYn": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        },
+        "slide_LgjQzQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "caption": "Works Even After Heavy Rain"
+          }
+        }
+      },
+      "block_order": [
+        "slide_GpEpTM",
+        "slide_R4FdYn",
+        "slide_LgjQzQ"
+      ],
+      "name": "New Banner Slider",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "text_alignment": "center",
+        "heading": "Rain, Snow, or Heat - It Just Works.",
+        "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
+        "show_arrows": true,
+        "slide_size": "large"
+      }
+    },
+    "accordian_MBTAMU": {
+      "type": "accordian",
+      "blocks": {
+        "question_eefaCG": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_94Yzrr": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to setup an account to place an order?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_mAYTiE": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer gift wrapping",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        }
+      },
+      "block_order": [
+        "question_eefaCG",
+        "question_94Yzrr",
+        "question_mAYTiE"
+      ],
+      "name": "Accordian",
+      "settings": {
+        "heading": "Have a question ? We are here to help.",
+        "subheading": "Check out the most common questions our customers asked. Still have questions? Contact our customer support.",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "heading_size": 24,
+        "subheading_size": 16,
+        "bg_color": "#ffffff",
+        "arrow_image": "shopify://shop_images/Overlay.png",
+        "arrow_image_width": 10,
+        "section_width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
     }
   },
   "order": [
@@ -820,6 +913,8 @@
     "new_banner_slider_Wpr933",
     "various_grid_9A7agj",
     "usp_accordion_3MVwD3",
-    "comparison_table_nwWE3E"
+    "comparison_table_nwWE3E",
+    "new_banner_slider_w4q6Cq",
+    "accordian_MBTAMU"
   ]
 }
