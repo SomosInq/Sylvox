@@ -69,7 +69,11 @@
       "collection_title": "Collection"
     }
   },
-  
+  "sections": {
+    "header-group": {
+      "name": "Header"
+    }
+  },
   "header": {
     "general": {
       "account": "Account",

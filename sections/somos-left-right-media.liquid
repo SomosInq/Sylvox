@@ -1,0 +1,343 @@
+{% style %}
+/* Section & Content Width */
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+.section_content_width_standard,
+.section_content_width_full {
+  transition: all 0.3s ease;
+}
+.section_content_width_full {
+  width: 100%;
+}
+.section_content_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+.atmos-slider {
+  background-color: {{ section.settings.background_color }};
+  {% if section.settings.background_image != blank %}
+    background-image: url({{ section.settings.background_image | image_url }});
+    background-size: cover;
+    background-position: center;
+  {% endif %}
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  margin-top: {{ section.settings.margin_top }}px;
+  margin-bottom: {{ section.settings.margin_bottom }}px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.slider-wrapper {
+  width: 50%;
+}
+.image-display {
+  width: 50%;
+}
+.flickity-viewport {
+  height: auto !important;
+}
+{% endstyle %}
+
+<div id="{{ section.settings.custom_id }}" class="section_width_{{ section.settings.section_width }}">
+  <div class="section_content_width_{{ section.settings.section_content_width }} atmos-slider {{ section.settings.custom_class }}">
+
+    {% if section.settings.icon != blank %}
+      <div class="section-icon" style="text-align:center;">
+        <img src="{{ section.settings.icon | image_url }}" alt="Icon" style="height:40px;">
+      </div>
+    {% endif %}
+
+    <div class="slider-wrapper" data-flickity='{"wrapAround": true, "pageDots": {{ section.settings.show_dots }}, "prevNextButtons": {{ section.settings.show_arrows }}}'>
+      {% for block in section.blocks %}
+        <div class="slide">
+          <{{ block.settings.heading_type }} style="color: {{ block.settings.heading_color }}; text-align: {{ block.settings.heading_align }}; font-weight: {{ block.settings.heading_weight }};">
+            {{ block.settings.heading }}
+          </{{ block.settings.heading_type }}>
+          <div style="color: {{ block.settings.body_color }}; text-align: {{ block.settings.body_align }};">
+            {{ block.settings.body | escape }}
+          </div>
+          {% if block.settings.button_text != blank %}
+            <a href="{{ block.settings.button_link }}" class="btn {{ block.settings.button_style }}">
+              {% if block.settings.button_icon_pos == 'left' %}<span class="icon-left">{{ block.settings.button_icon }}</span>{% endif %}
+              {{ block.settings.button_text }}
+              {% if block.settings.button_icon_pos == 'right' %}<span class="icon-right">{{ block.settings.button_icon }}</span>{% endif %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="image-display">
+      <img src="{{ section.settings.image | image_url }}" alt="Display Image" style="width: {{ section.settings.image_size }}%; object-fit: {{ section.settings.image_fit }};">
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Flickity initialization is handled via data-flickity attribute
+  });
+</script>
+
+{% schema %}
+{
+      "name": "Somos Left Right Media",
+  "tag": "section",
+  "class": "dolby-atmos-slider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Top Icon"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "range",
+      "id": "image_size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "label": "Image Size (%)",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image Fit",
+      "default": "cover",
+      "options": [
+        {"value": "cover", "label": "Cover"},
+        {"value": "contain", "label": "Contain"},
+        {"value": "fill", "label": "Fill"}
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Dots",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_type",
+          "label": "Heading Type",
+          "default": "h2",
+          "options": [
+            {"value": "h1", "label": "H1"},
+            {"value": "h2", "label": "H2"},
+            {"value": "h3", "label": "H3"},
+            {"value": "h4", "label": "H4"},
+            {"value": "h5", "label": "H5"},
+            {"value": "h6", "label": "H6"},
+            {"value": "p", "label": "Body"},
+            {"value": "em", "label": "Italic"}
+          ]
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#000"
+        },
+        {
+          "type": "select",
+          "id": "heading_align",
+          "label": "Heading Alignment",
+          "default": "left",
+          "options": [
+            {"value": "left", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "right", "label": "Right"}
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_weight",
+          "label": "Heading Weight",
+          "default": "400",
+          "options": [
+            {"value": "300", "label": "Light"},
+            {"value": "400", "label": "Regular"},
+            {"value": "700", "label": "Bold"}
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body Text"
+        },
+        {
+          "type": "color",
+          "id": "body_color",
+          "label": "Body Text Color",
+          "default": "#333"
+        },
+        {
+          "type": "select",
+          "id": "body_align",
+          "label": "Body Text Alignment",
+          "default": "left",
+          "options": [
+            {"value": "left", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "right", "label": "Right"}
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "default": "primary",
+          "options": [
+            {"value": "primary", "label": "Primary"},
+            {"value": "secondary", "label": "Secondary"}
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_icon",
+          "label": "Button Icon"
+        },
+        {
+          "type": "select",
+          "id": "button_icon_pos",
+          "label": "Icon Position",
+          "default": "left",
+          "options": [
+            {"value": "left", "label": "Left"},
+            {"value": "right", "label": "Right"}
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Somos Left Right Media",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
