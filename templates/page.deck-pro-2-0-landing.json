@@ -519,6 +519,50 @@
         "slide_size": "large"
       }
     },
+    "somos_left_right_media_XGX7Q9": {
+      "type": "somos-left-right-media",
+      "blocks": {
+        "slide_mDWGbn": {
+          "type": "slide",
+          "settings": {
+            "heading": "Dolby Atmos Support",
+            "heading_type": "h2",
+            "heading_color": "#000",
+            "heading_align": "left",
+            "heading_weight": "400",
+            "body": "",
+            "body_color": "#333",
+            "body_align": "left",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon": "",
+            "button_icon_pos": "left"
+          }
+        }
+      },
+      "block_order": [
+        "slide_mDWGbn"
+      ],
+      "name": "Somos Left Right Media",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "icon": "shopify://shop_images/c7d08704df966216dcbc68460292ea6c8695a8ff.png",
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4.png",
+        "image_size": 100,
+        "image_fit": "cover",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "show_arrows": true,
+        "show_dots": true,
+        "custom_class": "",
+        "custom_id": ""
+      }
+    },
     "various_grid_9A7agj": {
       "type": "various-grid",
       "blocks": {
@@ -911,6 +955,7 @@
     "somos_image_content_HHm83y",
     "somos_banner_TWzKkD",
     "new_banner_slider_Wpr933",
+    "somos_left_right_media_XGX7Q9",
     "various_grid_9A7agj",
     "usp_accordion_3MVwD3",
     "comparison_table_nwWE3E",
