@@ -49,6 +49,44 @@
 .flickity-viewport {
   height: auto !important;
 }
+
+/* ENHANCEMENTS */
+.slide {
+  padding-bottom: {{ block.settings.padding_bottom | default: 20 }}px;
+  background-color: {{ block.settings.slide_background | default: "#ffffff" }};
+}
+.flickity-page-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 30px;
+  margin: 0 4px;
+  background: #ccc;
+  opacity: 1;
+  transition: background 0.3s;
+}
+.flickity-page-dots .dot.is-selected {
+  background: #ff007f;
+}
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.video-wrapper iframe,
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.fallback-thumbnail {
+  display: block;
+  max-width: 100%;
+  border-radius: 12px;
+}
 {% endstyle %}
 
 <div id="{{ section.settings.custom_id }}" class="section_width_{{ section.settings.section_width }}">
@@ -63,19 +101,29 @@
     <div class="slider-wrapper" data-flickity='{"wrapAround": true, "pageDots": {{ section.settings.show_dots }}, "prevNextButtons": {{ section.settings.show_arrows }}}'>
       {% for block in section.blocks %}
         <div class="slide">
+
+          {% if block.settings.subtitle != blank %}
+            <p style="margin: 0 0 10px; font-weight: bold; color: {{ block.settings.subtitle_color }};">
+              {{ block.settings.subtitle }}
+            </p>
+          {% endif %}
+
           <{{ block.settings.heading_type }} style="color: {{ block.settings.heading_color }}; text-align: {{ block.settings.heading_align }}; font-weight: {{ block.settings.heading_weight }};">
             {{ block.settings.heading }}
           </{{ block.settings.heading_type }}>
+
           <div style="color: {{ block.settings.body_color }}; text-align: {{ block.settings.body_align }};">
             {{ block.settings.body | escape }}
           </div>
-          {% if block.settings.button_text != blank %}
+
+          {% if block.settings.button_text != blank and block.settings.button_link != blank %}
             <a href="{{ block.settings.button_link }}" class="btn {{ block.settings.button_style }}">
               {% if block.settings.button_icon_pos == 'left' %}<span class="icon-left">{{ block.settings.button_icon }}</span>{% endif %}
               {{ block.settings.button_text }}
               {% if block.settings.button_icon_pos == 'right' %}<span class="icon-right">{{ block.settings.button_icon }}</span>{% endif %}
             </a>
           {% endif %}
+
         </div>
       {% endfor %}
     </div>
@@ -83,6 +131,21 @@
     <div class="image-display">
       <img src="{{ section.settings.image | image_url }}" alt="Display Image" style="width: {{ section.settings.image_size }}%; object-fit: {{ section.settings.image_fit }};">
     </div>
+
+    {% if section.settings.video_url != blank %}
+      <div class="video-wrapper">
+        {% if section.settings.video_url contains 'youtube.com' or section.settings.video_url contains 'youtu.be' %}
+          <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url | split: 'v=' | last }}" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          <video controls>
+            <source src="{{ section.settings.video_url }}" type="video/mp4">
+            {% if section.settings.video_fallback != blank %}
+              <img src="{{ section.settings.video_fallback | image_url }}" alt="Video fallback image" class="fallback-thumbnail">
+            {% endif %}
+          </video>
+        {% endif %}
+      </div>
+    {% endif %}
 
   </div>
 </div>
@@ -204,6 +267,12 @@
     },
     {
       "type": "checkbox",
+      "id": "show_arrows2",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
       "id": "show_dots",
       "label": "Show Dots",
       "default": true
@@ -217,6 +286,16 @@
       "type": "text",
       "id": "custom_id",
       "label": "Custom ID"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL (YouTube or uploaded video)"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_fallback",
+      "label": "Fallback Thumbnail Image"
     }
   ],
   "blocks": [
@@ -329,6 +408,32 @@
             {"value": "left", "label": "Left"},
             {"value": "right", "label": "Right"}
           ]
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle Color",
+          "default": "#555555"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Bottom Padding",
+          "default": 20
+        },
+        {
+          "type": "color",
+          "id": "slide_background",
+          "label": "Slide Background Color",
+          "default": "#ffffff"
         }
       ]
     }
