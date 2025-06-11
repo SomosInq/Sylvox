@@ -129,7 +129,10 @@ width: 82%;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
   }
 
-.product-carousel {
+/* .product-carousel {
+  display: none;
+} */
+ .tab-content:not(.active) .product-carousel {
   display: none;
 }
 

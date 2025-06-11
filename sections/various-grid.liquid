@@ -49,6 +49,11 @@
     max-width: 100%;
   }
 }
+@media screen and (max-width: 768px) {
+  .various-grid-top {
+    flex-direction: column;
+  }
+}
 {% endstyle %}
 
 {% assign has_bg_image = false %}
@@ -76,7 +81,7 @@
           <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Left Image" style="width: {{ section.settings.left_image_width }}%;">
         {% endif %}
       </div>
-      <div class="aligright">
+      <div class="alignright">
         {% if section.settings.icon %}
           <img src="{{ section.settings.icon | img_url: 'master' }}" alt="Heading Icon" style="width: 40px; margin-bottom: 10px;">
         {% endif %}
