@@ -1,7 +1,13 @@
 {% schema %}
 {
-  "name": "Somos Image/Text Flex Blocks",
+  "name": "Somos Image/Text Block",
   "settings": [
+    {
+  "type": "color",
+  "id": "background_color",
+  "label": "Background Color",
+  "default": "#ffffff"
+},
     {
       "type": "select",
       "id": "section_width",
@@ -16,6 +22,16 @@
           "value": "full",
           "label": "Full Width"
         }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
       ]
     },
     {
@@ -120,8 +136,8 @@
 
 {% assign text_align = settings.alignment | default: 'center' %}
 
-<div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }}"
-     style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; text-align: {{ text_align }};">
+<div class="image-text-blocks-section px-4 md:px-8 py-6  section_width_{{ section.settings.section_width }}"
+     style="background-color: {{ section.settings.background_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; text-align: {{ text_align }};">
 
   {% for block in section.blocks %}
     {% case block.type %}
@@ -130,7 +146,7 @@
         {% if block.settings.image %}
 {% assign image_align = block.settings.image_alignment | default: 'center' %}
 
-<div class="
+<div class="section_content_width_{{ section.settings.section_content_width }} 
   {% if image_align == 'left' %} justify-start
   {% elsif image_align == 'right' %} justify-end
   {% else %} justify-center

@@ -15602,17 +15602,18 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
 .flickity-slider .testimonials-slide {
     display: block;
     opacity: 1;
+        background: #FAFAFA;
   }
 
 .testimonials-slide .testimonials-slider__text {
-    transform: scale(0.95);
-    transition:
-      transform 0.5s ease, box-shadow 0.5s ease;
+    /* transform: scale(0.95); */
+    /* transition: */
+      /* transform 0.5s ease, box-shadow 0.5s ease; */
   }
 
 .testimonials-slide.is-selected .testimonials-slider__text {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    /* transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); */
     position: relative;
     z-index: 10;
   }

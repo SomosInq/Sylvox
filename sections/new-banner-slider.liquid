@@ -25,6 +25,14 @@
         { "value": "full", "label": "Full Width" }
       ]
     },
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {
       "type": "select",
       "id": "text_alignment",
@@ -79,7 +87,13 @@
         {
           "type": "text",
           "id": "caption",
-          "label": "Caption",
+          "label": "Title",
+          "default": "Outdoor Dining Area"
+        },
+        {
+          "type": "textarea",
+          "id": "description_block",
+          "label": "Description",
           "default": "Outdoor Dining Area"
         }
       ]
@@ -185,6 +199,15 @@
 
   .carousel-caption {
     position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 400;
+  }
+
+   .carousel-description_block {
+    position: absolute;
     bottom: 1rem;
     left: 1rem;
     font-size: 0.75rem;
@@ -226,7 +249,7 @@
 {% endstyle %}
 
 
-<section class="outdoor-carousel-section section_width_{{ section.settings.section_width }}">
+<section class="outdoor-carousel-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <div class="outdoor-carousel-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}">
     <div class="small-heading">{{ section.settings.heading }}</div>
     <h2>{{ section.settings.subheading }}</h2>
@@ -249,6 +272,9 @@
           {% endif %}
           {% if block.settings.caption %}
             <div class="carousel-caption">{{ block.settings.caption }}</div>
+          {% endif %}
+          {% if block.settings.description_block %}
+            <div class="carousel-description_block">{{ block.settings.description_block }}</div>
           {% endif %}
         </div>
       {% endfor %}

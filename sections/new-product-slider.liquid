@@ -3,7 +3,6 @@
 <style>
   .product-tabs-section {
     transition: all 0.3s ease;
-    padding: 2rem 1rem;
   }
 
   .product-tabs-section .tabs {
@@ -29,29 +28,17 @@
     border-color: #20413B;
   }
 
-  .tab-content {
+  .product-tabs-section .tab-content {
     display: none;
   }
 
-  .tab-content.active {
+  .product-tabs-section .tab-content.active {
     display: block;
   }
 
-  .product-carousel {
-    overflow: visible;
-  }
-
-  .carousel-cell {
+  .product-carousel .carousel-cell {
     width: 250px;
     margin-right: 20px;
-    opacity: 0.3;
-    transform: scale(0.94);
-    transition: all 0.3s ease;
-  }
-
-  .carousel-cell.is-selected {
-    opacity: 1;
-    transform: scale(1);
   }
 
   .product-card {
@@ -72,8 +59,9 @@
   }
 
   .product-card p {
-    font-size: 0.875rem;
-    color: #666;
+    color: #333;
+    font-weight: 600;
+    margin-top: 4px;
   }
 
   .carousel-arrows {
@@ -103,7 +91,9 @@
 </style>
 {% endstylesheet %}
 
-<section class="product-tabs-section section_width_{{ section.settings.section_width }}">
+<section class="product-tabs-section section_width_{{ section.settings.section_width }}"
+  style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}'); background-size: cover; background-position: center;">
+
   <div class="section_content_width_{{ section.settings.section_content_width }}">
     {% if section.settings.heading %}
       <div class="header" style="text-align: {{ section.settings.header_alignment }};">
@@ -113,35 +103,41 @@
 
     <div class="tabs">
       {% for block in section.blocks %}
-        <div class="tab {% if forloop.first %}active{% endif %}" data-tab-id="tab-{{ forloop.index }}">{{ block.settings.tab_label }}</div>
+        <div class="tab {% if forloop.first %}active{% endif %}" data-tab-id="tab-{{ forloop.index }}">
+          {{ block.settings.tab_label }}
+        </div>
       {% endfor %}
     </div>
 
     {% for block in section.blocks %}
-      <div class="tab-content {% if forloop.first %}active{% endif %}" id="tab-{{ forloop.index }}">
-        {% if block.settings.collection and block.settings.collection.products.size > 0 %}
-          <div class="carousel-wrapper">
-            <div class="product-carousel" id="carousel-{{ forloop.index }}">
-              {% for product in block.settings.collection.products %}
-                <div class="carousel-cell product-card">
-                  <h3>{{ product.title }}</h3>
-                  <p>{{ product.description | strip_html | truncate: 100 }}</p>
-                  <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-                </div>
-              {% endfor %}
-            </div>
+      <div class="tab-content {% if forloop.first %}active{% endif %}"
+     id="tab-{{ forloop.index }}"
+     style="{% if forloop.first %}display: block;{% else %}display: none;{% endif %}">
 
-            {% if section.settings.show_arrows %}
-              <div class="carousel-arrows">
-                <button class="carousel-prev" data-carousel-id="carousel-{{ forloop.index }}">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-                </button>
-                <button class="carousel-next" data-carousel-id="carousel-{{ forloop.index }}">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-                </button>
+        {% if block.settings.collection and block.settings.collection.products.size > 0 %}
+          <div class="product-carousel"
+     id="carousel-{{ forloop.index }}"
+     data-flickity='{"wrapAround": true, "imagesLoaded": true, "pageDots": true, "cellAlign": "left", "contain": true}'>
+
+
+            {% for product in block.settings.collection.products %}
+              <div class="carousel-cell product-card">
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.description | strip_html | truncate: 100 }}</p>
+                <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
               </div>
-            {% endif %}
+            {% endfor %}
           </div>
+          {% if section.settings.show_arrows %}
+          <div class="carousel-arrows">
+            <button class="carousel-prev" data-carousel-id="carousel-{{ forloop.index }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-next" data-carousel-id="carousel-{{ forloop.index }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          {% endif %}
         {% else %}
           <p style="text-align:center;">No products found in this collection.</p>
         {% endif %}
@@ -155,49 +151,56 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const tabs = document.querySelectorAll(".product-tabs-section .tab");
-    const contents = document.querySelectorAll(".product-tabs-section .tab-content");
+    const tabContents = document.querySelectorAll(".product-tabs-section .tab-content");
+    const initialized = new Set();
 
+    function activateTab(tabId) {
+      tabContents.forEach(content => {
+        content.classList.remove("active");
+        content.style.display = "none";
+      });
+
+      tabs.forEach(t => t.classList.remove("active"));
+
+      const newTab = document.querySelector(`[data-tab-id="${tabId}"]`);
+      const newContent = document.getElementById(tabId);
+
+      if (newTab && newContent) {
+        newTab.classList.add("active");
+        newContent.classList.add("active");
+        newContent.style.display = "block";
+
+        const carousel = newContent.querySelector('.product-carousel');
+        if (carousel && !initialized.has(carousel)) {
+          new Flickity(carousel, {
+            wrapAround: true,
+            imagesLoaded: true,
+            pageDots: true,
+            prevNextButtons: false,
+            cellAlign: "left",
+            contain: true
+          });
+          initialized.add(carousel);
+        }
+      }
+    }
+
+    // Bind tab clicks
     tabs.forEach(tab => {
       tab.addEventListener("click", () => {
-        const id = tab.dataset.tabId;
-
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-
-        contents.forEach(c => {
-          c.classList.remove("active");
-          c.style.display = "none";
-        });
-
-        const activeContent = document.getElementById(id);
-        if (activeContent) {
-          activeContent.classList.add("active");
-          activeContent.style.display = "block";
-        }
+        activateTab(tab.dataset.tabId);
       });
     });
 
-    document.querySelectorAll('.product-carousel').forEach(carousel => {
-      const flkty = new Flickity(carousel, {
-        wrapAround: true,
-        imagesLoaded: true,
-        pageDots: true,
-        prevNextButtons: false,
-        cellAlign: 'left',
-        contain: true
-      });
-
-      // Arrows
-      const index = carousel.id.split("-").pop();
-      const prevBtn = document.querySelector(`.carousel-prev[data-carousel-id="carousel-${index}"]`);
-      const nextBtn = document.querySelector(`.carousel-next[data-carousel-id="carousel-${index}"]`);
-
-      prevBtn?.addEventListener('click', () => flkty.previous());
-      nextBtn?.addEventListener('click', () => flkty.next());
-    });
+    // Activate first tab by default
+    if (tabs.length > 0) {
+      activateTab(tabs[0].dataset.tabId);
+    }
   });
 </script>
 {% endjavascript %}
+
+
 
 {% schema %}
 {
@@ -215,7 +218,8 @@
         { "value": "right", "label": "Right" }
       ]
     },
-    { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
     {
       "type": "select", "id": "section_width", "label": "Section Width", "default": "standard",
       "options": [
@@ -229,7 +233,16 @@
         { "value": "standard", "label": "50% Width" },
         { "value": "full", "label": "Full Width" }
       ]
-    }
+    },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0 }
   ],
   "blocks": [
     {

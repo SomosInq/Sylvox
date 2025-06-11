@@ -13,6 +13,35 @@
   {% render 'section-testimonials' %}
 {%- endcomment -%}
 
+{% stylesheet %}
+.testimonials-section .flickity-page-dots {
+    position: unset !important;
+    width: 10%;
+    padding: 0;
+    margin: 0 auto !important;
+    list-style: none;
+    text-align: center;
+    line-height: 1;
+}
+
+.testimonials-section .flickity-page-dots .dot.is-selected {
+  width: 72px;
+height: 8px;
+border-radius: 20px;
+background: rgba(0, 0, 0, 0.10);
+    opacity: 1;
+    background-color: transparent;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 8px;
+    background: #333;
+    border-radius: 50%;
+    opacity: .25;
+    cursor: pointer;
+}
+{% endstylesheet %}
+
 {%- liquid
   assign align_text = align_text | default: section.settings.align_text | default: 'center'
   assign round_images = round_images | default: section.settings.round_images, allow_false: true | default: true, allow_false: true
