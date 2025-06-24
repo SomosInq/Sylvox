@@ -62,57 +62,131 @@
         "tab_ajBwUM": {
           "type": "tab",
           "settings": {
-            "tab_label": "label",
-            "title": "heading",
-            "heading_tag": "h2",
-            "inline_title": "Series",
-            "description": "<p>desc</p>",
-            "content_max_width": 780,
-            "text_color": "#000000",
-            "image": "shopify://shop_images/index_image.webp",
-            "product": "sylvox-official-extended-warranty-for-deck-pro-65-2-years-total-3-years",
-            "product_title": "New Nano AI",
-            "product_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small_webp.png",
-            "product_2": "1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-            "product_title_2": "New Nano AI",
-            "featured_text_color": "",
-            "background": "",
-            "btn_text_color": ""
+            "tab_label": "Outdoor TV",
+            "title": "Outdoor TV",
+            "inline_title": "Shop by Category",
+            "description": "<p>More Time Outdoors. More Moments Together.</p>",
+            "text_color": "#ffffff",
+            "font_weight": "normal",
+            "horizontal_position": "left",
+            "vertical_position": 50,
+            "image": "shopify://shop_images/Sylvox_7.png",
+            "collection": "outdoor-tv-2",
+            "collection_title_color": "#000000"
+          }
+        },
+        "tab_4MphUU": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Kitchen TV",
+            "title": "Kitchen TV",
+            "inline_title": "Shop by Category",
+            "description": "<p>More Time Outdoors. More Moments Together.</p>",
+            "text_color": "#ffffff",
+            "font_weight": "normal",
+            "horizontal_position": "left",
+            "vertical_position": 50,
+            "image": "shopify://shop_images/Sylvox_7.png",
+            "collection": "outdoor-tv-2",
+            "collection_title_color": "#000000"
+          }
+        },
+        "tab_nWHVTK": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "RV TV",
+            "title": "RV TV",
+            "inline_title": "Shop by Category",
+            "description": "<p>More Time Outdoors. More Moments Together.</p>",
+            "text_color": "#ffffff",
+            "font_weight": "normal",
+            "horizontal_position": "left",
+            "vertical_position": 50,
+            "image": "shopify://shop_images/Sylvox_7.png",
+            "collection": "outdoor-tv-2",
+            "collection_title_color": "#000000"
+          }
+        },
+        "tab_ifKxni": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Bathroom TV",
+            "title": "Bathroom TV",
+            "inline_title": "Shop by Category",
+            "description": "<p>More Time Outdoors. More Moments Together.</p>",
+            "text_color": "#ffffff",
+            "font_weight": "normal",
+            "horizontal_position": "left",
+            "vertical_position": 50,
+            "image": "shopify://shop_images/Sylvox_7.png",
+            "collection": "outdoor-tv-2",
+            "collection_title_color": "#000000"
+          }
+        },
+        "tab_hdbwhE": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Commercial TV",
+            "title": "Commercial TV",
+            "inline_title": "Shop by Category",
+            "description": "<p>More Time Outdoors. More Moments Together.</p>",
+            "text_color": "#ffffff",
+            "font_weight": "normal",
+            "horizontal_position": "left",
+            "vertical_position": 50,
+            "image": "shopify://shop_images/Sylvox_7.png",
+            "collection": "outdoor-tv-2",
+            "collection_title_color": "#000000"
+          }
+        },
+        "tab_HPMjtj": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Accessories",
+            "title": "Accessories",
+            "inline_title": "Shop by Category",
+            "description": "<p>More Time Outdoors. More Moments Together.</p>",
+            "text_color": "#ffffff",
+            "font_weight": "normal",
+            "horizontal_position": "left",
+            "vertical_position": 50,
+            "image": "shopify://shop_images/Sylvox_7.png",
+            "collection": "outdoor-tv-2",
+            "collection_title_color": "#000000"
           }
         }
       },
       "block_order": [
-        "tab_ajBwUM"
+        "tab_ajBwUM",
+        "tab_4MphUU",
+        "tab_nWHVTK",
+        "tab_ifKxni",
+        "tab_hdbwhE",
+        "tab_HPMjtj"
       ],
       "settings": {
+        "stack_products": true,
         "section_width": "full",
-        "section_content_width": "full",
-        "background_type": "color",
-        "background_color": "#ffffff",
-        "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
-        "hide_desktop": false,
-        "hide_tablet": false,
-        "hide_mobile": false,
+        "section_content_width": "standard",
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "enable_parallax": false,
+        "image_size": "auto",
+        "tabs_position": 81,
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "height_desktop": 600,
-        "show_header": true,
-        "header_text": "Welcome Title",
-        "header_tag": "h2",
-        "header_color": "#000000",
-        "header_weight": "bold",
-        "header_align": "center",
-        "header_richtext": "",
-        "custom_class": "",
-        "custom_id": "",
-        "json_blocks": "",
-        "tabs_position": 42,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "enable_parallax": false
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
       }
     },
     "info_section_JEKir6": {
@@ -212,8 +286,6 @@
         "text_color": "",
         "button_background": "",
         "button_text_color": "",
-        "title_size": 28,
-        "text_size": 16,
         "button_size": 16,
         "background_color": "#ffffff",
         "section_width": "standard",
@@ -229,6 +301,8 @@
         "view_all_text": "View All Comparisons",
         "view_all_url": "",
         "view_all_icon": "shopify://shop_images/Icon.svg",
+        "show_view_all_comparisons": true,
+        "show_see_all_specs": true,
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
@@ -535,7 +609,9 @@
         "image_ckK6ng"
       ],
       "settings": {
+        "background_color": "#ffffff",
         "section_width": "standard",
+        "section_content_width": "standard",
         "alignment": "center",
         "padding_top": 40,
         "padding_bottom": 40,
@@ -554,21 +630,24 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
-            "caption": "Outdoor Dining Area"
+            "caption": "Outdoor Dining Area",
+            "description_block": "Outdoor Dining Area"
           }
         },
         "slide_M46t3f": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/14e05d62ebe767f82f77c31d300c9d2e33bc554e.jpg",
-            "caption": "Outdoor Dining Area"
+            "caption": "Outdoor Dining Area",
+            "description_block": "Outdoor Dining Area"
           }
         },
         "slide_hbD7ck": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/74a1a00cf11556c67aff97a187c512eb9a149348.png",
-            "caption": "Outdoor Dining Area"
+            "caption": "Outdoor Dining Area",
+            "description_block": "Outdoor Dining Area"
           }
         }
       },
@@ -578,7 +657,16 @@
         "slide_hbD7ck"
       ],
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "text_alignment": "left",
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
