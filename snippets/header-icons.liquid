@@ -49,6 +49,7 @@
     data-icon="{{ cart_icon }}"
     aria-label="{% render 't_with_fallback', key: 'labels.cart', fallback: 'Cart' -%}"
   >
+    
     <span class="cart-link">
       {% render 'icon', name: cart_icon %}
       <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}">

@@ -31,14 +31,18 @@
       </a>
     {% endif %}
 
+<!-- Unified Scroll Container -->
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+  <div style="min-width: 768px;">
+
     <!-- Header Section -->
-    <div class="comparison-header" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
+    <div class="comparison-header" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
       <div class="header-blank"></div>
       {% for block in section.blocks %}
-        <div class="text-center header">
+        <div class="text-center header" style="display: flex; flex-direction: column; align-items: center;">
           {% if block.settings.main_image %}
-  <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 100%; margin-bottom: 1rem; margin-left: auto; margin-right: auto;" />
-{% endif %}
+            <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 100%; height: auto; margin-bottom: 1rem;" />
+          {% endif %}
           <div class="top-title">{{ block.settings.header_title }}</div>
           <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
             {% if block.settings.icon %}
@@ -62,7 +66,7 @@
     </div>
 
     <!-- Table Values Section -->
-    <div class="comparison-values" style="display: grid; grid-template-columns: auto repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
+    <div class="comparison-values" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
       {% assign max_rows = 20 %}
       {% for i in (1..max_rows) %}
         {% assign heading_key = 'heading_' | append: i %}
@@ -85,6 +89,11 @@
         {% endif %}
       {% endfor %}
     </div>
+
+  </div>
+</div>
+
+
 
     <!-- SEE ALL SPECS TOGGLE -->
     {% assign row_count = 0 %}

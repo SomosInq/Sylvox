@@ -32,7 +32,7 @@
 %}
 
 <div class="collection-filter">
-  <div class="collection-filter__inner">
+  {% comment %} <div class="collection-filter__inner">
     {%- if enable_filters -%}
       <div class="collection-filter__item collection-filter__item--drawer">
         <button
@@ -148,7 +148,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> {% endcomment %}
 
   <div class="collection-mobile-filters medium-up--hide">
     {%- render 'collection-mobile-filters' -%}

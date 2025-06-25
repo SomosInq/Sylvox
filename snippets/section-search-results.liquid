@@ -157,7 +157,7 @@
                           <span class="grid-product__price">
                             {%- assign labels_from_price_html = 'labels.from_price_html' | t: price: price %}
                             {%- capture fallback_labels_from_price_html -%}
-                              <span>from</span> {{ price }}
+                              <span>From</span> {{ price }}
                             {%- endcapture -%}
                             {% render 't_with_fallback',
                               t: labels_from_price_html,

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "snippets/price-varies.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1750065316819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1750065316819,
+            "name": "Commit-0",
+            "content": "{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | \"Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)\" License  %}\n{% comment %}\n  Renders the price varies component.\n\n  Accepts:\n  - superscript_decimals {boolean} - Whether to superscript decimals\n  - price {number} - The price of the product\n\n  Usage:\n  {% render 'price-varies', price: product.price_min %}\n{% endcomment %}\n\n{%- liquid\n  assign superscript_decimals = superscript_decimals | default: settings.superscript_decimals, allow_false: true | default: true, allow_false: true\n  assign price = price | default: blank\n\n  assign formatted_price = price | money\n  assign raw_price = price | money\n  unless shop.money_format contains 'money' or shop.money_format contains '.'\n    if superscript_decimals\n      if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}'\n        assign formatted_price = formatted_price | replace: '.', '<sup>' | append: '</sup>'\n      elsif shop.money_format contains '{{amount_with_comma_separator}}' or shop.money_format contains '{{ amount_with_comma_separator }}'\n        assign formatted_price = formatted_price | replace: ',', '<sup>' | append: '</sup>'\n      endif\n    endif\n  endunless\n-%}\n\n<span aria-hidden=\"true\" class=\"grid-product__price--from\">\n  {% assign labels_from_price_html = 'labels.from_price_html' | t: price: formatted_price %}\n  {%- capture fallback_labels_from_price_html -%}\n    <span>From</span> {{ formatted_price }}\n  {%- endcapture -%}\n  {% render 't_with_fallback', t: labels_from_price_html, fallback: fallback_labels_from_price_html %}\n</span>\n<span class=\"visually-hidden\">\n  {%- assign labels_from_price_html = 'labels.from_price_html' | t: price: raw_price %}\n  {%- capture fallback_labels_from_price_html -%}\n    <span>From</span> {{ raw_price }}\n  {%- endcapture -%}\n  {% render 't_with_fallback', t: labels_from_price_html, fallback: fallback_labels_from_price_html -%}\n</span>\n"
+        }
+    ]
+}

@@ -1,0 +1,309 @@
+
+{% schema %}
+{
+  "name": "Subscribe Gift",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Margin Right",
+      "default": 0
+    },
+
+    {
+      "type": "range",
+      "id": "content-padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Padding Right",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-margin_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Margin Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "content-margin_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Content Margin Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "Show on Desktop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_tablet",
+      "label": "Show on Tablet",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on Mobile",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "top_title",
+      "label": "Top Title"
+    },
+    {
+      "type": "richtext",
+      "id": "top_text",
+      "label": "Top Text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Sign In"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "range",
+      "id": "right_image_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Right Image Width (%)",
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "textarea",
+      "id": "json_blocks",
+      "label": "JSON Blocks"
+    }
+  ],
+  "presets": [
+    {
+  "name": "Subscribe Gift",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
+
+
+<section 
+  id="{{ section.settings.section_id }}" 
+  class="section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image %}background-image: url('{{ section.settings.background_image | img_url: 'master' }}'); background-size: cover;{% endif %}
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    margin-left: {{ section.settings.margin_left }}px;
+    margin-right: {{ section.settings.margin_right }}px;
+    display: {% if section.settings.show_on_desktop or section.settings.show_on_tablet or section.settings.show_on_mobile %}block{% else %}none{% endif %};
+  ">
+  <div class="content-wrapper" style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    content-padding-top: {{ section.settings.content-padding_top }}px;
+    content-padding-bottom: {{ section.settings.content-padding_bottom }}px;
+    content-padding-left: {{ section.settings.content-padding_left }}px;
+    content-padding-right: {{ section.settings.content-padding_right }}px;
+    content-margin-top: {{ section.settings.content-margin_top }}px;
+    content-margin-bottom: {{ section.settings.content-margin_bottom }}px;
+    content-margin-left: {{ section.settings.content-margin_left }}px;
+    content-margin-right: {{ section.settings.content-margin_right }}px;
+    ">
+    <div class="left-content">
+      {% if section.settings.top_title != blank %}
+        <div class="top-title">{{ section.settings.top_title }}</div>
+      {% endif %}
+      {% if section.settings.top_text != blank %}
+        <div class="top-text">{{ section.settings.top_text }}</div>
+      {% endif %}
+      <form>
+        <input type="email" placeholder="Enter Email Address Here">
+        <button type="submit">{{ section.settings.button_text }}</button>
+      </form>
+    </div>
+    {% if section.settings.right_image != blank %}
+      <div class="right-image" style="flex-shrink: 0; width: {{ section.settings.right_image_width }}%;">
+        <img src="{{ section.settings.right_image | img_url: 'master' }}" alt="Gift Image">
+      </div>
+    {% endif %}
+  </div>
+</section>

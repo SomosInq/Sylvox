@@ -1,17 +1,6 @@
-{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | "Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)" License  %}
+{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership %}
 {% comment %}
   Render a variant button for a product option.
-
-  Accepts:
-  - option {product_option} - Product option object
-  - prev_block_index {number} - Index of the previous block
-  - forloop {forloop} - Parent loop object
-  - product {product} - Product object
-  - block {block} - Block object
-  - swatch_file_extension {string} - Swatch file extension
-
-  Usage:
-  {% render 'variant-button', option: option %}
 {% endcomment %}
 
 {%- liquid
@@ -40,7 +29,6 @@
   endif
 
   assign swatch_file_extension = swatch_file_extension | default: 'png'
-
   assign is_size = false
 
   capture size_trigger
@@ -117,6 +105,8 @@
         assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
         assign color_swatch_fallback = value | split: ' ' | last | handle
       endif
+
+      assign variant = product.variants | where: 'option1', value | first
     -%}
 
     {% if is_color %}
@@ -132,33 +122,65 @@
       class="visually-hidden"
       type="radio"
       form="{{ form_id }}"
-      {% if option.selected_value == value %}
-        checked="checked"
-      {% endif %}
-      {% if option_disabled %}
-        data-disabled=""
-      {% endif %}
+      {% if option.selected_value == value %} checked="checked"{% endif %}
+      {% if option_disabled %} data-disabled=""{% endif %}
       value="{{ value | escape }}"
       name="{{ option.name }}"
       id="{{ id }}"
       data-index="option{{ option.position }}"
     >
+
     <label
       for="{{ id }}"
-      class="variant__button-label"
+      class="variant__button-label custom-variant-box"
       {% if is_color %}
         data-color-swatch="{{ option.name }}"
       {% endif %}
     >
-      {{- value | escape -}}
-      {%- if option_disabled -%}
-        <span class="visually-hidden">
-          {% render 't_with_fallback',
-            key: 'info.variant_sold_out_or_unavailable',
-            fallback: 'Variant sold out or unavailable'
-          %}
-        </span>
-      {%- endif -%}
+      <div class="custom-variant-content">
+        <div class="custom-variant-size">{{ value | escape }}</div>
+        {% if variant %}
+          <div class="custom-variant-price">{{ variant.price | money }}</div>
+        {% endif %}
+      </div>
     </label>
   {%- endfor -%}
 </fieldset>
+
+<style>
+  .custom-variant-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 100px;
+    margin: 0.5rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  input[type="radio"]:checked + .custom-variant-box {
+    border-color: #006341;
+    box-shadow: 0 0 0 2px rgba(0, 99, 65, 0.2);
+    background-color: #f4faf7;
+    font-weight: bold;
+  }
+
+  .custom-variant-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-variant-size {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .custom-variant-price {
+    font-size: 0.95rem;
+    color: #555;
+  }
+</style>

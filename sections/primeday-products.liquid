@@ -1,0 +1,343 @@
+<style>
+  /* Section & Content Width */
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  /* Visibility */
+  .hide-desktop { display: none !important; }
+  @media (min-width: 768px) {
+    .hide-tablet { display: none !important; }
+  }
+  @media (max-width: 767px) {
+    .hide-mobile { display: none !important; }
+  }
+
+  /* Header */
+.section-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-header img.header-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.section-header .richtext {
+  max-width: 800px;
+}
+
+
+  /* Gift Blocks Wrapper */
+  .gift-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Gift Block Layout */
+  .gift-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 20px;
+    flex: 0 1 calc(33.333% - 30px);
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  @media (max-width: 991px) {
+    .gift-block {
+      flex: 0 1 calc(50% - 30px);
+    }
+  }
+  @media (max-width: 600px) {
+    .gift-block {
+      flex: 0 1 100%;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .gift-block .gift-image {
+    flex: 0 0 40%;
+  }
+  .gift-block .gift-image img {
+    width: 100%;
+    display: block;
+  }
+  .gift-block .gift-content {
+    flex: 1;
+  }
+
+  .gift-content .free-badge {
+    background: #f5a623;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .gift-content .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text-link {
+    margin-top: 30px;
+    text-align: center;
+  }
+</style>
+
+<div id="{{ section.settings.custom_id }}" class="custom-section {{ section.settings.custom_class }}
+  section_width_{{ section.settings.section_width }} 
+  section_content_width_{{ section.settings.section_content_width }}
+  {% if section.settings.hide_desktop %}hide-desktop{% endif %}
+  {% if section.settings.hide_tablet %}hide-tablet{% endif %}
+  {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | image_url }});{% endif %}
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    height: {{ section.settings.height_desktop }}px;
+">
+
+  {% if section.settings.show_header %}
+    <div class="section-header">
+      {% if section.settings.header_image != blank %}
+        <img src="{{ section.settings.header_image | image_url }}" alt="Header Image" class="header-image">
+      {% endif %}
+      <{{ section.settings.title_tag }} style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }};">
+        {{ section.settings.title | escape }}
+      </{{ section.settings.title_tag }}>
+      <div class="richtext">{{ section.settings.subtitle }}</div>
+    </div>
+  {% endif %}
+
+  <div class="gift-blocks">
+    {% for block in section.blocks %}
+      <div class="gift-block">
+        {% if block.settings.image != blank %}
+          <div class="gift-image">
+            <img
+              src="{{ block.settings.image | image_url }}"
+              loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+              class="gift-effect-{{ block.settings.image_hover }}"
+              style="aspect-ratio: {{ block.settings.image_ratio }};"
+            >
+          </div>
+        {% endif %}
+
+        <div class="gift-content">
+          <div class="free-badge">FREE</div>
+          <h3>{{ block.settings.title }}</h3>
+          <div class="price-row">
+            <p><s>{{ block.settings.price }}</s></p>
+            <p class="now-free">Now for FREE</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.footer_text != blank %}
+    <div class="footer-text-link">
+      {{ section.settings.footer_text }}
+      {% if section.settings.footer_link_text != blank %}
+        <a href="{{ section.settings.footer_link }}">{{ section.settings.footer_link_text }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Free Gift Product Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "Header Image (Above Title)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide on Desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_tablet",
+      "label": "Hide on Tablet",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide on Mobile",
+      "default": false
+    },
+
+    { "type": "number", "id": "margin_top", "label": "Margin Top", "default": 0 },
+    { "type": "number", "id": "margin_right", "label": "Margin Right", "default": 0 },
+    { "type": "number", "id": "margin_bottom", "label": "Margin Bottom", "default": 0 },
+    { "type": "number", "id": "margin_left", "label": "Margin Left", "default": 0 },
+    { "type": "number", "id": "padding_top", "label": "Padding Top", "default": 0 },
+    { "type": "number", "id": "padding_right", "label": "Padding Right", "default": 0 },
+    { "type": "number", "id": "padding_bottom", "label": "Padding Bottom", "default": 0 },
+    { "type": "number", "id": "padding_left", "label": "Padding Left", "default": 0 },
+
+    { "type": "checkbox", "id": "show_header", "label": "Show Title Area", "default": true },
+    { "type": "text", "id": "title", "label": "Title", "default": "Buy 43” or 55” Outdoor TV" },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Title Tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" },
+        { "value": "body", "label": "Body" }
+      ]
+    },
+    { "type": "color", "id": "title_color", "label": "Title Color", "default": "#1a1a1a" },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Font Weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    { "type": "richtext", "id": "subtitle", "label": "Subtitle / Rich Text" },
+
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "Section Height (Desktop)",
+      "default": 600,
+      "min": 0,
+      "max": 1600,
+      "step": 20
+    },
+
+    { "type": "text", "id": "footer_text", "label": "Footer Text" },
+    { "type": "text", "id": "footer_link_text", "label": "Footer Link Text" },
+    { "type": "url", "id": "footer_link", "label": "Footer Link URL" },
+
+    { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
+    { "type": "text", "id": "custom_id", "label": "Custom ID (Anchor)" },
+    { "type": "checkbox", "id": "slider", "label": "Enable Carousel Slider", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Gift Block",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Product Image" },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image Ratio",
+          "default": "square",
+          "options": [
+            { "value": "square", "label": "Square" },
+            { "value": "landscape", "label": "Landscape" },
+            { "value": "portrait", "label": "Portrait" }
+          ]
+        },
+        { "type": "checkbox", "id": "lazy_load", "label": "Lazy Load", "default": true },
+        {
+          "type": "select",
+          "id": "image_hover",
+          "label": "Hover Effect",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "zoom", "label": "Zoom" },
+            { "value": "grayscale", "label": "Grayscale" },
+            { "value": "fade", "label": "Fade" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Product Title", "default": "Outdoor TV Wall Mount" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$149.00" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP Accordion",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}

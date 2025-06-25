@@ -1,119 +1,252 @@
-{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | "Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)" License  %}
+{% # components v2.10.64 | Copyright © 2024 Archetype Themes Limited Partnership %}
 {%- comment -%}
-  Renders the item grid filters.
-
-  Accepts:
-  - context {object} - The collection or search object
-  - collapse_filters {boolean} - Whether to collapse filters
-  - enable_sort {boolean} - Whether to enable sorting
-
-  Usage:
-  {% render 'item-grid-filters', context: search %}
+  Renders the collection grid filters.
 {%- endcomment -%}
 
 {%- liquid
+  assign enable_sidebar = enable_sidebar | default: section.settings.enable_sidebar, allow_false: true | default: true, allow_false: true
   assign collapse_filters = collapse_filters | default: section.settings.collapse_filters, allow_false: true | default: true, allow_false: true
+  assign enable_color_swatches = enable_color_swatches | default: section.settings.enable_color_swatches, allow_false: true | default: false, allow_false: true
+  assign enable_swatch_labels = enable_swatch_labels | default: section.settings.enable_swatch_labels, allow_false: true | default: true, allow_false: true
   assign enable_sort = enable_sort | default: section.settings.enable_sort, allow_false: true | default: true, allow_false: true
+  assign grid_style = grid_style | default: section.settings.grid_style | default: 'medium'
+  assign tags_combine = tags_combine | default: false, allow_false: true
+  assign show_sidebar = true
 
-  assign current_filter_size = 0
-  for filter in context.filters
-    assign current_filter_size = current_filter_size | plus: filter.active_values.size
-  endfor
-%}
+  if enable_sidebar == false or context.filters.size == 0
+    assign show_sidebar = false
+  endif
+-%}
 
-{%- if current_filter_size > 0 -%}
-  <ul class="no-bullets tag-list tag-list--active-tags">
-    {%- for filter in context.filters -%}
-      {%- for filter_value in filter.active_values -%}
-        <li class="tag tag--remove">
-          <a class="btn btn--small js-no-transition" href="{{ filter_value.url_to_remove }}">
-            {{ filter_value.label | escape }}
-          </a>
-          {% render 'icon', name: 'close' %}
-        </li>
-      {%- endfor -%}
-    {%- endfor -%}
-  </ul>
-{%- endif -%}
+{%- if enable_sidebar or enable_sort -%}
+  {%- assign location = 'CollectionSidebar' -%}
+  <div id="CollectionSidebar">
+    <div class="collection-sidebar small--hide" id="CollectionSidebarFilterWrap">
+      <div class="filter-wrapper">
+        <ul class="no-bullets tag-list tag-list--active-tags">
+          {%- for filter in context.filters -%}
+            {%- for filter_value in filter.active_values -%}
+              <li class="tag tag--remove">
+                <a class="btn btn--small js-no-transition" href="{{ filter_value.url_to_remove }}">
+                  {{ filter_value.label | escape }}
+                </a>
+                {% render 'icon', name: 'close' %}
+              </li>
+            {%- endfor -%}
+          {%- endfor -%}
+        </ul>
 
-{%- if enable_sort -%}
-  {%- liquid
-    assign sort_title = 'actions.sort' | t
-    assign sort_by = context.sort_by | default: context.default_sort_by
-    assign sort_id = 'CollectionSidebarSort'
-    assign id = location | append: '-' | append: sort_id
-  -%}
+        {%- assign sort_title = 'actions.sort' | t -%}
+        {%- assign sort_by = context.sort_by | default: context.default_sort_by -%}
+        {%- assign sort_id = 'CollectionSidebarSort' -%}
 
-  <div class="collection-sidebar__group collection-sidebar__group--sort medium-up--hide">
-    {%- capture slot_collapsible -%}
-      <ul class="no-bullets tag-list">
-        {%- for option in context.sort_options -%}
-          <li class="tag{% if option.value == sort_by %} tag--active{% endif %}">
-            <button type="button" data-value="{{ option.value }}" class="filter-sort">{{ option.name }}</button>
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- endcapture -%}
-    {%- capture slot_button -%}
-      <span class="collapsible-trigger__layout collapsible-trigger__layout--inline">
-        <span>{{ sort_title | escape }}</span>
-        {%- render 'collapsible-icons' -%}
-      </span>
-    {%- endcapture -%}
-    {%- render 'collapsible',
-      id: id,
-      slot_collapsible: slot_collapsible,
-      slot_button: slot_button,
-      controls: id,
-      class_button: 'tag-list__header'
-    -%}
-  </div>
-{%- endif -%}
+        <div class="collection-sidebar__group collection-sidebar__group--sort medium-up--hide">
+          <div class="custom-filter-header" data-collapsible-trigger>
+  <span class="custom-filter-title">{{ filter.label }}</span>
+  <svg class="custom-filter-arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+    <path d="M1.25268 0.241392L6.49975 6.14413L11.7468 0.241393C11.9219 0.0444589 12.1848 -0.0405531 12.4365 0.0183811C12.6882 0.0773148 12.8906 0.271241 12.9673 0.527109C13.044 0.782977 12.9835 1.06191 12.8085 1.25885L7.03082 7.75856C6.89409 7.91246 6.70163 8 6.5 8C6.29836 8 6.1059 7.91246 5.96917 7.75856L0.191519 1.25885C-0.0790433 0.954414 -0.0607213 0.479857 0.232444 0.198894C0.525609 -0.0820676 0.982119 -0.0630409 1.25268 0.241392Z" fill="#2C2C2C"/>
+  </svg>
+</div>
 
-<form class="filter-form">
-  {%- for filter in context.filters -%}
-    {%- capture filter_id -%}filter-{{ filter.label | handleize }}{%- endcapture -%}
-    {%- assign filter_index = forloop.index -%}
-    {%- assign collapsed_state = false -%}
-    {%- unless collapse_filters -%}
-      {%- assign collapsed_state = true -%}
-    {%- endunless -%}
+          <div data-id="{{ location }}-{{ sort_id }}" class="collapsible-content collapsible-content--all">
+            <div class="collapsible-content__inner">
+              <ul class="no-bullets tag-list">
+                {%- for option in context.sort_options -%}
+                  <li class="tag{% if option.value == sort_by %} tag--active{% endif %}">
+                    <button type="button" data-value="{{ option.value }}" class="filter-sort">{{ option.name }}</button>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    {%- assign id = location | append: '-' | append: filter_index -%}
-    <div class="collection-sidebar__group--{{ filter_index }}">
-      <div class="collection-sidebar__group">
-        {%- capture slot_collapsible -%}
-          {%- case filter.type -%}
-            {%- when 'list', 'boolean' -%}
-              {%- case filter.presentation -%}
-                {%- when 'swatch' -%}
-                  {%- render 'swatch-filter', filter: filter -%}
-                {%- when 'text' -%}
-                  {%- render 'text-filter', filter: filter -%}
-                {%- when 'image' -%}
-                  {%- render 'image-filter', filter: filter -%}
-                {%- else -%}
-                  {%- render 'fallback-filter', filter: filter -%}
-              {%- endcase -%}
-            {%- when 'price_range' -%}
-              {%- render 'price-range', filter: filter %}
-          {%- endcase -%}
-        {%- endcapture -%}
-        {%- capture slot_button -%}
-          <span class="collapsible-trigger__layout collapsible-trigger__layout--inline">
-            <span>{{ filter.label | escape }}</span>
-            {%- render 'collapsible-icons' -%}
-          </span>
-        {%- endcapture -%}
-        {%- render 'collapsible',
-          id: id,
-          slot_button: slot_button,
-          slot_collapsible: slot_collapsible,
-          controls: filter_id,
-          class_button: 'tag-list__header',
-          open: collapsed_state
-        -%}
+        {%- if enable_sidebar -%}
+          <form class="filter-form">
+            {%- for filter in context.filters -%}
+              {%- capture filter_id -%}filter-{{ filter.label | handleize }}{%- endcapture -%}
+              {%- assign filter_index = forloop.index -%}
+              {%- assign collapsed_state = collapse_filters -%}
+              <div class="collection-sidebar__group--{{ filter_index }}">
+                <div class="collection-sidebar__group">
+                  <div class="custom-filter-header" data-collapsible-trigger>
+                    <span class="custom-filter-title">{{ filter.label }}</span>
+                    <svg class="custom-filter-arrow" xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+                      <path d="M1.25268 0.241392L6.49975 6.14413L11.7468 0.241393C11.9219 0.0444589 12.1848 -0.0405531 12.4365 0.0183811C12.6882 0.0773148 12.8906 0.271241 12.9673 0.527109C13.044 0.782977 12.9835 1.06191 12.8085 1.25885L7.03082 7.75856C6.89409 7.91246 6.70163 8 6.5 8C6.29836 8 6.1059 7.91246 5.96917 7.75856L0.191519 1.25885C-0.0790433 0.954414 -0.0607213 0.479857 0.232444 0.198894C0.525609 -0.0820676 0.982119 -0.0630409 1.25268 0.241392Z" fill="#2C2C2C"/>
+                    </svg>
+                  </div>
+                  <div
+                    data-id="{{ location }}-{{ filter_index }}"
+                    data-collapsible-id="{{ filter_id }}"
+                    class="collapsible-content collapsible-content--all{% unless collapsed_state %} is-open{% endunless %}"
+                    {% unless collapsed_state %}style="height: auto;"{% endunless %}
+                  >
+                    <div class="collapsible-content__inner">
+                      {%- if filter.label == 'Technology' -%}
+                        <div class="tech-filter tech-filter--all-selected">
+                          <div class="tech-filter__item is-active">
+                            <span class="tech-filter__icon">●●●●</span>
+                            <span>ALL</span>
+                          </div>
+                        </div>
+                      {%- elsif filter.label == 'Sunlight' -%}
+                        <ul class="sunlight-filter">
+                          {% for value in filter.values %}
+                            <li class="sunlight-filter__item{% if value.active %} is-active{% endif %}">
+                              <a href="{{ value.url_to_add }}">
+                                {% case value.label %}
+                                  {% when 'Full Sun' %}
+                                    <span class="icon-sun"></span>
+                                  {% when 'Partial Sun' %}
+                                    <span class="icon-cloud-sun"></span>
+                                  {% when 'Lift Cabinet' %}
+                                    <span class="icon-cabinet"></span>
+                                {% endcase %}
+                                {{ value.label }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {%- else -%}
+                        {%- render 'fallback-filter', filter: filter -%}
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+
+            <div class="filter-compare-button">
+              <button type="button" class="btn btn--compare">
+                {% render 'icon', name: 'compare' %}
+                Compare
+              </button>
+            </div>
+          </form>
+        {%- endif -%}
       </div>
     </div>
-  {%- endfor -%}
-</form>
+  </div>
+
+  <style>
+    @media screen and (min-width: 769px) {
+      .collection-filter__item--drawer {
+        display: none;
+      }
+      .collection-filter__item--count {
+        text-align: left;
+      }
+      html[dir='rtl'] .collection-filter__item--count {
+        text-align: right;
+      }
+    }
+
+    .tech-filter__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    .sunlight-filter__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+    }
+
+    .filter-compare-button {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .btn--compare {
+      background-color: #18332f;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .icon-sun::before { content: "☀️"; }
+    .icon-cloud-sun::before { content: "⛅"; }
+    .icon-cabinet::before { content: "🗄️"; }
+
+    .custom-filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);;
+      cursor: pointer;
+    }
+
+    .custom-filter-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2c2c2c;
+    }
+
+    .custom-filter-arrow {
+  transition: transform 0.3s ease;
+}
+
+/* When active, rotate the arrow */
+.custom-filter-header.is-active .custom-filter-arrow {
+  transform: rotate(180deg);
+}
+
+  </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('[data-collapsible-trigger]').forEach(trigger => {
+      trigger.addEventListener("click", function () {
+        const content = this.nextElementSibling;
+        if (content && content.classList.contains("collapsible-content")) {
+          content.classList.toggle("is-open");
+          this.classList.toggle("is-active"); // toggle arrow
+        }
+      });
+    });
+  });
+</script>
+{%- endif -%}
+
+{%- if show_sidebar == false -%}
+  <style>
+    .collection-content .grid__item--sidebar,
+    .search-content .grid__item--sidebar {
+      display: none;
+    }
+    .collection-content .grid__item--content,
+    .search-content .grid__item--content {
+      width: 100% !important;
+    }
+    {%- if enable_sort == false -%}
+      .collection-filter__item--drawer {
+        display: none;
+      }
+    {%- endif -%}
+    .collection-filter__item--count {
+      text-align: left;
+    }
+    html[dir="rtl"] .collection-filter__item--count {
+      text-align: right;
+    }
+  </style>
+{%- endif -%}
+
+{%- unless enable_sort -%}
+  <style>
+    .collection-filter__sort,
+    .collection-sidebar__group--sort {
+      display: none;
+    }
+  </style>
+{%- endunless -%}

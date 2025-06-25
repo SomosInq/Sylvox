@@ -1,0 +1,1609 @@
+<style>
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_width_full {
+    width: 100%;
+  }
+
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .hide-desktop { display: none !important; }
+  @media (max-width: 1024px) {
+    .hide-tablet { display: none !important; }
+    .hide-desktop { display: block !important; }
+  }
+  @media (max-width: 768px) {
+    .hide-mobile { display: none !important; }
+  }
+
+  .subscribe-form {
+        text-align: left;
+        display: flex;
+{% comment %} width: 509px; {% endcomment %}
+height: 42px;
+padding: 12px 0px 12px 16px;
+{% comment %} justify-content: flex-end; {% endcomment %}
+align-items: center;
+flex-shrink: 0;
+border-radius: 9999px;
+background: #FFF;
+}
+
+  .subscribe-form input,  .subscribe-form textarea,  .subscribe-form select {
+    border: 0 solid;
+    border-color: var(--color-border);
+    max-width: 100%;
+    padding: 8px 10px;
+    border-radius: var(--input-radius);
+}
+
+  .subscribe-form button {
+    display: flex;
+width: 124px;
+padding: 10px 42px 9px 40px;
+justify-content: center;
+align-items: center;
+border-radius: 9999px;
+background: var(--Dark-Green, #20413B);
+}
+
+  .btn--sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+  .btn--base { padding: 0.5rem 1rem; font-size: 1rem; }
+  .btn--lg { padding: 0.75rem 1.5rem; font-size: 1.25rem; }
+
+  .hover-zoom img:hover { transform: scale(1.05); transition: 0.3s ease; }
+  .hover-grayscale img:hover { filter: grayscale(100%); transition: 0.3s ease; }
+  .hover-fade img:hover { opacity: 0.7; transition: 0.3s ease; }
+
+    .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .countdown {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+  }
+
+  .countdown span {
+    background: #ffcc00;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .countdown__block {
+    width: 100%;
+    margin: 0;
+    z-index: 3;
+}
+
+/* Countdown */
+
+.countdown-wrapper {
+  position: relative;
+}
+
+.countdown__background-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.countdown__background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.countdown__mobile-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.countdown__mobile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.countdown-layout--banner .countdown__content {
+    padding: 0;
+  }
+
+@media only screen and (min-width: 769px) {
+
+.countdown-layout--banner .countdown__content {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-around;
+      gap: 1rem;
+      padding: 0;
+  }
+    }
+
+.countdown-layout--banner.countdown-blocks--2.page-width .countdown__content {
+      justify-content: space-around;
+    }
+
+.countdown-layout--banner.countdown-blocks--2 .countdown__content {
+      justify-content: center;
+    }
+
+@media only screen and (min-width: 769px) {
+
+.countdown-layout--banner .countdown__block {
+      width: 33%;
+  }
+    }
+
+.countdown__content {
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+}
+
+.page-width .countdown__content {
+    position: relative;
+  }
+
+@media only screen and (min-width: 769px) {
+
+.countdown-layout--hero .countdown__content {
+      height: 100vh;
+  }
+    }
+
+.countdown__block {
+  width: 100%;
+  margin: 0;
+  z-index: 3;
+}
+
+.countdown__block--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown__block--content .countdown__block--button {
+    width: 100%;
+    margin: 0; /* Nested button will get spacing from text above it */
+  }
+
+@media only screen and (min-width: 769px) {
+
+.countdown-blocks--2.countdown-layout--banner .countdown__block--timer, .countdown-blocks--2.countdown-layout--banner .countdown__block--content {
+      width: 50%;
+  }
+    }
+
+@media only screen and (min-width: 769px) {
+
+.countdown-blocks--2.countdown-layout--banner .countdown__block--button.button-block-active {
+      width: 50%;
+  }
+    }
+
+.countdown__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 769px) {
+
+.countdown-layout--hero .countdown__text-wrapper {
+      width: 50%;
+  }
+    }
+
+.countdown__text-wrapper--content-alignment-left {
+  text-align: left;
+}
+
+.countdown__text-wrapper--content-alignment-right {
+  text-align: right;
+}
+ 
+.countdown__display {
+  display: flex;
+  justify-content: left;
+}
+
+.countdown__display--loaded {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity ease-in 0.3s;
+}
+
+.countdown__display--visible + .countdown__timer-message--visible {
+  margin-top: 1.5rem;
+}
+
+.countdown__display--hidden {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  transition: opacity ease-out 3s;
+}
+
+.countdown__display-block {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  border-right: 0px solid;
+  padding: 0 1rem 0 0;
+  {% comment %} padding: 0 1rem; {% endcomment %}
+}
+
+.countdown__display-block .number {
+    border-radius: 8px;
+background: #F8BB00;
+display: flex;
+padding: 13px 12px;
+justify-content: center;
+align-items: center;
+color: #fff;
+    font-size: 16px;
+    }
+
+.countdown__display-block span {
+color: #fff;
+    font-size: 14px;
+    }
+
+{% comment %} .countdown__display-block:after {
+    content: ':'
+} {% endcomment %}
+
+.countdown__display-block h2 {
+    margin-bottom: 16px;
+  }
+
+@media only screen and (min-width: 769px) {
+
+.countdown__display-block h2 {
+      margin-bottom: 4px;
+  }
+    }
+
+.countdown__display-block span {
+    font-size: 0.6rem;
+    letter-spacing: 1.7px;
+  }
+
+@media only screen and (min-width: 769px) {
+
+.countdown__display-block span {
+      font-size: 0.75rem;
+  }
+    }
+
+.countdown__display-block:last-child {
+    border-right: none;
+  }
+
+[dir='rtl'] .countdown__display-block:last-child {
+      border-right: 1px solid;
+    }
+
+[dir='rtl'] .countdown__display-block:first-child {
+      border-right: none;
+    }
+
+
+
+.index-section:not(.index-section--sub-product):first-child {
+padding: 10px 0;}
+
+.countdown__timer-message {
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+  height: 0;
+}
+
+.countdown__timer-message--visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity ease-in 1s;
+  height: auto;
+}
+
+.countdown__block--hidden {
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+  transition: opacity ease-out 1s;
+  width: 0 !important;
+}
+
+.countdown__overlay::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: var(--countdown-overlay-rgba);
+  }
+
+/* Expanse specific styles */
+
+.countdown__image--blur-true img {
+    filter: blur(4px);
+    transform: scale(1.03);
+  }
+
+.countdown__image--blur-true .countdown__background-image-wrapper {
+    overflow: hidden;
+  }
+
+.countdown__image--blur-true .countdown__mobile-image-wrapper {
+    overflow: hidden;
+  }
+
+.countdown-wrapper.page-width .countdown__content,
+  .countdown-wrapper.page-width .countdown__background-image-wrapper,
+  .countdown-wrapper.page-width .countdown__background-image,
+  .countdown-wrapper.page-width .countdown__mobile-image-wrapper,
+  .countdown-wrapper.page-width .countdown__mobile-image,
+  .countdown-wrapper.page-width .countdown__overlay::after {
+    border-radius: var(--roundness);
+  }
+
+.countdown__block--content .countdown__block--button {
+    margin-top: 0;
+  }
+
+  .index-section {
+        margin: 0;
+    padding: 0;
+}
+</style>
+
+<div
+  class="section_width_{{ section.settings.section_width }} section-content {{ section.settings.custom_class }}
+    {% if section.settings.hide_desktop %}hide-desktop{% endif %}
+    {% if section.settings.hide_tablet %}hide-tablet{% endif %}
+    {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
+  id="{{ section.settings.custom_id }}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: 'master' }});
+      background-size: cover;
+      background-position: center;
+    {% endif %}
+    height: {{ section.settings.section_height }}px;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    display: flex;
+    flex-direction: column;
+    justify-content: {{ section.settings.vertical_alignment }};
+  "
+>
+  {% if section.settings.custom_content_width_enabled %}
+    <div style="max-width: {{ section.settings.custom_content_width }}%; margin: 0 auto; text-align: {{ section.settings.text_alignment }};">
+  {% else %}
+    <div class="section_content_width_{{ section.settings.section_content_width }}" style="text-align: {{ section.settings.text_alignment }};">
+  {% endif %}
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'heading' %}
+          <{{ block.settings.heading_tag }}
+            style="
+              color: {{ block.settings.color }};
+              font-weight: {{ block.settings.font_weight }};
+              font-style: {% if block.settings.italic %}italic{% else %}normal{% endif %};
+              text-align: {{ block.settings.alignment }};
+            "
+            {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </{{ block.settings.heading_tag }}>
+
+        {% when 'richtext' %}
+          <div
+            style="color: {{ block.settings.color }}; text-align: {{ block.settings.alignment }};"
+            {{ block.shopify_attributes }}>
+            {{ block.settings.content }}
+          </div>
+
+        {% when 'image' %}
+          {% if block.settings.image != blank %}
+            <div
+              class="image-block hover-{{ block.settings.hover_effect }}"
+              style="text-align: center;"
+              {{ block.shopify_attributes }}>
+              <img
+                src="{{ block.settings.image | image_url }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+                style="
+                  width: {{ block.settings.image_width }}%;
+                  aspect-ratio: {% case block.settings.image_ratio %}
+                    {% when 'square' %} 1 / 1
+                    {% when 'landscape' %} 16 / 9
+                    {% when 'portrait' %} 3 / 4
+                  {% endcase %};
+                ">
+              {% if block.settings.overlay_color != blank %}
+                <div style="
+                  background-color: {{ block.settings.overlay_color }};
+                  opacity: {{ block.settings.overlay_opacity }};
+                  position: absolute;
+                  top: 0; left: 0; right: 0; bottom: 0;
+                "></div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+        {% when 'button' %}
+          <div style="text-align: {{ block.settings.alignment }};">
+            <a
+              href="{{ block.settings.url }}"
+              class="btn btn--{{ block.settings.size }}"
+              style="
+                color: {{ block.settings.text_color }};
+                background-color: {{ block.settings.background }};
+                {% if block.settings.style == 'outline' %}
+                  border: 2px solid {{ block.settings.outline_color }};
+                  background-color: transparent;
+                {% endif %}
+              "
+              {{ block.shopify_attributes }}>
+              {% if block.settings.icon_position == 'left' and block.settings.icon != blank %}
+                <span>{{ block.settings.icon }}</span>
+              {% endif %}
+              {{ block.settings.text }}
+              {% if block.settings.icon_position == 'right' and block.settings.icon != blank %}
+                <span>{{ block.settings.icon }}</span>
+              {% endif %}
+            </a>
+          </div>
+
+          {% when 'subscribe_form' %}
+          <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="subscribe-form">
+            <input type="hidden" name="form_type" value="customer" />
+            <input type="email" name="contact[email]" placeholder="{{ block.settings.placeholder }}" required>
+            <button type="submit">{{ block.settings.button_label }}</button>
+          </form>
+
+          {% when 'timer' %}
+          
+{%- liquid
+  assign full_width = full_width | default: section.settings.full_width, allow_false: true | default: false, allow_false: true
+  assign layout = layout | default: section.settings.layout | default: 'banner'
+  assign blur_image = blur_image | default: section.settings.blur_image, allow_false: true | default: false, allow_false: true
+  assign background_image = background_image | default: section.settings.background_image
+  assign mobile_image = mobile_image | default: section.settings.mobile_image
+  assign overlay_opacity = overlay_opacity | default: section.settings.overlay_opacity | default: 0
+  assign overlay_color = overlay_color | default: section.settings.overlay_color | default: '#000'
+  assign color_scheme = color_scheme | default: section.settings.color_scheme
+  assign hydration = hydration | default: 'on:visible'
+
+  assign lazyload_images = true
+  if section.index == 1
+    assign lazyload_images = false
+  endif
+
+  unless color_scheme
+    assign class_name = 'countdown-' | append: section.id
+    render 'color-scheme-override', class_name: class_name
+  endunless
+-%}
+
+<is-land {{ hydration }}>
+  <div
+    {% unless full_width %}
+      class="index-section"
+    {% endunless %}
+  >
+    <div >
+      <div
+        class="countdown__content color-scheme-{{ color_scheme }}"
+      >
+        {% if background_image != blank %}
+          <div
+            class="countdown__background-image-wrapper {% if mobile_image != blank %}small--hide{% endif %}"
+          >
+            {% comment %} Full width image so don't need to adjust sizes attribute, fallback is 100vw {% endcomment %}
+         
+            {% style %}
+              #shopify-section-{{ section.id }} .countdown__background-image {
+                {% if blur_image %}
+                  filter: blur(4px);
+                  {% if layout == 'banner' %}
+                    transform: scale(1.1);
+                  {% else %}
+                    transform: scale(1.03);
+                  {% endif %}
+                {% endif %}
+              }
+            {% endstyle %}
+            {% if overlay_opacity > 0 %}
+              {% assign overlay_alpha = overlay_opacity | divided_by: 100.0 %}
+              <div
+                class="
+                  countdown__overlay
+                  {% if mobile_image != blank %}small--hide{% endif %}
+                "
+                style="
+                                                        --countdown-overlay-rgba: {{ overlay_color | color_modify: 'alpha', overlay_alpha }}
+                "
+              ></div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if mobile_image != blank %}
+          <div
+            class="countdown__mobile-image-wrapper"
+          >
+            {% comment %} Full width image so don't need to adjust sizes attribute, fallback is 100vw {% endcomment %}
+            {%- render 'image-element',
+              img: mobile_image,
+              loading: lazyload_images,
+              classes: 'countdown__mobile-image medium-up--hide'
+            -%}
+            {% if overlay_opacity > 0 %}
+              {% assign overlay_alpha = overlay_opacity | divided_by: 100.0 %}
+              <div
+                class="countdown__overlay medium-up--hide"
+                style="
+                                                          --countdown-overlay-rgba: {{ overlay_color | color_modify: 'alpha', overlay_alpha }}
+                "
+              ></div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% for block in section.blocks %}
+          {% if block.type == '@app' %}
+            <div class="countdown__block countdown__block--{{ block.type }}" {{ block.shopify_attributes }}>
+              {%- render block -%}
+            </div>
+          {% endif %}
+          {% if block.type == 'timer' %}
+            <div class="countdown__block countdown__block--{{ block.type }}" {{ block.shopify_attributes }}>
+              <countdown-timer
+                data-year="{{ block.settings.year }}"
+                data-month="{{ block.settings.month }}"
+                data-day="{{ block.settings.day }}"
+                data-hour="{{ block.settings.hour }}"
+                data-minute="{{ block.settings.minute }}"
+                data-hide-timer="{{ block.settings.hide_timer }}"
+                data-complete-message="{{ block.settings.text }}"
+              >
+                <div class="countdown__display countdown__display--visible" data-time-display>
+                  <div class="countdown__display-block">
+                    <h2
+                      class="number {% if section.blocks.size == 1 %}h1{% elsif section.blocks.size == 3 and button_block_hidden == false %}h3{% endif %}"
+                      date-days-placeholder
+                    >
+                      12
+                    </h2>
+                    <span>Days</span>
+                  </div>
+                  <div class="countdown__display-block">
+                    <h2
+                      class="number {% if section.blocks.size == 1 %}h1{% elsif section.blocks.size == 3 and button_block_hidden == false %}h3{% endif %}"
+                      date-hours-placeholder
+                    >
+                      12
+                    </h2>
+                    <span>Hrs</span>
+                  </div>
+                  <div class="countdown__display-block">
+                    <h2
+                      class="number {% if section.blocks.size == 1 %}h1{% elsif section.blocks.size == 3 and button_block_hidden == false %}h3{% endif %}"
+                      date-minutes-placeholder
+                    >
+                      12
+                    </h2>
+                    <span>Mins</span>
+                  </div>
+                  <div class="countdown__display-block">
+                    <h2
+                      class="number {% if section.blocks.size == 1 %}h1{% elsif section.blocks.size == 3 and button_block_hidden == false %}h3{% endif %}"
+                      date-seconds-placeholder
+                    >
+                      12
+                    </h2>
+                    <span>Secs</span>
+                  </div>
+                </div>
+                {% if block.settings.text != blank %}
+                  <div class="countdown__timer-message" data-message-placeholder>{{ block.settings.text }}</div>
+                {% endif %}
+              </countdown-timer>
+            </div>
+          {% endif %}
+          {% if block.type == 'content' %}
+            <div class="countdown__block countdown__block--{{ block.type }}" {{ block.shopify_attributes }}>
+              <div class="countdown__text-wrapper countdown__text-wrapper--content-alignment-{{ block.settings.content_alignment }}">
+                <div class="countdown__heading">
+                  <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+                </div>
+                <div class="countdown__richtext">
+                  {{ block.settings.text }}
+                </div>
+                {% if section.blocks.size > 2
+                  and section.blocks[0].type == 'content'
+                  and section.blocks[1].type == 'button'
+                %}
+                  <div class="countdown__block countdown__block--button">
+                    <a
+                      class="countdown__button btn btn--{{ section.blocks[1].settings.button_style }}"
+                      href="{{ section.blocks[1].settings.button_link }}"
+                    >
+                      {{ section.blocks[1].settings.button }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% if block.type == 'button' and button_block_hidden == blank %}
+            <div
+              class="countdown__block countdown__block--{{ block.type }} button-block-active"
+              {{ block.shopify_attributes }}
+            >
+              <a
+                class="countdown__button btn btn--{{ block.settings.button_style }}"
+                href="{{ block.settings.button_link }}"
+              >
+                {{ block.settings.button }}
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <template data-island>
+    <script type="module">
+      import 'components/section-countdown'
+    </script>
+  </template>
+</is-land>
+
+
+        {% when 'video' %}
+          <div style="position: relative; text-align: center;" {{ block.shopify_attributes }}>
+            {% if block.settings.video_url != blank %}
+              <iframe
+                src="{{ block.settings.video_url }}{% if block.settings.autoplay %}?autoplay=1{% endif %}"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                style="width: 100%; height: 400px;">
+              </iframe>
+            {% else %}
+              <video
+                {% if block.settings.autoplay %}autoplay{% endif %}
+                {% if block.settings.loop %}loop{% endif %}
+                {% if block.settings.muted %}muted{% endif %}
+                controls
+                poster="{{ block.settings.thumbnail | image_url }}"
+                style="width: 100%; max-height: 500px;">
+                <source src="{{ block.settings.uploaded_video | video_url }}" type="video/mp4">
+              </video>
+            {% endif %}
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Somos Prime Day Banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "90% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width Preset",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "90% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_content_width_enabled",
+      "label": "Enable Custom Content Width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "custom_content_width",
+      "label": "Custom Content Width (%)",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 90,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height",
+      "min": 200,
+      "max": 1200,
+      "step": 10,
+      "default": 500,
+      "unit": "px"
+    },
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0, "unit": "px" },
+    { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop", "default": false },
+    { "type": "checkbox", "id": "hide_tablet", "label": "Hide on Tablet", "default": false },
+    { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile", "default": false },
+    { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
+    { "type": "text", "id": "custom_id", "label": "Unique ID" },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ]
+    }
+  ],
+"blocks": [
+  {
+    "type": "heading",
+    "name": "Heading",
+    "settings": [
+      { "type": "text", "id": "text", "label": "Text" },
+      {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Tag",
+        "default": "h2",
+        "options": [
+          { "value": "h1", "label": "H1" },
+          { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" },
+          { "value": "h4", "label": "H4" },
+          { "value": "h5", "label": "H5" },
+          { "value": "h6", "label": "H6" }
+        ]
+      },
+      { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
+      { "type": "checkbox", "id": "italic", "label": "Italic", "default": false },
+      {
+        "type": "select",
+        "id": "font_weight",
+        "label": "Font Weight",
+        "default": "400",
+        "options": [
+          { "value": "300", "label": "Light" },
+          { "value": "400", "label": "Normal" },
+          { "value": "700", "label": "Bold" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Alignment",
+        "default": "center",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]
+      }
+    ]
+  },
+   {
+      "type": "subscribe_form",
+      "name": "Subscribe Form",
+      "settings": [
+        { "type": "text", "id": "placeholder", "label": "Email Placeholder", "default": "Your email..." },
+        { "type": "text", "id": "button_label", "label": "Submit Button Text", "default": "Subscribe" }
+      ]
+    },
+    {
+      "type": "timer",
+      "name": "t:labels.timer",
+      "settings": [
+        {
+          "type": "select",
+          "id": "year",
+          "label": "t:labels.year",
+          "default": "2025",
+          "options": [
+            {
+              "value": "2024",
+              "label": "2024"
+            },
+            {
+              "value": "2025",
+              "label": "2025"
+            },
+            {
+              "value": "2026",
+              "label": "2026"
+            },
+            {
+              "value": "2027",
+              "label": "2027"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "month",
+          "label": "t:labels.month",
+          "default": "01",
+          "options": [
+            {
+              "value": "01",
+              "label": "t:labels.months.january"
+            },
+            {
+              "value": "02",
+              "label": "t:labels.months.february"
+            },
+            {
+              "value": "03",
+              "label": "t:labels.months.march"
+            },
+            {
+              "value": "04",
+              "label": "t:labels.months.april"
+            },
+            {
+              "value": "05",
+              "label": "t:labels.months.may"
+            },
+            {
+              "value": "06",
+              "label": "t:labels.months.june"
+            },
+            {
+              "value": "07",
+              "label": "t:labels.months.july"
+            },
+            {
+              "value": "08",
+              "label": "t:labels.months.august"
+            },
+            {
+              "value": "09",
+              "label": "t:labels.months.september"
+            },
+            {
+              "value": "10",
+              "label": "t:labels.months.october"
+            },
+            {
+              "value": "11",
+              "label": "t:labels.months.november"
+            },
+            {
+              "value": "12",
+              "label": "t:labels.months.december"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "day",
+          "label": "t:labels.day",
+          "default": "1",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            },
+            {
+              "value": "6",
+              "label": "6"
+            },
+            {
+              "value": "7",
+              "label": "7"
+            },
+            {
+              "value": "8",
+              "label": "8"
+            },
+            {
+              "value": "9",
+              "label": "9"
+            },
+            {
+              "value": "10",
+              "label": "10"
+            },
+            {
+              "value": "11",
+              "label": "11"
+            },
+            {
+              "value": "12",
+              "label": "12"
+            },
+            {
+              "value": "13",
+              "label": "13"
+            },
+            {
+              "value": "14",
+              "label": "14"
+            },
+            {
+              "value": "15",
+              "label": "15"
+            },
+            {
+              "value": "16",
+              "label": "16"
+            },
+            {
+              "value": "17",
+              "label": "17"
+            },
+            {
+              "value": "18",
+              "label": "18"
+            },
+            {
+              "value": "19",
+              "label": "19"
+            },
+            {
+              "value": "20",
+              "label": "20"
+            },
+            {
+              "value": "21",
+              "label": "21"
+            },
+            {
+              "value": "22",
+              "label": "22"
+            },
+            {
+              "value": "23",
+              "label": "23"
+            },
+            {
+              "value": "24",
+              "label": "24"
+            },
+            {
+              "value": "25",
+              "label": "25"
+            },
+            {
+              "value": "26",
+              "label": "26"
+            },
+            {
+              "value": "27",
+              "label": "27"
+            },
+            {
+              "value": "28",
+              "label": "28"
+            },
+            {
+              "value": "29",
+              "label": "29"
+            },
+            {
+              "value": "30",
+              "label": "30"
+            },
+            {
+              "value": "31",
+              "label": "31"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "hour",
+          "label": "t:labels.hour",
+          "default": "03",
+          "options": [
+            {
+              "value": "00",
+              "label": "t:labels.times.12_am"
+            },
+            {
+              "value": "01",
+              "label": "t:labels.times.01_am"
+            },
+            {
+              "value": "02",
+              "label": "t:labels.times.02_am"
+            },
+            {
+              "value": "03",
+              "label": "t:labels.times.03_am"
+            },
+            {
+              "value": "04",
+              "label": "t:labels.times.04_am"
+            },
+            {
+              "value": "05",
+              "label": "t:labels.times.05_am"
+            },
+            {
+              "value": "06",
+              "label": "t:labels.times.06_am"
+            },
+            {
+              "value": "07",
+              "label": "t:labels.times.07_am"
+            },
+            {
+              "value": "08",
+              "label": "t:labels.times.08_am"
+            },
+            {
+              "value": "09",
+              "label": "t:labels.times.09_am"
+            },
+            {
+              "value": "10",
+              "label": "t:labels.times.10_am"
+            },
+            {
+              "value": "11",
+              "label": "t:labels.times.11_am"
+            },
+            {
+              "value": "12",
+              "label": "t:labels.times.12_pm"
+            },
+            {
+              "value": "13",
+              "label": "t:labels.times.1_pm"
+            },
+            {
+              "value": "14",
+              "label": "t:labels.times.2_pm"
+            },
+            {
+              "value": "15",
+              "label": "t:labels.times.3_pm"
+            },
+            {
+              "value": "16",
+              "label": "t:labels.times.4_pm"
+            },
+            {
+              "value": "17",
+              "label": "t:labels.times.5_pm"
+            },
+            {
+              "value": "18",
+              "label": "t:labels.times.6_pm"
+            },
+            {
+              "value": "19",
+              "label": "t:labels.times.7_pm"
+            },
+            {
+              "value": "20",
+              "label": "t:labels.times.8_pm"
+            },
+            {
+              "value": "21",
+              "label": "t:labels.times.9_pm"
+            },
+            {
+              "value": "22",
+              "label": "t:labels.times.10_pm"
+            },
+            {
+              "value": "23",
+              "label": "t:labels.times.11_pm"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "minute",
+          "label": "t:labels.minute",
+          "default": "00",
+          "options": [
+            {
+              "value": "00",
+              "label": "00"
+            },
+            {
+              "value": "01",
+              "label": "01"
+            },
+            {
+              "value": "02",
+              "label": "02"
+            },
+            {
+              "value": "03",
+              "label": "03"
+            },
+            {
+              "value": "04",
+              "label": "04"
+            },
+            {
+              "value": "05",
+              "label": "05"
+            },
+            {
+              "value": "06",
+              "label": "06"
+            },
+            {
+              "value": "07",
+              "label": "07"
+            },
+            {
+              "value": "08",
+              "label": "08"
+            },
+            {
+              "value": "09",
+              "label": "09"
+            },
+            {
+              "value": "10",
+              "label": "10"
+            },
+            {
+              "value": "11",
+              "label": "11"
+            },
+            {
+              "value": "12",
+              "label": "12"
+            },
+            {
+              "value": "13",
+              "label": "13"
+            },
+            {
+              "value": "14",
+              "label": "14"
+            },
+            {
+              "value": "15",
+              "label": "15"
+            },
+            {
+              "value": "16",
+              "label": "16"
+            },
+            {
+              "value": "17",
+              "label": "17"
+            },
+            {
+              "value": "18",
+              "label": "18"
+            },
+            {
+              "value": "19",
+              "label": "19"
+            },
+            {
+              "value": "20",
+              "label": "20"
+            },
+            {
+              "value": "21",
+              "label": "21"
+            },
+            {
+              "value": "22",
+              "label": "22"
+            },
+            {
+              "value": "23",
+              "label": "23"
+            },
+            {
+              "value": "24",
+              "label": "24"
+            },
+            {
+              "value": "25",
+              "label": "25"
+            },
+            {
+              "value": "26",
+              "label": "26"
+            },
+            {
+              "value": "27",
+              "label": "27"
+            },
+            {
+              "value": "28",
+              "label": "28"
+            },
+            {
+              "value": "29",
+              "label": "29"
+            },
+            {
+              "value": "30",
+              "label": "30"
+            },
+            {
+              "value": "31",
+              "label": "31"
+            },
+            {
+              "value": "32",
+              "label": "32"
+            },
+            {
+              "value": "33",
+              "label": "33"
+            },
+            {
+              "value": "34",
+              "label": "34"
+            },
+            {
+              "value": "35",
+              "label": "35"
+            },
+            {
+              "value": "36",
+              "label": "36"
+            },
+            {
+              "value": "37",
+              "label": "37"
+            },
+            {
+              "value": "38",
+              "label": "38"
+            },
+            {
+              "value": "39",
+              "label": "39"
+            },
+            {
+              "value": "40",
+              "label": "40"
+            },
+            {
+              "value": "41",
+              "label": "41"
+            },
+            {
+              "value": "42",
+              "label": "42"
+            },
+            {
+              "value": "43",
+              "label": "43"
+            },
+            {
+              "value": "44",
+              "label": "44"
+            },
+            {
+              "value": "45",
+              "label": "45"
+            },
+            {
+              "value": "46",
+              "label": "46"
+            },
+            {
+              "value": "47",
+              "label": "47"
+            },
+            {
+              "value": "48",
+              "label": "48"
+            },
+            {
+              "value": "49",
+              "label": "49"
+            },
+            {
+              "value": "50",
+              "label": "50"
+            },
+            {
+              "value": "51",
+              "label": "51"
+            },
+            {
+              "value": "52",
+              "label": "52"
+            },
+            {
+              "value": "53",
+              "label": "53"
+            },
+            {
+              "value": "54",
+              "label": "54"
+            },
+            {
+              "value": "55",
+              "label": "55"
+            },
+            {
+              "value": "56",
+              "label": "56"
+            },
+            {
+              "value": "57",
+              "label": "57"
+            },
+            {
+              "value": "58",
+              "label": "58"
+            },
+            {
+              "value": "59",
+              "label": "59"
+            },
+            {
+              "value": "60",
+              "label": "60"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_timer",
+          "label": "t:labels.hide_timer_on",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:labels.timer_complete_message"
+        }
+      ],
+      "limit": 1
+    },
+  {
+    "type": "richtext",
+    "name": "Rich Text",
+    "settings": [
+      { "type": "richtext", "id": "content", "label": "Content" },
+      { "type": "color", "id": "color", "label": "Text Color", "default": "#000000" },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Text Alignment",
+        "default": "center",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "image",
+    "name": "Image",
+    "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      {
+        "type": "range",
+        "id": "image_width",
+        "label": "Image Width (%)",
+        "min": 10,
+        "max": 100,
+        "default": 100
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Aspect Ratio",
+        "default": "landscape",
+        "options": [
+          { "value": "square", "label": "Square" },
+          { "value": "landscape", "label": "Landscape" },
+          { "value": "portrait", "label": "Portrait" }
+        ]
+      },
+      { "type": "checkbox", "id": "lazy_load", "label": "Lazy Load", "default": true },
+      {
+        "type": "select",
+        "id": "hover_effect",
+        "label": "Hover Effect",
+        "default": "none",
+        "options": [
+          { "value": "none", "label": "None" },
+          { "value": "zoom", "label": "Zoom" },
+          { "value": "grayscale", "label": "Grayscale" },
+          { "value": "fade", "label": "Fade" }
+        ]
+      },
+      { "type": "color", "id": "overlay_color", "label": "Overlay Color" },
+      {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Overlay Opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "default": 0
+      }
+    ]
+  },
+  {
+    "type": "video",
+    "name": "Video",
+    "settings": [
+      { "type": "url", "id": "video_url", "label": "External Video URL (YouTube/Vimeo)" },
+      { "type": "video", "id": "uploaded_video", "label": "Upload Video" },
+      { "type": "image_picker", "id": "thumbnail", "label": "Thumbnail Image" },
+      { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": false },
+      { "type": "checkbox", "id": "loop", "label": "Loop", "default": false },
+      { "type": "checkbox", "id": "muted", "label": "Muted", "default": true }
+    ]
+  },
+  {
+    "type": "button",
+    "name": "Button",
+    "settings": [
+      { "type": "text", "id": "text", "label": "Text" },
+      { "type": "url", "id": "url", "label": "Link" },
+      {
+        "type": "select",
+        "id": "style",
+        "label": "Style",
+        "default": "fill",
+        "options": [
+          { "value": "fill", "label": "Fill" },
+          { "value": "outline", "label": "Outline" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "size",
+        "label": "Size",
+        "default": "base",
+        "options": [
+          { "value": "sm", "label": "Small" },
+          { "value": "base", "label": "Medium" },
+          { "value": "lg", "label": "Large" }
+        ]
+      },
+      { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
+      { "type": "color", "id": "background", "label": "Background Color", "default": "#000000" },
+      { "type": "color", "id": "outline_color", "label": "Outline Color", "default": "#000000" },
+      { "type": "text", "id": "icon", "label": "Icon (HTML or Unicode)" },
+      {
+        "type": "select",
+        "id": "icon_position",
+        "label": "Icon Position",
+        "default": "left",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "right", "label": "Right" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Alignment",
+        "default": "center",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]
+      }
+    ]
+  }
+],
+
+  "presets": [
+    {
+      "name": "Somos Prime Day Banner",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -48,7 +48,7 @@
   .filter-btn {
     border: none;
     cursor: pointer;
-    padding: 6px 12px;
+    padding: 0 0 6px 0;
     {% comment %} background: #f2f2f2; {% endcomment %}
     border-radius: 4px;
     font-size: 14px;
@@ -63,6 +63,9 @@
     display: flex;
     gap: 12px;
     align-items: center;
+  }
+  .product-filter-buttons p {
+  padding: 0;
   }
 
   .tab-product-content__banner {
@@ -185,6 +188,23 @@
   object-fit: contain;
 }
 
+@media (max-width: 600px) {
+  .title-filters {
+    flex-wrap: wrap;
+  }
+  .tabs {
+    position: unset;
+    transform: none;
+    flex-flow: column;
+            width: 100%;
+  }
+  .tab-product {
+    width: 100%;
+  }
+  .collection-title-row {
+    flex-flow: column;
+  }
+}
 </style>
 
 <div class="tab-products section section_width_{{ section.settings.section_width }}"
@@ -250,7 +270,7 @@
         {%- assign all_resolutions = "All,Full Sun,Partial Sun" | split: "," -%}
 
         <div class="collection-title-row" style="color: {{ block.settings.collection_title_color }}">
-          <div style="display: flex; align-items: center; gap: 20px;">
+          <div class="title-filters" style="display: flex; align-items: center; gap: 20px;">
             <h3>{{ block.settings.collection.title }}</h3>
             
             <div class="product-filter-buttons">
@@ -259,7 +279,7 @@
     {% assign trimmed = res | strip %}
     {% assign handle = trimmed | handleize %}
     <button class="filter-btn{% if forloop.first %} active{% endif %}" data-filter="{{ handle }}">
-      <div style="display:flex; flex-direction:column; align-items:center;">
+      <div style="display:flex; flex-direction:row; align-items:center;">
         {% if trimmed != "All" %}
           <img src="{{ 'filter-' | append: handle | append: '.jpg' | asset_url }}" alt="{{ trimmed }}" style="width:30px; height:auto; margin-bottom:4px;" />
         {% endif %}

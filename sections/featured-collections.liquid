@@ -2,109 +2,279 @@
 
 {% schema %}
 {
-  "name": "t:labels.collection_list",
+  "name": "Featured Collections Advanced",
   "class": "index-section",
   "max_blocks": 18,
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "t:labels.heading",
-      "default": "Popular categories"
+      "label": "Section Title",
+      "default": "Featured Collections"
     },
     {
       "type": "select",
       "id": "heading_size",
-      "label": "t:labels.heading_size",
+      "label": "Heading Size",
       "default": "h2",
       "options": [
-        {
-          "value": "h3",
-          "label": "t:labels.sizes.small"
-        },
-        {
-          "value": "h2",
-          "label": "t:labels.sizes.medium"
-        },
-        {
-          "value": "h1",
-          "label": "t:labels.sizes.large"
-        },
-        {
-          "value": "h0",
-          "label": "t:labels.sizes.extra_large"
-        }
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" },
+        { "value": "body", "label": "Body" },
+        { "value": "italic", "label": "Italic" }
       ]
     },
     {
       "type": "select",
-      "id": "heading_position",
-      "label": "t:labels.heading_position",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
       "default": "left",
       "options": [
-        {
-          "value": "left",
-          "label": "t:labels.alignments.left"
-        },
-        {
-          "value": "center",
-          "label": "t:labels.alignments.center"
-        },
-        {
-          "value": "right",
-          "label": "t:labels.alignments.right"
-        }
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
       ]
     },
     {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
       "type": "checkbox",
-      "id": "divider",
-      "label": "t:actions.show_section_divider",
+      "id": "hide_on_desktop",
+      "label": "Hide on Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_tablet",
+      "label": "Hide on Tablet"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_mobile",
+      "label": "Hide on Mobile"
+    },
+    {
+      "type": "range",
+      "id": "section_height_desktop",
+      "label": "Section Height - Desktop (vh)",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "section_height_tablet",
+      "label": "Section Height - Tablet (vh)",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "section_height_mobile",
+      "label": "Section Height - Mobile (vh)",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "step": 5
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_left",
+      "label": "Padding Left (px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_right",
+      "label": "Padding Right (px)",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "use_slider",
+      "label": "Display as Slider",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Slider Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Slider Dots",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Unique Section ID"
+    },
+    {
+      "type": "textarea",
+      "id": "json_blocks",
+      "label": "JSON Blocks (Advanced)",
+      "info": "Define custom block content using JSON."
     }
   ],
   "blocks": [
     {
       "type": "collection",
-      "name": "t:labels.collection",
+      "name": "Collection Item",
       "settings": [
         {
-          "id": "collection",
           "type": "collection",
-          "label": "t:labels.collection",
-          "info": "t:info.image_source_adjusted_theme_settings"
+          "id": "collection",
+          "label": "Select Collection"
         },
         {
           "type": "text",
-          "id": "title",
-          "label": "t:labels.title",
-          "info": "t:info.defaults_to_collection_title"
+          "id": "custom_title",
+          "label": "Override Title"
+        },
+        {
+          "type": "url",
+          "id": "learn_more_link",
+          "label": "Learn More Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "range",
+          "id": "image_size",
+          "label": "Image Size (%)",
+          "min": 10,
+          "max": 100,
+          "step": 5,
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image Ratio",
+          "default": "landscape",
+          "options": [
+            { "value": "square", "label": "Square" },
+            { "value": "landscape", "label": "Landscape" },
+            { "value": "portrait", "label": "Portrait" }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "lazyload",
+          "label": "Enable Lazy Load",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "hover_effect",
+          "label": "Hover Effect",
+          "default": "zoom",
+          "options": [
+            { "value": "zoom", "label": "Zoom" },
+            { "value": "fade", "label": "Fade" },
+            { "value": "grayscale", "label": "Grayscale" },
+            { "value": "none", "label": "None" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay Color"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay Opacity (%)",
+          "min": 0,
+          "max": 100,
+          "default": 50
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Buy It Now"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "default": "primary",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_icon_position",
+          "label": "Button Icon Position",
+          "default": "right",
+          "options": [
+            { "value": "left", "label": "Left of Text" },
+            { "value": "right", "label": "Right of Text" },
+            { "value": "none", "label": "No Icon" }
+          ]
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:labels.collection_list",
+      "name": "Featured Collections - Enhanced", 
+      "category": "Somos Custom",
       "blocks": [
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        }
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
       ]
     }
   ],
