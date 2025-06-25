@@ -1,0 +1,462 @@
+<style>
+/* Section Width */
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+/* Content Width */
+.section_content_width_standard,
+.section_content_width_full {
+  transition: all 0.3s ease;
+}
+.section_content_width_full {
+  width: 100%;
+}
+.section_content_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+/* Layout */
+.usp-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.usp-item {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.usp-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* Image Hover Effects */
+.hover-zoom img:hover {
+  transform: scale(1.05);
+}
+.hover-grayscale img:hover {
+  filter: grayscale(100%);
+}
+.hover-fade img:hover {
+  opacity: 0.7;
+}
+
+/* Responsive visibility */
+.hide-desktop { display: none !important; }
+@media (max-width: 1024px) {
+  .hide-tablet { display: none !important; }
+}
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+/* Section Width */
+.section_width_standard,
+.section_width_full {
+  transition: all 0.3s ease;
+}
+.section_width_full {
+  width: 100%;
+}
+.section_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+/* Content Width */
+.section_content_width_standard,
+.section_content_width_full {
+  transition: all 0.3s ease;
+}
+.section_content_width_full {
+  width: 100%;
+}
+.section_content_width_standard {
+  margin: 0 auto !important;
+  width: 90% !important;
+}
+
+/* Layout */
+.usp-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.usp-item {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.usp-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* Image Hover Effects */
+.hover-zoom img:hover {
+  transform: scale(1.05);
+}
+.hover-grayscale img:hover {
+  filter: grayscale(100%);
+}
+.hover-fade img:hover {
+  opacity: 0.7;
+}
+
+/* Responsive visibility */
+.hide-desktop { display: none !important; }
+@media (max-width: 1024px) {
+  .hide-tablet { display: none !important; }
+}
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+</style>
+
+<div 
+  id="{{ section.settings.section_id }}"
+  class="usp-section section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }} 
+    {% unless section.settings.show_on_desktop %}hide-desktop{% endunless %}
+    {% unless section.settings.show_on_tablet %}hide-tablet{% endunless %}
+    {% unless section.settings.show_on_mobile %}hide-mobile{% endunless %}"
+  style="
+    background: {{ section.settings.background_image | image_url: 'original' }} no-repeat center/cover, {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    height: {{ section.settings.height_desktop }}px;
+  "
+>
+
+  {% if section.settings.header_text != blank %}
+    <{{ section.settings.header_tag }} 
+      class="usp-header" 
+      style="text-align: {{ section.settings.header_alignment }}; color: {{ section.settings.header_color }}; font-weight: {{ section.settings.header_weight }};">
+      {{ section.settings.header_text }}
+    </{{ section.settings.header_tag }}>
+  {% endif %}
+
+  {% if section.settings.sub_text != blank %}
+    <div class="usp-subtext" style="text-align: {{ section.settings.sub_alignment }}; color: {{ section.settings.sub_color }}; font-weight: {{ section.settings.sub_weight }};">
+      {{ section.settings.sub_text }}
+    </div>
+  {% endif %}
+
+  <div class="usp-container {% if section.settings.slider_mode == 'slider' %}slider-wrapper{% endif %}">
+    {% for block in section.blocks %}
+      <div class="usp-item {{ block.settings.hover_effect }}">
+        {% if block.settings.image != blank %}
+          <img 
+            src="{{ block.settings.image | image_url: width: 800 }}"
+            loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+            style="width: {{ block.settings.image_width }}%; aspect-ratio: {{ block.settings.image_ratio }};"
+          >
+        {% endif %}
+        {% if block.settings.title != blank %}
+          <{{ block.settings.title_tag }} style="color: {{ block.settings.title_color }}; font-weight: {{ block.settings.title_weight }};">
+            {{ block.settings.title }}
+          </{{ block.settings.title_tag }}>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="usp-description">
+            {{ block.settings.text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Somos Grid",
+  "tag": "section",
+  "class": "usp-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Title",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "select",
+      "id": "header_tag",
+      "label": "Header Tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "label": "Sub Text"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "header_color",
+      "label": "Header Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "header_weight",
+      "label": "Header Font Weight",
+      "default": "600",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "Show on Desktop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_tablet",
+      "label": "Show on Tablet",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on Mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "label": "Padding Top (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "label": "Padding Bottom (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "label": "Padding Left (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "label": "Padding Right (px)"
+    },
+    {
+      "type": "select",
+      "id": "slider_mode",
+      "label": "Layout Type",
+      "default": "grid",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "slider", "label": "Carousel" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "Section Height (Desktop)",
+      "min": 0,
+      "max": 2000,
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (%)",
+          "min": 10,
+          "max": 100,
+          "default": 60
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image Ratio",
+          "default": "auto",
+          "options": [
+            { "value": "1 / 1", "label": "Square" },
+            { "value": "4 / 3", "label": "Landscape" },
+            { "value": "3 / 4", "label": "Portrait" },
+            { "value": "auto", "label": "Auto" }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "lazy_load",
+          "label": "Enable Lazy Loading",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "hover_effect",
+          "label": "Image Hover Effect",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "hover-zoom", "label": "Zoom" },
+            { "value": "hover-grayscale", "label": "Grayscale" },
+            { "value": "hover-fade", "label": "Fade" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_tag",
+          "label": "Title Tag",
+          "default": "h3",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#000"
+        },
+        {
+          "type": "select",
+          "id": "title_weight",
+          "label": "Title Weight",
+          "default": "600",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi-bold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+  "name": "Somos Grid",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
