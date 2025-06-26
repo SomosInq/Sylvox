@@ -476,28 +476,52 @@ padding: 10px 0;}
     display: block;
   }
 }
+.prime-day-banner {
+  background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+}
 
+@media (max-width: 768px) {
+  .prime-day-banner {
+    background-image: url('{{ section.settings.mobile_image | img_url: 'master' }}');
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-align-flex-start {
+    justify-content: flex-start !important;
+  }
+  .mobile-align-center {
+    justify-content: center !important;
+  }
+  .mobile-align-flex-end {
+    justify-content: flex-end !important;
+  }
+}
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} {
+    height: {{ section.settings.mobile_section_height }}px !important;
+  }
+}
 </style>
 
 <div
-  class="section_width_{{ section.settings.section_width }} section-content {{ section.settings.custom_class }}
-    {% if section.settings.hide_desktop %}hide-desktop{% endif %}
-    {% if section.settings.hide_tablet %}hide-tablet{% endif %}
-    {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
+  class="section_width_{{ section.settings.section_width }} prime-day-banner section-content {{ section.settings.custom_class }}
+  mobile-align-{{ section.settings.mobile_vertical_alignment }}
+  {% if section.settings.hide_desktop %}hide-desktop{% endif %}
+  {% if section.settings.hide_tablet %}hide-tablet{% endif %}
+  {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
   id="{{ section.settings.custom_id }}"
-  style="
-    background-color: {{ section.settings.background_color }};
-    {% if section.settings.background_image != blank %}
-      background-image: url({{ section.settings.background_image | img_url: 'master' }});
-      background-size: cover;
-      background-position: center;
-    {% endif %}
-    height: {{ section.settings.section_height }}px;
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    display: flex;
-    flex-direction: column;
-    justify-content: {{ section.settings.vertical_alignment }};
-  "
+style="
+  background-color: {{ section.settings.background_color }};
+  background-size: cover;
+  background-position: center;
+  height: {{ section.settings.section_height }}px;
+  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+  display: flex;
+  flex-direction: column;
+  justify-content: {{ section.settings.vertical_alignment }};
+"
 >
   {% if section.settings.custom_content_width_enabled %}
     <div style="max-width: {{ section.settings.custom_content_width }}%; margin: 0 auto; text-align: {{ section.settings.text_alignment }};">
@@ -647,27 +671,6 @@ padding: 10px 0;}
                 "
                 style="
                                                         --countdown-overlay-rgba: {{ overlay_color | color_modify: 'alpha', overlay_alpha }}
-                "
-              ></div>
-            {% endif %}
-          </div>
-        {% endif %}
-        {% if mobile_image != blank %}
-          <div
-            class="countdown__mobile-image-wrapper"
-          >
-            {% comment %} Full width image so don't need to adjust sizes attribute, fallback is 100vw {% endcomment %}
-            {%- render 'image-element',
-              img: mobile_image,
-              loading: lazyload_images,
-              classes: 'countdown__mobile-image medium-up--hide'
-            -%}
-            {% if overlay_opacity > 0 %}
-              {% assign overlay_alpha = overlay_opacity | divided_by: 100.0 %}
-              <div
-                class="countdown__overlay medium-up--hide"
-                style="
-                                                          --countdown-overlay-rgba: {{ overlay_color | color_modify: 'alpha', overlay_alpha }}
                 "
               ></div>
             {% endif %}
@@ -845,6 +848,27 @@ padding: 10px 0;}
       "default": 500,
       "unit": "px"
     },
+    {
+  "type": "select",
+  "id": "mobile_vertical_alignment",
+  "label": "Mobile Vertical Alignment",
+  "default": "center",
+  "options": [
+    { "value": "flex-start", "label": "Top" },
+    { "value": "center", "label": "Middle" },
+    { "value": "flex-end", "label": "Bottom" }
+  ]
+},
+{
+"type": "range",
+  "id": "mobile_section_height",
+  "label": "Mobile Section Height",
+  "min": 100,
+  "max": 1100,
+  "step": 10,
+  "default": 400,
+  "unit": "px"
+},
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
     { "type": "image_picker", "id": "mobile_image", "label": "Mobile Background Image" },

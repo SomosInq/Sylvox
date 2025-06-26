@@ -115,12 +115,14 @@ flex: 0 0 20%;
     padding: 10px 20px;
     text-decoration: none;
   }
+
+  
 </style>
 
 <div class="section_width_{{ section.settings.section_width }}"
-     style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;">
+     style="background-color: {{ section.settings.bg_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;">
   <div class="section_content_width_{{ section.settings.section_content_width }} left-right-media__container"
-       style="background-color: {{ section.settings.bg_color }};
+       style="
               {% if section.settings.bg_image != blank %}
                 background-image: url({{ section.settings.bg_image | img_url: 'master' }});
                 background-size: cover;

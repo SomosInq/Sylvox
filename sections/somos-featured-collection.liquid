@@ -5,6 +5,10 @@
 
 
 <style>
+ #shopify-section-{{ section.id }} .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 100% !important;
+}
 #shopify-section-{{ section.id }} .product-card__title {
   font-size: 20px;
   margin: 0;
@@ -25,6 +29,16 @@
 font-weight: 500;
     font-size: 20px;
 }
+#shopify-section-{{ section.id }} .product-card__buttons {width: 100%;}
+
+button.btn.btn--primary {
+  background: #20413B;
+}
+.product-card__before,
+.product-card__now {
+    text-align: left;
+}
+
 </style>
 
 {%- liquid
@@ -35,7 +49,7 @@ font-weight: 500;
 -%}
 
 {%- if divider -%}<div class="section--divider">{%- endif -%}
-<div class="page-width section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+<div class="page-width section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;">
   {%- if title != blank -%}
     <div class="section-header" style="text-align: {{ heading_position }};">
       <h2 class="section-header__title {{ heading_size }}" style="text-align: {{ heading_position }};">{{ title | escape }}</h2>
@@ -190,10 +204,6 @@ font-weight: 500;
     {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     { "type": "checkbox", "id": "use_slider", "label": "Display as Slider", "default": false },
     { "type": "checkbox", "id": "show_arrows", "label": "Show Slider Arrows", "default": true },
     { "type": "checkbox", "id": "show_dots", "label": "Show Slider Dots", "default": true },
