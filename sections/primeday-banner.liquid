@@ -13,6 +13,11 @@
     width: 90% !important;
   }
 
+  .custom-section,
+.custom-content {
+  transition: width 0.3s ease;
+}
+
   .hide-desktop { display: none !important; }
   @media (max-width: 1024px) {
     .hide-tablet { display: none !important; }
@@ -246,7 +251,7 @@ background: var(--Dark-Green, #20413B);
  
 .countdown__display {
   display: flex;
-  justify-content: left;
+  justify-content: left !important;
 }
 
 .countdown__display--loaded {
@@ -275,6 +280,7 @@ background: var(--Dark-Green, #20413B);
   align-content: center;
   border-right: 0px solid;
   padding: 0 1rem 0 0;
+  background-color: transparent;
   {% comment %} padding: 0 1rem; {% endcomment %}
 }
 
@@ -335,24 +341,24 @@ color: #fff;
 
 
 
-.index-section:not(.index-section--sub-product):first-child {
+#shopify-section-{{ section.id }} .index-section:not(.index-section--sub-product):first-child {
 padding: 10px 0;}
 
-.countdown__timer-message {
+#shopify-section-{{ section.id }} .countdown__timer-message {
   opacity: 0;
   visibility: hidden;
   margin: 0;
   height: 0;
 }
 
-.countdown__timer-message--visible {
+#shopify-section-{{ section.id }} .countdown__timer-message--visible {
   opacity: 1;
   visibility: visible;
   transition: opacity ease-in 1s;
   height: auto;
 }
 
-.countdown__block--hidden {
+#shopify-section-{{ section.id }} .countdown__block--hidden {
   opacity: 0;
   visibility: hidden;
   margin: 0;
@@ -360,7 +366,7 @@ padding: 10px 0;}
   width: 0 !important;
 }
 
-.countdown__overlay::after {
+#shopify-section-{{ section.id }} .countdown__overlay::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -405,6 +411,74 @@ padding: 10px 0;}
         margin: 0;
     padding: 0;
 }
+
+/* ✅ UPDATE 1: Fix subscribe form spacing and input field width */
+.subscribe-form {
+  text-align: left;
+  display: flex;
+  height: 42px;
+  padding: 0;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #FFF;
+  overflow: hidden;
+  max-width: 100%;
+}
+.subscribe-form input[type="email"] {
+  flex: 1;
+  border: none;
+  padding: 0 20px;
+  border-radius: 9999px 0 0 9999px;
+  height: 100%;
+  font-size: 16px;
+}
+.subscribe-form button {
+  height: 100%;
+  width: auto;
+  padding: 0 24px;
+  border-radius: 0 9999px 9999px 0;
+  color: white;
+  background: #20413B;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ✅ UPDATE 2: Add responsive content width behavior */
+@media (max-width: 768px) {
+  .section_content_width_standard {
+    width: 100% !important;
+    padding: 0 16px;
+  }
+  .section_width_standard {
+    width: 100% !important;
+    padding: 0 16px;
+  }
+}
+
+/* ✅ UPDATE 3: Mobile image support */
+.countdown__background-image-wrapper {
+  display: block;
+}
+.countdown__mobile-image-wrapper {
+  display: none;
+}
+@media (max-width: 768px) {
+  .countdown__background-image-wrapper {
+    display: none !important;
+  }
+  .countdown__mobile-image-wrapper {
+    display: block !important;
+  }
+  .countdown__mobile-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
 </style>
 
 <div
@@ -741,7 +815,7 @@ padding: 10px 0;}
 
 {% schema %}
 {
-  "name": "Somos Prime Day Banner",
+  "name": "Prime Day Banner",
   "settings": [
     {
       "type": "select",
@@ -754,15 +828,15 @@ padding: 10px 0;}
       ]
     },
     {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "Content Width Preset",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "90% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
+  "type": "range",
+  "id": "section_content_width",
+  "label": "Content Width",
+  "min": 5,
+  "max": 100,
+  "step": 5,
+  "default": 100,
+  "unit": "%"
+},
     {
       "type": "checkbox",
       "id": "custom_content_width_enabled",
@@ -791,6 +865,7 @@ padding: 10px 0;}
     },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile Background Image" },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0, "unit": "px" },
@@ -823,786 +898,69 @@ padding: 10px 0;}
       ]
     }
   ],
-"blocks": [
-  {
-    "type": "heading",
-    "name": "Heading",
-    "settings": [
-      { "type": "text", "id": "text", "label": "Text" },
-      {
-        "type": "select",
-        "id": "heading_tag",
-        "label": "Tag",
-        "default": "h2",
-        "options": [
-          { "value": "h1", "label": "H1" },
-          { "value": "h2", "label": "H2" },
-          { "value": "h3", "label": "H3" },
-          { "value": "h4", "label": "H4" },
-          { "value": "h5", "label": "H5" },
-          { "value": "h6", "label": "H6" }
-        ]
-      },
-      { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
-      { "type": "checkbox", "id": "italic", "label": "Italic", "default": false },
-      {
-        "type": "select",
-        "id": "font_weight",
-        "label": "Font Weight",
-        "default": "400",
-        "options": [
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" },
+        { "type": "select", "id": "heading_tag", "label": "Tag", "default": "h2", "options": [
+          { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }
+        ] },
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
+        { "type": "checkbox", "id": "italic", "label": "Italic", "default": false },
+        { "type": "select", "id": "font_weight", "label": "Font Weight", "default": "400", "options": [
           { "value": "300", "label": "Light" },
           { "value": "400", "label": "Normal" },
           { "value": "700", "label": "Bold" }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "alignment",
-        "label": "Alignment",
-        "default": "center",
-        "options": [
+        ] },
+        { "type": "select", "id": "alignment", "label": "Alignment", "default": "center", "options": [
           { "value": "left", "label": "Left" },
           { "value": "center", "label": "Center" },
           { "value": "right", "label": "Right" }
-        ]
-      }
-    ]
-  },
-   {
+        ] }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "Rich Text",
+      "settings": [
+        { "type": "richtext", "id": "content", "label": "Content" },
+        { "type": "color", "id": "color", "label": "Text Color", "default": "#000000" },
+        { "type": "select", "id": "alignment", "label": "Text Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ] }
+      ]
+    },
+    {
       "type": "subscribe_form",
       "name": "Subscribe Form",
       "settings": [
-        { "type": "text", "id": "placeholder", "label": "Email Placeholder", "default": "Your email..." },
-        { "type": "text", "id": "button_label", "label": "Submit Button Text", "default": "Subscribe" }
+        { "type": "text", "id": "placeholder", "label": "Email Placeholder", "default": "Enter your email" },
+        { "type": "text", "id": "button_label", "label": "Button Label", "default": "Subscribe" }
       ]
     },
     {
       "type": "timer",
-      "name": "t:labels.timer",
+      "name": "Countdown Timer",
       "settings": [
-        {
-          "type": "select",
-          "id": "year",
-          "label": "t:labels.year",
-          "default": "2025",
-          "options": [
-            {
-              "value": "2024",
-              "label": "2024"
-            },
-            {
-              "value": "2025",
-              "label": "2025"
-            },
-            {
-              "value": "2026",
-              "label": "2026"
-            },
-            {
-              "value": "2027",
-              "label": "2027"
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "month",
-          "label": "t:labels.month",
-          "default": "01",
-          "options": [
-            {
-              "value": "01",
-              "label": "t:labels.months.january"
-            },
-            {
-              "value": "02",
-              "label": "t:labels.months.february"
-            },
-            {
-              "value": "03",
-              "label": "t:labels.months.march"
-            },
-            {
-              "value": "04",
-              "label": "t:labels.months.april"
-            },
-            {
-              "value": "05",
-              "label": "t:labels.months.may"
-            },
-            {
-              "value": "06",
-              "label": "t:labels.months.june"
-            },
-            {
-              "value": "07",
-              "label": "t:labels.months.july"
-            },
-            {
-              "value": "08",
-              "label": "t:labels.months.august"
-            },
-            {
-              "value": "09",
-              "label": "t:labels.months.september"
-            },
-            {
-              "value": "10",
-              "label": "t:labels.months.october"
-            },
-            {
-              "value": "11",
-              "label": "t:labels.months.november"
-            },
-            {
-              "value": "12",
-              "label": "t:labels.months.december"
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "day",
-          "label": "t:labels.day",
-          "default": "1",
-          "options": [
-            {
-              "value": "1",
-              "label": "1"
-            },
-            {
-              "value": "2",
-              "label": "2"
-            },
-            {
-              "value": "3",
-              "label": "3"
-            },
-            {
-              "value": "4",
-              "label": "4"
-            },
-            {
-              "value": "5",
-              "label": "5"
-            },
-            {
-              "value": "6",
-              "label": "6"
-            },
-            {
-              "value": "7",
-              "label": "7"
-            },
-            {
-              "value": "8",
-              "label": "8"
-            },
-            {
-              "value": "9",
-              "label": "9"
-            },
-            {
-              "value": "10",
-              "label": "10"
-            },
-            {
-              "value": "11",
-              "label": "11"
-            },
-            {
-              "value": "12",
-              "label": "12"
-            },
-            {
-              "value": "13",
-              "label": "13"
-            },
-            {
-              "value": "14",
-              "label": "14"
-            },
-            {
-              "value": "15",
-              "label": "15"
-            },
-            {
-              "value": "16",
-              "label": "16"
-            },
-            {
-              "value": "17",
-              "label": "17"
-            },
-            {
-              "value": "18",
-              "label": "18"
-            },
-            {
-              "value": "19",
-              "label": "19"
-            },
-            {
-              "value": "20",
-              "label": "20"
-            },
-            {
-              "value": "21",
-              "label": "21"
-            },
-            {
-              "value": "22",
-              "label": "22"
-            },
-            {
-              "value": "23",
-              "label": "23"
-            },
-            {
-              "value": "24",
-              "label": "24"
-            },
-            {
-              "value": "25",
-              "label": "25"
-            },
-            {
-              "value": "26",
-              "label": "26"
-            },
-            {
-              "value": "27",
-              "label": "27"
-            },
-            {
-              "value": "28",
-              "label": "28"
-            },
-            {
-              "value": "29",
-              "label": "29"
-            },
-            {
-              "value": "30",
-              "label": "30"
-            },
-            {
-              "value": "31",
-              "label": "31"
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "hour",
-          "label": "t:labels.hour",
-          "default": "03",
-          "options": [
-            {
-              "value": "00",
-              "label": "t:labels.times.12_am"
-            },
-            {
-              "value": "01",
-              "label": "t:labels.times.01_am"
-            },
-            {
-              "value": "02",
-              "label": "t:labels.times.02_am"
-            },
-            {
-              "value": "03",
-              "label": "t:labels.times.03_am"
-            },
-            {
-              "value": "04",
-              "label": "t:labels.times.04_am"
-            },
-            {
-              "value": "05",
-              "label": "t:labels.times.05_am"
-            },
-            {
-              "value": "06",
-              "label": "t:labels.times.06_am"
-            },
-            {
-              "value": "07",
-              "label": "t:labels.times.07_am"
-            },
-            {
-              "value": "08",
-              "label": "t:labels.times.08_am"
-            },
-            {
-              "value": "09",
-              "label": "t:labels.times.09_am"
-            },
-            {
-              "value": "10",
-              "label": "t:labels.times.10_am"
-            },
-            {
-              "value": "11",
-              "label": "t:labels.times.11_am"
-            },
-            {
-              "value": "12",
-              "label": "t:labels.times.12_pm"
-            },
-            {
-              "value": "13",
-              "label": "t:labels.times.1_pm"
-            },
-            {
-              "value": "14",
-              "label": "t:labels.times.2_pm"
-            },
-            {
-              "value": "15",
-              "label": "t:labels.times.3_pm"
-            },
-            {
-              "value": "16",
-              "label": "t:labels.times.4_pm"
-            },
-            {
-              "value": "17",
-              "label": "t:labels.times.5_pm"
-            },
-            {
-              "value": "18",
-              "label": "t:labels.times.6_pm"
-            },
-            {
-              "value": "19",
-              "label": "t:labels.times.7_pm"
-            },
-            {
-              "value": "20",
-              "label": "t:labels.times.8_pm"
-            },
-            {
-              "value": "21",
-              "label": "t:labels.times.9_pm"
-            },
-            {
-              "value": "22",
-              "label": "t:labels.times.10_pm"
-            },
-            {
-              "value": "23",
-              "label": "t:labels.times.11_pm"
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "minute",
-          "label": "t:labels.minute",
-          "default": "00",
-          "options": [
-            {
-              "value": "00",
-              "label": "00"
-            },
-            {
-              "value": "01",
-              "label": "01"
-            },
-            {
-              "value": "02",
-              "label": "02"
-            },
-            {
-              "value": "03",
-              "label": "03"
-            },
-            {
-              "value": "04",
-              "label": "04"
-            },
-            {
-              "value": "05",
-              "label": "05"
-            },
-            {
-              "value": "06",
-              "label": "06"
-            },
-            {
-              "value": "07",
-              "label": "07"
-            },
-            {
-              "value": "08",
-              "label": "08"
-            },
-            {
-              "value": "09",
-              "label": "09"
-            },
-            {
-              "value": "10",
-              "label": "10"
-            },
-            {
-              "value": "11",
-              "label": "11"
-            },
-            {
-              "value": "12",
-              "label": "12"
-            },
-            {
-              "value": "13",
-              "label": "13"
-            },
-            {
-              "value": "14",
-              "label": "14"
-            },
-            {
-              "value": "15",
-              "label": "15"
-            },
-            {
-              "value": "16",
-              "label": "16"
-            },
-            {
-              "value": "17",
-              "label": "17"
-            },
-            {
-              "value": "18",
-              "label": "18"
-            },
-            {
-              "value": "19",
-              "label": "19"
-            },
-            {
-              "value": "20",
-              "label": "20"
-            },
-            {
-              "value": "21",
-              "label": "21"
-            },
-            {
-              "value": "22",
-              "label": "22"
-            },
-            {
-              "value": "23",
-              "label": "23"
-            },
-            {
-              "value": "24",
-              "label": "24"
-            },
-            {
-              "value": "25",
-              "label": "25"
-            },
-            {
-              "value": "26",
-              "label": "26"
-            },
-            {
-              "value": "27",
-              "label": "27"
-            },
-            {
-              "value": "28",
-              "label": "28"
-            },
-            {
-              "value": "29",
-              "label": "29"
-            },
-            {
-              "value": "30",
-              "label": "30"
-            },
-            {
-              "value": "31",
-              "label": "31"
-            },
-            {
-              "value": "32",
-              "label": "32"
-            },
-            {
-              "value": "33",
-              "label": "33"
-            },
-            {
-              "value": "34",
-              "label": "34"
-            },
-            {
-              "value": "35",
-              "label": "35"
-            },
-            {
-              "value": "36",
-              "label": "36"
-            },
-            {
-              "value": "37",
-              "label": "37"
-            },
-            {
-              "value": "38",
-              "label": "38"
-            },
-            {
-              "value": "39",
-              "label": "39"
-            },
-            {
-              "value": "40",
-              "label": "40"
-            },
-            {
-              "value": "41",
-              "label": "41"
-            },
-            {
-              "value": "42",
-              "label": "42"
-            },
-            {
-              "value": "43",
-              "label": "43"
-            },
-            {
-              "value": "44",
-              "label": "44"
-            },
-            {
-              "value": "45",
-              "label": "45"
-            },
-            {
-              "value": "46",
-              "label": "46"
-            },
-            {
-              "value": "47",
-              "label": "47"
-            },
-            {
-              "value": "48",
-              "label": "48"
-            },
-            {
-              "value": "49",
-              "label": "49"
-            },
-            {
-              "value": "50",
-              "label": "50"
-            },
-            {
-              "value": "51",
-              "label": "51"
-            },
-            {
-              "value": "52",
-              "label": "52"
-            },
-            {
-              "value": "53",
-              "label": "53"
-            },
-            {
-              "value": "54",
-              "label": "54"
-            },
-            {
-              "value": "55",
-              "label": "55"
-            },
-            {
-              "value": "56",
-              "label": "56"
-            },
-            {
-              "value": "57",
-              "label": "57"
-            },
-            {
-              "value": "58",
-              "label": "58"
-            },
-            {
-              "value": "59",
-              "label": "59"
-            },
-            {
-              "value": "60",
-              "label": "60"
-            }
-          ]
-        },
-        {
-          "type": "checkbox",
-          "id": "hide_timer",
-          "label": "t:labels.hide_timer_on",
-          "default": false
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "t:labels.timer_complete_message"
-        }
-      ],
-      "limit": 1
-    },
-  {
-    "type": "richtext",
-    "name": "Rich Text",
-    "settings": [
-      { "type": "richtext", "id": "content", "label": "Content" },
-      { "type": "color", "id": "color", "label": "Text Color", "default": "#000000" },
-      {
-        "type": "select",
-        "id": "alignment",
-        "label": "Text Alignment",
-        "default": "center",
-        "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "image",
-    "name": "Image",
-    "settings": [
-      { "type": "image_picker", "id": "image", "label": "Image" },
-      {
-        "type": "range",
-        "id": "image_width",
-        "label": "Image Width (%)",
-        "min": 10,
-        "max": 100,
-        "default": 100
-      },
-      {
-        "type": "select",
-        "id": "image_ratio",
-        "label": "Aspect Ratio",
-        "default": "landscape",
-        "options": [
-          { "value": "square", "label": "Square" },
-          { "value": "landscape", "label": "Landscape" },
-          { "value": "portrait", "label": "Portrait" }
-        ]
-      },
-      { "type": "checkbox", "id": "lazy_load", "label": "Lazy Load", "default": true },
-      {
-        "type": "select",
-        "id": "hover_effect",
-        "label": "Hover Effect",
-        "default": "none",
-        "options": [
-          { "value": "none", "label": "None" },
-          { "value": "zoom", "label": "Zoom" },
-          { "value": "grayscale", "label": "Grayscale" },
-          { "value": "fade", "label": "Fade" }
-        ]
-      },
-      { "type": "color", "id": "overlay_color", "label": "Overlay Color" },
-      {
-        "type": "range",
-        "id": "overlay_opacity",
-        "label": "Overlay Opacity",
-        "min": 0,
-        "max": 1,
-        "step": 0.1,
-        "default": 0
-      }
-    ]
-  },
-  {
-    "type": "video",
-    "name": "Video",
-    "settings": [
-      { "type": "url", "id": "video_url", "label": "External Video URL (YouTube/Vimeo)" },
-      { "type": "video", "id": "uploaded_video", "label": "Upload Video" },
-      { "type": "image_picker", "id": "thumbnail", "label": "Thumbnail Image" },
-      { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": false },
-      { "type": "checkbox", "id": "loop", "label": "Loop", "default": false },
-      { "type": "checkbox", "id": "muted", "label": "Muted", "default": true }
-    ]
-  },
-  {
-    "type": "button",
-    "name": "Button",
-    "settings": [
-      { "type": "text", "id": "text", "label": "Text" },
-      { "type": "url", "id": "url", "label": "Link" },
-      {
-        "type": "select",
-        "id": "style",
-        "label": "Style",
-        "default": "fill",
-        "options": [
-          { "value": "fill", "label": "Fill" },
-          { "value": "outline", "label": "Outline" }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "size",
-        "label": "Size",
-        "default": "base",
-        "options": [
-          { "value": "sm", "label": "Small" },
-          { "value": "base", "label": "Medium" },
-          { "value": "lg", "label": "Large" }
-        ]
-      },
-      { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
-      { "type": "color", "id": "background", "label": "Background Color", "default": "#000000" },
-      { "type": "color", "id": "outline_color", "label": "Outline Color", "default": "#000000" },
-      { "type": "text", "id": "icon", "label": "Icon (HTML or Unicode)" },
-      {
-        "type": "select",
-        "id": "icon_position",
-        "label": "Icon Position",
-        "default": "left",
-        "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "right", "label": "Right" }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "alignment",
-        "label": "Alignment",
-        "default": "center",
-        "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" }
-        ]
-      }
-    ]
-  }
-],
-
+        { "type": "select", "id": "year", "label": "Year", "default": "2025", "options": [ { "value": "2024", "label": "2024" }, { "value": "2025", "label": "2025" } ] },
+        { "type": "select", "id": "month", "label": "Month", "default": "01", "options": [ { "value": "01", "label": "January" }, { "value": "12", "label": "December" } ] },
+        { "type": "select", "id": "day", "label": "Day", "default": "01", "options": [ { "value": "01", "label": "1" }, { "value": "31", "label": "31" } ] },
+        { "type": "select", "id": "hour", "label": "Hour", "default": "00", "options": [ { "value": "00", "label": "00" }, { "value": "23", "label": "23" } ] },
+        { "type": "select", "id": "minute", "label": "Minute", "default": "00", "options": [ { "value": "00", "label": "00" }, { "value": "59", "label": "59" } ] },
+        { "type": "checkbox", "id": "hide_timer", "label": "Hide Timer After Completion", "default": false },
+        { "type": "richtext", "id": "text", "label": "Completion Message" }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Somos Prime Day Banner",
-      "category": "Somos Custom"
+      "name": "Prime Day Banner",
+      "category": "Custom"
     }
   ]
 }

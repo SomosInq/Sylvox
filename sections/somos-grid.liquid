@@ -49,7 +49,7 @@
   margin: 0 auto 10px;
 }
 
-/* Image Hover Effects */
+/* Hover Effects */
 .hover-zoom img:hover {
   transform: scale(1.05);
 }
@@ -60,7 +60,7 @@
   opacity: 0.7;
 }
 
-/* Responsive visibility */
+/* Visibility */
 .hide-desktop { display: none !important; }
 @media (max-width: 1024px) {
   .hide-tablet { display: none !important; }
@@ -68,75 +68,7 @@
 @media (max-width: 768px) {
   .hide-mobile { display: none !important; }
 }
-/* Section Width */
-.section_width_standard,
-.section_width_full {
-  transition: all 0.3s ease;
-}
-.section_width_full {
-  width: 100%;
-}
-.section_width_standard {
-  margin: 0 auto !important;
-  width: 90% !important;
-}
 
-/* Content Width */
-.section_content_width_standard,
-.section_content_width_full {
-  transition: all 0.3s ease;
-}
-.section_content_width_full {
-  width: 100%;
-}
-.section_content_width_standard {
-  margin: 0 auto !important;
-  width: 90% !important;
-}
-
-/* Layout */
-.usp-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.usp-item {
-  flex: 1 1 calc(33.333% - 20px);
-  box-sizing: border-box;
-  text-align: center;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-}
-
-.usp-item img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-/* Image Hover Effects */
-.hover-zoom img:hover {
-  transform: scale(1.05);
-}
-.hover-grayscale img:hover {
-  filter: grayscale(100%);
-}
-.hover-fade img:hover {
-  opacity: 0.7;
-}
-
-/* Responsive visibility */
-.hide-desktop { display: none !important; }
-@media (max-width: 1024px) {
-  .hide-tablet { display: none !important; }
-}
-@media (max-width: 768px) {
-  .hide-mobile { display: none !important; }
-}
 </style>
 
 <div 
@@ -190,6 +122,8 @@
     {% endfor %}
   </div>
 </div>
+
+
 
 {% schema %}
 {
@@ -282,34 +216,47 @@
     {
       "type": "range",
       "id": "padding_top",
+      "label": "Padding Top (px)",
       "min": 0,
       "max": 200,
-      "default": 0,
-      "label": "Padding Top (px)"
+      "step": 2,
+      "default": 0
     },
     {
       "type": "range",
       "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
       "min": 0,
       "max": 200,
-      "default": 0,
-      "label": "Padding Bottom (px)"
+      "step": 2,
+      "default": 0
     },
     {
       "type": "range",
       "id": "padding_left",
+      "label": "Padding Left (px)",
       "min": 0,
       "max": 200,
-      "default": 0,
-      "label": "Padding Left (px)"
+      "step": 2,
+      "default": 0
     },
     {
       "type": "range",
       "id": "padding_right",
+      "label": "Padding Right (px)",
       "min": 0,
       "max": 200,
-      "default": 0,
-      "label": "Padding Right (px)"
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "Section Height (Desktop)",
+      "min": 0,
+      "max": 2000,
+      "step": 20,
+      "default": 0
     },
     {
       "type": "select",
@@ -330,14 +277,6 @@
       "type": "text",
       "id": "section_id",
       "label": "Section ID"
-    },
-    {
-      "type": "range",
-      "id": "height_desktop",
-      "label": "Section Height (Desktop)",
-      "min": 0,
-      "max": 2000,
-      "default": 0
     },
     {
       "type": "select",
@@ -376,6 +315,7 @@
           "label": "Image Width (%)",
           "min": 10,
           "max": 100,
+          "step": 5,
           "default": 60
         },
         {
@@ -454,9 +394,10 @@
   ],
   "presets": [
     {
-  "name": "Somos Grid",
+      "name": "Somos Grid",
       "category": "Somos Custom"
     }
   ]
 }
+
 {% endschema %}
