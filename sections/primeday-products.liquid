@@ -43,7 +43,7 @@
   margin-bottom: 40px;
 }
 .section-header img.header-image {
-  max-width: 100%;
+  max-width: 100%; width: 12%;
   height: auto;
   margin-bottom: 20px;
 }
@@ -63,15 +63,16 @@
 
   /* Gift Block Layout */
   .gift-block {
-    display: flex;
+display: flex
+;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     gap: 20px;
     flex: 0 1 calc(33.333% - 30px);
-    background: #fff;
+    background: #FAFAFA;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    box-shadow: unset;
   }
   @media (max-width: 991px) {
     .gift-block {
@@ -107,11 +108,35 @@
     margin-bottom: 10px;
   }
 
-  .gift-content .price-row {
+.gift-content .price-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px; /* controls spacing between the two <p>s */
+}
+  .gift-content .price-row span {
+    display: block;
+    color: var(--Black, #1D1D1B);
+font-size: 16px;
+}
+.gift-content .price-row p {
+    margin: 0;
+    font-size: 28px;
+        color: #686868;
+}
+.now-free span {
+font-size: 16px;
+        color: #686868;
+}
+.gift-content .price-row p:first-child {
+    margin-right: 10px;
+}
+.now-free {
+color: #F8BB00 !important;
+font-size: 32px !important;
+font-weight: 700;
+}
+
 
   .footer-text-link {
     margin-top: 30px;
@@ -130,13 +155,12 @@
     {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | image_url }});{% endif %}
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-    height: {{ section.settings.height_desktop }}px;
 ">
 
   {% if section.settings.show_header %}
     <div class="section-header">
       {% if section.settings.header_image != blank %}
-        <img src="{{ section.settings.header_image | image_url }}" alt="Header Image" class="header-image">
+        <img  src="{{ section.settings.header_image | image_url }}" alt="Header Image" class="header-image">
       {% endif %}
       <{{ section.settings.title_tag }} style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }};">
         {{ section.settings.title | escape }}
@@ -163,8 +187,9 @@
           <div class="free-badge">FREE</div>
           <h3>{{ block.settings.title }}</h3>
           <div class="price-row">
-            <p><s>{{ block.settings.price }}</s></p>
-            <p class="now-free">Now for FREE</p>
+
+            <p><span>Before at</span><s>{{ block.settings.price }}</s></p>
+            <p class="now-free"><span>Now for</span>FREE</p>
           </div>
         </div>
       </div>
@@ -280,15 +305,7 @@
       ]
     },
 
-    {
-      "type": "range",
-      "id": "height_desktop",
-      "label": "Section Height (Desktop)",
-      "default": 600,
-      "min": 0,
-      "max": 1600,
-      "step": 20
-    },
+
 
     { "type": "text", "id": "footer_text", "label": "Footer Text" },
     { "type": "text", "id": "footer_link_text", "label": "Footer Link Text" },

@@ -13,11 +13,6 @@
     width: 90% !important;
   }
 
-  .custom-section,
-.custom-content {
-  transition: width 0.3s ease;
-}
-
   .hide-desktop { display: none !important; }
   @media (max-width: 1024px) {
     .hide-tablet { display: none !important; }
@@ -90,20 +85,20 @@ background: var(--Dark-Green, #20413B);
     width: 90% !important;
   }
 
-  .countdown {
+  #shopify-section-{{ section.id }}  .countdown {
     display: flex;
     gap: 10px;
     font-size: 18px;
   }
 
-  .countdown span {
+  #shopify-section-{{ section.id }}  .countdown span {
     background: #ffcc00;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
   }
 
-  .countdown__block {
+  #shopify-section-{{ section.id }}  .countdown__block {
     width: 100%;
     margin: 0;
     z-index: 3;
@@ -111,17 +106,17 @@ background: var(--Dark-Green, #20413B);
 
 /* Countdown */
 
-.countdown-wrapper {
+#shopify-section-{{ section.id }} .countdown-wrapper {
   position: relative;
 }
 
-.countdown__background-image-wrapper {
+#shopify-section-{{ section.id }} .countdown__background-image-wrapper {
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-.countdown__background-image {
+#shopify-section-{{ section.id }} .countdown__background-image {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -130,25 +125,25 @@ background: var(--Dark-Green, #20413B);
   left: 0;
 }
 
-.countdown__mobile-image-wrapper {
+#shopify-section-{{ section.id }} .countdown__mobile-image-wrapper {
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-.countdown__mobile-image {
+#shopify-section-{{ section.id }} .countdown__mobile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.countdown-layout--banner .countdown__content {
+#shopify-section-{{ section.id }} .countdown-layout--banner .countdown__content {
     padding: 0;
   }
 
 @media only screen and (min-width: 769px) {
 
-.countdown-layout--banner .countdown__content {
+#shopify-section-{{ section.id }} .countdown-layout--banner .countdown__content {
       display: flex;
       flex-wrap: nowrap;
       flex-direction: row;
@@ -158,22 +153,22 @@ background: var(--Dark-Green, #20413B);
   }
     }
 
-.countdown-layout--banner.countdown-blocks--2.page-width .countdown__content {
+#shopify-section-{{ section.id }} .countdown-layout--banner.countdown-blocks--2.page-width .countdown__content {
       justify-content: space-around;
     }
 
-.countdown-layout--banner.countdown-blocks--2 .countdown__content {
+#shopify-section-{{ section.id }} .countdown-layout--banner.countdown-blocks--2 .countdown__content {
       justify-content: center;
     }
 
 @media only screen and (min-width: 769px) {
 
-.countdown-layout--banner .countdown__block {
+#shopify-section-{{ section.id }} .countdown-layout--banner .countdown__block {
       width: 33%;
   }
     }
 
-.countdown__content {
+#shopify-section-{{ section.id }} .countdown__content {
   width: 100%;
   height: auto;
   max-height: 650px;
@@ -185,13 +180,13 @@ background: var(--Dark-Green, #20413B);
   text-align: center;
 }
 
-.page-width .countdown__content {
+#shopify-section-{{ section.id }} page-width .countdown__content {
     position: relative;
   }
 
 @media only screen and (min-width: 769px) {
 
-.countdown-layout--hero .countdown__content {
+#shopify-section-{{ section.id }} .countdown-layout--hero .countdown__content {
       height: 100vh;
   }
     }
@@ -202,33 +197,33 @@ background: var(--Dark-Green, #20413B);
   z-index: 3;
 }
 
-.countdown__block--content {
+#shopify-section-{{ section.id }} .countdown__block--content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.countdown__block--content .countdown__block--button {
+#shopify-section-{{ section.id }} .countdown__block--content .countdown__block--button {
     width: 100%;
     margin: 0; /* Nested button will get spacing from text above it */
   }
 
 @media only screen and (min-width: 769px) {
 
-.countdown-blocks--2.countdown-layout--banner .countdown__block--timer, .countdown-blocks--2.countdown-layout--banner .countdown__block--content {
+#shopify-section-{{ section.id }} .countdown-blocks--2.countdown-layout--banner .countdown__block--timer, #shopify-section-{{ section.id }} .countdown-blocks--2.countdown-layout--banner .countdown__block--content {
       width: 50%;
   }
     }
 
 @media only screen and (min-width: 769px) {
 
-.countdown-blocks--2.countdown-layout--banner .countdown__block--button.button-block-active {
+#shopify-section-{{ section.id }} .countdown-blocks--2.countdown-layout--banner .countdown__block--button.button-block-active {
       width: 50%;
   }
     }
 
-.countdown__text-wrapper {
+#shopify-section-{{ section.id }} .countdown__text-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -236,35 +231,35 @@ background: var(--Dark-Green, #20413B);
 
 @media only screen and (min-width: 769px) {
 
-.countdown-layout--hero .countdown__text-wrapper {
+#shopify-section-{{ section.id }} .countdown-layout--hero .countdown__text-wrapper {
       width: 50%;
   }
     }
 
-.countdown__text-wrapper--content-alignment-left {
+#shopify-section-{{ section.id }} .countdown__text-wrapper--content-alignment-left {
   text-align: left;
 }
 
-.countdown__text-wrapper--content-alignment-right {
+#shopify-section-{{ section.id }} .countdown__text-wrapper--content-alignment-right {
   text-align: right;
 }
  
-.countdown__display {
+#shopify-section-{{ section.id }} .countdown__display {
   display: flex;
   justify-content: left !important;
 }
 
-.countdown__display--loaded {
+#shopify-section-{{ section.id }} .countdown__display--loaded {
   opacity: 1;
   visibility: visible;
   transition: opacity ease-in 0.3s;
 }
 
-.countdown__display--visible + .countdown__timer-message--visible {
+#shopify-section-{{ section.id }} .countdown__display--visible + .countdown__timer-message--visible {
   margin-top: 1.5rem;
 }
 
-.countdown__display--hidden {
+#shopify-section-{{ section.id }} .countdown__display--hidden {
   visibility: hidden;
   opacity: 0;
   width: 0;
@@ -273,7 +268,7 @@ background: var(--Dark-Green, #20413B);
   transition: opacity ease-out 3s;
 }
 
-.countdown__display-block {
+#shopify-section-{{ section.id }} .countdown__display-block {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -284,7 +279,7 @@ background: var(--Dark-Green, #20413B);
   {% comment %} padding: 0 1rem; {% endcomment %}
 }
 
-.countdown__display-block .number {
+#shopify-section-{{ section.id }} .countdown__display-block .number {
     border-radius: 8px;
 background: #F8BB00;
 display: flex;
@@ -292,10 +287,10 @@ padding: 13px 12px;
 justify-content: center;
 align-items: center;
 color: #fff;
-    font-size: 16px;
+    font-size: 32px;
     }
 
-.countdown__display-block span {
+#shopify-section-{{ section.id }} .countdown__display-block span {
 color: #fff;
     font-size: 14px;
     }
@@ -304,38 +299,38 @@ color: #fff;
     content: ':'
 } {% endcomment %}
 
-.countdown__display-block h2 {
+#shopify-section-{{ section.id }} .countdown__display-block h2 {
     margin-bottom: 16px;
   }
 
 @media only screen and (min-width: 769px) {
 
-.countdown__display-block h2 {
+#shopify-section-{{ section.id }} .countdown__display-block h2 {
       margin-bottom: 4px;
   }
     }
 
-.countdown__display-block span {
+#shopify-section-{{ section.id }} .countdown__display-block span {
     font-size: 0.6rem;
     letter-spacing: 1.7px;
   }
 
 @media only screen and (min-width: 769px) {
 
-.countdown__display-block span {
+#shopify-section-{{ section.id }} .countdown__display-block span {
       font-size: 0.75rem;
   }
     }
 
-.countdown__display-block:last-child {
+#shopify-section-{{ section.id }} .countdown__display-block:last-child {
     border-right: none;
   }
 
-[dir='rtl'] .countdown__display-block:last-child {
+[dir='rtl'] #shopify-section-{{ section.id }} .countdown__display-block:last-child {
       border-right: 1px solid;
     }
 
-[dir='rtl'] .countdown__display-block:first-child {
+[dir='rtl'] #shopify-section-{{ section.id }} .countdown__display-block:first-child {
       border-right: none;
     }
 
@@ -413,19 +408,21 @@ padding: 10px 0;}
 }
 
 /* ✅ UPDATE 1: Fix subscribe form spacing and input field width */
-.subscribe-form {
+#shopify-section-{{ section.id }} .subscribe-form {
   text-align: left;
   display: flex;
   height: 42px;
-  padding: 0;
+  padding: 0; margin: 10px 0 0 0;
   align-items: center;
   flex-shrink: 0;
   border-radius: 9999px;
   background: #FFF;
   overflow: hidden;
   max-width: 100%;
+  border: 5px solid #fff;
+      width: 450px;
 }
-.subscribe-form input[type="email"] {
+#shopify-section-{{ section.id }} .subscribe-form input[type="email"] {
   flex: 1;
   border: none;
   padding: 0 20px;
@@ -433,25 +430,26 @@ padding: 10px 0;}
   height: 100%;
   font-size: 16px;
 }
-.subscribe-form button {
-  height: 100%;
-  width: auto;
-  padding: 0 24px;
-  border-radius: 0 9999px 9999px 0;
-  color: white;
-  background: #20413B;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+#shopify-section-{{ section.id }} .subscribe-form button {
+    height: 100%;
+    width: auto;
+    padding: 10px 24px;
+    border-radius: 99999px;
+    color: white;
+    background: #20413B;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 3px;
 }
 
 /* ✅ UPDATE 2: Add responsive content width behavior */
 @media (max-width: 768px) {
-  .section_content_width_standard {
+  #shopify-section-{{ section.id }} .section_content_width_standard {
     width: 100% !important;
     padding: 0 16px;
   }
-  .section_width_standard {
+  #shopify-section-{{ section.id }} .section_width_standard {
     width: 100% !important;
     padding: 0 16px;
   }
@@ -828,30 +826,14 @@ padding: 10px 0;}
       ]
     },
     {
-  "type": "range",
-  "id": "section_content_width",
-  "label": "Content Width",
-  "min": 5,
-  "max": 100,
-  "step": 5,
-  "default": 100,
-  "unit": "%"
-},
-    {
-      "type": "checkbox",
-      "id": "custom_content_width_enabled",
-      "label": "Enable Custom Content Width",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "custom_content_width",
-      "label": "Custom Content Width (%)",
-      "min": 40,
-      "max": 100,
-      "step": 5,
-      "default": 90,
-      "unit": "%"
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width Preset",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "90% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
     },
     {
       "type": "range",

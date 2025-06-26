@@ -80,7 +80,7 @@
   style="
     background: {{ section.settings.background_image | image_url: 'original' }} no-repeat center/cover, {{ section.settings.background_color }};
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    height: {{ section.settings.height_desktop }}px;
+ 
   "
 >
 
@@ -247,15 +247,6 @@
       "min": 0,
       "max": 200,
       "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "height_desktop",
-      "label": "Section Height (Desktop)",
-      "min": 0,
-      "max": 2000,
-      "step": 20,
       "default": 0
     },
     {

@@ -3,6 +3,30 @@
   Renders a section with a list of product blocks.
 {%- endcomment -%}
 
+
+<style>
+#shopify-section-{{ section.id }} .product-card__title {
+  font-size: 20px;
+  margin: 0;
+}
+#shopify-section-{{ section.id }} .btn, #shopify-section-{{ section.id }} .rte .btn, #shopify-section-{{ section.id }} .shopify-payment-button .shopify-payment-button__button--unbranded
+#shopify-section-{{ section.id }} .btn--secondary,
+#shopify-section-{{ section.id }} .block-buy-buttons[data-show-dynamic-checkout] .btn,
+#shopify-section-{{ section.id }} .rte .btn--secondary {
+        font-size: 13px;
+    line-height: normal;
+    padding: 10px;
+
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+#shopify-section-{{ section.id }} .product-card__price {
+font-weight: 500;
+    font-size: 20px;
+}
+</style>
+
 {%- liquid
   assign title = title | default: section.settings.title
   assign heading_size = heading_size | default: section.settings.heading_size | default: 'h2'
