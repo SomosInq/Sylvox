@@ -1,0 +1,451 @@
+
+
+{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | "Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)" License  %}
+{%- comment -%}
+  Renders a rich text section with a text blocks.
+
+  Accepts:
+  - divider {boolean} - Whether to show a divider above the section
+  - color_scheme {'none'|'1'|'2'|'3'} - The color scheme for the section
+  - align_text {'left'|'center'|'right'} - The text alignment for the section
+  - narrow_column {boolean} - Whether to make the section narrow
+  - show_wave {boolean} - Whether to show a wave background
+
+  Usage:
+  {% render 'section-rich-text' %}
+{%- endcomment -%}
+
+<style>
+    .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+.rich-text-flex {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.rich-text-flex--left .rich-text-image {
+  order: -1;
+}
+
+.rich-text-flex--right .rich-text-image {
+  order: 1;
+}
+
+.rich-text-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.page-width {
+  flex: 1;
+}
+
+.subscribe-form {
+        text-align: left;
+        display: flex;
+{% comment %} width: 509px; {% endcomment %}
+height: 42px;
+padding: 12px 0px 12px 16px;
+{% comment %} justify-content: flex-end; {% endcomment %}
+align-items: center;
+flex-shrink: 0;
+border-radius: 9999px;
+background: #FFF;
+}
+
+  .subscribe-form input,  .subscribe-form textarea,  .subscribe-form select {
+    border: 0 solid;
+    border-color: var(--color-border);
+    max-width: 100%;
+    padding: 8px 10px;
+    border-radius: var(--input-radius);
+}
+
+  .subscribe-form button {
+    display: flex;
+width: 124px;
+padding: 10px 42px 9px 40px;
+justify-content: center;
+align-items: center;
+border-radius: 9999px;
+}
+
+#shopify-section-{{ section.id }} .subscribe-form {
+  text-align: left;
+  display: flex;
+  height: 42px;
+  padding: 0; margin: 10px 0 0 0;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #FFF;
+  overflow: hidden;
+  max-width: 100%;
+  border: 5px solid #fff;
+      width: 450px;
+}
+#shopify-section-{{ section.id }} .subscribe-form input[type="email"] {
+  flex: 1;
+  border: none;
+  padding: 0 20px;
+  border-radius: 9999px 0 0 9999px;
+  height: 100%;
+  font-size: 16px;
+}
+#shopify-section-{{ section.id }} .subscribe-form button {
+    height: 100%;
+    width: auto;
+    padding: 10px 24px;
+    border-radius: 99999px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 3px;
+}
+</style>
+
+{%- liquid
+  assign divider = divider | default: section.settings.divider, allow_false: true | default: false, allow_false: true
+  assign color_scheme = color_scheme | default: section.settings.color_scheme | default: 'none'
+  assign align_text = align_text | default: section.settings.align_text | default: 'left'
+  assign narrow_column = narrow_column | default: section.settings.narrow_column, allow_false: true | default: false, allow_false: true
+  assign show_wave = show_wave | default: section.settings.show_wave, allow_false: true | default: false, allow_false: true
+-%}
+
+{%- if divider -%}<div class="section--divider">{%- endif -%}
+
+<div
+  class="section_width_{{ section.settings.section_width }} index-section color-scheme-{{ color_scheme }} text-{{ align_text }} {% if show_wave %}background-svg--wave{% endif %}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px
+  "
+>
+  {%- if color_scheme != 'none' -%}
+    {%- render 'color-scheme-texture', color_scheme: color_scheme -%}
+  {%- endif -%}
+
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+
+  {%- assign image_block = section.blocks | where: "type", "image" | first -%}
+
+  {%- if image_block -%}
+    <div class="rich-text-flex rich-text-flex--{{ image_block.settings.image_position }}">
+      <div class="rich-text-image">
+        <img
+          src="{{ image_block.settings.image | img_url: '800x' }}"
+          alt=""
+        >
+      </div>
+      <div class="page-width{% if narrow_column %} page-width--narrow{% endif %} section_content_width_{{ section.settings.section_content_width }}">
+        {%- for block in section.blocks -%}
+          {%- unless block.type == 'image' -%}
+            <div class="theme-block" {{ block.shopify_attributes }}>
+              {%- case block.type -%}
+                {%- when 'heading' -%}
+                  {% if block.settings.text_highlight %}
+                    <h2
+                      class="
+                        {{ block.settings.heading_size }}
+                        text-highlight
+                        text-highlight--{{ block.settings.text_highlight }}
+                      "
+                    >
+                      {{ block.settings.title }}
+                    </h2>
+                  {% else %}
+                    <h2 class="{{ block.settings.heading_size }}">{{ block.settings.title | escape }}</h2>
+                  {% endif %}
+                {%- when 'page' -%}
+                  {%- liquid
+                    assign slot = 'info.section_no_content' | t
+                    if block.settings.page_text != blank
+                      assign slot = pages[block.settings.page_text].content
+                    endif
+                    render 'rte', slot: slot
+                  -%}
+                {%- when 'text' -%}
+                  <div class="rte clearfix">
+                    {%- if block.settings.text != blank -%}
+                      {%- if block.settings.enlarge_text %}<div class="enlarge-text">{% endif -%}
+                      {{ block.settings.text }}
+                      {%- if block.settings.enlarge_text %}
+                        </div>
+                      {% endif -%}
+                    {%- else -%}
+                      {% render 't_with_fallback',
+                        key: 'info.section_no_content',
+                        fallback: "This section doesn't currently include any content. Add content to this section using the sidebar."
+                      %}
+                    {%- endif -%}
+                  </div>
+                {%- when 'button' -%}
+                  <div class="rte clearfix">
+                    <a href="{{ block.settings.link }}" class="btn">
+                      {{ block.settings.link_text }}
+                    </a>
+                  </div>
+
+              {%- when 'subscribe' -%}
+    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="subscribe-form">
+      <input type="hidden" name="form_type" value="customer" />
+      <input type="email" name="contact[email]" placeholder="{{ block.settings.placeholder }}" required>
+      <button type="submit" style="background: {{ block.settings.subscribe_button_color }} !important;">{{ block.settings.button_label }}</button>
+    </form>
+              {%- endcase -%}
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="page-width{% if narrow_column %} page-width--narrow{% endif %}">
+      {%- for block in section.blocks -%}
+        <div class="theme-block" {{ block.shopify_attributes }}>
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              {% if block.settings.text_highlight %}
+                <h2
+                  class="
+                    {{ block.settings.heading_size }}
+                    text-highlight
+                    text-highlight--{{ block.settings.text_highlight }}
+                  "
+                >
+                  {{ block.settings.title }}
+                </h2>
+              {% else %}
+                <h2 class="{{ block.settings.heading_size }}">{{ block.settings.title | escape }}</h2>
+              {% endif %}
+            {%- when 'page' -%}
+              {%- liquid
+                assign slot = 'info.section_no_content' | t
+                if block.settings.page_text != blank
+                  assign slot = pages[block.settings.page_text].content
+                endif
+                render 'rte', slot: slot
+              -%}
+            {%- when 'text' -%}
+              <div class="rte clearfix">
+                {%- if block.settings.text != blank -%}
+                  {%- if block.settings.enlarge_text %}<div class="enlarge-text">{% endif -%}
+                  {{ block.settings.text }}
+                  {%- if block.settings.enlarge_text %}
+                    </div>
+                  {% endif -%}
+                {%- else -%}
+                  {% render 't_with_fallback',
+                    key: 'info.section_no_content',
+                    fallback: "This section doesn't currently include any content. Add content to this section using the sidebar."
+                  %}
+                {%- endif -%}
+              </div>
+            {%- when 'button' -%}
+              <div class="rte clearfix">
+                <a href="{{ block.settings.link }}" class="btn">
+                  {{ block.settings.link_text }}
+                </a>
+              </div>
+              {%- when 'subscribe' -%}
+    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="subscribe-form">
+      <input type="hidden" name="form_type" value="customer" />
+      <input type="email" name="contact[email]" placeholder="{{ block.settings.placeholder }}" required>
+      <button type="submit" style="background: {{ block.settings.subscribe_button_color }} !important;">{{ block.settings.button_label }}</button>
+    </form>
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+  </div>
+</div>
+
+{%- if divider -%}</div>{%- endif -%}
+
+{% schema %}
+{
+  "name": "Rich Text",
+  "settings": [
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+  
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius (px)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Content alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centered" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "narrow_column",
+      "label": "Narrow column",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "1",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "Show section divider",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Heading", "default": "Rich text" },
+        { "type": "select", "id": "heading_size", "label": "Heading size", "default": "h2", "options": [
+          { "value": "h3", "label": "Small" },
+          { "value": "h2", "label": "Medium" },
+          { "value": "h1", "label": "Large" },
+          { "value": "h0", "label": "Extra large" }
+        ] }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "checkbox", "id": "enlarge_text", "label": "Enlarge text", "default": true },
+        { "id": "text", "type": "richtext", "label": "Text", "default": "<p>Your rich text here.</p>" }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "url", "id": "link", "label": "Button link" },
+        { "type": "text", "id": "link_text", "label": "Button text", "default": "Button" }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "subscribe",
+      "name": "Subscribe Form",
+      "settings": [
+        { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Your email" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" },
+        {
+  "type": "color",
+  "id": "subscribe_button_color",
+  "label": "Subscribe button color",
+  "default": "#DB4B97"
+}
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Rich Text", "blocks": [ { "type": "heading" }, { "type": "text" } ] }
+  ]
+}
+{% endschema %}
+

@@ -3,42 +3,104 @@
   Renders a section with a list of product blocks.
 {%- endcomment -%}
 
-
 <style>
- #shopify-section-{{ section.id }} .section_content_width_standard {
-    margin: 0 auto !important;
-    width: 100% !important;
+#shopify-section-{{ section.id }} .section_content_width_standard {
+  margin: 0 auto !important;
+  width: 100% !important;
 }
 #shopify-section-{{ section.id }} .product-card__title {
   font-size: 20px;
   margin: 0;
 }
-#shopify-section-{{ section.id }} .btn, #shopify-section-{{ section.id }} .rte .btn, #shopify-section-{{ section.id }} .shopify-payment-button .shopify-payment-button__button--unbranded
+#shopify-section-{{ section.id }} .btn,
+#shopify-section-{{ section.id }} .rte .btn,
+#shopify-section-{{ section.id }} .shopify-payment-button .shopify-payment-button__button--unbranded,
 #shopify-section-{{ section.id }} .btn--secondary,
 #shopify-section-{{ section.id }} .block-buy-buttons[data-show-dynamic-checkout] .btn,
 #shopify-section-{{ section.id }} .rte .btn--secondary {
-        font-size: 13px;
-    line-height: normal;
-    padding: 10px;
-
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
+  font-size: 13px;
+  line-height: normal;
+  padding: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
 }
 #shopify-section-{{ section.id }} .product-card__price {
-font-weight: 500;
-    font-size: 20px;
+  font-weight: 500;
+  font-size: 20px;
 }
-#shopify-section-{{ section.id }} .product-card__buttons {width: 100%;}
 
-button.btn.btn--primary {
-  background: #20413B;
+#shopify-section-{{ section.id }} .product-card__pricing {
+display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 40px;
+}
+#shopify-section-{{ section.id }} .product-card__buttons {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+#shopify-section-{{ section.id }} .product-card__buttons a,
+#shopify-section-{{ section.id }} .product-card__buttons button {
+  flex: 1;
+}
+#shopify-section-{{ section.id }} .product-card__overlay-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #F8BB00;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+      border-radius: 0 0 10px 10px;
+      padding: 10px 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+}
+#shopify-section-{{ section.id }} .product-card__overlay-badge span {
+display: block;
+    font-size: 16px;
+    font-weight: 200;
+}
+#shopify-section-{{ section.id }} .product-card__discount {
+  background: #F8BB00;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-top: 20px;
 }
 .product-card__before,
 .product-card__now {
-    text-align: left;
+  text-align: left;
 }
-
+.product-card__badges {
+  position: relative;
+}
+.product-card__details {
+  margin-top: 0.5rem;
+}
+#shopify-section-{{ section.id }} .type {
+display: flex !important
+;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-bottom: 40px;
+}
+#shopify-section-{{ section.id }} .sunimage {
+width: 24px !important;
+    float: left;
+}
 </style>
 
 {%- liquid
@@ -70,61 +132,88 @@ button.btn.btn--primary {
       data-view="6-3"
     {% endif %}
   >
-    {%- liquid
-      assign is_empty = true
-      if section.blocks.size > 0
-        assign is_empty = false
-      endif
-    -%}
+{%- if section.blocks.size == 0 -%}
+  <div class="page-width">
+    <div class="rte clearfix">
+      {% render 't_with_fallback',
+        key: 'info.section_no_content',
+        fallback: "This section doesn't currently include any content. Add content to this section using the sidebar."
+      %}
+    </div>
+  </div>
+{%- endif -%}
 
     {%- for block in section.blocks -%}
-      {%- liquid
-        assign product = block.settings.product
-        assign image_to_show = block.settings.custom_image | default: product.featured_image
-      -%}
+      {%- assign product = block.settings.product -%}
+      {%- assign image_to_show = block.settings.custom_image | default: product.featured_image -%}
 
       <div class="product-card" style="width: 25%; float: left; padding: 1rem; box-sizing: border-box;">
-        {% if image_to_show %}
-          <img
-            src="{{ image_to_show | img_url: '800x' }}"
-            alt="{{ product.title | escape }}"
-            loading="{% if block.settings.lazyload %}lazy{% else %}eager{% endif %}"
-            class="product-card__image hover-{{ block.settings.hover_effect }}"
-            style="width: {{ block.settings.image_size }}%; aspect-ratio: 
-              {% case block.settings.image_ratio %}
-                {% when 'square' %}1 / 1
-                {% when 'landscape' %}4 / 3
-                {% when 'portrait' %}3 / 4
-                {% else %}1 / 1
-              {% endcase %};"
-          >
-        {% endif %}
+        <div class="product-card__badges">
+          {% if block.settings.overlay_badge_text != blank %}
+            <div class="product-card__overlay-badge">{{ block.settings.overlay_badge_text }} <span>OFF</span></div>
+          {% endif %}
+          {% if image_to_show %}
+            <img
+              src="{{ image_to_show | img_url: '800x' }}"
+              alt="{{ product.title | escape }}"
+              loading="{% if block.settings.lazyload %}lazy{% else %}eager{% endif %}"
+              class="product-card__image hover-{{ block.settings.hover_effect }}"
+              style="width: {{ block.settings.image_size }}%; aspect-ratio: 
+                {% case block.settings.image_ratio %}
+                  {% when 'square' %}1 / 1
+                  {% when 'landscape' %}4 / 3
+                  {% when 'portrait' %}3 / 4
+                  {% else %}1 / 1
+                {% endcase %};"
+            >
+          {% endif %}
+        </div>
 
-        <div class="product-card__info">
-          <h3 class="product-card__title" style="text-align: left;">{{ block.settings.custom_title | default: product.title }}</h3>
-          <div class="product-card__meta">{{ product.vendor }}</div>
+        <div class="product-card__details">
+
+          <div class="type">
+          {% if block.settings.show_outdoor_tv %}
+            <div class="product-card__meta">Outdoor TV</div>
+          {% endif %}
+          {% if block.settings.show_partial_sun %}
+            <div class="product-card__meta">
+              <img class="sunimage" src="{{ block.settings.custom_image_sun | img_url: '400x' }}" alt="Sun" style="max-width: 100%;">
+              Partial Sun
+            </div>
+          {% endif %}
+        </div>
+
+          {% if block.settings.show_title %}
+            <h3 class="product-card__title" style="text-align: left;">{{ block.settings.custom_title | default: product.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.show_vendor %}
+            <div class="product-card__meta">{{ product.vendor }}</div>
+          {% endif %}
 
           <div class="product-card__pricing" style="display: flex; gap: 0.5rem; align-items: center;">
-            <div class="product-card__before">
-              <div style="font-size: 0.875rem; color: #666;">Before at</div>
-              <span class="product-card__price--compare" style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>
-            </div>
-            <div class="product-card__now">
-              <div style="font-size: 0.875rem; color: #666;">Now at</div>
-              <span class="product-card__price" style="font-weight: bold;">{{ product.price | money }}</span>
-            </div>
-            {% if product.compare_at_price > product.price %}
-              <span class="product-card__discount" style="background: #fdd835; color: #000; font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 0.25rem;">
-                {{ 100 | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}% OFF
-              </span>
+            {% if block.settings.show_before_price %}
+              <div class="product-card__before">
+                <div style="font-size: 0.875rem; color: #666;">{{ block.settings.before_label }}</div>
+                <span class="product-card__price--compare" style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>
+              </div>
+            {% endif %}
+            {% if block.settings.show_now_price %}
+              <div class="product-card__now">
+                <div style="font-size: 0.875rem; color: #666;">{{ block.settings.now_label }}</div>
+                <span class="product-card__price" style="font-weight: bold;">{{ product.price | money }}</span>
+              </div>
+            {% endif %}
+            {% if block.settings.show_discount_badge %}
+              <span class="product-card__discount">{{ block.settings.discount_badge_text }}</span>
             {% endif %}
           </div>
 
-          <div class="product-card__buttons" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-            <a href="{{ product.url }}" class="btn btn--secondary" style="flex: 1; text-align: center; color: {{ block.settings.secondary_button_text_color }}; background-color: {{ block.settings.secondary_button_background_color }}; border-color: {{ block.settings.secondary_button_border_color }};">Learn More</a>
-            <form method="post" action="/cart/add" style="flex: 1;">
+          <div class="product-card__buttons" style="margin-top: 1rem;">
+            <a href="{{ block.settings.learn_more_link | default: product.url }}" class="btn btn--secondary">Learn More</a>
+            <form method="post" action="/cart/add">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-              <button type="submit" class="btn btn--primary" style="width: 100%; color: {{ block.settings.primary_button_text_color }}; background-color: {{ block.settings.primary_button_background_color }}; border-color: {{ block.settings.primary_button_border_color }};">Buy It Now</button>
+              <button type="submit" class="btn btn--primary">Buy It Now</button>
             </form>
           </div>
         </div>
@@ -143,11 +232,7 @@ button.btn.btn--primary {
     {%- endif -%}
   </div>
 </div>
-
 {%- if divider -%}</div>{%- endif -%}
-
-
-
 
 {% schema %}
 {
@@ -155,61 +240,16 @@ button.btn.btn--primary {
   "class": "index-section",
   "max_blocks": 18,
   "settings": [
-      {
-      "type": "select",
-      "id": "section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "Content Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [{ "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" }] },
+    { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [{ "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" }] },
     { "type": "text", "id": "title", "label": "Section Title", "default": "Featured Products" },
-    { "type": "select", "id": "heading_size", "label": "Heading Size", "default": "h2", "options": [
-      { "value": "h1", "label": "H1" },
-      { "value": "h2", "label": "H2" },
-      { "value": "h3", "label": "H3" },
-      { "value": "h4", "label": "H4" },
-      { "value": "h5", "label": "H5" },
-      { "value": "h6", "label": "H6" },
-      { "value": "body", "label": "Body" },
-      { "value": "italic", "label": "Italic" }
-    ] },
-    { "type": "select", "id": "heading_alignment", "label": "Heading Alignment", "default": "left", "options": [
-      { "value": "left", "label": "Left" },
-      { "value": "center", "label": "Center" },
-      { "value": "right", "label": "Right" }
-    ] },
+    { "type": "select", "id": "heading_size", "label": "Heading Size", "default": "h2", "options": [{ "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }] },
+    { "type": "select", "id": "heading_alignment", "label": "Heading Alignment", "default": "left", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }] },
     { "type": "richtext", "id": "intro_text", "label": "Intro Text" },
-    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
-    { "type": "color", "id": "background_color", "label": "Background Color" },
-    { "type": "checkbox", "id": "hide_on_desktop", "label": "Hide on Desktop" },
-    { "type": "checkbox", "id": "hide_on_tablet", "label": "Hide on Tablet" },
-    { "type": "checkbox", "id": "hide_on_mobile", "label": "Hide on Mobile" },
-    { "type": "range", "id": "section_height_desktop", "label": "Section Height - Desktop (vh)", "min": 0, "max": 100, "default": 100, "step": 5 },
-    { "type": "range", "id": "section_height_tablet", "label": "Section Height - Tablet (vh)", "min": 0, "max": 100, "default": 100, "step": 5 },
-    { "type": "range", "id": "section_height_mobile", "label": "Section Height - Mobile (vh)", "min": 0, "max": 100, "default": 100, "step": 5 },
-      {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    { "type": "checkbox", "id": "use_slider", "label": "Display as Slider", "default": false },
-    { "type": "checkbox", "id": "show_arrows", "label": "Show Slider Arrows", "default": true },
-    { "type": "checkbox", "id": "show_dots", "label": "Show Slider Dots", "default": true },
-    { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
-    { "type": "text", "id": "custom_id", "label": "Unique Section ID" },
-    { "type": "textarea", "id": "json_blocks", "label": "JSON Blocks (Advanced)", "info": "Define custom block content using JSON." }
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
   ],
   "blocks": [
     {
@@ -221,31 +261,21 @@ button.btn.btn--primary {
         { "type": "url", "id": "learn_more_link", "label": "Learn More Link" },
         { "type": "image_picker", "id": "custom_image", "label": "Custom Image (overrides product image)" },
         { "type": "range", "id": "image_size", "label": "Image Size (%)", "min": 10, "max": 100, "step": 5, "default": 100 },
-        { "type": "select", "id": "image_ratio", "label": "Image Ratio", "default": "landscape", "options": [
-          { "value": "square", "label": "Square" },
-          { "value": "landscape", "label": "Landscape" },
-          { "value": "portrait", "label": "Portrait" }
-        ] },
+        { "type": "select", "id": "image_ratio", "label": "Image Ratio", "default": "landscape", "options": [{ "value": "square", "label": "Square" }, { "value": "landscape", "label": "Landscape" }, { "value": "portrait", "label": "Portrait" }] },
         { "type": "checkbox", "id": "lazyload", "label": "Enable Lazy Load", "default": true },
-        { "type": "select", "id": "hover_effect", "label": "Hover Effect", "default": "zoom", "options": [
-          { "value": "zoom", "label": "Zoom" },
-          { "value": "fade", "label": "Fade" },
-          { "value": "grayscale", "label": "Grayscale" },
-          { "value": "none", "label": "None" }
-        ] },
-        { "type": "color", "id": "overlay_color", "label": "Overlay Color" },
-        { "type": "range", "id": "overlay_opacity", "label": "Overlay Opacity (%)", "min": 0, "max": 100, "default": 50 },
-        { "type": "url", "id": "button_link", "label": "Button Link" },
-        { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy It Now" },
-        { "type": "select", "id": "button_style", "label": "Button Style", "default": "primary", "options": [
-          { "value": "primary", "label": "Primary" },
-          { "value": "secondary", "label": "Secondary" }
-        ] },
-        { "type": "select", "id": "button_icon_position", "label": "Button Icon Position", "default": "right", "options": [
-          { "value": "left", "label": "Left of Text" },
-          { "value": "right", "label": "Right of Text" },
-          { "value": "none", "label": "No Icon" }
-        ] }
+        { "type": "text", "id": "overlay_badge_text", "label": "Image Overlay Badge Text" },
+        { "type": "text", "id": "discount_badge_text", "label": "Discount Badge Text", "default": "15% OFF" },
+        { "type": "checkbox", "id": "show_outdoor_tv", "label": "Show Outdoor TV", "default": true },
+        { "type": "checkbox", "id": "show_partial_sun", "label": "Show Partial Sun", "default": true },
+
+        { "type": "image_picker", "id": "custom_image_sun", "label": "Custom Image for Sun Type" },
+        { "type": "checkbox", "id": "show_vendor", "label": "Show Vendor", "default": true },
+        { "type": "checkbox", "id": "show_title", "label": "Show Product Title", "default": true },
+        { "type": "checkbox", "id": "show_now_price", "label": "Show Now Price", "default": true },
+        { "type": "checkbox", "id": "show_before_price", "label": "Show Before Price", "default": true },
+        { "type": "checkbox", "id": "show_discount_badge", "label": "Show Discount Badge", "default": true },
+        { "type": "text", "id": "now_label", "label": "Now Label", "default": "Now at" },
+        { "type": "text", "id": "before_label", "label": "Before Label", "default": "Before at" }
       ]
     }
   ],
@@ -260,9 +290,6 @@ button.btn.btn--primary {
         { "type": "product" }
       ]
     }
-  ],
-  "disabled_on": {
-    "groups": ["footer", "header", "custom.popups"]
-  }
+  ]
 }
 {% endschema %}
