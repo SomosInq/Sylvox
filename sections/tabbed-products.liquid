@@ -1,0 +1,548 @@
+<style>
+   #shopify-section-{{ section.id }}.section_width_standard,
+   #shopify-section-{{ section.id }}.section_width_full {
+    transition: all 0.3s ease;
+  }
+   #shopify-section-{{ section.id }}.section_width_full {
+    width: 100%;
+  }
+   #shopify-section-{{ section.id }}.section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+   #shopify-section-{{ section.id }}.section_content_width_standard,
+   #shopify-section-{{ section.id }}.section_content_width_full {
+    transition: all 0.3s ease;
+  }
+   #shopify-section-{{ section.id }}.section_content_width_full {
+    width: 100%;
+  }
+   #shopify-section-{{ section.id }}.section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  #shopify-section-{{ section.id }} .tabbed-products-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  align-items: flex-start;
+  }
+
+#shopify-section-{{ section.id }} .tabbed-products-left {
+  flex: 0 0 26%;
+  max-width: 26%;
+}
+
+#shopify-section-{{ section.id }} .tabbed-products-right {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+  #shopify-section-{{ section.id }} .tabbed-products-left img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .tabbed-products-right {
+    flex: 1 1 60%;
+  }
+
+  #shopify-section-{{ section.id }} .tabs-holder {
+    display: flex;
+    {% comment %} gap: 20px; {% endcomment %}
+    margin-bottom: 20px;
+        text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    justify-items: center;
+    place-content: center;
+
+  }
+
+  #shopify-section-{{ section.id }} .tab {
+background: transparent;
+    color: #C6C6C6;
+    border-bottom: 1px solid #C6C6C6;
+    border-radius: 0;
+    padding: 0 30px 20px 30px;
+  }
+
+  #shopify-section-{{ section.id }} .tab.active {
+background: transparent;
+    color: #000;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+  }
+
+  #shopify-section-{{ section.id }} .tab-content {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .tab-content.active {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .product-card {
+    flex: 1 1 calc(33.333% - 20px);
+    {% comment %} border: 1px solid #ddd; {% endcomment %}
+    {% comment %} padding: 20px; {% endcomment %}
+    box-sizing: border-box;
+  }
+
+  {% comment %} New CSS {% endcomment %}
+   #shopify-section-{{ section.id }} .section_content_width_standard {
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+#shopify-section-{{ section.id }} .product-card__title {
+  font-size: 20px;
+  margin: 0;
+}
+#shopify-section-{{ section.id }} .btn,
+#shopify-section-{{ section.id }} .rte .btn,
+#shopify-section-{{ section.id }} .shopify-payment-button .shopify-payment-button__button--unbranded,
+#shopify-section-{{ section.id }} .btn--secondary,
+#shopify-section-{{ section.id }} .block-buy-buttons[data-show-dynamic-checkout] .btn,
+#shopify-section-{{ section.id }} .rte .btn--secondary {
+  font-size: 13px;
+  line-height: normal;
+  padding: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+#shopify-section-{{ section.id }} .product-card__price {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#shopify-section-{{ section.id }} .product-card__pricing {
+display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 40px;
+}
+#shopify-section-{{ section.id }} .product-card__buttons {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+#shopify-section-{{ section.id }} .product-card__buttons a,
+#shopify-section-{{ section.id }} .product-card__buttons button {
+  flex: 1;
+}
+#shopify-section-{{ section.id }} .product-card__overlay-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #F8BB00;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+      border-radius: 0 0 10px 10px;
+      padding: 10px 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+}
+#shopify-section-{{ section.id }} .product-card__overlay-badge span {
+display: block;
+    font-size: 16px;
+    font-weight: 200;
+}
+#shopify-section-{{ section.id }} .product-card__discount {
+  background: #F8BB00;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-top: 20px;
+}
+.product-card__before,
+.product-card__now {
+  text-align: left;
+}
+.product-card__badges {
+  position: relative;
+}
+.product-card__details {
+  margin-top: 0.5rem;
+}
+#shopify-section-{{ section.id }} .type {
+display: flex !important
+;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-bottom: 40px;
+}
+#shopify-section-{{ section.id }} .sunimage {
+width: 24px !important;
+    float: left;
+}
+   
+</style>
+
+
+<div 
+  id="{{ section.settings.custom_id }}" 
+  class="section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  "
+>
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+
+    {% if section.settings.subheading or section.settings.title or section.settings.content %}
+  <div class="tab-products-header" style="text-align: center; margin-bottom: 30px;">
+    {% if section.settings.subheading %}
+      <p class="tab-products-subheading" style="margin: 0 0 10px; font-size: 14px; color: #666;">
+        {{ section.settings.subheading }}
+      </p>
+    {% endif %}
+    {% if section.settings.title %}
+      <h2 class="tab-products-title" style="margin: 0 0 10px;">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+    {% if section.settings.content %}
+      <div class="tab-products-description" style="max-width: 600px; margin: 0 auto; font-size: 16px; color: #444;">
+        {{ section.settings.content }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+    <div class="tabs-holder">
+      {% for block in section.blocks %}
+        <div class="tab" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
+          {{ block.settings.tab_label }}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="tab-content" id="tab-content-{{ section.id }}-{{ forloop.index0 }}">
+        <div class="tabbed-products-wrapper">
+          <div class="tabbed-products-left">
+            {% if block.settings.hero_image %}
+              <img src="{{ block.settings.hero_image | img_url: '800x' }}" alt="{{ block.settings.tab_label }}">
+            {% endif %}
+          </div>
+          <div class="tabbed-products-right">
+            {% assign products = block.settings.collection.products %}
+            <div class="product-grid">
+             
+                
+
+{% for product in products limit: section.settings.products_limit %}
+  {% assign image_to_show = block.settings.custom_image | default: product.featured_image %}
+  <div class="product-card" style="width: 25%; float: left; padding: 1rem; box-sizing: border-box;">
+    <div class="product-card__badges">
+      {% if block.settings.overlay_badge_text != blank %}
+        <div class="product-card__overlay-badge">{{ block.settings.overlay_badge_text }} <span>OFF</span></div>
+      {% endif %}
+      {% if image_to_show %}
+        <img
+          src="{{ image_to_show | img_url: '800x' }}"
+          alt="{{ product.title | escape }}"
+          loading="lazy"
+          class="product-card__image"
+          style="width: 100%; aspect-ratio: 
+            {% case block.settings.image_ratio %}
+              {% when 'square' %}1 / 1
+              {% when 'landscape' %}4 / 3
+              {% when 'portrait' %}3 / 4
+              {% else %}1 / 1
+            {% endcase %};"
+        >
+      {% endif %}
+    </div>
+
+    <div class="product-card__details">
+      <div class="type">
+        {% if block.settings.show_outdoor_tv %}
+          <div class="product-card__meta">Outdoor TV</div>
+        {% endif %}
+        {% if block.settings.show_partial_sun %}
+          <div class="product-card__meta">
+            <img class="sunimage" src="{{ block.settings.custom_image_sun | img_url: '400x' }}" alt="Sun">
+            Partial Sun
+          </div>
+        {% endif %}
+      </div>
+
+      {% if block.settings.show_title %}
+        <h3 class="product-card__title">{{ block.settings.custom_title | default: product.title }}</h3>
+      {% endif %}
+
+      {% if block.settings.show_vendor %}
+        <div class="product-card__meta">{{ product.vendor }}</div>
+      {% endif %}
+
+      <div class="product-card__pricing" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;">
+        {% if block.settings.show_before_price %}
+          <div class="product-card__before">
+            <div style="font-size: 0.875rem; color: #666;">{{ block.settings.before_label | default: "Before at" }}</div>
+            <span class="product-card__price--compare" style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>
+          </div>
+        {% endif %}
+        {% if block.settings.show_now_price %}
+          <div class="product-card__now">
+            <div style="font-size: 0.875rem; color: #666;">{{ block.settings.now_label | default: "Now at" }}</div>
+            <span class="product-card__price" style="font-weight: bold;">{{ product.price | money }}</span>
+          </div>
+        {% endif %}
+        {% if block.settings.show_discount_badge %}
+          <span class="product-card__discount">{{ block.settings.discount_badge_text | default: "15% OFF" }}</span>
+        {% endif %}
+      </div>
+
+      <div class="product-card__buttons" style="margin-top: 1rem;">
+        <a href="{{ block.settings.learn_more_link | default: product.url }}" class="btn btn--secondary">Learn More</a>
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          <button type="submit" class="btn btn--primary">Buy It Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+
+
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab-id');
+        const sectionId = tab.getAttribute('data-section-id');
+
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(`tab-content-${sectionId}-${tabId}`).classList.add('active');
+      });
+    });
+
+    if (tabs.length) {
+      tabs[0].classList.add('active');
+      contents[0].classList.add('active');
+    }
+  });
+</script>
+
+
+{% schema %}
+{
+      "name": "Tabbed Products",
+  "settings": [
+
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+{ "type": "text", "id": "title", "label": "Heading", "default": "Featured collection" },
+{ "type": "richtext", "id": "content", "label": "Content" },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "label": "Margin Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "label": "Margin Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products per Tab",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Label",
+          "default": "Tab Label"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Hero Image"
+        },
+    { "type": "text", "id": "before_label", "label": "Before Label", "default": "Before at" },
+{ "type": "text", "id": "now_label", "label": "Now Label", "default": "Now at" },
+{ "type": "checkbox", "id": "show_before_price", "label": "Show Before Price", "default": true },
+{ "type": "checkbox", "id": "show_now_price", "label": "Show Now Price", "default": true },
+{ "type": "checkbox", "id": "show_vendor", "label": "Show Vendor", "default": true },
+{ "type": "checkbox", "id": "show_title", "label": "Show Title", "default": true },
+{ "type": "checkbox", "id": "show_discount_badge", "label": "Show Discount Badge", "default": true },
+{ "type": "text", "id": "discount_badge_text", "label": "Discount Badge Text", "default": "15% OFF" },
+{ "type": "text", "id": "overlay_badge_text", "label": "Overlay Badge Text" },
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabbed Products",
+      "category": "Somos Custom"
+    }
+  ]
+}
+
+
+{% endschema %}

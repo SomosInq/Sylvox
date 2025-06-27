@@ -142,6 +142,10 @@ border-radius: 9999px;
 <div
   class="section_width_{{ section.settings.section_width }} index-section color-scheme-{{ color_scheme }} text-{{ align_text }} {% if show_wave %}background-svg--wave{% endif %}"
   style="
+    background: {% if section.settings.bg_image != blank %} url({{ section.settings.bg_image | img_url: 'master' }}) {% else %} {{ section.settings.bg_color }} {% endif %};
+    background-repeat: no-repeat;
+    background-size: {{ section.settings.bg_size }};
+    background-position: center;
     background-color: {{ section.settings.background_color }};
     border-radius: {{ section.settings.border_radius }}px;
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px
@@ -312,6 +316,11 @@ border-radius: 9999px;
         { "value": "full", "label": "Full Width" }
       ]
     },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
     {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
@@ -444,7 +453,7 @@ border-radius: 9999px;
     }
   ],
   "presets": [
-    { "name": "Rich Text", "blocks": [ { "type": "heading" }, { "type": "text" } ] }
+    { "name": "Rich Image Text", "blocks": [ { "type": "heading" }, { "type": "text" } ] }
   ]
 }
 {% endschema %}

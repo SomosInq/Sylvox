@@ -6,7 +6,7 @@
 <style>
 #shopify-section-{{ section.id }} .section_content_width_standard {
   margin: 0 auto !important;
-  width: 100% !important;
+  width: 90% !important;
 }
 #shopify-section-{{ section.id }} .product-card__title {
   font-size: 20px;
@@ -111,7 +111,7 @@ width: 24px !important;
 -%}
 
 {%- if divider -%}<div class="section--divider">{%- endif -%}
-<div class="page-width section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;">
+<div class="section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;">
   {%- if title != blank -%}
     <div class="section-header" style="text-align: {{ heading_position }};">
       <h2 class="section-header__title {{ heading_size }}" style="text-align: {{ heading_position }};">{{ title | escape }}</h2>
@@ -282,7 +282,7 @@ width: 24px !important;
   "presets": [
     {
       "name": "Somos Featured Coll",
-      "category": "Custom",
+      "category": "Somos Custom",
       "blocks": [
         { "type": "product" },
         { "type": "product" },
