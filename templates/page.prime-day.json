@@ -149,6 +149,36 @@
         "margin_right": 0
       }
     },
+    "rich_text_KwBmtg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_wp3dUC": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text",
+            "heading_size": "h2"
+          }
+        },
+        "text_fqbkda": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wp3dUC",
+        "text_fqbkda"
+      ],
+      "name": "t:labels.rich_text",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    },
     "deck_slider_9ewjBM": {
       "type": "deck-slider",
       "blocks": {
@@ -1306,6 +1336,7 @@
     "main",
     "primeday_banner_mw8Fjb",
     "image_text_8V9rke",
+    "rich_text_KwBmtg",
     "deck_slider_9ewjBM",
     "primeday_products_aBYCzk",
     "primeday_products_TiRNYz",
