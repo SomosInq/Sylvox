@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 22,
             "patches": [
                 {
                     "date": 1751181939223,
@@ -92,6 +92,10 @@
                 {
                     "date": 1751186806036,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -94,18 +94,22 @@\n     margin: 3px;\n     background: #DB4B97 !important;\n   }\n \n-  @media screen and (max-width: 768px) {\n+@media screen and (max-width: 768px) {\n   #shopify-section-{{ section.id }} .somos-newsletter {\n     flex-direction: column;\n   }\n \n   #shopify-section-{{ section.id }} .somos-newsletter__content,\n   #shopify-section-{{ section.id }} .somos-newsletter__image {\n     width: 100% !important;\n-    height: auto; /* Optional: let height adjust naturally */\n+    height: auto;\n   }\n+\n+  #shopify-section-{{ section.id }} .somos-newsletter__content {\n+    padding: 20px; /* adjust as needed */\n+  }\n }\n \n </style>\n \n"
+                },
+                {
+                    "date": 1751187472350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -110,8 +110,28 @@\n     padding: 20px; /* adjust as needed */\n   }\n }\n \n+@media screen and (max-width: 768px) {\n+  .subscribe-form {\n+    flex-direction: column;\n+    height: auto; /* let height grow naturally */\n+  }\n+\n+  .subscribe-form input[type=\"email\"] {\n+    border-radius: 9999px; /* make it fully rounded */\n+    width: 100%;\n+    margin-bottom: 10px; /* space between input and button */\n+    height: 50px; /* optional, adjust as needed */\n+  }\n+\n+  .subscribe-form button {\n+    width: 100%;\n+    height: 50px; /* optional, adjust as needed */\n+    border-radius: 9999px; /* make it fully rounded */\n+  }\n+}\n+\n </style>\n \n <div id=\"{{ section.settings.custom_id }}\"\n      class=\"section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}\"\n"
                 }
             ],
             "date": 1751181939223,
