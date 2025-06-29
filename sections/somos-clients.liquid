@@ -1,0 +1,368 @@
+<style>
+  .somos-section {
+    width: 100%;
+    position: relative;
+  }
+
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .client-logos {
+    display: grid;
+    grid-gap: 2rem;
+  }
+
+  .client-logo-wrapper {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  }
+
+  .client-logo {
+    height: auto;
+    transition: all 0.3s ease;
+  }
+
+  .client-logo.hover-zoom:hover {
+    transform: scale(1.05);
+  }
+  .client-logo.hover-grayscale:hover {
+    filter: grayscale(100%);
+  }
+  .client-logo.hover-fade:hover {
+    opacity: 0.7;
+  }
+</style>
+
+<div 
+  class="somos-section"
+  style="
+    {% if section.settings.background_gradient != blank %}background: {{ section.settings.background_gradient }};{% endif %}
+    {% if section.settings.background_image != blank %}background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: {{ section.settings.background_size }}; background-position: center; background-repeat: no-repeat;{% endif %}
+    {% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}
+  "
+>
+  <section 
+    id="{{ section.settings.section_id }}" 
+    class="section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }}"
+    style="
+      margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+      padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+      {% if request.desktop %}height: {{ section.settings.height_desktop }}px;{% endif %}
+      {% if request.tablet %}height: {{ section.settings.height_tablet }}px;{% endif %}
+      {% if request.mobile %}height: {{ section.settings.height_mobile }}px;{% endif %}
+    "
+    data-hide-desktop="{{ section.settings.hide_desktop }}"
+    data-hide-tablet="{{ section.settings.hide_tablet }}"
+    data-hide-mobile="{{ section.settings.hide_mobile }}"
+  >
+    {% if section.settings.title != blank %}
+      <{{ section.settings.title_tag }} 
+        style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }}; text-align: {{ section.settings.title_alignment }};">
+        {{ section.settings.title }}
+      </{{ section.settings.title_tag }}>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div style="text-align: {{ section.settings.text_alignment }};">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+
+    <div 
+      class="client-logos"
+      style="grid-template-columns: repeat({{ section.settings.columns }}, 1fr);"
+    >
+      {% for block in section.blocks %}
+        {% if block.type == 'logo' %}
+          <div class="client-logo-wrapper">
+            <img 
+              src="{{ block.settings.logo | img_url: 'master' }}" 
+              alt="Client Logo" 
+              class="client-logo {% if block.settings.hover_effect != 'none' %}hover-{{ block.settings.hover_effect }}{% endif %}"
+              style="
+                max-width: {{ block.settings.logo_max_width }}%;
+              "
+              loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+            >
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Somos Clients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "background_gradient",
+      "label": "Background Gradient (CSS)",
+      "info": "Example: linear-gradient(135deg, #ff7e5f, #feb47b)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "background_size",
+      "label": "Background Size",
+      "default": "cover",
+      "info": "e.g. cover, contain, 50% auto"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide on Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_tablet",
+      "label": "Hide on Tablet"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide on Mobile"
+    },
+    {
+      "type": "number",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_right",
+      "label": "Margin Right",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_left",
+      "label": "Margin Left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+  "type": "range",
+  "id": "columns",
+  "label": "Logos per Row",
+  "min": 1,
+  "max": 6,
+  "default": 4
+},
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Title Tag",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" },
+        { "value": "p", "label": "Body" },
+        { "value": "em", "label": "Italic" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "lighter", "label": "Light" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID"
+    },
+    {
+      "type": "number",
+      "id": "height_desktop",
+      "label": "Height (Desktop)"
+    },
+    {
+      "type": "number",
+      "id": "height_tablet",
+      "label": "Height (Tablet)"
+    },
+    {
+      "type": "number",
+      "id": "height_mobile",
+      "label": "Height (Mobile)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Client Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "range",
+          "id": "logo_max_width",
+          "label": "Logo Max Width (%)",
+          "min": 10,
+          "max": 100,
+          "default": 60
+        },
+        {
+          "type": "checkbox",
+          "id": "lazy_load",
+          "label": "Lazy Load"
+        },
+        {
+          "type": "select",
+          "id": "hover_effect",
+          "label": "Hover Effect",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "zoom", "label": "Zoom" },
+            { "value": "grayscale", "label": "Grayscale" },
+            { "value": "fade", "label": "Fade" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Somos Clients",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}

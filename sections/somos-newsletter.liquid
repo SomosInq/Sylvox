@@ -1,0 +1,462 @@
+<style>
+  /* === Section & Content Width === */
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full {
+    width: 100%;
+  }
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full {
+    width: 100%;
+  }
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  /* === General Layout === */
+#shopify-section-{{ section.id }} .somos-newsletter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* prevent wrap */
+  align-items: stretch;
+  gap: 20px;
+}
+
+#shopify-section-{{ section.id }} .somos-newsletter__content,
+#shopify-section-{{ section.id }} .somos-newsletter__image {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .somos-newsletter {
+    flex-direction: column;
+  }
+}
+
+  #shopify-section-{{ section.id }} .somos-newsletter__content,
+  #shopify-section-{{ section.id }} .somos-newsletter__image {
+    box-sizing: border-box;
+    flex: none;
+  }
+
+  .hidden-desktop {
+    display: none !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+  .hidden-mobile {
+    display: none !important;
+  }
+
+  .subscribe-form {
+    display: flex;
+    height: 72px;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: #FFF;
+    overflow: hidden;
+    max-width: 100%;
+    border: 5px solid #fff;
+    width: 450px;
+    margin: 0 auto; /* always center inside wrapper */
+  }
+  .subscribe-form input[type="email"] {
+    flex: 1;
+    border: none;
+    padding: 0 20px;
+    border-radius: 9999px 0 0 9999px;
+    height: 100%;
+    font-size: 16px;
+  }
+  .subscribe-form button {
+    height: 100%;
+    width: auto;
+    padding: 10px 24px;
+    border-radius: 99999px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 3px;
+    background: #DB4B97 !important;
+  }
+</style>
+
+<div id="{{ section.settings.custom_id }}"
+     class="section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
+     style="
+       background:
+         {% if section.settings.background_gradient != blank %}
+           {{ section.settings.background_gradient }},
+         {% endif %}
+         {% if section.settings.background_image != blank %}
+           url({{ section.settings.background_image | img_url: 'master' }})
+         {% else %}
+           {{ section.settings.background_color }}
+         {% endif %};
+       margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+       padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+     "
+     data-hide-desktop="{{ section.settings.hide_desktop }}"
+     data-hide-tablet="{{ section.settings.hide_tablet }}"
+     data-hide-mobile="{{ section.settings.hide_mobile }}">
+
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    <div class="somos-newsletter">
+      <div class="somos-newsletter__content"
+           style="
+             width: calc(100% - {{ section.settings.image_width }}%);
+             border-radius: {{ section.settings.newsletter_border_radius }}px;
+             background: {{ section.settings.content_background_color }};
+             height: {{ section.settings.block_height }}px;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+           ">
+        {% if section.settings.title != blank %}
+          <{{ section.settings.title_tag }}
+             style="color: {{ section.settings.title_color }};
+                    font-weight: {{ section.settings.title_weight }};
+                    text-align: {{ section.settings.title_alignment }};">
+            {{ section.settings.title }}
+          </{{ section.settings.title_tag }}>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <div style="text-align: {{ section.settings.text_alignment }};">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+
+        <div class="newsletter-form-wrapper" style="text-align: center;">
+          <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="subscribe-form">
+            <input type="hidden" name="form_type" value="customer" />
+            <input type="email" name="contact[email]" placeholder="Email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="somos-newsletter__image"
+           style="
+             width: {{ section.settings.image_width }}%;
+             border-radius: {{ section.settings.image_border_radius }}px;
+             overflow: hidden;
+             height: {{ section.settings.block_height }}px;
+           ">
+        <img src="{{ section.settings.image | img_url: 'master' }}"
+             loading="{% if section.settings.lazyload %}lazy{% else %}eager{% endif %}"
+             style="width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    aspect-ratio: {{ section.settings.image_ratio }};
+                    {% if section.settings.image_hover_effect == 'zoom' %}transition: transform 0.3s ease;{% endif %}"
+             onmouseover="{% if section.settings.image_hover_effect == 'zoom' %}this.style.transform='scale(1.1)';{% endif %}"
+             onmouseout="{% if section.settings.image_hover_effect == 'zoom' %}this.style.transform='scale(1)';{% endif %}"
+             alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Somos Newsletter",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+  "type": "text",
+  "id": "background_gradient",
+  "label": "Background Gradient (CSS)",
+  "info": "Example: linear-gradient(135deg, #ff7e5f, #feb47b)"
+},
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "label": "Margin Right",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "label": "Margin Left",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide on Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_tablet",
+      "label": "Hide on Tablet"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide on Mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Title Tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color"
+    },
+    {
+      "type": "text",
+      "id": "title_weight",
+      "label": "Title Weight"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "block_height",
+      "label": "Block Height (px)",
+      "default": 400,
+      "min": 200,
+      "max": 1000,
+      "step": 10
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content Background Color"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Newsletter Placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_text",
+      "label": "Newsletter Button Text",
+      "default": "Sign Up"
+    },
+    {
+      "type": "range",
+      "id": "newsletter_border_radius",
+      "label": "Newsletter Border Radius",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image Width (%)",
+      "default": 50,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image Ratio",
+      "default": "landscape",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "landscape", "label": "Landscape" },
+        { "value": "portrait", "label": "Portrait" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "lazyload",
+      "label": "Lazy Load Image",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_hover_effect",
+      "label": "Image Hover Effect",
+      "default": "none",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "zoom", "label": "Zoom" },
+        { "value": "grayscale", "label": "Grayscale" },
+        { "value": "fade", "label": "Fade" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Somos Newsletter",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
