@@ -101,6 +101,12 @@ display: flex !important
 width: 24px !important;
     float: left;
 }
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .product-card {
+      width: 100% !important;
+      float: none !important;
+    }
+  }
 </style>
 
 {%- liquid

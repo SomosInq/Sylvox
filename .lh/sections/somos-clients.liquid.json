@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1751184110634,
@@ -24,6 +24,10 @@
                 {
                     "date": 1751184791280,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -207,15 +207,16 @@\n       \"label\": \"Padding Left\",\n       \"default\": 0\n     },\n     {\n-      \"type\": \"number\",\n-      \"id\": \"columns\",\n-      \"label\": \"Logos per Row\",\n-      \"default\": 4,\n-      \"min\": 1,\n-      \"max\": 6\n-    },\n+  \"type\": \"range\",\n+  \"id\": \"columns\",\n+  \"label\": \"Logos per Row\",\n+  \"min\": 1,\n+  \"max\": 6,\n+  \"default\": 4\n+}\n+,\n     {\n       \"type\": \"text\",\n       \"id\": \"title\",\n       \"label\": \"Title\"\n"
+                },
+                {
+                    "date": 1751185834101,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,8 +56,14 @@\n   }\n   .client-logo.hover-fade:hover {\n     opacity: 0.7;\n   }\n+  @media (max-width: 768px) {\n+  .client-logos {\n+    grid-template-columns: 1fr !important;\n+  }\n+}\n+\n </style>\n \n <div \n   class=\"somos-section\"\n@@ -213,10 +219,9 @@\n   \"label\": \"Logos per Row\",\n   \"min\": 1,\n   \"max\": 6,\n   \"default\": 4\n-}\n-,\n+},\n     {\n       \"type\": \"text\",\n       \"id\": \"title\",\n       \"label\": \"Title\"\n"
                 }
             ],
             "date": 1751184110634,

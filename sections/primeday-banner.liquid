@@ -22,6 +22,8 @@
     .hide-mobile { display: none !important; }
   }
 
+
+
   .subscribe-form {
         text-align: left;
         display: flex;
@@ -476,7 +478,10 @@ padding: 10px 0;}
     display: block;
   }
 }
-.prime-day-banner {
+
+  .prime-day-banner {
+  position: relative;
+  overflow: hidden; /* Already included in your media query, but good to have globally */
   background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
 }
 
@@ -501,6 +506,12 @@ padding: 10px 0;}
 @media (max-width: 768px) {
   #shopify-section-{{ section.id }} {
     height: {{ section.settings.mobile_section_height }}px !important;
+  }
+}
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} > div {
+    padding-top: {{ section.settings.mobile_padding_top }}px !important;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;
   }
 }
 </style>
@@ -858,6 +869,26 @@ style="
     { "value": "center", "label": "Middle" },
     { "value": "flex-end", "label": "Bottom" }
   ]
+},
+{
+  "type": "range",
+  "id": "mobile_padding_top",
+  "label": "Mobile Padding Top",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "default": 0,
+  "unit": "px"
+},
+{
+  "type": "range",
+  "id": "mobile_padding_bottom",
+  "label": "Mobile Padding Bottom",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "default": 0,
+  "unit": "px"
 },
 {
 "type": "range",

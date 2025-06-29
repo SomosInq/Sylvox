@@ -94,6 +94,23 @@
     margin: 3px;
     background: #DB4B97 !important;
   }
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .somos-newsletter {
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .somos-newsletter__content,
+  #shopify-section-{{ section.id }} .somos-newsletter__image {
+    width: 100% !important;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .somos-newsletter__content {
+    padding: 20px; /* adjust as needed */
+  }
+}
+
 </style>
 
 <div id="{{ section.settings.custom_id }}"

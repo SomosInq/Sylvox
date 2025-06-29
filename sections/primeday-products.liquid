@@ -34,23 +34,31 @@
   }
 
   /* Header */
-.section-header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 40px;
-}
-.section-header img.header-image {
-  max-width: 100%; width: 12%;
-  height: auto;
-  margin-bottom: 20px;
-}
-.section-header .richtext {
-  max-width: 800px;
-}
+  .section-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+  }
 
+  .section-header img.header-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 767px) {
+    .section-header img.header-image {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+
+  .section-header .richtext {
+    max-width: 800px;
+  }
 
   /* Gift Blocks Wrapper */
   .gift-blocks {
@@ -63,8 +71,7 @@
 
   /* Gift Block Layout */
   .gift-block {
-display: flex
-;
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
@@ -108,35 +115,39 @@ display: flex
     margin-bottom: 10px;
   }
 
-.gift-content .price-row {
+  .gift-content .price-row {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 10px; /* controls spacing between the two <p>s */
-}
+    gap: 10px;
+  }
+
   .gift-content .price-row span {
     display: block;
     color: var(--Black, #1D1D1B);
-font-size: 16px;
-}
-.gift-content .price-row p {
+    font-size: 16px;
+  }
+
+  .gift-content .price-row p {
     margin: 0;
     font-size: 28px;
-        color: #686868;
-}
-.now-free span {
-font-size: 16px;
-        color: #686868;
-}
-.gift-content .price-row p:first-child {
-    margin-right: 10px;
-}
-.now-free {
-color: #F8BB00 !important;
-font-size: 32px !important;
-font-weight: 700;
-}
+    color: #686868;
+  }
 
+  .now-free span {
+    font-size: 16px;
+    color: #686868;
+  }
+
+  .gift-content .price-row p:first-child {
+    margin-right: 10px;
+  }
+
+  .now-free {
+    color: #F8BB00 !important;
+    font-size: 32px !important;
+    font-weight: 700;
+  }
 
   .footer-text-link {
     margin-top: 30px;
@@ -146,7 +157,6 @@ font-weight: 700;
 
 <div id="{{ section.settings.custom_id }}" class="custom-section {{ section.settings.custom_class }}
   section_width_{{ section.settings.section_width }} 
-  section_content_width_{{ section.settings.section_content_width }}
   {% if section.settings.hide_desktop %}hide-desktop{% endif %}
   {% if section.settings.hide_tablet %}hide-tablet{% endif %}
   {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
@@ -157,10 +167,17 @@ font-weight: 700;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
 ">
 
+<div class="section_content_width_{{ section.settings.section_content_width }}">
+
   {% if section.settings.show_header %}
     <div class="section-header">
       {% if section.settings.header_image != blank %}
-        <img  src="{{ section.settings.header_image | image_url }}" alt="Header Image" class="header-image">
+        <img  
+          src="{{ section.settings.header_image | image_url }}" 
+          alt="Header Image" 
+          class="header-image"
+          style="width: {{ section.settings.header_image_width }}%;"
+        >
       {% endif %}
       <{{ section.settings.title_tag }} style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }};">
         {{ section.settings.title | escape }}
@@ -187,7 +204,6 @@ font-weight: 700;
           <div class="free-badge">FREE</div>
           <h3>{{ block.settings.title }}</h3>
           <div class="price-row">
-
             <p><span>Before at</span><s>{{ block.settings.price }}</s></p>
             <p class="now-free"><span>Now for</span>FREE</p>
           </div>
@@ -205,6 +221,7 @@ font-weight: 700;
     </div>
   {% endif %}
 </div>
+</div>
 
 {% schema %}
 {
@@ -214,6 +231,12 @@ font-weight: 700;
       "type": "image_picker",
       "id": "header_image",
       "label": "Header Image (Above Title)"
+    },
+    {
+      "type": "number",
+      "id": "header_image_width",
+      "label": "Header Image Width (%)",
+      "default": 12
     },
     {
       "type": "image_picker",
@@ -305,8 +328,6 @@ font-weight: 700;
       ]
     },
 
-
-
     { "type": "text", "id": "footer_text", "label": "Footer Text" },
     { "type": "text", "id": "footer_link_text", "label": "Footer Link Text" },
     { "type": "url", "id": "footer_link", "label": "Footer Link URL" },
@@ -352,7 +373,7 @@ font-weight: 700;
   ],
   "presets": [
     {
-  "name": "Free Gift Product Section",
+      "name": "Free Gift Product Section",
       "category": "Somos Custom"
     }
   ]

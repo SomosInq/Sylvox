@@ -9,6 +9,12 @@
   "default": "#ffffff"
 },
     {
+      "type": "text",
+      "id": "background_gradient",
+      "label": "Background Gradient (CSS)",
+      "info": "Example: linear-gradient(135deg, #ff7e5f, #feb47b)"
+    },
+    {
       "type": "select",
       "id": "section_width",
       "label": "Section Width",
@@ -137,7 +143,8 @@
 {% assign text_align = settings.alignment | default: 'center' %}
 
 <div class="image-text-blocks-section px-4 md:px-8 py-6  section_width_{{ section.settings.section_width }}"
-     style="background-color: {{ section.settings.background_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; text-align: {{ text_align }};">
+     style="
+    {% if section.settings.background_gradient != blank %}background: {{ section.settings.background_gradient }};{% endif %} background-color: {{ section.settings.background_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; text-align: {{ text_align }};">
 
   {% for block in section.blocks %}
     {% case block.type %}

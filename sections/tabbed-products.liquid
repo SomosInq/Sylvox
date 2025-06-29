@@ -197,6 +197,68 @@ display: flex !important
 width: 24px !important;
     float: left;
 }
+
+@media (max-width: 600px) {
+  .title-filters {
+    flex-wrap: wrap;
+  }
+
+  .tabs {
+    position: unset;
+    transform: none;
+    flex-flow: column;
+    width: 100%;
+  }
+
+  .tab-product {
+    width: 100%;
+  }
+
+  .collection-title-row {
+    flex-flow: column;
+  }
+
+  /* 👉 Force the product grid to be one column */
+  .tab-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 👉 Ensure banner image sits above the grid naturally (no changes needed for .tab-product-content__banner)
+     but if you have any floats or position, reset them: */
+  .tab-product-content__banner {
+    position: relative;
+  }
+
+  .tab-product-content__info {
+    position: absolute; /* keep this if you want text overlay — or adjust if needed */
+  }
+}
+
+
+@media (max-width: 600px) {
+  /* Stack left + right blocks vertically */
+  #shopify-section-{{ section.id }} .tabbed-products-wrapper {
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .tabbed-products-left,
+  #shopify-section-{{ section.id }} .tabbed-products-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* 👉 Make product grid flow vertically */
+  #shopify-section-{{ section.id }} .product-grid {
+    flex-direction: column;
+  }
+
+  /* 👉 Each product 100% width, no float */
+  #shopify-section-{{ section.id }} .product-card {
+    width: 100% !important;
+    float: none !important;
+  }
+}
+
    
 </style>
 
@@ -501,15 +563,7 @@ width: 24px !important;
       "type": "text",
       "id": "custom_id",
       "label": "Custom ID"
-    },
-    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+    }
   ],
   "blocks": [
     {
