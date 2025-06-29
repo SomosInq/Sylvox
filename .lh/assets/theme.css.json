@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 123,
+            "activePatchIndex": 126,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -500,6 +500,18 @@
                 {
                     "date": 1750081336119,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1138,8 +1138,13 @@\n \n   .somos-slide .description {\n     width: 50%;\n   }\n+   @media screen and (max-width: 699px){\n+    .somos-slide .description {\n+    width: 90%;\n+  }\n+   }\n   .somos-slide__media-wrapper {\n     position: relative;\n     width: 100%;\n     height: 100%;\n"
+                },
+                {
+                    "date": 1751188918134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -127,34 +127,43 @@\n     border-radius: 50px;\n }\n \n /* Width */\n-.section_width_standard,\n-.section_width_full {\n-transition: all 0.3s ease;\n-}\n-.section_width_full {\n-width: 100%;\n-}\n+  .section_width_standard,\n+  .section_width_full {\n+    transition: all 0.3s ease;\n+  }\n+  .section_width_full {\n+    width: 100%;\n+  }\n+  .section_width_standard {\n+    margin: 0 auto !important;\n+    width: 56% !important;\n+  }\n \n-.section_width_standard {\n-margin-left: auto !important;\n-margin-right: auto !important;\n-width: 82%;\n+  .section_content_width_standard,\n+  .section_content_width_full {\n+    transition: all 0.3s ease;\n+  }\n+  .section_content_width_full {\n+    width: 100%;\n+  }\n+  .section_content_width_standard {\n+    margin: 0 auto !important;\n+    width: 56% !important;\n+  }\n+  \n+  @media (max-width: 768px) {\n+  #shopify-section-{{ section.id }} .section_content_width_standard {\n+    width: 100% !important;\n+    padding: 0 16px;\n+  }\n+  #shopify-section-{{ section.id }} .section_width_standard {\n+    width: 100% !important;\n+    padding: 0 16px;\n+  }\n }\n \n-.section_content_width_standard,\n-.section_content_width_full {\n-  transition: all 0.3s ease;\n-}\n-.section_content_width_full {\n-  width: 100%;\n-}\n-.section_content_width_standard {\n-  margin: 0 auto !important;\n-  width: 82% !important;\n-}\n-\n /* Product Slider */\n  .collection-tabs-section {\n     display: grid;\n     grid-template-columns: 1fr 2fr;\n"
+                },
+                {
+                    "date": 1751220618271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -148,9 +148,9 @@\n     width: 100%;\n   }\n   .section_content_width_standard {\n     margin: 0 auto !important;\n-    width: 56% !important;\n+    width: 60% !important;\n   }\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n"
+                },
+                {
+                    "date": 1751220956329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -136,9 +136,9 @@\n     width: 100%;\n   }\n   .section_width_standard {\n     margin: 0 auto !important;\n-    width: 56% !important;\n+    width: 60% !important;\n   }\n \n   .section_content_width_standard,\n   .section_content_width_full {\n"
                 }
             ],
             "date": 1748526641710,

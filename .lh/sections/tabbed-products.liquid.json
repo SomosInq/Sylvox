@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1751185587943,
@@ -20,6 +20,14 @@
                 {
                     "date": 1751185773261,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -233,22 +233,27 @@\n     position: absolute; /* keep this if you want text overlay — or adjust if needed */\n   }\n }\n \n+\n @media (max-width: 600px) {\n-  /* Stack left and right blocks vertically */\n+  /* Stack left + right blocks vertically */\n   #shopify-section-{{ section.id }} .tabbed-products-wrapper {\n     flex-direction: column;\n   }\n \n-  /* Full width for image and grid blocks */\n   #shopify-section-{{ section.id }} .tabbed-products-left,\n   #shopify-section-{{ section.id }} .tabbed-products-right {\n     flex: 0 0 100%;\n     max-width: 100%;\n   }\n \n-  /* Product cards full width, remove floats */\n+  /* 👉 Make product grid flow vertically */\n+  #shopify-section-{{ section.id }} .product-grid {\n+    flex-direction: column;\n+  }\n+\n+  /* 👉 Each product 100% width, no float */\n   #shopify-section-{{ section.id }} .product-card {\n     width: 100% !important;\n     float: none !important;\n   }\n"
+                },
+                {
+                    "date": 1751220434518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,29 +1,6 @@\n <style>\n-   #shopify-section-{{ section.id }}.section_width_standard,\n-   #shopify-section-{{ section.id }}.section_width_full {\n-    transition: all 0.3s ease;\n-  }\n-   #shopify-section-{{ section.id }}.section_width_full {\n-    width: 100%;\n-  }\n-   #shopify-section-{{ section.id }}.section_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n-   #shopify-section-{{ section.id }}.section_content_width_standard,\n-   #shopify-section-{{ section.id }}.section_content_width_full {\n-    transition: all 0.3s ease;\n-  }\n-   #shopify-section-{{ section.id }}.section_content_width_full {\n-    width: 100%;\n-  }\n-   #shopify-section-{{ section.id }}.section_content_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n-\n   #shopify-section-{{ section.id }} .tabbed-products-wrapper {\n     display: flex;\n     flex-wrap: wrap;\n     gap: 40px;\n"
+                },
+                {
+                    "date": 1751220456494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,13 +75,8 @@\n     {% comment %} padding: 20px; {% endcomment %}\n     box-sizing: border-box;\n   }\n \n-  {% comment %} New CSS {% endcomment %}\n-   #shopify-section-{{ section.id }} .section_content_width_standard {\n-  margin: 0 auto !important;\n-  width: 100% !important;\n-}\n #shopify-section-{{ section.id }} .product-card__title {\n   font-size: 20px;\n   margin: 0;\n }\n"
                 }
             ],
             "date": 1751185587943,

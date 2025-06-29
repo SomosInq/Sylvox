@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1751184110634,
@@ -28,6 +28,10 @@
                 {
                     "date": 1751185834101,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,8 +56,14 @@\n   }\n   .client-logo.hover-fade:hover {\n     opacity: 0.7;\n   }\n+  @media (max-width: 768px) {\n+  .client-logos {\n+    grid-template-columns: 1fr !important;\n+  }\n+}\n+\n </style>\n \n <div \n   class=\"somos-section\"\n@@ -213,10 +219,9 @@\n   \"label\": \"Logos per Row\",\n   \"min\": 1,\n   \"max\": 6,\n   \"default\": 4\n-}\n-,\n+},\n     {\n       \"type\": \"text\",\n       \"id\": \"title\",\n       \"label\": \"Title\"\n"
+                },
+                {
+                    "date": 1751220334733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,31 +3,9 @@\n     width: 100%;\n     position: relative;\n   }\n \n-  .section_width_standard,\n-  .section_width_full {\n-    transition: all 0.3s ease;\n-  }\n-  .section_width_full {\n-    width: 100%;\n-  }\n-  .section_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n-  .section_content_width_standard,\n-  .section_content_width_full {\n-    transition: all 0.3s ease;\n-  }\n-  .section_content_width_full {\n-    width: 100%;\n-  }\n-  .section_content_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n   .client-logos {\n     display: grid;\n     grid-gap: 2rem;\n"
                 }
             ],
             "date": 1751184110634,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 58,
+            "activePatchIndex": 60,
             "patches": [
                 {
                     "date": 1750333385927,
@@ -240,6 +240,14 @@
                 {
                     "date": 1751186658275,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -508,9 +508,9 @@\n     height: {{ section.settings.mobile_section_height }}px !important;\n   }\n }\n @media (max-width: 768px) {\n-  #shopify-section-{{ section.id }} {\n+  #shopify-section-{{ section.id }} > div {\n     padding-top: {{ section.settings.mobile_padding_top }}px !important;\n     padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;\n   }\n }\n"
+                },
+                {
+                    "date": 1751188957655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,31 +62,9 @@\n   .hover-zoom img:hover { transform: scale(1.05); transition: 0.3s ease; }\n   .hover-grayscale img:hover { filter: grayscale(100%); transition: 0.3s ease; }\n   .hover-fade img:hover { opacity: 0.7; transition: 0.3s ease; }\n \n-    .section_width_standard,\n-  .section_width_full {\n-    transition: all 0.3s ease;\n-  }\n-  .section_width_full {\n-    width: 100%;\n-  }\n-  .section_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n-  .section_content_width_standard,\n-  .section_content_width_full {\n-    transition: all 0.3s ease;\n-  }\n-  .section_content_width_full {\n-    width: 100%;\n-  }\n-  .section_content_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n   #shopify-section-{{ section.id }}  .countdown {\n     display: flex;\n     gap: 10px;\n"
+                },
+                {
+                    "date": 1751220406189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -425,13 +425,11 @@\n \n /* ✅ UPDATE 2: Add responsive content width behavior */\n @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n-    width: 100% !important;\n     padding: 0 16px;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n-    width: 100% !important;\n     padding: 0 16px;\n   }\n }\n \n"
                 }
             ],
             "date": 1750333385927,

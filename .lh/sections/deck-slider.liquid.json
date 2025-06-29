@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 39,
+            "activePatchIndex": 40,
             "patches": [
                 {
                     "date": 1750683667263,
@@ -164,6 +164,10 @@
                 {
                     "date": 1750755862267,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,20 +65,27 @@\n               <span>{{ block.settings.small_text }}</span>\n             </div>\n \n             <div class=\"grid grid-cols-2 gap-4 mt-6\">\n-              {% for i in (1..4) %}\n-                {% assign image = block.settings[\"box_image_\" | append: i] %}\n-                {% assign text = block.settings[\"box_text_\" | append: i] %}\n-                {% if image or text %}\n-                  <div class=\"flex items-center\">\n-                    {% if image %}<img src=\"{{ image | image_url }}\" alt=\"\" style=\"width: 40px; height: 40px; margin-right: 10px;\">{% endif %}\n-                    <span>{{ text }}</span>\n-                  </div>\n-                {% endif %}\n-              {% endfor %}\n-            </div>\n+  <div class=\"flex items-center\">\n+    <img src=\"{{ block.settings.box_image_1 | image_url }}\" alt=\"\" style=\"width: 40px; height: 40px; margin-right: 10px;\">\n+    <span>{{ block.settings.box_text_1 }}</span>\n+  </div>\n+  <div class=\"flex items-center\">\n+    <img src=\"{{ block.settings.box_image_2 | image_url }}\" alt=\"\" style=\"width: 40px; height: 40px; margin-right: 10px;\">\n+    <span>{{ block.settings.box_text_2 }}</span>\n+  </div>\n+  <div class=\"flex items-center\">\n+    <img src=\"{{ block.settings.box_image_3 | image_url }}\" alt=\"\" style=\"width: 40px; height: 40px; margin-right: 10px;\">\n+    <span>{{ block.settings.box_text_3 }}</span>\n+  </div>\n+  <div class=\"flex items-center\">\n+    <img src=\"{{ block.settings.box_image_4 | image_url }}\" alt=\"\" style=\"width: 40px; height: 40px; margin-right: 10px;\">\n+    <span>{{ block.settings.box_text_4 }}</span>\n+  </div>\n+</div>\n \n+\n             <div class=\"price-area mt-6\">\n               <p class=\"line-through text-gray-400\">{{ block.settings.before_price }}</p>\n               <p class=\"text-xl font-bold\">{{ block.settings.now_price }}</p>\n               <span class=\"bg-green-500 text-white px-2 py-1\">{{ block.settings.discount_label }}</span>\n"
+                },
+                {
+                    "date": 1751220333314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,28 +1,7 @@\n <style>\n   .section_width_standard,\n-  .section_width_full {\n-    transition: all 0.3s ease;\n-  }\n-  .section_width_full {\n-    width: 100%;\n-  }\n-  .section_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n-  .section_content_width_standard,\n-  .section_content_width_full {\n-    transition: all 0.3s ease;\n-  }\n-  .section_content_width_full {\n-    width: 100%;\n-  }\n-  .section_content_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n \n   .deck-slider {\n     width: 100%;\n   }\n"
                 }
             ],
             "date": 1750683667263,

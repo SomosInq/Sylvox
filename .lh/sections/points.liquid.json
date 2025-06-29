@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1751186258813,
@@ -16,6 +16,10 @@
                 {
                     "date": 1751186281875,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -269,15 +269,10 @@\n         { \"value\": \"standard\", \"label\": \"50% Width\" },\n         { \"value\": \"full\", \"label\": \"Full Width\" }\n       ]\n     },\n+    \n     {\n-  \"type\": \"checkbox\",\n-  \"id\": \"show_on_mobile\",\n-  \"label\": \"Show on Mobile\",\n-  \"default\": true\n-},\n-    {\n       \"type\": \"image_picker\",\n       \"id\": \"bg_image\",\n       \"label\": \"Background Image\"\n     },\n"
+                },
+                {
+                    "date": 1751220329822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,35 +1,9 @@\n <style>\n <style>\n /* Section & Content Width */\n-.section_width_standard,\n-.section_width_full {\n-  transition: all 0.3s ease;\n-}\n \n-.section_width_full {\n-  width: 100%;\n-}\n \n-.section_width_standard {\n-  margin: 0 auto !important;\n-  width: 90% !important;\n-}\n-\n-.section_content_width_standard,\n-.section_content_width_full {\n-  transition: all 0.3s ease;\n-}\n-\n-.section_content_width_full {\n-  width: 100%;\n-}\n-\n-.section_content_width_standard {\n-  margin: 0 auto !important;\n-  width: 90% !important;\n-}\n-\n /* ✅ Device visibility logic */\n .hide-desktop { display: none; }\n .hide-tablet { display: block; }\n .hide-mobile { display: block; }\n"
                 }
             ],
             "date": 1751186258813,

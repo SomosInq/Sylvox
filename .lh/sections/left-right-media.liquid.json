@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1750758606074,
@@ -52,6 +52,10 @@
                 {
                     "date": 1751187185344,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -119,29 +119,30 @@\n   /* Add this inside your existing <style> */\n \n @media (max-width: 768px) {\n   .left-right-media__container {\n-    display: block; /* Stack children vertically */\n+    display: block; /* Stack vertically */\n   }\n \n   .media-left,\n   .media-right {\n     width: 100%;\n     min-width: auto;\n     display: block;\n-    text-align: center; /* Center images if desired */\n-    margin-bottom: 20px; /* Spacing between blocks */\n+    text-align: center;\n+    margin-bottom: 20px;\n   }\n \n   .media-left img,\n   .media-right img {\n-    width: 100% !important;\n+    width: auto; /* Let inline width stay as set in HTML */\n+    max-width: 100%; /* Prevent overflow */\n     height: auto;\n   }\n \n   .media-content {\n     width: 100%;\n-    padding: 20px; /* Space inside content */\n+    padding: 20px;\n   }\n \n   .media-blocks {\n     width: 100%;\n@@ -155,8 +156,9 @@\n }\n \n \n \n+\n   \n </style>\n \n <div class=\"section_width_{{ section.settings.section_width }}\"\n"
+                },
+                {
+                    "date": 1751220622980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,33 +1,7 @@\n <style>\n-  .section_width_standard,\n-  .section_width_full {\n-    transition: all 0.3s ease;\n-  }\n \n-  .section_width_full {\n-    width: 100%;\n-  }\n \n-  .section_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n-\n-  .section_content_width_standard,\n-  .section_content_width_full {\n-    transition: all 0.3s ease;\n-  }\n-\n-  .section_content_width_full {\n-    width: 100%;\n-  }\n-\n-  .section_content_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n-\n   .left-right-media__container {\n     display: flex;\n     flex-wrap: wrap;\n   }\n"
                 }
             ],
             "date": 1750758606074,
