@@ -1,0 +1,121 @@
+{%- render 'section-winner-list' -%}
+{% schema %}
+  {
+    "name": "Winner List",
+     "class": "index-section",
+    "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title Text",
+          "default": "Lucky Winners"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Text Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "title_background_color",
+          "label": "Title Background Color",
+          "default": "#297f67"
+        },
+        {
+          "type": "color",
+          "id": "content_start_background_color",
+          "label": "Content Start Background Color",
+          "default": "#D2FFF5"
+        },
+        {
+          "type": "color",
+          "id": "content_end_background_color",
+          "label": "Content End Background Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "contair_border_color",
+          "label": "Contair Border Color",
+          "default": "#297f67"
+        },
+        {
+          "type": "range",
+          "id": "height",
+          "label": "Winner List Height",
+          "default": 400,
+          "min": 400,
+          "max": 600,
+          "step": 50,
+          "unit": "px"
+        },
+    ],
+    "blocks": [
+    {
+      "type": "winner_info_block",
+      "name": "Winner Info Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "reward_image",
+          "label": "Reward Image",
+          "info": "t:actions.add_alt_text"
+        },
+        {
+          "id": "winner_reward_text",
+          "type": "text",
+          "label": "Winner Reward Text",
+          "default": "500 BUCKS"
+        },
+        {
+          "id": "winner_email",
+          "type": "text",
+          "label": "Winner Email",
+          "default": "ukabcdefghijk@gmail.com"
+        },
+        {
+          "id": "win_date",
+          "type": "text",
+          "label": "Win Date",
+          "default": "2025-06-25"
+        },
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "name": "Winner List",
+        "blocks": [
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          },
+          {
+            "type": "winner_info_block"
+          }
+        ]
+      }
+    ],
+  }
+{% endschema %}

@@ -323,6 +323,11 @@ color: #000;
 .countdown__block--content .countdown__block--button {
     margin-top: 0;
   }
+   @media only screen and (max-width: 769px){
+     .block-image{
+       width:50% !important;
+     }
+   }
 </style>
 
 <div class="section_width_{{ section.settings.section_width }} section-content {{ section.settings.custom_class }} {% if section.settings.hide_desktop %}hide-desktop{% endif %} {% if section.settings.hide_tablet %}hide-tablet{% endif %} {% if section.settings.hide_mobile %}hide-mobile{% endif %}" id="{{ section.settings.custom_id }}" style="background-color: {{ section.settings.background_color }}; {% if section.settings.background_image != blank %}background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;{% endif %} padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; display: flex; flex-direction: column; justify-content: center;">
@@ -342,7 +347,7 @@ color: #000;
         {% when 'image' %}
           {% if block.settings.image != blank %}
             <div style="text-align: center; margin-top: 20px;">
-              <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | escape }}" style="width: {{ block.settings.image_width }}%; object-fit: contain; margin: 0 auto 20px auto !important;
+              <img src="{{ block.settings.image | image_url }}" class="block-image" alt="{{ block.settings.image.alt | escape }}" style="width: {{ block.settings.image_width }}%; object-fit: contain; margin: 0 auto 20px auto !important;
     display: block;
     ">
             </div>

@@ -58,18 +58,6 @@
     padding: 20px;
     box-shadow: unset;
   }
-  @media (max-width: 991px) {
-    .gift-block {
-      flex: 0 1 calc(50% - 30px);
-    }
-  }
-  @media (max-width: 600px) {
-    .gift-block {
-      flex: 0 1 100%;
-      flex-direction: column;
-      text-align: center;
-    }
-  }
 
   .gift-block .gift-image {
     flex: 0 0 40%;
@@ -85,11 +73,13 @@
   .gift-content .free-badge {
     background: #f5a623;
     color: #fff;
-    padding: 4px 10px;
+    padding: 4px 16px;
     border-radius: 4px;
     font-weight: bold;
     display: inline-block;
     margin-bottom: 10px;
+    {% comment %} TODO {% endcomment %}
+    border-radius:30px;
   }
 
   .gift-content .price-row {
@@ -130,6 +120,33 @@
     margin-top: 30px;
     text-align: center;
   }
+  @media (max-width: 991px) {
+    .gift-block {
+      flex: 0 1 calc(50% - 30px) !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .gift-block {
+      flex: 0 1 100%;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  {% comment %} TODO {% endcomment %}
+  @media (max-width: 1500px) {
+    .gift-content .free-badge{
+      font-size:14px;
+    }
+    .gift-content-title{
+      font-size:22px;
+    }
+    .gift-content-price{
+      font-size:20px;
+    }
+    .now-free{
+      font-size:25px !important;
+    }
+  }
 </style>
 
 <div id="{{ section.settings.custom_id }}" class="custom-section {{ section.settings.custom_class }}
@@ -165,7 +182,14 @@
 
   <div class="gift-blocks">
     {% for block in section.blocks %}
-      <div class="gift-block">
+    
+{% if block.settings.link != blank %}
+  <a href="{{ block.settings.link }}" class="gift-block">
+{% else %}
+  <div class="gift-block">
+{% endif %}
+
+        
         {% if block.settings.image != blank %}
           <div class="gift-image">
             <img
@@ -179,13 +203,19 @@
 
         <div class="gift-content">
           <div class="free-badge">FREE</div>
-          <h3>{{ block.settings.title }}</h3>
+          <h3 class="gift-content-title">{{ block.settings.title }}</h3>
           <div class="price-row">
-            <p><span>Before at</span><s>{{ block.settings.price }}</s></p>
+            <p><span>Before at</span><s class="gift-content-price">{{ block.settings.price }}</s></p>
             <p class="now-free"><span>Now for</span>FREE</p>
           </div>
         </div>
-      </div>
+     
+{% if block.settings.link != blank %}
+  </a>
+{% else %}
+  </div>
+{% endif %}
+        
     {% endfor %}
   </div>
 
@@ -319,6 +349,11 @@
       "name": "Gift Block",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Product Image" },
+        {
+  "type": "url",
+  "id": "link",
+  "label": "Gift Link URL"
+},
         {
           "type": "select",
           "id": "image_ratio",

@@ -1,0 +1,47 @@
+{%- render 'section-extend-your-warranty-banner' -%}
+{% schema %}
+  {
+    "name": "Extend Warranty Banner",
+    "settings": [
+       {
+          "id": "banner_title",
+          "type": "text",
+          "label": "t:labels.heading",
+          "default": "EXTEND YOUR WARRANTY"
+        },
+      {
+        "type": "color",
+        "id": "banner_title_color",
+        "label": "Title text Color",
+        "default": "#fff"
+      },
+      {
+        "type": "number",
+        "id": "text_block_left_margin",
+        "label": "Text Block Left Margin(%)",
+        "default": 17,
+      },
+      {
+        "type": "range",
+        "id": "height",
+        "label": "t:labels.section_height",
+        "default": 400,
+        "min": 400,
+        "max": 750,
+        "step": 50,
+        "unit": "px"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "t:labels.image",
+        "info": "Show Room Background Image"
+      },
+    ],
+    "presets": [
+    {
+      "name": "Extend Warranty Banner"
+    }
+  ],
+  }
+{% endschema %}

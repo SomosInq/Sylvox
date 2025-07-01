@@ -6,6 +6,8 @@
           render block
         when 'title'
           render 'block-title', block: block
+       when 'notify'
+        render 'block-notify', block: block
         when 'description'
           render 'block-description', block: block
         when 'variant_picker'
@@ -215,6 +217,44 @@
           "id": "sku_enable",
           "label": "t:actions.show_sku"
         }
+      ]
+    },
+    {
+      "type": "notify",
+      "name": "Notify",
+      "settings": [
+         {
+          "type": "select",
+          "id": "notify_content_align",
+          "label": "Content Align",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "notify_content_text",
+          "label": "Content Text",
+          "default": "xxxxxxxxxxxxxxxx"
+        },
+        {
+          "type": "color",
+          "id": "notify_text_color",
+          "label": "Content Text Color",
+          "default": "#297f67"
+        },
       ]
     },
     {

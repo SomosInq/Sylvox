@@ -1,0 +1,173 @@
+{%- render 'section-extend-your-warranty-form' -%}
+{% schema %}
+  {
+    "name": "Extend Warranty Form",
+    "settings": [
+      {
+        "id": "purchase_channel_title",
+        "type": "text",
+        "label": "Purchase Channel Title",
+        "default": "Select your purchase channel"
+      },
+      {
+        "id": "purchase_channel_label",
+        "type": "text",
+        "label": "Purchase Channel Label",
+        "default": "Purchase Channel"
+      },
+      {
+        "id": "country_label",
+        "type": "text",
+        "label": "Country Region Label",
+        "default": "Country/Region"
+      },
+      {
+        "id": "country_tooltip",
+        "type": "textarea",
+        "label": "Country Region tooltip",
+        "default": "You can extend your warranty through our website. By activating your membership, you'll get an exclusive coupon which applies to all products on this site. Please note that orders can only be shipped to areas covered on that site."
+      },
+      {
+        "id": "contact_information_title",
+        "type": "text",
+        "label": "Contact Information Title",
+        "default": "Contact Information"
+      },
+      {
+        "id": "first_name_label",
+        "type": "text",
+        "label": "First Name Label",
+        "default": "First Name"
+      },
+      {
+        "id": "last_name_label",
+        "type": "text",
+        "label": "Last Name Label",
+        "default": "Last Name"
+      },
+      {
+        "id": "email_label",
+        "type": "text",
+        "label": "Email Label",
+        "default": "Email"
+      },
+      {
+        "id": "cell_phone_label",
+        "type": "text",
+        "label": "Cell Phone Label",
+        "default": "Cell Phone"
+      },
+      {
+        "id": "order_details_title",
+        "type": "text",
+        "label": "Order Details Title",
+        "default": "Order Details"
+      },
+      {
+        "id": "order_id_label",
+        "type": "text",
+        "label": "Order ID Title",
+        "default": "Order ID"
+      },
+      {
+        "id": "order_id_tooltip",
+        "type": "textarea",
+        "label": "Order ID Tooltip",
+        "default": "You can find you order ID in the order history of the account, through which your purchase was made."
+      },
+      {
+        "id": "product_serial_number_label",
+        "type": "text",
+        "label": "Product Serial Number Label",
+        "default": "Product Serial Number"
+      },
+      {
+        "id": "product_serial_number_tooltip_title",
+        "type": "text",
+        "label": "Product Serial Number Tooltip Title",
+        "default": "The device serial can be found in these two places"
+      },
+      {
+        "id": "product_serial_number_tooltip_subtitle_one",
+        "type": "textarea",
+        "label": "Product Serial Number Tooltip Subtitle One",
+        "default": "1. On the product warranty card: as shown in the figure"
+      },
+       {
+          "type": "image_picker",
+          "id": "sample_img_one",
+          "label": "Sample Image One"
+        },
+      {
+        "id": "product_serial_number_tooltip_subtitle_two",
+        "type": "textarea",
+        "label": "Product Serial Number Tooltip Subtitle Two",
+        "default": "2. Product back back tag nameplate: as shown in the figure"
+      },
+      {
+          "type": "image_picker",
+          "id": "sample_img_two",
+          "label": "Sample Image Two"
+        },
+       {
+        "id": "order_sreenshot_title",
+        "type": "text",
+        "label": "Order Sreenshot Title",
+        "default": "Order Screenshot"
+      },
+      {
+        "id": "remark_title",
+        "type": "text",
+        "label": "Remark Title",
+        "default": "Remark"
+      },
+      {
+        "id": "agree_check_box_one",
+        "type": "text",
+        "label": "Agree CheckBox One",
+        "default": "I agree to Sylvox's"
+      },
+      {
+        "id": "service_text",
+        "type": "text",
+        "label": "Terms of Service Text",
+        "default": "Terms of Service"
+      },
+      {
+        "type": "url",
+        "id": "service_link",
+        "label": "Terms of Service Link",
+        "info": "t:labels.optional"
+      },
+      {
+        "id": "privacy_text",
+        "type": "text",
+        "label": "Privacy Policy Text",
+        "default": "Privacy Policy"
+      },
+      {
+        "type": "url",
+        "id": "privacy_link",
+        "label": "Privacy Policy Link",
+        "info": "t:labels.optional"
+      },
+      {
+        "id": "agree_check_box_two",
+        "type": "text",
+        "label": "Agree CheckBox Two",
+        "default": "Subscribe to Sylvox's latest news and offers. You can unsubscribe at anytime"
+      },
+      {
+        "type": "url",
+        "id": "submit_success_url",
+        "label": "Submit of Success Link",
+        "info": "t:labels.optional"
+      },
+    ],
+     "presets": [
+      {
+        "name": "Extend Warranty Form"
+      }
+     ]
+  }
+{% endschema %}

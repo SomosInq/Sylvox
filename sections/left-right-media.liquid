@@ -1,6 +1,4 @@
 <style>
-
-
   .left-right-media__container {
     display: flex;
     flex-wrap: wrap;
@@ -21,12 +19,49 @@
   }
 
   @media (max-width: 768px) {
+    .left-right-media__container {
+      display: block; /* Stack vertically */
+    }
+
+    .media-left,
+    .media-right {
+      width: 100%;
+      min-width: auto;
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     .media-left img.desktop-image {
       display: none;
     }
 
     .media-left img.mobile-image {
       display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .lrm-textarea {
+      width: {{ section.settings.mobile_content_width }}%;
+    }
+    .media-content {
+      width: {{ section.settings.mobile_content_width }}%;
+      padding: {{ section.settings.mobile_content_padding_top }}px 
+               {{ section.settings.mobile_content_padding_right }}px 
+               {{ section.settings.mobile_content_padding_bottom }}px 
+               {{ section.settings.mobile_content_padding_left }}px;
+      margin: 0 auto;
+    }
+
+    .media-blocks {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .media-block {
+      flex: 0 0 40%;
+      text-align: center;
     }
   }
 
@@ -37,24 +72,14 @@
     width: 100%;
   }
 
-  .media-content.vertical-top {
-    justify-content: flex-start;
-  }
-
-  .media-content.vertical-center {
-    justify-content: center;
-  }
-
-  .media-content.vertical-bottom {
-    justify-content: flex-end;
-  }
+  .media-content.vertical-top { justify-content: flex-start; }
+  .media-content.vertical-center { justify-content: center; }
+  .media-content.vertical-bottom { justify-content: flex-end; }
 
   .media-bg-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     object-fit: cover;
     z-index: 0;
   }
@@ -70,11 +95,11 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
-    width: 60%;
+    /* width: 60%; */
   }
 
   .media-block {
-flex: 0 0 20%;
+    flex: 0 0 20%;
     text-align: center;
   }
 
@@ -82,7 +107,7 @@ flex: 0 0 20%;
     display: block;
     max-width: 100%;
     margin: 0 auto;
-}
+  }
 
   .custom-button {
     display: inline-block;
@@ -90,9 +115,20 @@ flex: 0 0 20%;
     text-decoration: none;
   }
 
-  /* Add this inside your existing <style> */
+  #shopify-section-{{ section.id }} .spanheader {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
 
-@media (max-width: 768px) {
+#shopify-section-{{ section.id }} .small-span {
+font-size: 19px;
+    font-weight: 400;
+    vertical-align: baseline;
+    margin-left: 4px;
+}
+
+      @media (max-width: 768px) {
   .left-right-media__container {
     display: block; /* Stack vertically */
   }
@@ -106,16 +142,21 @@ flex: 0 0 20%;
     margin-bottom: 20px;
   }
 
-  .media-left img,
-  .media-right img {
-    width: auto; /* Let inline width stay as set in HTML */
-    max-width: 100%; /* Prevent overflow */
+  .media-left img.desktop-image {
+    display: none;
+  }
+
+  .media-left img.mobile-image {
+    display: block;
+    width: 100%;
     height: auto;
   }
 
   .media-content {
     width: 100%;
-    padding: 20px;
+    max-width: {{ section.settings.mobile_content_width }}%;
+    margin: 0 auto;
+    padding: 0; /* Remove mobile padding */
   }
 
   .media-blocks {
@@ -128,12 +169,14 @@ flex: 0 0 20%;
     text-align: center;
   }
 }
-
-
-
-
-  
+  /* TODO */
+  @media(max-width:1500px){
+  .media-left .desktop-image{
+    height:100% !important;
+  }
+}
 </style>
+
 
 <div class="section_width_{{ section.settings.section_width }}"
      style="background-color: {{ section.settings.bg_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;">
@@ -187,21 +230,6 @@ flex: 0 0 20%;
   </{{ section.settings.heading_tag }}>
 {% endif %}
 
-    <style>
-#shopify-section-{{ section.id }} .spanheader {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-
-#shopify-section-{{ section.id }} .small-span {
-font-size: 19px;
-    font-weight: 400;
-    vertical-align: baseline;
-    margin-left: 4px;
-}
-</style>
-
         {% if section.settings.label_text_1 or section.settings.icon_text or section.settings.label_text_2 or section.settings.icon_image %}
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: {{ section.settings.heading_align }};">
             {% if section.settings.label_text_1 %}<span>{{ section.settings.label_text_1 }}</span>{% endif %}
@@ -212,7 +240,7 @@ font-size: 19px;
         {% endif %}
 
         {% if section.settings.description %}
-          <div style="padding-top: 50px !important; text-align: {{ section.settings.heading_align }}; margin-top: 10px;">
+          <div class="lrm-textarea" style="padding-top: 50px !important; text-align: {{ section.settings.heading_align }}; margin-top: 10px;word-warp:break-word;">
             {{ section.settings.description }}
           </div>
         {% endif %}
@@ -332,7 +360,16 @@ font-size: 19px;
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    {
+  "type": "range",
+  "id": "mobile_content_width",
+  "label": "Mobile Content Max Width (%)",
+  "min": 50,
+  "max": 100,
+  "step": 5,
+  "default": 100
+}
   ],
   "blocks": [
     {

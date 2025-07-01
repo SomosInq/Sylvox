@@ -108,11 +108,14 @@
           {% endif %}
 
         {% when 'button' %}
-          <div style="text-align: {{ block.settings.alignment }};">
+          {% comment %} TODO {% endcomment %}
+          <div style="text-align: {{ block.settings.alignment }};margin-top:14px;">
             <a
               href="{{ block.settings.url }}"
               class="btn btn--{{ block.settings.size }}"
               style="
+                {% comment %} TODO {% endcomment %}
+                 border-radius:30px;
                 color: {{ block.settings.text_color }};
                 background-color: {{ block.settings.background }};
                 {% if block.settings.style == 'outline' %}

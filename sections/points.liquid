@@ -1,4 +1,4 @@
-<style>
+
 <style>
 /* Section & Content Width */
 
@@ -45,14 +45,6 @@
   justify-content: flex-start; /* default, overridden by setting */
   height: 100%;
 }
-
-/* Responsive max-width */
-@media (min-width: 769px) {
-  .custom-section .content-wrap {
-    max-width: var(--content-max-width-desktop);
-  }
-}
-
 @media (max-width: 768px) {
   .custom-section .content-wrap {
     max-width: var(--content-max-width-mobile);
@@ -64,7 +56,7 @@
   margin: 20px 0 0 0;
 }
 
-.subscribe-form {
+#shopify-section-{{ section.id }} .subscribe-form > div {
   text-align: left;
   display: flex;
   height: 42px;
@@ -74,10 +66,15 @@
   border-radius: 9999px;
   background: #FFF;
 }
+#shopify-section-{{ section.id }} .subscribe-form > div label {
+    display: block;
+    width: 100%;
+}
 
-.subscribe-form input,
-.subscribe-form textarea,
-.subscribe-form select {
+
+#shopify-section-{{ section.id }} .subscribe-form > div input,
+#shopify-section-{{ section.id }} .subscribe-form > div textarea,
+#shopify-section-{{ section.id }} .subscribe-form > div select {
   border: 0 solid;
   border-color: var(--color-border);
   max-width: 100%;
@@ -85,7 +82,7 @@
   border-radius: var(--input-radius);
 }
 
-.subscribe-form button {
+#shopify-section-{{ section.id }} .subscribe-form > div button {
   display: flex;
   width: 124px;
   padding: 10px 42px 9px 40px;
@@ -94,10 +91,17 @@
   border-radius: 9999px;
 }
 
-#shopify-section-{{ section.id }} .subscribe-form {
+  #shopify-section-{{ section.id }} .subscribe-form {
+    padding: 0 !important;
+  margin-left: 0 !important;
+    margin-top: 20px;
+  height: 42px !important;
+}
+
+#shopify-section-{{ section.id }} .subscribe-form > div {
   text-align: left;
   display: flex;
-  height: 42px;
+  height: 42px !important;
   padding: 0; margin: 10px 0 0 0;
   align-items: center;
   flex-shrink: 0;
@@ -107,9 +111,10 @@
   max-width: 100%;
   border: 5px solid #fff;
   width: 450px;
+  margin-left: 0 !important;
 }
 
-#shopify-section-{{ section.id }} .subscribe-form input[type="email"] {
+#shopify-section-{{ section.id }} .subscribe-form > div input[type="email"] {
   flex: 1;
   border: none;
   padding: 0 20px;
@@ -118,7 +123,7 @@
   font-size: 16px;
 }
 
-#shopify-section-{{ section.id }} .subscribe-form button {
+#shopify-section-{{ section.id }} .subscribe-form > div button {
   height: 100%;
   width: auto;
   padding: 10px 24px;
@@ -129,32 +134,60 @@
   cursor: pointer;
   margin: 3px;
 }
-</style>
+{% comment %} TODO {% endcomment %}
+.custom-section .content-wrap {
+  position:absolute;
+  top:0;
+  width:60%;
+  max-width: var(--content-max-width-desktop);
+  padding-left:30px;
+}
+.bg-image{
+  width:100%;
+}
+@media(max-width:1500px){
+  .custom-section .content-wrap{
+    top:15%;
+    height:auto;
+  }
+  .title-tag{
+    font-size:24px;
+  }
+  .sub-title{
+    font-size:15px;
+  }
+  .points-section{
+    width:80% !important;
 
+  }
+}
 </style>
 
 <div 
   id="{{ section.settings.custom_id }}"
-  class="custom-section section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }}
+  {% comment %} TODO {% endcomment %}
+  class="points-section custom-section section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }}
   {% unless section.settings.show_on_desktop %} hide-desktop{% endunless %}
   {% unless section.settings.show_on_tablet %} hide-tablet{% endunless %}
   {% unless section.settings.show_on_mobile %} hide-mobile{% endunless %}"
   style="
-    background: {% if section.settings.bg_image != blank %} url({{ section.settings.bg_image | img_url: 'master' }}) {% else %} {{ section.settings.bg_color }} {% endif %};
-    background-repeat: no-repeat;
-    background-size: {{ section.settings.bg_size }};
-    background-position: center;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     height: {{ section.settings.height_desktop }}px;
     --content-max-width-desktop: {{ section.settings.content_max_width_desktop }}px;
     --content-max-width-mobile: {{ section.settings.content_max_width_mobile }}px;
   ">
-
   {% if section.settings.overlay_color != blank %}
     <div class="section-overlay" style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity }};"></div>
   {% endif %}
-
+  {% comment %} TODO {% endcomment %}
+    <img 
+  src="{{ section.settings.bg_image | img_url: 'master' }}"
+  srcset="{{ section.settings.bg_image | img_url: 'master' }} 768w, {{ section.settings.bg_image_mobile | img_url: 'master' }} 767w"
+  sizes="(max-width: 768px) 100vw, 100vw"
+  loading="lazy"
+  alt="Section Image"
+  class="bg-image">
 <div class="content-wrap"
   style="
     justify-content: {% if section.settings.vertical_align == 'center' %}center{% elsif section.settings.vertical_align == 'bottom' %}flex-end{% else %}flex-start{% endif %};
@@ -166,15 +199,14 @@
       margin-left: auto; margin-right: 0;
     {% endif %}
   ">
-
     {% if section.settings.title != blank %}
-      <{{ section.settings.title_tag }} style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }}; text-align: {{ section.settings.title_align }};">
+      <{{ section.settings.title_tag }} class="title-tag" style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }}; text-align: {{ section.settings.title_align }};">
         {{ section.settings.title }}
       </{{ section.settings.title_tag }}>
     {% endif %}
 
     {% if section.settings.text != blank %}
-      <div style="text-align: {{ section.settings.text_align }}; color: {{ section.settings.text_color }}; font-weight: {{ section.settings.text_weight }};">
+      <div style="text-align: {{ section.settings.text_align }}; color: {{ section.settings.text_color }}; font-weight: {{ section.settings.text_weight }};" class="sub-title">
         {{ section.settings.text }}
       </div>
     {% endif %}
@@ -200,11 +232,214 @@
       </video>
     {% endif %}
 
-    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="subscribe-form">
-      <input type="hidden" name="form_type" value="customer" />
-      <input type="email" name="contact[email]" placeholder="Email" required>
-      <button type="submit" style="background:#DB4B97  !important;">Subscribe</button>
-    </form>
+<!-- Subscribe -->
+
+            <style>
+  #form-message {
+    display: none;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    max-width: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  #form-message.error {
+    color: #b00020;
+    border-color: #b00020;
+    background: #fff;
+  }
+  #form-message.success {
+    color: #0f5132;
+    border-color: #198754;
+    background: #fff;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    z-index: 10000;
+  }
+  .modal button.modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    background: #eee;
+    width: 100px; height: 100px;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #DB4B97;
+  }
+</style>
+
+<div id="form-message" style="margin-bottom:10px;"></div>
+
+
+<div id="tc-modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+ background:white; padding:20px; border:1px solid #ccc; z-index:9999;">
+  <p>
+    You must agree to the 
+    <a href="#" id="tos-link" style="text-decoration:underline; color:blue;">Terms of Service</a> 
+and 
+<a href="#" id="privacy-link" style="text-decoration:underline; color:blue;">Privacy Policy</a>
+
+    to subscribe.
+  </p>
+  <button id="accept-tc">Accept</button>
+</div>
+
+
+<div id="tos-modal" class="modal"  style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+ background:white; padding:20px; border:1px solid #ccc; width:80%; max-height:80%; overflow:auto; z-index:10000;">
+  <button id="close-tos" class="modal-close">Close</button>
+  <div id="tos-content">
+    <p>Loading...</p>
+  </div>
+</div>
+
+
+<div id="privacy-modal" class="modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+ background:white; padding:20px; border:1px solid #ccc; width:80%; max-height:80%; overflow:auto; z-index:10000;">
+  <button id="close-privacy" class="modal-close">Close</button>
+  <div id="privacy-content">
+    <p>Loading...</p>
+  </div>
+</div>
+
+
+<form id="subscribe-form" class="subscribe-form">
+  <input id="email-input" type="email" name="contact[email]" placeholder="Enter your email" required>
+  <button type="button" id="subscribe-btn">Subscribe</button>
+</form>
+
+{% assign terms_url = pages[section.settings.terms_page].url %}
+{% assign privacy_url = pages[section.settings.privacy_page].url %}
+
+<script>
+  // Elements
+  const subscribeBtn = document.getElementById('subscribe-btn');
+  const emailInput = document.getElementById('email-input');
+  const formMessage = document.getElementById('form-message');
+  const tcModal = document.getElementById('tc-modal');
+  const acceptTc = document.getElementById('accept-tc');
+  const subscribeForm = document.getElementById('subscribe-form');
+
+  const tosLink = document.getElementById('tos-link');
+  const privacyLink = document.getElementById('privacy-link');
+  const tosModal = document.getElementById('tos-modal');
+  const privacyModal = document.getElementById('privacy-modal');
+  const tosContent = document.getElementById('tos-content');
+  const privacyContent = document.getElementById('privacy-content');
+  const closeTos = document.getElementById('close-tos');
+  const closePrivacy = document.getElementById('close-privacy');
+
+  // ✅ URLs resolved by Liquid
+  const termsURL = '{{ terms_url }}';
+  const privacyURL = '{{ privacy_url }}';
+
+  // Click subscribe
+  subscribeBtn.addEventListener('click', function() {
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Reset message
+    formMessage.className = '';
+    formMessage.style.display = 'block';
+
+    if (!emailRegex.test(email)) {
+      formMessage.classList.add('error');
+      formMessage.textContent = "Please submit a valid email address.";
+      return;
+    }
+
+    // Valid email → hide any message → show T&C modal
+    formMessage.style.display = 'none';
+    formMessage.textContent = '';
+    tcModal.style.display = 'block';
+  });
+
+  // Accept T&C → submit
+  acceptTc.addEventListener('click', function() {
+    tcModal.style.display = 'none';
+    formMessage.className = '';
+    formMessage.classList.add('success');
+    formMessage.textContent = "Thank you! Your email has been submitted.";
+    formMessage.style.display = 'block';
+    subscribeForm.submit();
+  });
+
+  // Open Terms modal
+  tosLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    tcModal.style.display = 'none';
+    tosContent.innerHTML = '<p>Loading Terms of Service...</p>';
+    tosModal.style.display = 'block';
+
+    fetch(termsURL)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const mainContent = doc.querySelector('.legal-content') || doc.querySelector('main') || doc.body;
+        if (mainContent) {
+          tosContent.innerHTML = mainContent.innerHTML;
+        } else {
+          tosContent.innerHTML = '<p>Could not load Terms content.</p>';
+        }
+      })
+      .catch(err => {
+        tosContent.innerHTML = '<p>Failed to load Terms of Service.</p>';
+      });
+  });
+
+  // Open Privacy modal
+  privacyLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    tcModal.style.display = 'none';
+    privacyContent.innerHTML = '<p>Loading Privacy Policy...</p>';
+    privacyModal.style.display = 'block';
+
+    fetch(privacyURL)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const mainContent = doc.querySelector('.legal-content') || doc.querySelector('main') || doc.body;
+        if (mainContent) {
+          privacyContent.innerHTML = mainContent.innerHTML;
+        } else {
+          privacyContent.innerHTML = '<p>Could not load Privacy content.</p>';
+        }
+      })
+      .catch(err => {
+        privacyContent.innerHTML = '<p>Failed to load Privacy Policy.</p>';
+      });
+  });
+
+  // Close modals → return to parent T&C modal
+  closeTos.addEventListener('click', function() {
+    tosModal.style.display = 'none';
+    tcModal.style.display = 'block';
+  });
+
+  closePrivacy.addEventListener('click', function() {
+    privacyModal.style.display = 'none';
+    tcModal.style.display = 'block';
+  });
+</script>
+
+
+
+
 
   </div>
 
@@ -289,6 +524,16 @@
       "max": 1200,
       "step": 50,
       "default": 600
+    },
+    {
+      "type": "page",
+      "id": "terms_page",
+      "label": "Terms of Service Page"
+    },
+    {
+      "type": "page",
+      "id": "privacy_page",
+      "label": "Privacy Policy Page"
     },
     {
       "type": "checkbox",
@@ -385,6 +630,22 @@
       "id": "title",
       "label": "Title"
     },
+    {
+  "type": "text",
+  "id": "checkbox_label",
+  "label": "Checkbox Label Text",
+  "default": "I agree to the"
+},
+{
+  "type": "url",
+  "id": "terms_url",
+  "label": "Terms of Service URL"
+},
+{
+  "type": "url",
+  "id": "privacy_url",
+  "label": "Privacy Policy URL"
+},
     {
       "type": "select",
       "id": "vertical_align",

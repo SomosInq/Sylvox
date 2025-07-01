@@ -1,0 +1,47 @@
+{%- render 'section-contact-us-new' -%}
+      <script>
+        window.okkiConfigs = window.okkiConfigs || [];
+        function okkiAdd() { okkiConfigs.push(arguments); };
+        okkiAdd("analytics", { siteId: "2678-14137", gId: "UA-276653715-49" });
+      </script>
+{% schema %}
+{
+  "name": "contact us new",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:info.all_submissions_sent_to_store_email"
+    },
+     {
+      "type": "textarea",
+      "id": "head_sub_title",
+      "label": "t:labels.heading",
+      "default": "✅Option 2: Upload via Google Form"
+    },
+    {
+      "type": "textarea",
+      "id": "head_title",
+      "label": "t:labels.heading",
+      "default": "Don’tuse social media? you can still enter! 👉Click here to upload your entry"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "t:actions.add_phone_number"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Contact Us New"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.popups"]
+  }
+}
+{% endschema %}
