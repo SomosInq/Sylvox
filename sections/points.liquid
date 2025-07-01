@@ -33,23 +33,48 @@
 /* Positioning */
 .custom-section {
   position: relative;
-  overflow: hidden;
-}
-
-/* Flex container for vertical alignment */
-.custom-section .content-wrap {
-  position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* default, overridden by setting */
-  height: 100%;
+  justify-content: var(--vertical-align); /* will hold: flex-start | center | flex-end */
+  overflow: hidden;
+  height: 100%; /* or auto if you don’t want forced height */
 }
+
+.custom-section .content-wrap {
+  position: relative;
+  width: 60%;
+  max-width: var(--content-max-width-desktop);
+  margin-left: 30px;
+}
+
 @media (max-width: 768px) {
   .custom-section .content-wrap {
+    position: relative;       /* normal flow */
+    width: auto;               /* let max-width control it */
     max-width: var(--content-max-width-mobile);
+    margin: 0 auto;            /* center it */
+    padding-left: 0;
+    margin-top: var(--content-padding-top-mobile, 20px); /* real push-down */
   }
 }
+
+#{{ section.settings.custom_id }} {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  #{{ section.settings.custom_id }} .bg-image {
+    display: none; /* Hide the <img> */
+  }
+
+  #{{ section.settings.custom_id }} {
+    height: auto !important;
+  }
+}
+
+
 
 #shopify-section-{{ section.id }} .btn {
   width: 420px;
@@ -134,14 +159,7 @@
   cursor: pointer;
   margin: 3px;
 }
-{% comment %} TODO {% endcomment %}
-.custom-section .content-wrap {
-  position:absolute;
-  top:0;
-  width:60%;
-  max-width: var(--content-max-width-desktop);
-  padding-left:30px;
-}
+
 .bg-image{
   width:100%;
 }
@@ -161,6 +179,14 @@
 
   }
 }
+
+.bg-image-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .bg-image { display: none; }
+  .bg-image-mobile { display: block; }
+}
 </style>
 
 <div 
@@ -171,11 +197,13 @@
   {% unless section.settings.show_on_tablet %} hide-tablet{% endunless %}
   {% unless section.settings.show_on_mobile %} hide-mobile{% endunless %}"
   style="
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    height: {{ section.settings.height_desktop }}px;
-    --content-max-width-desktop: {{ section.settings.content_max_width_desktop }}px;
-    --content-max-width-mobile: {{ section.settings.content_max_width_mobile }}px;
+  --vertical-align: {% if section.settings.vertical_align == 'center' %}center{% elsif section.settings.vertical_align == 'bottom' %}flex-end{% else %}flex-start{% endif %};
+ margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+  --content-max-width-desktop: {{ section.settings.content_max_width_desktop }}px;
+  --content-max-width-mobile: {{ section.settings.content_max_width_mobile }}px;
+  --content-padding-top-mobile: {{ section.settings.content_padding_top_mobile }}px;
+  --mobile-bg-width: {{ section.settings.bg_size_mobile }}%;
   ">
   {% if section.settings.overlay_color != blank %}
     <div class="section-overlay" style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity }};"></div>
@@ -188,6 +216,13 @@
   loading="lazy"
   alt="Section Image"
   class="bg-image">
+  {% if section.settings.bg_image_mobile != blank %}
+  <img 
+    src="{{ section.settings.bg_image_mobile | img_url: 'master' }}"
+    class="bg-image-mobile"
+    alt="Mobile Background"
+    style="width: var(--mobile-bg-width); height: auto; display: block;">
+{% endif %}
 <div class="content-wrap"
   style="
     justify-content: {% if section.settings.vertical_align == 'center' %}center{% elsif section.settings.vertical_align == 'bottom' %}flex-end{% else %}flex-start{% endif %};
@@ -445,15 +480,7 @@ and
 
 </div>
 
-{% if section.settings.bg_image_mobile != blank %}
-<style>
-  @media (max-width: 768px) {
-    #{{ section.settings.custom_id }} {
-      background-image: url({{ section.settings.bg_image_mobile | img_url: 'master' }});
-    }
-  }
-</style>
-{% endif %}
+
 
 {% schema %}
 {
@@ -485,11 +512,7 @@ and
       "id": "bg_image",
       "label": "Background Image"
     },
-    {
-      "type": "image_picker",
-      "id": "bg_image_mobile",
-      "label": "Mobile Background Image"
-    },
+    
     {
       "type": "select",
       "id": "bg_size",
@@ -501,6 +524,20 @@ and
         { "value": "auto", "label": "Auto" }
       ]
     },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile Background Image"
+    },
+{
+  "type": "range",
+  "id": "bg_size_mobile",
+  "label": "Mobile Background Width (%)",
+  "min": 10,
+  "max": 100,
+  "step": 5,
+  "default": 100
+},
     {
       "type": "color",
       "id": "bg_color",
@@ -625,6 +662,15 @@ and
       "max": 200,
       "step": 5
     },
+    {
+  "type": "range",
+  "id": "content_padding_top_mobile",
+  "label": "Content Top Padding (Mobile)",
+  "min": 0,
+  "max": 200,
+  "step": 5,
+  "default": 20
+},
     {
       "type": "text",
       "id": "title",
@@ -837,15 +883,6 @@ and
       "type": "textarea",
       "id": "json_blocks",
       "label": "JSON Blocks"
-    },
-    {
-      "type": "range",
-      "id": "height_desktop",
-      "label": "Height Desktop",
-      "min": 100,
-      "max": 2000,
-      "step": 50,
-      "default": 600
     }
   ],
   "presets": [

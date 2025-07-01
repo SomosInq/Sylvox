@@ -106,7 +106,11 @@
     border-radius: 9999px; /* make it fully rounded */
   }
 }
-
+{% if section.settings.hide_image_mobile %}
+  #shopify-section-{{ section.id }} .background-image {
+    display: none;
+  }
+{% endif %}
 </style>
 
 <div id="{{ section.settings.custom_id }}"
@@ -419,6 +423,12 @@
       "id": "image",
       "label": "Right Side Image"
     },
+    {
+  "type": "checkbox",
+  "id": "hide_image_mobile",
+  "label": "Hide background image on mobile",
+  "default": false
+},
     {
       "type": "range",
       "id": "image_border_radius",
