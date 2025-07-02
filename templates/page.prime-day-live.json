@@ -40,7 +40,7 @@
           "type": "richtext",
           "settings": {
             "content": "<p>From June 30th – July 7st</p>",
-            "color": "#1c1d1d",
+            "color": "#ffffff",
             "alignment": "left"
           }
         },
@@ -84,11 +84,11 @@
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
-        "section_height": 650,
+        "desktop_section_height": 720,
         "mobile_vertical_alignment": "flex-start",
         "mobile_padding_top": 44,
-        "mobile_padding_bottom": 0,
-        "mobile_section_height": 360,
+        "mobile_padding_bottom": 44,
+        "mobile_section_height": 390,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/dcf07c0f54a81a866a543750f1217cc1_1.jpg",
         "mobile_image": "shopify://shop_images/banner780x1120_APP.jpg",
@@ -104,7 +104,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "mobile_image_fit": "cover"
       }
     },
     "image_text_8V9rke": {
@@ -145,7 +146,7 @@
         "section_content_width": "full",
         "alignment": "center",
         "padding_top": 60,
-        "padding_bottom": 60,
+        "padding_bottom": 25,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -163,6 +164,8 @@
         "section_content_width": "standard",
         "bg_image": "shopify://shop_images/Subscribe_for_a_Chance_to_Get_a_Free_Gift.png",
         "bg_size": "contain",
+        "bg_image_mobile": "shopify://shop_images/Cart.png",
+        "bg_size_mobile": 100,
         "bg_color": "#ffffff",
         "content_max_width_desktop": 1000,
         "content_max_width_mobile": 450,
@@ -179,6 +182,7 @@
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
+        "content_padding_top_mobile": 20,
         "title": "Subscribe today — 100% guaranteed free gift below.",
         "checkbox_label": "I agree to the",
         "terms_url": "",
@@ -206,8 +210,7 @@
         "video_loop": false,
         "custom_class": "",
         "custom_id": "",
-        "json_blocks": "",
-        "height_desktop": 350
+        "json_blocks": ""
       }
     },
     "primeday_products_aBYCzk": {
@@ -245,7 +248,7 @@
       "name": "Free Gift Product Section",
       "settings": {
         "header_image": "shopify://shop_images/Tag_BUY_NOW_CHOOSE_A_FREE_GIFT.png",
-        "header_image_width": 20,
+        "header_image_width": 17,
         "bg_color": "#ffffff",
         "hide_desktop": false,
         "hide_tablet": false,
@@ -517,7 +520,7 @@
         "main_heading": "",
         "main_heading_2": "There's MORE savings",
         "description": "Save up to $2,800 with our outdoor TV+ cabinet bundle!",
-        "badge_text": "$240 Off",
+        "badge_text": "$1800 Off",
         "heading_size": 48,
         "heading_color_1": "#2E7D5F",
         "heading_color_2": "#b06a8a",
@@ -861,11 +864,11 @@
         "description_size_mobile": 14,
         "description_color_mobile": "#777777",
         "discount_bg_color": "#f8bb00",
-        "discount_color": "#fff",
+        "discount_color": "#ffffff",
         "discount_size": 15,
-        "price_color": "#B06A8A",
-        "button_bg_color": "#2E7D5F",
-        "button_text_color": "#FFFFFF"
+        "price_color": "#b06a8a",
+        "button_bg_color": "#2e7d5f",
+        "button_text_color": "#ffffff"
       }
     },
     "somos_banner_PNpJtb": {
@@ -1022,6 +1025,7 @@
         "section_width": "full",
         "section_content_width": "standard",
         "left_image": "shopify://shop_images/Rectangle_522.png",
+        "mobile_image": "shopify://shop_images/Rectangle_522.png",
         "image_radius": 50,
         "image_width_percent": 80,
         "bg_color": "rgba(0,0,0,0)",
@@ -1253,11 +1257,12 @@
         "section_width": "full",
         "section_content_width": "standard",
         "bg_image": "shopify://shop_images/Earn_Multiple_points.jpg",
-        "bg_image_mobile": "shopify://shop_images/Earn_Multiple_points_Mobile.png",
         "bg_size": "cover",
+        "bg_image_mobile": "shopify://shop_images/Earn_Multiple_points_Mobile_2.jpg",
+        "bg_size_mobile": 100,
         "bg_color": "#ffffff",
-        "content_max_width_desktop": 2000,
-        "content_max_width_mobile": 300,
+        "content_max_width_desktop": 1250,
+        "content_max_width_mobile": 1200,
         "terms_page": "terms-of-services",
         "privacy_page": "privacy-policy",
         "show_on_desktop": true,
@@ -1269,8 +1274,9 @@
         "margin_right": 0,
         "padding_top": 0,
         "padding_bottom": 0,
-        "padding_left": 35,
+        "padding_left": 0,
         "padding_right": 0,
+        "content_padding_top_mobile": 20,
         "title": "Earn 1.5x Sylvox Points",
         "checkbox_label": "I agree to the",
         "terms_url": "",
@@ -1298,8 +1304,7 @@
         "video_loop": false,
         "custom_class": "",
         "custom_id": "",
-        "json_blocks": "",
-        "height_desktop": 300
+        "json_blocks": ""
       }
     },
     "image_text_zytR3h": {
@@ -1535,7 +1540,9 @@
         "newsletter_placeholder": "Enter your email",
         "newsletter_button_text": "Sign Up",
         "newsletter_border_radius": 100,
+        "newsletter_border_radius_mobile": 0,
         "image": "shopify://shop_images/165fc9e9ca53d84715d39e60ae62cc138335a2d7_1.jpg",
+        "hide_image_mobile": true,
         "image_border_radius": 100,
         "image_width": 50,
         "image_ratio": "landscape",

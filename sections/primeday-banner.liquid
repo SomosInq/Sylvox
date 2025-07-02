@@ -497,6 +497,9 @@ padding: 10px 0;}
   position: relative;
   overflow: hidden; /* Already included in your media query, but good to have globally */
   background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
 }
 
 @media (max-width: 768px) {
@@ -517,8 +520,13 @@ padding: 10px 0;}
     justify-content: flex-end !important;
   }
 }
+  @media (min-width: 769px) {
+  #shopify-section-{{ section.id }} .prime-day-banner{
+    height: {{ section.settings.desktop_section_height }}px !important;
+  }
+}
 @media (max-width: 768px) {
-  #shopify-section-{{ section.id }} {
+  #shopify-section-{{ section.id }} .prime-day-banner {
     height: {{ section.settings.mobile_section_height }}px !important;
   }
 }
@@ -1120,6 +1128,16 @@ and
         { "value": "full", "label": "Full Width" }
       ]
     },
+    {
+  "type": "range",
+  "id": "desktop_section_height",
+  "label": "Desktop Section Height",
+  "min": 100,
+  "max": 1100,
+  "step": 10,
+  "default": 650,
+  "unit": "px"
+},
     {
   "type": "select",
   "id": "mobile_vertical_alignment",
