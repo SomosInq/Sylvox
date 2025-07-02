@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 26,
+            "activePatchIndex": 27,
             "patches": [
                 {
                     "date": 1751186258813,
@@ -112,6 +112,10 @@
                 {
                     "date": 1751386011171,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -158,16 +158,9 @@\n   border: none;\n   cursor: pointer;\n   margin: 3px;\n }\n-{% comment %} TODO {% endcomment %}\n-.custom-section .content-wrap {\n-  position:absolute;\n-  top:0;\n-  width:60%;\n-  max-width: var(--content-max-width-desktop);\n-  padding-left:30px;\n-}\n+\n .bg-image{\n   width:100%;\n }\n @media(max-width:1500px){\n"
+                },
+                {
+                    "date": 1751387864385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -210,9 +210,9 @@\n   {% endif %}\n   {% comment %} TODO {% endcomment %}\n     <img \n   src=\"{{ section.settings.bg_image | img_url: 'master' }}\"\n-  srcset=\"{{ section.settings.bg_image | img_url: 'master' }} 768w, {{ section.settings.bg_image_mobile | img_url: 'master' }} 767w\"\n+  srcset=\"{{ section.settings.bg_image | img_url: 'master' }}\"\n   sizes=\"(max-width: 768px) 100vw, 100vw\"\n   loading=\"lazy\"\n   alt=\"Section Image\"\n   class=\"bg-image\">\n"
                 }
             ],
             "date": 1751186258813,

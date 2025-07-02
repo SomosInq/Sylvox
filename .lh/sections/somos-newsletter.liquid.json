@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 25,
+            "activePatchIndex": 29,
             "patches": [
                 {
                     "date": 1751181939223,
@@ -108,6 +108,22 @@
                 {
                     "date": 1751387014966,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -105,9 +105,13 @@\n     height: 50px; /* optional, adjust as needed */\n     border-radius: 9999px; /* make it fully rounded */\n   }\n }\n-\n+{% if section.settings.hide_image_mobile %}\n+  #shopify-section-{{ section.id }} .background-image {\n+    display: none;\n+  }\n+{% endif %}\n </style>\n \n <div id=\"{{ section.settings.custom_id }}\"\n      class=\"section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}\"\n"
+                },
+                {
+                    "date": 1751387323071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,11 +106,13 @@\n     border-radius: 9999px; /* make it fully rounded */\n   }\n }\n {% if section.settings.hide_image_mobile %}\n-  #shopify-section-{{ section.id }} .background-image {\n-    display: none;\n+@media screen and (max-width: 768px) {\n+  #shopify-section-{{ section.id }} .somos-newsletter__image {\n+    display: none !important;\n   }\n+}\n {% endif %}\n </style>\n \n <div id=\"{{ section.settings.custom_id }}\"\n"
+                },
+                {
+                    "date": 1751387441201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -420,8 +420,16 @@\n       \"min\": 0,\n       \"max\": 100\n     },\n     {\n+  \"type\": \"range\",\n+  \"id\": \"newsletter_border_radius_mobile\",\n+  \"label\": \"Newsletter Border Radius (Mobile)\",\n+  \"default\": 0,\n+  \"min\": 0,\n+  \"max\": 100\n+},\n+    {\n       \"type\": \"image_picker\",\n       \"id\": \"image\",\n       \"label\": \"Right Side Image\"\n     },\n"
+                },
+                {
+                    "date": 1751387495778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -112,8 +112,11 @@\n     display: none !important;\n   }\n }\n {% endif %}\n+#shopify-section-{{ section.id }} .somos-newsletter__content {\n+  border-radius: {{ section.settings.newsletter_border_radius_mobile }}px !important;\n+}\n </style>\n \n <div id=\"{{ section.settings.custom_id }}\"\n      class=\"section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}\"\n"
+                },
+                {
+                    "date": 1751387556246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,19 +104,20 @@\n     width: 100%;\n     height: 50px; /* optional, adjust as needed */\n     border-radius: 9999px; /* make it fully rounded */\n   }\n+  #shopify-section-{{ section.id }} .somos-newsletter__content {\n+  border-radius: {{ section.settings.newsletter_border_radius_mobile }}px !important;\n }\n+}\n {% if section.settings.hide_image_mobile %}\n @media screen and (max-width: 768px) {\n   #shopify-section-{{ section.id }} .somos-newsletter__image {\n     display: none !important;\n   }\n }\n {% endif %}\n-#shopify-section-{{ section.id }} .somos-newsletter__content {\n-  border-radius: {{ section.settings.newsletter_border_radius_mobile }}px !important;\n-}\n+\n </style>\n \n <div id=\"{{ section.settings.custom_id }}\"\n      class=\"section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}\"\n"
                 }
             ],
             "date": 1751181939223,

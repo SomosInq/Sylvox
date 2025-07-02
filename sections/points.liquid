@@ -211,7 +211,7 @@
   {% comment %} TODO {% endcomment %}
     <img 
   src="{{ section.settings.bg_image | img_url: 'master' }}"
-  srcset="{{ section.settings.bg_image | img_url: 'master' }} 768w, {{ section.settings.bg_image_mobile | img_url: 'master' }} 767w"
+  srcset="{{ section.settings.bg_image | img_url: 'master' }}"
   sizes="(max-width: 768px) 100vw, 100vw"
   loading="lazy"
   alt="Section Image"

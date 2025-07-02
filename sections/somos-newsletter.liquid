@@ -105,12 +105,18 @@
     height: 50px; /* optional, adjust as needed */
     border-radius: 9999px; /* make it fully rounded */
   }
+  #shopify-section-{{ section.id }} .somos-newsletter__content {
+  border-radius: {{ section.settings.newsletter_border_radius_mobile }}px !important;
+}
 }
 {% if section.settings.hide_image_mobile %}
-  #shopify-section-{{ section.id }} .background-image {
-    display: none;
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .somos-newsletter__image {
+    display: none !important;
   }
+}
 {% endif %}
+
 </style>
 
 <div id="{{ section.settings.custom_id }}"
@@ -418,6 +424,14 @@
       "min": 0,
       "max": 100
     },
+    {
+  "type": "range",
+  "id": "newsletter_border_radius_mobile",
+  "label": "Newsletter Border Radius (Mobile)",
+  "default": 0,
+  "min": 0,
+  "max": 100
+},
     {
       "type": "image_picker",
       "id": "image",
