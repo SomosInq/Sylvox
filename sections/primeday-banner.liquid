@@ -720,7 +720,10 @@ style="
 }
 </style>
 
-<div id="form-message" style="margin-bottom:10px;"></div>
+<div id="form-message" style="margin-bottom:10px;">
+  <span id="form-message-text"></span>
+  <button id="form-message-close" style="margin-left:10px; background:none; border:none; cursor:pointer; font-weight:bold;">✖</button>
+</div>
 
 
 <div id="tc-modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
@@ -780,6 +783,16 @@ and
   const closeTos = document.getElementById('close-tos');
   const closePrivacy = document.getElementById('close-privacy');
 
+  const formMessageText = document.getElementById('form-message-text');
+const formMessageClose = document.getElementById('form-message-close');
+
+formMessageClose.addEventListener('click', () => {
+  formMessage.style.display = 'none';
+  formMessage.className = '';
+  formMessageText.textContent = '';
+});
+
+
   // ✅ URLs resolved by Liquid
   const termsURL = '{{ terms_url }}';
   const privacyURL = '{{ privacy_url }}';
@@ -795,13 +808,13 @@ and
 
     if (!emailRegex.test(email)) {
       formMessage.classList.add('error');
-      formMessage.textContent = "Please submit a valid email address.";
+      formMessageText.textContent = "Please submit a valid email address.";
       return;
     }
 
     // Valid email → hide any message → show T&C modal
     formMessage.style.display = 'none';
-    formMessage.textContent = '';
+    formMessageText.textContent = '';
     tcModal.style.display = 'block';
   });
 
@@ -810,7 +823,7 @@ and
     tcModal.style.display = 'none';
     formMessage.className = '';
     formMessage.classList.add('success');
-    formMessage.textContent = "Thank you! Your email has been submitted.";
+    formMessageText.textContent = "Thank you! Your email has been submitted.";
     formMessage.style.display = 'block';
     subscribeForm.submit();
   });

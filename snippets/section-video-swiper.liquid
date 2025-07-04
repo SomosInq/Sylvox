@@ -1,0 +1,238 @@
+{%- liquid
+  assign swiper_title = swiper_title | default: section.settings.swiper_title
+  assign swiper_sub_title = swiper_sub_title | default: section.settings.swiper_sub_title
+-%}
+<style>
+    .video-swiper-contair{
+        width:100%;
+        margin: 0 auto;
+    }
+    .video-swiper-title{
+        font-size:14px;
+        color:#666;
+    }
+    .video-swiper-content{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:30px;
+    }
+    .video-swiper-content-text{
+        flex-basis:60%;
+        margin:0;
+        font-size: 18px;
+    }
+    .carousel-arrow{
+        width: 28px;
+        height: 28px;
+        border: 1px solid #888;
+        border-radius: 50%;
+        font-size: 13px;
+        line-height: 0px;
+        transition: all 0.3s ease-out;
+    }
+    .carousel-arrow:hover{
+        background-color:#297f67;
+        color:#fff;
+        border:none;
+    }
+    .prev{
+        margin-right:10px;
+    }
+    .video-blocks {
+        display: flex;
+        gap: 15px;
+       overflow-x: auto;
+       scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 20px;
+    }
+    .video-blocks::-webkit-scrollbar {
+        display: none;
+    }
+    .video-wrapper {
+        position:relative;
+        flex: 0 0 calc(20% - 10px);
+        scroll-snap-align: start;
+        min-width: 285px;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0;
+        transform: translateY(30px);
+        will-change: transform, box-shadow;
+        cursor:pointer;
+    }
+    .video-wrapper video-media{
+        width:100%;
+        border-radius:10px;
+        height:490px;
+    }
+    .video-wrapper:hover {
+        transform: scale(1.05) translateY(-5px);
+    }
+    .video-wrapper.animate {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .control-block{
+        opacity:0;
+        display:flex;
+        align-items:center;
+        position: absolute;
+        width: 90%;
+        bottom: -3%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        padding: 5px 16px;
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 0.3s ease-out;
+    }
+    .video-wrapper:hover .control-block {
+        bottom: 3%; /* 悬停时移动到视频底部 */
+         opacity:1;
+    }
+    .control-block .right-btn{
+        min-width:60px;
+        display:flex;
+    }
+    .ProgressBar_wrapper{
+        height:3px;
+        width: 100%;
+    }
+    .progress_bar{
+        height:100%;
+        width:0%;
+        background:#fff;
+        border-radius:10px;
+    }
+    .control-block-mobile{
+        display:block;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:40px;
+        height:40px;
+        border-radius:50%;
+        padding:5px 6px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    .video-control-btn{
+        max-width:30px;
+        max-height:30px;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        color: #FFF;
+        transform: scale(0.8);
+    }
+    .video-control-btn svg,.control-block-mobile svg{
+        max-height:30px;
+        max-width:100%;
+        fill:#FFF;
+    }
+    .control-block-mobile svg{
+        transform:scale(0.75)
+    }
+    .control-btn{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2px;
+    }
+    @media screen and (max-width: 1440px){
+        .video-wrapper {
+            flex: 0 0 calc(25% - 10px);
+        }
+    }
+    @media screen and (max-width: 1024px){
+        .video-wrapper {
+            flex: 0 0 calc(30% - 10px);
+        }
+    }
+    @media screen and (max-width: 768px){
+        .video-swiper-content{
+            flex-direction:column;
+            align-items:flex-start;
+            gap:20px;
+        }
+        .carousel-arrow{
+            width:35px;
+            height:35px;
+        }
+        .prev{
+            margin-right:25px;
+        }
+        .video-wrapper {
+            flex: 0 0 calc(35% - 10px);
+            min-width: 100px;
+        }
+        .video-wrapper video-media{
+            height:350px;
+        }
+        .control-block{
+            display:none;
+        }
+    }
+    @media screen and (max-width: 470px){
+        .video-wrapper {
+            flex: 0 0 calc(70% - 10px);
+        }
+    }
+</style>
+<div class="page-width">
+    <div class="video-swiper-contair">
+    {%- if swiper_title != blank -%}
+        <p class="video-swiper-title">{{ swiper_title | escape }}</p>
+    {%- endif -%}
+    <div class="video-swiper-content">
+        {%- if swiper_sub_title != blank -%}
+            <p class="video-swiper-content-text">{{ swiper_sub_title | escape }}</p>
+        {%- endif -%}
+        <div class="carousel-arrow-content">
+            <button class="carousel-arrow prev">❮</button>
+            <button class="carousel-arrow next">❯</button>
+        </div>
+    </div>
+    {%- if section.blocks.size > 0 -%}
+    <div class="video-blocks">
+        {%- for block in section.blocks -%}
+        <div class="video-wrapper">
+            {%- if block.settings.video != blank -%}
+                {% render 'video-media', video: block.settings.video,show_controls:false,autoplay:false,media_crop:'9:16' %}
+                <button title="play" class="control-block-mobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-label="Play" class=""><path d="m8 6 16 10.5L8 26V6Z"></path></svg>
+                </button>
+                <div class="control-block">
+                    <button title="play" class="video-control-btn play-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-label="Play" class=""><path d="m8 6 16 10.5L8 26V6Z"></path></svg>
+                    </button>
+                    <div class="ProgressBar_wrapper">
+                        <div class="progress_bar"></div>
+                    </div>
+                    <div class="right-btn">
+                        <button title="mute" class="video-control-btn mute-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-label="SoundOn" class=""><path d="M23 4h4v24h-4V4Zm-6 5.33h4V28h-4V9.33Zm-6 5.34h4V28h-4V14.67ZM5 20h4v8H5v-8Z"></path></svg>
+                        </button>
+                        <button title="fullscreen" class="video-control-btn full-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-label="Fullscreen" class=""><path d="M7.106 20.333v-.5H5.5v4.743A2.924 2.924 0 0 0 8.424 27.5h4.743v-1.606H8.424c-.728 0-1.318-.59-1.318-1.318v-4.243Zm5.56-14.227h.5V4.5H8.425A2.924 2.924 0 0 0 5.5 7.424v4.743h1.606V7.424c0-.728.59-1.318 1.318-1.318h4.243Zm12.228 5.56v.5H26.5V7.425A2.924 2.924 0 0 0 23.576 4.5h-4.743v1.606h4.743c.728 0 1.318.59 1.318 1.318v4.243Zm-5.56 14.228h-.5V27.5h4.742a2.924 2.924 0 0 0 2.924-2.924v-4.743h-1.606v4.743c0 .728-.59 1.318-1.318 1.318h-4.243Z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            {%- else -%}
+                {% render 'video-media', external_video: block.settings.video_url,autoplay:false,media_crop:'9:16' %}
+            {%- endif -%} 
+        </div>
+        {%- endfor -%}
+    </div>
+    {%- endif -%}
+    </div>
+</div>
+<script src="{{ 'video-swiper.js' | asset_url }}" defer="defer"></script>

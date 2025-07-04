@@ -2,7 +2,17 @@
 {
   "name": "Icon Grid",
   "settings": [
-      {
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout Style",
+      "default": "grid",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "slider", "label": "Slider" }
+      ]
+    },
+    {
       "type": "select",
       "id": "section_width",
       "label": "Section Width",
@@ -126,7 +136,7 @@
     {% endif %}
   </div>
 
-  <div class="icon-grid__container">
+  <div class="icon-grid__container {% if section.settings.layout == 'slider' %}icon-grid__slider{% endif %}">
     {% for block in section.blocks %}
       <a href="{{ block.settings.link | default: '#' }}" class="icon-grid__item" style="text-align: {{ block.settings.text_align }};">
         {% if block.settings.icon %}
@@ -147,23 +157,47 @@
 
 <style>
 .icon-grid__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
 }
+
+.icon-grid__container.icon-grid__slider {
+  display: block;
+}
+
+.icon-grid__container:not(.icon-grid__slider) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
 .icon-grid__item {
   text-decoration: none;
   padding: 1rem;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Horizontal centering */
+  justify-content: center; /* Vertical centering */
+  text-align: center;
 }
+
 .icon-grid__item:hover {
   transform: translateY(-5px);
 }
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  height: 100px; /* Optional: adjust for icon container height */
+}
+
 .icon-grid__header {
   text-align: center;
   margin-bottom: 2rem;
 }
+
 .icon-grid__button {
   display: inline-block;
   margin-top: 1rem;
@@ -173,17 +207,36 @@
   text-decoration: none;
   border-radius: 5px;
 }
-.icon-container {
-  display: flex;
-  margin-bottom: 1rem;
-}
+
 .icon-align-left {
   justify-content: flex-start;
 }
+
 .icon-align-center {
   justify-content: center;
 }
+
 .icon-align-right {
   justify-content: flex-end;
 }
 </style>
+
+<!-- Flickity -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    {% if section.settings.layout == 'slider' %}
+      var elem = document.querySelector('.icon-grid__slider');
+      if (elem && window.Flickity) {
+        new Flickity( elem, {
+          cellAlign: 'left',
+          contain: true,
+          pageDots: true,
+          prevNextButtons: true
+        });
+      }
+    {% endif %}
+  });
+</script>

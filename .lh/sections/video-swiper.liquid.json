@@ -1,0 +1,18 @@
+{
+    "sourceFile": "sections/video-swiper.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1751451032582,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1751451032582,
+            "name": "Commit-0",
+            "content": "{%- render 'section-video-swiper' -%}\n\n{% schema %}\n  {\n    \"name\": \"Section name\",\n    \"class\": \"index-section\",\n    \"settings\": [\n      {\n        \"id\": \"swiper_title\",\n        \"type\": \"text\",\n        \"label\": \"t:labels.heading\",\n        \"default\": \"sylvox Community\"\n      },\n      {\n        \"id\": \"swiper_sub_title\",\n        \"type\": \"text\",\n        \"label\": \"Content Text\",\n        \"default\": \"A home for all Sylvox fans to experience content,inspiration, and our beautiful technology.\"\n\n      },\n    ],\n     \"blocks\": [\n      {\n        \"type\": \"video_block\",\n        \"name\": \"Video Block\",\n        \"settings\": [\n          {\n            \"type\": \"video\",\n            \"id\": \"video\",\n            \"label\": \"t:labels.video\",\n            \"info\": \"t:info.overrides_video_url_if_both_set\"\n          },\n          {\n            \"type\": \"video_url\",\n            \"id\": \"video_url\",\n            \"label\": \"t:labels.video_url\",\n            \"default\": \"https://www.youtube.com/watch?v=_9VUPq3SxOc\",\n            \"accept\": [\"youtube\", \"vimeo\"]\n          },\n        ]\n      }\n    ],\n    \"presets\": [\n      {\n        \"name\": \"Video Swiper\",\n        \"blocks\": [\n          {\n            \"type\": \"video_block\"\n          },\n          {\n            \"type\": \"video_block\"\n          },\n          {\n            \"type\": \"video_block\"\n          },\n          {\n            \"type\": \"video_block\"\n          },\n          {\n            \"type\": \"video_block\"\n          },\n          {\n            \"type\": \"video_block\"\n          }\n        ]\n      }\n    ],\n  }\n{% endschema %}"
+        }
+    ]
+}
