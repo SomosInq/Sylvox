@@ -48,6 +48,7 @@
   }
 </style>
 
+
 <div class="outdoor-tabs-section section section_width_{{ section.settings.section_width }}"
      style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');">
   
@@ -144,14 +145,20 @@
     { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
     {
-      "type": "select", "id": "section_width", "label": "Section Width", "default": "standard",
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
       "options": [
         { "value": "standard", "label": "50% Width" },
         { "value": "full", "label": "Full Width" }
       ]
     },
     {
-      "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard",
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
       "options": [
         { "value": "standard", "label": "50% Width" },
         { "value": "full", "label": "Full Width" }
@@ -168,7 +175,7 @@
   ],
   "blocks": [
     {
-      "type": "video_block",
+      "type": "video",
       "name": "Video",
       "settings": [
         { "type": "text", "id": "title", "label": "Video Title" },
@@ -196,4 +203,5 @@
     }
   ]
 }
+
 {% endschema %}
