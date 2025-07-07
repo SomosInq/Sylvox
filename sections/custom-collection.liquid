@@ -1,0 +1,237 @@
+{% comment %}
+  Custom section: Custom Collection | custom-collection.liquid
+{% endcomment %}
+
+<div id="custom-collection-{{ section.id }}" class="custom-collection">
+  {% if section.settings.title != blank %}
+    <h2 class="custom-collection__title" style="text-align: {{ section.settings.title_alignment }};">
+      {{ section.settings.title }}
+    </h2>
+  {% endif %}
+
+  <div class="custom-collection__grid" style="text-align: {{ section.settings.text_alignment }};">
+    {% for block in section.blocks %}
+      {% if block.settings.product != blank %}
+        {% assign product = all_products[block.settings.product] %}
+        <div class="custom-collection__item" {{ block.shopify_attributes }}>
+          <div class="custom-collection__image-wrapper">
+            <a href="{{ product.url }}">
+              <img
+                src="{% if block.settings.alt_image != blank %}
+                  {{ block.settings.alt_image | image_url: width: 400 }}
+                {% else %}
+                  {{ product.featured_image | image_url: width: 400 }}
+                {% endif %}"
+                alt="{% if block.settings.alt_image != blank %}
+                  {{ block.settings.alt_image.alt | escape }}
+                {% else %}
+                  {{ product.featured_image.alt | escape }}
+                {% endif %}"
+                class="custom-collection__image"
+                loading="lazy"
+              >
+            </a>
+          </div>
+
+          {% if block.settings.tag != blank %}
+            <div class="custom-collection__tag">{{ block.settings.tag }}</div>
+          {% endif %}
+
+          <h3 class="custom-collection__name">
+            <a href="{{ product.url }}">
+              {% if block.settings.alt_name != blank %}
+                {{ block.settings.alt_name }}
+              {% else %}
+                {{ product.title }}
+              {% endif %}
+            </a>
+          </h3>
+
+          <p class="custom-collection__price">
+            {% if product.compare_at_price > product.price %}
+              {{ product.price | money }}
+              <span class="custom-collection__compare-price">{{ product.compare_at_price | money }}</span>
+            {% else %}
+              {{ product.price | money }}
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  #custom-collection-{{ section.id }} {
+    padding: 60px 20px;
+  }
+
+  .custom-collection__title {
+    font-size: 32px;
+    font-weight: 400;
+    color: #1d1d1b;
+    font-family: "Questrial", sans-serif;
+    margin-bottom: 60px;
+  }
+
+  .custom-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px 32px;
+    justify-items: center;
+  }
+
+  .custom-collection__item {
+    max-width: 220px;
+  }
+
+  .custom-collection__image-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .custom-collection__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .custom-collection__tag {
+    font-size: 14px;
+    color: #3a923a;
+    font-family: "Questrial", sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .custom-collection__name {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #1d1d1b;
+    font-family: "Questrial", sans-serif;
+  }
+
+  .custom-collection__name a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .custom-collection__price {
+    font-size: 14px;
+    color: #1d1d1b;
+    font-family: "Questrial", sans-serif;
+  }
+
+  .custom-collection__compare-price {
+    text-decoration: line-through;
+    color: #7e8182;
+    margin-left: 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-collection__title {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
+    .custom-collection__grid {
+      gap: 32px 20px;
+    }
+
+    .custom-collection__item {
+      max-width: 160px;
+    }
+
+    .custom-collection__name {
+      font-size: 16px;
+    }
+
+    .custom-collection__price {
+      font-size: 13px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Collection",
+  "tag": "section",
+  "class": "section-custom-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Compatible with"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Item Text Alignment",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "right" }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "alt_image",
+          "label": "Alternate Image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "alt_name",
+          "label": "Alternate Product Name (optional)"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (e.g., Element)",
+          "default": "Element"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Custom Collection",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

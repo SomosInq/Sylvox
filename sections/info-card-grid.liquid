@@ -1,0 +1,237 @@
+{% comment %}
+  Custom section: Info Card Grid | info-card-grid.liquid
+{% endcomment %}
+{% schema %}
+    {
+      "name": "Info Card Grid",
+      "settings": [],
+      "blocks": [
+        {
+          "type": "card",
+          "name": "Info Card",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "background_image",
+              "label": "Background Image"
+            },
+            {
+              "type": "text",
+              "id": "heading",
+              "label": "Heading",
+              "default": "Card Title"
+            },
+            {
+              "type": "textarea",
+              "id": "description",
+              "label": "Description",
+              "default": "This is a flexible content block. Use it for any purpose like support, education, promotions, or highlights."
+            },
+            {
+              "type": "text",
+              "id": "cta_text",
+              "label": "CTA Text",
+              "default": "Learn more about this feature or section."
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+            },
+            {
+              "type": "color",
+              "id": "heading_color",
+              "label": "Heading Color",
+              "default": "#ffffff"
+            },
+            {
+              "type": "color",
+              "id": "description_color",
+              "label": "Description Color",
+              "default": "#eaeaea"
+            },
+            {
+              "type": "color",
+              "id": "cta_color",
+              "label": "CTA Color",
+              "default": "#ffffff"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Info Card Grid",
+            "category": "Custom",
+          "blocks": []
+        }
+      ]
+    }
+    {% endschema %}
+    
+    {% stylesheet %}
+    .info-card-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      padding-left: 50px;
+      padding-right: 50px;
+      background: white;
+      flex-wrap: wrap;
+      margin-top: 78px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .info-card {
+      position: relative;
+      max-width: 792px;
+      aspect-ratio: 792 / 530;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 40px;
+      border-radius: 8px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-blend-mode: overlay;
+      background-image: none;
+      overflow: hidden;
+      text-decoration: none;
+      /* flex: 1 1 auto; */
+    }
+    .info-card h2 {
+      font-family: 'Questrial', sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: white;
+      width: 636px;
+      text-align: left;
+    }
+    .info-card .description {
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      width: 562px;
+      line-height: normal;
+    }
+    .info-card .cta {
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+    .info-card .arrow {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .info-card__bottom {
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .info-card__bottom .description {
+      max-width: 562px;
+    }
+    @media screen and (max-width: 767px) {
+      .info-card-grid {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        padding: 40px 16px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .info-card {
+        max-width: 358px;
+        aspect-ratio: 358 / 266;
+        height: auto;
+        padding: 24px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        /* flex: 1 1 auto; */
+      }
+
+      .info-card h2 {
+        font-size: 20px;
+        width: 100%;
+        height: 21px;
+      }
+
+      .info-card .description {
+        font-size: 14px;
+      }
+
+      .info-card .cta {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .info-card .arrow {
+        width: 48px;
+        height: 48px;
+      }
+
+      .info-card__bottom {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .info-card__bottom .description {
+        width: auto;
+      }
+    }
+    {% endstylesheet %}
+    
+    <div class="info-card-grid">
+      {% for block in section.blocks %}
+        {% if block.settings.background_image %}
+          {% assign bg = block.settings.background_image | image_url: width: 1000 %}
+          {%- assign link_url = block.settings.link -%}
+          {%- if link_url != blank -%}
+            <a href="{{ link_url }}" class="info-card" style="background-image: url('{{ bg }}')">
+              <h2>{{ block.settings.heading }}</h2>
+              <div class="info-card__bottom">
+                <div class="description">
+                  {{ block.settings.description }}
+                  <div class="cta">{{ block.settings.cta_text }}</div>
+                </div>
+                <div class="arrow">
+                  {%- render 'bottom-right-arrow.svg' -%}
+                </div>
+              </div>
+            </a>
+          {%- else -%}
+            <div class="info-card" style="background-image: url('{{ bg }}')">
+              <h2>{{ block.settings.heading }}</h2>
+              <div class="info-card__bottom">
+                <div class="description">
+                  {{ block.settings.description }}
+                  <div class="cta">{{ block.settings.cta_text }}</div>
+                </div>
+                <div class="arrow">
+                  {%- render 'bottom-right-arrow.svg' -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {% endif %}
+      {% endfor %}
+    </div>

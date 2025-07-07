@@ -1,0 +1,539 @@
+{% comment %}
+  Custom section: Vantrue DashCam App | support-layout-app-player.liquid
+{% endcomment %}
+
+<div class="pagewidth support-dashcam-app-layout">
+  <div class="support-dashcam-app-wrapper">
+    {% assign sidebar_block = section.blocks | where: "type", "sidebar_menu" | first %}
+    {% if sidebar_block and sidebar_block.settings.menu != blank %}
+      {% render 'support-sidebar', menu: sidebar_block.settings.menu %}
+    {% endif %}
+
+    <div class="support-content support-dashcam-app-content">
+      <div class="support-dashcam-app__banner" {% if section.settings.banner_background %}style="background-image: url({{ section.settings.banner_background | image_url: width: 1600 }});" {% endif %}>
+        <div class="support-dashcam-app__banner-inner">
+          <div class="support-dashcam-app__banner-content" style="width: 831px; display: inline-flex; flex-direction: column; gap: 20px; align-items: flex-start;">
+            {% if section.settings.banner_wordmark %}
+              <img src="{{ section.settings.banner_wordmark | image_url: width: 140 }}" alt="Vantrue Wordmark">
+            {% endif %}
+            <h1 class="support-dashcam-app__banner-title">APP & Player</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-dashcam-app__content-wrapper">
+        <div class="support-dashcam-app__logo">
+          {% if section.settings.banner_logo %}
+            <img src="{{ section.settings.banner_logo | image_url: width: 140 }}" alt="Vantrue Orange Logo">
+          {% endif %}
+          <div class="support-dashcam-app__logo-inner">
+            {% if section.settings.heading != blank %}
+              <div class="support-dashcam-app__logo-heading">{{ section.settings.heading }}</div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="support-dashcam-app__features">
+          <div class="support-dashcam-app__feature">
+            {% if section.settings.image_1 %}
+              <img src="{{ section.settings.image_1 | image_url: width: 120 }}" alt="Video Sharing">
+            {% endif %}
+            <p>Video Sharing</p>
+          </div>
+          <div class="support-dashcam-app__feature-divider">
+            <div class="support-dashcam-app__feature-divider-line"></div>
+          </div>
+          <div class="support-dashcam-app__feature">
+            {% if section.settings.image_2 %}
+              <img src="{{ section.settings.image_2 | image_url: width: 120 }}" alt="GPS Track">
+            {% endif %}
+            <p>GPS Track</p>
+          </div>
+          <div class="support-dashcam-app__feature-divider">
+            <div class="support-dashcam-app__feature-divider-line"></div>
+          </div>
+          <div class="support-dashcam-app__feature">
+            {% if section.settings.image_3 %}
+              <img src="{{ section.settings.image_3 | image_url: width: 120 }}" alt="Video Editing">
+            {% endif %}
+            <p>Video Editing</p>
+          </div>
+          <div class="support-dashcam-app__feature-divider">
+            <div class="support-dashcam-app__feature-divider-line"></div>
+          </div>
+          <div class="support-dashcam-app__feature">
+            {% if section.settings.image_4 %}
+              <img src="{{ section.settings.image_4 | image_url: width: 120 }}" alt="Live Preview">
+            {% endif %}
+            <p>Live Preview</p>
+          </div>
+        </div>
+
+        <ul class="support-dashcam-app__features-list">
+          <li>Support wireless connection with Vantrue WiFi dashcam</li>
+          <li>Preview the current recording in real-time in the app</li>
+          <li>Support picture and video download and playback</li>
+          <li>Easily access or modify dashcam settings through the app</li>
+        </ul>
+
+        <div class="support-dashcam-app__downloads">
+          <div class="support-dashcam-app__card support-dashcam-app__card-title-left">
+            <h4 class="support-dashcam-app__card-title-left">iOS</h4>
+            <div class="support-dashcam-app__card-body-centered">
+              {% if section.settings.qr_ios %}
+                <img src="{{ section.settings.qr_ios | image_url: width: 160 }}">
+              {% endif %}
+              {% if section.settings.badge_ios %}
+                <img src="{{ section.settings.badge_ios | image_url: width: 120 }}" alt="App Store">
+              {% endif %}
+              <a href="{{ section.settings.link_ios }}" class="support-dashcam-app__button">Download</a>
+            </div>
+          </div>
+
+          <div class="support-dashcam-app__card support-dashcam-app__card-title-left">
+            <h4 class="support-dashcam-app__card-title-left">Android</h4>
+            <div class="support-dashcam-app__card-body-centered">
+              {% if section.settings.qr_android %}
+                <img src="{{ section.settings.qr_android | image_url: width: 160 }}">
+              {% endif %}
+              {% if section.settings.badge_android %}
+                <img src="{{ section.settings.badge_android | image_url: width: 120 }}" alt="Google Play">
+              {% endif %}
+              <a href="{{ section.settings.link_android }}" class="support-dashcam-app__button">Download</a>
+            </div>
+          </div>
+
+          <div class="support-dashcam-app__card support-dashcam-app__card-center">
+            <h4>Vantrue Web <span>(Only for Android)</span></h4>
+            <div class="support-dashcam-app__card-body-centered">
+              <div class="support-dashcam-app__empty-qr"></div>
+              <a href="{{ section.settings.link_web }}" class="support-dashcam-app__button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+.support-dashcam-app-layout {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.pagewidth {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.support-dashcam-app-wrapper {
+  display: flex;
+  gap: 20px;
+  max-width: 1608px;
+  margin: 0 auto;
+}
+.support-dashcam-app-content {
+  flex: 1;
+}
+.support-dashcam-app__banner {
+  padding: 80px;
+  background: #E8E8E8;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 26px;
+  height: auto;
+}
+.support-dashcam-app__banner-inner {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 80px;
+}
+.support-dashcam-app__banner-title {
+  font-size: 56px;
+  font-weight: 400;
+  font-family: Questrial, sans-serif;
+  color: #1D1D1B;
+}
+.support-dashcam-app__content-wrapper {
+  background-color: #FAFAFA;
+  padding: 40px 24px;
+  margin-top: 20px;
+}
+.support-dashcam-app__logo {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 32px;
+}
+.support-dashcam-app__logo img {
+  width: 84px;
+  height: 84px;
+  mix-blend-mode: multiply;
+  border-radius: 10px;
+}
+.support-dashcam-app__logo-inner {
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.support-dashcam-app__logo-heading {
+  font-size: 32px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: #2C2C2C;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.support-dashcam-app__features {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.support-dashcam-app__feature {
+  flex: 1 1 0;
+  align-self: stretch;
+  padding-top: 33px;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-top: 1px #E0E0E0 solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  display: inline-flex;
+  height: 352px;
+} 
+.support-dashcam-app__feature img {
+  width: 116.29px;
+  height: 239px;
+  mix-blend-mode: multiply;
+  border-radius: 22px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.support-dashcam-app__feature p {
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: center;
+  word-wrap: break-word;
+  margin-top: 0;
+}
+.support-dashcam-app__feature-divider {
+  align-self: stretch;
+  padding-top: 8px;
+  padding-left: 4px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.support-dashcam-app__feature-divider-line {
+  width: 1px;
+  flex: 1 1 0;
+  background: #E0E0E0;
+}
+.support-dashcam-app__features-list {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 40px;
+}
+
+.support-dashcam-app__features-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: #636363;
+  word-wrap: break-word;
+}
+.support-dashcam-app__downloads {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.support-dashcam-app__card {
+  flex: 1;
+  min-width: 240px;
+  padding: 0;
+}
+.support-dashcam-app__card-title-left {
+  color: #2C2C2C;
+font-size: 32px;
+font-family: Questrial;
+font-weight: 400;
+  margin-bottom: 12px;
+  text-align: left;
+}
+.support-dashcam-app__card-body-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.support-dashcam-app__card-center h4 {
+    color: #2C2C2C;
+font-size: 32px;
+font-family: Questrial;
+font-weight: 400;
+  margin-bottom: -10px; 
+  text-align: center;
+}
+.support-dashcam-app__card-center span {
+  font-size: 12px;
+  color: #888;
+  display: block;
+}
+.support-dashcam-app__button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: #1d1d1b;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+}
+.support-dashcam-app__empty-qr {
+  height: 160px;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+
+.support-dashcam-app-wrapper {
+    flex-direction: column;
+}
+  .support-dashcam-app__banner {
+    padding: 80px 40px;
+    height: auto;
+    background-position: top left;
+    background-size: cover;
+  }
+  .support-dashcam-app__banner-inner {
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex;
+  }
+  .support-dashcam-app__banner-content {
+    width: 262px !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: flex-start !important;
+    display: flex !important;
+  }
+  .support-dashcam-app__banner-title {
+    font-size: 24px !important;
+  }
+  .support-dashcam-app__logo {
+    flex-direction: row !important;
+    gap: 20px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    display: flex !important;
+  }
+  .support-dashcam-app__logo img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .support-dashcam-app__logo-heading {
+    font-size: 18px !important;
+  }
+  .support-dashcam-app__features {
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    width: 100%;
+  }
+  .support-dashcam-app__feature {
+    height: auto !important;
+    padding: 33px 24px 24px !important;
+    border-top: 1px solid #E0E0E0 !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    align-items: center !important;
+    display: flex !important;
+  }
+  .support-dashcam-app__feature img {
+    width: 116.29px !important;
+    height: 239px !important;
+    border-radius: 22px !important;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25) !important;
+  }
+  .support-dashcam-app__feature p {
+    font-size: 18px !important;
+    text-align: center !important;
+    color: #222222 !important;
+  }
+  .support-dashcam-app__features-list li {
+    font-size: 16px !important;
+    color: #636363 !important;
+    width: 100% !important;
+    max-width: 305px !important;
+  }
+  .support-dashcam-app__downloads {
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+  .support-dashcam-app__card {
+    width: 100%;
+    max-width: 342px;
+    padding: 24px;
+    height: auto;
+  }
+  .support-dashcam-app__card-title-left {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .support-dashcam-app__card-center h4 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .support-dashcam-app__card-center span {
+    font-size: 12px;
+    text-align: center;
+  }
+  .support-dashcam-app__card-body-centered {
+    gap: 16px;
+  }
+  .support-dashcam-app__button {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+  }
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "App Player Layout",
+  "class": "support-dashcam-app-layout",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_wordmark",
+      "label": "Banner Wordmark Logo (Black)"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_logo",
+      "label": "Orange V Logo"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Vantrue DashCam App"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_background",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Video Sharing Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "GPS Track Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Video Editing Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Live Preview Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "qr_ios",
+      "label": "QR Code iOS"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_ios",
+      "label": "App Store Badge"
+    },
+    {
+      "type": "url",
+      "id": "link_ios",
+      "label": "iOS Download Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "qr_android",
+      "label": "QR Code Android"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_android",
+      "label": "Google Play Badge"
+    },
+    {
+      "type": "url",
+      "id": "link_android",
+      "label": "Android Download Link"
+    },
+    {
+      "type": "url",
+      "id": "link_web",
+      "label": "Vantrue Web App Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sidebar_menu",
+      "name": "Support Sidebar",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Sidebar Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "App Player Layout",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

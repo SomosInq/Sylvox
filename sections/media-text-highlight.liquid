@@ -1,0 +1,184 @@
+{% comment %}
+  Custom section: Media Text Highlight | media-text-highlight.liquid
+{% endcomment %}
+
+<div class="media-text-highlight" id="media-text-highlight-{{ section.id }}">
+  <div class="media-text-highlight__wrapper">
+    <div class="media-text-highlight__media">
+      {% if section.settings.image %}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="lazy"
+          class="media-text-highlight__image"
+        >
+      {% endif %}
+    </div>
+    <div class="media-text-highlight__content">
+      {% if section.settings.title != blank %}
+        <h2 class="media-text-highlight__title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="media-text-highlight__description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+      <div class="media-text-highlight__images">
+        {% if section.settings.image_1 %}
+          <img
+            src="{{ section.settings.image_1 | image_url }}"
+            alt="Supporting image 1"
+            class="media-text-highlight__inline-image"
+            loading="lazy"
+          >
+        {% endif %}
+        {% if section.settings.image_2 %}
+          <img
+            src="{{ section.settings.image_2 | image_url }}"
+            alt="Supporting image 2"
+            class="media-text-highlight__inline-image"
+            loading="lazy"
+          >
+        {% endif %}
+        {% if section.settings.image_3 %}
+          <img
+            src="{{ section.settings.image_3 | image_url }}"
+            alt="Supporting image 3"
+            class="media-text-highlight__inline-image"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .media-text-highlight {
+    padding: 60px 20px;
+    background-color: #ffffff;
+  }
+
+  .media-text-highlight__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1608px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .media-text-highlight__media {
+    flex: 1 1 50%;
+    max-width: 720px;
+  }
+
+  .media-text-highlight__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .media-text-highlight__content {
+    flex: 1 1 40%;
+    max-width: 560px;
+  }
+
+  .media-text-highlight__title {
+    font-family: 'Questrial', sans-serif;
+    font-size: 40px;
+    line-height: 1.3;
+    color: #1d1d1b;
+    margin-bottom: 24px;
+  }
+
+  .media-text-highlight__description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #2c2c2c;
+    margin-bottom: 40px;
+  }
+
+  .media-text-highlight__images {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .media-text-highlight__inline-image {
+    height: auto;
+    max-width: 100px;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    .media-text-highlight__wrapper {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .media-text-highlight__content {
+      max-width: 100%;
+    }
+
+    .media-text-highlight__images {
+      justify-content: center;
+    }
+
+    .media-text-highlight__title {
+      font-size: 28px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Media Text Highlight",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your Title Here"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Your description goes here.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Supporting Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Supporting Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Supporting Image 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media Text Highlight",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

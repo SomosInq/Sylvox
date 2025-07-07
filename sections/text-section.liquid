@@ -1,0 +1,373 @@
+{% comment %}
+  Custom section: Text Section | text-section.liquid
+{% endcomment %}
+
+<section
+  id="text-section-{{ section.id }}"
+  class="text-section"
+  style="
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  "
+>
+  <div class="text-section__inner">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'caption' %}
+          <p
+            class="text-section__caption"
+            id="{{ block.id }}"
+            {{ block.shopify_attributes }}
+            style="
+              font-size: {{ block.settings.caption_font_size_desktop }}px;
+              font-weight: {{ block.settings.font_weight }};
+              margin-bottom: {{ block.settings.margin_bottom }}px;
+              color: {{ block.settings.color }};
+              text-transform: {{ block.settings.text_transform }};
+              max-width: {{ block.settings.caption_max_width_desktop }}px;
+              margin-left: auto;
+              margin-right: auto;
+              text-align: {{ block.settings.caption_text_align_desktop }};
+            "
+          >
+            {{ block.settings.text }}
+          </p>
+
+        {% when 'heading' %}
+          <h2
+            class="text-section__heading"
+            id="{{ block.id }}"
+            {{ block.shopify_attributes }}
+            style="
+              font-size: {{ block.settings.heading_font_size_desktop }}px;
+              font-weight: {{ block.settings.font_weight }};
+              margin-bottom: {{ block.settings.margin_bottom }}px;
+              color: {{ block.settings.color }};
+              text-transform: {{ block.settings.text_transform }};
+              max-width: {{ block.settings.heading_max_width_desktop }}px;
+              margin-left: auto;
+              margin-right: auto;
+              text-align: {{ block.settings.heading_text_align_desktop }};
+            "
+          >
+            {{ block.settings.text }}
+          </h2>
+
+        {% when 'paragraph' %}
+          <p
+            class="text-section__paragraph"
+            id="{{ block.id }}"
+            {{ block.shopify_attributes }}
+            style="
+              font-size: {{ block.settings.paragraph_font_size_desktop }}px;
+              font-weight: {{ block.settings.font_weight }};
+              margin-bottom: {{ block.settings.margin_bottom }}px;
+              color: {{ block.settings.color }};
+              text-transform: {{ block.settings.text_transform }};
+              max-width: {{ block.settings.paragraph_max_width_desktop }}px;
+              margin-left: auto;
+              margin-right: auto;
+              text-align: {{ block.settings.paragraph_text_align_desktop }};
+            "
+          >
+            {{ block.settings.text }}
+          </p>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+{% style %}
+  .text-section {
+    text-align: center;
+  }
+
+  .text-section__inner {
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  @media screen and (max-width: 767px) {
+    #text-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    {% for block in section.blocks %}
+      {% if block.type == 'caption' %}
+        .text-section__caption#{{ block.id }} {
+          font-size: {{ block.settings.caption_font_size_mobile }}px;
+          max-width: {{ block.settings.caption_max_width_mobile }}px;
+          text-align: {{ block.settings.caption_text_align_mobile }};
+        }
+      {% endif %}
+      {% if block.type == 'heading' %}
+        .text-section__heading#{{ block.id }} {
+          font-size: {{ block.settings.heading_font_size_mobile }}px;
+          max-width: {{ block.settings.heading_max_width_mobile }}px;
+          text-align: {{ block.settings.heading_text_align_mobile }};
+        }
+      {% endif %}
+      {% if block.type == 'paragraph' %}
+        .text-section__paragraph#{{ block.id }} {
+          font-size: {{ block.settings.paragraph_font_size_mobile }}px;
+          max-width: {{ block.settings.paragraph_max_width_mobile }}px;
+          text-align: {{ block.settings.paragraph_text_align_mobile }};
+        }
+      {% endif %}
+    {% endfor %}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Text Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "caption",
+      "name": "Caption",
+      "limit": 10,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Caption text", "default": "THE START OF SOMETHING DIFFERENT" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#2e2e2e" },
+        { "type": "range", "id": "caption_font_size_desktop", "label": "Font size (desktop)", "min": 10, "max": 30, "step": 1, "unit": "px", "default": 14 },
+        { "type": "range", "id": "caption_font_size_mobile", "label": "Font size (mobile)", "min": 10, "max": 24, "step": 1, "unit": "px", "default": 14 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 12 },
+        { "type": "range", "id": "caption_max_width_desktop", "label": "Max width (desktop)", "min": 300, "max": 1600, "step": 20, "unit": "px", "default": 600 },
+        { "type": "range", "id": "caption_max_width_mobile", "label": "Max width (mobile)", "min": 300, "max": 700, "step": 20, "unit": "px", "default": 340 },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "default": "400",
+          "options": [
+            { "value": "300", "label": "Light (300)" },
+            { "value": "400", "label": "Regular (400)" },
+            { "value": "500", "label": "Medium (500)" },
+            { "value": "600", "label": "Semi-bold (600)" },
+            { "value": "700", "label": "Bold (700)" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_transform",
+          "label": "Text transform",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" },
+            { "value": "capitalize", "label": "Capitalize" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "caption_text_align_desktop",
+          "label": "Text alignment (desktop)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "caption_text_align_mobile",
+          "label": "Text alignment (mobile)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 10,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Heading text", "default": "Safety in Every Second, Precision in Every Pixel" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#2e2e2e" },
+        { "type": "range", "id": "heading_font_size_desktop", "label": "Font size (desktop)", "min": 24, "max": 72, "step": 2, "unit": "px", "default": 48 },
+        { "type": "range", "id": "heading_font_size_mobile", "label": "Font size (mobile)", "min": 18, "max": 42, "step": 1, "unit": "px", "default": 32 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 28 },
+        { "type": "range", "id": "heading_max_width_desktop", "label": "Max width (desktop)", "min": 300, "max": 1600, "step": 20, "unit": "px", "default": 900 },
+        { "type": "range", "id": "heading_max_width_mobile", "label": "Max width (mobile)", "min": 300, "max": 700, "step": 20, "unit": "px", "default": 340 },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "default": "500",
+          "options": [
+            { "value": "300", "label": "Light (300)" },
+            { "value": "400", "label": "Regular (400)" },
+            { "value": "500", "label": "Medium (500)" },
+            { "value": "600", "label": "Semi-bold (600)" },
+            { "value": "700", "label": "Bold (700)" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_transform",
+          "label": "Text transform",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" },
+            { "value": "capitalize", "label": "Capitalize" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_text_align_desktop",
+          "label": "Text alignment (desktop)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_text_align_mobile",
+          "label": "Text alignment (mobile)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 10,
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Paragraph text", "default": "We started in 2015, Vantrue set out on a unique path..." },
+        { "type": "color", "id": "color", "label": "Color", "default": "#4a4a4a" },
+        { "type": "range", "id": "paragraph_font_size_desktop", "label": "Font size (desktop)", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 18 },
+        { "type": "range", "id": "paragraph_font_size_mobile", "label": "Font size (mobile)", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 16 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 0 },
+        { "type": "range", "id": "paragraph_max_width_desktop", "label": "Max width (desktop)", "min": 300, "max": 1600, "step": 20, "unit": "px", "default": 800 },
+        { "type": "range", "id": "paragraph_max_width_mobile", "label": "Max width (mobile)", "min": 300, "max": 700, "step": 20, "unit": "px", "default": 340 },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "default": "400",
+          "options": [
+            { "value": "300", "label": "Light (300)" },
+            { "value": "400", "label": "Regular (400)" },
+            { "value": "500", "label": "Medium (500)" },
+            { "value": "600", "label": "Semi-bold (600)" },
+            { "value": "700", "label": "Bold (700)" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_transform",
+          "label": "Text transform",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "uppercase", "label": "UPPERCASE" },
+            { "value": "lowercase", "label": "lowercase" },
+            { "value": "capitalize", "label": "Capitalize" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "paragraph_text_align_desktop",
+          "label": "Text alignment (desktop)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "paragraph_text_align_mobile",
+          "label": "Text alignment (mobile)",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Section",
+      "category": "Custom",
+      "blocks": [
+        { "type": "caption" },
+        { "type": "heading" },
+        { "type": "paragraph" }
+      ]
+    }
+  ]
+}
+{% endschema %}

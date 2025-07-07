@@ -1,0 +1,341 @@
+{% comment %}
+  Custom section: Feature Grid | feature-grid.liquid
+{% endcomment %}
+
+<div
+  class="feature-grid"
+  id="{{ section.id }}"
+>
+  <div class="feature-grid__wrapper feature-grid__desktop">
+    <div class="feature-grid__row">
+      {% for block in section.blocks %}
+        {% if forloop.index != 1 %}
+          <div class="feature-grid__divider"></div>
+        {% endif %}
+        <div class="feature-grid__item" {{ block.shopify_attributes }} id="{{ block.id }}">
+          <div class="feature-grid__line"></div>
+          <div class="feature-grid__cell">
+            {% if block.settings.symbol %}
+              <div class="feature-grid__symbol">
+                <img
+                  src="{{ block.settings.symbol | image_url: width: 60 }}"
+                  alt="100% Products Quality Guarantee"
+                >
+              </div>
+            {% endif %}
+            <div class="feature-grid__text">
+              <p class="feature-grid__text">{{ block.settings.text }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="feature-grid__wrapper feature-grid__mobile">
+    <div class="feature-grid__mobile-features">
+      {% for block in section.blocks %}
+        <div class="feature-grid__mobile-feature-item" id="feature-{{ block.id }}" {{ block.shopify_attributes }}>
+          {% if block.settings.symbol %}
+            <div class="feature-grid__mobile-feature-item__icon">
+              <img src="{{ block.settings.symbol | image_url: width: 50 }}" alt="100% Products Quality Guarantee">
+            </div>
+          {% endif %}
+          <div class="feature-grid__mobile-feature-item__text">
+            <h3 class="feature-grid__text">{{ block.settings.text }}</h3>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .feature-grid {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    position: relative;
+  }
+
+  .feature-grid__wrapper {
+    max-width: 1607px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .feature-grid__mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    .feature-grid__desktop {
+      display: none;
+    }
+    .feature-grid__mobile {
+      display: block;
+    }
+    .feature-grid__mobile {
+      padding: 0;
+    }
+    .feature-grid__mobile-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .feature-grid__mobile-feature-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+      border-top: 1px solid {{ section.settings.divider_color }};
+    }
+
+    .feature-grid__mobile-feature-item:first-child {
+      border-top: none;
+    }
+
+    .feature-grid__mobile-feature-item__icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .feature-grid__mobile-feature-item__icon img {
+      width: {{ section.settings.symbol_width_mobile }}px !important;
+      height: auto;
+    }
+
+    .feature-grid__mobile-feature-item__text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .feature-grid__mobile-feature-item__text h3 {
+      font-size: 16px;
+      font-family: 'Questrial', sans-serif;
+      font-weight: 400;
+      color: #636363;
+      text-align: left;
+    }
+
+    .feature-grid__mobile-feature-item__text p {
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      color: #636363;
+      text-align: left;
+    }
+
+    .feature-grid__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+
+    .feature-grid__divider {
+      width: 1px;
+      background-color: {{ section.settings.divider_color }};
+      margin: 9px 0;
+    }
+
+    .feature-grid__item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 209px;
+      text-align: center;
+      position: relative;
+    }
+
+    .feature-grid__item:nth-child(-n + 2)::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1px;
+      background-color: {{ section.settings.divider_color }};
+      right: 4px;
+      left: auto;
+      top: 0;
+    }
+
+    .feature-grid__item:nth-child(n + 3)::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1px;
+      background-color: {{ section.settings.divider_color }};
+      left: 4px;
+      right: auto;
+      top: 0;
+    }
+
+    .feature-grid__line {
+      display: none;
+    }
+  }
+  
+    .feature-grid__text {
+    font-size: 14px;
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 0;
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .feature-grid__divider {
+      display: block;
+    }
+
+    .feature-grid__text {
+    max-width: 164px;
+  }
+  }
+
+  .feature-grid__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .feature-grid__divider {
+    width: 1px;
+    background-color: {{ section.settings.divider_color }};
+    margin: 9px 0;
+  }
+
+  .feature-grid__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 209px;
+    text-align: center;
+  }
+
+  .feature-grid__line {
+    height: 1px;
+    width: calc(100% - 9px);
+    background-color: {{ section.settings.divider_color }};
+    margin: 0 auto 32px auto;
+  }
+
+  .feature-grid__cell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 9px;
+  }
+
+  .feature-grid__symbol img {
+    width: {{ section.settings.symbol_width_desktop }}px;
+    height: auto;
+    margin-bottom: 24px;
+    object-fit: contain;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Feature Grid",
+  "tag": "section",
+  "class": "feature-grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile",
+      "label": "Padding (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "symbol_width_desktop",
+      "label": "Symbol Width (Desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "symbol_width_mobile",
+      "label": "Symbol Width (Mobile)",
+      "min": 20,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider Line Color",
+      "default": "#535353"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Feature Text Color",
+      "default": "#1D1D1B"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "symbol",
+          "label": "Symbol (SVG or Image)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "100% Products Quality Guarantee"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Feature Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

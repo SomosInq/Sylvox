@@ -1,0 +1,432 @@
+{% comment %}
+  Custom section: Custom Blog | custom-blog.liquid
+{% endcomment %}
+<section class="custom-blog" style="background: {{ section.settings.bg_color }};">
+
+  <!-- Banner -->
+  <div class="custom-blog__banner" style="background-image: url('{{ section.settings.banner_image | image_url: width: 1920 }}');">
+    <div class="custom-blog__banner-inner">
+      <div class="custom-blog__label">{{ section.settings.banner_label }}</div>
+      <div class="custom-blog__subtitle">{{ section.settings.banner_subtitle }}</div>
+      <h1 class="custom-blog__heading">{{ blog.title }}</h1>
+      <a href="{{ section.settings.banner_link }}" class="custom-blog__arrow">
+        {% render 'diagonal-bottom-left-arrow.svg' %}
+      </a>
+    </div>
+  </div>
+
+  <!-- Blog Navigation Bar -->
+  <nav class="custom-blog__nav">
+    <ul>
+      <li><a href="/blogs/{{ section.settings.link_all }}" class="{% if blog.handle == section.settings.link_all %}active{% endif %}">{{ section.settings.tab_label_all }}</a></li>
+      <li><a href="/blogs/{{ section.settings.link_education }}" class="{% if blog.handle == section.settings.link_education %}active{% endif %}">{{ section.settings.tab_label_1 }}</a></li>
+      <li><a href="/blogs/{{ section.settings.link_industry }}" class="{% if blog.handle == section.settings.link_industry %}active{% endif %}">{{ section.settings.tab_label_2 }}</a></li>
+    </ul>
+  </nav>
+
+  <!-- Filter/Sort Row -->
+  <div class="custom-blog__filter-sort">
+    <button class="custom-blog__filter-btn">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+          <path d="M0 5H16" stroke="#6C707A"/>
+          <path d="M0 11H16" stroke="#6C707A"/>
+          <path d="M14 3H12V7H14V3Z" fill="#6C707A"/>
+          <path d="M5 9H3V13H5V9Z" fill="#6C707A"/>
+        </svg>
+      </span>
+      Filter
+    </button>
+    <button class="custom-blog__sort-btn">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+          <path d="M3 6L8 11L13 6" stroke="#6C707A"/>
+        </svg>
+      </span>
+      Sort
+    </button>
+  </div>
+  {% paginate blog.articles by 9 %}
+    <!-- Blog Grid -->
+    <div class="custom-blog__grid">
+      {% for article in blog.articles %}
+        <div class="custom-blog__card" data-category="{{ article.tags | join: ' ' }}">
+          <div class="custom-blog__card-image">
+            {% if article.image %}
+              <a href="{{ article.url }}">
+                <img
+                  src="{{ article.image | image_url: width: 600 }}"
+                  alt="{{ article.title }}"
+                  style="aspect-ratio: 520 / 288; max-width: 519.98px; max-height: 287.98px; width: 100%; height: auto; object-fit: cover;">
+              </a>
+            {% else %}
+              <div class="custom-blog__image-placeholder"></div>
+            {% endif %}
+            {% if article.tags.size > 0 %}
+              <div class="custom-blog__card-label">{{ article.tags.first }}</div>
+            {% endif %}
+          </div>
+
+          <div class="custom-blog__card-content">
+            <h3 class="custom-blog__card-title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h3>
+            <div class="custom-blog__card-excerpt-arrow">
+              <p class="custom-blog__card-excerpt">
+                {{ article.excerpt_or_content | strip_html | truncate: 140 }}
+              </p>
+              <a class="custom-blog__card-arrow" href="{{ article.url }}">
+                {% render 'diagonal-bottom-left-arrow.svg' %}
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Pagination -->
+    <div class="custom-blog__pagination">
+      {% if paginate.previous %}
+        <a href="{{ paginate.previous.url }}">&lt;</a>
+      {% endif %}
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a href="{{ part.url }}">{{ part.title }}</a>
+        {% else %}
+          <span class="current">{{ part.title }}</span>
+        {% endif %}
+      {% endfor %}
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}">&gt;</a>
+      {% endif %}
+    </div>
+  {% endpaginate %}
+</section>
+
+{% style %}
+.custom-blog__banner {
+  height: 600px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+}
+.custom-blog__banner-inner {
+  position: absolute;
+  left: 157px;
+  top: 154.5px;
+  gap: 20px;
+  max-width: 688px;
+  display: flex;
+  flex-direction: column;
+}
+.custom-blog__label {
+  padding: 6px 10px;
+  background: #1D1D1B;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+}
+.custom-blog__subtitle {
+  font-size: 18px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: white;
+}
+.custom-blog__heading {
+  font-size: 56px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: white;
+  max-width: 657px;
+  line-height: 1.2;
+}
+.custom-blog__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 4px;
+  width: auto;
+  height: auto;
+}
+ .custom-blog__arrow rect {
+  stroke: #ffffff;
+ }
+  .custom-blog__arrow path { 
+  fill: #ffffff;
+}
+.custom-blog__nav {
+  background-color: #1a1a1a;
+  margin-bottom: 40px;
+}
+.custom-blog__nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  height: 60px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.custom-blog__nav a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 12px;
+}
+.custom-blog__nav a.active {
+  font-weight: 600;
+}
+.custom-blog__nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 24px;
+  background: #ffffff;
+}
+.custom-blog__filter-sort {
+  display: flex;
+  justify-content: left;
+  gap: 16px;
+  margin: 40px auto;
+  max-width: 1608px;
+}
+.custom-blog__filter-btn,
+.custom-blog__sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #bdbdbd;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.custom-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 24px;
+  max-width: 1608px;
+  margin: 0 auto 60px;
+  padding: 0;
+}
+.custom-blog__card {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  max-width: 519.98px;
+}
+.custom-blog__card-image {
+  position: relative;
+}
+.custom-blog__card-image img {
+  width: 100%;
+  height: auto;
+  max-width: 519.98px;
+  max-height: 287.98px;
+  aspect-ratio: 520 / 288;
+  object-fit: cover;
+  display: block;
+}
+.custom-blog__card-content {
+  background: #FAFAFA;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+}
+.custom-blog__card-image .custom-blog__card-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #1a1a1a;
+  padding: 6px 12px;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  border-radius: 0;
+  z-index: 2;
+}
+.custom-blog__card-title {
+  font-size: 24px;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1D1D1B;
+}
+.custom-blog__card-title a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+.custom-blog__card-excerpt-arrow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+.custom-blog__card-excerpt {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #636363;
+  max-height: none;
+  overflow: visible;
+  margin: 0;
+}
+.custom-blog__card-arrow {
+  position: static;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 2px;
+}
+.custom-blog__pagination {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.custom-blog__pagination a,
+.custom-blog__pagination span {
+  margin: 0 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1a1a1a;
+  border-radius: 4px;
+}
+.custom-blog__pagination .current {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-blog__banner {
+    height: 600px;
+    background-position: center;
+  }
+  .custom-blog__banner-inner {
+    top: 354px;
+    left: 24px;
+    gap: 22px;
+    max-width: 282px;
+  }
+  .custom-blog__label {
+    font-size: 14px;
+  }
+  .custom-blog__subtitle {
+    font-size: 14px;
+  }
+  .custom-blog__heading {
+    font-size: 24px;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+  .custom-blog__grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 40px 24px;
+  }
+}
+{% endstyle %}
+{% schema %}
+{
+  "name": "Custom Blog",
+  "tag": "section",
+  "class": "custom-blog",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_label",
+      "label": "Banner Label",
+      "default": "Education"
+    },
+    {
+      "type": "text",
+      "id": "banner_subtitle",
+      "label": "Banner Subtitle",
+      "default": "Education & Industry"
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Banner Arrow Link",
+      "default": "/"
+    },
+    {
+      "type": "text",
+      "id": "tab_label_all",
+      "label": "All Tab Label",
+      "default": "All"
+    },
+    {
+      "type": "text",
+      "id": "tab_label_1",
+      "label": "First Tab Label",
+      "default": "Education"
+    },
+    {
+      "type": "text",
+      "id": "tab_label_2",
+      "label": "Second Tab Label",
+      "default": "Industry"
+    },
+    {
+      "type": "text",
+      "id": "link_all",
+      "label": "Blog handle for All",
+      "default": "all"
+    },
+    {
+      "type": "text",
+      "id": "link_education",
+      "label": "Blog handle for Education",
+      "default": "education"
+    },
+    {
+      "type": "text",
+      "id": "link_industry",
+      "label": "Blog handle for Industry",
+      "default": "industry"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Blog",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

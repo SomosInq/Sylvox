@@ -1,0 +1,331 @@
+{% comment %}
+  Custom section: Footer Alternate | footer-alternate.liquid
+{% endcomment %}
+
+<section class="footer-alternate" id="{{ section.id }}">
+  <div class="footer-alternate__grid">
+    <div class="footer-alternate__brand-row">
+      {% if section.settings.logo != blank %}
+        <div class="footer-alternate__logo">
+          {{ section.settings.logo | image_url: width: 180 | image_tag: alt: 'Vantrue logo' }}
+        </div>
+      {% endif %}
+
+      <div class="footer-alternate__heading-thumbnails">
+        <h2 class="footer-alternate__heading">Join Vantrue Community</h2>
+        <div class="footer-alternate__thumbnails">
+          {% if section.settings.image_1 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_1 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+          {% if section.settings.image_2 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_2 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+          {% if section.settings.image_3 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_3 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+          {% if section.settings.image_4 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_4 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-alternate__divider">
+
+    <div class="footer-alternate__content">
+      <div class="footer-alternate__newsletter">
+        <p class="footer-alternate__newsletter-label">Newsletter</p>
+        <p class="footer-alternate__newsletter-text">Be the first to know about product launches and all-things inside Vantrue.</p>
+        <button class="footer-alternate__newsletter-button">
+          <span class="footer-alternate__button-pill">Sign Up</span>
+          {% render 'bottom-right-arrow.svg' %}
+        </button>
+      </div>
+
+      <div class="footer-alternate__links">
+        <div class="footer-alternate__link-group">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#">Series</a></li>
+            <li><a href="#">What Series Is Right For Me?</a></li>
+            <li><a href="#">Compare</a></li>
+            <li><a href="#">Cloud</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Membership</a></li>
+          </ul>
+        </div>
+        <div class="footer-alternate__link-group">
+          <h3>About us</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Education & Industry</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+            <li><a href="#">Membership</a></li>
+          </ul>
+        </div>
+        <div class="footer-alternate__link-group">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Support Hub</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">App & Player</a></li>
+            <li><a href="#">User Manuals</a></li>
+          </ul>
+        </div>
+        <div class="footer-alternate__link-group">
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Cookie Statement</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-alternate__bottom">
+      <div class="footer-alternate__socials">
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Facebook</a>
+      </div>
+      <div class="footer-alternate__right-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Cookie Statement</a>
+        <span class="footer-alternate__language">NL | EN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .footer-alternate {
+    background-color: #fafafa;
+    padding: 60px 20px;
+    font-family: var(--font-body-family);
+  }
+
+  .footer-alternate__grid {
+    max-width: 1608px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .footer-alternate__brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .footer-alternate__heading-thumbnails {
+    display: flex;
+    align-items: center;
+    gap: 164.33px;
+  }
+
+  .footer-alternate__heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin: 0;
+  }
+
+  .footer-alternate__logo img {
+    max-width: 180px;
+    height: auto;
+  }
+
+  .footer-alternate__thumbnails {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-alternate__thumbnail img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+  }
+
+  .footer-alternate__divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .footer-alternate__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .footer-alternate__newsletter {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-alternate__newsletter-label {
+    font-size: 14px;
+    color: #7e8182;
+  }
+
+  .footer-alternate__newsletter-text {
+    font-size: 16px;
+    color: #0a0a0a;
+  }
+
+  .footer-alternate__newsletter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .footer-alternate__button-pill {
+    padding: 8px 18px;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 9999px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .footer-alternate__links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 32px;
+    max-width: 795.33px;
+  }
+
+  .footer-alternate__link-group h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #7e8182;
+    margin-bottom: 8px;
+  }
+
+  .footer-alternate__link-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-alternate__link-group li {
+    margin-bottom: 6px;
+  }
+
+  .footer-alternate__link-group a {
+    font-size: 14px;
+    color: #0a0a0a;
+    text-decoration: none;
+  }
+
+  .footer-alternate__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #7e8182;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-alternate__socials {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-alternate__right-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-alternate__right-links a {
+    color: #0a0a0a;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .footer-alternate__language {
+    color: #7e8182;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .footer-alternate__content {
+      flex-direction: column;
+    }
+
+    .footer-alternate__links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-alternate__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-alternate__brand-row {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footer-alternate__heading-thumbnails {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer Alternate",
+  "tag": "section",
+  "class": "section footer-alternate",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Community image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Community image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Community image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Community image 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Alternate",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

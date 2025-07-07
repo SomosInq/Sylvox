@@ -1,0 +1,210 @@
+{% comment %}
+  Custom section: Content Navigation | content-navigation.liquid
+{% endcomment %}
+
+<div class="content-navigation" id="{{ section.id }}">
+  <nav class="content-navigation__nav">
+    <ul class="content-navigation__list">
+      {% for block in section.blocks %}
+        <li class="content-navigation__item" {{ block.shopify_attributes }}>
+          <a
+            href="{{ block.settings.target | default: '#' }}"
+            class="content-navigation__link {% if forloop.first %}active{% endif %}"
+            data-target="{{ block.settings.target | default: '#' }}"
+            id="nav-link-{{ block.id }}"
+          >
+            {{ block.settings.label }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <span class="content-navigation__underline"></span>
+  </nav>
+</div>
+
+<style>
+  .content-navigation {
+    background-color: #0a0a0a;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .content-navigation__nav {
+    max-width: 1608px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .content-navigation__list {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid #c2c4c5;
+    scroll-behavior: smooth;
+  }
+
+  .content-navigation__item {
+    position: relative;
+    margin-right: 48px;
+    padding-bottom: 12px;
+    flex-shrink: 0;
+  }
+
+  .content-navigation__link {
+    display: inline-block;
+    font-family: "Questrial", sans-serif;
+    font-size: 16px;
+    color: #c2c4c5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .content-navigation__link.active {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .content-navigation__underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ffffff;
+    transition: left 0.3s ease, width 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    .content-navigation__item {
+      margin-right: 32px;
+    }
+
+    .content-navigation__link {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.querySelector(`#{{ section.id }} .content-navigation__nav`);
+    const links = nav.querySelectorAll('.content-navigation__link');
+    const underline = nav.querySelector('.content-navigation__underline');
+
+    function updateUnderline(el) {
+      underline.style.left = `${el.offsetLeft}px`;
+      underline.style.width = `${el.offsetWidth}px`;
+    }
+
+    function onScroll() {
+      let scrollPos = window.scrollY || window.pageYOffset;
+
+      links.forEach(link => {
+        const targetSelector = link.dataset.target;
+        const target = document.querySelector(targetSelector);
+
+        if (target) {
+          const offsetTop = target.offsetTop - 100;
+          const offsetBottom = offsetTop + target.offsetHeight;
+
+          if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            updateUnderline(link);
+          }
+        }
+      });
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetSelector = this.dataset.target;
+        const target = document.querySelector(targetSelector);
+
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', onScroll);
+
+    // Initial active underline on first render
+    const activeLink = nav.querySelector('.content-navigation__link.active');
+    if (activeLink) updateUnderline(activeLink);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Content Navigation",
+  "tag": "section",
+  "class": "content-navigation-wrapper",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Navigation Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link Label",
+          "default": "About Us"
+        },
+        {
+          "type": "text",
+          "id": "target",
+          "label": "Scroll Target (ID or class)",
+          "default": "#about-us",
+          "info": "Use #id or .class of the section to scroll to."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Content Navigation",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "About Us",
+            "target": "#about-us"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "As seen on",
+            "target": "#as-seen-on"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Vision & Mission",
+            "target": "#vision-mission"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Achievements",
+            "target": "#achievements"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,173 @@
+{% comment %}
+  Custom section: Image Carousel | image-carousel.liquid
+{% endcomment %}
+
+<div class="image-carousel" id="{{ section.id }}">
+  <div class="image-carousel__outer">
+    <div class="image-carousel__wrapper">
+      {% for block in section.blocks %}
+        <div class="image-carousel__slide" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            <div class="image-carousel__image-container">
+              <img 
+                src="{{ block.settings.image | image_url: width: 1600 }}" 
+                alt="{{ block.settings.image.alt | escape }}" 
+                loading="lazy"
+                class="image-carousel__image"
+              >
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+.image-carousel {
+  padding: 40px 0;
+  margin-left: 24px;
+}
+
+.image-carousel__outer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.image-carousel__outer::-webkit-scrollbar {
+  display: none;
+}
+
+.image-carousel__wrapper {
+  display: flex;
+  gap: 24px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+  width: max-content;
+}
+
+.image-carousel__slide {
+  flex: 0 0 calc((100vw - 120px) / 3);
+  scroll-snap-align: start;
+}
+
+.image-carousel__image-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-carousel__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+  .image-carousel__slide {
+    flex: 0 0 calc(50% - 12px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image-carousel__slide {
+    flex: 0 0 calc(100% - 24px);
+  }
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Image Carousel",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image_1",
+      "name": "Slide Image 1",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_2",
+      "name": "Slide Image 2",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_3",
+      "name": "Slide Image 3",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_4",
+      "name": "Slide Image 4",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_5",
+      "name": "Slide Image 5",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_6",
+      "name": "Slide Image 6",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_7",
+      "name": "Slide Image 7",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_8",
+      "name": "Slide Image 8",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_9",
+      "name": "Slide Image 9",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "image_10",
+      "name": "Slide Image 10",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Carousel",
+      "category": "Custom",
+      "blocks": [
+        { "type": "image_1" },
+        { "type": "image_2" },
+        { "type": "image_3" },
+        { "type": "image_4" }
+      ]
+    }
+  ]
+}
+{% endschema %}

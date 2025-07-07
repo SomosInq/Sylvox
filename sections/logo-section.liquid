@@ -1,0 +1,153 @@
+{% comment %}
+  Custom section: Logo Section | logo-section.liquid
+{% endcomment %}
+
+<div class="logo-section" id="{{ section.id }}">
+  <div class="logo-section__inner">
+    {% if section.settings.title != blank %}
+      <h2 class="logo-section__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="logo-section__logos">
+      {% if section.settings.logo_1 != blank %}
+        <div class="logo-section__logo" style="width: {{ section.settings.logo_1_width }}px;">
+          <img src="{{ section.settings.logo_1 | image_url }}" alt="Logo 1" loading="lazy">
+        </div>
+      {% endif %}
+      {% if section.settings.logo_2 != blank %}
+        <div class="logo-section__logo" style="width: {{ section.settings.logo_2_width }}px;">
+          <img src="{{ section.settings.logo_2 | image_url }}" alt="Logo 2" loading="lazy">
+        </div>
+      {% endif %}
+      {% if section.settings.logo_3 != blank %}
+        <div class="logo-section__logo" style="width: {{ section.settings.logo_3_width }}px;">
+          <img src="{{ section.settings.logo_3 | image_url }}" alt="Logo 3" loading="lazy">
+        </div>
+      {% endif %}
+      {% if section.settings.logo_4 != blank %}
+        <div class="logo-section__logo" style="width: {{ section.settings.logo_4_width }}px;">
+          <img src="{{ section.settings.logo_4 | image_url }}" alt="Logo 4" loading="lazy">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+.logo-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+.logo-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo-section__title {
+  font-size: 18px;
+  line-height: 1.4;
+  color: #1d1d1b;
+  margin-bottom: 32px;
+}
+.logo-section__logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.logo-section__logo {
+  opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+}
+.logo-section__logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Logo Section",
+  "tag": "section",
+  "class": "section logo-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "As Seen On"
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "Logo Opacity (%)",
+      "default": 100,
+      "min": 1,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo 1"
+    },
+    {
+      "type": "range",
+      "id": "logo_1_width",
+      "label": "Logo 1 Width (px)",
+      "default": 140,
+      "min": 40,
+      "max": 300,
+      "step": 5
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "Logo 2"
+    },
+    {
+      "type": "range",
+      "id": "logo_2_width",
+      "label": "Logo 2 Width (px)",
+      "default": 140,
+      "min": 40,
+      "max": 300,
+      "step": 5
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_3",
+      "label": "Logo 3"
+    },
+    {
+      "type": "range",
+      "id": "logo_3_width",
+      "label": "Logo 3 Width (px)",
+      "default": 140,
+      "min": 40,
+      "max": 300,
+      "step": 5
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_4",
+      "label": "Logo 4"
+    },
+    {
+      "type": "range",
+      "id": "logo_4_width",
+      "label": "Logo 4 Width (px)",
+      "default": 140,
+      "min": 40,
+      "max": 300,
+      "step": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

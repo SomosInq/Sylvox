@@ -1,0 +1,267 @@
+{% comment %}
+  Custom section: Stat Cards Grid | stat-cards-grid.liquid
+{% endcomment %}
+
+<div class="stat-cards-grid" id="{{ section.id }}">
+  <div class="stat-cards-grid__outer-wrapper">
+    <div class="stat-cards-grid__row">
+      {% if section.blocks.size > 0 %}
+        {% assign block1 = section.blocks[0] %}
+        <div class="stat-cards-grid__card" {{ block1.shopify_attributes }}>
+          <div class="stat-cards-grid__inner">
+            <div>
+              <p class="stat-cards-grid__label">{{ block1.settings.label }}</p>
+              <h2 class="stat-cards-grid__stat">{{ block1.settings.stat }}</h2>
+            </div>
+            <p class="stat-cards-grid__description">{{ block1.settings.description }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 1 %}
+        {% assign block2 = section.blocks[1] %}
+        <div class="stat-cards-grid__card" {{ block2.shopify_attributes }}>
+          <div class="stat-cards-grid__inner">
+            <div>
+              <p class="stat-cards-grid__label">{{ block2.settings.label }}</p>
+              <h2 class="stat-cards-grid__stat">{{ block2.settings.stat }}</h2>
+            </div>
+            <p class="stat-cards-grid__description">{{ block2.settings.description }}</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="stat-cards-grid__row">
+      {% if section.blocks.size > 2 %}
+        {% assign block3 = section.blocks[2] %}
+        <div class="stat-cards-grid__card" {{ block3.shopify_attributes }}>
+          <div class="stat-cards-grid__inner">
+            <div>
+              <p class="stat-cards-grid__label">{{ block3.settings.label }}</p>
+              <h2 class="stat-cards-grid__stat">{{ block3.settings.stat }}</h2>
+            </div>
+            <p class="stat-cards-grid__description">{{ block3.settings.description }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 3 %}
+        {% assign block4 = section.blocks[3] %}
+        <div class="stat-cards-grid__card" {{ block4.shopify_attributes }}>
+          <div class="stat-cards-grid__inner">
+            <div>
+              <p class="stat-cards-grid__label">{{ block4.settings.label }}</p>
+              <h2 class="stat-cards-grid__stat">{{ block4.settings.stat }}</h2>
+            </div>
+            <p class="stat-cards-grid__description">{{ block4.settings.description }}</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .stat-cards-grid {
+    padding: 80px 0;
+    background-color: #ffffff;
+  }
+
+  .stat-cards-grid__outer-wrapper {
+    width: 996px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .stat-cards-grid__row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .stat-cards-grid__card {
+    display: flex;
+    /* height: 204px; */
+    padding: 24px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    background-color: #FAFAFA;
+  }
+
+  .stat-cards-grid__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+    width: 100%;
+    gap: 30px;
+  }
+
+  .stat-cards-grid__label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2e2e2e;
+  }
+
+  .stat-cards-grid__stat {
+    font-size: 48px;
+    font-weight: 400;
+    color: #0a0a0a;
+    margin: 0;
+  }
+
+  .stat-cards-grid__description {
+    font-size: 16px;
+    color: #7e8182;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .stat-cards-grid__outer-wrapper {
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .stat-cards-grid__row {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .stat-cards-grid__card {
+      width: 100%;
+    }
+
+    .stat-cards-grid__stat {
+      font-size: 36px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Stat Cards Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card_1",
+      "name": "Card 1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Label"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Stat",
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description text"
+        }
+      ]
+    },
+    {
+      "type": "card_2",
+      "name": "Card 2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Label"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Stat",
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description text"
+        }
+      ]
+    },
+    {
+      "type": "card_3",
+      "name": "Card 3",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Label"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Stat",
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description text"
+        }
+      ]
+    },
+    {
+      "type": "card_4",
+      "name": "Card 4",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Label"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Stat",
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stat Cards Grid",
+      "category": "Custom",
+      "blocks": [
+        { "type": "card_1" },
+        { "type": "card_2" },
+        { "type": "card_3" },
+        { "type": "card_4" }
+      ]
+    }
+  ]
+}
+{% endschema %}

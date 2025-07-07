@@ -1,0 +1,298 @@
+{% comment %}
+  Custom section: Image Text Columns | image-text-columns.liquid
+{% endcomment %}
+
+<div class="image-text-columns-wrapper" id="image-text-columns-{{ section.id }}">
+  <div class="image-text-columns-grid">
+    {% for block in section.blocks %}
+      <div class="image-text-column" {{ block.shopify_attributes }} id="{{ block.id }}">
+        {% if block.settings.image %}
+          <div class="image-wrapper">
+            <div class="desktop-only">
+              <img
+                src="{{ block.settings.image | image_url: width: 800 }}"
+                alt="{{ block.settings.heading | escape }}"
+                loading="lazy"
+              >
+            </div>
+            {% if block.settings.image_mobile %}
+              <div class="mobile-only">
+                <img
+                  src="{{ block.settings.image_mobile | image_url: width: 400 }}"
+                  alt="{{ block.settings.heading | escape }}"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="text-block">
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+          <span class="read-more">Read More</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+  .desktop-only { display: block; }
+  .mobile-only { display: none; }
+
+  @media screen and (max-width: 990px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+  }
+  #image-text-columns-{{ section.id }} {
+    padding: 60px 0;
+    background: #ffffff;
+  }
+
+  #image-text-columns-{{ section.id }} .image-text-columns-grid {
+    display: flex;
+    gap: 24px;
+    max-width: 1602px;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #image-text-columns-{{ section.id }} .image-text-column {
+    width: 789px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #image-text-columns-{{ section.id }} .image-wrapper {
+    max-width: 789px;
+    aspect-ratio: 789 / 566;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  #image-text-columns-{{ section.id }} .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  #image-text-columns-{{ section.id }} .text-block {
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  #image-text-columns-{{ section.id }} .text-block h3 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    color: #1D1D1B;
+    max-width: 789px;
+    margin: 0 auto;
+  }
+
+  #image-text-columns-{{ section.id }} .text-block p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #1D1D1B;
+    max-width: 705px;
+    margin: 0 auto;
+  }
+
+  #image-text-columns-{{ section.id }} .text-block .read-more {
+    display: none;
+  }
+
+  @media screen and (max-width: 990px) {
+    #image-text-columns-{{ section.id }} {
+      padding: 48px 0;
+    }
+
+    #image-text-columns-{{ section.id }} .image-text-columns-grid {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 48px;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+
+    #image-text-columns-{{ section.id }} .image-text-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    #image-text-columns-{{ section.id }} .image-wrapper {
+      width: 340px;
+      height: 245px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    #image-text-columns-{{ section.id }} .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #image-text-columns-{{ section.id }} .text-block {
+      padding: 0;
+      margin-top: 0;
+      gap: 10px;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    #image-text-columns-{{ section.id }} .text-block h3 {
+      font-family: 'Questrial', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #1D1D1B;
+      margin: 0;
+      max-width: 340px;
+    }
+
+    #image-text-columns-{{ section.id }} .text-block p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1D1D1B;
+      line-height: 1.5em;
+      max-height: 6em;
+      margin: 0;
+      max-width: 340px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #image-text-columns-{{ section.id }} .text-block.expanded {
+      height: 100%;
+      min-height: 100%;
+      padding-bottom: 24px;
+    }
+    #image-text-columns-{{ section.id }} .text-block.expanded p {
+      -webkit-line-clamp: unset;
+      overflow: visible;
+      max-height: none;
+    }
+
+    #image-text-columns-{{ section.id }} .text-block .read-more {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1D1D1B;
+      text-decoration: underline;
+      max-width: 340px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      margin-top: 8px;
+    }
+  }
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#image-text-columns-{{ section.id }} .read-more').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const textBlock = this.closest('.text-block');
+        textBlock.classList.toggle('expanded');
+        this.textContent = textBlock.classList.contains('expanded') ? 'Read Less' : 'Read More';
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Image Text Columns",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "column_left",
+      "name": "Left Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Driving the Future with Trust and Innovation"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "We see a world where each turn, stop, and pathway is another opportunity to create safer roads for all..."
+        }
+      ]
+    },
+    {
+      "type": "column_right",
+      "name": "Right Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Driven by Innovation, Powered by You"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Vantrue is dedicated to making every drive safer, smoother, and more connected..."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Text Columns",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "column_left"
+        },
+        {
+          "type": "column_right"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

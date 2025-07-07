@@ -1,0 +1,385 @@
+{% comment %}
+  Custom section: Article Content | article-content.liquid
+{% endcomment %}
+
+<section class="article-content" id="article-content">
+  <div class="article-content__wrapper">
+    <nav class="article-content__nav">
+      <ul>
+        <li><a href="#{{ section.settings.section_1_id }}">{{ section.settings.section_1_heading }}</a></li>
+        <li><a href="#{{ section.settings.section_2_id }}">{{ section.settings.section_2_heading }}</a></li>
+        <li><a href="#{{ section.settings.section_3_id }}">{{ section.settings.section_3_heading }}</a></li>
+        <li><a href="#{{ section.settings.section_3_subtitle_1_id }}">{{ section.settings.section_3_subtitle_1 }}</a></li>
+        <li><a href="#{{ section.settings.section_3_subtitle_2_id }}">{{ section.settings.section_3_subtitle_2 }}</a></li>
+      </ul>
+    </nav>
+    <div class="article-content__section" id="{{ section.settings.section_1_id }}">
+      <h2 class="article-content__heading">{{ section.settings.section_1_heading }}</h2>
+      <p class="article-content__paragraph">{{ section.settings.section_1_description }}</p>
+      <div class="article-content__image-grid">
+        <div class="article-content__image-block">
+          <img src="{{ section.settings.section_1_image_1 | image_url: width: 800 }}" alt="" loading="lazy">
+          <h3>{{ section.settings.section_1_image_1_title }}</h3>
+          <p>{{ section.settings.section_1_image_1_text }}</p>
+        </div>
+        <div class="article-content__image-block">
+          <img src="{{ section.settings.section_1_image_2 | image_url: width: 800 }}" alt="" loading="lazy">
+          <h3>{{ section.settings.section_1_image_2_title }}</h3>
+          <p>{{ section.settings.section_1_image_2_text }}</p>
+        </div>
+        <div class="article-content__image-block">
+          <img src="{{ section.settings.section_1_image_3 | image_url: width: 800 }}" alt="" loading="lazy">
+          <h3>{{ section.settings.section_1_image_3_title }}</h3>
+          <p>{{ section.settings.section_1_image_3_text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="article-content__section" id="{{ section.settings.section_2_id }}">
+      <h2 class="article-content__heading">{{ section.settings.section_2_heading }}</h2>
+      <p class="article-content__paragraph">{{ section.settings.section_2_description }}</p>
+      <div class="article-content__symptoms">
+        <div class="article-content__symptom">
+          <h4>{{ section.settings.section_2_feature_1_title }}</h4>
+          <p>{{ section.settings.section_2_feature_1_text }}</p>
+        </div>
+        <div class="article-content__symptom">
+          <h4>{{ section.settings.section_2_feature_2_title }}</h4>
+          <p>{{ section.settings.section_2_feature_2_text }}</p>
+        </div>
+        <div class="article-content__symptom">
+          <h4>{{ section.settings.section_2_feature_3_title }}</h4>
+          <p>{{ section.settings.section_2_feature_3_text }}</p>
+        </div>
+        <div class="article-content__symptom">
+          <h4>{{ section.settings.section_2_feature_4_title }}</h4>
+          <p>{{ section.settings.section_2_feature_4_text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="article-content__section" id="{{ section.settings.section_3_id }}">
+      <h2 class="article-content__heading">{{ section.settings.section_3_heading }}</h2>
+      <p class="article-content__paragraph">{{ section.settings.section_3_description }}</p>
+      <div class="article-content__prevent-grid">
+        <div class="article-content__hardware-image">
+          {% for block in section.blocks %}
+            <div class="tab-image" data-tab-id="{{ block.id }}">
+              <img src="{{ block.settings.tab_image | image_url: width: 800 }}" alt="" loading="lazy">
+            </div>
+          {% endfor %}
+        </div>
+        <div class="article-content__tips">
+          {% for block in section.blocks %}
+            <details {{ block.shopify_attributes }} data-tab-trigger="{{ block.id }}">
+              <summary>{{ block.settings.tab_title }}</summary>
+              <p>{{ block.settings.tab_text }}</p>
+            </details>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="article-content__section" id="{{ section.settings.section_3_subtitle_1_id }}">
+      <h2 class="article-content__heading">{{ section.settings.section_3_subtitle_1 }}</h2>
+      <p class="article-content__paragraph">{{ section.settings.section_3_text_1 }}</p>
+    </div>
+
+    <div class="article-content__section" id="{{ section.settings.section_3_subtitle_2_id }}">
+      <h2 class="article-content__heading">{{ section.settings.section_3_subtitle_2 }}</h2>
+      <p class="article-content__paragraph">{{ section.settings.section_3_text_2 }}</p>
+    </div>
+  </div>
+
+  {% style %}
+    .article-content {
+      background-color: #ffffff;
+      padding: 60px 16px;
+    }
+    .article-content__wrapper {
+      max-width: 1608px;
+      margin: 0 auto;
+    }
+    .article-content__nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .article-content__nav li a {
+      text-decoration: none;
+      color: #2e2e2e;
+      font-weight: 500;
+    }
+    .article-content__nav li a:hover {
+      text-decoration: underline;
+    }
+    .article-content__heading {
+      color: #1d1d1b;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .article-content__paragraph {
+      font-size: 18px;
+      color: #2e2e2e;
+      margin-bottom: 24px;
+    }
+    .article-content__image-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .article-content__image-block {
+      flex: 1 1 calc(33.333% - 16px);
+      min-width: 300px;
+    }
+    .article-content__image-block img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 8px;
+    }
+    .article-content__symptoms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .article-content__prevent-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .article-content__hardware-image {
+      flex: 1 1 40%;
+    }
+    .article-content__hardware-image img {
+      width: 100%;
+      height: auto;
+    }
+    .article-content__tips {
+      flex: 1 1 50%;
+    }
+    .article-content__tips details {
+      margin-bottom: 16px;
+    }
+    .article-content__tips summary {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .tab-image {
+      display: none;
+    }
+  {% endstyle %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const triggers = document.querySelectorAll('[data-tab-trigger]');
+      const images = document.querySelectorAll('.tab-image');
+      triggers.forEach(trigger => {
+        trigger.addEventListener('toggle', function () {
+          if (this.open) {
+            images.forEach(img => img.style.display = 'none');
+            const target = document.querySelector(`.tab-image[data-tab-id='${this.dataset.tabTrigger}']`);
+            if (target) target.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+</section>
+{% schema %}
+{
+  "name": "Article Content",
+  "tag": "section",
+  "class": "article-content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_1_id",
+      "label": "Section 1 - ID"
+    },
+    {
+      "type": "text",
+      "id": "section_1_heading",
+      "label": "Section 1 - Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_1_description",
+      "label": "Section 1 - Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_1_image_1",
+      "label": "Section 1 - Image 1"
+    },
+    {
+      "type": "text",
+      "id": "section_1_image_1_title",
+      "label": "Section 1 - Image 1 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_1_image_1_text",
+      "label": "Section 1 - Image 1 Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_1_image_2",
+      "label": "Section 1 - Image 2"
+    },
+    {
+      "type": "text",
+      "id": "section_1_image_2_title",
+      "label": "Section 1 - Image 2 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_1_image_2_text",
+      "label": "Section 1 - Image 2 Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_1_image_3",
+      "label": "Section 1 - Image 3"
+    },
+    {
+      "type": "text",
+      "id": "section_1_image_3_title",
+      "label": "Section 1 - Image 3 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_1_image_3_text",
+      "label": "Section 1 - Image 3 Text"
+    },
+    {
+      "type": "text",
+      "id": "section_2_id",
+      "label": "Section 2 - ID"
+    },
+    {
+      "type": "text",
+      "id": "section_2_heading",
+      "label": "Section 2 - Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_2_description",
+      "label": "Section 2 - Description"
+    },
+    {
+      "type": "text",
+      "id": "section_2_feature_1_title",
+      "label": "Feature 1 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_2_feature_1_text",
+      "label": "Feature 1 Text"
+    },
+    {
+      "type": "text",
+      "id": "section_2_feature_2_title",
+      "label": "Feature 2 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_2_feature_2_text",
+      "label": "Feature 2 Text"
+    },
+    {
+      "type": "text",
+      "id": "section_2_feature_3_title",
+      "label": "Feature 3 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_2_feature_3_text",
+      "label": "Feature 3 Text"
+    },
+    {
+      "type": "text",
+      "id": "section_2_feature_4_title",
+      "label": "Feature 4 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "section_2_feature_4_text",
+      "label": "Feature 4 Text"
+    },
+    {
+      "type": "text",
+      "id": "section_3_id",
+      "label": "Section 3 - ID"
+    },
+    {
+      "type": "text",
+      "id": "section_3_heading",
+      "label": "Section 3 - Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_3_description",
+      "label": "Section 3 - Description"
+    },
+    {
+      "type": "text",
+      "id": "section_3_subtitle_1_id",
+      "label": "Section 3 Subsection 1 - ID"
+    },
+    {
+      "type": "text",
+      "id": "section_3_subtitle_1",
+      "label": "Section 3 Subsection 1 - Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_3_text_1",
+      "label": "Section 3 Subsection 1 - Text"
+    },
+    {
+      "type": "text",
+      "id": "section_3_subtitle_2_id",
+      "label": "Section 3 Subsection 2 - ID"
+    },
+    {
+      "type": "text",
+      "id": "section_3_subtitle_2",
+      "label": "Section 3 Subsection 2 - Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_3_text_2",
+      "label": "Section 3 Subsection 2 - Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tip",
+      "name": "Tab Content Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_text",
+          "label": "Tab Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "tab_image",
+          "label": "Tab Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article Content",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

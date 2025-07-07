@@ -1,0 +1,169 @@
+{% comment %}
+  Custom section: Referrals | membership-referrals.liquid
+{% endcomment %}
+
+<section id="membership-referrals" style="background-image: url('{{ section.settings.referrals_background | image_url }}');">
+  <div class="membership-referrals__inner">
+    <h2 class="membership-referrals__title">{{ section.settings.title }}</h2>
+    <p class="membership-referrals__subtitle">{{ section.settings.subtitle }}</p>
+    <div class="membership-referrals__boxes">
+      <div class="membership-referrals__box" style="background-image: url('{{ section.settings.box_background | image_url }}');">
+        <div class="membership-referrals__box-label">{{ section.settings.you_label }}</div>
+        <div class="membership-referrals__box-desc">{{ section.settings.you_desc }}</div>
+      </div>
+      <div class="membership-referrals__arrow">{% render 'arrow-left-right.svg' %}</div>
+      <div class="membership-referrals__box" style="background-image: url('{{ section.settings.box_background | image_url }}');">
+        <div class="membership-referrals__box-label">{{ section.settings.friend_label }}</div>
+        <div class="membership-referrals__box-desc">{{ section.settings.friend_desc }}</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #membership-referrals {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 140px 20px;
+      color: #fff;
+    }
+
+    .membership-referrals__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .membership-referrals__title {
+      font-family: 'Questrial', sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .membership-referrals__subtitle {
+      font-size: 18px;
+      font-family: 'Questrial', sans-serif;
+      margin-bottom: 60px;
+      color: white;
+    }
+
+    .membership-referrals__boxes {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .membership-referrals__box {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      padding: 24px 32px;
+      min-width: 300px;
+      max-width: 420px;
+      text-align: left;
+      color: white;
+    }
+
+    .membership-referrals__box-label {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: 'Questrial', sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .membership-referrals__box-desc {
+      font-size: 16px;
+      font-weight: 400;
+      font-family: 'Questrial', sans-serif;
+    }
+
+    .membership-referrals__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .membership-referrals__arrow svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .membership-referrals__boxes {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .membership-referrals__arrow svg {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Referrals",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "referrals_background",
+      "label": "Section Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_background",
+      "label": "Box Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Referrals"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Give your friends a reward and claim your own when they make a purchase."
+    },
+    {
+      "type": "text",
+      "id": "you_label",
+      "label": "Your Box Title",
+      "default": "You"
+    },
+    {
+      "type": "text",
+      "id": "you_desc",
+      "label": "Your Box Description",
+      "default": "Get 100 Points"
+    },
+    {
+      "type": "text",
+      "id": "friend_label",
+      "label": "Friend Box Title",
+      "default": "Your Friend"
+    },
+    {
+      "type": "text",
+      "id": "friend_desc",
+      "label": "Friend Box Description",
+      "default": "Get 100 Points on any purchase"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Referrals",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

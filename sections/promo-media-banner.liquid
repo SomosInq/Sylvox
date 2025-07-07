@@ -1,0 +1,204 @@
+{% schema %}
+  {
+    "name": "Promo Media Banner",
+    "tag": "section",
+    "class": "promo-media-banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Secure, store, and access your footage from anywhere, anytime."
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Subheading Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Main Heading",
+        "default": "Vantrue Cloud"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "image_picker",
+        "id": "play_image",
+        "label": "Play Background Image"
+      },
+      {
+        "type": "url",
+        "id": "play_link",
+        "label": "Play Button Link"
+      },
+      {
+        "type": "url",
+        "id": "learn_more_link",
+        "label": "Learn More Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promo Media Banner",
+        "category": "Custom"
+      }
+    ]
+  }
+  {% endschema %}
+  
+  <div
+    class="promo-media-banner__wrapper"
+    style="
+      {% if section.settings.background_image %}
+        background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');
+      {% endif %}
+    "
+  >
+    <div class="promo-media-banner__content">
+      {% if section.settings.subheading %}
+        <p class="promo-media-banner__subheading" style="color: {{ section.settings.subheading_color }};">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+  
+      {% if section.settings.heading %}
+        <h2 class="promo-media-banner__heading" style="color: {{ section.settings.heading_color }};">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+  
+      <div class="promo-media-banner__button-row">
+        {% if section.settings.play_image and section.settings.play_link %}
+          <a href="{{ section.settings.play_link }}" class="promo-media-banner__play-button" aria-label="Play video">
+            <div class="promo-media-banner__play-container">
+              <img
+                src="{{ section.settings.play_image | image_url: width: 220 }}"
+                alt="Play background"
+                loading="lazy"
+                class="promo-media-banner__play-image"
+              >
+              <div class="promo-media-banner__play-icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none">
+                  <path d="M8 5v14l11-7L8 5z" fill="white" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        {% endif %}
+  
+        {% if section.settings.learn_more_link %}
+          <a href="{{ section.settings.learn_more_link }}" class="promo-media-banner__learn-more-button">
+            Learn More
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .promo-media-banner__wrapper {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 100px 20px;
+      text-align: center;
+    }
+  
+    .promo-media-banner__content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  
+    .promo-media-banner__subheading {
+      font-size: 16px;
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+  
+    .promo-media-banner__heading {
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+  
+    .promo-media-banner__button-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  
+    .promo-media-banner__play-button {
+      display: inline-flex;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+  
+    .promo-media-banner__play-container {
+      position: relative;
+      display: inline-block;
+      width: auto;
+    }
+  
+    .promo-media-banner__play-image {
+      width: 220px;
+      height: 42px;
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 9999px;
+    }
+  
+    .promo-media-banner__play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+  
+    .promo-media-banner__learn-more-button {
+      background: #000;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      white-space: nowrap;
+    }
+  
+    .promo-media-banner__learn-more-button:hover {
+      background: #222;
+    }
+  
+    @media screen and (max-width: 600px) {
+      .promo-media-banner__heading {
+        font-size: 36px;
+      }
+  
+      .promo-media-banner__subheading {
+        font-size: 14px;
+      }
+  
+      .promo-media-banner__button-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+  

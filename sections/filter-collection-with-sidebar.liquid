@@ -1,0 +1,613 @@
+{% comment %}
+  Custom section: Sidebar Collection Filter | filter-collection-with-sidebar.liquid
+{% endcomment %}
+
+<div class="filter-collection" id="{{ section.id }}">
+  <div class="filter-collection__wrapper">
+    <div class="filter-collection__overlay" onclick="document.querySelector('.filter-collection__drawer').classList.remove('is-open');document.querySelector('.filter-collection__overlay').classList.remove('is-active')"></div>
+    <div class="filter-collection__drawer">
+      <div class="filter-collection__drawer-inner">
+        <aside class="filter-collection__sidebar">
+          <details open>
+            <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
+              <span class="filter-collection__group-heading">Sort By</span>
+              <span class="filter-collection__chevron">⌄</span>
+            </summary>
+            <ul class="filter-collection__series-list">
+              <li class="filter-collection__series-item">Featured</li>
+              <li class="filter-collection__series-item">Price: Low to High</li>
+              <li class="filter-collection__series-item">Price: High to Low</li>
+            </ul>
+          </details>
+          <div class="filter-collection__divider"></div>
+
+          <details open>
+            <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
+              <span class="filter-collection__group-heading">Series</span>
+              <span class="filter-collection__chevron">⌄</span>
+            </summary>
+            <ul class="filter-collection__series-list">
+              <li class="filter-collection__series-item active">
+                {% if section.settings.image_all != blank %}
+                  <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="22" height="22" alt="All" />
+                {% endif %}
+                <span>ALL</span>
+              </li>
+              <li class="filter-collection__series-item">
+                {% if section.settings.image_360 != blank %}
+                  <img src="{{ section.settings.image_360 | image_url: width: 77 }}" width="76.68" height="30" alt="360" />
+                {% endif %}
+                <span>360</span>
+              </li>
+              <li class="filter-collection__series-item">
+                {% if section.settings.image_nexus != blank %}
+                  <img src="{{ section.settings.image_nexus | image_url: width: 30 }}" width="30" height="30" alt="Nexus" />
+                {% endif %}
+                <span>Nexus</span>
+              </li>
+              <li class="filter-collection__series-item active">
+                {% if section.settings.image_element != blank %}
+                  <img src="{{ section.settings.image_element | image_url: width: 30 }}" width="30" height="30" alt="Element" />
+                {% endif %}
+                <span>Element</span>
+              </li>
+              <li class="filter-collection__series-item">
+                {% if section.settings.image_sonnet != blank %}
+                  <img src="{{ section.settings.image_sonnet | image_url: width: 30 }}" width="30" height="30" alt="Sonnet" />
+                {% endif %}
+                <span>Sonnet</span>
+              </li>
+              <li class="filter-collection__series-item">
+                {% if section.settings.image_falcon != blank %}
+                  <img src="{{ section.settings.image_falcon | image_url: width: 30 }}" width="30" height="30" alt="Falcon" />
+                {% endif %}
+                <span>Falcon</span>
+              </li>
+              <li class="filter-collection__series-item">
+                {% if section.settings.image_ondash != blank %}
+                  <img src="{{ section.settings.image_ondash | image_url: width: 30 }}" width="30" height="30" alt="OnDash" />
+                {% endif %}
+                <span>OnDash</span>
+              </li>
+              <li class="filter-collection__series-item">
+                {% if section.settings.image_pilot != blank %}
+                  <img src="{{ section.settings.image_pilot | image_url: width: 30 }}" width="30" height="30" alt="Pilot" />
+                {% endif %}
+                <span>Pilot</span>
+              </li>
+            </ul>
+          </details>
+          <div class="filter-collection__divider"></div>
+
+          <div class="filter-collection__group-heading-wrapper">
+            <p class="filter-collection__group-heading">Accessories</p>
+          </div>
+
+          <div class="filter-collection__compare-wrapper">
+            <div class="filter-collection__compare-button">
+              <button class="filter-collection__button">Compare</button>
+            </div>
+          </div>
+          <div class="filter-collection__apply-wrapper">
+            <button class="filter-collection__apply-button">APPLY FILTERS</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+<button class="filter-collection__filter-toggle" onclick="document.querySelector('.filter-collection__drawer').classList.toggle('is-open');document.querySelector('.filter-collection__overlay').classList.toggle('is-active')">
+  Filter
+</button>
+
+    <div class="filter-collection__products">
+      <div class="filter-collection__grid">
+        {% for product in collection.products %}
+          <div class="filter-collection__item">
+            <div class="filter-collection__image-wrapper">
+              <a href="{{ product.url }}">
+                {{ product.featured_image | image_url: width: 500 | image_tag: class: 'filter-collection__image', loading: 'lazy' }}
+              </a>
+            </div>
+            <div class="filter-collection__meta">
+              <span class="filter-collection__tag">Element</span>
+              <h3 class="filter-collection__title">{{ product.title }}</h3>
+              <p class="filter-collection__price">
+                From {{ product.price | money }}
+                {% if product.compare_at_price > product.price %}
+                  <span class="filter-collection__compare-price">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% paginate collection.products by 12 %}
+        <div class="filter-collection__pagination">
+          {{ paginate | default_pagination }}
+        </div>
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+.filter-collection__pagination span.prev,
+.filter-collection__pagination span.next,  {
+    width: 19px !important;
+    height: 19px !important;
+}
+
+.filter-collection__pagination .prev a,
+.filter-collection__pagination .next a {
+  position: relative;
+  color: transparent; 
+  font-size: 0;
+  justify-content: center;
+  text-align: center;
+  display: flex
+;
+}
+
+/* Insert SVG before/after */
+.filter-collection__pagination .prev a::before,
+.filter-collection__pagination .next a::before {
+  content: '';
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Left arrow for “Previous” */
+.filter-collection__pagination .prev a::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M7.05371 15.77L12.2154 10.6083C12.825 9.99873 12.825 9.00123 12.2154 8.39165L7.05371 3.22998" stroke="%231F1F1F" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  transform: rotate(180deg);
+}
+
+/* Right arrow for “Next” */
+.filter-collection__pagination .next a::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M7.05371 15.77L12.2154 10.6083C12.825 9.99873 12.825 9.00123 12.2154 8.39165L7.05371 3.22998" stroke="%231F1F1F" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+/* ------ */
+/* Overlay styles for filter drawer */
+.filter-collection__overlay {
+  display: none;
+}
+.filter-collection__overlay.is-active {
+  display: block;
+}
+.filter-collection {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.filter-collection__wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1608px;
+  margin-inline: auto;
+  justify-content: center;
+}
+.filter-collection__drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background-color: #ffffff;
+  width: 312px;
+  padding: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.filter-collection__drawer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+}
+.filter-collection__sidebar {
+  flex-shrink: 0;
+  width: 312px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-right: 40px;
+}
+.filter-collection__group-heading-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter-collection__group-heading {
+  font-family: 'Questrial', sans-serif;
+  font-size: 18px;
+  color: #2C2C2C;
+}
+.filter-collection__chevron {
+  width: 13px;
+  height: 8px;
+  object-fit: contain;
+}
+.filter-collection__products {
+  flex: 1;
+  max-width: 1608px;
+}
+.filter-collection__filter-group {
+  display: flex;
+  flex-direction: column;
+}
+.filter-collection__label {
+  font-family: 'Questrial', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #2C2C2C;
+  margin-bottom: 10px;
+}
+.filter-collection__select {
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #c2c4c5;
+  background: #ffffff;
+  color: #0a0a0a;
+}
+.filter-collection__series-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.filter-collection__series-item {
+  font-family: 'Basic Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  color: #2e2e2e;
+  width: 100%;
+  background: white;
+}
+.filter-collection__series-item:hover {
+  background: #fbfbfb;
+}
+.filter-collection__series-item.active {
+  font-weight: 400;
+  background: #fbfbfb;
+}
+.filter-collection__compare-wrapper {
+  padding: 0 0 24px 0;
+}
+.filter-collection__compare-button {
+  margin-top: auto;
+}
+.filter-collection__button {
+  padding: 12px 24px;
+  background: #101820;
+  color: #ffffff;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 40px;
+}
+.filter-collection__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 25px;
+}
+.filter-collection__item {
+  width: 282px;
+  height: 472px;
+  border-radius: 6px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.filter-collection__image-wrapper {
+  max-width: 283px;
+  max-height: 322px;
+  aspect-ratio: 283 / 322;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+.filter-collection__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.filter-collection__meta {
+  padding: 16px 13px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.filter-collection__tag {
+  background: linear-gradient(90deg, #57a653, #1ba613);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+.filter-collection__title {
+  font-family: Questrial;
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: normal;
+  margin: 0;
+}
+.filter-collection__price {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: normal;
+  margin: 0;
+}
+.filter-collection__compare-price {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 4px;
+  font-size: 16px;
+  font-family: Roboto;
+}
+.filter-collection__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 16px;
+  font-family: 'Basic Sans', sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: black;
+  margin-top: 48px;
+}
+
+.filter-collection__pagination a {
+  text-decoration: none;
+  color: black;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+}
+.filter-collection__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+}
+.filter-collection__filter-toggle {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .filter-collection__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .filter-collection__drawer.is-open ~ .filter-collection__overlay {
+    display: block;
+  }
+  .filter-collection__wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .filter-collection__grid {
+    grid-template-columns: repeat(2, 164px);
+    column-gap: 16px;
+    row-gap: 34px;
+    padding: 0 23px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .filter-collection__item {
+    width: 164px;
+    height: 307px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 34px;
+  }
+
+  .filter-collection__image-wrapper {
+    width: 164px;
+    height: 181px;
+  }
+
+  .filter-collection__meta {
+    width: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .filter-collection__tag {
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 400;
+    color: #57A653;
+  }
+
+  .filter-collection__title {
+    font-size: 18px;
+    font-family: Questrial;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .filter-collection__price {
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .filter-collection__pagination {
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    font-size: 16px;
+    font-family: 'Basic Sans', sans-serif;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: black;
+  }
+
+  .filter-collection__drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 312px;
+    max-width: 90%;
+    background: white;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s, visibility 0.3s;
+    z-index: 9999;
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 22px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .filter-collection__drawer.is-open {
+    transform: translateX(0%);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .filter-collection__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .filter-collection__group-heading,
+  .filter-collection__group-heading-wrapper .filter-collection__group-heading,
+  .filter-collection__group-heading-wrapper p.filter-collection__group-heading {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2C2C2C;
+  }
+  /* If you have other labels like Sort By, Series, Accessories as .filter-collection__group-heading, they're covered above */
+
+  .filter-collection__series-item {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #2C3939;
+  }
+
+  .filter-collection__compare-button .filter-collection__button {
+    background: #101820;
+    border-radius: 40px;
+    padding: 12px 24px;
+    color: #fff;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+  }
+
+  .filter-collection__apply-button {
+    padding: 12px 24px;
+    border: 1px solid #000;
+    border-radius: 40px;
+    color: #1D1D1B;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    background: transparent;
+    width: 100%;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .filter-collection__filter-toggle {
+    display: flex;
+  }
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Sidebar Collection Filter",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_all",
+      "label": "ALL Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_360",
+      "label": "360 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_nexus",
+      "label": "Nexus Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_element",
+      "label": "Element Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_sonnet",
+      "label": "Sonnet Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_falcon",
+      "label": "Falcon Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_ondash",
+      "label": "OnDash Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_pilot",
+      "label": "Pilot Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sidebar Collection Filter",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

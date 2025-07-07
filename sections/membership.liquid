@@ -1,0 +1,127 @@
+{% comment %}
+  Custom section: Membership | membership.liquid
+{% endcomment %}
+
+<section id="membership-wrapper-{{ section.id }}">
+  <div id="appstleLoyaltyPage"></div>
+
+  <style>
+    #membership-wrapper-{{ section.id }} .loyaltyPage-hero-section {
+      background-image: url('https://cdn.shopify.com/s/files/1/0724/5706/0661/files/picturePicture_19604a06808951beb25ed92431ce947a_986fcd60-7ddd-49ec-a72e-b8cfd3b6b949_jpg.png?v=1749354254') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      padding: 140px 20px 120px !important;
+      color: #fff !important;
+    }
+
+    .loyaltyPage-hero-section .al-container {
+      padding: 0 !important;
+      margin: 0 auto !important;
+    }
+
+    .loyaltyPage-hero-section .al-flex.al-flex-col.al-items-center {
+      align-items: flex-start !important;
+      text-align: left !important;
+    }
+
+    .loyaltyPage-hero-title,
+    .loyaltyPage-hero-description,
+    #loyaltyPageRedeemPointsSection,
+    #loyaltyPageEarnPointsSection,
+    #loyaltyPageReferralSection,
+    #loyaltyPageVipSection,
+    #loyaltyPageFaqSection {
+      display: none !important;
+    }
+
+    #membership-wrapper-{{ section.id }} .loyaltyPage-hero-image-container {
+      display: none !important;
+    }
+
+    .custom-membership-heading {
+      font-family: 'Questrial', sans-serif;
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: white;
+      max-width: 600px;
+    }
+
+    .custom-membership-heading::before {
+      content: 'MEMBERSHIP';
+      display: block;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .loyaltyPage-hero-button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px !important;
+    }
+
+    .loyaltyPage-hero-signin-button,
+    .loyaltyPage-hero-signup-button {
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      padding: 12px 28px !important;
+      border-radius: 9999px !important;
+    }
+
+    .loyaltyPage-hero-signin-button {
+      background-color: #000 !important;
+      color: #fff !important;
+      border: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .loyaltyPage-hero-signin-button::after {
+      content: '→';
+      display: inline-block;
+      margin-left: 8px;
+    }
+
+    .loyaltyPage-hero-signup-button {
+      background: transparent !important;
+      color: #fff !important;
+      border: 1px solid #fff !important;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const check = setInterval(() => {
+        const hero = document.querySelector('#loyaltyPageHeroSection');
+        if (hero && !document.querySelector('.custom-membership-heading')) {
+          clearInterval(check);
+          const customHeading = document.createElement('div');
+          customHeading.className = 'custom-membership-heading';
+          customHeading.innerHTML = 'Join the Vantrue<br>community';
+          hero.querySelector('.al-flex.al-flex-col.al-items-center')?.prepend(customHeading);
+        }
+      }, 300);
+    });
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Membership",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Membership",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

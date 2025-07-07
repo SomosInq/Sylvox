@@ -1,0 +1,298 @@
+{% comment %}
+  Custom section: Split Feature Block | split-feature-block.liquid
+{% endcomment %}
+
+<div class="split-feature-block" id="split-feature-block-{{ section.id }}">
+  <div class="split-feature-block__wrapper">
+    {% for block in section.blocks %}
+      <div class="split-feature-block__tab-content{% if forloop.first %} active{% endif %}" data-tab="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+        <div class="split-feature-block__inner">
+          <div class="split-feature-block__left">
+            <div class="split-feature-block__tag-group">
+              <div class="split-feature-block__tag">{{ block.settings.title }}</div>
+
+              <div class="split-feature-block__upcoming" data-tab-root="{{ forloop.index0 }}">
+                {% assign total = section.blocks.size %}
+                {% for i in (1..3) %}
+                  {% assign next_index = forloop.parentloop.index0 | plus: i %}
+                  {% assign next_index = next_index | modulo: total %}
+                  <div
+                    class="split-feature-block__upcoming-title"
+                    data-tab-trigger="{{ next_index }}"
+                  >
+                    {{ section.blocks[next_index].settings.title }}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <h2 class="split-feature-block__title">{{ block.settings.title }}</h2>
+            <p class="split-feature-block__description">{{ block.settings.description }}</p>
+
+            <div class="split-feature-block__dots">
+              {% for dot in section.blocks %}
+                <span class="dot{% if forloop.index0 == forloop.parentloop.index0 %} active{% endif %}" data-tab-trigger="{{ forloop.index0 }}"></span>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="split-feature-block__right">
+            {% if block.settings.image %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1000 }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                class="split-feature-block__image"
+              >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .split-feature-block {
+    padding: 80px 20px;
+    background: #ffffff;
+  }
+
+  .split-feature-block__wrapper {
+    max-width: 1608px;
+    margin: 0 auto;
+  }
+
+  .split-feature-block__tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .split-feature-block__tab-content.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .split-feature-block__inner {
+    display: flex;
+    height: 1184px;
+    flex-wrap: wrap;
+  }
+
+  .split-feature-block__left {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    padding: 60px;
+    flex: 1;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    position: relative;
+  }
+
+  .split-feature-block__tag-group {
+  margin-top: 229.49px;
+  margin-bottom: 120px;
+}
+
+  .split-feature-block__tag {
+    font-size: 24px;
+    color: #ffffff;
+    font-family: "Questrial", sans-serif;
+    margin-bottom: 8px;
+  }
+
+  .split-feature-block__upcoming-title {
+    font-size: 14px;
+    color: #a4a4a4;
+    font-family: "Questrial", sans-serif;
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+
+  .split-feature-block__upcoming-title:hover {
+    text-decoration: underline;
+  }
+
+  .split-feature-block__title {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: "Questrial", sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .split-feature-block__description {
+    font-size: 14px;
+    font-family: "Questrial", sans-serif;
+    color: #d1d1d1;
+    line-height: 1.6;
+    margin-bottom: 60px;
+  }
+
+  .split-feature-block__dots {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .split-feature-block__dots .dot {
+    flex: 1;
+    height: 2px;
+    margin: 0 2px;
+    background-color: #ffffff;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .split-feature-block__dots .dot.active {
+    opacity: 1;
+  }
+
+  .split-feature-block__right {
+    flex: 1;
+    min-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .split-feature-block__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 768px) {
+    .split-feature-block__inner {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .split-feature-block__left,
+    .split-feature-block__right {
+      min-width: 100%;
+      padding: 40px 20px;
+    }
+
+    .split-feature-block__title {
+      font-size: 20px;
+    }
+
+    .split-feature-block__description {
+      font-size: 13px;
+    }
+  }
+</style>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('#split-feature-block-{{ section.id }}');
+    if (!container) return;
+
+    const tabs = container.querySelectorAll('.split-feature-block__tab-content');
+    const triggers = container.querySelectorAll('[data-tab-trigger]');
+    const dots = container.querySelectorAll('.dot');
+    let current = 0;
+
+    function showTab(index) {
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+      });
+
+      triggers.forEach(t => {
+        const tIndex = parseInt(t.dataset.tabTrigger);
+        t.classList.toggle('active', tIndex === index);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+
+      current = index;
+    }
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const index = parseInt(trigger.getAttribute('data-tab-trigger'));
+        showTab(index);
+      });
+    });
+
+    // Swipe Support
+    let touchStartX = null;
+    container.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    container.addEventListener('touchend', (e) => {
+      if (touchStartX === null) return;
+      let touchEndX = e.changedTouches[0].screenX;
+      let diff = touchEndX - touchStartX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff < 0) {
+          // swipe left
+          showTab((current + 1) % tabs.length);
+        } else {
+          // swipe right
+          showTab((current - 1 + tabs.length) % tabs.length);
+        }
+      }
+
+      touchStartX = null;
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Split Feature Block",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Double protection for recording data"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage..."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Right Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Split Feature Block",
+      "category": "Custom",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
+      ]
+    }
+  ]
+}
+{% endschema %}

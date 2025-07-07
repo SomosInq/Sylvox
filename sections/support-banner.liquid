@@ -1,0 +1,253 @@
+{% comment %}
+  Custom section: Support Banner | support-banner.liquid
+{% endcomment %}
+
+<section class="support-banner" style="
+  margin: 0 auto;
+  margin-top: {{ section.settings.padding_top_desktop }}px;
+  margin-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  padding-left: {{ section.settings.padding_left_desktop }}px;
+  padding-right: {{ section.settings.padding_right_desktop }}px;
+">
+  <div class="support-banner__bg-wrapper">
+    <div class="support-banner__inner">
+      <div class="support-banner__content">
+        <h2 class="support-banner__heading">
+          {{ section.settings.heading }}
+        </h2>
+        <a href="{{ section.settings.button_link }}" class="support-banner__button">
+          <span>{{ section.settings.button_text }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4581 14.0591L7.35527 21.6233C6.72301 22.0185 5.89013 21.8263 5.49497 21.194C5.36087 20.9795 5.28977 20.7315 5.28977 20.4785V5.35C5.28977 4.60442 5.89418 4 6.63977 4C6.89278 4 7.14071 4.0711 7.35527 4.2052L19.4581 11.7695C20.0903 12.1646 20.2825 12.9975 19.8874 13.6298C19.7787 13.8036 19.6319 13.9504 19.4581 14.0591Z" fill="white"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% style %}
+    .support-banner {
+      width: 100%;
+      height: 600px;
+      position: relative;
+    }
+
+    .support-banner__bg-wrapper {
+      max-width: 1608px;
+      aspect-ratio: 1608 / 600;
+      width: 100%;
+      margin: 0 auto;
+      background: url('{{ section.settings.background | image_url }}') center center / cover no-repeat;
+    }
+
+    .support-banner__inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .support-banner__content {
+      width: 606px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .support-banner__heading {
+      color: #ffffff;
+      font-size: 48px;
+      font-family: 'Questrial', sans-serif;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .support-banner__button {
+      padding: 12px 41px;
+      border-radius: 30px;
+      outline: 1px solid #ffffff;
+      outline-offset: -1px;
+      background: transparent;
+      color: #ffffff;
+      font-size: 18px;
+      font-family: 'Questrial', sans-serif;
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .support-banner__button span {
+      color: #ffffff;
+      font-size: 18px;
+      font-family: 'Questrial', sans-serif;
+      font-weight: 400;
+    }
+
+    .support-banner__button:hover {
+      background-color: #2e2e2e;
+    }
+
+    .support-banner__button svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .support-banner {
+        height: 360px;
+        margin: 0 auto;
+        margin-top: {{ section.settings.padding_top_mobile }}px;
+        margin-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        padding-left: {{ section.settings.padding_left_mobile }}px;
+        padding-right: {{ section.settings.padding_right_mobile }}px;
+      }
+
+      .support-banner__bg-wrapper {
+        max-width: 346px;
+        aspect-ratio: 346 / 301;
+        background-image: url('{{ section.settings.background_mobile | image_url }}');
+      }
+
+      .support-banner__heading {
+        font-size: 20px;
+        padding: 0 20px;
+      }
+
+      .support-banner__button {
+        font-size: 16px;
+        padding: 10px 28px;
+      }
+    }
+  {% endstyle %}
+</section>
+
+{% schema %}
+{
+  "name": "Support Banner",
+  "tag": "section",
+  "class": "section section-support-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to Safely Install a Dash Camera with Airbags"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Watch Video"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Margin Settings"
+    },
+    {
+      "type": "range",
+      "id": "margin_left_desktop",
+      "label": "Margin Left (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_right_desktop",
+      "label": "Margin Right (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_left_mobile",
+      "label": "Margin Left (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_right_mobile",
+      "label": "Margin Right (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Support Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

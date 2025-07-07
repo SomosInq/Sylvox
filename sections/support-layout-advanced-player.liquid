@@ -1,0 +1,253 @@
+{% comment %}
+  Custom section: Vantrue Advanced Player | support-layout-advanced-player.liquid
+{% endcomment %}
+
+<div class="pagewidth support-layout-app-player" style="margin-top: 80px; margin-bottom: 80px;">
+  <div class="support-wrapper">
+    {% assign sidebar_block = section.blocks | where: "type", "sidebar_menu" | first %}
+    {% if sidebar_block and sidebar_block.settings.menu != blank %}
+      {% render 'support-sidebar', menu: sidebar_block.settings.menu %}
+    {% endif %}
+
+    <div class="support-content app-player-content">
+      <div class="app-banner" style="background-image: url({{ section.settings.banner_background | image_url }});">
+        <div class="app-banner__inner">
+          {% if section.settings.banner_logo %}
+            <img src="{{ section.settings.banner_logo | image_url }}" alt="Vantrue logo" loading="lazy" class="app-banner__logo">
+          {% endif %}
+          <h1 class="app-banner__heading">APP & Player</h1>
+        </div>
+      </div>
+
+      <div class="advanced-player__wrapper">
+        <div class="app-header">
+          <img src="{{ section.settings.app_logo | image_url }}" alt="Advanced Player Logo" loading="lazy" class="app-header__logo" />
+          <h2 class="app-title">{{ section.settings.heading }}</h2>
+        </div>
+
+        <p class="app-description-text">{{ section.settings.description }}</p>
+
+        <div class="app-download-options">
+          <div class="download-item">
+            <img class="platform-logo" src="{{ section.settings.windows_logo | image_url }}" alt="Windows Logo" />
+            <div class="platform-text">
+              <h4>Windows</h4>
+              <p>{{ section.settings.windows_version }}</p>
+              <a class="download-button" href="{{ section.settings.windows_link }}">Download</a>
+            </div>
+          </div>
+          <div class="download-item">
+            <img class="platform-logo" src="{{ section.settings.mac_logo | image_url }}" alt="Mac Logo" />
+            <div class="platform-text">
+              <h4>Mac</h4>
+              <p>{{ section.settings.mac_version }}</p>
+              <a class="download-button" href="{{ section.settings.mac_link }}">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+.support-layout-app-player .support-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1608px;
+  margin: 0 auto;
+}
+.support-layout-app-player .support-content {
+  flex: 1;
+}
+.support-layout-app-player .app-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 255px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.support-layout-app-player .app-banner__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 1245px;
+  gap: 26px;
+}
+.support-layout-app-player .app-banner__logo {
+  width: 97px;
+  height: 16px;
+}
+.support-layout-app-player .app-banner__heading {
+  font-family: Questrial, sans-serif;
+  font-size: 56px;
+  color: #1d1d1b;
+  margin: 0;
+  line-height: normal;
+  font-weight: 400;
+}
+
+.advanced-player__wrapper {
+  background-color: #FAFAFA;
+  padding: 64px;
+  border-radius: 0;
+}
+.support-layout-app-player .app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.support-layout-app-player .app-header__logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+.support-layout-app-player .app-title {
+  font-family: Questrial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #2e2e2e;
+  margin: 0;
+}
+.support-layout-app-player .app-description-text {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  color: #7e8182;
+  margin-bottom: 48px;
+  max-width: 720px;
+}
+.support-layout-app-player .app-download-options {
+  display: flex;
+  gap: 48px;
+}
+.support-layout-app-player .download-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: 50%;
+}
+.support-layout-app-player .platform-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.support-layout-app-player .platform-text h4 {
+  font-family: Questrial, sans-serif;
+  font-size: 20px;
+  color: #1d1d1b;
+  margin: 0 0 4px;
+}
+.support-layout-app-player .platform-text p {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  color: #2e2e2e;
+  margin: 0 0 20px;
+}
+.support-layout-app-player .download-button {
+  display: inline-flex;
+  width: 152px;
+  height: 43px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: Questrial, sans-serif;
+  font-size: 16px;
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Vantrue Advanced Player",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_background",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_logo",
+      "label": "Banner Logo (Vantrue SVG/Image)"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_logo",
+      "label": "Advanced Player Logo (V Image)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Vantrue Advanced Player"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "windows_logo",
+      "label": "Windows Logo SVG/PNG (30x30)"
+    },
+    {
+      "type": "text",
+      "id": "windows_version",
+      "label": "Windows Version Text",
+      "default": "Vantrue Player V. 3.03"
+    },
+    {
+      "type": "url",
+      "id": "windows_link",
+      "label": "Windows Download Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "mac_logo",
+      "label": "Mac Logo SVG/PNG (30x30)"
+    },
+    {
+      "type": "text",
+      "id": "mac_version",
+      "label": "Mac Version Text",
+      "default": "Vantrue Player"
+    },
+    {
+      "type": "url",
+      "id": "mac_link",
+      "label": "Mac Download Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sidebar_menu",
+      "name": "Sidebar Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Sidebar Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vantrue Advanced Player",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "sidebar_menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

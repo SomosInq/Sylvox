@@ -1,0 +1,237 @@
+{% comment %}
+  Custom section: FAQ Rewards | faq-rewards.liquid
+{% endcomment %}
+
+<section id="faq-rewards-{{ section.id }}" class="faq-rewards page-width">
+  <div class="faq-rewards__inner">
+    <h2 class="faq-rewards__heading">{{ section.settings.title }}</h2>
+
+    <div class="faq-rewards__items">
+      {% if section.settings.q1_question != blank %}
+        <details class="faq-rewards__item">
+          <summary class="faq-rewards__question">
+            1. {{ section.settings.q1_question }}
+            <span class="faq-rewards__arrow"></span>
+          </summary>
+          <div class="faq-rewards__answer">{{ section.settings.q1_answer }}</div>
+        </details>
+      {% endif %}
+
+      {% if section.settings.q2_question != blank %}
+        <details class="faq-rewards__item">
+          <summary class="faq-rewards__question">
+            2. {{ section.settings.q2_question }}
+            <span class="faq-rewards__arrow"></span>
+          </summary>
+          <div class="faq-rewards__answer">{{ section.settings.q2_answer }}</div>
+        </details>
+      {% endif %}
+
+      {% if section.settings.q3_question != blank %}
+        <details class="faq-rewards__item">
+          <summary class="faq-rewards__question">
+            3. {{ section.settings.q3_question }}
+            <span class="faq-rewards__arrow"></span>
+          </summary>
+          <div class="faq-rewards__answer">{{ section.settings.q3_answer }}</div>
+        </details>
+      {% endif %}
+
+      {% if section.settings.q4_question != blank %}
+        <details class="faq-rewards__item">
+          <summary class="faq-rewards__question">
+            4. {{ section.settings.q4_question }}
+            <span class="faq-rewards__arrow"></span>
+          </summary>
+          <div class="faq-rewards__answer">{{ section.settings.q4_answer }}</div>
+        </details>
+      {% endif %}
+
+      {% if section.settings.q5_question != blank %}
+        <details class="faq-rewards__item">
+          <summary class="faq-rewards__question">
+            5. {{ section.settings.q5_question }}
+            <span class="faq-rewards__arrow"></span>
+          </summary>
+          <div class="faq-rewards__answer">{{ section.settings.q5_answer }}</div>
+        </details>
+      {% endif %}
+
+      {% if section.settings.q6_question != blank %}
+        <details class="faq-rewards__item">
+          <summary class="faq-rewards__question">
+            6. {{ section.settings.q6_question }}
+            <span class="faq-rewards__arrow"></span>
+          </summary>
+          <div class="faq-rewards__answer">{{ section.settings.q6_answer }}</div>
+        </details>
+      {% endif %}
+    </div>
+  </div>
+
+  <style>
+    #faq-rewards-{{ section.id }} {
+      padding: 80px 0;
+    }
+
+    .faq-rewards__inner {
+      max-width: 1608px;
+      margin: 0 auto;
+    }
+
+    .faq-rewards__heading {
+      font-size: 48px;
+      font-family: 'Suisse Intl', sans-serif;
+      color: #0d0d0d;
+      margin-bottom: 40px;
+    }
+
+    .faq-rewards__items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .faq-rewards__item {
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 24px;
+    }
+
+    .faq-rewards__question {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: 'Suisse Intl', sans-serif;
+      color: #0d0d0d;
+      cursor: pointer;
+      position: relative;
+      list-style: none;
+      padding-right: 32px;
+    }
+
+    .faq-rewards__arrow {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.66675 6L8.00008 9.33333L11.3334 6' stroke='%230D0D0D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    details[open] .faq-rewards__arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-rewards__answer {
+      margin-top: 12px;
+      font-size: 16px;
+      font-family: 'Suisse Intl', sans-serif;
+      color: #505050;
+      line-height: 1.5;
+    }
+
+    @media screen and (max-width: 749px) {
+      .faq-rewards__heading {
+        font-size: 36px;
+      }
+
+      .faq-rewards__question {
+        font-size: 16px;
+      }
+
+      .faq-rewards__answer {
+        font-size: 14px;
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Rewards",
+  "tag": "section",
+  "class": "section faq-rewards-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "text",
+      "id": "q1_question",
+      "label": "Question 1",
+      "default": "What is this?"
+    },
+    {
+      "type": "textarea",
+      "id": "q1_answer",
+      "label": "Answer 1",
+      "default": "We’re excited to show our appreciation through our exclusive rewards program! By creating an account, you’ll earn points for various activities on our site, such as referrals and purchases. These points can be redeemed for discounts on future purchases—the more points you collect, the more you save!"
+    },
+    {
+      "type": "text",
+      "id": "q2_question",
+      "label": "Question 2",
+      "default": "Who can join?"
+    },
+    {
+      "type": "textarea",
+      "id": "q2_answer",
+      "label": "Answer 2"
+    },
+    {
+      "type": "text",
+      "id": "q3_question",
+      "label": "Question 3",
+      "default": "How do I earn points?"
+    },
+    {
+      "type": "textarea",
+      "id": "q3_answer",
+      "label": "Answer 3"
+    },
+    {
+      "type": "text",
+      "id": "q4_question",
+      "label": "Question 4",
+      "default": "How do I redeem my points?"
+    },
+    {
+      "type": "textarea",
+      "id": "q4_answer",
+      "label": "Answer 4"
+    },
+    {
+      "type": "text",
+      "id": "q5_question",
+      "label": "Question 5",
+      "default": "Is there a limit to the number of points I can earn?"
+    },
+    {
+      "type": "textarea",
+      "id": "q5_answer",
+      "label": "Answer 5"
+    },
+    {
+      "type": "text",
+      "id": "q6_question",
+      "label": "Question 6",
+      "default": "What do the 'approved,' 'pending' and 'cancelled' statuses mean?"
+    },
+    {
+      "type": "textarea",
+      "id": "q6_answer",
+      "label": "Answer 6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Rewards",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

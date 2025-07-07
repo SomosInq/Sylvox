@@ -1,0 +1,353 @@
+{% comment %}
+  Custom section: Banner Tabs With Image | banner-tabs-with-image.liquid
+{% endcomment %}
+
+{% stylesheet %}
+  .banner-tabs-wrapper {
+    width: 100%;
+  }
+
+  .banner-tabs-inner {
+    max-width: 1608px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .banner-tabs-content {
+    max-width: 894px;
+    height: 600px;
+    padding: 60px;
+    background-color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .banner-tabs-heading {
+    font-family: 'Questrial', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #1D1D1B;
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+
+  .banner-tab-nav {
+    display: flex;
+    gap: 36px;
+    position: relative;
+    margin-bottom: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
+
+  .banner-tab-label {
+    color: #c5c5c5;
+    cursor: pointer;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  .banner-tab-label.active {
+    color: #1D1D1B;
+  }
+
+  .banner-tab-indicator {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #00d084;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+
+  .banner-tab-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #1D1D1B;
+    max-width: 640px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .banner-tab-button {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    width: fit-content;
+  }
+
+  .banner-tab-button:hover {
+    background-color: #111;
+  }
+
+  .banner-tabs-image {
+    max-width: 688px;
+    height: 600px;
+    flex: none;
+  }
+
+  .banner-tabs-image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 688 / 600;
+    object-fit: cover;
+    display: block;
+  }
+{% endstylesheet %}
+
+
+{% style %}
+  @media screen and (max-width: 767px) {
+  .banner-tabs-inner {
+    flex-direction: column;
+  }
+
+  .banner-tabs-content {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 32px 24px;
+    border-radius: 0;
+  }
+
+  .banner-tabs-heading {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  .banner-tab-nav {
+    flex-wrap: wrap;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .banner-tab-description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .banner-tab-button {
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-top: 8px;
+  }
+
+  .banner-tabs-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .banner-tabs-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: cover;
+    border-radius: 0;
+  }
+}
+
+{% endstyle %}
+
+
+
+
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = Array.from(document.querySelectorAll('[data-tab-button]'));
+    const indicator = document.querySelector('[data-tab-indicator]');
+    const heading = document.querySelector('[data-tab-heading]');
+    const desc = document.querySelector('[data-tab-description]');
+    const image = document.querySelector('[data-tab-image]');
+    const headings = JSON.parse(document.querySelector('[data-tab-headings]').textContent);
+    const descriptions = JSON.parse(document.querySelector('[data-tab-descriptions]').textContent);
+    const images = JSON.parse(document.querySelector('[data-tab-images]').textContent);
+    const autoplayEnabled = {{ section.settings.autoplay | json }};
+    const intervalTime = {{ section.settings.autoplay_interval | times: 1000 }};
+
+    function updateIndicator(index) {
+      const activeTab = tabs[index];
+      const width = activeTab.offsetWidth * ((index + 1) / tabs.length);
+      const left = activeTab.offsetLeft;
+      indicator.style.width = `${width}px`;
+      indicator.style.left = `${left}px`;
+    }
+
+    function activateTab(index) {
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+      });
+
+      heading.textContent = headings[index];
+      desc.textContent = descriptions[index];
+      image.src = images[index];
+      updateIndicator(index);
+    }
+
+    let current = 0;
+    activateTab(current);
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        current = i;
+        activateTab(current);
+        resetAutoplay();
+      });
+    });
+
+    let autoplayInterval;
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => {
+        current = (current + 1) % tabs.length;
+        activateTab(current);
+      }, intervalTime);
+    }
+
+    function resetAutoplay() {
+      if (autoplayEnabled) {
+        clearInterval(autoplayInterval);
+        startAutoplay();
+      }
+    }
+
+    if (autoplayEnabled) {
+      startAutoplay();
+    }
+  });
+{% endjavascript %}
+
+<section class="banner-tabs-wrapper page-width">
+  <div class="banner-tabs-inner">
+    <div class="banner-tabs-content" data-tab-slide style="background-image: url('{{ section.settings.content_background | image_url: width: 894 }}');">
+      <h2 class="banner-tabs-heading" data-tab-heading>{{ section.blocks[0].settings.heading }}</h2>
+
+      <div class="banner-tab-nav">
+        {% for block in section.blocks %}
+          <div class="banner-tab-label {% if forloop.first %}active{% endif %}" data-tab-button>
+            {{ block.settings.label }}
+          </div>
+        {% endfor %}
+        <div class="banner-tab-indicator" data-tab-indicator></div>
+      </div>
+
+      <p class="banner-tab-description" data-tab-description>{{ section.blocks[0].settings.description }}</p>
+
+      <button class="banner-tab-button">{{ section.settings.button_text }}</button>
+    </div>
+
+    <div class="banner-tabs-image">
+      <img data-tab-image src="{{ section.blocks[0].settings.side_image | image_url: width: 688 }}" alt="Tab Side Image">
+    </div>
+  </div>
+
+  <script type="application/json" data-tab-headings>
+    {{ section.blocks | map: 'settings.heading' | json }}
+  </script>
+  <script type="application/json" data-tab-descriptions>
+    {{ section.blocks | map: 'settings.description' | json }}
+  </script>
+  <script type="application/json" data-tab-images>
+    {{ section.blocks | map: 'settings.side_image' | image_url: width: 688 | json }}
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Tabs With Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "content_background",
+      "label": "Content Background Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "label": "Autoplay Interval (seconds)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab Label",
+          "default": "Valentine’s Day"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Share the Love with Vantrue"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Celebrate this Valentine’s Day with exclusive discounts on our top-rated dash cams. Capture every memorable journey with your loved ones."
+        },
+        {
+          "type": "image_picker",
+          "id": "side_image",
+          "label": "Right Side Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Banner Tabs With Image",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

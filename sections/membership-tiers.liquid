@@ -1,0 +1,316 @@
+{% comment %}
+  Custom section: Membership Tiers | membership-tiers.liquid
+{% endcomment %}
+
+<div id="membership-tiers-{{ section.id }}">
+  <div class="membership-tiers__wrapper">
+    <h2 class="membership-tiers__heading">VIP</h2>
+    <p class="membership-tiers__description">Your all access pass to exclusive rewards. Reach higher tiers for more exclusive perks.</p>
+
+    <div class="membership-tiers__cards">
+      <!-- BASIC -->
+      <div class="membership-tiers__card card--basic">
+        <div class="membership-tiers__card-top" style="background-image: url({{ section.settings.bg_image_1 | image_url }});">
+          <img class="membership-tiers__svg" src="{{ section.settings.svg_image_1 | image_url }}" alt="Basic tier image">
+          <div class="membership-tiers__card-content">
+            <h3 class="membership-tiers__card-title">{{ section.settings.tier_title_1 }}</h3>
+            <p class="membership-tiers__card-amount">{{ section.settings.tier_amount_1 }}</p>
+            <p class="membership-tiers__card-note">{{ section.settings.tier_note_1 }}</p>
+          </div>
+        </div>
+        <div class="membership-tiers__rewards">
+          <div class="membership-tiers__rewards-title">
+            {% render 'rewards-confetti.svg' %}
+            <span>Rewards</span>
+          </div>
+          <p>{{ section.settings.tier_reward_1 }}</p>
+        </div>
+        <ul class="membership-tiers__benefits benefits--basic">
+          <li>{{ section.settings.tier_1_benefit_1 }}</li>
+          <li>{{ section.settings.tier_1_benefit_2 }}</li>
+          <li>{{ section.settings.tier_1_benefit_3 }}</li>
+        </ul>
+      </div>
+
+      <!-- VIP -->
+      <div class="membership-tiers__card card--vip">
+        <div class="membership-tiers__card-top" style="background-image: url({{ section.settings.bg_image_2 | image_url }});">
+          <img class="membership-tiers__svg" src="{{ section.settings.svg_image_2 | image_url }}" alt="VIP tier image">
+          <div class="membership-tiers__card-content">
+            <h3 class="membership-tiers__card-title">{{ section.settings.tier_title_2 }}</h3>
+            <p class="membership-tiers__card-amount">{{ section.settings.tier_amount_2 }}</p>
+            <p class="membership-tiers__card-note">{{ section.settings.tier_note_2 }}</p>
+          </div>
+        </div>
+        <div class="membership-tiers__rewards">
+          <div class="membership-tiers__rewards-title">
+            {% render 'rewards-confetti.svg' %}
+            <span>Rewards</span>
+          </div>
+          <p>{{ section.settings.tier_reward_2 }}</p>
+        </div>
+        <div class="membership-tiers__benefits benefits--vip">
+          <details><summary>{{ section.settings.tier_2_benefit_1 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_2 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_3 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_4 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_5 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_6 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_7 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_8 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_9 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_10 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_11 }}</summary></details>
+          <details><summary>{{ section.settings.tier_2_benefit_12 }}</summary></details>
+        </div>
+      </div>
+
+      <!-- VIC -->
+      <div class="membership-tiers__card card--vic">
+        <div class="membership-tiers__card-top" style="background-image: url({{ section.settings.bg_image_3 | image_url }});">
+          <img class="membership-tiers__svg" src="{{ section.settings.svg_image_3 | image_url }}" alt="VIC tier image">
+          <div class="membership-tiers__card-content">
+            <h3 class="membership-tiers__card-title">{{ section.settings.tier_title_3 }}</h3>
+            <p class="membership-tiers__card-amount">{{ section.settings.tier_amount_3 }}</p>
+            <p class="membership-tiers__card-note">{{ section.settings.tier_note_3 }}</p>
+          </div>
+        </div>
+        <div class="membership-tiers__perks-header">
+          <div class="membership-tiers__rewards-title">
+            {% render 'rewards-confetti.svg' %}
+            <span>Benefits</span>
+          </div>
+        </div>
+        <div class="membership-tiers__benefits benefits--vic">
+          <details><summary>{{ section.settings.tier_3_benefit_1 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_2 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_3 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_4 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_5 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_6 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_7 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_8 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_9 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_10 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_11 }}</summary></details>
+          <details><summary>{{ section.settings.tier_3_benefit_12 }}</summary></details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+#membership-tiers-{{ section.id }} {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.membership-tiers__wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.membership-tiers__heading {
+  font-family: 'Questrial', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  color: #0a0a0a;
+  margin-bottom: 16px;
+}
+
+.membership-tiers__description {
+  font-size: 16px;
+  color: #2e2e2e;
+  margin-bottom: 48px;
+}
+
+.membership-tiers__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.membership-tiers__card {
+  width: 100%;
+  max-width: 384px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.membership-tiers__card-top {
+  background-size: cover;
+  background-position: center;
+  padding: 48px 20px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.membership-tiers__svg {
+  width: 92px;
+  height: 91px;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.membership-tiers__card-title,
+.membership-tiers__card-amount,
+.membership-tiers__card-note {
+  color: #ffffff;
+  text-align: left;
+}
+
+.membership-tiers__card-title {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.membership-tiers__card-amount {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.membership-tiers__card-note {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.membership-tiers__rewards,
+.membership-tiers__benefits,
+.membership-tiers__perks-header {
+  background: #fcfcfc;
+}
+
+.membership-tiers__rewards {
+  margin: 24px 0;
+}
+
+.membership-tiers__rewards-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  text-align: left;
+  padding: 12px 20px 4px;
+}
+
+.membership-tiers__rewards p {
+  padding: 0 20px 20px;
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+}
+
+.benefits--basic {
+  padding: 0 20px 24px;
+  list-style: disc;
+}
+
+.benefits--basic li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.benefits--vip details,
+.benefits--vic details {
+  padding: 0 20px;
+  border-bottom: 1px solid #EAECF0;
+}
+
+.benefits--vip summary,
+.benefits--vic summary {
+  padding: 12px 0;
+  font-size: 14px;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.card--vic .membership-tiers__card-title,
+.card--vic .membership-tiers__card-amount,
+.card--vic .membership-tiers__card-note {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .membership-tiers__cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+{% endstyle %}
+
+
+{% schema %}
+{
+  "name": "Membership Tiers",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image_1", "label": "Background Image - Basic" },
+    { "type": "image_picker", "id": "bg_image_2", "label": "Background Image - VIP" },
+    { "type": "image_picker", "id": "bg_image_3", "label": "Background Image - VIC" },
+
+    { "type": "image_picker", "id": "svg_image_1", "label": "SVG Image - Basic" },
+    { "type": "image_picker", "id": "svg_image_2", "label": "SVG Image - VIP" },
+    { "type": "image_picker", "id": "svg_image_3", "label": "SVG Image - VIC" },
+
+    { "type": "text", "id": "tier_title_1", "label": "Title - Basic", "default": "Basic" },
+    { "type": "text", "id": "tier_amount_1", "label": "Amount - Basic", "default": "0 amount" },
+    { "type": "text", "id": "tier_note_1", "label": "Note - Basic", "default": "Spending amount includes purchases and referrals." },
+    { "type": "text", "id": "tier_reward_1", "label": "Reward - Basic", "default": "5% off on birthday" },
+    { "type": "text", "id": "tier_1_benefit_1", "label": "Basic Benefit 1", "default": "-" },
+    { "type": "text", "id": "tier_1_benefit_2", "label": "Basic Benefit 2", "default": "-" },
+    { "type": "text", "id": "tier_1_benefit_3", "label": "Basic Benefit 3", "default": "-" },
+
+    { "type": "text", "id": "tier_title_2", "label": "Title - VIP", "default": "VIP" },
+    { "type": "text", "id": "tier_amount_2", "label": "Amount - VIP", "default": "30,000 amount" },
+    { "type": "text", "id": "tier_note_2", "label": "Note - VIP", "default": "Includes personal and referred purchases." },
+    { "type": "text", "id": "tier_reward_2", "label": "Reward - VIP", "default": "10% off on birthday" },
+    { "type": "text", "id": "tier_2_benefit_1", "label": "VIP Benefit 1", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_2", "label": "VIP Benefit 2", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_3", "label": "VIP Benefit 3", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_4", "label": "VIP Benefit 4", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_5", "label": "VIP Benefit 5", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_6", "label": "VIP Benefit 6", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_7", "label": "VIP Benefit 7", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_8", "label": "VIP Benefit 8", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_9", "label": "VIP Benefit 9", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_10", "label": "VIP Benefit 10", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_11", "label": "VIP Benefit 11", "default": "-" },
+    { "type": "text", "id": "tier_2_benefit_12", "label": "VIP Benefit 12", "default": "-" },
+
+    { "type": "text", "id": "tier_title_3", "label": "Title - VIC", "default": "VIC" },
+    { "type": "text", "id": "tier_amount_3", "label": "Amount - VIC", "default": "50,000 amount" },
+    { "type": "text", "id": "tier_note_3", "label": "Note - VIC", "default": "Includes all purchases by member and referrals." },
+    { "type": "text", "id": "tier_reward_3", "label": "Reward - VIC", "default": "Exclusive birthday privileges" },
+    { "type": "text", "id": "tier_3_benefit_1", "label": "VIC Benefit 1", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_2", "label": "VIC Benefit 2", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_3", "label": "VIC Benefit 3", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_4", "label": "VIC Benefit 4", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_5", "label": "VIC Benefit 5", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_6", "label": "VIC Benefit 6", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_7", "label": "VIC Benefit 7", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_8", "label": "VIC Benefit 8", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_9", "label": "VIC Benefit 9", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_10", "label": "VIC Benefit 10", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_11", "label": "VIC Benefit 11", "default": "-" },
+    { "type": "text", "id": "tier_3_benefit_12", "label": "VIC Benefit 12", "default": "-" }
+  ],
+  "presets": [
+    {
+      "name": "Membership Tiers",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

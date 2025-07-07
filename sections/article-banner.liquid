@@ -1,0 +1,205 @@
+{% comment %}
+  Custom section: Article Banner | article-banner.liquid
+{% endcomment %}
+
+<div
+  class="article-banner"
+  id="article-banner-{{ section.id }}"
+  style="background-image: url({{ section.settings.banner_image | image_url: width: 1920 }});"
+>
+  <div class="article-banner__content">
+    <span class="article-banner__category-label">{{ section.settings.primary_tag }}</span>
+    <p class="article-banner__category">{{ section.settings.secondary_tag }}</p>
+    <h1 class="article-banner__title">{{ section.settings.title }}</h1>
+    <div class="article-banner__meta">
+      <span>{{ section.settings.author }}</span>
+      <span class="article-banner__dot">•</span>
+      <span>{{ section.settings.date }}</span>
+      <span class="article-banner__dot">•</span>
+      <span>{{ section.settings.share_label }}</span>
+      <div class="article-banner__socials">
+        {% if section.settings.tiktok != blank %}
+          <a href="{{ section.settings.tiktok }}" aria-label="TikTok">{% render 'tiktok.svg' %}</a>
+        {% endif %}
+        {% if section.settings.linkedin != blank %}
+          <a href="{{ section.settings.linkedin }}" aria-label="LinkedIn">{% render 'linkedin.svg' %}</a>
+        {% endif %}
+        {% if section.settings.youtube != blank %}
+          <a href="{{ section.settings.youtube }}" aria-label="YouTube">{% render 'youtube.svg' %}</a>
+        {% endif %}
+        {% if section.settings.facebook != blank %}
+          <a href="{{ section.settings.facebook }}" aria-label="Facebook">{% render 'facebook.svg' %}</a>
+        {% endif %}
+        {% if section.settings.x != blank %}
+          <a href="{{ section.settings.x }}" aria-label="X">{% render 'x.svg' %}</a>
+        {% endif %}
+        {% if section.settings.pinterest != blank %}
+          <a href="{{ section.settings.pinterest }}" aria-label="Pinterest">{% render 'pinterest.svg' %}</a>
+        {% endif %}
+        {% if section.settings.instagram != blank %}
+          <a href="{{ section.settings.instagram }}" aria-label="Instagram">{% render 'instagram.svg' %}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+.article-banner {
+  position: relative;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+}
+
+.article-banner__content {
+  max-width: 680px;
+}
+
+.article-banner__category-label {
+  display: inline-block;
+  background: #1A1A1A;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1;
+  padding: 5px 10px;
+  margin-bottom: 12px;
+  font-family: Roboto, sans-serif;
+}
+
+.article-banner__category {
+  font-size: 14px;
+  font-family: Roboto, sans-serif;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+
+.article-banner__title {
+  font-family: Questrial, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 32px;
+  color: #ffffff;
+}
+
+.article-banner__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.article-banner__dot {
+  font-size: 12px;
+}
+
+.article-banner__socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.article-banner__socials a svg {
+  width: 18px;
+  height: 18px;
+  fill: #ffffff;
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Article Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "primary_tag",
+      "label": "Primary Tag",
+      "default": "Education"
+    },
+    {
+      "type": "text",
+      "id": "secondary_tag",
+      "label": "Secondary Tag",
+      "default": "Education & Industry"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Article Title",
+      "default": "Dash Cam Struggles to Turn On When Cold: Why?"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "TeamVantrue"
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "label": "Date",
+      "default": "Jan 09"
+    },
+    {
+      "type": "text",
+      "id": "share_label",
+      "label": "Share Text",
+      "default": "Share"
+    },
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok Link"
+    },
+    {
+      "type": "url",
+      "id": "linkedin",
+      "label": "LinkedIn Link"
+    },
+    {
+      "type": "url",
+      "id": "youtube",
+      "label": "YouTube Link"
+    },
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook Link"
+    },
+    {
+      "type": "url",
+      "id": "x",
+      "label": "X Link"
+    },
+    {
+      "type": "url",
+      "id": "pinterest",
+      "label": "Pinterest Link"
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

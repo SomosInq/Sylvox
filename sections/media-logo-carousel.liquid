@@ -1,0 +1,220 @@
+{% comment %}
+  Custom section: Media Logo Carousel | media-logo-carousel.liquid
+{% endcomment %}
+
+<div class="media-logo-carousel" id="media-logo-carousel-{{ section.id }}">
+  <div class="media-logo-carousel__inner">
+    <div class="media-logo-carousel__text-group">
+      <h2 class="media-logo-carousel__heading">{{ section.settings.heading }}</h2>
+      <p class="media-logo-carousel__subtext">{{ section.settings.subtext }}</p>
+    </div>
+    <div class="media-logo-carousel__carousel">
+      {% for block in section.blocks %}
+        <div class="media-logo-carousel__item" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <p class="media-logo-carousel__quote">{{ block.settings.quote }}</p>
+          <div class="media-logo-carousel__logo-wrapper">
+            {% if block.settings.logo != blank %}
+              {{ block.settings.logo | image_url: width: 200 | image_tag: loading: 'lazy', class: 'media-logo-carousel__logo', alt: block.settings.alt }}
+            {% endif %}
+          </div>
+          <p class="media-logo-carousel__meta">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% style %}
+    .media-logo-carousel {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 20px;
+      color: #ffffff;
+      background-image: url({{ section.settings.background | image_url }});
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .media-logo-carousel__inner {
+      max-width: 1608px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .media-logo-carousel__text-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .media-logo-carousel__heading {
+      font-family: Questrial, sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    .media-logo-carousel__subtext {
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      max-width: 600px;
+      line-height: 1.5;
+      color: #ffffff;
+    }
+
+    .media-logo-carousel__carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 24px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .media-logo-carousel__item {
+      flex: 0 0 auto;
+      width: 368px;
+      background-color: #ffffff;
+      color: #1D1D1B;
+      border-radius: 8px;
+      padding: 40px 24px;
+      scroll-snap-align: start;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .media-logo-carousel__item.active {
+      opacity: 1;
+    }
+
+    .media-logo-carousel__quote {
+      font-family: Roboto, sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    .media-logo-carousel__logo-wrapper {
+      margin-bottom: 24px;
+    }
+
+    .media-logo-carousel__logo {
+      display: block;
+      max-height: 40px;
+      width: auto;
+      margin: 0 auto;
+    }
+
+    .media-logo-carousel__meta {
+      font-size: 14px;
+      text-align: center;
+      color: #7e8182;
+    }
+
+    @media screen and (max-width: 768px) {
+      .media-logo-carousel__heading {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .media-logo-carousel__text-group {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .media-logo-carousel__carousel {
+        padding-bottom: 16px;
+      }
+    }
+  {% endstyle %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const carousel = document.querySelector('#media-logo-carousel-{{ section.id }} .media-logo-carousel__carousel');
+      const items = carousel.querySelectorAll('.media-logo-carousel__item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('active', entry.isIntersecting);
+        });
+      }, { root: carousel, threshold: 0.6 });
+
+      items.forEach(item => observer.observe(item));
+    });
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Media Logo Carousel",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "As seen on"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Our brand has been featured in some of the most trusted media outlets, showcasing our commitment to quality and innovation."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_item",
+      "name": "Media Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "“The low-profile form factor, excellent video quality and ease of use make it a winner.”"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Logo alt text",
+          "default": "Media logo"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "By William Roberson, Sep 28, 2020"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Media Logo Carousel",
+      "category": "Custom",
+      "blocks": [
+        { "type": "media_item" },
+        { "type": "media_item" },
+        { "type": "media_item" },
+        { "type": "media_item" },
+        { "type": "media_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

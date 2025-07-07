@@ -1,0 +1,314 @@
+{% schema %}
+{
+  "name": "Video Carousel",
+  "settings": [
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay (seconds)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "Video Type",
+          "options": [
+            { "value": "shopify", "label": "Shopify-hosted MP4" },
+            { "value": "youtube", "label": "YouTube" },
+            { "value": "vimeo", "label": "Vimeo" }
+          ],
+          "default": "shopify"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (YouTube, Vimeo or MP4 link)",
+          "default": "/"
+        },
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Shopify Video (MP4)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Carousel",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="video-carousel" data-delay="{{ section.settings.autoplay_delay | times: 1000 }}">
+  <div class="carousel-track-wrapper">
+    <div class="carousel-track">
+      {% assign slides = section.blocks %}
+      {% if slides.size > 0 %}
+        {% assign last = slides.last %}
+        <div class="carousel-slide clone">
+          {% assign video_type = last.settings.video_type %}
+          {% assign hosted_video = last.settings.shopify_video %}
+          {% assign external_url = last.settings.video_url %}
+          {% if video_type == 'shopify' and hosted_video != blank %}
+            {{ hosted_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: true }}
+          {% elsif video_type == 'youtube' and external_url contains 'youtube' %}
+            {% assign id = external_url | split: 'v=' | last | split: '&' | first %}
+            <iframe src="https://www.youtube.com/embed/{{ id }}?enablejsapi=1&mute=1&loop=1&playlist={{ id }}" frameborder="0" allowfullscreen></iframe>
+          {% elsif video_type == 'vimeo' and external_url contains 'vimeo' %}
+            {% assign id = external_url | split: '/' | last %}
+            <iframe src="https://player.vimeo.com/video/{{ id }}?muted=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        </div>
+
+        {% for block in slides %}
+          <div class="carousel-slide">
+            {% assign video_type = block.settings.video_type %}
+            {% assign hosted_video = block.settings.shopify_video %}
+            {% assign external_url = block.settings.video_url %}
+            {% if video_type == 'shopify' and hosted_video != blank %}
+              {{ hosted_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: true }}
+            {% elsif video_type == 'youtube' and external_url contains 'youtube' %}
+              {% assign id = external_url | split: 'v=' | last | split: '&' | first %}
+              <iframe src="https://www.youtube.com/embed/{{ id }}?enablejsapi=1&mute=1&loop=1&playlist={{ id }}" frameborder="0" allowfullscreen></iframe>
+            {% elsif video_type == 'vimeo' and external_url contains 'vimeo' %}
+              {% assign id = external_url | split: '/' | last %}
+              <iframe src="https://player.vimeo.com/video/{{ id }}?muted=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        {% assign first = slides.first %}
+        <div class="carousel-slide clone">
+          {% assign video_type = first.settings.video_type %}
+          {% assign hosted_video = first.settings.shopify_video %}
+          {% assign external_url = first.settings.video_url %}
+          {% if video_type == 'shopify' and hosted_video != blank %}
+            {{ hosted_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: true }}
+          {% elsif video_type == 'youtube' and external_url contains 'youtube' %}
+            {% assign id = external_url | split: 'v=' | last | split: '&' | first %}
+            <iframe src="https://www.youtube.com/embed/{{ id }}?enablejsapi=1&mute=1&loop=1&playlist={{ id }}" frameborder="0" allowfullscreen></iframe>
+          {% elsif video_type == 'vimeo' and external_url contains 'vimeo' %}
+            {% assign id = external_url | split: '/' | last %}
+            <iframe src="https://player.vimeo.com/video/{{ id }}?muted=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="carousel-nav">
+      {% for block in section.blocks %}
+        <div class="carousel-dot-bar" data-index="{{ forloop.index0 }}">
+          <div class="bar-fill"></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<style>
+.video-carousel {
+  overflow: hidden;
+  background-color: #fff;
+  padding: 40px 0;
+  position: relative;
+}
+.carousel-track-wrapper {
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+}
+.carousel-slide {
+  flex: 0 0 auto;
+  width: 1000px;
+  height: 562.5px; /* 16:9 for 1000px width */
+  margin: 0 20px;
+  opacity: 0.5;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.carousel-slide.active {
+  opacity: 1;
+}
+.carousel-slide iframe,
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+/* Dot-bar navigation */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+.carousel-dot-bar {
+  width: 40px;
+  height: 6px;
+  background-color: #d0d0d0;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+.carousel-dot-bar .bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #34a853;
+  transition: width linear;
+}
+.carousel-dot-bar.active {
+  background-color: #bbb;
+}
+
+@media screen and (max-width: 1024px) {
+  .carousel-slide {
+    width: 90vw;
+    height: calc(90vw * 0.5625);
+    margin: 0 5vw;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.querySelector('.video-carousel');
+  const track = carousel.querySelector('.carousel-track');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const dots = carousel.querySelectorAll('.carousel-dot-bar');
+  const delay = parseInt(carousel.dataset.delay);
+  const totalSlides = slides.length;
+  const realSlides = totalSlides - 2;
+
+  let index = 1;
+  let interval;
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let diffX = 0;
+  let manualPlay = false;
+
+  function updatePosition(animate = true) {
+    const slide = slides[index];
+    const offset = slide.offsetLeft - (carousel.offsetWidth / 2 - slide.offsetWidth / 2);
+    track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+    track.style.transform = `translateX(-${offset}px)`;
+
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    dots.forEach((dot, i) => {
+      const fill = dot.querySelector('.bar-fill');
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      dot.classList.remove('active');
+      if (i === index - 1) {
+        dot.classList.add('active');
+        requestAnimationFrame(() => {
+          fill.style.transition = `width ${delay}ms linear`;
+          fill.style.width = '100%';
+        });
+      }
+    });
+  }
+
+  function slideTo(i) {
+    index = i;
+    updatePosition(true);
+  }
+
+  function startAutoplay() {
+    interval = setInterval(() => {
+      if (!manualPlay) {
+        index++;
+        slideTo(index);
+      }
+    }, delay);
+  }
+
+  function resetAutoplay() {
+    clearInterval(interval);
+    startAutoplay();
+  }
+
+  track.addEventListener('transitionend', () => {
+    if (index === totalSlides - 1) {
+      index = 1;
+      updatePosition(false);
+    } else if (index === 0) {
+      index = realSlides;
+      updatePosition(false);
+    }
+  });
+
+  // Drag support: mouse + touch
+  const onDragStart = (e) => {
+    isDragging = true;
+    startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+    currentX = startX;
+    track.style.transition = 'none';
+    clearInterval(interval);
+  };
+
+  const onDragMove = (e) => {
+    if (!isDragging) return;
+    currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+    diffX = currentX - startX;
+    const slide = slides[index];
+    const offset = slide.offsetLeft - (carousel.offsetWidth / 2 - slide.offsetWidth / 2);
+    track.style.transform = `translateX(${ -offset + diffX }px)`;
+  };
+
+  const onDragEnd = () => {
+    isDragging = false;
+    if (Math.abs(diffX) > 50) index += diffX < 0 ? 1 : -1;
+    updatePosition(true);
+    resetAutoplay();
+  };
+
+  track.addEventListener('mousedown', onDragStart);
+  track.addEventListener('mousemove', onDragMove);
+  track.addEventListener('mouseup', onDragEnd);
+  track.addEventListener('mouseleave', () => isDragging && onDragEnd());
+  track.addEventListener('touchstart', onDragStart);
+  track.addEventListener('touchmove', onDragMove);
+  track.addEventListener('touchend', onDragEnd);
+
+  track.addEventListener('mouseover', () => clearInterval(interval));
+  track.addEventListener('mouseleave', () => { manualPlay = false; resetAutoplay(); });
+
+  track.querySelectorAll('video').forEach((vid) => {
+    vid.addEventListener('play', () => {
+      manualPlay = true;
+      clearInterval(interval);
+    });
+  });
+
+  window.addEventListener('resize', () => updatePosition(false));
+
+  updatePosition(false);
+  startAutoplay();
+});
+</script>

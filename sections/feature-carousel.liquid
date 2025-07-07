@@ -1,0 +1,224 @@
+{% schema %}
+    {
+      "name": "Feature Carousel",
+      "settings": [
+        {
+          "type": "text",
+          "id": "section_heading",
+          "label": "Section Heading",
+          "default": "Packed with Extra Features for a Complete Experience"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f9f9f9"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "feature",
+          "name": "Feature",
+          "settings": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Feature Label",
+              "default": "Intelligent Voice Control"
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Feature Title",
+              "default": "Intelligent Voice Control"
+            },
+            {
+              "type": "textarea",
+              "id": "description",
+              "label": "Feature Description",
+              "default": "Hands-free commands for effortless operation."
+            },
+            {
+              "type": "image_picker",
+              "id": "feature_image",
+              "label": "Feature Image"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 8,
+      "presets": [
+        {
+          "name": "Feature Carousel",
+          "category": "Custom"
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <section class="feature-carousel" style="background-color: {{ section.settings.background_color }};">
+      <div class="page-width">
+        <h2 class="section-title">{{ section.settings.section_heading }}</h2>
+        <div class="carousel-wrapper">
+          <div class="carousel-text-column">
+            <ul class="feature-labels">
+              {% for block in section.blocks %}
+                <li class="feature-label {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+                  {{ block.settings.label }}
+                </li>
+              {% endfor %}
+            </ul>
+            <div class="feature-details">
+              {% for block in section.blocks %}
+                <div class="feature-content {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+                  <h3>{{ block.settings.title }}</h3>
+                  <p>{{ block.settings.description }}</p>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="carousel-dots">
+              {% for block in section.blocks %}
+                <span class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="carousel-image-column">
+            {% for block in section.blocks %}
+              <div class="image-wrapper {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+                {% if block.settings.feature_image != blank %}
+                  <img src="{{ block.settings.feature_image | image_url: width: 1000 }}" alt="{{ block.settings.title }}" loading="lazy">
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <style>
+    .feature-carousel {
+      padding: 60px 0;
+    }
+    .feature-carousel .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+    .carousel-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .carousel-text-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #2b2b2b;
+      color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+    }
+    .feature-labels {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+    }
+    .feature-label {
+      font-size: 14px;
+      opacity: 0.4;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: opacity 0.3s;
+    }
+    .feature-label.active {
+      opacity: 1;
+    }
+    .feature-details {
+      margin-top: auto;
+    }
+    .feature-details .feature-content {
+      display: none;
+    }
+    .feature-details .feature-content.active {
+      display: block;
+    }
+    .feature-content h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .feature-content p {
+      font-size: 14px;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 10px;
+      margin-top: 40px;
+    }
+    .carousel-dots .dot {
+      height: 2px;
+      flex: 1;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel-dots .dot.active {
+      background: #fff;
+    }
+    .carousel-image-column {
+      position: relative;
+    }
+    .image-wrapper {
+      display: none;
+    }
+    .image-wrapper.active {
+      display: block;
+    }
+    .image-wrapper img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    @media screen and (max-width: 768px) {
+      .carousel-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .carousel-text-column, .carousel-image-column {
+        padding: 20px;
+      }
+    }
+    </style>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const labels = document.querySelectorAll(".feature-label");
+        const dots = document.querySelectorAll(".carousel-dots .dot");
+        const contents = document.querySelectorAll(".feature-content");
+        const images = document.querySelectorAll(".image-wrapper");
+    
+        function updateActive(index) {
+          labels.forEach(l => l.classList.remove("active"));
+          dots.forEach(d => d.classList.remove("active"));
+          contents.forEach(c => c.classList.remove("active"));
+          images.forEach(i => i.classList.remove("active"));
+    
+          labels[index].classList.add("active");
+          dots[index].classList.add("active");
+          contents[index].classList.add("active");
+          images[index].classList.add("active");
+        }
+    
+        labels.forEach(label => {
+          label.addEventListener("click", () => {
+            const index = parseInt(label.getAttribute("data-index"));
+            updateActive(index);
+          });
+        });
+    
+        dots.forEach(dot => {
+          dot.addEventListener("click", () => {
+            const index = parseInt(dot.getAttribute("data-index"));
+            updateActive(index);
+          });
+        });
+      });
+    </script>
+    

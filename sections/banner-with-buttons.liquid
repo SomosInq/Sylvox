@@ -1,0 +1,337 @@
+{% schema %}
+{
+  "name": "Banner with Buttons",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "height_type",
+      "label": "Banner Height",
+      "default": "custom",
+      "options": [
+        { "value": "default", "label": "Banner height" },
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "custom", "label": "Custom height" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "custom_height",
+      "label": "Custom height (px)",
+      "min": 100,
+      "max": 600,
+      "step": 5,
+      "default": 175,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "caption",
+      "name": "Caption",
+      "limit": 4,
+      "settings": [
+        { "type": "richtext", "id": "content", "label": "Caption Content" },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font size (px)",
+          "min": 10,
+          "max": 48,
+          "step": 1,
+          "default": 14
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "default": "400",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 48,
+          "step": 2,
+          "default": 8
+        },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#ffffff" }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 4,
+      "settings": [
+        { "type": "richtext", "id": "content", "label": "Heading Content" },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font size (px)",
+          "min": 14,
+          "max": 72,
+          "step": 1,
+          "default": 32
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "default": "500",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom (px)",
+          "min": 0,
+          "max": 48,
+          "step": 2,
+          "default": 8
+        },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#ffffff" }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Button Text", "default": "Learn More" },
+        { "type": "url", "id": "link", "label": "Button Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner with Buttons",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": { "content": "<p>Refer a Friend, Earn Up to 8% Back!</p>" }
+        },
+        {
+          "type": "button",
+          "settings": { "text": "Learn More" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.banner-with-buttons__background {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  max-width: 1608px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.banner-with-buttons__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+}
+
+.banner-with-buttons__text {
+  max-width: 70%;
+}
+
+.banner-with-buttons__text > * > * {
+  display: block;
+}
+
+.banner-with-buttons__text p {
+  margin-bottom: 0;
+}
+
+.banner-with-buttons__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 0;
+  gap: 12px;
+}
+
+.banner-with-buttons__button {
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.banner-with-buttons__button:hover {
+  background-color: #e5e5e5;
+}
+
+@media screen and (max-width: 768px) {
+  .banner-with-buttons__background {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    height: 200px;
+    padding: 67px 20px;
+  }
+
+  .banner-with-buttons__text {
+    max-width: 235px;
+    text-align: center;
+  }
+
+  .banner-with-buttons__text p {
+    font-size: 24px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .banner-with-buttons__cta {
+    width: 142px;
+    height: 42px;
+    align-items: center;
+  }
+
+  .banner-with-buttons__button {
+    padding: 0;
+    height: 42px;
+    width: 142px;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 40px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+
+  .banner-with-buttons__button svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+</style>
+
+
+<section
+  class="banner-with-buttons"
+  style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;"
+>
+  <div class="page-width">
+    <div
+      class="banner-with-buttons__background"
+      style="
+        background-image: url({{ section.settings.background_image | image_url: width: 1608 }});
+        {% if section.settings.height_type == 'custom' %}
+          height: {{ section.settings.custom_height }}px;
+        {% elsif section.settings.height_type == 'adapt' %}
+          height: auto;
+        {% else %}
+          height: auto;
+        {% endif %}
+      "
+    >
+      <div class="banner-with-buttons__content">
+        <div class="banner-with-buttons__text">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'caption' %}
+                <div
+                  style="
+                    font-size: {{ block.settings.font_size }}px;
+                    font-weight: {{ block.settings.font_weight }};
+                    color: {{ block.settings.text_color }};
+                  "
+                >
+                  <div style="margin-bottom: {{ block.settings.margin_bottom }}px;">
+                    {{ block.settings.content }}
+                  </div>
+                </div>
+              {% when 'heading' %}
+                <div
+                  style="
+                    font-size: {{ block.settings.font_size }}px;
+                    font-weight: {{ block.settings.font_weight }};
+                    color: {{ block.settings.text_color }};
+                  "
+                >
+                  <div style="margin-bottom: {{ block.settings.margin_bottom }}px;">
+                    {{ block.settings.content }}
+                  </div>
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+
+        <div class="banner-with-buttons__cta">
+          {% for block in section.blocks %}
+            {% if block.type == 'button' %}
+              <a href="{{ block.settings.link | default: '#' }}" class="banner-with-buttons__button">
+                {{ block.settings.text }}
+                {% render 'diagonal-top-right-arrow.svg' %}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

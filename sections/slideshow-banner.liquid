@@ -1,0 +1,313 @@
+{% comment %}
+  Custom section: Slideshow Banner | slideshow-banner.liquid
+{% endcomment %}
+
+<div class="slideshow-banner"
+     data-autoplay="{{ section.settings.autoplay }}"
+     data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+     data-adapt="{{ section.settings.adapt_to_image }}"
+     data-custom-height="{{ section.settings.custom_height }}">
+  <div class="slideshow-banner__track">
+    {% for block in section.blocks %}
+      <div
+        class="slideshow-banner__slide{% if forloop.first %} is-active{% endif %}"
+        style="background-image: url({{ block.settings.background_image | image_url: width: 3200 }}); height: {% if section.settings.adapt_to_image %}auto{% else %}{{ section.settings.custom_height }}px{% endif %};"
+        {{ block.shopify_attributes }}
+      >
+        <div class="slideshow-banner__content" style="--text-color: {{ block.settings.text_color }};">
+          <div class="banner-heading">{{ block.settings.heading }}</div>
+          <div class="banner-subheading">{{ block.settings.subheading }}</div>
+          <div class="banner-description">{{ block.settings.description }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="banner-nav prev" aria-label="Previous slide">
+    {% render 'left-arrow-circle.svg' %}
+  </button>
+  <button class="banner-nav next" aria-label="Next slide">
+    {% render 'right-arrow-circle.svg' %}
+  </button>
+
+  <div class="banner-progress">
+    {% for block in section.blocks %}
+      <span class="dot{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}"></span>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+.slideshow-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #d4d4d4;
+}
+
+.slideshow-banner__track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.slideshow-banner__slide {
+  min-width: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 3rem;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .slideshow-banner__slide {
+    padding-left: 157px;
+    padding-right: 157px;
+  }
+}
+
+.slideshow-banner__content {
+  max-width: 600px;
+}
+
+.banner-heading,
+.banner-subheading,
+.banner-description {
+  margin-bottom: 1.2rem;
+}
+
+.banner-heading *:not(svg),
+.banner-subheading *:not(svg),
+.banner-description *:not(svg) {
+  color: var(--text-color) !important;
+}
+
+.banner-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.banner-nav.prev {
+  left: 2rem;
+}
+
+.banner-nav.next {
+  right: 2rem;
+}
+
+.banner-progress {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(180, 180, 180, 0.3);
+  border-radius: 9999px;
+  padding: 0.4rem 1rem;
+}
+
+.banner-progress .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: #c4c4c4;
+  transition: all 0.3s ease;
+}
+
+.banner-progress .dot.active {
+  background: #fff;
+  width: 28px;
+}
+
+@media screen and (max-width: 767px) {
+  .slideshow-banner__slide {
+    padding: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 640px;
+  }
+
+  .slideshow-banner__content {
+    max-width: none;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent 60%);
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .banner-heading {
+    font-size: 24px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  .banner-subheading {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .banner-description {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  .banner-nav.prev {
+    left: 1rem;
+  }
+
+  .banner-nav.next {
+    right: 1rem;
+  }
+
+  .banner-progress {
+    bottom: 1rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+{% endstyle %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.querySelector('.slideshow-banner');
+  const track = wrapper.querySelector('.slideshow-banner__track');
+  const slides = wrapper.querySelectorAll('.slideshow-banner__slide');
+  const dots = wrapper.querySelectorAll('.banner-progress .dot');
+  const nextBtn = wrapper.querySelector('.banner-nav.next');
+  const prevBtn = wrapper.querySelector('.banner-nav.prev');
+
+  let current = 0;
+  let interval = null;
+  const speed = parseInt(wrapper.dataset.speed);
+  const autoplay = wrapper.dataset.autoplay === 'true';
+
+  const showSlide = (index) => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+    current = index;
+  }
+
+  const nextSlide = () => showSlide((current + 1) % slides.length);
+  const prevSlide = () => showSlide((current - 1 + slides.length) % slides.length);
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.slide)));
+  });
+
+  if (autoplay) {
+    interval = setInterval(nextSlide, speed);
+    wrapper.addEventListener('mouseenter', () => clearInterval(interval));
+    wrapper.addEventListener('mouseleave', () => {
+      interval = setInterval(nextSlide, speed);
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Slideshow Banner",
+  "tag": "section",
+  "class": "slideshow-banner-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed (seconds)",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "adapt_to_image",
+      "label": "Adapt height to first slide image",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "custom_height",
+      "label": "Custom height (px)",
+      "min": 300,
+      "max": 900,
+      "step": 10,
+      "default": 600
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "N Series: Navigate the Road with Clarity"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Capture Every Detail with High-Resolution Recording"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "The Vantrue N Series dash cams stand out with their high-resolution video capability, capturing every journey in crisp, vivid detail."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Slideshow Banner",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

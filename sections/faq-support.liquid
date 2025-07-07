@@ -1,0 +1,477 @@
+{% comment %}
+  Custom section: FAQ & Support Hub | faq-support.liquid
+{% endcomment %}
+
+<div id="{{ section.id }}" class="faq-support-container">
+  <div class="faq-support__wrapper">
+    <div class="faq-support__header">
+      <h2 class="faq-support__title">Have a question ?<br>We are here to help.</h2>
+      <p class="faq-support__subtitle">Check out the most common questions our customers asked. Still have questions ? Contact our customer support.</p>
+    </div>
+
+    <div class="faq-support__accordion">
+      {% for block in section.blocks %}
+        <details class="faq-support__item" id="{{ block.id }}" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+          <summary class="faq-support__question">
+            {{ block.settings.question }}
+            {% render 'circle-arrow.svg' %}
+          </summary>
+          {% if block.settings.answer != blank %}
+            <div class="faq-support__answer">{{ block.settings.answer }}</div>
+          {% endif %}
+        </details>
+      {% endfor %}
+    </div>
+
+    <div class="faq-support__cards">
+      <a href="{{ section.settings.support_link }}" class="faq-support__card faq-support__card--support">
+        {% if section.settings.support_image %}
+          <img src="{{ section.settings.support_image | image_url: width: 1000 }}" alt="Support Hub Background" class="faq-support__card-bg faq-support__bg--desktop" />
+        {% endif %}
+        {% if section.settings.support_image_mobile %}
+          <img src="{{ section.settings.support_image_mobile | image_url: width: 600 }}" alt="Support Hub Background Mobile" class="faq-support__card-bg faq-support__bg--mobile" />
+        {% endif %}
+        <div class="faq-support__card-inner">
+          <h2 class="faq-support__card-title">{{ section.settings.support_heading }}</h2>
+          <div class="faq-support__card-content">
+            <p>{{ section.settings.support_description }}</p>
+          </div>
+          <div class="faq-support__card-bottom">
+            {{ section.settings.support_cta_text }}
+            <span class="faq-support__arrow">
+              {% render 'bottom-right-arrow.svg' %}
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ section.settings.contact_link }}" class="faq-support__card faq-support__card--questions">
+        {% if section.settings.still_bg_image %}
+          <img src="{{ section.settings.still_bg_image | image_url: width: 1000 }}" alt="Still have questions Background" class="faq-support__card-bg faq-support__bg--desktop" />
+        {% endif %}
+        {% if section.settings.still_bg_image_mobile %}
+          <img src="{{ section.settings.still_bg_image_mobile | image_url: width: 600 }}" alt="Still have questions Background Mobile" class="faq-support__card-bg faq-support__bg--mobile" />
+        {% endif %}
+        <div class="faq-support__card-inner">
+          <h2 class="faq-support__card-title">{{ section.settings.questions_heading }}</h2>
+          <div class="faq-support__card-bottom">
+            <p>{{ section.settings.questions_description }}</p>
+            <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.669922" y="1.25977" width="47" height="47" rx="1.5" stroke="#636363"/>
+              <path d="M28.1699 28.7598L20.7898 28.7404V27.3651L25.9423 27.5007L20.1699 21.7477L21.1578 20.7598L26.9302 26.5128L26.814 21.3602H28.1699V28.7598Z" fill="#636363"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% style %}
+.faq-support-container {
+  padding: 80px 20px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.faq-support__wrapper {
+  max-width: 1608px;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.faq-support__header {
+  margin-bottom: 32px;
+}
+
+.faq-support__title {
+  font-size: 56px;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 400;
+  max-width: 532px;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #1A1A1A;
+}
+
+.faq-support__subtitle {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 654.22px;
+  color: #1A1A1A;
+}
+
+.faq-support__accordion {
+  overflow-wrap: break-word;
+  background-color: #FCFCFC;
+  padding: 40px 48px;
+}
+
+.faq-support__item {
+  padding: 20px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.10);
+  box-sizing: border-box;
+}
+
+.faq-support__question {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-support__answer {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #4C4E50;
+  line-height: 1.6;
+}
+
+.faq-support__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.faq-support__card {
+  width: calc(50% - 10px);
+  aspect-ratio: 792 / 530;
+  padding: 40px;
+  border-radius: 8px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.faq-support__card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.faq-support__bg--mobile {
+  display: none;
+}
+
+  .faq-support__card--questions {
+    color: #636363;
+    position: relative;
+  }
+
+  .faq-support__card--questions svg path,
+  .faq-support__card--questions svg rect {
+    stroke: #636363 !important;
+  }
+
+.faq-support__card-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.faq-support__card-title {
+  font-family: 'Questrial', sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  max-width: 636px;
+  text-align: left;
+  margin: 0 0 16px 0;
+  color: inherit;
+}
+
+.faq-support__card-content {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 562px;
+  line-height: normal;
+  align-self: flex-start;
+    margin-top: auto;
+}
+
+.faq-support__card-content p {
+  margin: 0;
+}
+
+.faq-support__card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  gap: 8px;
+}
+
+.faq-support__cta {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.faq-support__cta svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.faq-support__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+
+.faq-support__card--support svg path,
+.faq-support__card--support svg rect {
+  stroke: #ffffff !important;
+}
+
+.faq-support__card--support:hover,
+.faq-support__card--support:hover .faq-support__card-title,
+.faq-support__card--support:hover .faq-support__card-content,
+.faq-support__card--support:hover .faq-support__card-bottom,
+.faq-support__card--support:hover .faq-support__card-bottom *,
+.faq-support__card--support:hover .faq-support__cta {
+  color: #ffffff;
+}
+
+.faq-support__wrapper p {
+margin-bottom: 0;
+}
+@media screen and (max-width: 767px) {
+  .faq-support__bg--desktop {
+    display: none;
+  }
+  .faq-support__bg--mobile {
+    display: block;
+  }
+
+  .faq-support-container {
+    margin-top: 40px;
+    padding: 0 24px 0 24px;
+  }
+
+  .faq-support__accordion {
+    padding: 0;
+  }
+
+
+  .faq-support__card {
+    width: 358px;
+    flex: 1 1 100%;
+    padding: 24px;
+    border-radius: 8px;
+  }
+
+  .faq-support__card-title {
+    font-family: 'Questrial', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
+  .faq-support__card-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: normal;
+    display: none;
+  }
+
+  .faq-support__card-bottom {
+    font-size: 16px;
+font-family: Roboto;
+   }
+
+  .faq-support__cta {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 12px;
+  }
+
+  .faq-support__cards {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  .faq-support__title {
+    font-size: 24px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+    max-width: 219px;
+  }
+
+  .faq-support__subtitle {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    height: 45px;
+    margin-bottom: 48px;
+  }
+  .faq-support__item {
+  padding: 20px 0;
+  margin: 0px 20px;
+  }
+
+  .faq-support__question {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .faq-support__answer {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #636363;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .faq-support__card-content {
+    display: none;
+  }
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQ & Support Hub",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "support_image",
+      "label": "Support Hub Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "support_image_mobile",
+      "label": "Support Hub Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "support_heading",
+      "label": "Support Hub Heading",
+      "default": "Support Hub"
+    },
+    {
+      "type": "textarea",
+      "id": "support_description",
+      "label": "Support Hub Description",
+      "default": "Access user manuals and firmware updates to ensure your dash cam operates at its best. Our dedicated support team is ready to assist with any inquiries or issues you may encounter."
+    },
+    {
+      "type": "text",
+      "id": "support_cta_text",
+      "label": "Support Hub CTA Text",
+      "default": "Explore our Support Hub for all your product assistance needs."
+    },
+    {
+      "type": "image_picker",
+      "id": "still_bg_image",
+      "label": "‘Still have questions?’ Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "still_bg_image_mobile",
+      "label": "‘Still have questions?’ Background (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "questions_heading",
+      "label": "‘Still have questions?’ Heading",
+      "default": "Still have questions ?"
+    },
+    {
+      "type": "textarea",
+      "id": "questions_description",
+      "label": "‘Still have questions?’ Description",
+      "default": "Contact our customer support."
+    },
+    {
+      "type": "url",
+      "id": "support_link",
+      "label": "Support Hub Link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact Support Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ & Support Hub",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What memory card do we recommend?",
+            "answer": "We only recommend Vantrue, Samsung Endurance and Sandisk High Endurance/Max Endurance Card..."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

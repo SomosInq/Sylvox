@@ -1,0 +1,459 @@
+{% comment %}
+  Custom section: Feature Banner Tabs | feature-banner-tabs.liquid
+{% endcomment %}
+
+<div class="feature-banner-tabs" id="feature-banner-tabs-{{ section.id }}">
+  <div class="feature-banner-tabs__tabs-wrapper">
+    <div class="feature-banner-tabs__tabs">
+      {% for block in section.blocks %}
+        <button class="tab-label{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}">
+          {{ block.settings.label }}
+        </button>
+      {% endfor %}
+    </div>
+    <span class="feature-banner-tabs__underline"></span>
+  </div>
+
+  <div class="feature-banner-tabs__carousel">
+    {% assign last_block = section.blocks | last %}
+    <div class="feature-banner-tabs__slide is-clone">
+      <div class="feature-banner-tabs__banner banner-{{ last_block.id }}" style="background-image: url({{ last_block.settings.background | image_url: width: 1600 }});">
+        <div class="feature-banner-tabs__content">
+          <h2 class="banner-heading-{{ last_block.id }}">{{ last_block.settings.heading }}</h2>
+          <p class="banner-paragraph-{{ last_block.id }}">{{ last_block.settings.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="feature-banner-tabs__slide" {{ block.shopify_attributes }}>
+        <div class="feature-banner-tabs__banner banner-{{ block.id }}" style="background-image: url({{ block.settings.background | image_url: width: 1600 }});">
+          <div class="feature-banner-tabs__content">
+            <h2 class="banner-heading-{{ block.id }}">{{ block.settings.heading }}</h2>
+            <p class="banner-paragraph-{{ block.id }}">{{ block.settings.description }}</p>
+          </div>
+        </div>
+        {% if block.settings.mobile_background %}
+          <style>
+            @media screen and (max-width: 767px) {
+              .banner-{{ block.id }} {
+                background-image: url({{ block.settings.mobile_background | image_url: width: 800 }}) !important;
+              }
+            }
+          </style>
+        {% endif %}
+        <style>
+          .banner-heading-{{ block.id }},
+          .banner-paragraph-{{ block.id }} {
+            color: {{ block.settings.text_color }};
+          }
+        </style>
+      </div>
+    {% endfor %}
+
+    {% assign first_block = section.blocks | first %}
+    <div class="feature-banner-tabs__slide is-clone">
+      <div class="feature-banner-tabs__banner banner-{{ first_block.id }}" style="background-image: url({{ first_block.settings.background | image_url: width: 1600 }});">
+        <div class="feature-banner-tabs__content">
+          <h2 class="banner-heading-{{ first_block.id }}">{{ first_block.settings.heading }}</h2>
+          <p class="banner-paragraph-{{ first_block.id }}">{{ first_block.settings.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-banner-tabs__progress">
+    {% for block in section.blocks %}
+      <span class="dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+.feature-banner-tabs {
+  padding: 48px 0;
+  position: relative;
+}
+
+.feature-banner-tabs__tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+  .feature-banner-tabs__tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+
+.feature-banner-tabs__underline {
+  width: 100%;
+  max-width: 996px;
+  height: 1px;
+  background-color: #e2e2e2;
+  margin-top: -1px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.tab-label {
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  padding-bottom: 8px;
+  color: #7e8182;
+  position: relative;
+}
+
+.tab-label.active {
+  color: #0a0a0a;
+}
+
+.tab-label.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #0a0a0a;
+}
+
+.feature-banner-tabs__carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 24px;
+  padding: 0 438px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.feature-banner-tabs__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.feature-banner-tabs__slide {
+  flex: 0 0 auto;
+  width: 996px;
+  scroll-snap-align: center;
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+}
+
+.feature-banner-tabs__slide.active {
+  opacity: 1;
+}
+
+.feature-banner-tabs__banner {
+  height: 460px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.feature-banner-tabs__content {
+  max-width: 620px;
+  color: #0a0a0a;
+}
+
+.feature-banner-tabs__content h2 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.feature-banner-tabs__content p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.feature-banner-tabs__progress {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.feature-banner-tabs__progress .dot {
+  width: 8px;
+  height: 8px;
+  background: #c2c4c5;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.feature-banner-tabs__progress .dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #0a0a0a;
+}
+
+@media screen and (max-width: 767px) {
+  .feature-banner-tabs {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .feature-banner-tabs__tabs-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .tab-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #959393;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab-label.active {
+    font-weight: 700;
+    color: #2C2C2C;
+  }
+
+  .tab-label.active::after {
+    height: 0;
+  }
+
+  .feature-banner-tabs__underline {
+    width: 100%;
+    max-width: 342px;
+    height: 1px;
+    background-color: #959393;
+  }
+
+  .feature-banner-tabs__carousel {
+    padding-left: 24px;
+    padding-right: 24px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    display: flex;
+  }
+
+  .feature-banner-tabs__slide {
+    width: 370px;
+    height: 482px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .feature-banner-tabs__banner {
+    width: 370px;
+    height: 480px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+  }
+
+  .feature-banner-tabs__content {
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .feature-banner-tabs__content h2 {
+    font-size: 18px;
+    font-family: 'Questrial', sans-serif;
+    font-weight: 400;
+  }
+
+  .feature-banner-tabs__content p {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+
+  .feature-banner-tabs__progress {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    padding-left: 0;
+    margin-top: 40px;
+  }
+
+  .feature-banner-tabs__progress .dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.10);
+    border-radius: 4px;
+  }
+
+  .feature-banner-tabs__progress .dot.active {
+    width: 72px;
+    background: rgba(0, 0, 0, 0.10);
+  }
+}
+{% endstyle %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.getElementById("feature-banner-tabs-{{ section.id }}");
+    const carousel = section.querySelector(".feature-banner-tabs__carousel");
+    const slides = section.querySelectorAll(".feature-banner-tabs__slide");
+    const dots = section.querySelectorAll(".dot");
+    const tabs = section.querySelectorAll(".tab-label");
+    const autoplayEnabled = {{ section.settings.autoplay_enabled | json }};
+    const interval = {{ section.settings.autoplay_interval }} * 1000;
+
+    const total = {{ section.blocks.size }};
+    let index = 0;
+    let timer;
+
+    function scrollToSlide(i) {
+      index = i;
+      const targetSlide = slides[i + 1]; // accounts for start clone
+      if (!targetSlide) return;
+
+      const scrollOffset = targetSlide.offsetLeft - (carousel.offsetWidth - targetSlide.offsetWidth) / 2;
+
+      carousel.scrollTo({
+        left: scrollOffset,
+        behavior: 'smooth'
+      });
+
+      updateUI();
+
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("active", idx === i + 1); // i + 1 because of cloned first slide
+      });
+
+      restartAutoplay();
+    }
+
+    function updateUI() {
+      tabs.forEach((tab, i) => tab.classList.toggle("active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
+
+    function nextSlide() {
+      index = (index + 1) % total;
+      scrollToSlide(index);
+    }
+
+    function startAutoplay() {
+      timer = setInterval(nextSlide, interval);
+    }
+
+    function restartAutoplay() {
+      if (autoplayEnabled) {
+        clearInterval(timer);
+        startAutoplay();
+      }
+    }
+
+    tabs.forEach((tab, i) => tab.addEventListener("click", () => scrollToSlide(i)));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => scrollToSlide(i)));
+
+    scrollToSlide(0);
+    if (autoplayEnabled) startAutoplay();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Feature Banner Tabs",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "label": "Autoplay interval (seconds)",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "default": "Data Protection"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Double Protection for Recording Data"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage."
+        },
+        {
+          "type": "image_picker",
+          "id": "background",
+          "label": "Background image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_background",
+          "label": "Mobile background image"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#1D1D1B"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Banner Tabs",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

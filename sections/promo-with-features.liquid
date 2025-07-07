@@ -1,0 +1,307 @@
+{% comment %}
+  Custom section: Promo With Features | promo-with-features.liquid
+{% endcomment %}
+
+<section id="promo-with-features-{{ section.id }}" class="promo-with-features" aria-label="Promo With Features Section">
+  <div class="promo-with-features__overlay"></div>
+  <div class="promo-with-features__inner">
+    <div class="promo-with-features__content">
+      <h2 class="promo-with-features__heading">{{ section.settings.heading }}</h2>
+      <div class="promo-with-features__text">
+        <p>{{ section.settings.paragraph_1 }}</p>
+        <p>{{ section.settings.paragraph_2 }}</p>
+        <p>{{ section.settings.paragraph_3 }}</p>
+      </div>
+      <a href="{{ section.settings.button_link }}" class="promo-with-features__button">
+        {{ section.settings.button_label }}
+        {% render 'diagonal-top-right-arrow.svg' %}
+      </a>
+    </div>
+    <div class="promo-with-features__features">
+      <div class="promo-with-features__feature">
+        {% if section.settings.feature_1_image %}
+          <img src="{{ section.settings.feature_1_image | image_url: width: 80 }}" alt="Feature 1 image" loading="lazy">
+        {% endif %}
+        <p class="promo-with-features__feature-text">{{ section.settings.feature_1_desc }}</p>
+      </div>
+      <div class="promo-with-features__feature">
+        {% if section.settings.feature_2_image %}
+          <img src="{{ section.settings.feature_2_image | image_url: width: 80 }}" alt="Feature 2 image" loading="lazy">
+        {% endif %}
+        <p class="promo-with-features__feature-text">{{ section.settings.feature_2_desc }}</p>
+      </div>
+      <div class="promo-with-features__feature">
+        {% if section.settings.feature_3_image %}
+          <img src="{{ section.settings.feature_3_image | image_url: width: 80 }}" alt="Feature 3 image" loading="lazy">
+        {% endif %}
+        <p class="promo-with-features__feature-text">{{ section.settings.feature_3_desc }}</p>
+      </div>
+      <div class="promo-with-features__feature">
+        {% if section.settings.feature_4_image %}
+          <img src="{{ section.settings.feature_4_image | image_url: width: 80 }}" alt="Feature 4 image" loading="lazy">
+        {% endif %}
+        <p class="promo-with-features__feature-text">{{ section.settings.feature_4_desc }}</p>
+      </div>
+    </div>
+  </div>
+
+  {% style %}
+    #promo-with-features-{{ section.id }} {
+      position: relative;
+      height: 800px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #promo-with-features-{{ section.id }} .promo-with-features__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url({{ section.settings.background_image | image_url: width: 1920 }});
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .promo-with-features__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1608px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .promo-with-features__content {
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .promo-with-features__heading {
+      font-size: 56px;
+      font-weight: 400;
+      font-family: Questrial, sans-serif;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+
+    .promo-with-features__text p {
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .promo-with-features__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #0a0a0a;
+      padding: 10px 20px;
+      border-radius: 40px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      height: 42px;
+    }
+
+    .promo-with-features__features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid #c2c4c5;
+      margin-top: 60px;
+    }
+
+    .promo-with-features__feature {
+      text-align: center;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-top: 33px;
+      padding-bottom: 30px;
+      border-right: 1px solid #c2c4c5;
+      gap: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .promo-with-features__feature:last-child {
+      border-right: none;
+    }
+
+    .promo-with-features__feature img {
+      width: 64px;
+      min-width: 64px;
+      min-height: 64px;
+      height: auto;
+      margin-bottom: 12px;
+    }
+
+    .promo-with-features__feature-text {
+      font-size: 18px;
+      color: #d4d4d4;
+      max-width: 202px;
+    }
+
+    @media screen and (max-width: 767px) {
+      #promo-with-features-{{ section.id }} {
+        height: auto;
+        padding: 60px 20px;
+      }
+
+      .promo-with-features__inner {
+        margin: 0;
+        padding: 0;
+      }
+
+      .promo-with-features__heading {
+        font-size: 24px;
+      }
+
+      .promo-with-features__text {
+        max-width: 319px;
+      }
+
+      .promo-with-features__text p {
+        font-size: 14px;
+      }
+
+      .promo-with-features__features {
+        grid-template-columns: 1fr;
+        gap: 0;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 60px;
+        width: 100vw;
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+
+      .promo-with-features__feature {
+        border-top: 1px solid #e0e0e0;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        gap: 24px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        border-right: none;
+        text-align: left;
+      }
+
+      .promo-with-features__feature-text {
+        font-size: 16px;
+        max-width: 254px;
+      }
+    }
+  {% endstyle %}
+</section>
+
+{% schema %}
+{
+  "name": "Promo With Features",
+  "tag": "section",
+  "class": "promo-with-features-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join Vantrue Affiliate Program"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_1",
+      "label": "Paragraph Line 1",
+      "default": "We are looking for influencers and websites to join our Affiliate Program."
+    },
+    {
+      "type": "text",
+      "id": "paragraph_2",
+      "label": "Paragraph Line 2",
+      "default": "By referring customers to Vantrue.com."
+    },
+    {
+      "type": "text",
+      "id": "paragraph_3",
+      "label": "Paragraph Line 3",
+      "default": "You earn minimum 5% to 8% commission on all referred sales."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_1_image",
+      "label": "Feature 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_desc",
+      "label": "Feature 1 Description",
+      "default": "Quality Guarantee"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_2_image",
+      "label": "Feature 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_desc",
+      "label": "Feature 2 Description",
+      "default": "Over $300.00"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_3_image",
+      "label": "Feature 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_desc",
+      "label": "Feature 3 Description",
+      "default": "Exchange Service"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_4_image",
+      "label": "Feature 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_desc",
+      "label": "Feature 4 Description",
+      "default": "Warranty"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo With Features",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

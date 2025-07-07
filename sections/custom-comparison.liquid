@@ -1,0 +1,457 @@
+{% comment %}
+  Custom section: Product Comparison Table | custom-comparison.liquid
+{% endcomment %}
+
+<div class="custom-comparison" id="custom-comparison-{{ section.id }}">
+  <div class="custom-comparison__container" style="max-width: 1608px; margin: 0 auto; text-align: center;">
+    <h2 class="custom-comparison__heading">{{ section.settings.heading }}</h2>
+    <div class="custom-comparison__selectors">
+      <div class="custom-comparison__selector">
+        <select id="comparison-product-1" class="custom-comparison__dropdown">
+          {% for product in collections[section.settings.product_source].products %}
+            <option value="{{ product.handle }}">{{ product.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="custom-comparison__selector">
+        <select id="comparison-product-2" class="custom-comparison__dropdown">
+          {% for product in collections[section.settings.product_source].products %}
+            <option value="{{ product.handle }}">{{ product.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="custom-comparison__selector">
+        <select id="comparison-product-3" class="custom-comparison__dropdown">
+          {% for product in collections[section.settings.product_source].products %}
+            <option value="{{ product.handle }}">{{ product.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="custom-comparison__products" id="comparison-table">
+      <!-- JavaScript will populate this area with product cards + table -->
+    </div>
+  </div>
+
+  {% style %}
+    .custom-comparison {
+      padding: 60px 20px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-comparison__container {
+      max-width: 1608px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .custom-comparison__heading {
+      font-family: "Questrial", sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: #000000;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .custom-comparison__selectors {
+      display: inline-flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .custom-comparison__dropdown {
+      width: 384px;
+      height: 51px;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #c6c6c6;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1c1b1b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8f9fa;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .custom-comparison__products {
+      overflow-x: auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      color: #979797;
+      border-left: none;
+      border-right: none;
+    }
+
+    .comparison-table,
+    .comparison-table th,
+    .comparison-table td {
+      border-left: none;
+      border-right: none;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      border-right: none !important;
+      border-left: none !important;
+    }
+
+    .comparison-table thead tr th {
+      font-weight: 600;
+      background: #f4f4f4;
+      color: #1a1a1a;
+      font-size: 14px;
+      padding: 20px;
+      vertical-align: middle;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .comparison-table tbody tr th,
+    .comparison-table tbody tr td {
+      padding: 20px 12px;
+      vertical-align: middle;
+    }
+
+    .comparison-table tbody tr th {
+      font-weight: 600;
+      font-family: "Questrial", sans-serif;
+      font-size: 18px;
+      color: #1a1a1a;
+      border-bottom: 1px solid #c9c9c9;
+      background: #fff;
+    }
+
+    .comparison-table tbody tr td {
+      font-size: 16px;
+      color: #979797;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .comparison-table .product-image {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+    }
+
+    .comparison-table thead tr th > div {
+      font-family: "Questrial", sans-serif;
+      font-size: 18px;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .comparison-table thead tr th > div + div {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      color: #979797;
+      margin-bottom: 10px;
+    }
+
+    .custom-comparison__view-btn {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #da007d 0%, #e63d3c 100%);
+      padding: 10px 16px;
+      color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      border: none;
+      border-radius: 24px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .custom-comparison__view-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .comparison-section-label {
+      font-size: 24px;
+      font-family: "Questrial", sans-serif;
+      font-weight: 400;
+      color: #000000;
+      padding: 40px 0 10px;
+      text-align: left;
+      width: 100%;
+    }
+
+    .comparison-subheading {
+      font-size: 16px;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      color: #000000;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #c9c9c9;
+      text-align: left;
+      width: 100%;
+    }
+
+    .comparison-checkmark {
+      font-size: 18px;
+      color: #979797;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .comparison-table__row.comparison-table__product-summary {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .comparison-table {
+      border-top: none;
+    }
+
+    .comparison-table__row.comparison-table__product-summary .comparison-table__cell {
+      padding: 40px 20px;
+      vertical-align: top;
+    }
+
+    .comparison-table__product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 20px;
+      background: #ffffff;
+    }
+
+    .comparison-table__product-card img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+
+    .comparison-table__product-title {
+      font-family: "Questrial", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #1a1a1a;
+      text-align: center;
+    }
+
+    .comparison-table__product-price {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #979797;
+      text-align: center;
+    }
+
+    .custom-comparison__view-btn {
+      background: linear-gradient(90deg, #da007d 0%, #e63d3c 100%);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  {% endstyle %}
+
+  <script>
+    const comparisonSection = document.getElementById('custom-comparison-{{ section.id }}');
+    const productHandles = {
+      1: document.getElementById('comparison-product-1'),
+      2: document.getElementById('comparison-product-2'),
+      3: document.getElementById('comparison-product-3'),
+    };
+
+    function fetchProductData(handle) {
+      return fetch(`/products/${handle}.js`).then(res => res.json());
+    }
+
+    const blocks = [
+      {% for block in section.blocks %}
+        { label: "{{ block.settings.row_label }}", key: "{{ block.settings.metafield_key }}" }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    const headers = [
+      {% for block in section.blocks %}
+        { label: "{{ block.settings.row_label }}", key: "{{ block.settings.metafield_key }}" }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    function renderTable(products) {
+      const container = document.getElementById('comparison-table');
+      if (!products.length) return;
+
+      let html = '';
+      // Product summary
+      html += '<table class="comparison-table"><tbody class="comparison-table__body">';
+      html += `<tr class="comparison-table__row comparison-table__product-summary"><th class="comparison-table__label"></th>`;
+      products.forEach(p => {
+        html += `
+          <td class="comparison-table__cell">
+            <div class="comparison-table__product-card">
+              <img src="${p.featured_image}" alt="${p.title}" />
+              <div class="comparison-table__product-title">${p.title}</div>
+              <div class="comparison-table__product-price">$${(p.price / 100).toFixed(2)}</div>
+              <a class="custom-comparison__view-btn" href="${p.url}">View <svg><use xlink:href="#icon-arrow-right" /></svg></a>
+            </div>
+          </td>`;
+      });
+      html += '</tr></tbody></table>';
+
+      // About section (Details)
+      html += `<div class="comparison-section-label">Details</div>`;
+      blocks.forEach(block => {
+        if (block.label && block.label.trim().toLowerCase() === 'about') {
+          html += `<div class="comparison-subheading">${block.label}</div>`;
+          html += '<table class="comparison-table"><tbody class="comparison-table__body"><tr class="comparison-table__row">';
+          products.forEach(p => {
+            let value = '';
+            const key = block.key;
+            if (p.metafields?.[key.split('.')[0]]?.[key.split('.')[1]]) {
+              value = p.metafields[key.split('.')[0]][key.split('.')[1]];
+            }
+            html += `<td class="comparison-table__cell">${value}</td>`;
+          });
+          html += '</tr></tbody></table>';
+        }
+      });
+
+      // Specifications heading
+      html += `<div class="comparison-section-label">Specifications</div>`;
+      html += '<table class="comparison-table"><tbody class="comparison-table__body">';
+
+      // Specification rows
+      headers.forEach(row => {
+        if (row.label.toLowerCase() === 'about') return;
+        html += `<tr class="comparison-table__row"><th class="comparison-table__label">${row.label}</th>`;
+        products.forEach(p => {
+          let value = '';
+          if (typeof p.metafields?.[row.key] !== 'undefined' && p.metafields?.[row.key] !== '' && p.metafields?.[row.key] !== null) {
+            value = p.metafields[row.key];
+          } else if (row.label.toLowerCase() === 'title' && p.title) {
+            value = p.title;
+          } else if (row.label.toLowerCase() === 'description' && p.description) {
+            value = p.description.replace(/<[^>]*>/g, '').split('.')[0];
+          }
+          if (value === true || value === 'true' || value === '✓') {
+            html += `<td class="comparison-table__cell comparison-checkmark">✓</td>`;
+          } else if (value !== '') {
+            html += `<td class="comparison-table__cell">${value}</td>`;
+          } else {
+            html += `<td class="comparison-table__cell"></td>`;
+          }
+        });
+        html += '</tr>';
+      });
+
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    async function updateComparison() {
+      const handles = Object.values(productHandles).map(select => select.value);
+      const productData = await Promise.all(handles.map(fetchProductData));
+      renderTable(productData);
+    }
+
+    Object.values(productHandles).forEach(select => {
+      select.addEventListener('change', updateComparison);
+    });
+
+    updateComparison(); // Initial render
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Product Comparison Table",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Which Product Is Right for You?"
+    },
+    {
+      "type": "collection",
+      "id": "product_source",
+      "label": "Product Collection (for dropdown)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "about",
+      "name": "About Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "row_label",
+          "label": "Row label",
+          "default": "About"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Metafield key (namespace.key)",
+          "default": "custom_comparison.about"
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "row_label",
+          "label": "Row label",
+          "default": "Sensor"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Metafield key (namespace.key)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Comparison Table",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "row_label": "About",
+            "metafield_key": "custom_comparison.about"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,406 @@
+{% comment %}
+  Custom section: Text Banner with Tabs | text-banner-with-tabs.liquid
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Text Banner with Tabs",
+  "tag": "section",
+  "class": "text-banner-with-tabs-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab Block",
+      "settings": [
+        { "type": "text", "id": "tab_label", "label": "Tab Label", "default": "Element" },
+        { "type": "text", "id": "label", "label": "Top Label", "default": "Shop by Series" },
+        { "type": "text", "id": "title", "label": "Main Title", "default": "E Series" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle (Bold)", "default": "Compact Power, Full Coverage Element Dash Cams." },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "The Vantrue E-Series Dash Cam range..." },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
+        { "type": "color", "id": "underline_color", "label": "Active Tab Underline", "default": "#ffffff" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Banner with Tabs",
+      "category": "Custom",
+      "blocks": [
+        { "type": "tab" },
+        { "type": "tab" },
+        { "type": "tab" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="text-banner-with-tabs__wrapper">
+  <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="" />
+  <div class="text-banner-with-tabs" >
+    {% for block in section.blocks %}
+      <div
+        class="text-banner-with-tabs__panel{% if forloop.first %} active{% endif %}"
+        data-tab="{{ block.settings.tab_label | escape }}"
+      >
+        <div class="text-banner-with-tabs__content">
+          <p class="label" style="color: {{ block.settings.text_color }};">{{ block.settings.label }}</p>
+          <h2 class="title" style="color: {{ block.settings.text_color }};">{{ block.settings.title }}</h2>
+          <p class="subtitle" style="color: {{ block.settings.text_color }};">{{ block.settings.subtitle }}</p>
+          <p class="description" style="color: {{ block.settings.text_color }};">{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="text-banner-with-tabs__tabs">
+      <div class="tab-list">
+        {% for block in section.blocks %}
+          <span
+            class="tab{% if forloop.first %} active{% endif %}"
+            data-tab="{{ block.settings.tab_label | escape }}"
+            style="--underline-color: {{ block.settings.underline_color }};"
+          >
+            {{ block.settings.tab_label }}
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-banner-with-tabs__wrapper-mobile" style="background-image: radial-gradient(ellipse 35.08% 51.29% at 50% 31.25%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.63) 100%), url('{{ section.settings.background_image | image_url: width: 1920 }}'); background-size: cover; background-position: center;">
+  {% if section.blocks.size > 0 %}
+    {% assign first_block = section.blocks.first %}
+    <h2 class="title-mobile">{{ first_block.settings.title }}</h2>
+    <p class="subtitle-mobile">{{ first_block.settings.subtitle }}</p>
+    <p class="description-mobile">{{ first_block.settings.description }}</p>
+  {% endif %}
+
+  <div class="text-banner-with-tabs__tabs-mobile">
+    {% assign blocks_count = section.blocks.size %}
+    {% assign rows = blocks_count | divided_by: 4.0 | ceil %}
+    {% for row in (0..rows-1) %}
+      <div class="tab-row">
+        {% for i in (0..3) %}
+          {% assign index = row | times: 4 | plus: i %}
+          {% if index < blocks_count %}
+            {% assign block = section.blocks[index] %}
+            <span
+              class="tab-mobile{% if index == 0 %} active{% endif %}"
+              data-tab="{{ block.settings.tab_label | escape }}"
+            >
+              {{ block.settings.tab_label }}
+            </span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+.text-banner-with-tabs__wrapper {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.text-banner-with-tabs__wrapper img {
+  position: absolute;
+  width: 1920px;
+  height: 600px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.text-banner-with-tabs__wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%);
+  z-index: 0;
+}
+
+.text-banner-with-tabs {
+  position: relative;
+  z-index: 1;
+}
+
+.text-banner-with-tabs__panel {
+  position: absolute;
+  top: 156px;
+  left: 157px;
+  width: 508px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: none;
+}
+
+.text-banner-with-tabs__panel.active {
+  display: flex;
+}
+
+.text-banner-with-tabs__content .label {
+  font-size: 18px;
+  font-family: 'Questrial', sans-serif;
+  color: #ffffff !important;
+  margin-bottom: 10px;
+}
+
+.text-banner-with-tabs__content .title {
+  font-size: 56px;
+  font-family: 'Questrial', sans-serif;
+  color: #ffffff !important;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.text-banner-with-tabs__content .subtitle {
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-bottom: 16px;
+}
+
+.text-banner-with-tabs__content .description {
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff !important;
+  line-height: 1.6;
+  max-width: 508px;
+  margin: 0;
+}
+
+.text-banner-with-tabs__tabs {
+  position: absolute;
+  top: 536px;
+  left: 606px;
+  width: 709px;
+  height: 34px;
+  z-index: 1;
+  border-bottom: none;
+}
+
+.text-banner-with-tabs__tabs::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #FAFAFA;
+  z-index: 0;
+}
+
+.text-banner-with-tabs__tabs::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 408px;
+  width: 90px;
+  height: 1px;
+  background-color: white;
+  z-index: 0;
+}
+
+.text-banner-with-tabs__tabs .tab-list {
+  width: 660px;
+  position: absolute;
+  left: 24px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.text-banner-with-tabs__tabs .tab {
+  width: 63.88px;
+  height: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #FAFAFA;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.text-banner-with-tabs__tabs .tab:hover {
+  opacity: 1;
+}
+
+.text-banner-with-tabs__tabs .tab.active {
+  font-weight: 700;
+  color: white;
+  opacity: 1;
+}
+
+/* Mobile Wrapper */
+.text-banner-with-tabs__wrapper-mobile {
+  display: none;
+  position: relative;
+  height: 600px;
+  width: 100%;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.text-banner-with-tabs__wrapper-mobile .title-mobile {
+  position: absolute;
+  top: 76px;
+  left: 24px;
+  font-size: 24px;
+  font-family: 'Questrial', sans-serif;
+  color: white;
+  margin: 0;
+}
+
+.text-banner-with-tabs__wrapper-mobile .subtitle-mobile {
+  position: absolute;
+  top: 370px;
+  left: 24px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.text-banner-with-tabs__wrapper-mobile .description-mobile {
+  position: absolute;
+  top: 409px;
+  left: 24px;
+  width: 342px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Mobile Tabs */
+.text-banner-with-tabs__tabs-mobile {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.text-banner-with-tabs__tabs-mobile .tab-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  padding-bottom: 8px;
+}
+
+.text-banner-with-tabs__tabs-mobile .tab-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.text-banner-with-tabs__tabs-mobile .tab-mobile {
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #FAFAFA;
+  font-weight: 400;
+  width: 85px;
+  user-select: none;
+}
+
+.text-banner-with-tabs__tabs-mobile .tab-row:nth-child(odd) .tab-mobile {
+  width: 85px;
+}
+
+.text-banner-with-tabs__tabs-mobile .tab-row:nth-child(even) .tab-mobile {
+  width: 86px;
+}
+
+.text-banner-with-tabs__tabs-mobile .tab-mobile.active {
+  color: white;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .text-banner-with-tabs__wrapper {
+    display: none;
+  }
+  .text-banner-with-tabs {
+    display: none;
+  }
+  .text-banner-with-tabs__wrapper-mobile {
+    display: block;
+  }
+}
+{% endstyle %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.text-banner-with-tabs .tab');
+  const panels = document.querySelectorAll('.text-banner-with-tabs__panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      panels.forEach(panel => {
+        if (panel.dataset.tab === key) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+  });
+
+  // Mobile tabs functionality
+  const mobileTabs = document.querySelectorAll('.text-banner-with-tabs__tabs-mobile .tab-mobile');
+  const mobileTitle = document.querySelector('.text-banner-with-tabs__wrapper-mobile .title-mobile');
+  const mobileSubtitle = document.querySelector('.text-banner-with-tabs__wrapper-mobile .subtitle-mobile');
+  const mobileDescription = document.querySelector('.text-banner-with-tabs__wrapper-mobile .description-mobile');
+
+  mobileTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.tab;
+
+      mobileTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Find the block with matching tab_label
+      const blocks = {{ section.blocks | json }};
+      const matchedBlock = blocks.find(block => block.settings.tab_label === key);
+
+      if (matchedBlock) {
+        mobileTitle.textContent = matchedBlock.settings.title;
+        mobileSubtitle.textContent = matchedBlock.settings.subtitle;
+        mobileDescription.textContent = matchedBlock.settings.description;
+      }
+    });
+  });
+});
+</script>

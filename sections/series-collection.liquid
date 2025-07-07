@@ -1,0 +1,826 @@
+{% comment %}
+  Custom section: Series Collection | series-collection.liquid
+{% endcomment %}
+
+<div class="series-collection series-collection-desktop" style="margin-top: {{ section.settings.margin_top | append: 'px' }}; margin-bottom: {{ section.settings.margin_bottom | append: 'px' }};">
+  <div class="series-collection-inner">
+    {% for block in section.blocks %}
+      <div
+        class="series-collection-tab-content{% if forloop.first %} active{% endif %}"
+        id="tab-{{ forloop.index0 }}"
+        style="--banner-text-color: {{ block.settings.text_color }}; --button-bg: {{ block.settings.button_bg }}; --button-text: {{ block.settings.button_text_color }};"
+        role="tabpanel"
+        aria-labelledby="tab-label-{{ forloop.index0 }}"
+      >
+        <div class="series-collection-banner">
+          {% if block.settings.banner_image %}
+            <img src="{{ block.settings.banner_image | image_url: width: 1608 }}" class="series-collection-banner-image" alt="Banner for {{ block.settings.heading }}" />
+          {% endif %}
+
+          <div class="series-collection-banner-content series-collection-position-{{ block.settings.horizontal_position }} series-collection-banner-y-{{ block.settings.vertical_position }}">
+            <span class="series-collection-label" style="color: {{ block.settings.text_color }}">{{ block.settings.label }}</span>
+            <h2 class="series-collection-heading" style="color: {{ block.settings.text_color }}">{{ block.settings.heading }}</h2>
+            <h3 class="series-collection-subheading" style="color: {{ block.settings.text_color }}">{{ block.settings.subheading }}</h3>
+            <p class="series-collection-description" style="color: {{ block.settings.text_color }}">{{ block.settings.description }}</p>
+
+            <div class="series-collection-features">
+              {% if block.settings.feature_1_image and block.settings.feature_1_label %}
+                <div class="series-collection-feature">
+                  <img src="{{ block.settings.feature_1_image | image_url: width: 40 }}" alt="{{ block.settings.feature_1_label }}" />
+                  <p style="color: {{ block.settings.text_color }}">{{ block.settings.feature_1_label }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.feature_2_image and block.settings.feature_2_label %}
+                <div class="series-collection-feature">
+                  <img src="{{ block.settings.feature_2_image | image_url: width: 40 }}" alt="{{ block.settings.feature_2_label }}" />
+                  <p style="color: {{ block.settings.text_color }}">{{ block.settings.feature_2_label }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.feature_3_image and block.settings.feature_3_label %}
+                <div class="series-collection-feature">
+                  <img src="{{ block.settings.feature_3_image | image_url: width: 40 }}" alt="{{ block.settings.feature_3_label }}" />
+                  <p style="color: {{ block.settings.text_color }}">{{ block.settings.feature_3_label }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.feature_4_image and block.settings.feature_4_label %}
+                <div class="series-collection-feature">
+                  <img src="{{ block.settings.feature_4_image | image_url: width: 40 }}" alt="{{ block.settings.feature_4_label }}" />
+                  <p style="color: {{ block.settings.text_color }}">{{ block.settings.feature_4_label }}</p>
+                </div>
+              {% endif %}
+            </div>
+
+            {% if block.settings.shop_all_link %}
+              <a href="{{ block.settings.shop_all_link }}" class="series-collection-shop-all-button">
+                {{ block.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+
+          <ul class="series-collection-tab-list" role="tablist" aria-label="Series Collection Tabs">
+            {% for inner in section.blocks %}
+              <li class="series-collection-tab{% if forloop.index0 == forloop.parent.index0 %} active{% endif %}"
+                  id="tab-label-{{ forloop.index0 }}"
+                  data-tab="{{ forloop.index0 }}"
+                  style="--tab-color: {{ inner.settings.tab_color }}; --active-tab-color: {{ inner.settings.active_tab_color }};"
+                  role="tab">
+                {{ inner.settings.tab_label }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="series-collection-tab-products">
+          <div class="series-collection-product-grid">
+            {% if block.settings.collection and block.settings.collection.products.size > 0 %}
+              {% for product in block.settings.collection.products limit: 4 %}
+                <div class="series-collection-product-card">
+                  <a href="{{ product.url }}">
+                    <div class="series-collection-product-image">
+                      {{ product.featured_image | image_url: width: 546 | image_tag: alt: product.title }}
+                    </div>
+                    <div class="series-collection-product-info">
+                      <span class="series-collection-product-tag">{{ product.type }}</span>
+                      <h4>{{ product.title }}</h4>
+                      <span class="series-collection-price">
+                        {% if product.compare_at_price > product.price %}
+                          <span class="sale">{{ product.price | money }}</span>
+                          <s>{{ product.compare_at_price | money }}</s>
+                        {% else %}
+                          {{ product.price | money }}
+                        {% endif %}
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            {% endif %}
+
+            {% assign quiz_bg = section.settings.quiz_background | image_url %}
+            <a href="{{ section.settings.quiz_link | default: '#' }}" class="series-collection-quiz-card" style="{% if quiz_bg != blank %}background-image: url({{ quiz_bg }});{% endif %}" role="link" aria-label="Start Quiz">
+              <div class="series-collection-quiz-label">Quiz</div>
+              <h4 class="series-collection-quiz-title">Which Series Is<br>Right for Me?</h4>
+              <div class="series-collection-quiz-link">
+                <div class="series-collection-circle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% comment %} ------- {% endcomment %}
+{% style %}
+@media screen and (min-width: 768px) {
+  .series-collection-mobile {
+    display: none !important;
+  }
+}
+
+.series-collection {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .series-collection-inner {
+    max-width: 1608px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .series-collection-tab-content {
+    display: none;
+    position: relative;
+  }
+
+  .series-collection-tab-content.active {
+    display: block;
+  }
+
+  .series-collection-banner {
+    position: relative;
+  }
+
+  .series-collection-banner-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .series-collection-banner-content {
+    position: absolute;
+    padding: 77px;
+    max-width: 600px;
+  }
+
+  .series-collection-position-left { left: 0; text-align: left; }
+  .series-collection-position-center { left: 50%; transform: translateX(-50%); text-align: center; }
+  .series-collection-position-right { right: 0; text-align: right; }
+
+  .series-collection-banner-y-top { top: 0; }
+  .series-collection-banner-y-center { top: 50%; transform: translateY(-50%); }
+  .series-collection-banner-y-bottom { bottom: 0; }
+
+  .series-collection-label {
+    font-family: 'Questrial', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .series-collection-heading {
+    font-family: 'Questrial', sans-serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0.25em 0;
+  }
+
+  .series-collection-subheading {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 1em;
+  }
+
+  .series-collection-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 1.5em;
+  }
+
+  .series-collection-features {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .series-collection-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .series-collection-feature img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.3rem;
+  }
+
+  .series-collection-feature p {
+    font-family: 'Basic Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
+
+  .series-collection-shop-all-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: normal;
+    background: var(--button-bg);
+    color: var(--button-text);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .series-collection-tab-list {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    z-index: 5;
+  }
+
+  .series-collection-tab {
+    cursor: pointer;
+    color: var(--tab-color);
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .series-collection-tab.active {
+    color: var(--active-tab-color);
+    font-weight: 700;
+  }
+
+  .series-collection-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--active-tab-color);
+  }
+
+  .series-collection-tab-products {
+    display: block;
+    margin-top: 3rem;
+  }
+
+  .series-collection-product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+
+  .series-collection-product-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .series-collection-product-image img {
+    width: 100%;
+  }
+
+  .series-collection-product-tag {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: #57A653;
+  }
+
+  .series-collection-product-info h4 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0.5rem 0;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .series-collection-price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .series-collection-price .sale {
+    color: #c01;
+    margin-right: 0.5rem;
+    font-weight: 400;
+  }
+
+  .series-collection-quiz-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    min-height: 420px;
+    color: #ffffff;
+  }
+
+  .series-collection-quiz-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 0.75rem;
+  }
+
+  .series-collection-quiz-title {
+    font-family: 'Questrial', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .series-collection-quiz-link .series-collection-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1962);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+{% endstyle %}  
+
+
+{% comment %} ----------MOBILE------------ {% endcomment %}
+<div class="series-collection-mobile">
+  <div class="series-collection-mobile-inner">
+    {% for block in section.blocks %}
+      <div class="series-collection-mobile-tab-content{% if forloop.first %} active{% endif %}" data-tab-content="{{ forloop.index0 }}">
+        <div class="series-collection-mobile-banner-content">
+          <span class="series-collection-label">{{ block.settings.label }}</span>
+          <h2 class="series-collection-heading">{{ block.settings.heading }}</h2>
+
+          {% if block.settings.shop_all_link %}
+            <a href="{{ block.settings.shop_all_link }}"
+               class="series-collection-mobile-shop-all"
+               style="background-color: {{ block.settings.button_bg }}; color: {{ block.settings.button_text_color }};">
+              {{ block.settings.button_text }}
+            </a>
+          {% endif %}
+        </div>
+
+        <ul class="series-collection-tab-list" role="tablist" aria-label="Series Collection Tabs">
+          <li class="series-collection-mobile-tab{% if forloop.index0 == 0 %} active{% endif %}" data-tab="0">
+            {% if section.blocks.size > 0 %}{{ section.blocks[0].settings.tab_label }}{% endif %}
+          </li>
+          <li class="series-collection-mobile-tab{% if forloop.index0 == 1 %} active{% endif %}" data-tab="1">
+            {% if section.blocks.size > 1 %}{{ section.blocks[1].settings.tab_label }}{% endif %}
+          </li>
+          <li class="series-collection-mobile-tab{% if forloop.index0 == 2 %} active{% endif %}" data-tab="2">
+            {% if section.blocks.size > 2 %}{{ section.blocks[2].settings.tab_label }}{% endif %}
+          </li>
+          <li class="series-collection-mobile-tab{% if forloop.index0 == 3 %} active{% endif %}" data-tab="3">
+            {% if section.blocks.size > 3 %}{{ section.blocks[3].settings.tab_label }}{% endif %}
+          </li>
+        </ul>
+
+        <div class="series-collection-tab-products">
+          <div class="series-collection-product-grid">
+            {% if block.settings.collection and block.settings.collection.products.size > 0 %}
+              {% for product in block.settings.collection.products limit: 4 %}
+                <div class="series-collection-product-card">
+                  <a href="{{ product.url }}">
+                    <div class="series-collection-product-image">
+                      {{ product.featured_image | image_url: width: 546 | image_tag: alt: product.title }}
+                    </div>
+                    <div class="series-collection-product-info">
+                      <span class="series-collection-product-tag">{{ product.type }}</span>
+                      <h4>{{ product.title }}</h4>
+                      <span class="series-collection-price">
+                        {% if product.compare_at_price > product.price %}
+                          <span class="sale">{{ product.price | money }}</span>
+                          <s>{{ product.compare_at_price | money }}</s>
+                        {% else %}
+                          {{ product.price | money }}
+                        {% endif %}
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          {% assign quiz_bg = section.settings.quiz_background | image_url %}
+          <a href="{{ section.settings.quiz_link | default: '#' }}"
+             class="series-collection-quiz-card"
+             style="{% if quiz_bg != blank %}background-image: url({{ quiz_bg }});{% endif %}"
+             role="link" aria-label="Start Quiz">
+            <div class="series-collection-quiz-label">Quiz</div>
+            <h4 class="series-collection-quiz-title">Which Series Is<br>Right for Me?</h4>
+            <div class="series-collection-quiz-link">
+              <div class="series-collection-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+{% comment %} mobile {% endcomment %}
+{% style %}
+@media screen and (max-width: 767px) {
+  .series-collection-desktop {
+    display: none !important;
+  }
+
+  .series-collection-mobile {
+    display: block;
+    padding: 24px;
+  }
+
+  .series-collection-mobile-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .series-collection-mobile-banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .series-collection-label {
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #1D1D1B;
+  }
+
+  .series-collection-heading {
+    font-family: 'Questrial', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #1D1D1B;
+  }
+
+  .series-collection-mobile-shop-all {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px 24px;
+    border-radius: 40px;
+    display: inline-block;
+    align-self: flex-end;
+    margin-top: 8px;
+    text-decoration: none;
+  }
+
+  .series-collection-tab-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid #636363;
+    padding-bottom: 8px;
+    position: relative;
+  }
+
+  .series-collection-mobile-tab {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #636363;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  .series-collection-mobile-tab.active {
+    font-weight: 700;
+    color: #1D1D1B;
+  }
+
+  .series-collection-mobile-tab-content {
+    display: none;
+  }
+
+  .series-collection-mobile-tab-content.active {
+    display: block;
+  }
+
+  .series-collection-product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .series-collection-product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .series-collection-product-tag {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #57A653;
+  }
+
+  .series-collection-product-info h4 {
+    font-family: 'Questrial', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  .series-collection-price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+{% endstyle %}
+
+
+
+
+
+
+
+{% comment %} DESKTOP JS {% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.series-collection-tab');
+    const contents = document.querySelectorAll('.series-collection-tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const index = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        const selectedPanel = document.getElementById(`tab-${index}`);
+        if (selectedPanel) {
+          selectedPanel.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+{% comment %} MOBILE JS {% endcomment %}
+<script>
+  document.querySelectorAll('.series-collection-mobile-tab').forEach(tab => {
+    tab.addEventListener('click', function () {
+      const target = this.dataset.tab;
+
+      document.querySelectorAll('.series-collection-mobile-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      document.querySelectorAll('.series-collection-mobile-tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+
+      const targetContent = document.querySelector('.series-collection-mobile-tab-content[data-tab-content="' + target + '"]');
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Series Collection",
+  "tag": "section",
+  "class": "series-collection-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 60,
+      "label": "Top margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 60,
+      "label": "Bottom margin"
+    },
+    {
+      "type": "url",
+      "id": "quiz_link",
+      "label": "Quiz Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "quiz_background",
+      "label": "Quiz Background Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Label",
+          "default": "Element"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Banner Label",
+          "default": "Shop by Series"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "E Series"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Compact Power, Full Coverage Element Dash Cams."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "These dash cams offer powerful features in a compact form."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text & Label Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "horizontal_position",
+          "label": "Horizontal Alignment",
+          "default": "left",
+          "options": [
+            { "label": "Left", "value": "left" },
+            { "label": "Center", "value": "center" },
+            { "label": "Right", "value": "right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "vertical_position",
+          "label": "Vertical Alignment",
+          "default": "bottom",
+          "options": [
+            { "label": "Top", "value": "top" },
+            { "label": "Center", "value": "center" },
+            { "label": "Bottom", "value": "bottom" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Shop All Button Text",
+          "default": "Shop All"
+        },
+        {
+          "type": "url",
+          "id": "shop_all_link",
+          "label": "Shop All Button Link"
+        },
+        {
+          "type": "color",
+          "id": "button_bg",
+          "label": "Button Background Color",
+          "default": "#101820"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_label",
+          "label": "Feature 1 Label"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_1_image",
+          "label": "Feature 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_label",
+          "label": "Feature 2 Label"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_2_image",
+          "label": "Feature 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_label",
+          "label": "Feature 3 Label"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_3_image",
+          "label": "Feature 3 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_4_label",
+          "label": "Feature 4 Label"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_4_image",
+          "label": "Feature 4 Image"
+        },
+        {
+          "type": "color",
+          "id": "tab_color",
+          "label": "Tab Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "active_tab_color",
+          "label": "Active Tab Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Series Collection",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

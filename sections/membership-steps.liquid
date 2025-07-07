@@ -1,0 +1,139 @@
+{% comment %}
+  Custom section: Membership Steps | membership-steps.liquid
+{% endcomment %}
+
+<section id="membership-how-it-works">
+  <div class="how-it-works__inner">
+    <h2 class="how-it-works__title">How it works</h2>
+    <div class="how-it-works__steps">
+      <div class="how-it-works__step">
+        <div class="how-it-works__step-label">Step 1</div>
+        <div class="how-it-works__step-heading">Join Us</div>
+        <div class="how-it-works__step-desc">Get XXXX points when you register</div>
+        <a class="how-it-works__step-link" href="#">Sign Up Now &gt;&gt;</a>
+      </div>
+      <div class="how-it-works__step">
+        <div class="how-it-works__step-label">Step 2</div>
+        <div class="how-it-works__step-heading">Earn Points</div>
+        <div class="how-it-works__step-desc">Collect points with each purchase to access special discounts and complimentary products.</div>
+        <a class="how-it-works__step-link" href="#">Start Now &gt;&gt;</a>
+      </div>
+      <div class="how-it-works__step">
+        <div class="how-it-works__step-label">Step 3</div>
+        <div class="how-it-works__step-heading">Redeem Rewards</div>
+        <div class="how-it-works__step-desc">Use points to redeem special discounts and free products</div>
+        <a class="how-it-works__step-link" href="#">Redeem Now &gt;&gt;</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #membership-how-it-works {
+      background-color: #ffffff;
+      padding: 100px 20px;
+    }
+
+    .how-it-works__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    #membership-how-it-works .how-it-works__title {
+      font-family: 'Questrial', sans-serif;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      color: #111111;
+      margin-bottom: 54px;
+    }
+
+    .how-it-works__steps {
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .how-it-works__step {
+      background-image: url('https://cdn.shopify.com/s/files/1/0724/5706/0661/files/Frame_1272639002_e372f10b-c356-4950-bfb6-7ea1e7873382.png?v=1749357691');
+      background-size: cover;
+      background-position: center;
+      width: 384px;
+      padding: 32px;
+      border-radius: 8px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .how-it-works__step-label {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: 'Questrial', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .how-it-works__step-heading {
+      font-size: 32px;
+      font-weight: 400;
+      font-family: 'Questrial', sans-serif;
+      margin-bottom: 24px;
+    }
+
+    .how-it-works__step-desc {
+      font-size: 16px;
+      font-weight: 400;
+      font-family: 'Questrial', sans-serif;
+      margin-bottom: 32px;
+    }
+
+    .how-it-works__step-link {
+      font-size: 16px;
+      font-weight: 400;
+      font-family: 'Questrial', sans-serif;
+      text-decoration: underline;
+      color: white;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .how-it-works__steps {
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .how-it-works__steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .how-it-works__title {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      .how-it-works__step {
+        width: 100%;
+        max-width: 384px;
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Membership Steps",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Membership Steps",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,222 @@
+{% comment %}
+  Custom section: FAQ Section | faq-section.liquid
+{% endcomment %}
+
+<div id="faq-section-{{ section.id }}">
+  <div class="faq-section__container">
+    <div class="faq-section__left">
+      <h2 class="faq-section__heading">{{ section.settings.heading }}</h2>
+      <div class="faq-section__subheading">{{ section.settings.subheading }}</div>
+    </div>
+    <div class="faq-section__right">
+      <div class="faq-section__card">
+        {% for block in section.blocks %}
+          <div class="faq-section__item" {{ block.shopify_attributes }}>
+            <button class="faq-section__question" aria-expanded="false" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('open');">
+              {{ block.settings.question }}
+              <span class="faq-section__toggle">
+                {% render 'circle-arrow.svg' %}
+              </span>
+            </button>
+            <div class="faq-section__answer">
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% style %}
+    .faq-section__container {
+      position: relative;
+      max-width: 1600px;
+      background-color: #FAFAFA;
+      border-radius: 24px;
+      padding: 80px;
+      height: 598.56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .faq-section__heading {
+      font-family: "Questrial", sans-serif;
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #1A1A1A;
+      margin-bottom: 32px;
+    }
+
+    .faq-section__subheading {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      color: #1A1A1A;
+      max-width: 500px;
+    }
+
+    .faq-section__card {
+      background: #FCFCFC;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-section__item {
+      border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+    }
+
+    .faq-section__question {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 24px 32px;
+      font-size: 16px;
+      font-family: "Roboto", sans-serif;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: #1A1A1A;
+    }
+
+    .faq-section__toggle {
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-section__question.active .faq-section__toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-section__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 32px;
+    }
+
+    .faq-section__answer.open {
+      /* max-height: 300px; */
+      padding-bottom: 24px;
+    }
+
+    .faq-section__answer p {
+      font-size: 15px;
+      color: #1d1d1b;
+    }
+
+    @media screen and (max-width: 768px) {
+      .faq-section__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-left: 14px;
+        margin-right: 14px;
+      }
+
+      .faq-section__heading {
+        font-size: 24px;
+        width: 340px;
+      }
+
+      .faq-section__subheading {
+        font-size: 14px;
+        width: 342px;
+        height: 44px;
+      }
+
+      .faq-section__card {
+        width: 362px;
+        padding: 20px 11px;
+        background: #FCFCFC;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .faq-section__item {
+        align-self: stretch;
+        position: relative;
+        border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+      }
+
+      .faq-section__question {
+        width: 340px;
+        padding-top: 21px;
+        padding-bottom: 21px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        line-height: 25.6px;
+      }
+    }
+  {% endstyle %}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "div",
+  "class": "faq-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Have a question? We are here to help."
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Check out the most common questions our customers asked. Still have questions? Contact our customer support.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Do you ship overseas?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Yes, we ship all over the world. Shipping costs will apply and will be added at checkout."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "category": "Custom",
+      "blocks": [
+        { "type": "faq" },
+        { "type": "faq" },
+        { "type": "faq" }
+      ]
+    }
+  ]
+}
+{% endschema %}

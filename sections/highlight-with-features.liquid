@@ -1,0 +1,751 @@
+{% comment %}
+  Custom section: Highlight With Features | highlight-with-features.liquid
+{% endcomment %}
+
+<section class="highlight-with-features" style="background-image: url({{ section.settings.bg_image | image_url }});">
+  <div class="highlight-with-features-desktop">
+    <div class="highlight-with-features__inner page-width">
+      <div class="highlight-with-features__intro">
+        <p class="highlight-with-features__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="highlight-with-features__heading">{{ section.settings.heading }}</h2>
+        <div class="highlight-with-features__buttons">
+          {% if section.settings.play_background %}
+            <div
+              class="highlight-with-features__play-wrapper"
+              style="background-image: url({{ section.settings.play_background | image_url }});"
+            >
+              {% render 'play.svg' %}
+            </div>
+          {% endif %}
+          {% if section.settings.button_label and section.settings.button_link %}
+            <a href="{{ section.settings.button_link }}" class="highlight-with-features__button">{{ section.settings.button_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if section.settings.main_image %}
+        <div class="highlight-with-features__image">
+          <img
+            src="{{ section.settings.main_image | image_url: width: 800 }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+            style="object-fit: {{ section.settings.image_fit | escape }};"
+          >
+        </div>
+      {% endif %}
+
+      <div class="highlight-with-features__description">
+        {{ section.settings.description }}
+      </div>
+
+      <div class="highlight-with-features__features">
+        {% for block in section.blocks %}
+          <div class="highlight-with-features__feature-item" {{ block.shopify_attributes }}>
+            {% if block.settings.svg %}
+              <img src="{{ block.settings.svg | image_url: width: 60 }}" alt="{{ block.settings.title | escape }}">
+            {% endif %}
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-with-features-mobile">
+    <div class="highlight-with-features__mobile-nav">
+      <div class="highlight-with-features__mobile-nav-inner">
+        {% if section.settings.nav_link_1_text != blank %}
+          <a href="#section-overview" class="highlight-with-features__mobile-nav-link active">{{ section.settings.nav_link_1_text }}</a>
+        {% endif %}
+        {% if section.settings.nav_link_2_text != blank %}
+          <a href="#feature-1" class="highlight-with-features__mobile-nav-link">{{ section.settings.nav_link_2_text }}</a>
+        {% endif %}
+        {% if section.settings.nav_link_3_text != blank %}
+          <a href="#feature-2" class="highlight-with-features__mobile-nav-link">{{ section.settings.nav_link_3_text }}</a>
+        {% endif %}
+        {% if section.settings.nav_link_4_text != blank %}
+          <a href="#feature-3" class="highlight-with-features__mobile-nav-link">{{ section.settings.nav_link_4_text }}</a>
+        {% endif %}
+        {% if section.settings.nav_link_5_text != blank %}
+          <a href="#feature-4" class="highlight-with-features__mobile-nav-link">{{ section.settings.nav_link_5_text }}</a>
+        {% endif %}
+        {% if section.settings.nav_link_6_text != blank %}
+          <a href="#feature-5" class="highlight-with-features__mobile-nav-link">{{ section.settings.nav_link_6_text }}</a>
+        {% endif %}
+        {% if section.settings.nav_link_7_text != blank %}
+          <a href="#feature-6" class="highlight-with-features__mobile-nav-link">{{ section.settings.nav_link_7_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="highlight-with-features__mobile-inner" style="background-image: url({{ section.settings.mobile_bg_image | image_url }});">
+      <div class="highlight-with-features__mobile-header">
+        <p id="section-overview" class="highlight-with-features__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="highlight-with-features__heading">{{ section.settings.heading }}</h2>
+        <div class="highlight-with-features__buttons">
+          {% if section.settings.play_background %}
+            <div
+              class="highlight-with-features__play-wrapper"
+              style="background-image: url({{ section.settings.play_background | image_url }});"
+            >
+              {% render 'play.svg' %}
+            </div>
+          {% endif %}
+          {% if section.settings.button_label and section.settings.button_link %}
+            <a href="{{ section.settings.button_link }}" class="highlight-with-features__button">{{ section.settings.button_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="highlight-with-features__mobile-description">
+        {{ section.settings.description }}
+      </div>
+
+      <div class="highlight-with-features__mobile-features">
+        {% for block in section.blocks %}
+          <div class="highlight-with-features__feature-item" id="feature-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            {% if block.settings.svg %}
+              <div class="highlight-with-features__feature-item__icon">
+                <img src="{{ block.settings.svg | image_url: width: 50 }}" alt="{{ block.settings.title | escape }}">
+              </div>
+            {% endif %}
+            <div class="highlight-with-features__feature-item__text">
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .highlight-with-features__mobile-nav {
+      width: 100%;
+      background-color: #000;
+      padding: 10px 13px;
+      border-bottom: 1px solid #c6c6c6;
+    }
+
+    .highlight-with-features__mobile-nav-inner {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      gap: 40px;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE and Edge */
+    }
+
+    .highlight-with-features__mobile-nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .highlight-with-features__mobile-nav-link {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+
+    .highlight-with-features__mobile-nav-link {
+      color: #c6c6c6;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .highlight-with-features__mobile-nav-link.active {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .highlight-with-features__mobile-nav-link:hover {
+      color: #ffffff;
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    }
+    .highlight-with-features {
+      position: relative;
+      height: 1415px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+      color: #ffffff;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .highlight-with-features__inner {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .highlight-with-features__eyebrow {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .highlight-with-features__heading {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 auto 20px;
+      max-width: 600px;
+      color: #ffffff;
+    }
+
+    .highlight-with-features__buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .highlight-with-features__play-wrapper {
+      width: 120px;
+      height: 36px;
+      border-radius: 9999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .highlight-with-features__play-wrapper svg {
+      width: 14px;
+      height: 14px;
+      fill: #000000;
+    }
+
+    .highlight-with-features__button {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 10px 20px;
+      font-size: 13px;
+      border-radius: 9999px;
+      text-decoration: none;
+    }
+
+    .highlight-with-features__image {
+      display: none;
+    }
+
+    .highlight-with-features__description {
+      font-family: 'Questrial', sans-serif;
+      font-size: 48px;
+      color: #ffffff;
+      max-width: 1396px;
+      max-height: 231px;
+      margin: 640px auto 0 auto; 
+      line-height: 1.2;
+    }
+
+    /* FEATURES */
+    .highlight-with-features__features {
+      position: absolute;
+      bottom: 116px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 1607px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      gap: 0;
+    }
+
+    .highlight-with-features__feature-item {
+      position: relative;
+      flex: 1;
+      padding: 0 9px 0;
+      text-align: center;
+      height: 209px;
+    }
+
+    .highlight-with-features__feature-item img {
+      height: 36px;
+      margin-bottom: 12px;
+    }
+
+    .highlight-with-features__feature-item h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .highlight-with-features__feature-item p {
+      font-size: 13px;
+      color: #cccccc;
+      line-height: 1.4;
+    }
+
+    @media screen and (min-width: 750px) {
+      .highlight-with-features__feature-item::before {
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: #E0E0E0;
+        width: calc(100% - 9px);
+        margin: 0 auto 32px auto;
+      }
+
+      .highlight-with-features__feature-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 9px; 
+        bottom: 9px; 
+        right: 0;
+        width: 1px;
+        background-color: #E0E0E0;
+      }
+    }
+
+    @media screen and (max-width: 749px) {
+      .highlight-with-features {
+        padding-top: 0;
+        padding-bottom: 0;
+         margin-left: -24px;
+        margin-right: -24px;
+      }
+      .highlight-with-features__features {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .highlight-with-features__feature-item {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 20px 0;
+        border-top: 1px solid #E0E0E0;
+      }
+
+      .highlight-with-features__feature-item img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .highlight-with-features__feature-item h3 {
+        font-size: 16px;
+        font-family: 'Questrial', sans-serif;
+        font-weight: 400;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      .highlight-with-features__feature-item p {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      .highlight-with-features__feature-item > div:last-child {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        flex: 1;
+      }
+
+      .highlight-with-features__description {
+        font-size: 20px;
+        font-family: 'Questrial', sans-serif;
+        text-align: center;
+        padding-top: 40px;
+        padding-left: 24px;
+        padding-right: 24px;
+        max-width: 324px;
+        margin: 0 auto;
+        line-height: 1.4;
+      }
+
+      .highlight-with-features__buttons {
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+      }
+
+      .highlight-with-features__play-wrapper {
+        width: 130px;
+        height: 42px;
+        border-radius: 100px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .highlight-with-features__play-wrapper svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .highlight-with-features__mobile-features .highlight-with-features__feature-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        text-align: left;
+        padding: 20px 0;
+        border-top: 1px solid #E0E0E0;
+      }
+
+      .highlight-with-features__mobile-features .highlight-with-features__feature-item:first-child {
+        border-top: none;
+      }
+
+      .highlight-with-features__feature-item__icon {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .highlight-with-features__feature-item__icon img {
+        width: 100%;
+        height: auto;
+      }
+
+      .highlight-with-features__feature-item__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .highlight-with-features__feature-item__text h3 {
+        font-size: 16px;
+        font-family: 'Questrial', sans-serif;
+        font-weight: 400;
+      }
+      .highlight-with-features__feature-item__text p {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+      .highlight-with-features__feature-item__text h3,
+      .highlight-with-features__feature-item__text p {
+        text-align: left;
+      }
+
+      .highlight-with-features__mobile-nav {
+        width: 390px;
+        padding: 10px 13px;
+        background-color: #000;
+        gap: 7px;
+      }
+      .highlight-with-features__mobile-nav-inner {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        gap: 40px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .highlight-with-features__mobile-nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+      .highlight-with-features__mobile-nav-link {
+        height: 25px;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+      .highlight-with-features__mobile-nav-link.active {
+        font-weight: 700;
+      }
+
+      .highlight-with-features__mobile-header {
+        width: 368px;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .highlight-with-features__mobile-header .highlight-with-features__eyebrow {
+        height: 31.5px;
+        font-size: 14px;
+        font-family: 'Questrial', sans-serif;
+        font-weight: 400;
+        text-align: center;
+      }
+      .highlight-with-features__mobile-header .highlight-with-features__heading {
+        font-size: 24px;
+        font-family: 'Questrial', sans-serif;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .highlight-with-features__buttons {
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .highlight-with-features__play-wrapper {
+        width: 130px;
+        height: 42px;
+        border-radius: 100px;
+      }
+      .highlight-with-features__play-wrapper svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .highlight-with-features__button {
+        width: 129.42px;
+        height: 42px;
+        border-radius: 40px;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+
+      .highlight-with-features__mobile-description {
+        width: 324px;
+        height: 103px;
+        font-size: 20px;
+        font-family: 'Questrial', sans-serif;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      .highlight-with-features__mobile-inner {
+        width: 390px;
+        padding-top: 20px;
+        gap: 223px;
+      }
+
+      .highlight-with-features__mobile-features .highlight-with-features__feature-item {
+        width: 390px;
+        padding: 20px 24px;
+        gap: 24px;
+      }
+
+      .highlight-with-features__feature-item__icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .highlight-with-features__feature-item__text {
+        gap: 10px;
+      }
+
+      .highlight-with-features__feature-item__text h3 {
+        font-size: 16px;
+        font-family: 'Questrial', sans-serif;
+        font-weight: 400;
+      }
+      .highlight-with-features__feature-item__text p {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+    }
+
+    .highlight-with-features-mobile {
+      display: none;
+    }
+
+    @media screen and (max-width: 749px) {
+      .highlight-with-features-desktop {
+        display: none;
+      }
+
+      .highlight-with-features-mobile {
+        display: block;
+        width: 100%;
+      }
+
+      .highlight-with-features__mobile-inner {
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .highlight-with-features__mobile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .highlight-with-features__mobile-description {
+        color: #ffffff;
+        font-family: 'Questrial', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        line-height: 1.4;
+        margin-top: 203px;
+      }
+
+      .highlight-with-features__mobile-features {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border-top: 1px solid #E0E0E0;
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Highlight With Features",
+  "tag": "section",
+  "class": "highlight-with-features",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg_image",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Highlight Label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Big, Bold Heading Goes Here"
+    },
+    {
+      "type": "image_picker",
+      "id": "play_background",
+      "label": "Play Button Background Image"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Main Image Fit",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>This is the supporting description text that highlights the value or context of the section.</p>"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_1_text",
+      "label": "Nav Link 1 Text",
+      "default": "Overview"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_2_text",
+      "label": "Nav Link 2 Text",
+      "default": "360° Panoramic Recording"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_3_text",
+      "label": "Nav Link 3 Text",
+      "default": "Sony STARVIS 2 Sensor"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_4_text",
+      "label": "Nav Link 4 Text",
+      "default": "Voice & Touch Control"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_5_text",
+      "label": "Nav Link 5 Text",
+      "default": "Additional Features"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_6_text",
+      "label": "Nav Link 6 Text",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_7_text",
+      "label": "Nav Link 7 Text",
+      "default": "Compare"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "svg",
+          "label": "Feature Symbol"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Highlight With Features",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
