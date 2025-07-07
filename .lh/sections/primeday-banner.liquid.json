@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 68,
+            "activePatchIndex": 70,
             "patches": [
                 {
                     "date": 1750333385927,
@@ -280,6 +280,14 @@
                 {
                     "date": 1751463775506,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -813,9 +813,9 @@\n     }\n \n     // Valid email → hide any message → show T&C modal\n     formMessage.style.display = 'none';\n-    formMessage.textContent = '';\n+    formMessageText.textContent = '';\n     tcModal.style.display = 'block';\n   });\n \n   // Accept T&C → submit\n"
+                },
+                {
+                    "date": 1751880980523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,30 +1,5 @@\n <style>\n-  .section_width_standard,\n-  .section_width_full {\n-    transition: all 0.3s ease;\n-  }\n-\n-  .section_width_full {\n-    width: 100%;\n-  }\n-\n-  .section_width_standard {\n-    margin: 0 auto !important;\n-    width: 90% !important;\n-  }\n-\n-  .hide-desktop { display: none !important; }\n-  @media (max-width: 1024px) {\n-    .hide-tablet { display: none !important; }\n-    .hide-desktop { display: block !important; }\n-  }\n-  @media (max-width: 768px) {\n-    .hide-mobile { display: none !important; }\n-  }\n-\n-\n-\n    @media screen and (max-width: 768px) {\n     .subscribe-form {\n     text-align: left;\n         display: block;\n"
+                },
+                {
+                    "date": 1751880997988,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -434,20 +434,8 @@\n     padding: 0;\n }\n \n \n-\n-/* ✅ UPDATE 2: Add responsive content width behavior */\n-@media (max-width: 768px) {\n-  #shopify-section-{{ section.id }} .section_content_width_standard {\n-    padding: 0 16px;\n-  }\n-  #shopify-section-{{ section.id }} .section_width_standard {\n-    padding: 0 16px;\n-  }\n-}\n-\n-/* ✅ UPDATE 3: Mobile image support */\n .countdown__background-image-wrapper {\n   display: block;\n }\n .countdown__mobile-image-wrapper {\n"
                 }
             ],
             "date": 1750333385927,

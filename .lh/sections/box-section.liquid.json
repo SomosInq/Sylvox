@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 10,
             "patches": [
                 {
                     "date": 1748513151997,
@@ -44,6 +44,10 @@
                 {
                     "date": 1749025208762,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,8 @@\n   </div>\n </div>\n \n <style>\n-\n #shopify-section-{{ section.id }} .section_width_standard {\n margin: 0 auto !important;\n width: 90%;\n }\n"
+                },
+                {
+                    "date": 1751880950887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -129,11 +129,4 @@\n       </div>\n     {% endif %}\n   </div>\n </div>\n-\n-<style>\n-#shopify-section-{{ section.id }} .section_width_standard {\n-margin: 0 auto !important;\n-width: 90%;\n-}\n-</style>\n"
                 }
             ],
             "date": 1748513151997,

@@ -7,12 +7,12 @@
     <div class="footer-alternate__brand-row">
       {% if section.settings.logo != blank %}
         <div class="footer-alternate__logo">
-          {{ section.settings.logo | image_url: width: 180 | image_tag: alt: 'Vantrue logo' }}
+          {{ section.settings.logo | image_url: width: 180 | image_tag: alt: 'Sylvox logo' }}
         </div>
       {% endif %}
 
       <div class="footer-alternate__heading-thumbnails">
-        <h2 class="footer-alternate__heading">Join Vantrue Community</h2>
+        <h2 class="footer-alternate__heading">Join Sylvox Community</h2>
         <div class="footer-alternate__thumbnails">
           {% if section.settings.image_1 != blank %}
             <div class="footer-alternate__thumbnail">{{ section.settings.image_1 | image_url: width: 64 | image_tag }}</div>
@@ -35,7 +35,7 @@
     <div class="footer-alternate__content">
       <div class="footer-alternate__newsletter">
         <p class="footer-alternate__newsletter-label">Newsletter</p>
-        <p class="footer-alternate__newsletter-text">Be the first to know about product launches and all-things inside Vantrue.</p>
+        <p class="footer-alternate__newsletter-text">Be the first to know about product launches and all-things inside Sylvox.</p>
         <button class="footer-alternate__newsletter-button">
           <span class="footer-alternate__button-pill">Sign Up</span>
           {% render 'bottom-right-arrow.svg' %}

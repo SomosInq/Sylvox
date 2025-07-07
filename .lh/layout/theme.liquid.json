@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1750754136290,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751879973427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -180,8 +180,9 @@\n           {{ content_for_layout }}\n         </main>\n \n         {%- sections 'footer-group' -%}\n+        {% section 'footer-alternate' %}\n       </div>\n     </div>\n \n     {%- liquid\n"
+                },
+                {
+                    "date": 1751880053670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -179,9 +179,8 @@\n         <main class=\"main-content\" id=\"MainContent\">\n           {{ content_for_layout }}\n         </main>\n \n-        {%- sections 'footer-group' -%}\n         {% section 'footer-alternate' %}\n       </div>\n     </div>\n \n"
                 }
             ],
             "date": 1750754136290,

@@ -1,0 +1,208 @@
+{%- comment -%}
+  Clean: Somos Image/Text + Comparison + Heading + Description + No Double Images
+{%- endcomment -%}
+
+{% assign text_align = section.settings.alignment | default: 'center' %}
+{% assign heading_align = section.settings.heading_position | default: 'left' %}
+
+<div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }}"
+     style="
+      {% if section.settings.background_gradient != blank %}background: {{ section.settings.background_gradient }};{% endif %}
+      background-color: {{ section.settings.background_color }};
+      padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+      margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+">
+
+  {% comment %} Section Heading & Description {% endcomment %}
+  {% if section.settings.heading != blank %}
+    <{{ section.settings.heading_size | default: 'h2' }} style="text-align: {{ heading_align }};">
+      {{ section.settings.heading }}
+    </{{ section.settings.heading_size | default: 'h2' }}>
+  {% endif %}
+
+  {% if section.settings.heading_description != blank %}
+    <p style="text-align: {{ heading_align }}; margin-bottom: 1rem;">{{ section.settings.heading_description }}</p>
+  {% endif %}
+
+  {% comment %} Output ONLY non-slider blocks {% endcomment %}
+  {% for block in section.blocks %}
+    {% unless forloop.index <= 2 %}
+      {% case block.type %}
+        {% when 'image' %}
+          {% if block.settings.image %}
+            {% assign image_align = block.settings.image_alignment | default: 'center' %}
+            <div class="section_content_width_{{ section.settings.section_content_width }} flex mb-4 {% if image_align == 'left' %} justify-start {% elsif image_align == 'right' %} justify-end {% else %} justify-center {% endif %}">
+              <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="Section image" class="mb-4 inline-block" loading="lazy" />
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endunless %}
+  {% endfor %}
+
+  {% comment %} Comparison Slider always at the bottom {% endcomment %}
+  {%- render 'section-image-compare' -%}
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Image/Text + Comparison",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "background_gradient",
+      "label": "Background Gradient (CSS)",
+      "info": "Example: linear-gradient(135deg, #ff7e5f, #feb47b)"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading"
+    },
+{
+  "type": "textarea",
+  "id": "heading_description",
+  "label": "Heading Description",
+  "default": "Add your description here"
+},
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:labels.heading_size",
+      "default": "h2",
+      "options": [
+        { "value": "h3", "label": "t:labels.sizes.small" },
+        { "value": "h2", "label": "t:labels.sizes.medium" },
+        { "value": "h1", "label": "t:labels.sizes.large" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "label": "t:labels.heading_position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "t:labels.alignments.left" },
+        { "value": "center", "label": "t:labels.alignments.center" },
+        { "value": "right", "label": "t:labels.alignments.right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "fullwidth",
+      "label": "t:labels.full_page_width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "slider_style",
+      "label": "t:labels.slider_style",
+      "default": "classic",
+      "options": [
+        { "value": "classic", "label": "t:labels.classic" },
+        { "value": "minimal", "label": "t:labels.minimal" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "t:labels.height",
+      "default": 600,
+      "min": 400,
+      "max": 900,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.colors"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:labels.button",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:labels.image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "t:labels.image" },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Image Alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image/Text + Comparison",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.popups"]
+  }
+}
+{% endschema %}

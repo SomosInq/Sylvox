@@ -1,29 +1,4 @@
 <style>
-  .section_width_standard,
-  .section_width_full {
-    transition: all 0.3s ease;
-  }
-
-  .section_width_full {
-    width: 100%;
-  }
-
-  .section_width_standard {
-    margin: 0 auto !important;
-    width: 90% !important;
-  }
-
-  .hide-desktop { display: none !important; }
-  @media (max-width: 1024px) {
-    .hide-tablet { display: none !important; }
-    .hide-desktop { display: block !important; }
-  }
-  @media (max-width: 768px) {
-    .hide-mobile { display: none !important; }
-  }
-
-
-
    @media screen and (max-width: 768px) {
     .subscribe-form {
     text-align: left;
@@ -460,18 +435,6 @@ padding: 10px 0;}
 }
 
 
-
-/* ✅ UPDATE 2: Add responsive content width behavior */
-@media (max-width: 768px) {
-  #shopify-section-{{ section.id }} .section_content_width_standard {
-    padding: 0 16px;
-  }
-  #shopify-section-{{ section.id }} .section_width_standard {
-    padding: 0 16px;
-  }
-}
-
-/* ✅ UPDATE 3: Mobile image support */
 .countdown__background-image-wrapper {
   display: block;
 }

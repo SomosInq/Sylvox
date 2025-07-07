@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 34,
+            "activePatchIndex": 35,
             "patches": [
                 {
                     "date": 1751186258813,
@@ -144,6 +144,10 @@
                 {
                     "date": 1751463782079,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -458,9 +458,9 @@\n     }\n \n     // Valid email → hide any message → show T&C modal\n     formMessage.style.display = 'none';\n-    formMessage.textContent = '';\n+    formMessageText.textContent = '';\n     tcModal.style.display = 'block';\n   });\n \n   // Accept T&C → submit\n"
+                },
+                {
+                    "date": 1751881038358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,8 @@\n ;\n <style>\n /* Section & Content Width */\n \n-\n-/* ✅ Device visibility logic */\n-.hide-desktop { display: none; }\n-.hide-tablet { display: block; }\n-.hide-mobile { display: block; }\n-\n-@media (max-width: 1024px) {\n-  .hide-desktop { display: block; }\n-  .hide-tablet { display: none; }\n-}\n-\n-@media (max-width: 768px) {\n-  .hide-mobile { display: none; }\n-}\n-\n /* Hover effects */\n .img-hover-zoom img:hover { transform: scale(1.1); }\n .img-hover-grayscale img:hover { filter: grayscale(100%); }\n .img-hover-fade img:hover { opacity: 0.7; }\n"
                 }
             ],
             "date": 1751186258813,

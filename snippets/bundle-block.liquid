@@ -1,0 +1,125 @@
+{% comment %}
+  Custom block: Bundle Product Block | bundle-product-blocks.liquid
+{% endcomment %}
+
+
+<div class="product-bundles-block" {{ block.shopify_attributes }} id="{{ block.id }}">
+  <div class="product-bundles-block__heading">{{ block.settings.heading }}</div>
+
+  <div class="product-bundles-block__list">
+
+    <!-- First bundle -->
+    <div class="product-bundles-block__item product-bundles-block__item--highlight">
+      <div class="product-bundles-block__badge">SAVE {{ block.settings.savings_1 }}</div>
+      <div class="product-bundles-block__content">
+        <div class="product-bundles-block__image">
+          <img src="{{ block.settings.image_1 | image_url: width: 300 }}" alt="{{ block.settings.title_1 }}">
+        </div>
+        <div class="product-bundles-block__info">
+          <h3>{{ block.settings.title_1 }}</h3>
+          <div class="product-bundles-block__price">
+            <span class="product-bundles-block__price-sale">{{ block.settings.sale_price_1 }}</span>
+            <span class="product-bundles-block__price-compare">{{ block.settings.original_price_1 }}</span>
+          </div>
+          <p class="product-bundles-block__desc">{{ block.settings.description_1 }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second bundle -->
+    <div class="product-bundles-block__item">
+      <div class="product-bundles-block__badge">SAVE {{ block.settings.savings_2 }}</div>
+      <div class="product-bundles-block__content">
+        <div class="product-bundles-block__image">
+          <img src="{{ block.settings.image_2 | image_url: width: 300 }}" alt="{{ block.settings.title_2 }}">
+        </div>
+        <div class="product-bundles-block__info">
+          <h3>{{ block.settings.title_2 }}</h3>
+          <div class="product-bundles-block__price">
+            <span class="product-bundles-block__price-sale">{{ block.settings.sale_price_2 }}</span>
+            <span class="product-bundles-block__price-compare">{{ block.settings.original_price_2 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% style %}
+.product-bundles-block {
+  padding: 40px 0;
+}
+.product-bundles-block__heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0a0a0a;
+  margin-bottom: 32px;
+}
+.product-bundles-block__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.product-bundles-block__item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+}
+.product-bundles-block__item--highlight {
+  border: 2px solid #29a870;
+}
+.product-bundles-block__badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background-color: #29a870;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+.product-bundles-block__content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.product-bundles-block__image img {
+  max-width: 140px;
+}
+.product-bundles-block__info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a0a0a;
+  margin-bottom: 8px;
+}
+.product-bundles-block__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.product-bundles-block__price-sale {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a0a0a;
+}
+.product-bundles-block__price-compare {
+  font-size: 16px;
+  color: #9a9a9a;
+  text-decoration: line-through;
+}
+.product-bundles-block__desc {
+  font-size: 14px;
+  color: #2e2e2e;
+}
+@media screen and (max-width: 768px) {
+  .product-bundles-block__content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+{% endstyle %}

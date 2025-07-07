@@ -98,11 +98,7 @@
 {% endstyle %}
 
 <div class="index-section">
-  {% if heading != blank %}
-    <div class="section-header page-width">
-      <h2 class="{{ heading_size }} text-{{ heading_position }}">{{ heading | escape }}</h2>
-    </div>
-  {% endif %}
+
   <div
     {% unless full_width %}
       class="page-width"

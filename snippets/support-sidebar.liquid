@@ -1,0 +1,158 @@
+{% comment %}
+  Snippet: Support Sidebar Navigation | support-sidebar.liquid
+{% endcomment %}
+
+{% if menu != blank %}
+  <aside class="support-sidebar">
+    <div class="sidebar-menu">
+      <ul class="sidebar-list">
+        {% for category in linklists[menu].links %}
+          <li class="category-item{% if category.links != blank %} has-children{% endif %}">
+            {% if category.links != blank %}
+              <button class="menu-toggle" aria-expanded="false" aria-controls="submenu-{{ forloop.index }}">
+                {{ category.title }}
+                <span class="caret" aria-hidden="true">
+                  <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#2C2C2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+              <ul class="sub-menu" id="submenu-{{ forloop.index }}" hidden>
+                {% for sublink in category.links %}
+                  <li>
+                    <a href="{{ sublink.url }}" class="{% if sublink.active %}active{% endif %}">{{ sublink.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <a href="{{ category.url }}" class="category-title">{{ category.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+{% endif %}
+
+{% style %}
+.support-sidebar {
+  flex: 0 0 312px;
+  border-top: 1px solid #00000014;
+}
+.sidebar-menu {
+  width: 100%;
+  border-top: 1px solid #00000014;
+  border-bottom: 1px solid #00000014;
+}
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.category-item {
+  margin-bottom: 6px;
+}
+.category-title,
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1D1D1B;
+  height: 59px;
+  padding: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  gap: 6px;
+  transition: background 0.25s;
+}
+.category-title {
+  text-decoration: none;
+}
+.category-title:hover,
+.menu-toggle:hover {
+  background-color: #FAFAFA;
+  color: #1D1D1B;
+}
+.caret {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+.arrow-icon {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+.has-children.open .arrow-icon {
+  transform: rotate(270deg);
+}
+.sub-menu {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+.sub-menu li {
+  margin-bottom: 6px;
+}
+.sub-menu a {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #636363;
+  padding: 20px 40px;
+  border-radius: 5px;
+  background: none;
+  text-decoration: none;
+  transition: background 0.25s;
+}
+.sub-menu a.active {
+  background: #FAFAFA;
+}
+.sub-menu a:hover {
+  background: #FAFAFA;
+}
+
+.sidebar-section-heading {
+  font-family: 'Questrial', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #2C2C2C;
+  margin: 24px 0 8px 0;
+  padding: 0 10px;
+}
+.sidebar-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  width: 311px;
+  margin: 16px 0;
+  border: none;
+}
+{% endstyle %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".menu-toggle").forEach(function (toggle) {
+    toggle.addEventListener("click", function () {
+      const parent = toggle.parentElement;
+      const submenu = toggle.nextElementSibling;
+      const isOpen = parent.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen);
+      if (submenu) {
+        if (isOpen) {
+          submenu.removeAttribute("hidden");
+        } else {
+          submenu.setAttribute("hidden", "");
+        }
+      }
+    });
+  });
+});
+</script>

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1750857713061,
@@ -32,6 +32,10 @@
                 {
                     "date": 1751189072071,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,53 +1,32 @@\n <style>\n-/* Section Width */\n-.section_width_standard,\n-.section_width_full {\n-  transition: all 0.3s ease;\n-}\n-.section_width_full {\n-  width: 100%;\n-}\n-.section_width_standard {\n-  margin: 0 auto !important;\n-  width: 90% !important;\n-}\n \n-/* Content Width */\n-.section_content_width_standard,\n-.section_content_width_full {\n-  transition: all 0.3s ease;\n-}\n-.section_content_width_full {\n-  width: 100%;\n-}\n-.section_content_width_standard {\n-  margin: 0 auto !important;\n-  width: 90% !important;\n-}\n-\n /* Layout */\n .usp-container {\n-  display: flex;\n-  flex-wrap: wrap;\n-  justify-content: center;\n-  gap: 20px;\n+    display: flex;\n+    flex-wrap: wrap;\n+    justify-content: center;\n+    gap: 8px; /* Reduce the spacing between blocks */\n+    align-content: start;\n+    max-width: 960px; /* Optional: limits the total width */\n+    margin: 0 auto;\n }\n \n .usp-item {\n-  flex: 1 1 calc(33.333% - 20px);\n-  box-sizing: border-box;\n-  text-align: center;\n-  padding: 20px;\n-  border-radius: 8px;\n-  position: relative;\n+    flex: 1 1 calc(33.333% - 16px); /* Adjust to match smaller gap */\n+    box-sizing: border-box;\n+    text-align: center;\n+    padding: 16px; /* Reduce internal spacing */\n+    border-radius: 8px;\n+    position: relative;\n }\n \n .usp-item img {\n-  max-width: 100%;\n-  height: auto;\n-  display: block;\n-  margin: 0 auto 10px;\n+    max-width: 100%;\n+    height: auto;\n+    display: block;\n+    margin: 0 auto ;\n+    width: 100%;\n }\n \n /* Hover Effects */\n .hover-zoom img:hover {\n@@ -79,9 +58,9 @@\n     {% unless section.settings.show_on_mobile %}hide-mobile{% endunless %}\"\n   style=\"\n     background: {{ section.settings.background_image | image_url: 'original' }} no-repeat center/cover, {{ section.settings.background_color }};\n     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;\n-    height: {{ section.settings.height_desktop }}px;\n+ \n   \"\n >\n \n   {% if section.settings.header_text != blank %}\n@@ -249,17 +228,8 @@\n       \"step\": 2,\n       \"default\": 0\n     },\n     {\n-      \"type\": \"range\",\n-      \"id\": \"height_desktop\",\n-      \"label\": \"Section Height (Desktop)\",\n-      \"min\": 0,\n-      \"max\": 2000,\n-      \"step\": 20,\n-      \"default\": 0\n-    },\n-    {\n       \"type\": \"select\",\n       \"id\": \"slider_mode\",\n       \"label\": \"Layout Type\",\n       \"default\": \"grid\",\n"
+                },
+                {
+                    "date": 1751881097795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,18 +37,8 @@\n }\n .hover-fade img:hover {\n   opacity: 0.7;\n }\n-\n-/* Visibility */\n-.hide-desktop { display: none !important; }\n-@media (max-width: 1024px) {\n-  .hide-tablet { display: none !important; }\n-}\n-@media (max-width: 768px) {\n-  .hide-mobile { display: none !important; }\n-}\n-\n </style>\n \n <div \n   id=\"{{ section.settings.section_id }}\"\n"
                 }
             ],
             "date": 1750857713061,

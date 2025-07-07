@@ -1,0 +1,93 @@
+{% comment %}
+  Custom block: Product User Manual Block | product-user-manual-block.liquid
+{% endcomment %}
+
+<div class="product-user-manual-block" id="product-user-manual-block-{{ block.id }}" {{ block.shopify_attributes }}>
+  <h3 class="product-user-manual-block__heading">DOWNLOAD USER MANUAL</h3>
+  <a class="product-user-manual-block__link" href="{{ block.settings.manual_file }}" target="_blank" rel="noopener">
+    <span class="product-user-manual-block__label">
+      {{ block.settings.manual_label }}
+    </span>
+    <span class="product-user-manual-block__icon" aria-hidden="true">
+      <svg class="product-user-manual-block__svg" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0.790039" width="24" height="24" rx="12" fill="#ffffff" fill-opacity="0.2"/>
+        <path d="M10.5 9.29L13.5 12.29L10.5 15.29" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+</div>
+
+{% style %}
+  #product-user-manual-block-{{ block.id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product-user-manual-block__heading {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+  }
+
+  .product-user-manual-block__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    padding: 9px 24px;
+    width: 486px;
+    background: linear-gradient(90deg, #57A653 0%, #1BA613 100%);
+    text-decoration: none;
+    border-radius: 0;
+  }
+
+  .product-user-manual-block__label {
+    width: 266px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    word-wrap: break-word;
+  }
+
+  .product-user-manual-block__icon {
+    width: 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-user-manual-block__svg rect {
+    fill: #ffffff;
+    fill-opacity: 1;
+  }
+
+  .product-user-manual-block__svg path {
+    stroke: #1BA613;
+  }
+
+  .product-user-manual-block__link:hover {
+    background: linear-gradient(90deg, #4d914f 0%, #2d9916 100%);
+  }
+
+  @media screen and (max-width: 767px) {
+    .product-user-manual-block__heading {
+      font-size: 14px;
+    }
+
+    .product-user-manual-block__link {
+      width: 100%;
+    }
+
+    .product-user-manual-block__label {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
