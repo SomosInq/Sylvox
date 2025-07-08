@@ -130,7 +130,11 @@
     }
   }
   
+  
   @media screen and (max-width: 699px){
+.tab-product {
+    font-size: 15px !important;
+}
 
     .tabs{
         gap: 4px;

@@ -1,0 +1,34 @@
+{
+    "sourceFile": "assets/section-tab-products.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1751901557965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751901573618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,9 @@\n   }\n   \n   \n   @media screen and (max-width: 699px){\n-.tab-product.active {\n+.tab-product {\n     background: var(--Dark-Green, #20413B);\n     color: white;\n     font-size: 19px;\n }\n"
+                },
+                {
+                    "date": 1751901594806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -132,10 +132,8 @@\n   \n   \n   @media screen and (max-width: 699px){\n .tab-product {\n-    background: var(--Dark-Green, #20413B);\n-    color: white;\n     font-size: 19px;\n }\n \n     .tabs{\n"
+                },
+                {
+                    "date": 1751901615922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -132,9 +132,9 @@\n   \n   \n   @media screen and (max-width: 699px){\n .tab-product {\n-    font-size: 19px;\n+    font-size: 19px !important;\n }\n \n     .tabs{\n         gap: 4px;\n"
+                },
+                {
+                    "date": 1751901663975,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -132,9 +132,9 @@\n   \n   \n   @media screen and (max-width: 699px){\n .tab-product {\n-    font-size: 19px !important;\n+    font-size: 15px !important;\n }\n \n     .tabs{\n         gap: 4px;\n"
+                }
+            ],
+            "date": 1751901557965,
+            "name": "Commit-0",
+            "content": ".tabs {\n    display: flex;\n    gap: 10px;\n    cursor: pointer;\n    position: absolute;\n    top: 400px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    background: #e3e3e3;\n    padding: 4px 6px;\n    border-radius: 68px;\n    z-index: 1;\n  }\n  .tab-products {\n        position: relative;\n  }\n  .tab-product {\n    display: flex;\n    align-items: center;\n    gap: 4px;\n    color: #000;\n    width: max-content;\n    padding: 14px 20px;\n    font-size: 16px;\n    border-radius: 68px;\n    background: transparent;\n    transition: all 0.3s ease;\n    text-transform: uppercase;\n  }\n  .tab-product.active, .tab-product:hover {\n    color: #fff;\n    background: #179c99;\n  }\n  .tab-product-content {\n    display: none;\n  }\n  .tab-product-content.active {\n    display: block;\n  }\n\n  .tab-product-content__info{\n    max-width: var(--tab-content-max-width) !important;\n  }\n\n  .tab-product-content__info h3{\n    color: var(--tab-text-color);\n    font-weight: 400;\n  }\n\n  .tab-product-content__info .h2{\n      font-size: 80px;\n  }\n\n  .tab-product-content__info .h3{\n    font-size: 58px;\n  }\n\n  .tab-product-content__info p{\n    color: var(--tab-text-color);\n  }\n\n  .tab-products__featured{\n    display: flex;\n    gap: 40px;\n    margin-top: 54px;\n  }\n\n  .tabs-product__grid{\n    margin-top: 54px;\n  }\n\n  .tab-products__featured-product{\n    position: relative;\n  }\n\n  .tab-products__featured-product img{\n    width: 100%;\n    height: auto;\n  }\n\n  .tab-products__featured-info{\n    padding: 44px 50px;\n    position: absolute;\n    left:0;\n    top:0;\n  }\n\n  .tab-product-content__info-title{\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    color: var(--tab-text-color);\n    margin-bottom: 20px;\n  }\n\n  .tab-product-content__info-title span{\n    margin-top: 44px;\n    font-size: 24px;\n  }\n\n  .tab-product-content__info-dec h6{\n    font-size: 20px;\n    color: var(--tab-text-color);\n    font-weight: 700;\n    margin-bottom: 20px;\n  }\n\n  .tab-products__featured-info h4{\n    font-size: 48px;\n    font-weight: 700;\n    color: var(--tab-featured-text-color);\n  }\n\n  .tab-products__featured-info p{\n    font-size: 20px;\n    color: var(--tab-featured-text-color);\n  }\n\n  .tab-products__featured-price{\n    position: absolute;\n    bottom: 40px;\n    left: 0;\n    text-align: center;\n    width: 100%;\n  }\n\n  @media screen and (min-width: 700px){\n    .tabs{\n        top: var(--tab-position);\n    }\n  }\n  \n  \n  @media screen and (max-width: 699px){\n.tab-product.active {\n    background: var(--Dark-Green, #20413B);\n    color: white;\n    font-size: 19px;\n}\n\n    .tabs{\n        gap: 4px;\n        padding: 4px 4px;\n        position: relative;\n        top: unset;\n        left: unset;\n        transform: unset;\n        margin-bottom: 16px;\n        width: max-content;\n    }\n\n    .tab-product{\n        padding: 4px;\n        font-size: 9px;\n        gap: 2px;\n        min-width: 65px;\n        flex: 0 1;\n        display: flex;\n        align-items: center;\n        text-align: center;\n        justify-content: center;\n    }\n    .tab-product-content__info .h2{\n        font-size: 36px;\n    }\n  \n    .tab-product-content__info .h3{\n      font-size: 32px;\n    }\n\n    .tab-product-content__info-title span{\n        margin-top: 16px;\n        font-size: 12px;\n    }\n\n    .tab-product-content__info-dec h6{\n        font-size: 16px;\n    }\n\n    .tab-product-content__info-dec p{\n        font-size: 12px;\n    }\n\n    .tab-products__featured{\n        gap: 16px;\n        margin-top: 24px;\n        flex-direction: column;\n    }\n\n    .tab-products__featured-info{\n        padding: 16px;\n    }\n\n    .tab-products__featured-info h4{\n        font-size: 18px;\n    }\n\n    .tab-products__featured-price{\n        bottom: 20px;\n    }\n\n    .tabs-product__grid{\n        margin-top: 24px;\n    }\n  }"
+        }
+    ]
+}
