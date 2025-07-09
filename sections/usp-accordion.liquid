@@ -51,13 +51,13 @@
       "type": "color",
       "id": "section_title_color",
       "label": "Section Heading Color",
-      "default": "#ffffff"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "section_description_color",
       "label": "Section Description Color",
-      "default": "#cccccc"
+      "default": "#333333"
     },
     {
       "type": "text",
@@ -171,7 +171,7 @@
   "presets": [
     {
       "name": "USP Accordion",
-      "category": "Somos Custom"
+      "category": "Custom"
     }
   ]
 }
@@ -190,34 +190,79 @@
   margin-top: {{ section.settings.margin_top }}px;
   margin-bottom: {{ section.settings.margin_bottom }}px;
 }
-.accordion {
-  background: #20413B;
-  color: {{ section.settings.text_color }};
-  font-size: {{ section.settings.font_size }}px;
+
+.accordion-wrapper {
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
 }
+
+.accordion-left {
+  flex: 1;
+}
+
+.accordion-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.accordion-right {
+  background: #20413B;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion {
+  color: var(--Light-Grey, #C6C6C6);
+  font-size: {{ section.settings.font_size }}px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem;
+}
+
+.accordion-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .accordion-header {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 0;
+  transition: font-size 0.3s ease;
 }
+
+.accordion-item.active .accordion-header span {
+  font-size: 1.5em;
+}
+
 .accordion-icon {
   transition: transform 0.3s ease;
 }
+
 .accordion-icon.rotate {
   transform: rotate(180deg);
 }
+
 .accordion-content {
   display: none;
-  padding: 0 1rem 1rem;
+  padding: 0 0 1rem;
 }
+
 .accordion-content.active {
   display: block;
 }
+
 .accordion-subtitle {
   font-size: 0.875rem;
-  color: #ccc;
+  color: #A7DCB7;
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -225,74 +270,73 @@
 
 <div class="section_width_{{ section.settings.section_width }}">
   <div class="section_content_width_{{ section.settings.section_content_width }} usp-accordion-section">
-    
-    <!-- Header Block -->
-    <div class="usp-accordion-header" style="text-align: center; margin-bottom: 2rem;">
-      {% if section.settings.section_heading != blank %}
-        <h2 style="color: {{ section.settings.section_title_color }};">{{ section.settings.section_heading }}</h2>
+    <div style="text-align: center; margin-bottom: 2rem;">
+      {% if section.settings.section_heading %}
+        <h2 style="color: {{ section.settings.section_title_color }}">{{ section.settings.section_heading }}</h2>
       {% endif %}
-      {% if section.settings.section_description != blank %}
-        <p style="color: {{ section.settings.section_description_color }};">{{ section.settings.section_description }}</p>
+      {% if section.settings.section_description %}
+        <p style="color: {{ section.settings.section_description_color }}">{{ section.settings.section_description }}</p>
       {% endif %}
-      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
-        <a href="{{ section.settings.button_link }}" class="usp-accordion-button" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: #20413B; color: white; text-decoration: none; border-radius: 4px;">
-          {{ section.settings.button_text }}
-        </a>
+      {% if section.settings.button_text and section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" style="display:inline-block; margin-top:1rem; padding:0.5rem 1.5rem; background:#20413B; color:white; text-decoration:none; border-radius:4px;">{{ section.settings.button_text }}</a>
       {% endif %}
     </div>
 
-    <!-- Content Columns -->
-    <div style="display: flex; gap: 2rem; align-items: stretch;">
-      <div style="flex: 1;">
-        <img id="dynamic-accordion-image" src="{% for block in section.blocks limit: 1 %}{{ block.settings.associated_image | image_url }}{% endfor %}" style="width: 100%;" alt="Accordion Image" />
+    <div class="accordion-wrapper">
+      <div class="accordion-left">
+        <img id="dynamic-accordion-image" src="{% for block in section.blocks limit:1 %}{{ block.settings.associated_image | image_url }}{% endfor %}" alt="Accordion Image" />
       </div>
-      <div class="accordion" style="flex: 1; padding: 1rem;">
-        <h2>{{ section.settings.title }}</h2>
-        <p>{{ section.settings.text }}</p>
-        {% for block in section.blocks %}
-          <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}">
-            <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
-              <span>{{ block.settings.question }}</span>
-              {% if block.settings.icon %}
-                <img src="{{ block.settings.icon | image_url }}" class="accordion-icon" id="icon-{{ forloop.index }}" width="20" />
-              {% else %}
-                <span class="accordion-icon" id="icon-{{ forloop.index }}">▼</span>
-              {% endif %}
+      <div class="accordion-right">
+        <div class="accordion">
+          <h2>{{ section.settings.title }}</h2>
+          <p>{{ section.settings.text }}</p>
+          {% for block in section.blocks %}
+            <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}">
+              <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
+                <span>{{ block.settings.question }}</span>
+                {% if block.settings.icon %}
+                  <img src="{{ block.settings.icon | image_url }}" class="accordion-icon" id="icon-{{ forloop.index }}" width="20" />
+                {% else %}
+                  <span class="accordion-icon" id="icon-{{ forloop.index }}">▼</span>
+                {% endif %}
+              </div>
+              <div class="accordion-content" id="content-{{ forloop.index }}">
+                {% if block.settings.subtitle %}
+                  <div class="accordion-subtitle">{{ block.settings.subtitle }}</div>
+                {% endif %}
+                <div>{{ block.settings.answer }}</div>
+              </div>
             </div>
-            <div class="accordion-content" id="content-{{ forloop.index }}">
-              {% if block.settings.subtitle != blank %}
-                <div class="accordion-subtitle">{{ block.settings.subtitle }}</div>
-              {% endif %}
-              <div>{{ block.settings.answer }}</div>
-            </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  function toggleAccordion(index) {
-    document.querySelectorAll('.accordion-content').forEach((content, i) => {
-      const icon = document.getElementById(`icon-${i + 1}`);
-      const contentEl = document.getElementById(`content-${i + 1}`);
-      if (i + 1 === index) {
-        const isActive = contentEl.classList.contains('active');
-        contentEl.classList.toggle('active', !isActive);
-        icon?.classList.toggle('rotate', !isActive);
-      } else {
-        contentEl.classList.remove('active');
-        icon?.classList.remove('rotate');
-      }
-    });
-
-    // Update image
-    const clickedItem = document.querySelector(`.accordion-item[data-index="${index}"]`);
-    const newImage = clickedItem.getAttribute('data-image');
-    const imageEl = document.getElementById('dynamic-accordion-image');
-    if (newImage && imageEl) {
-      imageEl.src = newImage;
+function toggleAccordion(index) {
+  document.querySelectorAll('.accordion-content').forEach((content, i) => {
+    const icon = document.getElementById(`icon-${i + 1}`);
+    const contentEl = document.getElementById(`content-${i + 1}`);
+    const itemEl = contentEl.closest('.accordion-item');
+    if (i + 1 === index) {
+      const isActive = contentEl.classList.contains('active');
+      contentEl.classList.toggle('active', !isActive);
+      icon?.classList.toggle('rotate', !isActive);
+      itemEl.classList.toggle('active', !isActive);
+    } else {
+      contentEl.classList.remove('active');
+      icon?.classList.remove('rotate');
+      itemEl.classList.remove('active');
     }
+  });
+
+  const clickedItem = document.querySelector(`.accordion-item[data-index="${index}"]`);
+  const newImage = clickedItem.getAttribute('data-image');
+  const imageEl = document.getElementById('dynamic-accordion-image');
+  if (newImage && imageEl) {
+    imageEl.src = newImage;
   }
+}
 </script>

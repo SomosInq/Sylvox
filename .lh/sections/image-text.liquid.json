@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 15,
+            "activePatchIndex": 16,
             "patches": [
                 {
                     "date": 1748444519032,
@@ -68,6 +68,10 @@
                 {
                     "date": 1751220673383,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -139,8 +139,14 @@\n   ]\n }\n {% endschema %}\n \n+<style>\n+  .image-text-blocks-section img {\n+    margin: 0 auto;\n+}\n+</style>\n+\n {% assign text_align = settings.alignment | default: 'center' %}\n \n <div class=\"image-text-blocks-section px-4 md:px-8 py-6  section_width_{{ section.settings.section_width }}\"\n      style=\"\n"
+                },
+                {
+                    "date": 1752068243451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -141,9 +141,9 @@\n {% endschema %}\n \n <style>\n   .image-text-blocks-section img {\n-    margin: 0 auto;\n+    margin: 0 auto 20px auto;\n }\n </style>\n \n {% assign text_align = settings.alignment | default: 'center' %}\n"
                 }
             ],
             "date": 1748444519032,

@@ -2,7 +2,14 @@
   Custom section: Feature Banner Tabs | feature-banner-tabs.liquid
 {% endcomment %}
 
-<div class="feature-banner-tabs" id="feature-banner-tabs-{{ section.id }}">
+<div 
+  class="feature-banner-tabs" 
+  id="feature-banner-tabs-{{ section.id }}"
+  style="
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  "
+>
   <div class="feature-banner-tabs__tabs-wrapper">
     <div class="feature-banner-tabs__tabs">
       {% for block in section.blocks %}
@@ -17,7 +24,13 @@
   <div class="feature-banner-tabs__carousel">
     {% assign last_block = section.blocks | last %}
     <div class="feature-banner-tabs__slide is-clone">
-      <div class="feature-banner-tabs__banner banner-{{ last_block.id }}" style="background-image: url({{ last_block.settings.background | image_url: width: 1600 }});">
+      <div 
+        class="feature-banner-tabs__banner banner-{{ last_block.id }}"
+        style="
+          background-image: url({{ last_block.settings.background | image_url: width: 1600 }});
+          height: {{ section.settings.banner_height }}px;
+        "
+      >
         <div class="feature-banner-tabs__content">
           <h2 class="banner-heading-{{ last_block.id }}">{{ last_block.settings.heading }}</h2>
           <p class="banner-paragraph-{{ last_block.id }}">{{ last_block.settings.description }}</p>
@@ -27,12 +40,19 @@
 
     {% for block in section.blocks %}
       <div class="feature-banner-tabs__slide" {{ block.shopify_attributes }}>
-        <div class="feature-banner-tabs__banner banner-{{ block.id }}" style="background-image: url({{ block.settings.background | image_url: width: 1600 }});">
+        <div 
+          class="feature-banner-tabs__banner banner-{{ block.id }}"
+          style="
+            background-image: url({{ block.settings.background | image_url: width: 1600 }});
+            height: {{ section.settings.banner_height }}px;
+          "
+        >
           <div class="feature-banner-tabs__content">
             <h2 class="banner-heading-{{ block.id }}">{{ block.settings.heading }}</h2>
             <p class="banner-paragraph-{{ block.id }}">{{ block.settings.description }}</p>
           </div>
         </div>
+
         {% if block.settings.mobile_background %}
           <style>
             @media screen and (max-width: 767px) {
@@ -42,6 +62,17 @@
             }
           </style>
         {% endif %}
+
+        {% if section.settings.banner_height_mobile %}
+          <style>
+            @media screen and (max-width: 767px) {
+              .banner-{{ block.id }} {
+                height: {{ section.settings.banner_height_mobile }}px !important;
+              }
+            }
+          </style>
+        {% endif %}
+
         <style>
           .banner-heading-{{ block.id }},
           .banner-paragraph-{{ block.id }} {
@@ -53,7 +84,13 @@
 
     {% assign first_block = section.blocks | first %}
     <div class="feature-banner-tabs__slide is-clone">
-      <div class="feature-banner-tabs__banner banner-{{ first_block.id }}" style="background-image: url({{ first_block.settings.background | image_url: width: 1600 }});">
+      <div 
+        class="feature-banner-tabs__banner banner-{{ first_block.id }}"
+        style="
+          background-image: url({{ first_block.settings.background | image_url: width: 1600 }});
+          height: {{ section.settings.banner_height }}px;
+        "
+      >
         <div class="feature-banner-tabs__content">
           <h2 class="banner-heading-{{ first_block.id }}">{{ first_block.settings.heading }}</h2>
           <p class="banner-paragraph-{{ first_block.id }}">{{ first_block.settings.description }}</p>
@@ -71,7 +108,6 @@
 
 {% style %}
 .feature-banner-tabs {
-  padding: 48px 0;
   position: relative;
 }
 
@@ -83,13 +119,14 @@
   margin-bottom: 32px;
 }
 
-  .feature-banner-tabs__tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 2;
-  }
+.feature-banner-tabs__tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Added gap between tab labels */
+  position: relative;
+  z-index: 2;
+}
 
 .feature-banner-tabs__underline {
   width: 100%;
@@ -157,7 +194,6 @@
 }
 
 .feature-banner-tabs__banner {
-  height: 460px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -193,7 +229,7 @@
 .feature-banner-tabs__progress .dot {
   width: 8px;
   height: 8px;
-  background: #c2c4c5;
+  background: rgba(0, 0, 0, 0.10);
   border-radius: 50%;
   transition: all 0.3s ease;
 }
@@ -201,13 +237,11 @@
 .feature-banner-tabs__progress .dot.active {
   width: 24px;
   border-radius: 4px;
-  background: #0a0a0a;
+  background: #DB4B97;
 }
 
 @media screen and (max-width: 767px) {
   .feature-banner-tabs {
-    padding-top: 40px;
-    padding-bottom: 40px;
     overflow: hidden;
   }
 
@@ -261,15 +295,14 @@
 
   .feature-banner-tabs__slide {
     width: 370px;
-    height: 482px;
+    height: auto;
     position: relative;
     flex-shrink: 0;
   }
 
   .feature-banner-tabs__banner {
     width: 370px;
-    height: 480px;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     padding: 0;
@@ -339,7 +372,7 @@
 
     function scrollToSlide(i) {
       index = i;
-      const targetSlide = slides[i + 1]; // accounts for start clone
+      const targetSlide = slides[i + 1];
       if (!targetSlide) return;
 
       const scrollOffset = targetSlide.offsetLeft - (carousel.offsetWidth - targetSlide.offsetWidth) / 2;
@@ -352,7 +385,7 @@
       updateUI();
 
       slides.forEach((slide, idx) => {
-        slide.classList.toggle("active", idx === i + 1); // i + 1 because of cloned first slide
+        slide.classList.toggle("active", idx === i + 1);
       });
 
       restartAutoplay();
@@ -405,7 +438,35 @@
       "max": 15,
       "step": 1,
       "default": 4
-    }
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Banner height (px)",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
+      "default": 460,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Banner height (mobile px)",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "default": 480,
+      "unit": "px"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
   ],
   "blocks": [
     {

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1748872363610,
@@ -52,6 +52,18 @@
                 {
                     "date": 1748964312999,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,10 @@\n   align-items: center;\n   justify-content: space-between;\n   gap: 40px;\n }\n-.various-grid-top .left,\n-.various-grid-top .right {\n+.various-grid-top .alignleft,\n+.various-grid-top .alignright {\n   flex: 1 1 48%;\n }\n .various-grid-top .left img {\n   max-width: 100%;\n@@ -70,14 +70,14 @@\n   \"\n >\n   <div class=\"various-grid-inner section_content_width_{{ section.settings.section_content_width }}\">\n     <div class=\"various-grid-top\">\n-      <div class=\"left\">\n+      <div class=\"alignleft\">\n         {% if section.settings.left_image %}\n           <img src=\"{{ section.settings.left_image | img_url: 'master' }}\" alt=\"Left Image\" style=\"width: {{ section.settings.left_image_width }}%;\">\n         {% endif %}\n       </div>\n-      <div class=\"right\">\n+      <div class=\"aligright\">\n         {% if section.settings.icon %}\n           <img src=\"{{ section.settings.icon | img_url: 'master' }}\" alt=\"Heading Icon\" style=\"width: 40px; margin-bottom: 10px;\">\n         {% endif %}\n         <h2 style=\"color: {{ section.settings.heading_color }};\">{{ section.settings.heading }}</h2>\n"
+                },
+                {
+                    "date": 1752060287301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,8 +48,13 @@\n   .usp-box {\n     max-width: 100%;\n   }\n }\n+@media screen and (max-width: 768px) {\n+  .various-grid-top {\n+    flex-direction: column;\n+  }\n+}\n {% endstyle %}\n \n {% assign has_bg_image = false %}\n {% if section.settings.bg_image != blank %}\n@@ -68,16 +73,16 @@\n     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;\n     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;\n   \"\n >\n-  <div class=\"various-grid-inner section_content_width_{{ section.settings.section_content_width }}\">\n+  <div class=\"various-grid-inner \">\n     <div class=\"various-grid-top\">\n       <div class=\"alignleft\">\n         {% if section.settings.left_image %}\n           <img src=\"{{ section.settings.left_image | img_url: 'master' }}\" alt=\"Left Image\" style=\"width: {{ section.settings.left_image_width }}%;\">\n         {% endif %}\n       </div>\n-      <div class=\"aligright\">\n+      <div class=\"alignright\">\n         {% if section.settings.icon %}\n           <img src=\"{{ section.settings.icon | img_url: 'master' }}\" alt=\"Heading Icon\" style=\"width: 40px; margin-bottom: 10px;\">\n         {% endif %}\n         <h2 style=\"color: {{ section.settings.heading_color }};\">{{ section.settings.heading }}</h2>\n"
+                },
+                {
+                    "date": 1752060307095,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -90,9 +90,9 @@\n       </div>\n     </div>\n \n     {% if section.blocks.size > 0 %}\n-      <div class=\"usp-grid\">\n+      <div class=\"usp-grid section_content_width_{{ section.settings.section_content_width }}\">\n         {% for block in section.blocks %}\n           <div class=\"usp-box\">\n             {% if block.settings.icon %}\n               <img src=\"{{ block.settings.icon | img_url: 'master' }}\" alt=\"USP Icon\" style=\"width: {{ block.settings.icon_size }}%;\">\n"
+                },
+                {
+                    "date": 1752060365540,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n {% style %}\n .various-grid-wrapper {\n   width: 100%;\n }\n-.various-grid-inner {\n+/* .various-grid-inner {\n   max-width: 1600px;\n   margin: 0 auto;\n-}\n+} */\n .various-grid-top {\n   display: flex;\n   flex-wrap: wrap;\n   align-items: center;\n"
                 }
             ],
             "date": 1748872363610,
