@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 152,
+            "activePatchIndex": 154,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -616,6 +616,14 @@
                 {
                     "date": 1751986649963,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -961,9 +961,9 @@\n     background: var(--Mid-Green, #336256);\n     max-width: 200px;\n     margin: 20px auto 0 auto;\n     padding: 12px 35px;\n-    font-size: calc(var(--type-base-size) + 2px);\n+    font-size: 15px;\n }\n \n .comparison-section .btn img {\n   display: inline-flex;\n"
+                },
+                {
+                    "date": 1752074302410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -155,14 +155,14 @@\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n     width: 100% !important;\n-    padding: 0 16px;\n+    padding: 0 16px !important;\n     margin: 0 auto !important;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n     width: 100% !important;\n-    padding: 0 16px;\n+    padding: 0 16px !important;\n     margin: 0 auto !important;\n   }\n }\n \n"
+                },
+                {
+                    "date": 1752074462565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -155,14 +155,14 @@\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n     width: 100% !important;\n-    padding: 0 16px !important;\n+    padding: 0 25px !important;\n     margin: 0 auto !important;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n     width: 100% !important;\n-    padding: 0 16px !important;\n+    padding: 0 25px !important;\n     margin: 0 auto !important;\n   }\n }\n \n"
                 }
             ],
             "date": 1748526641710,

@@ -133,15 +133,22 @@
     font-weight: 500;
   }
 
+.carousel-dots .flickity-page-dots {
+  position: static !important;
+  bottom: auto !important;
+  left: auto !important;
+  display: flex !important;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
   .carousel-dots .flickity-page-dots {
-    position: static !important;
-    bottom: auto !important;
-    left: auto !important;
-    display: flex !important;
-    justify-content: flex-start;
-    gap: 8px;
-    margin-top: 0;
+    justify-content: center !important;
   }
+}
+
 
   .flickity-page-dots .dot {
     all: unset;
@@ -153,6 +160,8 @@
     cursor: pointer;
     float: left;
   }
+
+  
 
   .flickity-page-dots .dot.is-selected {
     width: 24px;

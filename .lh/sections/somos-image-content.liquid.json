@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1748867346892,
@@ -28,6 +28,10 @@
                 {
                     "date": 1749025173064,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -203,32 +203,8 @@\n   {% endif %}\n   padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;\n   margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;\n }\n-\n-.section_width_standard,\n-.section_width_full {\n-  transition: all 0.3s ease;\n-}\n-.section_width_full {\n-  width: 100%;\n-}\n-.section_width_standard {\n-  margin: 0 auto !important;\n-  width: 90% !important;\n-}\n-\n-.section_content_width_standard,\n-.section_content_width_full {\n-  transition: all 0.3s ease;\n-}\n-.section_content_width_full {\n-  width: 100%;\n-}\n-.section_content_width_standard {\n-  margin: 0 auto !important;\n-  width: 90% !important;\n-}\n {% endstyle %}\n \n <section class=\"section_width_{{ section.settings.section_width }}\" id=\"shopify-section-{{ section.id }}\">\n   <div class=\"section_content_width_{{ section.settings.section_content_width }}\">\n"
+                },
+                {
+                    "date": 1752074616947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -203,8 +203,19 @@\n   {% endif %}\n   padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;\n   margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;\n }\n+  @media screen and (max-width: 768px) {\n+    .icon-grid-row {\n+      flex-direction: column !important;\n+      gap: 20px;\n+    }\n+    .icon-grid-row .image-col,\n+    .icon-grid-row .text-col {\n+      flex: 0 0 100% !important;\n+      max-width: 100% !important;\n+    }\n+  }\n {% endstyle %}\n \n <section class=\"section_width_{{ section.settings.section_width }}\" id=\"shopify-section-{{ section.id }}\">\n   <div class=\"section_content_width_{{ section.settings.section_content_width }}\">\n"
                 }
             ],
             "date": 1748867346892,
