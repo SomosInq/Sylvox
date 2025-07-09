@@ -1,17 +1,23 @@
-{% comment %} {%- unless section.settings.full_width -%}
-  {%- render 'section-spacing-collapsing' -%}
-{%- endunless -%} {% endcomment %}
-
 <style>
-
   #shopify-section-{{ section.id }} {
- 
-
     --content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};
-
     {%- if section.settings.allow_transparent_header -%}
       margin-block-start: calc(-1 * var(--header-height) * var(--section-is-first));
     {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} image-banner {
+    position: relative;
+  display: block;
+  height: var(--slide-height);
+}
+
+  #shopify-section-{{ section.id }} .grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: grid;
+    width: 100%;
+    height: 100%;
   }
 
   #shopify-section-{{ section.id }} .grid-content-wrapper {
@@ -22,15 +28,121 @@
       "bottom-left bottom-center bottom-right";
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    {% comment %} height: 100%; {% endcomment %}
     width: 100%;
+    height: 100%;
   }
+
+  #shopify-section-{{ section.id }} picture,
+  #shopify-section-{{ section.id }} picture > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+
+  /* --- MOBILE FIXES --- */
+  @media (max-width: 699px) {
+    #shopify-section-{{ section.id }} .grid {
+      display: block; /* Disable grid on mobile */
+    }
+
+    #shopify-section-{{ section.id }} .grid-content-wrapper {
+      display: block; /* Disable grid on mobile */
+      padding-left: 1.5rem; /* 24px */
+      padding-right: 1.5rem;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .grid-content-wrapper > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* Ensure image sizing stays proper for mobile */
+    #shopify-section-{{ section.id }} picture,
+    #shopify-section-{{ section.id }} picture > img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* === Position helpers === */
+
+#shopify-section-{{ section.id }} .pos-top-left {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#shopify-section-{{ section.id }} .pos-top-center {
+  justify-content: center;
+  align-items: flex-start;
+}
+#shopify-section-{{ section.id }} .pos-top-right {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+#shopify-section-{{ section.id }} .pos-middle-left {
+  justify-content: flex-start;
+  align-items: center;
+}
+#shopify-section-{{ section.id }} .pos-middle-center {
+  justify-content: center;
+  align-items: center;
+}
+#shopify-section-{{ section.id }} .pos-middle-right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#shopify-section-{{ section.id }} .pos-bottom-left {
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+#shopify-section-{{ section.id }} .pos-bottom-center {
+  justify-content: center;
+  align-items: flex-end;
+}
+#shopify-section-{{ section.id }} .pos-bottom-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* === MOBILE overrides === */
+@media (max-width: 699px) {
+  #shopify-section-{{ section.id }} .mobile-pos {
+    display: flex;
+  }
+}
+
+@media (max-width: 699px) {
+  #shopify-section-{{ section.id }} .grid-content-wrapper > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+@media (max-width: 699px) {
+  #shopify-section-{{ section.id }} {
+    --slide-height: var(--slide-height-mobile);
+  }
+}
 </style>
 
-<div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} class="section_width_{{ section.settings.section_width }}" style="--slide-height: {{ section.settings.slide_height }}px;">
+
+<div {% render 'section-properties' %} 
+     {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} 
+     class="section_width_{{ section.settings.section_width }}" 
+     style="--slide-height: {{ section.settings.slide_height }}px; --slide-height-mobile: {{ section.settings.mobile_slide_height }}px;">
+
   {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
 
-  <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
+<image-banner
+  reveal-on-scroll="true"
+  {% if section.settings.enable_parallax %}parallax="0.3"{% endif %}
+  {% render 'surface', class: class, text_color: section.settings.text_color %}>
     {%- if section.settings.image != blank -%}
       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
       {%- capture fetch_priority -%}{% if section.index == 1 %}high{% else %}low{% endif %}{%- endcapture -%}
@@ -54,7 +166,8 @@
     {%- if section.blocks.size > 0 -%}
      <div class="grid w-full h-full">
   <div class="grid-content-wrapper section_content_width_{{ section.settings.section_width }}">
-            <div class="p-4 {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
+            <div class="p-4 mobile-pos {{ section.settings.mobile_text_position }} sm:{{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
+
 
             <div class="prose">
               {%- for block in section.blocks -%}
@@ -175,7 +288,6 @@
     }
   ]
 },
-{"type": "range", "id": "slide_height", "label": "Height", "min": 200, "max": 1000, "step": 50, "default": 500, "unit": "px"},
     {
       "type": "checkbox",
       "id": "allow_transparent_header",
@@ -187,6 +299,11 @@
       "id": "enable_parallax",
       "label": "Enable parallax effect",
       "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
     },
     {
       "type": "select",
@@ -202,10 +319,22 @@
       "default": "auto"
     },
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
+  "type": "select",
+  "id": "desktop_text_position",
+  "label": "Desktop content position",
+  "options": [
+    { "value": "sm:pos-top-left", "label": "Top left" },
+    { "value": "sm:pos-top-center", "label": "Top center" },
+    { "value": "sm:pos-top-right", "label": "Top right" },
+    { "value": "sm:pos-middle-left", "label": "Middle left" },
+    { "value": "sm:pos-middle-center", "label": "Middle center" },
+    { "value": "sm:pos-middle-right", "label": "Middle right" },
+    { "value": "sm:pos-bottom-left", "label": "Bottom left" },
+    { "value": "sm:pos-bottom-center", "label": "Bottom center" },
+    { "value": "sm:pos-bottom-right", "label": "Bottom right" }
+  ],
+  "default": "sm:pos-middle-center"
+},
     {
       "type": "image_picker",
       "id": "mobile_image",
@@ -228,22 +357,15 @@
   ],
   "default": "pos-middle-center"
 },
-    {
-  "type": "select",
-  "id": "desktop_text_position",
-  "label": "Desktop content position",
-  "options": [
-    { "value": "sm:pos-top-left", "label": "Top left" },
-    { "value": "sm:pos-top-center", "label": "Top center" },
-    { "value": "sm:pos-top-right", "label": "Top right" },
-    { "value": "sm:pos-middle-left", "label": "Middle left" },
-    { "value": "sm:pos-middle-center", "label": "Middle center" },
-    { "value": "sm:pos-middle-right", "label": "Middle right" },
-    { "value": "sm:pos-bottom-left", "label": "Bottom left" },
-    { "value": "sm:pos-bottom-center", "label": "Bottom center" },
-    { "value": "sm:pos-bottom-right", "label": "Bottom right" }
-  ],
-  "default": "sm:pos-middle-center"
+{
+  "type": "range",
+  "id": "mobile_slide_height",
+  "label": "Mobile height",
+  "min": 200,
+  "max": 1000,
+  "step": 50,
+  "default": 400,
+  "unit": "px"
 },
     {
       "type": "header",

@@ -1,69 +1,212 @@
-{%- render 'section-video-swiper' -%}
+{%- liquid
+  assign swiper_title = swiper_title | default: section.settings.swiper_title
+  assign swiper_sub_title = swiper_sub_title | default: section.settings.swiper_sub_title
+-%}
+
+<style>
+  .video-swiper-contair {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .usp-heading {
+    margin-bottom: 5px;
+  }
+
+  .usp-subtext {
+    margin-bottom: 0;
+  }
+
+  .video-swiper-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .content-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-right {
+    display: flex;
+    gap: 10px;
+  }
+
+  .usp-arrow {
+ width: 40px;
+  height: 40px;
+  border: 1px solid #636363;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  display: flex;               /* Add flex layout */
+  align-items: center;         /* Center vertically */
+  justify-content: center;     /* Center horizontally */
+
+  font-size: 30px;
+  color: #636363;
+  line-height: 1;              /* Safe default */
+  padding: 0;   
+  }
+
+  .usp-arrow:hover {
+    background: #297f67;
+    color: #fff;
+    border: none;
+  }
+
+  .video-blocks {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 20px 0;
+  }
+
+  .video-blocks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .video-wrapper {
+    position: relative;
+    flex: 0 0 calc(20% - 10px);
+    scroll-snap-align: start;
+    min-width: 285px;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, box-shadow;
+    cursor: pointer;
+  }
+
+  .video-wrapper video,
+  .video-wrapper iframe {
+    width: 100%;
+    border-radius: 10px;
+    height: 490px;
+  }
+
+  .video-wrapper.animate {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .video-swiper-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .content-right {
+      margin-top: 10px;
+    }
+
+    .video-wrapper {
+      flex: 0 0 calc(35% - 10px);
+    }
+
+    .video-wrapper video,
+    .video-wrapper iframe {
+      height: 350px;
+    }
+  }
+  
+</style>
+
+<div class="page-width">
+  <div class="video-swiper-contair">
+
+    <div class="video-swiper-content">
+      <div class="content-left">
+        {%- if swiper_sub_title != blank -%}
+          <div class="usp-subtext">{{ swiper_sub_title }}</div>
+        {%- endif -%}
+        {%- if swiper_title != blank -%}
+          <h2 class="usp-heading">{{ swiper_title }}</h2>
+        {%- endif -%}
+      </div>
+
+      <div class="content-right">
+        <button class="usp-arrow prev">‹</button>
+        <button class="usp-arrow next">›</button>
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="video-blocks">
+        {%- for block in section.blocks -%}
+          <div class="video-wrapper">
+            {% if block.settings.video != blank %}
+              {{ block.settings.video | video_tag: controls: true, autoplay: false, loop: false, muted: false, poster: block.settings.thumbnail | img_url: '800x' }}
+            {% elsif block.settings.video_url != blank %}
+              <iframe src="{{ block.settings.video_url | escape }}" frameborder="0" allowfullscreen width="100%" height="490"></iframe>
+            {% endif %}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+<script src="{{ 'video-swiper.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
-  {
-    "name": "Section name",
-    "class": "index-section",
-    "settings": [
-      {
-        "id": "swiper_title",
-        "type": "text",
-        "label": "t:labels.heading",
-        "default": "sylvox Community"
-      },
-      {
-        "id": "swiper_sub_title",
-        "type": "text",
-        "label": "Content Text",
-        "default": "A home for all Sylvox fans to experience content,inspiration, and our beautiful technology."
-
-      },
-    ],
-     "blocks": [
-      {
-        "type": "video_block",
-        "name": "Video Block",
-        "settings": [
-          {
-            "type": "video",
-            "id": "video",
-            "label": "t:labels.video",
-            "info": "t:info.overrides_video_url_if_both_set"
-          },
-          {
-            "type": "video_url",
-            "id": "video_url",
-            "label": "t:labels.video_url",
-            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "accept": ["youtube", "vimeo"]
-          },
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Video Swiper",
-        "blocks": [
-          {
-            "type": "video_block"
-          },
-          {
-            "type": "video_block"
-          },
-          {
-            "type": "video_block"
-          },
-          {
-            "type": "video_block"
-          },
-          {
-            "type": "video_block"
-          },
-          {
-            "type": "video_block"
-          }
-        ]
-      }
-    ],
-  }
+{
+  "name": "Video Swiper",
+  "settings": [
+    {
+      "id": "swiper_title",
+      "type": "text",
+      "label": "Heading",
+      "default": "Sylvox Community"
+    },
+    {
+      "id": "swiper_sub_title",
+      "type": "text",
+      "label": "Subtext",
+      "default": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Swiper",
+      "blocks": [
+        { "type": "video_block" }
+      ]
+    }
+  ]
+}
 {% endschema %}

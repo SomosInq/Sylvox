@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 142,
+            "activePatchIndex": 152,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -576,6 +576,46 @@
                 {
                     "date": 1751964871667,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1162,33 +1162,10 @@\n       margin-bottom: 24px;\n       flex-direction: column;\n     }\n   }\n+  \n \n-    @media screen and (max-width: 768px) {\n-    .comparison-header,\n-    .comparison-values {\n-      display: block !important;\n-    }\n-    .comparison-header .header {\n-      margin-bottom: 2rem;\n-    }\n-    .comparison-values .head {\n-      font-weight: bold;\n-      margin-top: 1rem;\n-    }\n-    .comparison-values .table-value {\n-      margin-bottom: 1rem;\n-    }\n-\n-    /* Optional: wrap each column + values in a card style for clarity */\n-    .comparison-column-mobile {\n-      border: 1px solid #e0e0e0;\n-      padding: 1rem;\n-      margin-bottom: 2rem;\n-    }\n-  }\n-\n   /* Somos Slider */\n \n .content_section_width_standard,\n .content_section_width_full {\n"
+                },
+                {
+                    "date": 1751969599207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -153,14 +153,14 @@\n   }\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n-    width: 90% !important;\n+    width: 100% !important;\n     padding: 0 16px;\n     margin: 0 auto !important;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n-    width: 90% !important;\n+    width: 100% !important;\n     padding: 0 16px;\n     margin: 0 auto !important;\n   }\n }\n@@ -1166,20 +1166,9 @@\n   \n \n   /* Somos Slider */\n \n-.content_section_width_standard,\n-.content_section_width_full {\n-transition: all 0.3s ease;\n-}\n-.content_section_width_full {\n-width: 100%;\n-}\n \n-.content_section_width_standard {\n-margin: 0 auto;\n-width: 90%;\n-}\n   .somos-slider {\n     position: relative;\n     overflow: hidden;\n   }\n"
+                },
+                {
+                    "date": 1751977391794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -121,9 +121,10 @@\n     align-items: center;\n     color: white;\n     display: inline-block;\n     margin: 5px;\n-    padding: 5px 15px;\n+    padding: 12px 35px;\n+    font-size: 14px;\n     text-decoration: none;\n     border-radius: 50px;\n }\n \n@@ -1277,9 +1278,10 @@\n   }\n   .somos-slide .button {\n     display: inline-block;\n     margin: 25px 5px 5px 0;\n-    padding: 5px 15px;\n+    padding: 12px 35px;\n+    font-size: 14px;\n     text-decoration: none;\n     border-radius: 50px;\n     border: 1px solid;\n   }\n"
+                },
+                {
+                    "date": 1751977522904,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -963,9 +963,10 @@\n     border-radius: 9999px;\n     background: var(--Mid-Green, #336256);\n     max-width: 200px;\n     margin: 20px auto 0 auto;\n-    padding: 0.5rem 1rem;\n+    padding: 12px 35px;\n+    font-size: 14px;\n }\n \n .comparison-section .btn img {\n   display: inline-flex;\n"
+                },
+                {
+                    "date": 1751977549492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -266,12 +266,12 @@\n   }\n \n   .collection-tabs-section .shop-all-btn {\n     text-decoration: none;\n-    padding: 0.4rem 0.9rem;\n+    padding: 12px 35px;\n+    font-size: 14px;\n     color: #20413B;\n     border-radius: 4px;\n-    font-size: 0.85rem;\n     margin-left: auto;\n     border-radius: 40px;\n     border: 1px solid var(--Dark-Green, #20413B);\n   }\n"
+                },
+                {
+                    "date": 1751977582906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1300,9 +1300,10 @@\n \n   .shopify-section--image-with-text-overlay .btn {\n     display: inline-block;\n     margin: 25px 5px 5px 0;\n-    padding: 5px 15px;\n+    padding: 12px 35px;\n+    font-size: 14px;\n     text-decoration: none;\n   }\n  \n \n"
+                },
+                {
+                    "date": 1751977846757,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -492,18 +492,10 @@\n   gap: 20px;\n   margin: 20px 0;\n }\n \n-a.button {\n-    background: var(--Dark-Green, #20413B);\n-    justify-content: center;\n-    align-items: center;\n-    color: white;\n-    padding: 5px 15px;\n-    text-decoration: none;\n-    border-radius: 50px;\n-}\n \n+\n .sylvox-icons img {\n   height: 15px;\n }\n \n"
+                },
+                {
+                    "date": 1751983633581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -582,19 +582,16 @@\n   display: flex;\n   gap: 8px;\n }\n .usp-arrow {\n-  display: flex;\n-  width: 32px;\n-  height: 32px;\n-  padding: 11px 0;\n-  justify-content: center;\n-  align-items: center;\n-  border-radius: 16px;\n-  border: 1px solid var(--Black, #1D1D1B);\n-  background: white;\n-  font-size: 16px;\n-  cursor: pointer;\n+width: 38px;\n+    height: 38px;\n+    border: 1px solid #888;\n+    border-radius: 50%;\n+    background: none;\n+    cursor: pointer;\n+    transition: all 0.3s ease-out;\n+    font-size: 28px;\n }\n \n /* Video Grid */\n \n"
+                },
+                {
+                    "date": 1751983870015,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -582,16 +582,24 @@\n   display: flex;\n   gap: 8px;\n }\n .usp-arrow {\n-width: 38px;\n-    height: 38px;\n-    border: 1px solid #888;\n-    border-radius: 50%;\n-    background: none;\n-    cursor: pointer;\n-    transition: all 0.3s ease-out;\n-    font-size: 28px;\n+ width: 40px;\n+  height: 40px;\n+  border: 1px solid #636363;\n+  border-radius: 50%;\n+  background: none;\n+  cursor: pointer;\n+  transition: all 0.3s ease-out;\n+\n+  display: flex;               /* Add flex layout */\n+  align-items: center;         /* Center vertically */\n+  justify-content: center;     /* Center horizontally */\n+\n+  font-size: 30px;\n+  color: #636363;\n+  line-height: 1;              /* Safe default */\n+  padding: 0;   \n }\n \n /* Video Grid */\n \n"
+                },
+                {
+                    "date": 1751986455984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -961,9 +961,9 @@\n     background: var(--Mid-Green, #336256);\n     max-width: 200px;\n     margin: 20px auto 0 auto;\n     padding: 12px 35px;\n-    font-size: 14px;\n+    font-size: calc(var(--type-base-size) + 2px);\n }\n \n .comparison-section .btn img {\n   display: inline-flex;\n@@ -1298,9 +1298,9 @@\n   .shopify-section--image-with-text-overlay .btn {\n     display: inline-block;\n     margin: 25px 5px 5px 0;\n     padding: 12px 35px;\n-    font-size: 14px;\n+    font-size: calc(var(--type-base-size) + 2px);\n     text-decoration: none;\n   }\n  \n \n"
+                },
+                {
+                    "date": 1751986649963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -961,9 +961,9 @@\n     background: var(--Mid-Green, #336256);\n     max-width: 200px;\n     margin: 20px auto 0 auto;\n     padding: 12px 35px;\n-    font-size: calc(var(--type-base-size) + 2px);\n+    font-size: 15px;\n }\n \n .comparison-section .btn img {\n   display: inline-flex;\n"
                 }
             ],
             "date": 1748526641710,

@@ -122,7 +122,8 @@ a.button {
     color: white;
     display: inline-block;
     margin: 5px;
-    padding: 5px 15px;
+    padding: 12px 35px;
+    font-size: 14px;
     text-decoration: none;
     border-radius: 50px;
 }
@@ -154,12 +155,12 @@ a.button {
   
   @media (max-width: 768px) {
   #shopify-section-{{ section.id }} .section_content_width_standard {
-    width: 90% !important;
+    width: 100% !important;
     padding: 0 16px;
     margin: 0 auto !important;
   }
   #shopify-section-{{ section.id }} .section_width_standard {
-    width: 90% !important;
+    width: 100% !important;
     padding: 0 16px;
     margin: 0 auto !important;
   }
@@ -266,10 +267,10 @@ a.button {
 
   .collection-tabs-section .shop-all-btn {
     text-decoration: none;
-    padding: 0.4rem 0.9rem;
+    padding: 12px 35px;
+    font-size: 14px;
     color: #20413B;
     border-radius: 4px;
-    font-size: 0.85rem;
     margin-left: auto;
     border-radius: 40px;
     border: 1px solid var(--Dark-Green, #20413B);
@@ -492,15 +493,7 @@ a.button {
   margin: 20px 0;
 }
 
-a.button {
-    background: var(--Dark-Green, #20413B);
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 5px 15px;
-    text-decoration: none;
-    border-radius: 50px;
-}
+
 
 .sylvox-icons img {
   height: 15px;
@@ -590,17 +583,22 @@ a.button {
   gap: 8px;
 }
 .usp-arrow {
-  display: flex;
-  width: 32px;
-  height: 32px;
-  padding: 11px 0;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-  border: 1px solid var(--Black, #1D1D1B);
-  background: white;
-  font-size: 16px;
+ width: 40px;
+  height: 40px;
+  border: 1px solid #636363;
+  border-radius: 50%;
+  background: none;
   cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  display: flex;               /* Add flex layout */
+  align-items: center;         /* Center vertically */
+  justify-content: center;     /* Center horizontally */
+
+  font-size: 30px;
+  color: #636363;
+  line-height: 1;              /* Safe default */
+  padding: 0;   
 }
 
 /* Video Grid */
@@ -963,7 +961,8 @@ display: flex;
     background: var(--Mid-Green, #336256);
     max-width: 200px;
     margin: 20px auto 0 auto;
-    padding: 0.5rem 1rem;
+    padding: 12px 35px;
+    font-size: 15px;
 }
 
 .comparison-section .btn img {
@@ -1167,18 +1166,7 @@ display: flex;
 
   /* Somos Slider */
 
-.content_section_width_standard,
-.content_section_width_full {
-transition: all 0.3s ease;
-}
-.content_section_width_full {
-width: 100%;
-}
 
-.content_section_width_standard {
-margin: 0 auto;
-width: 90%;
-}
   .somos-slider {
     position: relative;
     overflow: hidden;
@@ -1289,7 +1277,8 @@ width: 90%;
   .somos-slide .button {
     display: inline-block;
     margin: 25px 5px 5px 0;
-    padding: 5px 15px;
+    padding: 12px 35px;
+    font-size: 14px;
     text-decoration: none;
     border-radius: 50px;
     border: 1px solid;
@@ -1309,7 +1298,8 @@ width: 90%;
   .shopify-section--image-with-text-overlay .btn {
     display: inline-block;
     margin: 25px 5px 5px 0;
-    padding: 5px 15px;
+    padding: 12px 35px;
+    font-size: calc(var(--type-base-size) + 2px);
     text-decoration: none;
   }
  

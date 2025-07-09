@@ -1,10 +1,10 @@
 {% comment %}
-  Custom section: Media Logo Carousel | media-logo-carousel.liquid
+  Media Logo Carousel | Dots for groups of 4 + drag to scroll
 {% endcomment %}
 
-<div class="media-logo-carousel" id="media-logo-carousel-{{ section.id }}">
-  <div class="media-logo-carousel__inner">
-    <div class="media-logo-carousel__text-group">
+<div class="media-logo-carousel section_width_{{ section.settings.section_width }}" id="media-logo-carousel-{{ section.id }}">
+  <div class="media-logo-carousel__inner section_content_width_{{ section.settings.section_content_width }}">
+    <div class="media-logo-carousel__text-group align-{{ section.settings.title_alignment }}">
       <h2 class="media-logo-carousel__heading">{{ section.settings.heading }}</h2>
       <p class="media-logo-carousel__subtext">{{ section.settings.subtext }}</p>
     </div>
@@ -14,21 +14,39 @@
           <p class="media-logo-carousel__quote">{{ block.settings.quote }}</p>
           <div class="media-logo-carousel__logo-wrapper">
             {% if block.settings.logo != blank %}
-              {{ block.settings.logo | image_url: width: 200 | image_tag: loading: 'lazy', class: 'media-logo-carousel__logo', alt: block.settings.alt }}
+              <img 
+                src="{{ block.settings.logo | image_url }}" 
+                loading="lazy"
+                alt="{{ block.settings.alt }}"
+                class="media-logo-carousel__logo"
+                style="width: {{ block.settings.logo_width }}%; height: auto;"
+              >
             {% endif %}
           </div>
           <p class="media-logo-carousel__meta">{{ block.settings.description }}</p>
         </div>
       {% endfor %}
     </div>
+<div class="media-logo-carousel__dots">
+  {% assign groups = section.blocks.size | divided_by: 4 %}
+  {% assign remainder = section.blocks.size | mod: 4 %}
+  {% if remainder != 0 %}
+    {% assign groups = groups | plus: 1 %}
+  {% endif %}
+
+  {% for i in (1..groups) %}
+    {% assign i0 = i | minus: 1 %}
+    <span class="dot {% if forloop.first %}active{% endif %}" data-group="{{ i0 }}"></span>
+  {% endfor %}
+</div>
+
   </div>
 
   {% style %}
     .media-logo-carousel {
       position: relative;
       overflow: hidden;
-      padding: 80px 20px;
-      color: #ffffff;
+      padding: 80px 40px;
       background-image: url({{ section.settings.background | image_url }});
       background-size: cover;
       background-position: center;
@@ -44,10 +62,23 @@
 
     .media-logo-carousel__text-group {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
+      flex-direction: column;
       margin-bottom: 40px;
+    }
+
+    .media-logo-carousel__text-group.align-left {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .media-logo-carousel__text-group.align-center {
+      text-align: center;
+      align-items: center;
+    }
+
+    .media-logo-carousel__text-group.align-right {
+      text-align: right;
+      align-items: flex-end;
     }
 
     .media-logo-carousel__heading {
@@ -56,7 +87,7 @@
       font-weight: 400;
       line-height: 1.2;
       margin: 0;
-      color: #ffffff;
+      color: #000000;
     }
 
     .media-logo-carousel__subtext {
@@ -65,7 +96,7 @@
       font-weight: 400;
       max-width: 600px;
       line-height: 1.5;
-      color: #ffffff;
+      color: #000000;
     }
 
     .media-logo-carousel__carousel {
@@ -73,6 +104,8 @@
       overflow-x: auto;
       gap: 24px;
       scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      cursor: grab;
     }
 
     .media-logo-carousel__item {
@@ -85,6 +118,10 @@
       scroll-snap-align: start;
       opacity: 0.5;
       transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
     }
 
     .media-logo-carousel__item.active {
@@ -95,19 +132,21 @@
       font-family: Roboto, sans-serif;
       font-size: 18px;
       line-height: 1.5;
-      font-weight: 400;
       margin-bottom: 32px;
     }
 
     .media-logo-carousel__logo-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 24px;
+      height: 100px;
     }
 
     .media-logo-carousel__logo {
       display: block;
-      max-height: 40px;
-      width: auto;
-      margin: 0 auto;
+      height: auto;
+      max-width: 100%;
     }
 
     .media-logo-carousel__meta {
@@ -116,19 +155,50 @@
       color: #7e8182;
     }
 
+    .media-logo-carousel__dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .media-logo-carousel__dots .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #ddd;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .media-logo-carousel__dots .dot.active {
+      background-color: #e91e63;
+    }
+
     @media screen and (max-width: 768px) {
       .media-logo-carousel__heading {
         font-size: 32px;
-        margin-bottom: 20px;
-      }
-
-      .media-logo-carousel__text-group {
-        flex-direction: column;
-        gap: 20px;
       }
 
       .media-logo-carousel__carousel {
-        padding-bottom: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        overflow: visible;
+        scroll-snap-type: none;
+        cursor: default;
+      }
+
+      .media-logo-carousel__item {
+        flex: 1 1 auto;
+        width: 100%;
+        opacity: 1;
+        scroll-snap-align: none;
+      }
+
+      .media-logo-carousel__dots {
+        display: none;
       }
     }
   {% endstyle %}
@@ -137,13 +207,76 @@
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.querySelector('#media-logo-carousel-{{ section.id }} .media-logo-carousel__carousel');
       const items = carousel.querySelectorAll('.media-logo-carousel__item');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          entry.target.classList.toggle('active', entry.isIntersecting);
-        });
-      }, { root: carousel, threshold: 0.6 });
+      const dots = document.querySelectorAll('#media-logo-carousel-{{ section.id }} .dot');
 
-      items.forEach(item => observer.observe(item));
+      // Observer to highlight visible items and dots
+      if (window.innerWidth > 768) {
+        const observer = new IntersectionObserver((entries) => {
+          let minIndex = null;
+          entries.forEach(entry => {
+            const index = parseInt(entry.target.getAttribute('data-index'));
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              if (minIndex === null || index < minIndex) minIndex = index;
+            } else {
+              entry.target.classList.remove('active');
+            }
+          });
+          if (minIndex !== null) {
+            const group = Math.floor(minIndex / 4);
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[group].classList.add('active');
+          }
+        }, { root: carousel, threshold: 0.5 });
+
+        items.forEach(item => observer.observe(item));
+      } else {
+        items.forEach(item => item.classList.add('active'));
+      }
+
+      // Click dots to scroll to group
+      dots.forEach(dot => {
+        dot.addEventListener('click', function () {
+          const group = parseInt(this.dataset.group);
+          const index = group * 4;
+          const item = carousel.querySelector('.media-logo-carousel__item[data-index="' + index + '"]');
+          if (item) {
+            carousel.scrollTo({
+              left: item.offsetLeft,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Drag to scroll
+      let isDown = false;
+      let startX, scrollLeft;
+
+      carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        carousel.classList.add('dragging');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        carousel.classList.remove('dragging');
+      });
+
+      carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        carousel.classList.remove('dragging');
+      });
+
+      carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 1.5; // Scroll speed
+        carousel.scrollLeft = scrollLeft - walk;
+      });
     });
   </script>
 </div>
@@ -169,6 +302,37 @@
       "id": "subtext",
       "label": "Subtext",
       "default": "Our brand has been featured in some of the most trusted media outlets, showcasing our commitment to quality and innovation."
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
     }
   ],
   "blocks": [
@@ -186,6 +350,12 @@
           "type": "image_picker",
           "id": "logo",
           "label": "Logo image"
+        },
+        {
+          "type": "number",
+          "id": "logo_width",
+          "label": "Logo width (%)",
+          "default": 50
         },
         {
           "type": "text",
@@ -208,8 +378,6 @@
       "name": "Media Logo Carousel",
       "category": "Custom",
       "blocks": [
-        { "type": "media_item" },
-        { "type": "media_item" },
         { "type": "media_item" },
         { "type": "media_item" },
         { "type": "media_item" }
