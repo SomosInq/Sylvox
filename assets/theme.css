@@ -1182,8 +1182,8 @@ display: flex;
   }
 
   .somos-slide .content_section_width_standard {
-    margin: 0 auto;
-    width: 80% !important;
+max-width: 1608px;
+    margin: 0 auto !important;
 }
 
   .somos-slide .description {

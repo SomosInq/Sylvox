@@ -48,7 +48,7 @@
   .filter-btn {
     border: none;
     cursor: pointer;
-    padding: 0 0 6px 0;
+    padding: 0;
     {% comment %} background: #f2f2f2; {% endcomment %}
     border-radius: 4px;
     font-size: 14px;
@@ -60,12 +60,13 @@
   } {% endcomment %}
 
   .product-filter-buttons {
-    display: flex;
-    gap: 12px;
+     display: flex;
+    gap: 42px;
     align-items: center;
+    font-size: 20px;
   }
   .product-filter-buttons p {
-  padding: 0;
+  padding: 0; margin: 0;
   }
 
   .tab-product-content__banner {
@@ -81,13 +82,23 @@
     height: auto;
   }
 
+  .filter-btn div span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #C6C6C6;
+}
+
+.filter-btn.active div span {
+    color: #000;
+}
+
   .tab-product-content__info {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 40px;
     display: grid;
     place-items: var(--vertical-align, center) var(--horizontal-align, center);
     text-align: var(--text-align, center);
