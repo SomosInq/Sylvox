@@ -72,6 +72,16 @@
         { "value": "large", "label": "Large" }
       ],
       "default": "large"
+    },
+    {
+      "type": "range",
+      "id": "slide_height",
+      "label": "Slide Height (px)",
+      "min": 200,
+      "max": 1000,
+      "step": 50,
+      "default": 500,
+      "unit": "px"
     }
   ],
   "blocks": [
@@ -110,12 +120,33 @@
 
 {% style %}
 <style>
+
+  /* The container */
+.carousel-dots .flickity-page-dots {
+  display: flex !important;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each dot */
+.flickity-page-dots .dot {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: #636363;
+  cursor: pointer;
+}
+
+/* Active dot override */
+.flickity-page-dots .dot.is-selected {
+  background: #DB4B97;
+}
+
   .outdoor-carousel-section {
     padding: 2rem 1rem;
-  }
-
-  .controls {
-    position: relative;
   }
 
   .outdoor-carousel-text.left { text-align: left; }
@@ -133,63 +164,22 @@
     font-weight: 500;
   }
 
-.carousel-dots .flickity-page-dots {
-  position: static !important;
-  bottom: auto !important;
-  left: auto !important;
-  display: flex !important;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-top: 0;
-}
-
-@media (max-width: 768px) {
-  .carousel-dots .flickity-page-dots {
-    justify-content: center !important;
-  }
-}
-
-
-  .flickity-page-dots .dot {
-    all: unset;
-    display: block;
-    width: 24px;
-    height: 25px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23636363"/></svg>') no-repeat center center;
-    background-size: contain;
-    cursor: pointer;
-    float: left;
-  }
-
-  
-
-  .flickity-page-dots .dot.is-selected {
-    width: 24px;
-    height: 25px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23DB4B97"/></svg>');
-    opacity: 1;
-    background-color: transparent;
-  }
-
   .carousel-wrapper {
     position: relative;
     max-width: 100%;
   }
 
-  .carousel-arrows-wrapper {
-    display: flex;
-    justify-content: flex-end;
-  }
-
   .flickity-carousel {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .carousel-cell {
+    position: relative;
+    overflow: hidden;
     margin-right: 20px;
-    opacity: 0.3;
-    transform: scale(0.94);
-    transition: all 0.3s ease;
+    opacity: 0.2;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .carousel-cell.is-selected {
@@ -199,6 +189,9 @@
 
   .carousel-cell img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
     border-radius: 8px;
   }
 
@@ -215,7 +208,7 @@
     font-weight: 400;
   }
 
-   .carousel-description_block {
+  .carousel-description_block {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
@@ -224,12 +217,44 @@
     font-weight: 400;
   }
 
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .carousel-dots-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .carousel-dots .flickity-page-dots {
+    display: flex !important;
+    justify-content: center;
+    gap: 8px;
+    position: static !important;
+  }
+
+  .flickity-page-dots .dot {
+    all: unset;
+    display: block;
+    width: 24px;
+    height: 25px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23636363"/></svg>') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  .flickity-page-dots .dot.is-selected {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><rect x="4" y="11.9502" width="16" height="2" rx="1" fill="%23DB4B97"/></svg>');
+  }
+
   .carousel-arrows {
     display: flex;
     gap: 10px;
-    position: absolute;
-    bottom: -55px;
-    right: 0;
+    flex-shrink: 0;
   }
 
   .carousel-arrows button {
@@ -237,28 +262,18 @@
     height: 40px;
     border-radius: 50%;
     border: 1px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: white;
     cursor: pointer;
-    transition: border-color 0.3s;
   }
 
   .carousel-arrows button:hover {
     border-color: #999;
   }
-
-  .carousel-arrows button svg {
-    width: 16px;
-    height: 16px;
-    fill: #333;
-  }
 </style>
 {% endstyle %}
 
-
-<section class="outdoor-carousel-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+<section class="outdoor-carousel-section section_width_{{ section.settings.section_width }}"
+         style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <div class="outdoor-carousel-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}">
     <div class="small-heading">{{ section.settings.heading }}</div>
     <h2>{{ section.settings.subheading }}</h2>
@@ -269,13 +284,14 @@
          data-flickity='{
            "wrapAround": true,
            "imagesLoaded": true,
-           "pageDots": true,
+           "pageDots": false,
            "prevNextButtons": false,
            "cellAlign": "center",
            "contain": true
          }'>
       {% for block in section.blocks %}
-        <div class="carousel-cell size-{{ section.settings.slide_size }} relative">
+        <div class="carousel-cell size-{{ section.settings.slide_size }} relative"
+             style="height: {{ section.settings.slide_height }}px;">
           {% if block.settings.image %}
             <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
           {% endif %}
@@ -290,14 +306,23 @@
     </div>
   </div>
 
-  <!-- Dots and Arrows Container -->
-  <div class="controls dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+  <div class="controls section_content_width_{{ section.settings.section_content_width }}">
     <div class="carousel-dots-container">
       <div class="carousel-dots"></div>
     </div>
-
+    <div class="controls">
+  <div class="carousel-dots-container">
+    <div class="carousel-dots"></div>
+  </div>
+  {% if section.settings.show_arrows %}
+    <div class="carousel-arrows">
+      <button class="usp-arrow prev">‹</button>
+      <button class="usp-arrow next">›</button>
+    </div>
+  {% endif %}
+</div>
     {% if section.settings.show_arrows %}
-      <div class="carousel-arrows content-right">
+      <div class="carousel-arrows">
         <button class="usp-arrow prev" aria-label="Previous">‹</button>
         <button class="usp-arrow next" aria-label="Next">›</button>
       </div>
@@ -311,31 +336,26 @@
     const carousel = document.querySelector('.flickity-carousel');
     const customDotsContainer = document.querySelector('.carousel-dots');
 
-    // Fully disable Flickity's default dot handling
     let flkty = new Flickity(carousel, {
       wrapAround: true,
       imagesLoaded: true,
-      pageDots: false, // prevent auto-adding to DOM
+      pageDots: false,
       prevNextButtons: false,
       cellAlign: "center",
       contain: true
     });
 
-    // Manually generate page dots and move them inside .carousel-dots
     flkty.on('ready', function () {
       if (typeof flkty.createPageDots === 'function') {
-        flkty.createPageDots(); // create <ol class="flickity-page-dots">
+        flkty.createPageDots();
       }
       if (flkty.pageDots && flkty.pageDots.element && customDotsContainer) {
         customDotsContainer.appendChild(flkty.pageDots.element);
       }
     });
 
-    // Navigation arrows
-    document.querySelector('.carousel-prev')?.addEventListener('click', () => flkty.previous());
-    document.querySelector('.carousel-next')?.addEventListener('click', () => flkty.next());
+    document.querySelector('.usp-arrow.prev')?.addEventListener('click', () => flkty.previous());
+    document.querySelector('.usp-arrow.next')?.addEventListener('click', () => flkty.next());
   });
 </script>
 {% endjavascript %}
-
-
