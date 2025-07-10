@@ -1,14 +1,45 @@
 {%- comment -%}
-Somos Slider: Individual Button Style Controls
+Somos Slider: Individual Button Style Controls + All requested upgrades
 {%- endcomment -%}
 
-<div class="somos-slider" style="--slide-height: {{ section.settings.slide_height }}px; background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %}  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; {{ section.settings.section_width }}">
+<div class="somos-slider"
+  style="
+    --slide-height: {{ section.settings.slide_height }}px;
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image %}
+      background-image: url({{ section.settings.background_image | image_url }});
+      background-size: cover;
+    {% endif %}
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    {{ section.settings.section_width }}">
+  <style>
+    @media screen and (max-width: 749px) {
+      .somos-slider {
+        {% if section.settings.background_image_mobile %}
+          background-image: url({{ section.settings.background_image_mobile | image_url }}) !important;
+          background-size: cover;
+        {% endif %}
+        --slide-height: {{ section.settings.slide_height_mobile }}px !important;
+      }
+    }
+  </style>
+
   <div class="somos-slider__wrapper" id="somos-slider-wrapper-{{ section.id }}">
     {% for block in section.blocks %}
       <div class="somos-slide" id="block-{{ block.id }}">
-        <div class="somos-slide__media-wrapper">
+        <div class="somos-slide__media-wrapper" style="position: relative;">
           {% if block.settings.image %}
             <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
+            {% if block.settings.image_overlay_color != blank and block.settings.image_overlay_opacity > 0 %}
+              <div style="
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: {{ block.settings.image_overlay_color }};
+                opacity: {{ block.settings.image_overlay_opacity }};
+                pointer-events: none;">
+              </div>
+            {% endif %}
           {% endif %}
           <div class="somos-slide__content content_section_width_{{ section.settings.section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             {% if block.settings.subheading %}
@@ -21,11 +52,19 @@ Somos Slider: Individual Button Style Controls
               <div class="description" style="font-size: {{ block.settings.font_size | minus: 2 }}px;">{{ block.settings.description }}</div>
             {% endif %}
             <div class="buttons">
-              {% if block.settings.button_text_1 and block.settings.button_link_1 %}
-                <a href="{{ block.settings.button_link_1 }}" class="button" style="background: {{ block.settings.button_1_bg }}; color: {{ block.settings.button_1_text }}; border-color: {{ block.settings.button_1_border }}">{{ block.settings.button_text_1 }}</a>
+              {% if block.settings.button_text_1 and block.settings.button_link_1 or block.settings.button_text_1 and block.settings.button_video_1 %}
+                <a href="{% if block.settings.button_video_1 != blank %}{{ block.settings.button_video_1 }}{% else %}{{ block.settings.button_link_1 }}{% endif %}"
+                   class="button"
+                   style="background: {{ block.settings.button_1_bg }}; color: {{ block.settings.button_1_text }}; border-color: {{ block.settings.button_1_border }}">
+                  {{ block.settings.button_text_1 }}
+                </a>
               {% endif %}
-              {% if block.settings.button_text_2 and block.settings.button_link_2 %}
-                <a href="{{ block.settings.button_link_2 }}" class="button" style="background: {{ block.settings.button_2_bg }}; color: {{ block.settings.button_2_text }}; border-color: {{ block.settings.button_2_border }}">{{ block.settings.button_text_2 }}</a>
+              {% if block.settings.button_text_2 and block.settings.button_link_2 or block.settings.button_text_2 and block.settings.button_video_2 %}
+                <a href="{% if block.settings.button_video_2 != blank %}{{ block.settings.button_video_2 }}{% else %}{{ block.settings.button_link_2 }}{% endif %}"
+                   class="button"
+                   style="background: {{ block.settings.button_2_bg }}; color: {{ block.settings.button_2_text }}; border-color: {{ block.settings.button_2_border }}">
+                  {{ block.settings.button_text_2 }}
+                </a>
               {% endif %}
             </div>
           </div>
@@ -107,26 +146,28 @@ Somos Slider: Individual Button Style Controls
         }
       ]
     },
-     {
-  "type": "select",
-  "id": "content_section_width",
-  "label": "Content Width",
-  "default": "standard",
-  "options": [
     {
-      "value": "standard",
-      "label": "50% Width"
+      "type": "select",
+      "id": "content_section_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        {
+          "value": "standard",
+          "label": "50% Width"
+        },
+        {
+          "value": "full",
+          "label": "Full Width"
+        }
+      ]
     },
-    {
-      "value": "full",
-      "label": "Full Width"
-    }
-  ]
-},
     {"type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true},
     {"type": "range", "id": "slide_height", "label": "Slide height", "min": 200, "max": 1000, "step": 50, "default": 500, "unit": "px"},
+    {"type": "range", "id": "slide_height_mobile", "label": "Mobile Slide height", "min": 200, "max": 1000, "step": 50, "default": 400, "unit": "px"},
     {"type": "color", "id": "background_color", "label": "Background color", "default": "#ffffff"},
     {"type": "image_picker", "id": "background_image", "label": "Background image"},
+    {"type": "image_picker", "id": "background_image_mobile", "label": "Mobile Background image"},
     {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
@@ -146,11 +187,13 @@ Somos Slider: Individual Button Style Controls
         {"type": "textarea", "id": "description", "label": "Description", "default": "This is a description box."},
         {"type": "text", "id": "button_text_1", "label": "Button 1 text"},
         {"type": "url", "id": "button_link_1", "label": "Button 1 link"},
+        {"type": "url", "id": "button_video_1", "label": "Button 1 video link"},
         {"type": "color", "id": "button_1_bg", "label": "Button 1 background", "default": "#ffffff"},
         {"type": "color", "id": "button_1_text", "label": "Button 1 text color", "default": "#000000"},
         {"type": "color", "id": "button_1_border", "label": "Button 1 border color", "default": "#000000"},
         {"type": "text", "id": "button_text_2", "label": "Button 2 text"},
         {"type": "url", "id": "button_link_2", "label": "Button 2 link"},
+        {"type": "url", "id": "button_video_2", "label": "Button 2 video link"},
         {"type": "color", "id": "button_2_bg", "label": "Button 2 background", "default": "#ffffff"},
         {"type": "color", "id": "button_2_text", "label": "Button 2 text color", "default": "#000000"},
         {"type": "color", "id": "button_2_border", "label": "Button 2 border color", "default": "#000000"},
@@ -167,6 +210,8 @@ Somos Slider: Individual Button Style Controls
         {"type": "color", "id": "text_color", "label": "Text color", "default": "#000000"},
         {"type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px"},
         {"type": "image_picker", "id": "image", "label": "Image"},
+        {"type": "color", "id": "image_overlay_color", "label": "Image overlay color", "default": "#000000"},
+        {"type": "range", "id": "image_overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 1, "step": 0.1, "default": 0},
         {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"}
       ]
     }
