@@ -35,16 +35,62 @@
             "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
             "image_size": 100
           }
+        },
+        "slide_fXUwAp": {
+          "type": "slide",
+          "settings": {
+            "subheading": "Outdoor Entertainment, Perfected",
+            "heading": "<h1>Sylvox Pool Pro 2.0</h1>",
+            "description": "Effortless Entertainment, Rain or Shine.",
+            "button_text_1": "Learn More",
+            "button_link_1": "shopify://collections/rv-tv",
+            "button_1_bg": "#ffffff",
+            "button_1_text": "#000000",
+            "button_1_border": "#ffffff",
+            "button_text_2": "Watch Video",
+            "button_link_2": "shopify://products/sylvox-official-extended-warranty-for-deck-pro-55-2-years-total-3-years",
+            "button_2_bg": "rgba(0,0,0,0)",
+            "button_2_text": "#ffffff",
+            "button_2_border": "#ffffff",
+            "horizontal_align": "left",
+            "vertical_align": "middle",
+            "text_color": "#ffffff",
+            "font_size": 24,
+            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image_size": 100
+          }
+        },
+        "slide_X9a3Fm": {
+          "type": "slide",
+          "settings": {
+            "subheading": "Outdoor Entertainment, Perfected",
+            "heading": "<h1>Sylvox Pool Pro 2.0</h1>",
+            "description": "Effortless Entertainment, Rain or Shine.",
+            "button_text_1": "Learn More",
+            "button_link_1": "shopify://collections/rv-tv",
+            "button_1_bg": "#ffffff",
+            "button_1_text": "#000000",
+            "button_1_border": "#ffffff",
+            "button_text_2": "Watch Video",
+            "button_link_2": "shopify://products/sylvox-official-extended-warranty-for-deck-pro-55-2-years-total-3-years",
+            "button_2_bg": "rgba(0,0,0,0)",
+            "button_2_text": "#ffffff",
+            "button_2_border": "#ffffff",
+            "horizontal_align": "left",
+            "vertical_align": "middle",
+            "text_color": "#ffffff",
+            "font_size": 24,
+            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image_size": 100
+          }
         }
       },
-      "block_order": [
-        "slide_U4WUax"
-      ],
+      "block_order": ["slide_U4WUax", "slide_fXUwAp", "slide_X9a3Fm"],
       "settings": {
         "section_width": "standard",
         "content_section_width": "standard",
         "show_arrows": true,
-        "slide_height": 500,
+        "slide_height": 800,
         "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -178,7 +224,7 @@
         "link_text": "View all",
         "enable_parallax": false,
         "image_size": "auto",
-        "tabs_position": 81,
+        "tabs_position": 45,
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -274,10 +320,7 @@
           }
         }
       },
-      "block_order": [
-        "values_TqCTNF",
-        "values_BEzx44"
-      ],
+      "block_order": ["values_TqCTNF", "values_BEzx44"],
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
@@ -343,10 +386,7 @@
           }
         }
       },
-      "block_order": [
-        "tab_EaHJ7G",
-        "tab_BhYH4G"
-      ],
+      "block_order": ["tab_EaHJ7G", "tab_BhYH4G"],
       "settings": {
         "section_width": "standard",
         "left_image": "shopify://shop_images/Sylvox_5.png",
@@ -479,15 +519,16 @@
         "button_39wxXB"
       ],
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
-        "slide_height": 500,
         "allow_transparent_header": false,
         "enable_parallax": false,
-        "image_size": "auto",
         "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
-        "mobile_text_position": "pos-middle-center",
+        "image_size": "auto",
         "desktop_text_position": "sm:pos-middle-center",
+        "mobile_image": "shopify://shop_images/165fc9e9ca53d84715d39e60ae62cc138335a2d7_1.jpg",
+        "mobile_text_position": "pos-middle-center",
+        "mobile_slide_height": 1000,
         "text_color": "#ffffff",
         "overlay_color": "#ffffff",
         "overlay_opacity": 30
@@ -504,9 +545,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_mm9kKm"
-      ],
+      "block_order": ["heading_mm9kKm"],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -572,55 +611,48 @@
         "margin_right": 0
       }
     },
-    "image_text_dE7fr8": {
-      "type": "image-text",
+    "somos_image_text_comparison_NTEhyJ": {
+      "type": "somos-image-text-comparison",
       "blocks": {
-        "title_w6ifMh": {
-          "type": "title",
-          "settings": {
-            "title": "Bright & Beautiful 4K UHD"
-          }
-        },
-        "text_gAtfdn": {
-          "type": "text",
-          "settings": {
-            "text": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight."
-          }
-        },
-        "button_LAAcrH": {
-          "type": "button",
-          "settings": {
-            "button_text": "Learn More",
-            "button_link": ""
-          }
-        },
-        "image_ckK6ng": {
+        "image_3eAxPx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Nits.png",
+            "image": "shopify://shop_images/Property_1_Variant2.png",
+            "image_alignment": "center"
+          }
+        },
+        "image_4JgVnB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Property_1_Variant3.png",
             "image_alignment": "center"
           }
         }
       },
-      "block_order": [
-        "title_w6ifMh",
-        "text_gAtfdn",
-        "button_LAAcrH",
-        "image_ckK6ng"
-      ],
+      "block_order": ["image_3eAxPx", "image_4JgVnB"],
+      "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
+        "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
         "alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "heading": "Bright & Beautiful 4K UHD",
+        "heading_description": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
+        "heading_size": "h2",
+        "heading_position": "center",
+        "fullwidth": true,
+        "slider_style": "classic",
+        "height": 900,
+        "color": "#ffffff"
       }
     },
     "new_banner_slider_D3WkxM": {
@@ -651,11 +683,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_ktPLKQ",
-        "slide_M46t3f",
-        "slide_hbD7ck"
-      ],
+      "block_order": ["slide_ktPLKQ", "slide_M46t3f", "slide_hbD7ck"],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -685,12 +713,12 @@
         "icon3": "shopify://shop_images/Dolby-Atmos-Logo_1.png",
         "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-75-total-3-years",
         "show_title": false,
-        "product_image_width": 330,
+        "product_image_width": 720,
         "price_text": "From USD $1,149.00",
         "button_link": "",
         "button_label": "Buy Now",
-        "padding_top": 55,
-        "padding_bottom": 50,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -710,19 +738,17 @@
           }
         }
       },
-      "block_order": [
-        "heading_EyXPFe"
-      ],
+      "block_order": ["heading_EyXPFe"],
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
-        "slide_height": 500,
         "allow_transparent_header": false,
         "enable_parallax": false,
-        "image_size": "auto",
         "image": "shopify://shop_images/Sylvox_6.png",
-        "mobile_text_position": "pos-middle-center",
+        "image_size": "auto",
         "desktop_text_position": "sm:pos-middle-center",
+        "mobile_text_position": "pos-middle-center",
+        "mobile_slide_height": 400,
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
@@ -746,10 +772,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_3m8b3q",
-        "button_BEFJ9i"
-      ],
+      "block_order": ["heading_3m8b3q", "button_BEFJ9i"],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -834,139 +857,190 @@
         "margin_right": 0
       }
     },
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830": {
-      "type": "logo-list",
+    "media_logo_carousel_w9Bt3h": {
+      "type": "media-logo-carousel",
       "blocks": {
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-1": {
-          "type": "logo_image",
+        "media_item_AFBWKH": {
+          "type": "media_item",
           "settings": {
-            "image": "shopify://shop_images/1703494383743.png",
-            "link": "https://www.pcmag.com/reviews/sylvox-55-inch-pool-series-full-sun-outdoor-tv"
+            "quote": "",
+            "logo": "shopify://shop_images/image_31.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
           }
         },
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-2": {
-          "type": "logo_image",
+        "media_item_Ct9abK": {
+          "type": "media_item",
           "settings": {
-            "image": "shopify://shop_images/1703494393979.png",
-            "link": "https://the-gadgeteer.com/2023/01/25/sylvox-43-inch-4k-outdoor-tv-review-be-entertained-in-the-great-outdoors/"
+            "quote": "",
+            "logo": "shopify://shop_images/image_22.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
           }
         },
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-3": {
-          "type": "logo_image",
+        "media_item_MjUB96": {
+          "type": "media_item",
           "settings": {
-            "image": "shopify://shop_images/1703494405819.png",
-            "link": "https://www.hightechdad.com/2022/10/20/big-screen-digital-entertainment-outside-55-qled-sylvox-deck-pro-outdoor-tv-review/"
+            "quote": "",
+            "logo": "shopify://shop_images/image_30.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
           }
         },
-        "bf5989da-b35d-4fb2-b9b5-8436344ccd7b": {
-          "type": "logo_image",
+        "media_item_GwYF3m": {
+          "type": "media_item",
           "settings": {
-            "image": "shopify://shop_images/1703494449414.png",
-            "link": "https://nerdtechy.com/sylvox-outdoor-tv-review"
+            "quote": "",
+            "logo": "shopify://shop_images/image_28.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
           }
         },
-        "118b9aa1-07fc-488f-a44b-f333ab6e99ca": {
-          "type": "logo_image",
+        "media_item_xKTQWi": {
+          "type": "media_item",
           "settings": {
-            "image": "shopify://shop_images/1703494462724.png",
-            "link": "https://www.trustedreviews.com/reviews/sylvox-43-inch-deck-pro-outdoor-tv"
+            "quote": "",
+            "logo": "shopify://shop_images/image_fc0df307-6eb7-40b8-8ddf-750d8965f46a.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
           }
         },
-        "7168f6de-09d9-4361-9322-761adfbfbc41": {
-          "type": "logo_image",
+        "media_item_NbJYBR": {
+          "type": "media_item",
           "settings": {
-            "image": "shopify://shop_images/1703494470833.png",
-            "link": "https://www.makeuseof.com/sylvox-55-deck-pro-outdoor-tv-review/"
+            "quote": "",
+            "logo": "shopify://shop_images/image_29.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
+          }
+        },
+        "media_item_8mNCWp": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/image_29.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
+          }
+        },
+        "media_item_CPqtRg": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/image_29.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
+          }
+        },
+        "media_item_tgny9P": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/image_29.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
+          }
+        },
+        "media_item_bX89qe": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/image_29.png",
+            "logo_width": 50,
+            "alt": "Media logo",
+            "description": ""
           }
         }
       },
       "block_order": [
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-1",
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-2",
-        "template--15419224457277__2f70f0d4-86f7-4eb7-bf83-05295e841830-logo_image-3",
-        "bf5989da-b35d-4fb2-b9b5-8436344ccd7b",
-        "118b9aa1-07fc-488f-a44b-f333ab6e99ca",
-        "7168f6de-09d9-4361-9322-761adfbfbc41"
+        "media_item_AFBWKH",
+        "media_item_Ct9abK",
+        "media_item_MjUB96",
+        "media_item_GwYF3m",
+        "media_item_xKTQWi",
+        "media_item_NbJYBR",
+        "media_item_8mNCWp",
+        "media_item_CPqtRg",
+        "media_item_tgny9P",
+        "media_item_bX89qe"
       ],
+      "name": "Media Logo Carousel",
       "settings": {
-        "section_width": "standard",
-        "title": "As seen on",
-        "heading_size": "h2",
-        "heading_position": "center",
-        "divider": false
+        "heading": "As seen on",
+        "subtext": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "title_alignment": "center"
       }
     },
-    "video_grid_FUaEwe": {
-      "type": "video-grid",
+    "video_swiper_xUg7Rz": {
+      "type": "video-swiper",
       "blocks": {
-        "video_fKfz69": {
-          "type": "video",
+        "video_block_Catw9n": {
+          "type": "video_block",
           "settings": {
-            "video_type": "youtube",
-            "video_url": "https://youtu.be/B8w71jFwWXI?feature=shared",
-            "interaction_type": "modal",
-            "fallback_image": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74.jpg",
-            "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster_png.png"
+            "video": "shopify://files/videos/with sub_2c84365c-9f8e-41ff-9bde-bb785a6f0f14.mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png"
           }
         },
-        "video_dcBxFx": {
-          "type": "video",
+        "video_block_RzQCii": {
+          "type": "video_block",
           "settings": {
-            "video_type": "youtube",
-            "video_url": "",
-            "interaction_type": "modal",
-            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-1.png"
+            "video": "shopify://files/videos/20250628_165943_960.mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
           }
         },
-        "video_GbCEXC": {
-          "type": "video",
+        "video_block_GrJEBt": {
+          "type": "video_block",
           "settings": {
-            "video_type": "youtube",
-            "video_url": "",
-            "interaction_type": "modal",
-            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-2.png"
+            "video": "shopify://files/videos/InShot_20250527_221137802_e87c037f-5d85-4b56-9e7b-6d9e7dc6e02d.mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
           }
         },
-        "video_bij4X4": {
-          "type": "video",
+        "video_block_mF7Gxx": {
+          "type": "video_block",
           "settings": {
-            "video_type": "youtube",
-            "video_url": "",
-            "interaction_type": "modal",
-            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png"
+            "video": "shopify://files/videos/6月10日(1).mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
           }
         },
-        "video_yVXhPe": {
-          "type": "video",
+        "video_block_LhWJgN": {
+          "type": "video_block",
           "settings": {
-            "video_type": "youtube",
-            "video_url": "",
-            "interaction_type": "modal",
-            "fallback_image": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-1.png"
+            "video": "shopify://files/videos/Sylvox 4K Outdoor TV with Android TV OS and Bluetooth voice control remote. sylvox outdoor tv.mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }
+        },
+        "video_block_Ywb6aF": {
+          "type": "video_block",
+          "settings": {
+            "video": "shopify://files/videos/9convert.com - Sylvox Outdoor TV Showing in CES2024_v720P.mp4",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
           }
         }
       },
       "block_order": [
-        "video_fKfz69",
-        "video_dcBxFx",
-        "video_GbCEXC",
-        "video_bij4X4",
-        "video_yVXhPe"
+        "video_block_Catw9n",
+        "video_block_RzQCii",
+        "video_block_GrJEBt",
+        "video_block_mF7Gxx",
+        "video_block_LhWJgN",
+        "video_block_Ywb6aF"
       ],
+      "name": "Video Swiper",
       "settings": {
-        "section_width": "standard",
-        "top_title": "Sylvox Community",
-        "subtitle": "A home for all Sylvox fans to experience content,",
-        "description": "inspiration, and our beautiful technology.",
-        "show_arrows": true,
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0
+        "swiper_title": "A home for all Sylvox fans to experience content,<br> inspiration, and our beautiful technology.",
+        "swiper_sub_title": "sylvox Community"
       }
     }
   },
@@ -980,13 +1054,13 @@
     "image_with_text_overlay_heWpQE",
     "rich_text_g7wbE4",
     "box_section_NjjNqW",
-    "image_text_dE7fr8",
+    "somos_image_text_comparison_NTEhyJ",
     "new_banner_slider_D3WkxM",
     "large_product_BDXMM6",
     "image_with_text_overlay_4yErEx",
     "rich_text_cbmRYc",
     "usp_grid_mBqiLF",
-    "2f70f0d4-86f7-4eb7-bf83-05295e841830",
-    "video_grid_FUaEwe"
+    "media_logo_carousel_w9Bt3h",
+    "video_swiper_xUg7Rz"
   ]
 }
