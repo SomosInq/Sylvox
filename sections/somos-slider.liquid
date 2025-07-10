@@ -1,5 +1,5 @@
 {%- comment -%}
-Somos Slider: Individual Button Style Controls + All requested upgrades
+Somos Slider: Supports mobile-only slide image, image overlay, mobile height, and per-button uploaded video or link.
 {%- endcomment -%}
 
 <div class="somos-slider"
@@ -30,7 +30,12 @@ Somos Slider: Individual Button Style Controls + All requested upgrades
       <div class="somos-slide" id="block-{{ block.id }}">
         <div class="somos-slide__media-wrapper" style="position: relative;">
           {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
+            <picture>
+              {% if block.settings.mobile_image %}
+                <source srcset="{{ block.settings.mobile_image | image_url }}" media="(max-width: 749px)">
+              {% endif %}
+              <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
+            </picture>
             {% if block.settings.image_overlay_color != blank and block.settings.image_overlay_opacity > 0 %}
               <div style="
                 position: absolute;
@@ -41,6 +46,7 @@ Somos Slider: Individual Button Style Controls + All requested upgrades
               </div>
             {% endif %}
           {% endif %}
+
           <div class="somos-slide__content content_section_width_{{ section.settings.section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             {% if block.settings.subheading %}
               <p style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.subheading }}</p>
@@ -52,19 +58,32 @@ Somos Slider: Individual Button Style Controls + All requested upgrades
               <div class="description" style="font-size: {{ block.settings.font_size | minus: 2 }}px;">{{ block.settings.description }}</div>
             {% endif %}
             <div class="buttons">
-              {% if block.settings.button_text_1 and block.settings.button_link_1 or block.settings.button_text_1 and block.settings.button_video_1 %}
-                <a href="{% if block.settings.button_video_1 != blank %}{{ block.settings.button_video_1 }}{% else %}{{ block.settings.button_link_1 }}{% endif %}"
-                   class="button"
-                   style="background: {{ block.settings.button_1_bg }}; color: {{ block.settings.button_1_text }}; border-color: {{ block.settings.button_1_border }}">
-                  {{ block.settings.button_text_1 }}
-                </a>
+              {% if block.settings.button_text_1 %}
+                {% if block.settings.button_video_upload_1 %}
+                  <video controls style="max-width: 100%; height: auto;">
+                    <source src="{{ block.settings.button_video_upload_1 | video_url }}" type="video/mp4">
+                  </video>
+                {% elsif block.settings.button_link_1 %}
+                  <a href="{{ block.settings.button_link_1 }}"
+                     class="button"
+                     style="background: {{ block.settings.button_1_bg }}; color: {{ block.settings.button_1_text }}; border-color: {{ block.settings.button_1_border }}">
+                    {{ block.settings.button_text_1 }}
+                  </a>
+                {% endif %}
               {% endif %}
-              {% if block.settings.button_text_2 and block.settings.button_link_2 or block.settings.button_text_2 and block.settings.button_video_2 %}
-                <a href="{% if block.settings.button_video_2 != blank %}{{ block.settings.button_video_2 }}{% else %}{{ block.settings.button_link_2 }}{% endif %}"
-                   class="button"
-                   style="background: {{ block.settings.button_2_bg }}; color: {{ block.settings.button_2_text }}; border-color: {{ block.settings.button_2_border }}">
-                  {{ block.settings.button_text_2 }}
-                </a>
+
+              {% if block.settings.button_text_2 %}
+                {% if block.settings.button_video_upload_2 %}
+                  <video controls style="max-width: 100%; height: auto;">
+                    <source src="{{ block.settings.button_video_upload_2 | video_url }}" type="video/mp4">
+                  </video>
+                {% elsif block.settings.button_link_2 %}
+                  <a href="{{ block.settings.button_link_2 }}"
+                     class="button"
+                     style="background: {{ block.settings.button_2_bg }}; color: {{ block.settings.button_2_text }}; border-color: {{ block.settings.button_2_border }}">
+                    {{ block.settings.button_text_2 }}
+                  </a>
+                {% endif %}
               {% endif %}
             </div>
           </div>
@@ -187,13 +206,13 @@ Somos Slider: Individual Button Style Controls + All requested upgrades
         {"type": "textarea", "id": "description", "label": "Description", "default": "This is a description box."},
         {"type": "text", "id": "button_text_1", "label": "Button 1 text"},
         {"type": "url", "id": "button_link_1", "label": "Button 1 link"},
-        {"type": "url", "id": "button_video_1", "label": "Button 1 video link"},
+        {"type": "video", "id": "button_video_upload_1", "label": "Button 1 Uploaded Video"},
         {"type": "color", "id": "button_1_bg", "label": "Button 1 background", "default": "#ffffff"},
         {"type": "color", "id": "button_1_text", "label": "Button 1 text color", "default": "#000000"},
         {"type": "color", "id": "button_1_border", "label": "Button 1 border color", "default": "#000000"},
         {"type": "text", "id": "button_text_2", "label": "Button 2 text"},
         {"type": "url", "id": "button_link_2", "label": "Button 2 link"},
-        {"type": "url", "id": "button_video_2", "label": "Button 2 video link"},
+        {"type": "video", "id": "button_video_upload_2", "label": "Button 2 Uploaded Video"},
         {"type": "color", "id": "button_2_bg", "label": "Button 2 background", "default": "#ffffff"},
         {"type": "color", "id": "button_2_text", "label": "Button 2 text color", "default": "#000000"},
         {"type": "color", "id": "button_2_border", "label": "Button 2 border color", "default": "#000000"},
@@ -210,6 +229,7 @@ Somos Slider: Individual Button Style Controls + All requested upgrades
         {"type": "color", "id": "text_color", "label": "Text color", "default": "#000000"},
         {"type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px"},
         {"type": "image_picker", "id": "image", "label": "Image"},
+        {"type": "image_picker", "id": "mobile_image", "label": "Mobile Slide Image"},
         {"type": "color", "id": "image_overlay_color", "label": "Image overlay color", "default": "#000000"},
         {"type": "range", "id": "image_overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 1, "step": 0.1, "default": 0},
         {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"}

@@ -31,8 +31,16 @@
         {% when 'image' %}
           {% if block.settings.image %}
             {% assign image_align = block.settings.image_alignment | default: 'center' %}
-            <div class="section_content_width_{{ section.settings.section_content_width }} flex mb-4 {% if image_align == 'left' %} justify-start {% elsif image_align == 'right' %} justify-end {% else %} justify-center {% endif %}">
-              <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="Section image" class="mb-4 inline-block" loading="lazy" />
+            <div 
+              class="section_content_width_{{ section.settings.section_content_width }} flex mb-4 {% if image_align == 'left' %} justify-start {% elsif image_align == 'right' %} justify-end {% else %} justify-center {% endif %}" 
+              style="height: {{ section.settings.height }}px;"
+            >
+              <img 
+                src="{{ block.settings.image | image_url: width: 1200 }}" 
+                alt="Section image" 
+                class="w-full h-full object-cover mb-4 inline-block" 
+                loading="lazy" 
+              />
             </div>
           {% endif %}
       {% endcase %}
@@ -43,7 +51,6 @@
   {%- render 'section-image-compare' -%}
 
 </div>
-
 
 {% schema %}
 {
@@ -106,12 +113,12 @@
       "id": "heading",
       "label": "t:labels.heading"
     },
-{
-  "type": "textarea",
-  "id": "heading_description",
-  "label": "Heading Description",
-  "default": "Add your description here"
-},
+    {
+      "type": "textarea",
+      "id": "heading_description",
+      "label": "Heading Description",
+      "default": "Add your description here"
+    },
     {
       "type": "select",
       "id": "heading_size",
@@ -156,7 +163,7 @@
       "label": "t:labels.height",
       "default": 600,
       "min": 400,
-      "max": 900,
+      "max": 1000,
       "step": 10,
       "unit": "px"
     },
