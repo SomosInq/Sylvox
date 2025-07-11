@@ -12804,6 +12804,11 @@ header-section[data-section-index='2'] .header-wrapper--overlay {
   /* background: #222; */
   overflow: hidden;
 }
+  @media (max-width: 600px) {
+.comparison {
+        height: 220px;
+        }
+      }
 
 .comparison__draggable {
   position: absolute;

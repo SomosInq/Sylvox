@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1748439884206,
@@ -52,6 +52,10 @@
                 {
                     "date": 1751986425847,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2773,8 +2773,9 @@\n   text-decoration: none;\n   text-align: center;\n   white-space: normal;\n \n+  font-size: calc(var(--type-base-size) + 2px);\n   font-weight: var(--type-header-weight);\n \n   display: inline-block;\n   padding: var(--button-padding);\n"
+                },
+                {
+                    "date": 1752240142805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12800,11 +12800,16 @@\n .comparison {\n   position: relative;\n   display: block;\n   width: 100%;\n-  background: #222;\n+  /* background: #222; */\n   overflow: hidden;\n }\n+  @media (max-width: 600px) {\n+.comparison {\n+        height: 220px;\n+        }\n+      }\n \n .comparison__draggable {\n   position: absolute;\n   top: 0;\n@@ -12817,9 +12822,9 @@\n .comparison__image {\n   width: 100%;\n   height: 100%;\n   max-width: none;\n-  object-fit: cover;\n+  object-fit: contain;\n   display: block;\n   -webkit-user-select: none;\n           user-select: none;\n   opacity: 1;\n"
                 }
             ],
             "date": 1748439884206,

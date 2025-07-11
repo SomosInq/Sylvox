@@ -36,12 +36,20 @@
     },
     {
       "type": "checkbox",
-      "id": "show_arrows",
-      "label": "Show slider arrows",
+      "id": "show_arrows_mobile",
+      "label": "Show arrows on Mobile",
       "default": true
     },
-    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_desktop",
+      "label": "Show arrows on Desktop",
+      "default": true
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding top (Desktop)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom (Desktop)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (Mobile)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (Mobile)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
@@ -77,12 +85,50 @@
 }
 {% endschema %}
 
-<section class="collection-tabs-section section_width_{{ section.settings.section_width }}">
+
+<style>
+  .collection-tabs-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  }
+
+  @media (max-width: 768px) {
+    .collection-tabs-section {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+</style>
+
+<section class="collection-tabs-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_bottom_mobile }}px">
   <div class="left-image">
     {% if section.settings.left_image != blank %}
       <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Left Image">
     {% endif %}
   </div>
+
+  {% if section.settings.show_arrows_desktop == false %}
+  <style>
+    @media (min-width: 769px) {
+      .collection-tabs-section .flickity-prev-next-button {
+        display: none !important;
+      }
+    }
+  </style>
+{% endif %}
+
+{% if section.settings.show_arrows_mobile == false %}
+  <style>
+    @media (max-width: 768px) {
+      .collection-tabs-section .flickity-prev-next-button {
+        display: none !important;
+      }
+    }
+  </style>
+{% endif %}
 
   <div class="right-content">
     <div class="tab-header">
@@ -115,9 +161,10 @@
         data-flickity-options='{
           "contain": true,
           "wrapAround": true,
-          "pageDots": false,
-          "prevNextButtons": {{ section.settings.show_arrows }}
+          "pageDots": false
         }'
+        data-arrows-mobile="{{ section.settings.show_arrows_mobile }}"
+        data-arrows-desktop="{{ section.settings.show_arrows_desktop }}"
       >
         {% if block_collection != blank %}
           {% for product in block_collection.products limit: 10 %}
@@ -161,12 +208,48 @@ function initCollectionTabsSlider(section) {
     });
   });
 
-  if (typeof Flickity !== 'undefined') {
-    carousels.forEach(carousel => {
-      if (!carousel.classList.contains('flickity-enabled')) {
-        new Flickity(carousel, JSON.parse(carousel.getAttribute('data-flickity-options')));
-      }
-    });
+  carousels.forEach(carousel => {
+    initFlickityWithViewport(carousel);
+  });
+
+  // Debounced resize handling
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      carousels.forEach(carousel => {
+        maybeReinitFlickity(carousel);
+      });
+    }, 200);
+  });
+}
+
+function initFlickityWithViewport(carousel) {
+  const flickityOptions = JSON.parse(carousel.getAttribute('data-flickity-options'));
+  const showArrowsMobile = carousel.dataset.arrowsMobile === 'true';
+  const showArrowsDesktop = carousel.dataset.arrowsDesktop === 'true';
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  flickityOptions.prevNextButtons = isMobile ? showArrowsMobile : showArrowsDesktop;
+
+  // Store which mode it's using
+  carousel._flickityBreakpoint = isMobile ? 'mobile' : 'desktop';
+
+  // Destroy any old
+  if (carousel.flickityInstance) {
+    carousel.flickityInstance.destroy();
+  }
+
+  // Create new
+  carousel.flickityInstance = new Flickity(carousel, flickityOptions);
+}
+
+function maybeReinitFlickity(carousel) {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const currentBreakpoint = isMobile ? 'mobile' : 'desktop';
+
+  if (carousel._flickityBreakpoint !== currentBreakpoint) {
+    initFlickityWithViewport(carousel);
   }
 }
 

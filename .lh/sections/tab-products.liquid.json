@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 209,
+            "activePatchIndex": 210,
             "patches": [
                 {
                     "date": 1748349377145,
@@ -844,6 +844,10 @@
                 {
                     "date": 1752229354796,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -124,8 +124,11 @@\n     margin-top: 30px;\n   }\n \n   @media (max-width: 600px) {\n+        .title-filters {\n+        width: 100%;\n+    }\n     .tabs {\n       display: block;\n       position: relative;\n       transform: none;\n"
+                },
+                {
+                    "date": 1752229415494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -125,9 +125,9 @@\n   }\n \n   @media (max-width: 600px) {\n         .title-filters {\n-        width: 100%;\n+        width: 100% !important;\n     }\n     .tabs {\n       display: block;\n       position: relative;\n"
                 }
             ],
             "date": 1748349377144,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 154,
+            "activePatchIndex": 155,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -624,6 +624,10 @@
                 {
                     "date": 1752074462565,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -155,14 +155,14 @@\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n     width: 100% !important;\n-    padding: 0 16px !important;\n+    padding: 0 25px !important;\n     margin: 0 auto !important;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n     width: 100% !important;\n-    padding: 0 16px !important;\n+    padding: 0 25px !important;\n     margin: 0 auto !important;\n   }\n }\n \n"
+                },
+                {
+                    "date": 1752239976539,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -155,14 +155,16 @@\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n     width: 100% !important;\n-    padding: 0 25px !important;\n+    padding-left: 25px !important;\n+    padding-right: 25px !important;\n     margin: 0 auto !important;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n     width: 100% !important;\n-    padding: 0 25px !important;\n+    padding-left: 25px !important;\n+    padding-right: 25px !important;\n     margin: 0 auto !important;\n   }\n }\n \n@@ -1181,10 +1183,10 @@\n     height: var(--slide-height);\n   }\n \n   .somos-slide .content_section_width_standard {\n-    margin: 0 auto;\n-    width: 80% !important;\n+max-width: 1608px;\n+    margin: 0 auto !important;\n }\n \n   .somos-slide .description {\n     width: 50%;\n"
                 }
             ],
             "date": 1748526641710,

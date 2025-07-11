@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 42,
+            "activePatchIndex": 43,
             "patches": [
                 {
                     "date": 1748360636080,
@@ -176,6 +176,10 @@
                 {
                     "date": 1751974706758,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -138,10 +138,12 @@\n      style=\"--slide-height: {{ section.settings.slide_height }}px; --slide-height-mobile: {{ section.settings.mobile_slide_height }}px;\">\n \n   {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}\n \n-  <image-banner style=\"--slide-height: {{ section.settings.slide_height }}px; --slide-height-mobile: {{ section.settings.mobile_slide_height }}px;\"\n- reveal-on-scroll=\"true\" {% if section.settings.enable_parallax %}parallax=\"0.3\"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>\n+<image-banner\n+  reveal-on-scroll=\"true\"\n+  {% if section.settings.enable_parallax %}parallax=\"0.3\"{% endif %}\n+  {% render 'surface', class: class, text_color: section.settings.text_color %}>\n     {%- if section.settings.image != blank -%}\n       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}\n       {%- capture fetch_priority -%}{% if section.index == 1 %}high{% else %}low{% endif %}{%- endcapture -%}\n \n"
+                },
+                {
+                    "date": 1752240517762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -134,9 +134,9 @@\n \n <div {% render 'section-properties' %} \n      {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} \n      class=\"section_width_{{ section.settings.section_width }}\" \n-     style=\"--slide-height: {{ section.settings.slide_height }}px; --slide-height-mobile: {{ section.settings.mobile_slide_height }}px;\">\n+     style=\"--slide-height: {{ section.settings.slide_height }}px; --slide-height-mobile: {{ section.settings.mobile_slide_height }}px !important;\">\n \n   {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}\n \n <image-banner\n"
                 }
             ],
             "date": 1748360636080,

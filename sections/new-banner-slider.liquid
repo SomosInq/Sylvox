@@ -194,10 +194,25 @@
     display: block;
     border-radius: 8px;
   }
+    @media (max-width: 768px) {
+      .carousel-cell img {
+            height: 30%;
+      }
+      .flickity-carousel {
+            height: 360px !important;
+      }
+      
+    }
 
   .carousel-cell.size-small { width: 40%; }
   .carousel-cell.size-medium { width: 55%; }
   .carousel-cell.size-large { width: 70%; }
+
+      @media (max-width: 768px) {
+        .carousel-cell.size-small { width: 40%; }
+  .carousel-cell.size-medium { width: 55%; }
+  .carousel-cell.size-large { width: 70%; }
+    }
 
   .carousel-caption {
     position: absolute;
