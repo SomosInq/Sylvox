@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 210,
+            "activePatchIndex": 211,
             "patches": [
                 {
                     "date": 1748349377145,
@@ -848,6 +848,10 @@
                 {
                     "date": 1752229415494,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -125,9 +125,9 @@\n   }\n \n   @media (max-width: 600px) {\n         .title-filters {\n-        width: 100%;\n+        width: 100% !important;\n     }\n     .tabs {\n       display: block;\n       position: relative;\n"
+                },
+                {
+                    "date": 1752247976647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -149,8 +149,9 @@\n \n     .product-filter-buttons {\n       display: block;\n       margin-top: 10px;\n+      width: 100% !important;\n     }\n     .product-filter-buttons select {\n       display: block;\n       width: 100%;\n"
                 }
             ],
             "date": 1748349377144,

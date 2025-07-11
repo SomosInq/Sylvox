@@ -12806,7 +12806,7 @@ header-section[data-section-index='2'] .header-wrapper--overlay {
 }
   @media (max-width: 600px) {
 .comparison {
-        height: 220px;
+        height: 220px !important;
         }
       }
 
