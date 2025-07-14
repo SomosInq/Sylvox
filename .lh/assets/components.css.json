@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1748439884206,
@@ -60,6 +60,10 @@
                 {
                     "date": 1752249133655,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12805,9 +12805,9 @@\n   overflow: hidden;\n }\n   @media (max-width: 600px) {\n .comparison {\n-        height: 220px;\n+        height: 220px !important;\n         }\n       }\n \n .comparison__draggable {\n"
+                },
+                {
+                    "date": 1752485885603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12818,8 +12818,9 @@\n   overflow: hidden;\n   z-index: 2;\n }\n \n+\n .comparison__image {\n   width: 100%;\n   height: 100%;\n   max-width: none;\n"
                 }
             ],
             "date": 1748439884206,
