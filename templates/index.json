@@ -33,6 +33,8 @@
             "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image_overlay_color": "#000000",
+            "image_overlay_opacity": 0.3,
             "image_size": 100
           }
         },
@@ -57,6 +59,8 @@
             "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image_overlay_color": "#000000",
+            "image_overlay_opacity": 0,
             "image_size": 100
           }
         },
@@ -81,16 +85,23 @@
             "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image_overlay_color": "#000000",
+            "image_overlay_opacity": 0,
             "image_size": 100
           }
         }
       },
-      "block_order": ["slide_U4WUax", "slide_fXUwAp", "slide_X9a3Fm"],
+      "block_order": [
+        "slide_U4WUax",
+        "slide_fXUwAp",
+        "slide_X9a3Fm"
+      ],
       "settings": {
         "section_width": "standard",
         "content_section_width": "standard",
         "show_arrows": true,
         "slide_height": 800,
+        "slide_height_mobile": 500,
         "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -117,7 +128,8 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
-            "collection": "outdoor-tv-2",
+            "mobile_banner_height": 400,
+            "collection": "outdoor-tv",
             "collection_title_color": "#000000"
           }
         },
@@ -133,6 +145,7 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
+            "mobile_banner_height": 300,
             "collection": "outdoor-tv-2",
             "collection_title_color": "#000000"
           }
@@ -149,6 +162,7 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
+            "mobile_banner_height": 300,
             "collection": "outdoor-tv-2",
             "collection_title_color": "#000000"
           }
@@ -165,6 +179,7 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
+            "mobile_banner_height": 300,
             "collection": "outdoor-tv-2",
             "collection_title_color": "#000000"
           }
@@ -181,6 +196,7 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
+            "mobile_banner_height": 300,
             "collection": "outdoor-tv-2",
             "collection_title_color": "#000000"
           }
@@ -197,6 +213,7 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
+            "mobile_banner_height": 300,
             "collection": "outdoor-tv-2",
             "collection_title_color": "#000000"
           }
@@ -226,7 +243,7 @@
         "image_size": "auto",
         "tabs_position": 45,
         "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -239,8 +256,8 @@
       "type": "info-section",
       "settings": {
         "section_width": "standard",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -320,7 +337,10 @@
           }
         }
       },
-      "block_order": ["values_TqCTNF", "values_BEzx44"],
+      "block_order": [
+        "values_TqCTNF",
+        "values_BEzx44"
+      ],
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
@@ -333,8 +353,8 @@
         "background_color": "#ffffff",
         "section_width": "standard",
         "text_alignment": "center",
-        "padding_top": 45,
-        "padding_bottom": 45,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -344,8 +364,8 @@
         "view_all_text": "View All Comparisons",
         "view_all_url": "",
         "view_all_icon": "shopify://shop_images/Icon.svg",
-        "show_view_all_comparisons": true,
-        "show_see_all_specs": true,
+        "show_view_all_comparisons": false,
+        "show_see_all_specs": false,
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
@@ -386,16 +406,22 @@
           }
         }
       },
-      "block_order": ["tab_EaHJ7G", "tab_BhYH4G"],
+      "block_order": [
+        "tab_EaHJ7G",
+        "tab_BhYH4G"
+      ],
       "settings": {
         "section_width": "standard",
         "left_image": "shopify://shop_images/Sylvox_5.png",
         "subheading": "Customer Favorites",
         "heading": "Best Sellers",
         "shop_all_url": "shopify://collections",
-        "show_arrows": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "show_arrows_mobile": true,
+        "show_arrows_desktop": false,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 100,
+        "padding_bottom_mobile": 0,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -452,8 +478,8 @@
       ],
       "settings": {
         "section_width": "standard",
-        "section_title": "Shop by Outdoor Scenarios",
-        "section_description": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors.",
+        "section_title": "Whether you're enjoying family movie nights, watching the big game with friends, or just unwinding in nature, it brings entertainment where it truly belongs—outdoors.",
+        "section_description": "Shop by Outdoor Scenarios",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -545,7 +571,9 @@
           }
         }
       },
-      "block_order": ["heading_mm9kKm"],
+      "block_order": [
+        "heading_mm9kKm"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -629,7 +657,10 @@
           }
         }
       },
-      "block_order": ["image_3eAxPx", "image_4JgVnB"],
+      "block_order": [
+        "image_3eAxPx",
+        "image_4JgVnB"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -650,7 +681,7 @@
         "heading_size": "h2",
         "heading_position": "center",
         "fullwidth": true,
-        "slider_style": "classic",
+        "slider_style": "minimal",
         "height": 900,
         "color": "#ffffff"
       }
@@ -683,7 +714,11 @@
           }
         }
       },
-      "block_order": ["slide_ktPLKQ", "slide_M46t3f", "slide_hbD7ck"],
+      "block_order": [
+        "slide_ktPLKQ",
+        "slide_M46t3f",
+        "slide_hbD7ck"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -699,7 +734,8 @@
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
         "show_arrows": true,
-        "slide_size": "large"
+        "slide_size": "large",
+        "slide_height": 1000
       }
     },
     "large_product_BDXMM6": {
@@ -738,7 +774,9 @@
           }
         }
       },
-      "block_order": ["heading_EyXPFe"],
+      "block_order": [
+        "heading_EyXPFe"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -772,7 +810,10 @@
           }
         }
       },
-      "block_order": ["heading_3m8b3q", "button_BEFJ9i"],
+      "block_order": [
+        "heading_3m8b3q",
+        "button_BEFJ9i"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -924,7 +965,7 @@
           "type": "media_item",
           "settings": {
             "quote": "",
-            "logo": "shopify://shop_images/image_29.png",
+            "logo": "shopify://shop_images/image_32.png",
             "logo_width": 50,
             "alt": "Media logo",
             "description": ""
@@ -934,7 +975,7 @@
           "type": "media_item",
           "settings": {
             "quote": "",
-            "logo": "shopify://shop_images/image_29.png",
+            "logo": "shopify://shop_images/image_34.png",
             "logo_width": 50,
             "alt": "Media logo",
             "description": ""
@@ -944,7 +985,7 @@
           "type": "media_item",
           "settings": {
             "quote": "",
-            "logo": "shopify://shop_images/image_29.png",
+            "logo": "shopify://shop_images/image_23.png",
             "logo_width": 50,
             "alt": "Media logo",
             "description": ""
@@ -954,7 +995,7 @@
           "type": "media_item",
           "settings": {
             "quote": "",
-            "logo": "shopify://shop_images/image_29.png",
+            "logo": "shopify://shop_images/image_24.png",
             "logo_width": 50,
             "alt": "Media logo",
             "description": ""
@@ -1042,6 +1083,68 @@
         "swiper_title": "A home for all Sylvox fans to experience content,<br> inspiration, and our beautiful technology.",
         "swiper_sub_title": "sylvox Community"
       }
+    },
+    "support_7VNrrL": {
+      "type": "support",
+      "blocks": {
+        "link_item_aAH8Ay": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact Us",
+            "url": ""
+          }
+        },
+        "link_item_M8nhRw": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact Us",
+            "url": ""
+          }
+        },
+        "link_item_E7xHzx": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact Us",
+            "url": ""
+          }
+        },
+        "link_item_dLKUx6": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact Us",
+            "url": ""
+          }
+        },
+        "link_item_eLAjQX": {
+          "type": "link_item",
+          "settings": {
+            "text": "Contact Us",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_item_aAH8Ay",
+        "link_item_M8nhRw",
+        "link_item_E7xHzx",
+        "link_item_dLKUx6",
+        "link_item_eLAjQX"
+      ],
+      "name": "Support",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "button_label": "See All",
+        "button_link": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
     }
   },
   "order": [
@@ -1061,6 +1164,7 @@
     "rich_text_cbmRYc",
     "usp_grid_mBqiLF",
     "media_logo_carousel_w9Bt3h",
-    "video_swiper_xUg7Rz"
+    "video_swiper_xUg7Rz",
+    "support_7VNrrL"
   ]
 }
