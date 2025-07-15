@@ -35,22 +35,22 @@
   }
 
   .usp-arrow {
- width: 40px;
-  height: 40px;
-  border: 1px solid #636363;
-  border-radius: 50%;
-  background: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #636363;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
 
-  display: flex;               /* Add flex layout */
-  align-items: center;         /* Center vertically */
-  justify-content: center;     /* Center horizontally */
+    display: flex;               /* Add flex layout */
+    align-items: center;         /* Center vertically */
+    justify-content: center;     /* Center horizontally */
 
-  font-size: 30px;
-  color: #636363;
-  line-height: 1;              /* Safe default */
-  padding: 0;   
+    font-size: 30px;
+    color: #636363;
+    line-height: 1;              /* Safe default */
+    padding: 0;   
   }
 
   .usp-arrow:hover {
@@ -118,7 +118,6 @@
       height: 350px;
     }
   }
-  
 </style>
 
 <div class="page-width">
@@ -143,10 +142,14 @@
     {%- if section.blocks.size > 0 -%}
       <div class="video-blocks">
         {%- for block in section.blocks -%}
-          <div class="video-wrapper">
+          <div class="video-wrapper animate">
             {% if block.settings.video != blank %}
-              {{ block.settings.video | video_tag: controls: true, autoplay: false, loop: false, muted: false, poster: block.settings.thumbnail | img_url: '800x' }}
+              <!-- Video Tag with controls, autoplay, loop, muted, and poster -->
+              <video controls autoplay="{{ block.settings.autoplay | default: 'false' }}" loop="{{ block.settings.loop | default: 'false' }}" muted="{{ block.settings.muted | default: 'false' }}" poster="{{ block.settings.thumbnail | img_url: '800x' }}">
+                <source src="{{ block.settings.video | file_url }}" type="video/mp4">
+              </video>
             {% elsif block.settings.video_url != blank %}
+              <!-- Embed iframe for external video URL (YouTube, Vimeo) -->
               <iframe src="{{ block.settings.video_url | escape }}" frameborder="0" allowfullscreen width="100%" height="490"></iframe>
             {% endif %}
           </div>
@@ -196,6 +199,21 @@
           "type": "image_picker",
           "id": "thumbnail",
           "label": "Thumbnail image"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay"
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "Loop"
+        },
+        {
+          "type": "checkbox",
+          "id": "muted",
+          "label": "Muted"
         }
       ]
     }
