@@ -160,11 +160,11 @@
     transition: border-color 0.3s, box-shadow 0.3s;
   }
 
+  .variant-button-wrap input[type=radio]:checked+label,
   input[type="radio"]:checked + .custom-variant-box {
-    border-color: #006341;
-    box-shadow: 0 0 0 2px rgba(0, 99, 65, 0.2);
-    background-color: #f4faf7;
-    font-weight: bold;
+    border-radius: 4px;
+border: 2px solid var(--Mid-Green, #336256);
+background: #FFF;
   }
 
   .custom-variant-content {
@@ -174,7 +174,7 @@
   }
 
   .custom-variant-size {
-    font-weight: bold;
+    {% comment %} font-weight: bold; {% endcomment %}
     font-size: 1.1rem;
     margin-bottom: 0.2rem;
   }

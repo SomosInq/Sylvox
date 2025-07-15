@@ -1,4 +1,4 @@
-{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | "Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)" License  %}
+{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership %}
 {% comment %}
   Renders product buy buttons
 
@@ -13,9 +13,7 @@
 {%- liquid
   assign product = section.settings.product | default: product
   assign form_id = 'product-form-' | append: section.id
-
   assign cart_type = settings.cart_type | default: 'dropdown'
-
   assign show_dynamic_checkout = false
 
   if block.settings.show_dynamic_checkout
@@ -51,16 +49,8 @@
     {% endif %}
     {{ block.shopify_attributes }}
   >
-    {%- form 'product', product, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-      {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
-        <div class="product__policies rte">
-          {%- if cart.taxes_included -%}
-            {% render 't_with_fallback', key: 'info.tax_included', fallback: 'Tax included.' %}
-          {%- endif -%}
 
-          
-        </div>
-      {%- endif -%}
+    {%- form 'product', product, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 
       {%- if gift_card_recipient_feature_active -%}
         {%- render 'gift-card-recipient-form' -%}
@@ -74,47 +64,91 @@
           disabled
         {% endif %}
       >
-      <div>
-        <button
-          id="ProductSubmitButton-{{ section.id }}"
-          type="submit"
-          name="add"
-          class="btn btn--full add-to-cart"
-          {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
-            disabled
-          {% endif %}
-        >
-          <span>
-            {% liquid
-              capture button_text
-                render 't_with_fallback', key: 'actions.add_to_cart', fallback: 'Add to cart'
-              endcapture
 
-              if template contains 'preorder'
-                capture button_text
-                  render 't_with_fallback', key: 'actions.preorder', fallback: 'Pre-order'
-                endcapture
-              endif
+      <!-- Custom Styled Buttons -->
+<div class="custom-buy-buttons-wrapper side-by-side">
+  <div class="custom-btn-wrap">
+    <button
+      id="ProductSubmitButton-{{ section.id }}"
+      type="submit"
+      name="add"
+      class="custom-btn add-to-cart"
+      {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+        disabled
+      {% endif %}
+    >
+      <span>
+        {% liquid
+          capture button_text
+            render 't_with_fallback', key: 'actions.add_to_cart', fallback: 'Add to cart'
+          endcapture
 
-              if product.selected_or_first_available_variant.available == false or quantity_rule_soldout
-                capture button_text
-                  render 't_with_fallback', key: 'info.sold_out', fallback: 'Sold out'
-                endcapture
-              endif
+          if template contains 'preorder'
+            capture button_text
+              render 't_with_fallback', key: 'actions.preorder', fallback: 'Pre-order'
+            endcapture
+          endif
 
-              echo button_text
-            %}
-          </span>
-        </button>
+          if product.selected_or_first_available_variant.available == false or quantity_rule_soldout
+            capture button_text
+              render 't_with_fallback', key: 'info.sold_out', fallback: 'Sold out'
+            endcapture
+          endif
 
-        {%- if show_dynamic_checkout
+          echo button_text
+        %}
+      </span>
+    </button>
+  </div>
+
+  <div class="custom-btn-wrap">
+    <button type="submit" name="buy_now" class="custom-btn buy-now">
+      Buy It Now
+    </button>
+  </div>
+
+          {%- if show_dynamic_checkout
           and template != 'product.preorder'
           and gift_card_recipient_feature_active == false
         -%}
           {{- form | payment_button -}}
         {%- endif -%}
+
+        <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/f994295577f46cc7fa059484967496c6_78845b32-1249-497f-88f5-deb969be2ab4.png?v=1730711873">
+
+  <!-- Payment Options -->
+  {% comment %} <div class="payment-icons">
+    <img src="{{ 'amex.svg' | asset_url }}" alt="AMEX" />
+    <img src="{{ 'discover.svg' | asset_url }}" alt="Discover" />
+    <img src="{{ 'apple-pay.svg' | asset_url }}" alt="Apple Pay" />
+    <img src="{{ 'google-pay.svg' | asset_url }}" alt="Google Pay" />
+    <img src="{{ 'mastercard.svg' | asset_url }}" alt="MasterCard" />
+    <img src="{{ 'paypal.svg' | asset_url }}" alt="PayPal" />
+    <img src="{{ 'shop-pay.svg' | asset_url }}" alt="Shop Pay" />
+    <img src="{{ 'visa.svg' | asset_url }}" alt="Visa" />
+    <img src="{{ 'klarna.svg' | asset_url }}" alt="Klarna" />
+    <img src="{{ 'afterpay.svg' | asset_url }}" alt="Afterpay" />
+  </div> {% endcomment %}
+</div>
+
+        <!-- Payment Options (icons) -->
+        {% comment %} <div class="payment-icons">
+          <img src="{{ 'amex.svg' | asset_url }}" alt="AMEX" />
+          <img src="{{ 'discover.svg' | asset_url }}" alt="Discover" />
+          <img src="{{ 'apple-pay.svg' | asset_url }}" alt="Apple Pay" />
+          <img src="{{ 'google-pay.svg' | asset_url }}" alt="Google Pay" />
+          <img src="{{ 'mastercard.svg' | asset_url }}" alt="MasterCard" />
+          <img src="{{ 'paypal.svg' | asset_url }}" alt="PayPal" />
+          <img src="{{ 'shop-pay.svg' | asset_url }}" alt="Shop Pay" />
+          <img src="{{ 'visa.svg' | asset_url }}" alt="Visa" />
+          <img src="{{ 'klarna.svg' | asset_url }}" alt="Klarna" />
+          <img src="{{ 'afterpay.svg' | asset_url }}" alt="Afterpay" />
+        </div>
+      </div> {% endcomment %}
+
+      <div class="shopify-payment-terms product__policies">
+        {{ form | payment_terms }}
       </div>
-      <div class="shopify-payment-terms product__policies">{{ form | payment_terms }}</div>
     {%- endform -%}
 
     <script type="application/json">
@@ -139,4 +173,4 @@
       {%- render 'store-availability' -%}
     {% endif %}
   {%- endif -%}
-{%- endif -%}
+{% endif %}

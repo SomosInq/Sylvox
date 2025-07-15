@@ -12,6 +12,8 @@
           render 'block-description', block: block
         when 'variant_picker'
           render 'block-variant-picker', block: block, forloop: forloop
+        when 'bundle_block'
+           render 'bundle-block', block: block
         when 'buy_buttons'
           render 'block-buy-buttons', block: block
         when 'price'
@@ -224,6 +226,82 @@
         }
       ]
     },
+        {
+  "type": "bundle_block",
+  "name": "Bundle Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SAVE BIG IN BUNDLES YOU’LL LOVE"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Bundle Image 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1",
+      "default": "E360 ACE + LTE Box + Hardwire kit"
+    },
+    {
+      "type": "text",
+      "id": "sale_price_1",
+      "label": "Sale Price 1",
+      "default": "$499.99"
+    },
+    {
+      "type": "text",
+      "id": "original_price_1",
+      "label": "Original Price 1",
+      "default": "$629.97"
+    },
+    {
+      "type": "text",
+      "id": "savings_1",
+      "label": "Savings 1",
+      "default": "$129.98"
+    },
+    {
+      "type": "textarea",
+      "id": "description_1",
+      "label": "Description 1",
+      "default": "This package includes the E360 ACE Dash Cam, Hardwire Kit for parking mode and LTE Box for cloud connectivity."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Bundle Image 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2",
+      "default": "E360 + LTE Box + Hardwire kit"
+    },
+    {
+      "type": "text",
+      "id": "sale_price_2",
+      "label": "Sale Price 2",
+      "default": "$469.99"
+    },
+    {
+      "type": "text",
+      "id": "original_price_2",
+      "label": "Original Price 2",
+      "default": "$569.97"
+    },
+    {
+      "type": "text",
+      "id": "savings_2",
+      "label": "Savings 2",
+      "default": "$99.98"
+    }
+  ]
+},
     {
       "type": "notify",
       "name": "Notify",

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 14,
+            "activePatchIndex": 22,
             "patches": [
                 {
                     "date": 1748439884206,
@@ -64,6 +64,38 @@
                 {
                     "date": 1752485885603,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12818,8 +12818,9 @@\n   overflow: hidden;\n   z-index: 2;\n }\n \n+\n .comparison__image {\n   width: 100%;\n   height: 100%;\n   max-width: none;\n"
+                },
+                {
+                    "date": 1752583120238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15921,11 +15921,11 @@\n     font-weight: normal;\n     padding: 7px 15px 7px;\n     margin: 0 8px var(--label-bottom-margin) 0;\n     background-color: var(--color-body);\n-    box-shadow: 0 0 0 1px var(--color-border);\n-    border-radius: 1px;\n     overflow: hidden;\n+    border-radius: 4px;\n+    border: 1px solid var(--Light-Grey, #C6C6C6);\n   }\n \n .variant-button-wrap label[data-color-swatch] {\n       padding: 0;\n"
+                },
+                {
+                    "date": 1752583292996,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15939,12 +15939,10 @@\n     outline: 2px auto -webkit-focus-ring-color;\n     outline-offset: 1px;\n   }\n \n-.variant-button-wrap input[type='radio']:checked + label {\n-    box-shadow: 0 0 0 2px var(--color-text-body);\n-  }\n \n+\n .variant-button-wrap input[data-disabled] + label {\n     color: var(--color-border);\n   }\n \n"
+                },
+                {
+                    "date": 1752591987886,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15906,8 +15906,60 @@\n :root {\n   --label-bottom-margin: 12px;\n }\n \n+.custom-buy-buttons-wrapper {\n+  background-color: #FAFAFA;\n+  padding: 24px;\n+  display: flex;\n+  flex-direction: column;\n+  gap: 14px;\n+  border-radius: 12px;\n+  max-width: 420px;\n+}\n+\n+.custom-btn {\n+  background-color: #20413B;\n+  color: #fff;\n+  border: none;\n+  padding: 14px;\n+  font-size: 16px;\n+  border-radius: 32px;\n+  cursor: pointer;\n+  transition: background-color 0.3s ease;\n+  width: 100%;\n+  text-align: center;\n+}\n+\n+.custom-btn:hover {\n+  opacity: 0.9;\n+}\n+\n+.custom-btn.add-to-cart {\n+  background-color: transparent;\n+  color: #20413B;\n+  border: 2px solid #20413B;\n+}\n+\n+.custom-btn.add-to-cart:hover {\n+  background-color: #20413B;\n+  color: #fff;\n+}\n+\n+.payment-icons {\n+  display: flex;\n+  flex-wrap: wrap;\n+  gap: 8px;\n+  margin-top: 12px;\n+  align-items: center;\n+}\n+\n+.payment-icons img {\n+  height: 26px;\n+  width: auto;\n+}\n+\n+\n .variant-button-wrap {\n   border: 0;\n   padding: 0;\n   margin: 0 0 calc(var(--label-bottom-margin) * -1);\n"
+                },
+                {
+                    "date": 1752592291717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15943,13 +15943,76 @@\n .custom-btn.add-to-cart:hover {\n   background-color: #20413B;\n   color: #fff;\n }\n+.custom-buy-buttons-wrapper {\n+  background-color: #FAFAFA;\n+  padding: 24px;\n+  border-radius: 12px;\n+  max-width: 420px;\n+  display: flex;\n+  flex-direction: column;\n+  gap: 16px;\n+}\n \n+.side-by-side {\n+  gap: 16px;\n+}\n+\n+.side-by-side .custom-btn-wrap {\n+  flex: 1;\n+}\n+\n+.side-by-side .custom-btn-wrap {\n+  display: inline-block;\n+  width: 49%;\n+}\n+\n+.custom-btn {\n+  background-color: #20413B;\n+  color: #fff;\n+  border: none;\n+  padding: 14px;\n+  font-size: 16px;\n+  border-radius: 32px;\n+  cursor: pointer;\n+  width: 100%;\n+  text-align: center;\n+  transition: 0.3s ease;\n+}\n+\n+.custom-btn:hover {\n+  opacity: 0.9;\n+}\n+\n+.custom-btn.add-to-cart {\n+  background-color: transparent;\n+  color: #20413B;\n+  border: 2px solid #20413B;\n+}\n+\n+.custom-btn.add-to-cart:hover {\n+  background-color: #20413B;\n+  color: #fff;\n+}\n+\n .payment-icons {\n   display: flex;\n   flex-wrap: wrap;\n   gap: 8px;\n+  align-items: center;\n+  margin-top: 16px;\n+}\n+\n+.payment-icons img {\n+  height: 26px;\n+  width: auto;\n+}\n+\n+.payment-icons {\n+  display: flex;\n+  flex-wrap: wrap;\n+  gap: 8px;\n   margin-top: 12px;\n   align-items: center;\n }\n \n"
+                },
+                {
+                    "date": 1752592324867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15914,8 +15914,9 @@\n   flex-direction: column;\n   gap: 14px;\n   border-radius: 12px;\n   max-width: 420px;\n+  width: 100%;\n }\n \n .custom-btn {\n   background-color: #20413B;\n"
+                },
+                {
+                    "date": 1752593960099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15906,46 +15906,9 @@\n :root {\n   --label-bottom-margin: 12px;\n }\n \n-.custom-buy-buttons-wrapper {\n-  background-color: #FAFAFA;\n-  padding: 24px;\n-  display: flex;\n-  flex-direction: column;\n-  gap: 14px;\n-  border-radius: 12px;\n-  max-width: 420px;\n-  width: 100%;\n-}\n \n-.custom-btn {\n-  background-color: #20413B;\n-  color: #fff;\n-  border: none;\n-  padding: 14px;\n-  font-size: 16px;\n-  border-radius: 32px;\n-  cursor: pointer;\n-  transition: background-color 0.3s ease;\n-  width: 100%;\n-  text-align: center;\n-}\n-\n-.custom-btn:hover {\n-  opacity: 0.9;\n-}\n-\n-.custom-btn.add-to-cart {\n-  background-color: transparent;\n-  color: #20413B;\n-  border: 2px solid #20413B;\n-}\n-\n-.custom-btn.add-to-cart:hover {\n-  background-color: #20413B;\n-  color: #fff;\n-}\n .custom-buy-buttons-wrapper {\n   background-color: #FAFAFA;\n   padding: 24px;\n   border-radius: 12px;\n@@ -16008,22 +15971,10 @@\n   height: 26px;\n   width: auto;\n }\n \n-.payment-icons {\n-  display: flex;\n-  flex-wrap: wrap;\n-  gap: 8px;\n-  margin-top: 12px;\n-  align-items: center;\n-}\n \n-.payment-icons img {\n-  height: 26px;\n-  width: auto;\n-}\n \n-\n .variant-button-wrap {\n   border: 0;\n   padding: 0;\n   margin: 0 0 calc(var(--label-bottom-margin) * -1);\n"
+                },
+                {
+                    "date": 1752595192404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15911,11 +15911,11 @@\n .custom-buy-buttons-wrapper {\n   background-color: #FAFAFA;\n   padding: 24px;\n   border-radius: 12px;\n-  max-width: 420px;\n+  /* max-width: 420px; */\n   display: flex;\n-  flex-direction: column;\n+  /* flex-direction: column; */\n   gap: 16px;\n }\n \n .side-by-side {\n"
+                },
+                {
+                    "date": 1752595255489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15913,9 +15913,9 @@\n   padding: 24px;\n   border-radius: 12px;\n   /* max-width: 420px; */\n   display: flex;\n-  /* flex-direction: column; */\n+  flex-direction: column;\n   gap: 16px;\n }\n \n .side-by-side {\n"
                 }
             ],
             "date": 1748439884206,
