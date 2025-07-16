@@ -14,6 +14,28 @@
     },
     {
       "type": "select",
+      "id": "columns",
+      "label": "Items Per Row",
+      "default": "4",
+      "options": [
+        { "value": "2", "label": "2 per row" },
+        { "value": "3", "label": "3 per row" },
+        { "value": "4", "label": "4 per row" },
+        { "value": "5", "label": "5 per row" },
+        { "value": "6", "label": "6 per row" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "item_min_width",
+      "label": "Grid Item Min Width (px)",
+      "min": 0,
+      "max": 400,
+      "step": 20,
+      "default": 0
+    },
+    {
+      "type": "select",
       "id": "section_width",
       "label": "Section Width",
       "default": "standard",
@@ -136,7 +158,20 @@
     {% endif %}
   </div>
 
-  <div class="icon-grid__container {% if section.settings.layout == 'slider' %}icon-grid__slider{% endif %} section_content_width_{{ section.settings.section_content_width }}">
+  <div
+    class="icon-grid__container
+      {% if section.settings.layout == 'slider' %}
+        icon-grid__slider
+      {% elsif section.settings.item_min_width != 0 %}
+        icon-grid--auto-cols
+      {% else %}
+        icon-grid-cols-{{ section.settings.columns }}
+      {% endif %}
+      section_content_width_{{ section.settings.section_content_width }}"
+    {% if section.settings.item_min_width != 0 %}
+      style="--item-min-width: {{ section.settings.item_min_width }}px;"
+    {% endif %}
+  >
     {% for block in section.blocks %}
       <a href="{{ block.settings.link | default: '#' }}" class="icon-grid__item" style="text-align: {{ block.settings.text_align }};">
         {% if block.settings.icon %}
@@ -167,14 +202,22 @@
   gap: 2rem;
 }
 
-.icon-grid__container.icon-grid__slider {
+.icon-grid__slider {
   display: block;
 }
 
-.icon-grid__container:not(.icon-grid__slider) {
+/* Dynamic min width layout */
+.icon-grid--auto-cols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--item-min-width), 1fr));
 }
+
+/* Fixed column fallback */
+.icon-grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.icon-grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.icon-grid-cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+.icon-grid-cols-5 { display: grid; grid-template-columns: repeat(5, 1fr); }
+.icon-grid-cols-6 { display: grid; grid-template-columns: repeat(6, 1fr); }
 
 .icon-grid__item {
   text-decoration: none;
@@ -230,7 +273,6 @@
 .grid-item-subtitle {
   font-style: italic;
 }
-
 </style>
 
 <!-- Flickity -->
@@ -242,7 +284,7 @@
     {% if section.settings.layout == 'slider' %}
       var elem = document.querySelector('.icon-grid__slider');
       if (elem && window.Flickity) {
-        new Flickity( elem, {
+        new Flickity(elem, {
           cellAlign: 'left',
           contain: true,
           pageDots: true,
