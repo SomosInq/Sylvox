@@ -1026,11 +1026,40 @@
     "video_swiper_xUg7Rz": {
       "type": "video-swiper",
       "blocks": {
+        "video_block_GrJEBt": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74_2a7c8b25-0528-4b13-9e21-929dc5d072af.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
+        "video_block_mF7Gxx": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "thumbnail": "shopify://shop_images/e4ac83204ea4c739da8f47c9dbae0abf13311e24.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
+        "video_block_LhWJgN": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "thumbnail": "shopify://shop_images/964ee67aac68daf4ba6acace829858ca0d8ee0b2.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
         "video_block_Catw9n": {
           "type": "video_block",
           "settings": {
-            "video": "shopify://files/videos/with sub_2c84365c-9f8e-41ff-9bde-bb785a6f0f14.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_url": "",
             "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png",
             "autoplay": false,
             "loop": false,
@@ -1040,48 +1069,8 @@
         "video_block_RzQCii": {
           "type": "video_block",
           "settings": {
-            "video": "shopify://files/videos/20250628_165943_960.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_GrJEBt": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/InShot_20250527_221137802_e87c037f-5d85-4b56-9e7b-6d9e7dc6e02d.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_mF7Gxx": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/6月10日(1).mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_LhWJgN": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/Sylvox 4K Outdoor TV with Android TV OS and Bluetooth voice control remote. sylvox outdoor tv.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_Ywb6aF": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/9convert.com - Sylvox Outdoor TV Showing in CES2024_v720P.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_url": "",
+            "thumbnail": "shopify://shop_images/a81645ffc5728db649c68b84a9615ca90534f80c.jpg",
             "autoplay": false,
             "loop": false,
             "muted": false
@@ -1089,15 +1078,24 @@
         }
       },
       "block_order": [
-        "video_block_Catw9n",
-        "video_block_RzQCii",
         "video_block_GrJEBt",
         "video_block_mF7Gxx",
         "video_block_LhWJgN",
-        "video_block_Ywb6aF"
+        "video_block_Catw9n",
+        "video_block_RzQCii"
       ],
       "name": "Video Swiper",
       "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
         "swiper_title": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology.",
         "swiper_sub_title": "sylvox Community"
       }
@@ -1158,7 +1156,8 @@
         "section_width": "full",
         "section_content_width": "standard",
         "button_label": "See All",
-        "button_link": "",
+        "button_link": "shopify://pages/terms-of-services",
+        "button_icon": "shopify://shop_images/SVG_1_0093569a-cfa8-4f59-9673-99f01e5438ce.svg",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -1176,8 +1175,10 @@
         "background_image": "shopify://shop_images/Image_Placeholder.png",
         "heading": "Join Our Newsletter",
         "subheading": "Be the first to know about product launches and all things inside Sylvox.",
+        "envelope_icon": "shopify://shop_images/email_5bd48f58-f5a9-42f9-bd4d-081df65051a3.svg",
         "email_placeholder": "Email address",
-        "button_label": "Sign Up"
+        "button_label": "Sign Up",
+        "button_arrow_icon": "shopify://shop_images/SVG_2_6145df75-fc23-404c-9ab0-a558c02d58d1.svg"
       }
     }
   },

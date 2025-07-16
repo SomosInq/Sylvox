@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1752596108938,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752658923457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -154,12 +154,13 @@\n       \"name\": \"Somos Banner\",\n       \"settings\": {\n         \"section_width\": \"full\",\n         \"section_content_width\": \"standard\",\n-        \"custom_content_width_enabled\": false,\n+        \"custom_content_width_enabled\": true,\n         \"custom_content_width\": 90,\n-        \"mobile_content_width\": 90,\n+        \"mobile_content_width\": 60,\n         \"section_height\": 1200,\n+        \"mobile_section_height\": 100,\n         \"background_color\": \"#ffffff\",\n         \"background_image\": \"shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9.jpg\",\n         \"banner_overlay_color\": \"#000000\",\n         \"banner_overlay_opacity\": 0.4,\n@@ -391,8 +392,9 @@\n         \"custom_content_width_enabled\": false,\n         \"custom_content_width\": 90,\n         \"mobile_content_width\": 90,\n         \"section_height\": 1200,\n+        \"mobile_section_height\": 500,\n         \"background_color\": \"#ffffff\",\n         \"background_image\": \"shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg\",\n         \"banner_overlay_color\": \"#000000\",\n         \"banner_overlay_opacity\": 0.4,\n"
                 }
             ],
             "date": 1752596108938,
