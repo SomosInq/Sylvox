@@ -42,15 +42,13 @@
     background: none;
     cursor: pointer;
     transition: all 0.3s ease-out;
-
-    display: flex;               /* Add flex layout */
-    align-items: center;         /* Center vertically */
-    justify-content: center;     /* Center horizontally */
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 30px;
     color: #636363;
-    line-height: 1;              /* Safe default */
-    padding: 0;   
+    line-height: 1;
+    padding: 0;
   }
 
   .usp-arrow:hover {
@@ -68,6 +66,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 20px 0;
+        {% comment %} margin: 0 0 0 23%; {% endcomment %}
   }
 
   .video-blocks::-webkit-scrollbar {
@@ -120,9 +119,8 @@
   }
 </style>
 
-<div class="page-width">
-  <div class="video-swiper-contair">
-
+<div class="section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+  <div class="video-swiper-contair section_content_width_{{ section.settings.section_content_width }}">
     <div class="video-swiper-content">
       <div class="content-left">
         {%- if swiper_sub_title != blank -%}
@@ -142,21 +140,52 @@
     {%- if section.blocks.size > 0 -%}
       <div class="video-blocks">
         {%- for block in section.blocks -%}
-          <div class="video-wrapper animate">
-            {% if block.settings.video != blank %}
-              <!-- Video Tag with controls, autoplay, loop, muted, and poster -->
-              <video controls autoplay="{{ block.settings.autoplay | default: 'false' }}" loop="{{ block.settings.loop | default: 'false' }}" muted="{{ block.settings.muted | default: 'false' }}" poster="{{ block.settings.thumbnail | img_url: '800x' }}">
-                <source src="{{ block.settings.video | file_url }}" type="video/mp4">
-              </video>
-            {% elsif block.settings.video_url != blank %}
-              <!-- Embed iframe for external video URL (YouTube, Vimeo) -->
-              <iframe src="{{ block.settings.video_url | escape }}" frameborder="0" allowfullscreen width="100%" height="490"></iframe>
-            {% endif %}
-          </div>
-        {%- endfor -%}
+  <div class="video-wrapper animate">
+
+    {% if block.settings.video != blank %}
+      <video
+        controls
+        {% if block.settings.autoplay %} autoplay {% endif %}
+        {% if block.settings.loop %} loop {% endif %}
+        {% if block.settings.muted %} muted {% endif %}
+        poster="{{ block.settings.thumbnail | img_url: '800x' }}"
+      >
+        <source src="{{ block.settings.video | file_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+    {% elsif block.settings.video_url != blank %}
+      {% assign embed_url = block.settings.video_url | replace: 'watch?v=', 'embed/' %}
+      <iframe
+        src="{{ embed_url | escape }}"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        width="100%"
+        height="490"
+      ></iframe>
+
+    {% elsif block.settings.thumbnail != blank %}
+      <!-- Fallback to image if no video -->
+      <img
+        src="{{ block.settings.thumbnail | img_url: '800x' }}"
+        alt="Video thumbnail"
+        style="width: 100%; border-radius: 10px; height: 490px; object-fit: cover;"
+      />
+
+    {% else %}
+      <!-- Optional: Fallback if nothing is set -->
+      <div style="width: 100%; height: 490px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
+        <p>No video or thumbnail provided</p>
+      </div>
+
+    {% endif %}
+
+  </div>
+{%- endfor -%}
+
       </div>
     {%- endif -%}
-
   </div>
 </div>
 
@@ -166,6 +195,34 @@
 {
   "name": "Video Swiper",
   "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {
       "id": "swiper_title",
       "type": "text",
@@ -190,10 +247,9 @@
           "label": "Video"
         },
         {
-          "type": "video_url",
+          "type": "text",
           "id": "video_url",
-          "label": "Video URL",
-          "accept": ["youtube", "vimeo"]
+          "label": "Video URL (YouTube or Vimeo)"
         },
         {
           "type": "image_picker",

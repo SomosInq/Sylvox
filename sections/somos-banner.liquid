@@ -7,17 +7,19 @@
   .hover-grayscale img:hover { filter: grayscale(100%); transition: 0.3s ease; }
   .hover-fade img:hover { opacity: 0.7; transition: 0.3s ease; }
 
-  @media screen and (max-width: 749px) {
-    #{{ section.settings.custom_id }} {
-      padding-top: {{ section.settings.mobile_padding_top }}px !important;
-      padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;
-      padding-left: {{ section.settings.mobile_padding_left }}px !important;
-      padding-right: {{ section.settings.mobile_padding_right }}px !important;
-    }
-    #{{ section.settings.custom_id }} > div {
-      max-width: {{ section.settings.mobile_content_width }}% !important;
-    }
+@media screen and (max-width: 749px) {
+  #{{ section.settings.custom_id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px !important;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;
+    padding-left: {{ section.settings.mobile_padding_left }}px !important;
+    padding-right: {{ section.settings.mobile_padding_right }}px !important;
+    min-height: {{ section.settings.mobile_section_height }}px !important;
   }
+
+  #{{ section.settings.custom_id }} > div {
+    max-width: {{ section.settings.mobile_content_width }}% !important;
+  }
+}
 </style>
 
 <div
@@ -34,7 +36,8 @@
       background-size: cover;
       background-position: center;
     {% endif %}
-    height: {{ section.settings.section_height }}px;
+    min-height: {{ section.settings.section_height }}px;
+
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     display: flex;
     flex-direction: column;
@@ -167,107 +170,46 @@
 {
   "name": "Somos Banner",
   "settings": [
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "90% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "Content Width Preset",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "90% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_content_width_enabled",
-      "label": "Enable Custom Content Width",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "custom_content_width",
-      "label": "Custom Content Width (%)",
-      "min": 40,
-      "max": 100,
-      "step": 5,
-      "default": 90,
-      "unit": "%"
-    },
-    {
-      "type": "range",
-      "id": "mobile_content_width",
-      "label": "Mobile Content Width (%)",
-      "min": 40,
-      "max": 100,
-      "step": 5,
-      "default": 90,
-      "unit": "%"
-    },
-    {
-      "type": "range",
-      "id": "section_height",
-      "label": "Section Height",
-      "min": 200,
-      "max": 1200,
-      "step": 10,
-      "default": 500,
-      "unit": "px"
-    },
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [
+      { "value": "standard", "label": "90% Width" },
+      { "value": "full", "label": "Full Width" }
+    ]},
+    { "type": "select", "id": "section_content_width", "label": "Content Width Preset", "default": "standard", "options": [
+      { "value": "standard", "label": "90% Width" },
+      { "value": "full", "label": "Full Width" }
+    ]},
+    { "type": "checkbox", "id": "custom_content_width_enabled", "label": "Enable Custom Content Width", "default": false },
+    { "type": "range", "id": "custom_content_width", "label": "Custom Content Width (%)", "min": 40, "max": 100, "step": 5, "default": 90, "unit": "%" },
+    { "type": "range", "id": "mobile_content_width", "label": "Mobile Content Width (%)", "min": 40, "max": 100, "step": 5, "default": 90, "unit": "%" },
+    { "type": "range", "id": "section_height", "label": "Section Height", "min": 200, "max": 1200, "step": 10, "default": 500, "unit": "px" },
+    { "type": "range", "id": "mobile_section_height", "label": "Mobile Section Height", "min": 100, "max": 1000, "step": 10, "default": 500, "unit": "px" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
-
     { "type": "color", "id": "banner_overlay_color", "label": "Banner Overlay Color", "default": "#000000" },
     { "type": "range", "id": "banner_overlay_opacity", "label": "Banner Overlay Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.4 },
-
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0, "unit": "px" },
-
     { "type": "range", "id": "mobile_padding_top", "label": "Mobile Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile Padding Bottom", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "mobile_padding_left", "label": "Mobile Padding Left", "min": 0, "max": 100, "default": 0, "unit": "px" },
     { "type": "range", "id": "mobile_padding_right", "label": "Mobile Padding Right", "min": 0, "max": 100, "default": 0, "unit": "px" },
-
     { "type": "checkbox", "id": "hide_desktop", "label": "Hide on Desktop", "default": false },
     { "type": "checkbox", "id": "hide_tablet", "label": "Hide on Tablet", "default": false },
     { "type": "checkbox", "id": "hide_mobile", "label": "Hide on Mobile", "default": false },
-
     { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
     { "type": "text", "id": "custom_id", "label": "Unique ID" },
-
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "Text Alignment",
-      "default": "center",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "vertical_alignment",
-      "label": "Vertical Alignment",
-      "default": "center",
-      "options": [
-        { "value": "flex-start", "label": "Top" },
-        { "value": "center", "label": "Center" },
-        { "value": "flex-end", "label": "Bottom" }
-      ]
-    }
+    { "type": "select", "id": "text_alignment", "label": "Text Alignment", "default": "center", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ]},
+    { "type": "select", "id": "vertical_alignment", "label": "Vertical Alignment", "default": "center", "options": [
+      { "value": "flex-start", "label": "Top" },
+      { "value": "center", "label": "Center" },
+      { "value": "flex-end", "label": "Bottom" }
+    ]}
   ],
   "blocks": [
     {
@@ -275,45 +217,26 @@
       "name": "Heading",
       "settings": [
         { "type": "text", "id": "text", "label": "Text" },
-        {
-          "type": "select",
-          "id": "heading_tag",
-          "label": "Tag",
-          "default": "h2",
-          "options": [
-            { "value": "h1", "label": "H1" },
-            { "value": "h2", "label": "H2" },
-            { "value": "h3", "label": "H3" },
-            { "value": "h4", "label": "H4" },
-            { "value": "h5", "label": "H5" },
-            { "value": "h6", "label": "H6" }
-          ]
-        },
+        { "type": "select", "id": "heading_tag", "label": "Tag", "default": "h2", "options": [
+          { "value": "h1", "label": "H1" },
+          { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" },
+          { "value": "h4", "label": "H4" },
+          { "value": "h5", "label": "H5" },
+          { "value": "h6", "label": "H6" }
+        ]},
         { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
         { "type": "checkbox", "id": "italic", "label": "Italic", "default": false },
-        {
-          "type": "select",
-          "id": "font_weight",
-          "label": "Font Weight",
-          "default": "400",
-          "options": [
-            { "value": "300", "label": "Light" },
-            { "value": "400", "label": "Normal" },
-            { "value": "700", "label": "Bold" }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-
-          "default": "center",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
-        }
+        { "type": "select", "id": "font_weight", "label": "Font Weight", "default": "400", "options": [
+          { "value": "300", "label": "Light" },
+          { "value": "400", "label": "Normal" },
+          { "value": "700", "label": "Bold" }
+        ]},
+        { "type": "select", "id": "alignment", "label": "Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]}
       ]
     },
     {
@@ -322,17 +245,11 @@
       "settings": [
         { "type": "text", "id": "text", "label": "Text" },
         { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "default": "center",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
-        }
+        { "type": "select", "id": "alignment", "label": "Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]}
       ]
     },
     {
@@ -341,17 +258,11 @@
       "settings": [
         { "type": "richtext", "id": "content", "label": "Content" },
         { "type": "color", "id": "color", "label": "Text Color", "default": "#000000" },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Text Alignment",
-          "default": "center",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
-        }
+        { "type": "select", "id": "alignment", "label": "Text Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]}
       ]
     },
     {
@@ -359,48 +270,21 @@
       "name": "Image",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        {
-          "type": "range",
-          "id": "image_width",
-          "label": "Image Width (%)",
-          "min": 10,
-          "max": 100,
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "image_ratio",
-          "label": "Aspect Ratio",
-          "default": "landscape",
-          "options": [
-            { "value": "square", "label": "Square" },
-            { "value": "landscape", "label": "Landscape" },
-            { "value": "portrait", "label": "Portrait" }
-          ]
-        },
+        { "type": "range", "id": "image_width", "label": "Image Width (%)", "min": 10, "max": 100, "default": 100 },
+        { "type": "select", "id": "image_ratio", "label": "Aspect Ratio", "default": "landscape", "options": [
+          { "value": "square", "label": "Square" },
+          { "value": "landscape", "label": "Landscape" },
+          { "value": "portrait", "label": "Portrait" }
+        ]},
         { "type": "checkbox", "id": "lazy_load", "label": "Lazy Load", "default": true },
-        {
-          "type": "select",
-          "id": "hover_effect",
-          "label": "Hover Effect",
-          "default": "none",
-          "options": [
-            { "value": "none", "label": "None" },
-            { "value": "zoom", "label": "Zoom" },
-            { "value": "grayscale", "label": "Grayscale" },
-            { "value": "fade", "label": "Fade" }
-          ]
-        },
+        { "type": "select", "id": "hover_effect", "label": "Hover Effect", "default": "none", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "zoom", "label": "Zoom" },
+          { "value": "grayscale", "label": "Grayscale" },
+          { "value": "fade", "label": "Fade" }
+        ]},
         { "type": "color", "id": "overlay_color", "label": "Overlay Color" },
-        {
-          "type": "range",
-          "id": "overlay_opacity",
-          "label": "Overlay Opacity",
-          "min": 0,
-          "max": 1,
-          "step": 0.1,
-          "default": 0
-        }
+        { "type": "range", "id": "overlay_opacity", "label": "Overlay Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0 }
       ]
     },
     {
@@ -421,52 +305,28 @@
       "settings": [
         { "type": "text", "id": "text", "label": "Text" },
         { "type": "url", "id": "url", "label": "Link" },
-        {
-          "type": "select",
-          "id": "style",
-          "label": "Style",
-          "default": "fill",
-          "options": [
-            { "value": "fill", "label": "Fill" },
-            { "value": "outline", "label": "Outline" }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "size",
-          "label": "Size",
-          "default": "base",
-          "options": [
-            { "value": "sm", "label": "Small" },
-            { "value": "base", "label": "Medium" },
-            { "value": "lg", "label": "Large" }
-          ]
-        },
+        { "type": "select", "id": "style", "label": "Style", "default": "fill", "options": [
+          { "value": "fill", "label": "Fill" },
+          { "value": "outline", "label": "Outline" }
+        ]},
+        { "type": "select", "id": "size", "label": "Size", "default": "base", "options": [
+          { "value": "sm", "label": "Small" },
+          { "value": "base", "label": "Medium" },
+          { "value": "lg", "label": "Large" }
+        ]},
         { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
         { "type": "color", "id": "background", "label": "Background Color", "default": "#000000" },
         { "type": "color", "id": "outline_color", "label": "Outline Color", "default": "#000000" },
         { "type": "text", "id": "icon", "label": "Icon (HTML or Unicode)" },
-        {
-          "type": "select",
-          "id": "icon_position",
-          "label": "Icon Position",
-          "default": "left",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "right", "label": "Right" }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "default": "center",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
-        }
+        { "type": "select", "id": "icon_position", "label": "Icon Position", "default": "left", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "right", "label": "Right" }
+        ]},
+        { "type": "select", "id": "alignment", "label": "Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]}
       ]
     }
   ],

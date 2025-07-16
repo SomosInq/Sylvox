@@ -260,7 +260,7 @@
 
 .in-the-box-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
   text-align: right;
 }
@@ -269,6 +269,13 @@
   .in-the-box-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+@media (max-width: 767px) {
+  .in-the-box-grid,
+  .in-the-box-left h2,
+  .in-the-box-grid div {
+    text-align: center !important;
+}
 }
 {% endstyle %}
 
