@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1751640826708,
@@ -16,6 +16,10 @@
                 {
                     "date": 1751641496412,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,8 +152,15 @@\n     },\n     \"somos_banner_zJ33mX\": {\n       \"type\": \"somos-banner\",\n       \"blocks\": {\n+        \"subheading_tWFA9z\": {\n+          \"type\": \"subheading\",\n+          \"settings\": {\n+            \"text\": \"Outdoor TV Finder\",\n+            \"color\": \"#ffffff\"\n+          }\n+        },\n         \"heading_TWpQCb\": {\n           \"type\": \"heading\",\n           \"settings\": {\n             \"text\": \"Not Sure What Outdoor TV Fits you Best?\",\n"
+                },
+                {
+                    "date": 1752681973040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -197,16 +197,16 @@\n       \"name\": \"Somos Banner\",\n       \"settings\": {\n         \"section_width\": \"standard\",\n         \"section_content_width\": \"standard\",\n-        \"text_alignment\": \"left\",\n         \"section_height\": 330,\n+        \"background_color\": \"#ffffff\",\n         \"background_image\": \"shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png\",\n-        \"background_color\": \"#ffffff\",\n         \"padding_top\": 60,\n         \"padding_bottom\": 0,\n         \"padding_left\": 0,\n-        \"padding_right\": 0\n+        \"padding_right\": 0,\n+        \"text_alignment\": \"left\"\n       }\n     },\n     \"comparison_table_prb7MT\": {\n       \"type\": \"comparison-table\",\n@@ -268,10 +268,8 @@\n         \"button_url\": \"\",\n         \"text_color\": \"\",\n         \"button_background\": \"\",\n         \"button_text_color\": \"\",\n-        \"title_size\": 28,\n-        \"text_size\": 16,\n         \"button_size\": 16,\n         \"background_color\": \"\",\n         \"section_width\": \"standard\",\n         \"text_alignment\": \"left\",\n@@ -417,10 +415,8 @@\n         \"button_url\": \"\",\n         \"text_color\": \"\",\n         \"button_background\": \"\",\n         \"button_text_color\": \"\",\n-        \"title_size\": 28,\n-        \"text_size\": 16,\n         \"button_size\": 16,\n         \"background_color\": \"\",\n         \"section_width\": \"standard\",\n         \"text_alignment\": \"left\",\n"
                 }
             ],
             "date": 1751640826707,

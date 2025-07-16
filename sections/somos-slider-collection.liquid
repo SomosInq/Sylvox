@@ -4,30 +4,44 @@ Somos Slider: Individual Button Style Controls
 
 <div class="somos-slider" style="--slide-height: {{ section.settings.slide_height }}px; background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %}  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; {{ section.settings.section_width }}">
 
-  
-
   <div class="somos-slider__wrapper" id="somos-slider-wrapper-{{ section.id }}">
     {% for block in section.blocks %}
       <div class="somos-slide" id="block-{{ block.id }}">
         <div class="somos-slide__media-wrapper">
           {% if block.settings.image %}
-            <img src="{{ block.settings.image | image_url }}" alt="Slide Image">
-          {% endif %}
+  <div class="slide-image-wrapper" style="position: relative;">
+    <img 
+      src="{{ block.settings.image | image_url }}" 
+      alt="Slide Image"
+      style="width: 100%; display: block;"
+    >
+    <div 
+      class="slide-overlay" 
+      style="
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: {{ block.settings.overlay_color }};
+        opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+        pointer-events: none;
+      "
+    ></div>
+  </div>
+{% endif %}
+
           <div class="somos-slide__content content_section_width_{{ section.settings.content_section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             
             {% if section.settings.collection_subheading %}
-    <p class="collection-subheading">{{ section.settings.collection_subheading }}</p>
-  {% endif %}
+              <p class="collection-subheading">{{ section.settings.collection_subheading }}</p>
+            {% endif %}
 
-  {% if section.settings.category_title %}
-    <h2 class="collection-category">{{ section.settings.category_title }}</h2>
-  {% endif %}
+            {% if section.settings.category_title %}
+              <h2 class="collection-category">{{ section.settings.category_title }}</h2>
+            {% endif %}
 
-  {% if collection.description != blank %}
-    <div class="collection-description">{{ collection.description }}</div>
-  {% endif %}
+            {% if collection.description != blank %}
+              <div class="collection-description">{{ collection.description }}</div>
+            {% endif %}
             
-
             {% if block.settings.subheading %}
               <p style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.subheading }}</p>
             {% endif %}
@@ -119,26 +133,8 @@ Somos Slider: Individual Button Style Controls
     }
   ],
   "settings": [
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "content_section_width",
-      "label": "Content Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "select", "id": "content_section_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
     { "type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true },
     { "type": "checkbox", "id": "show_dots", "label": "Show dots", "default": true },
     { "type": "text", "id": "collection_subheading", "label": "Collection Subheading" },
@@ -174,19 +170,27 @@ Somos Slider: Individual Button Style Controls
         { "type": "color", "id": "button_2_bg", "label": "Button 2 background", "default": "#ffffff" },
         { "type": "color", "id": "button_2_text", "label": "Button 2 text color", "default": "#000000" },
         { "type": "color", "id": "button_2_border", "label": "Button 2 border color", "default": "#000000" },
-        { "type": "select", "id": "horizontal_align", "label": "Horizontal alignment", "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" }
-        ], "default": "center" },
-        { "type": "select", "id": "vertical_align", "label": "Vertical alignment", "options": [
-          { "value": "top", "label": "Top" },
-          { "value": "middle", "label": "Middle" },
-          { "value": "bottom", "label": "Bottom" }
-        ], "default": "middle" },
+        { "type": "select", "id": "horizontal_align", "label": "Horizontal alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "center" },
+        { "type": "select", "id": "vertical_align", "label": "Vertical alignment", "options": [ { "value": "top", "label": "Top" }, { "value": "middle", "label": "Middle" }, { "value": "bottom", "label": "Bottom" } ], "default": "middle" },
         { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
         { "type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px" },
         { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+  "type": "color",
+  "id": "overlay_color",
+  "label": "Overlay Color",
+  "default": "#000000"
+},
+{
+  "type": "range",
+  "id": "overlay_opacity",
+  "label": "Overlay Opacity",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "default": 40,
+  "unit": "%"
+},
         { "type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%" }
       ]
     }

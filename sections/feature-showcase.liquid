@@ -1,0 +1,265 @@
+{% comment %}
+  Custom Section: Feature Showcase Tabs (Tabs between image and text)
+{% endcomment %}
+
+<div 
+  class="feature-showcase-tabs section_width_{{ section.settings.section_width }}" 
+  id="feature-showcase-tabs-{{ section.id }}"
+  style="
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    max-width: {{ section.settings.banner_width }}px;
+    margin-left: auto;
+    margin-right: auto;
+  "
+>
+  <div class="feature-showcase-tabs__content-wrapper section_content_width_{{ section.settings.section_content_width }}">
+    {% for block in section.blocks %}
+      <div 
+        class="feature-showcase-tabs__content{% if forloop.first %} active{% endif %}" 
+        data-tab-index="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+        <!-- Main Image -->
+        <div class="feature-showcase-tabs__image" style="height: {{ section.settings.banner_height }}px;">
+          <img src="{{ block.settings.image | image_url: width: 1600 }}" alt="{{ block.settings.heading | escape }}" />
+
+        </div>
+
+        <!-- Tabs go here, just below image -->
+        <div class="feature-showcase-tabs__nav">
+          <div class="feature-showcase-tabs__underline"></div>
+          {% for labelBlock in section.blocks %}
+            <button 
+              class="feature-showcase-tabs__tab{% if forloop.index0 == forloop.parentloop.index0 %} active{% endif %}" 
+              data-tab-index="{{ forloop.index0 }}"
+            >
+              {{ labelBlock.settings.label }}
+            </button>
+          {% endfor %}
+        </div>
+
+        <!-- Text Content -->
+        <div class="feature-showcase-tabs__text">
+          <h3>{{ block.settings.heading }}</h3>
+          <p class="subheading">{{ block.settings.subheading }}</p>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+.feature-showcase-tabs {
+  text-align: center;
+}
+
+.feature-showcase-tabs__content-wrapper {
+  position: relative;
+}
+
+.feature-showcase-tabs__content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-showcase-tabs__content.active {
+  display: flex;
+}
+
+.feature-showcase-tabs__image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.feature-showcase-tabs__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.feature-showcase-tabs__icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.85);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.feature-showcase-tabs__nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.feature-showcase-tabs__underline {
+  width: 100%;
+  max-width: 700px;
+  height: 1px;
+  background-color: #e2e2e2;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.feature-showcase-tabs__tab {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7e8182;
+  padding-bottom: 6px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.feature-showcase-tabs__tab.active {
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+.feature-showcase-tabs__tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #0a0a0a;
+}
+
+.feature-showcase-tabs__text {
+  max-width: 700px;
+  margin-top: 16px;
+}
+
+.feature-showcase-tabs__text h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-showcase-tabs__text .subheading {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.feature-showcase-tabs__text p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+{% endstyle %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.getElementById("feature-showcase-tabs-{{ section.id }}");
+    const allTabs = section.querySelectorAll(".feature-showcase-tabs__tab");
+    const allContents = section.querySelectorAll(".feature-showcase-tabs__content");
+
+    allTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const index = tab.getAttribute("data-tab-index");
+
+        allTabs.forEach(t => t.classList.remove("active"));
+        allContents.forEach(c => c.classList.remove("active"));
+
+        // Show the correct content block
+        allContents[index].classList.add("active");
+
+        // Find the matching nav buttons inside the now-active content block
+        const newTabs = allContents[index].querySelectorAll(".feature-showcase-tabs__tab");
+        newTabs.forEach(t => {
+          if (t.getAttribute("data-tab-index") === index) {
+            t.classList.add("active");
+          }
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Feature Showcase Tabs",
+  "settings": [{
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "banner_width",
+      "label": "Max Width (px)",
+      "min": 400,
+      "max": 1400,
+      "step": 20,
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Image Height (px)",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "default": 460
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 40 },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Tab Label", "default": "HDR" },
+        { "type": "image_picker", "id": "image", "label": "Main Image" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "HDR Technology – Deeper Contrast & More Vivid Colors" },
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "178° Wide Viewing Angle – Every Seat is the Best Seat" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Experience every detail with enhanced contrast and richer colors. HDR technology optimizes brightness and shadow detail, bringing scenes to life with stunning realism." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Showcase Tabs",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

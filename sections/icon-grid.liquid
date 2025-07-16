@@ -13,26 +13,13 @@
       ]
     },
     {
-      "type": "select",
-      "id": "columns",
-      "label": "Items Per Row",
-      "default": "4",
-      "options": [
-        { "value": "2", "label": "2 per row" },
-        { "value": "3", "label": "3 per row" },
-        { "value": "4", "label": "4 per row" },
-        { "value": "5", "label": "5 per row" },
-        { "value": "6", "label": "6 per row" }
-      ]
-    },
-    {
       "type": "range",
       "id": "item_min_width",
       "label": "Grid Item Min Width (px)",
-      "min": 0,
+      "min": 100,
       "max": 400,
       "step": 20,
-      "default": 0
+      "default": 220
     },
     {
       "type": "select",
@@ -141,8 +128,13 @@
   style="
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-    {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;{% else %}background-color: {{ section.settings.background_color }};{% endif %}
-  ">
+    {% if section.settings.background_image %}
+      background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;
+    {% else %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+  "
+>
   <div class="icon-grid__header">
     {% if section.settings.parent_title %}
       <h2>{{ section.settings.parent_title }}</h2>
@@ -158,77 +150,69 @@
     {% endif %}
   </div>
 
-  <div
-    class="icon-grid__container
-      {% if section.settings.layout == 'slider' %}
-        icon-grid__slider
-      {% elsif section.settings.item_min_width != 0 %}
-        icon-grid--auto-cols
-      {% else %}
-        icon-grid-cols-{{ section.settings.columns }}
-      {% endif %}
-      section_content_width_{{ section.settings.section_content_width }}"
-    {% if section.settings.item_min_width != 0 %}
+  <div class="icon-grid__outer">
+    <div
+      class="icon-grid__container
+        {% if section.settings.layout == 'slider' %}
+          icon-grid__slider
+        {% else %}
+          icon-grid--minwidth
+        {% endif %}
+        section_content_width_{{ section.settings.section_content_width }}"
       style="--item-min-width: {{ section.settings.item_min_width }}px;"
-    {% endif %}
-  >
-    {% for block in section.blocks %}
-      <a href="{{ block.settings.link | default: '#' }}" class="icon-grid__item" style="text-align: {{ block.settings.text_align }};">
-        {% if block.settings.icon %}
-          <div class="icon-container icon-align-{{ block.settings.text_align }}">
-            <img src="{{ block.settings.icon | img_url: '150x' }}" style="width: {{ block.settings.icon_size }}%;" alt="{{ block.settings.title }}">
-          </div>
-        {% endif %}
-        <h3 style="color: {{ block.settings.text_color }};">
-          {{ block.settings.title }}
-        </h3>
-        {% if block.settings.subtitle != blank %}
-          <p class="grid-item-subtitle" style="color: {{ block.settings.text_color }};">
-            {{ block.settings.subtitle }}
-          </p>
-        {% endif %}
-        {% if block.settings.description != blank %}
-          <p class="grid-item-description" style="color: {{ block.settings.text_color }};">
-            {{ block.settings.description }}
-          </p>
-        {% endif %}
-      </a>
-    {% endfor %}
+    >
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" class="icon-grid__item" style="text-align: {{ block.settings.text_align }};">
+          {% if block.settings.icon %}
+            <div class="icon-container icon-align-{{ block.settings.text_align }}">
+              <img src="{{ block.settings.icon | img_url: '150x' }}" style="width: {{ block.settings.icon_size }}%;" alt="{{ block.settings.title }}">
+            </div>
+          {% endif %}
+          <h3 style="color: {{ block.settings.text_color }};">{{ block.settings.title }}</h3>
+          {% if block.settings.subtitle %}
+            <p class="grid-item-subtitle" style="color: {{ block.settings.text_color }};">{{ block.settings.subtitle }}</p>
+          {% endif %}
+          {% if block.settings.description %}
+            <p class="grid-item-description" style="color: {{ block.settings.text_color }};">{{ block.settings.description }}</p>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 <style>
+.icon-grid__outer {
+  display: flex;
+  justify-content: center;
+}
+
 .icon-grid__container {
   gap: 2rem;
 }
 
+/* Centered responsive grid layout */
+.icon-grid--minwidth {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--item-min-width), 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Optional: slider version */
 .icon-grid__slider {
   display: block;
 }
 
-/* Dynamic min width layout */
-.icon-grid--auto-cols {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--item-min-width), 1fr));
-}
-
-/* Fixed column fallback */
-.icon-grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); }
-.icon-grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
-.icon-grid-cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
-.icon-grid-cols-5 { display: grid; grid-template-columns: repeat(5, 1fr); }
-.icon-grid-cols-6 { display: grid; grid-template-columns: repeat(6, 1fr); }
-
 .icon-grid__item {
-  text-decoration: none;
   padding: 1rem;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  transition: transform 0.3s ease;
+  text-decoration: none;
 }
 
 .icon-grid__item:hover {
@@ -258,17 +242,9 @@
   border-radius: 5px;
 }
 
-.icon-align-left {
-  justify-content: flex-start;
-}
-
-.icon-align-center {
-  justify-content: center;
-}
-
-.icon-align-right {
-  justify-content: flex-end;
-}
+.icon-align-left { justify-content: flex-start; }
+.icon-align-center { justify-content: center; }
+.icon-align-right { justify-content: flex-end; }
 
 .grid-item-subtitle {
   font-style: italic;
