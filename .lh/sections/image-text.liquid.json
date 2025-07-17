@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 16,
+            "activePatchIndex": 21,
             "patches": [
                 {
                     "date": 1748444519032,
@@ -72,6 +72,26 @@
                 {
                     "date": 1752068243451,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -141,9 +141,9 @@\n {% endschema %}\n \n <style>\n   .image-text-blocks-section img {\n-    margin: 0 auto;\n+    margin: 0 auto 20px auto;\n }\n </style>\n \n {% assign text_align = settings.alignment | default: 'center' %}\n"
+                },
+                {
+                    "date": 1752748487832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -139,14 +139,10 @@\n   ]\n }\n {% endschema %}\n \n-<style>\n-  .image-text-blocks-section img {\n-    margin: 0 auto 20px auto;\n-}\n-</style>\n \n+\n {% assign text_align = settings.alignment | default: 'center' %}\n \n <div class=\"image-text-blocks-section px-4 md:px-8 py-6  section_width_{{ section.settings.section_width }}\"\n      style=\"\n"
+                },
+                {
+                    "date": 1752763786777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -128,8 +128,9 @@\n   \"presets\": [\n     {\n       \"name\": \"Somos Image/Text Flex Blocks\",\n       \"category\": \"Somos Custom\",\n+      \"max_blocks\": 5,\n       \"blocks\": [\n         { \"type\": \"image\" },\n         { \"type\": \"title\" },\n         { \"type\": \"text\" },\n"
+                },
+                {
+                    "date": 1752763851018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,8 +63,9 @@\n   \"blocks\": [\n     {\n       \"type\": \"image\",\n       \"name\": \"Image\",\n+      \"max_blocks\": 20,\n       \"settings\": [\n         {\n           \"type\": \"image_picker\",\n           \"id\": \"image\",\n@@ -128,9 +129,8 @@\n   \"presets\": [\n     {\n       \"name\": \"Somos Image/Text Flex Blocks\",\n       \"category\": \"Somos Custom\",\n-      \"max_blocks\": 5,\n       \"blocks\": [\n         { \"type\": \"image\" },\n         { \"type\": \"title\" },\n         { \"type\": \"text\" },\n"
+                },
+                {
+                    "date": 1752763968939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n {% schema %}\n {\n   \"name\": \"Somos Image/Text Block\",\n+      \"max_blocks\": 20,\n   \"settings\": [\n     {\n   \"type\": \"color\",\n   \"id\": \"background_color\",\n@@ -63,9 +64,8 @@\n   \"blocks\": [\n     {\n       \"type\": \"image\",\n       \"name\": \"Image\",\n-      \"max_blocks\": 20,\n       \"settings\": [\n         {\n           \"type\": \"image_picker\",\n           \"id\": \"image\",\n"
+                },
+                {
+                    "date": 1752765427708,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -165,9 +165,9 @@\n \">\n   <img\n     src=\"{{ block.settings.image | image_url: width: 1200 }}\"\n     alt=\"Section image\"\n-    class=\"mb-4 inline-block\"\n+    class=\"mb-4 inline-block itfb_image\"\n     loading=\"lazy\"\n   />\n </div>\n         {% endif %}\n"
                 }
             ],
             "date": 1748444519032,

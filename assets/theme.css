@@ -152,6 +152,15 @@ a.button {
     max-width: 1608px;
     margin: 0 auto !important;
   }
+
+  @media (max-width: 1654px) {
+    .section_content_width_standard {
+      max-width: 1218px;
+      margin: 0 auto !important;
+      padding-left: 60px !important;
+    padding-right: 60px !important;
+    }
+  }
   
   @media (max-width: 768px) {
   #shopify-section-{{ section.id }} .section_content_width_standard {
@@ -1312,6 +1321,11 @@ max-width: 1608px;
 }
 .image-text-blocks-section img {
   margin: 0 auto;
+  /* width: 100%; */
+}
+
+.itfb_image {
+  width: 100%;
 }
 
 

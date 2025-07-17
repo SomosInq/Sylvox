@@ -15918,6 +15918,10 @@ form + .footer__social {
   gap: 16px;
 }
 
+.gravity-button {
+  border-radius: 12px !important;
+}
+
 .side-by-side {
   gap: 16px;
 }

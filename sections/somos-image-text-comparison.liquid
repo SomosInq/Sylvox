@@ -13,6 +13,19 @@
       margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
 ">
 
+
+  {% comment %} Icon above heading {% endcomment %}
+  {% if section.settings.heading_icon %}
+    <div style="text-align: {{ heading_align }}; margin-bottom: 0.5rem;">
+      <img 
+        src="{{ section.settings.heading_icon | image_url: width: 100 }}" 
+        alt="Heading Icon" 
+        style="display: inline-block; height: auto; max-width: 80px;" 
+        loading="lazy"
+      />
+    </div>
+  {% endif %}
+
   {% comment %} Section Heading & Description {% endcomment %}
   {% if section.settings.heading != blank %}
     <{{ section.settings.heading_size | default: 'h2' }} style="text-align: {{ heading_align }};">
@@ -50,11 +63,16 @@
   {% comment %} Comparison Slider always at the bottom {% endcomment %}
   {%- render 'section-image-compare' -%}
 
+  {% if section.settings.heading_description != blank %}
+    <p style="text-align: {{ heading_align }}; margin-bottom: 1rem;">{{ section.settings.base_description }}</p>
+  {% endif %}
+
 </div>
 
 {% schema %}
 {
   "name": "Image/Text + Comparison",
+      "max_blocks": 20,
   "settings": [
     {
       "type": "color",
@@ -107,7 +125,11 @@
     { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-
+{
+      "type": "image_picker",
+      "id": "heading_icon",
+      "label": "Heading Icon (above title)"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -117,6 +139,12 @@
       "type": "textarea",
       "id": "heading_description",
       "label": "Heading Description",
+      "default": "Add your description here"
+    },
+    {
+      "type": "textarea",
+      "id": "base_description",
+      "label": "Base Description",
       "default": "Add your description here"
     },
     {

@@ -1,54 +1,60 @@
 <style>
-  .outdoor-tabs-section .tabs {
+ .video-tabs-section .tabs {
     display: flex;
     justify-content: center;
     gap: 16px;
     background: white;
     padding: 12px 20px;
+    margin-bottom: 40px;
     border-radius: 9999px;
     margin-bottom: 24px;
+    background: #FAFAFA;
+    width: fit-content;
+    margin: 0 auto;
   }
-  .outdoor-tabs-section .tab {
+
+ .video-tabs-section .tab {
     padding: 8px 16px;
     border-radius: 9999px;
     cursor: pointer;
-    background: #fff;
-    border: 1px solid #ccc;
+    {% comment %} background: #fff; {% endcomment %}
+    {% comment %} border: 1px solid #ccc; {% endcomment %}
     transition: background 0.3s;
   }
-  .outdoor-tabs-section .tab.active {
+ .video-tabs-section .tab.active {
     background: #20413B;
     color: white;
     border-color: #20413B;
   }
-  .outdoor-tabs-section .video-grid {
+ .video-tabs-section .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
   }
-  .outdoor-tabs-section .video-card {
+ .video-tabs-section .video-card {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
   }
-  .outdoor-tabs-section .video-card img,
-  .outdoor-tabs-section .video-card video {
+ .video-tabs-section .video-card img,
+ .video-tabs-section .video-card video {
     width: 100%;
     height: auto;
     display: block;
   }
-  .outdoor-tabs-section .video-title {
-    text-align: center;
+ .video-tabs-section .video-title {
+    text-align: left;
     margin-top: 10px;
   }
-  .outdoor-tabs-section .header {
+ .video-tabs-section .header {
     margin-bottom: 2rem;
     text-align: var(--header-align, center);
   }
+  
 </style>
 
-<div class="outdoor-tabs-section section section_width_{{ section.settings.section_width }}"
+<div class="video-tabs-section section section_width_{{ section.settings.section_width }}"
      style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');">
   
   <div class="section_content_width_{{ section.settings.section_content_width }}">

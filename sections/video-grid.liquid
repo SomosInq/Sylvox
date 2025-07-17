@@ -5,15 +5,18 @@
     gap: 16px;
     background: white;
     padding: 12px 20px;
+    margin-bottom: 40px;
     border-radius: 9999px;
-    margin-bottom: 24px;
+    background: #FAFAFA;
+    width: fit-content;
+    margin: 0 auto 24px auto;
   }
   .outdoor-tabs-section .tab {
     padding: 8px 16px;
     border-radius: 9999px;
     cursor: pointer;
-    background: #fff;
-    border: 1px solid #ccc;
+    {% comment %} background: #fff; {% endcomment %}
+    {% comment %} border: 1px solid #ccc; {% endcomment %}
     transition: background 0.3s;
   }
   .outdoor-tabs-section .tab.active {
@@ -39,7 +42,7 @@
     display: block;
   }
   .outdoor-tabs-section .video-title {
-    text-align: center;
+    text-align: left;
     margin-top: 10px;
   }
   .outdoor-tabs-section .header {

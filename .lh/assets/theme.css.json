@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 155,
+            "activePatchIndex": 164,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -628,6 +628,42 @@
                 {
                     "date": 1752239976539,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -155,14 +155,16 @@\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n     width: 100% !important;\n-    padding: 0 25px !important;\n+    padding-left: 25px !important;\n+    padding-right: 25px !important;\n     margin: 0 auto !important;\n   }\n   #shopify-section-{{ section.id }} .section_width_standard {\n     width: 100% !important;\n-    padding: 0 25px !important;\n+    padding-left: 25px !important;\n+    padding-right: 25px !important;\n     margin: 0 auto !important;\n   }\n }\n \n@@ -1181,10 +1183,10 @@\n     height: var(--slide-height);\n   }\n \n   .somos-slide .content_section_width_standard {\n-    margin: 0 auto;\n-    width: 80% !important;\n+max-width: 1608px;\n+    margin: 0 auto !important;\n }\n \n   .somos-slide .description {\n     width: 50%;\n"
+                },
+                {
+                    "date": 1752748482277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1311,8 +1311,9 @@\n   margin-bottom: 40px;\n }\n .image-text-blocks-section img {\n   margin: 0 auto;\n+  width: 100%;\n }\n \n \n \n"
+                },
+                {
+                    "date": 1752757690680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -151,8 +151,15 @@\n   .section_content_width_standard {\n     max-width: 1608px;\n     margin: 0 auto !important;\n   }\n+\n+  @media (max-width: 1470) {\n+  .section_content_width_standard {\n+    max-width: 1218px;\n+    margin: 0 auto !important;\n+}\n+  }\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n     width: 100% !important;\n"
+                },
+                {
+                    "date": 1752757742002,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -153,12 +153,12 @@\n     margin: 0 auto !important;\n   }\n \n   @media (max-width: 1470) {\n-  .section_content_width_standard {\n-    max-width: 1218px;\n-    margin: 0 auto !important;\n-}\n+    .section_content_width_standard {\n+      max-width: 1218px;\n+      margin: 0 auto !important;\n+    }\n   }\n   \n   @media (max-width: 768px) {\n   #shopify-section-{{ section.id }} .section_content_width_standard {\n"
+                },
+                {
+                    "date": 1752757781902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,9 +152,9 @@\n     max-width: 1608px;\n     margin: 0 auto !important;\n   }\n \n-  @media (max-width: 1470) {\n+  @media (max-width: 1470px) {\n     .section_content_width_standard {\n       max-width: 1218px;\n       margin: 0 auto !important;\n     }\n"
+                },
+                {
+                    "date": 1752757832942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,9 +152,9 @@\n     max-width: 1608px;\n     margin: 0 auto !important;\n   }\n \n-  @media (max-width: 1470px) {\n+  @media (max-width: 1654px) {\n     .section_content_width_standard {\n       max-width: 1218px;\n       margin: 0 auto !important;\n     }\n"
+                },
+                {
+                    "date": 1752757866381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -156,8 +156,10 @@\n   @media (max-width: 1654px) {\n     .section_content_width_standard {\n       max-width: 1218px;\n       margin: 0 auto !important;\n+      padding-left: 25px !important;\n+    padding-right: 25px !important;\n     }\n   }\n   \n   @media (max-width: 768px) {\n"
+                },
+                {
+                    "date": 1752757893530,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -156,10 +156,10 @@\n   @media (max-width: 1654px) {\n     .section_content_width_standard {\n       max-width: 1218px;\n       margin: 0 auto !important;\n-      padding-left: 25px !important;\n-    padding-right: 25px !important;\n+      padding-left: 60px !important;\n+    padding-right: 60px !important;\n     }\n   }\n   \n   @media (max-width: 768px) {\n"
+                },
+                {
+                    "date": 1752760897556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1320,9 +1320,9 @@\n   margin-bottom: 40px;\n }\n .image-text-blocks-section img {\n   margin: 0 auto;\n-  width: 100%;\n+  /* width: 100%; */\n }\n \n \n \n"
+                },
+                {
+                    "date": 1752765450244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1323,10 +1323,14 @@\n   margin: 0 auto;\n   /* width: 100%; */\n }\n \n+.itfb_image {\n+  width: 100%;\n+}\n \n \n+\n /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */\n /* *, :before, :after {\n   box-sizing: border-box;\n   border-style: solid;\n"
                 }
             ],
             "date": 1748526641710,

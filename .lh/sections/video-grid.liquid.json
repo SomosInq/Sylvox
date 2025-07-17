@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 15,
             "patches": [
                 {
                     "date": 1748445205268,
@@ -44,6 +44,30 @@
                 {
                     "date": 1751642713892,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,16 +144,22 @@\n     },\n     { \"type\": \"image_picker\", \"id\": \"bg_image\", \"label\": \"Background Image\" },\n     { \"type\": \"color\", \"id\": \"bg_color\", \"label\": \"Background Color\", \"default\": \"#ffffff\" },\n     {\n-      \"type\": \"select\", \"id\": \"section_width\", \"label\": \"Section Width\", \"default\": \"standard\",\n+      \"type\": \"select\",\n+      \"id\": \"section_width\",\n+      \"label\": \"Section Width\",\n+      \"default\": \"standard\",\n       \"options\": [\n         { \"value\": \"standard\", \"label\": \"50% Width\" },\n         { \"value\": \"full\", \"label\": \"Full Width\" }\n       ]\n     },\n     {\n-      \"type\": \"select\", \"id\": \"section_content_width\", \"label\": \"Content Width\", \"default\": \"standard\",\n+      \"type\": \"select\",\n+      \"id\": \"section_content_width\",\n+      \"label\": \"Content Width\",\n+      \"default\": \"standard\",\n       \"options\": [\n         { \"value\": \"standard\", \"label\": \"50% Width\" },\n         { \"value\": \"full\", \"label\": \"Full Width\" }\n       ]\n@@ -168,9 +174,9 @@\n     { \"type\": \"range\", \"id\": \"margin_right\", \"label\": \"Margin Right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 }\n   ],\n   \"blocks\": [\n     {\n-      \"type\": \"video_block\",\n+      \"type\": \"video\",\n       \"name\": \"Video\",\n       \"settings\": [\n         { \"type\": \"text\", \"id\": \"title\", \"label\": \"Video Title\" },\n         { \"type\": \"url\", \"id\": \"video_url\", \"label\": \"Video URL (YouTube, Vimeo, or MP4)\" },\n@@ -196,5 +202,6 @@\n       \"category\": \"Somos Custom\"\n     }\n   ]\n }\n+\n {% endschema %}\n"
+                },
+                {
+                    "date": 1752763152746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,14 @@\n     justify-content: center;\n     gap: 16px;\n     background: white;\n     padding: 12px 20px;\n+    margin-bottom: 40px;\n     border-radius: 9999px;\n     margin-bottom: 24px;\n+    background: #FAFAFA;\n+    width: fit-content;\n+    margin: 0 auto;\n   }\n   .outdoor-tabs-section .tab {\n     padding: 8px 16px;\n     border-radius: 9999px;\n"
+                },
+                {
+                    "date": 1752763172858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,10 +15,10 @@\n   .outdoor-tabs-section .tab {\n     padding: 8px 16px;\n     border-radius: 9999px;\n     cursor: pointer;\n-    background: #fff;\n-    border: 1px solid #ccc;\n+    {% comment %} background: #fff; {% endcomment %}\n+    {% comment %} border: 1px solid #ccc; {% endcomment %}\n     transition: background 0.3s;\n   }\n   .outdoor-tabs-section .tab.active {\n     background: #20413B;\n"
+                },
+                {
+                    "date": 1752763190842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,21 +4,17 @@\n     justify-content: center;\n     gap: 16px;\n     background: white;\n     padding: 12px 20px;\n-    margin-bottom: 40px;\n     border-radius: 9999px;\n     margin-bottom: 24px;\n-    background: #FAFAFA;\n-    width: fit-content;\n-    margin: 0 auto;\n   }\n   .outdoor-tabs-section .tab {\n     padding: 8px 16px;\n     border-radius: 9999px;\n     cursor: pointer;\n-    {% comment %} background: #fff; {% endcomment %}\n-    {% comment %} border: 1px solid #ccc; {% endcomment %}\n+    background: #fff;\n+    border: 1px solid #ccc;\n     transition: background 0.3s;\n   }\n   .outdoor-tabs-section .tab.active {\n     background: #20413B;\n"
+                },
+                {
+                    "date": 1752763319479,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,17 +4,21 @@\n     justify-content: center;\n     gap: 16px;\n     background: white;\n     padding: 12px 20px;\n+    margin-bottom: 40px;\n     border-radius: 9999px;\n     margin-bottom: 24px;\n+    background: #FAFAFA;\n+    width: fit-content;\n+    margin: 0 auto;\n   }\n   .outdoor-tabs-section .tab {\n     padding: 8px 16px;\n     border-radius: 9999px;\n     cursor: pointer;\n-    background: #fff;\n-    border: 1px solid #ccc;\n+    {% comment %} background: #fff; {% endcomment %}\n+    {% comment %} border: 1px solid #ccc; {% endcomment %}\n     transition: background 0.3s;\n   }\n   .outdoor-tabs-section .tab.active {\n     background: #20413B;\n"
+                },
+                {
+                    "date": 1752763341151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,12 +6,11 @@\n     background: white;\n     padding: 12px 20px;\n     margin-bottom: 40px;\n     border-radius: 9999px;\n-    margin-bottom: 24px;\n     background: #FAFAFA;\n     width: fit-content;\n-    margin: 0 auto;\n+    margin: 0 auto 24px auto;\n   }\n   .outdoor-tabs-section .tab {\n     padding: 8px 16px;\n     border-radius: 9999px;\n"
+                },
+                {
+                    "date": 1752763353380,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n     height: auto;\n     display: block;\n   }\n   .outdoor-tabs-section .video-title {\n-    text-align: center;\n+    text-align: left;\n     margin-top: 10px;\n   }\n   .outdoor-tabs-section .header {\n     margin-bottom: 2rem;\n"
                 }
             ],
             "date": 1748445205267,

@@ -159,7 +159,7 @@
         "custom_content_width": 90,
         "mobile_content_width": 60,
         "section_height": 1200,
-        "mobile_section_height": 100,
+        "mobile_section_height": 710,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9.jpg",
         "banner_overlay_color": "#000000",
@@ -208,10 +208,10 @@
         "grid_item_kjYECa": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
+            "icon": "shopify://shop_images/Icons_b7440227-4de3-466b-ab1b-e4484b54c955.png",
+            "icon_size": 100,
             "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
+            "subtitle": "",
             "description": "Dolby Atmos delivers immersive, cinematic sound.",
             "text_align": "center",
             "text_color": "#000000",
@@ -221,11 +221,11 @@
         "grid_item_R869MN": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-1_19a03b67-f305-4fdb-ad3c-e9666c59dbf4.png",
+            "icon_size": 100,
+            "title": "Smart & Simple Entertainment",
+            "subtitle": "",
+            "description": "Google TV, Apple AirPlay, and Chromecast built-in for seamless streaming.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -234,11 +234,11 @@
         "grid_item_3hTLDc": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-2_ba1c6d9d-7359-42b0-b852-10d82e00efd8.png",
+            "icon_size": 100,
+            "title": "Built to Last",
+            "subtitle": "",
+            "description": "Corrosion-resistant, full-metal durability for long-term outdoor use.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -247,11 +247,11 @@
         "grid_item_7g4BxQ": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-3_3a526d18-da26-41b1-b9d8-fdfcf0cb3067.png",
+            "icon_size": 100,
+            "title": "Engineered for Outdoor Life",
+            "subtitle": "",
+            "description": "IP55 Waterproof, heatproof, and weatherproof. No worries, rain or shine.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -260,11 +260,11 @@
         "grid_item_8geVAG": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-4_e017f042-6a32-4a71-bc2e-0da7be7265fa.png",
+            "icon_size": 100,
+            "title": "Bright & Beautiful 4K UHD",
+            "subtitle": "",
+            "description": "HDR technology and 2000-nit brightness for crystal-clear viewing in sunlight.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -281,6 +281,7 @@
       "name": "Icon Grid",
       "settings": {
         "layout": "grid",
+        "item_min_width": 300,
         "section_width": "standard",
         "section_content_width": "standard",
         "background_color": "#ffffff",
@@ -298,64 +299,53 @@
         "margin_right": 0
       }
     },
-    "image_text_pBLTm3": {
-      "type": "image-text",
+    "somos_image_text_comparison_6YJJAb": {
+      "type": "somos-image-text-comparison",
       "blocks": {
-        "image_WqVGMb": {
+        "image_PRK3G6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "image": "shopify://shop_images/Property_1_Variant2.png",
             "image_alignment": "center"
           }
         },
-        "title_3Pc68k": {
-          "type": "title",
-          "settings": {
-            "title": "3x Brighter Than Indoor TVs"
-          }
-        },
-        "text_73JQGD": {
-          "type": "text",
-          "settings": {
-            "text": "1.000-Nit Peak Brightness"
-          }
-        },
-        "image_jjR9ip": {
+        "image_RXhEGM": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Nits.png",
+            "image": "shopify://shop_images/Property_1_Variant3.png",
             "image_alignment": "center"
-          }
-        },
-        "text_yp8KpL": {
-          "type": "text",
-          "settings": {
-            "text": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp."
           }
         }
       },
       "block_order": [
-        "image_WqVGMb",
-        "title_3Pc68k",
-        "text_73JQGD",
-        "image_jjR9ip",
-        "text_yp8KpL"
+        "image_PRK3G6",
+        "image_RXhEGM"
       ],
-      "name": "Image/Text Flex Blocks",
+      "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
         "alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "heading_icon": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+        "heading": "3x Brighter Than Indoor TVs",
+        "heading_description": "1.000-Nit Peak Brightness",
+        "base_description": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp.",
+        "heading_size": "h2",
+        "heading_position": "center",
+        "fullwidth": true,
+        "slider_style": "minimal",
+        "height": 900,
+        "color": "#ffffff"
       }
     },
     "somos_banner_6wHtpL": {
@@ -502,7 +492,7 @@
         "slide_QqP7Lp": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c_1.png",
             "caption": "Works Even After Heavy Rain",
             "description_block": "Outdoor Dining Area"
           }
@@ -510,15 +500,7 @@
         "slide_bmLipF": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
-            "caption": "Works Even After Heavy Rain",
-            "description_block": "Outdoor Dining Area"
-          }
-        },
-        "slide_GjKyYM": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/b36b7f888f46c63dc1958177ec00efeb_jpg.png",
+            "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
             "caption": "Works Even After Heavy Rain",
             "description_block": "Outdoor Dining Area"
           }
@@ -526,15 +508,14 @@
       },
       "block_order": [
         "slide_QqP7Lp",
-        "slide_bmLipF",
-        "slide_GjKyYM"
+        "slide_bmLipF"
       ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -542,9 +523,11 @@
         "margin_left": 0,
         "margin_right": 0,
         "text_alignment": "center",
-        "heading": "Rain, Snow, or Heat - It Just Works.",
-        "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
+        "heading": "",
+        "subheading": "Rain, Snow, or Heat - It Just Works.",
+        "description": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
         "show_arrows": true,
+        "show_dots": true,
         "slide_size": "large",
         "slide_height": 900
       }
@@ -581,7 +564,7 @@
       "settings": {
         "background_color": "#ffffff",
         "background_gradient": "",
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
         "alignment": "center",
         "padding_top": 50,
@@ -648,7 +631,7 @@
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 30,
-        "padding_bottom": 0,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -657,20 +640,20 @@
         "margin_right": 0
       }
     },
-    "usp_accordion_4PkPyD": {
+    "usp_accordion_pPbMYA": {
       "type": "usp-accordion",
       "blocks": {
-        "accordion_VTrC4r": {
+        "accordion_kmbKj4": {
           "type": "accordion",
           "settings": {
-            "question": "No Professionals Required",
-            "subtitle": "",
+            "question": "Quick & Simple Installation",
+            "subtitle": "No Professionals Required",
             "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
             "icon": "shopify://shop_images/expand_more.png",
             "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png"
           }
         },
-        "accordion_rYtjQU": {
+        "accordion_EDeg9a": {
           "type": "accordion",
           "settings": {
             "question": "5-Second Response Time",
@@ -680,7 +663,7 @@
             "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5_9bbf9670-c207-4c1f-bafc-14e19b4bf3e8.png"
           }
         },
-        "accordion_F7EWHL": {
+        "accordion_CqWEXD": {
           "type": "accordion",
           "settings": {
             "question": "60Hz Refresh Rate",
@@ -692,9 +675,9 @@
         }
       },
       "block_order": [
-        "accordion_VTrC4r",
-        "accordion_rYtjQU",
-        "accordion_F7EWHL"
+        "accordion_kmbKj4",
+        "accordion_EDeg9a",
+        "accordion_CqWEXD"
       ],
       "name": "USP Accordion",
       "settings": {
@@ -707,12 +690,12 @@
         "section_description_color": "#000000",
         "button_text": "Learn More",
         "button_link": "",
-        "title": "Quick & Simple Installation",
+        "title": "",
         "text": "",
         "text_color": "#ffffff",
         "font_size": 16,
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "margin_top": 0,
         "margin_bottom": 0
       }
@@ -726,7 +709,7 @@
         "content_width": 50,
         "content_padding_left": 30,
         "heading_icon": "shopify://shop_images/b57de234d7223ab88e90f104710b49d570ab2242.png",
-        "left_image": "shopify://shop_images/9be961560fe8e24e54e91a764421434bc5014fe9_e04c64da-0f1a-46d3-955b-567040d5bdc7.png",
+        "left_image": "shopify://shop_images/921ddd20a38bd4525f9273abd71a41e3b42ceda6.jpg",
         "image_radius": 0,
         "image_width_percent": 100,
         "bg_color": "#fafafa",
@@ -734,7 +717,7 @@
         "content_bg_position": "top right",
         "media_position": "left",
         "subheading": "",
-        "heading": "Connect, Stream, Play—Your Way.",
+        "heading": "Stay Connected, Indoors or Out.",
         "spanheader": "",
         "heading_tag": "h2",
         "heading_color": "#000000",
@@ -745,7 +728,7 @@
         "label_text_1": "",
         "icon_text": "",
         "label_text_2": "",
-        "description": "<p>Your outdoor TV should fit your lifestyle. Deck Pro 2.0 makes it easy to connect all your devices—wired or wirelessly.</p>",
+        "description": "<p>No matter how you watch, listen, or play, your TV should keep up. With multiple wireless and wired connection options, the Pool Pro 2.0 integrates seamlessly with your favorite devices.</p>",
         "button_text": "",
         "button_url": "",
         "button_text_color": "#ffffff",
@@ -816,6 +799,7 @@
       "name": "Icon Grid",
       "settings": {
         "layout": "grid",
+        "item_min_width": 220,
         "section_width": "full",
         "section_content_width": "standard",
         "background_color": "#fafafa",
@@ -932,62 +916,109 @@
         "left_text_size": 18
       }
     },
-    "video_grid_aPiKfa": {
+    "video_grid_qCpbih": {
       "type": "video-grid",
       "blocks": {
-        "video_qEzKKL": {
+        "video_wnCzjM": {
           "type": "video",
           "settings": {
-            "title": "",
+            "title": "Video Title",
             "video_url": "",
-            "video_type": "youtube",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
+            "video_type": "Expert Reviews",
             "link_url": ""
           }
         },
-        "video_DX4NP4": {
+        "video_RPb8yV": {
           "type": "video",
           "settings": {
-            "title": "",
+            "title": "Video Title",
             "video_url": "",
-            "video_type": "youtube",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
+            "video_type": "How-To Tutorials",
             "link_url": ""
           }
         },
-        "video_fVnKEe": {
+        "video_hrdDjd": {
           "type": "video",
           "settings": {
-            "title": "",
+            "title": "Video Title",
             "video_url": "",
-            "video_type": "youtube",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-2_92114025-b2da-444b-ad2e-3f79cd99e10f.png",
+            "video_type": "Expert Reviews",
             "link_url": ""
           }
         },
-        "video_qEfQed": {
+        "video_mKCHQy": {
           "type": "video",
           "settings": {
-            "title": "",
+            "title": "Video Title",
             "video_url": "",
-            "video_type": "youtube",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-2_92114025-b2da-444b-ad2e-3f79cd99e10f.png",
+            "video_type": "How-To Tutorials",
+            "link_url": ""
+          }
+        },
+        "video_tewgFA": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-1_3f7bebb9-1197-4ae9-b5c0-da44b3515fb6.png",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_6UjqH6": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-1_3f7bebb9-1197-4ae9-b5c0-da44b3515fb6.png",
+            "video_type": "Real User Stories",
+            "link_url": ""
+          }
+        },
+        "video_L6wxpR": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-3_92fa0bd1-e1b0-456e-9b51-d0a60f8715ff.png",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_MFriQA": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-3_92fa0bd1-e1b0-456e-9b51-d0a60f8715ff.png",
+            "video_type": "Real User Stories",
             "link_url": ""
           }
         }
       },
       "block_order": [
-        "video_qEzKKL",
-        "video_DX4NP4",
-        "video_fVnKEe",
-        "video_qEfQed"
+        "video_wnCzjM",
+        "video_RPb8yV",
+        "video_hrdDjd",
+        "video_mKCHQy",
+        "video_tewgFA",
+        "video_6UjqH6",
+        "video_L6wxpR",
+        "video_MFriQA"
       ],
-      "disabled": true,
-      "name": "Video Grid",
+      "name": "Video Media",
       "settings": {
-        "heading": "",
+        "heading": "Experience the Outdoors Like Never Before.",
         "header_alignment": "center",
         "bg_color": "#ffffff",
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -996,68 +1027,81 @@
         "margin_right": 0
       }
     },
-    "video_grid_gF4rY4": {
-      "type": "video-grid",
+    "video_swiper_EiE3a7": {
+      "type": "video-swiper",
       "blocks": {
-        "video_raY38R": {
-          "type": "video",
+        "video_block_J4eE66": {
+          "type": "video_block",
           "settings": {
-            "title": "",
             "video_url": "",
-            "video_type": "youtube",
-            "link_url": ""
+            "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74_2a7c8b25-0528-4b13-9e21-929dc5d072af.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
           }
         },
-        "video_L9Kjxd": {
-          "type": "video",
+        "video_block_MxcWcp": {
+          "type": "video_block",
           "settings": {
-            "title": "",
             "video_url": "",
-            "video_type": "youtube",
-            "link_url": ""
+            "thumbnail": "shopify://shop_images/e4ac83204ea4c739da8f47c9dbae0abf13311e24.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
           }
         },
-        "video_B9hjeR": {
-          "type": "video",
+        "video_block_xTFiDz": {
+          "type": "video_block",
           "settings": {
-            "title": "",
             "video_url": "",
-            "video_type": "youtube",
-            "link_url": ""
+            "thumbnail": "shopify://shop_images/964ee67aac68daf4ba6acace829858ca0d8ee0b2.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
           }
         },
-        "video_8wjAPM": {
-          "type": "video",
+        "video_block_F4ygiN": {
+          "type": "video_block",
           "settings": {
-            "title": "",
             "video_url": "",
-            "video_type": "youtube",
-            "link_url": ""
+            "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
+        "video_block_U7nerx": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "thumbnail": "shopify://shop_images/a81645ffc5728db649c68b84a9615ca90534f80c.jpg",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
           }
         }
       },
       "block_order": [
-        "video_raY38R",
-        "video_L9Kjxd",
-        "video_B9hjeR",
-        "video_8wjAPM"
+        "video_block_J4eE66",
+        "video_block_MxcWcp",
+        "video_block_xTFiDz",
+        "video_block_F4ygiN",
+        "video_block_U7nerx"
       ],
-      "disabled": true,
-      "name": "Video Grid",
+      "name": "Video Swiper",
       "settings": {
-        "heading": "",
-        "header_alignment": "center",
-        "bg_color": "#ffffff",
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "swiper_title": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology.",
+        "swiper_sub_title": "sylvox Community"
       }
     },
     "comparison_table_QTgTwz": {
@@ -1183,8 +1227,8 @@
         "background_color": "",
         "section_width": "standard",
         "text_alignment": "left",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -1388,9 +1432,8 @@
     },
     "more-products-vendor": {
       "type": "more-products-vendor",
-      "disabled": true,
       "settings": {
-        "products_per_row": 3,
+        "products_per_row": 5,
         "max_products": 5
       }
     },
@@ -1423,18 +1466,18 @@
     "somos_banner_aRxBYn",
     "74b3fd60-d752-4732-b2b3-12ea39fe6851",
     "icon_grid_AeeJc6",
-    "image_text_pBLTm3",
+    "somos_image_text_comparison_6YJJAb",
     "somos_banner_6wHtpL",
     "somos_image_content_BqTAzw",
     "new_banner_slider_NmBRen",
     "image_text_UQFVkh",
     "somos_image_content_b794Jg",
-    "usp_accordion_4PkPyD",
+    "usp_accordion_pPbMYA",
     "left_right_media_Q6Xzji",
     "icon_grid_wmpKyN",
     "in_the_box_CcWA6g",
-    "video_grid_aPiKfa",
-    "video_grid_gF4rY4",
+    "video_grid_qCpbih",
+    "video_swiper_EiE3a7",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",

@@ -137,10 +137,10 @@
         "grid_item_xYY44L": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
+            "icon": "shopify://shop_images/Icons_b7440227-4de3-466b-ab1b-e4484b54c955.png",
+            "icon_size": 100,
             "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
+            "subtitle": "",
             "description": "Dolby Atmos delivers immersive, cinematic sound.",
             "text_align": "center",
             "text_color": "#000000",
@@ -150,11 +150,11 @@
         "grid_item_j4H7Dk": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-1_19a03b67-f305-4fdb-ad3c-e9666c59dbf4.png",
+            "icon_size": 100,
+            "title": "Smart & Simple Entertainment",
+            "subtitle": "",
+            "description": "Google TV, Apple AirPlay, and Chromecast built-in for seamless streaming.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -163,11 +163,11 @@
         "grid_item_yFGPDX": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-2_ba1c6d9d-7359-42b0-b852-10d82e00efd8.png",
+            "icon_size": 100,
+            "title": "Built to Last",
+            "subtitle": "",
+            "description": "Corrosion-resistant, full-metal durability for long-term outdoor use.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -176,11 +176,11 @@
         "grid_item_KLMwA3": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-3_3a526d18-da26-41b1-b9d8-fdfcf0cb3067.png",
+            "icon_size": 100,
+            "title": "Engineered for Outdoor Life",
+            "subtitle": "",
+            "description": "IP55 Waterproof, heatproof, and weatherproof. No worries, rain or shine.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -189,11 +189,11 @@
         "grid_item_bFFWyC": {
           "type": "grid_item",
           "settings": {
-            "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
-            "icon_size": 15,
-            "title": "Feel-Good Audio",
-            "subtitle": "Immersive sound",
-            "description": "Dolby Atmos delivers immersive, cinematic sound.",
+            "icon": "shopify://shop_images/Icons-4_e017f042-6a32-4a71-bc2e-0da7be7265fa.png",
+            "icon_size": 100,
+            "title": "Bright & Beautiful 4K UHD",
+            "subtitle": "",
+            "description": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
             "text_align": "center",
             "text_color": "#000000",
             "link": ""
@@ -210,6 +210,7 @@
       "name": "Icon Grid",
       "settings": {
         "layout": "grid",
+        "item_min_width": 280,
         "section_width": "standard",
         "section_content_width": "standard",
         "background_color": "#ffffff",
@@ -217,8 +218,8 @@
         "parent_description": "",
         "parent_button_link": "",
         "parent_button_text": "",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -259,12 +260,13 @@
         "custom_content_width": 100,
         "mobile_content_width": 70,
         "section_height": 900,
+        "mobile_section_height": 500,
         "background_color": "#ffffff",
-        "background_image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c_105c09d7-78f7-44fb-8d0b-b5f9b88c80db.jpg",
+        "background_image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_732a6102-d9e2-4e94-8082-4f81737cadea.jpg",
         "banner_overlay_color": "#000000",
         "banner_overlay_opacity": 0.4,
         "padding_top": 60,
-        "padding_bottom": 0,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "mobile_padding_top": 0,
@@ -340,6 +342,47 @@
         "margin_right": 0
       }
     },
+    "feature_showcase_PjMJrh": {
+      "type": "feature-showcase",
+      "blocks": {
+        "feature_PemNRF": {
+          "type": "feature",
+          "settings": {
+            "label": "HDR Technology – Deeper<br> Contrast & More Vivid Colors",
+            "image": "shopify://shop_images/a81a03768d288538bf826aea1a84aaef34f4cff9.jpg",
+            "heading": "HDR Technology – Deeper Contrast & More Vivid Colors",
+            "subheading": "178° Wide Viewing Angle — Every Seat is the Best Seat",
+            "description": "Experience every detail with enhanced contrast and richer colors. HDR technology optimizes brightness and shadow detail, bringing scenes to life with stunning realism."
+          }
+        },
+        "feature_wqii3a": {
+          "type": "feature",
+          "settings": {
+            "label": "178° Wide Viewing Angle – Every<br> Seat is the Best Seat",
+            "image": "shopify://shop_images/adc9d74ea52ed7927d83436003f88acc_jpg.png",
+            "heading": "178° Wide Viewing Angle – Every Seat is the Best Seat",
+            "subheading": "178° Wide Viewing Angle — Every Seat is the Best Seat",
+            "description": "Hosting a backyard gathering? No problem. With a 178-degree wide viewing angle, everyone sees the same sharp, high-contrast image—whether they’re sitting directly in front of the TV or off to the side."
+          }
+        }
+      },
+      "block_order": ["feature_PemNRF", "feature_wqii3a"],
+      "name": "Feature Showcase",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "banner_width": 1400,
+        "banner_height": 690,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "somos_banner_RMW7rJ": {
       "type": "somos-banner",
       "blocks": {
@@ -384,6 +427,7 @@
         "custom_content_width": 100,
         "mobile_content_width": 90,
         "section_height": 900,
+        "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
         "banner_overlay_color": "#000000",
@@ -514,6 +558,7 @@
         "custom_content_width": 90,
         "mobile_content_width": 90,
         "section_height": 1000,
+        "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c.png",
         "banner_overlay_color": "#000000",
@@ -869,6 +914,7 @@
       "name": "Icon Grid",
       "settings": {
         "layout": "grid",
+        "item_min_width": 220,
         "section_width": "full",
         "section_content_width": "standard",
         "background_color": "#fafafa",
@@ -1148,7 +1194,8 @@
         "heading": "Rain, Snow, or Heat - It Just Works.",
         "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
         "show_arrows": false,
-        "slide_size": "large"
+        "slide_size": "large",
+        "slide_height": 500
       }
     },
     "accordian_MBTAMU": {
@@ -1208,6 +1255,7 @@
     "icon_grid_f4ecNH",
     "somos_banner_gLazR9",
     "image_text_XdLFDc",
+    "feature_showcase_PjMJrh",
     "somos_banner_RMW7rJ",
     "somos_image_content_HHm83y",
     "somos_banner_TWzKkD",

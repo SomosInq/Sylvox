@@ -25,14 +25,14 @@
         { "value": "full", "label": "Full Width" }
       ]
     },
-    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     {
       "type": "select",
       "id": "text_alignment",
@@ -57,9 +57,21 @@
       "default": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments."
     },
     {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Add Description"
+    },
+    {
       "type": "checkbox",
       "id": "show_arrows",
       "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Pagination Dots",
       "default": true
     },
     {
@@ -89,23 +101,9 @@
       "type": "slide",
       "name": "Slide",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Slide Image"
-        },
-        {
-          "type": "text",
-          "id": "caption",
-          "label": "Title",
-          "default": "Outdoor Dining Area"
-        },
-        {
-          "type": "textarea",
-          "id": "description_block",
-          "label": "Description",
-          "default": "Outdoor Dining Area"
-        }
+        { "type": "image_picker", "id": "image", "label": "Slide Image" },
+        { "type": "text", "id": "caption", "label": "Title", "default": "Outdoor Dining Area" },
+        { "type": "textarea", "id": "description_block", "label": "Description", "default": "Outdoor Dining Area" }
       ]
     }
   ],
@@ -118,37 +116,62 @@
 }
 {% endschema %}
 
+{% comment %} New Banner Slider with Flickity dots fix and full functionality merged {% endcomment %}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<section class="outdoor-carousel-section section_width_{{ section.settings.section_width }}"
+         style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+  <div class="outdoor-carousel-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}">
+    <div class="small-heading">{{ section.settings.heading }}</div>
+    <h2 class="main-heading">{{ section.settings.subheading }}</h2>
+    <div class="carousel-section-description">{{ section.settings.description }}</div>
+  </div>
+
+  <div class="carousel-wrapper section_width_{{ section.settings.section_width }}">
+    <div class="flickity-carousel"
+         data-flickity='{
+           "wrapAround": true,
+           "imagesLoaded": true,
+           "pageDots": {{ section.settings.show_dots | json }},
+           "prevNextButtons": false,
+           "cellAlign": "center",
+           "contain": true
+         }'>
+      {% for block in section.blocks %}
+        <div class="carousel-cell size-{{ section.settings.slide_size }} relative" style="height: {{ section.settings.slide_height }}px;">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
+          {% endif %}
+          {% if block.settings.caption %}
+            <h2 class="carousel-caption">{{ block.settings.caption }}</h2>
+          {% endif %}
+          {% if block.settings.description_block %}
+            <p class="carousel-description_block">{{ block.settings.description_block }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+  <!-- Dots and Arrows Container -->
+  <div class="controls dots-arrows-wrapper section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+    <div class="carousel-dots-container">
+      <div class="carousel-dots"></div>
+    </div>
+
+    {% if section.settings.show_arrows %}
+      <div class="carousel-arrows content-right">
+        <button class="usp-arrow prev" aria-label="Previous">‹</button>
+        <button class="usp-arrow next" aria-label="Next">›</button>
+      </div>
+    {% endif %}
+  </div>
+
+  </div>
+</section>
+
 {% style %}
 <style>
-
-  /* The container */
-.carousel-dots .flickity-page-dots {
-  display: flex !important;
-  justify-content: center;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Each dot */
-.flickity-page-dots .dot {
-  display: inline-block;
-  width: 24px;
-  height: 2px;
-  background: #636363;
-  cursor: pointer;
-}
-
-/* Active dot override */
-.flickity-page-dots .dot.is-selected {
-  background: #DB4B97;
-}
-
-  .outdoor-carousel-section {
-    padding: 2rem 1rem;
-  }
-
   .outdoor-carousel-text.left { text-align: left; }
   .outdoor-carousel-text.center { text-align: center; }
   .outdoor-carousel-text.right { text-align: right; }
@@ -160,17 +183,19 @@
   }
 
   .main-heading {
-    font-size: 1.625rem;
     font-weight: 500;
   }
 
-  .carousel-wrapper {
-    position: relative;
-    max-width: 100%;
+  .carousel-section-description {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1rem;
   }
 
   .flickity-carousel {
     overflow: hidden;
+    position: relative;
   }
 
   .carousel-cell {
@@ -194,66 +219,49 @@
     display: block;
     border-radius: 8px;
   }
-    @media (max-width: 768px) {
-      .carousel-cell img {
-            height: 30%;
-      }
-      .flickity-carousel {
-            height: 360px !important;
-      }
-      
-    }
-
-  .carousel-cell.size-small { width: 40%; }
-  .carousel-cell.size-medium { width: 55%; }
-  .carousel-cell.size-large { width: 70%; }
-
-      @media (max-width: 768px) {
-        .carousel-cell.size-small { width: 40%; }
-  .carousel-cell.size-medium { width: 55%; }
-  .carousel-cell.size-large { width: 70%; }
-    }
 
   .carousel-caption {
     position: absolute;
-    bottom: 2rem;
-    left: 1rem;
-    font-size: 0.75rem;
+    bottom: 60px;
+    left: 2rem;
     color: white;
+    font-family: "Neurial Grotesk";
+    font-size: 32px;
     font-weight: 400;
   }
 
   .carousel-description_block {
     position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    font-size: 0.75rem;
+    bottom: 40px;
+    left: 2rem;
     color: white;
     font-weight: 400;
   }
 
-  .controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 16px;
+  .carousel-cell.size-small { width: 40%; }
+  .carousel-cell.size-medium { width: 55%; }
+  .carousel-cell.size-large { width: 70%; }
+
+  @media (max-width: 768px) {
+    .carousel-cell img { height: 30%; }
+    .flickity-carousel { height: 360px !important; }
   }
 
   .carousel-dots-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    height: 40px;
+    margin-top: 10px;
   }
 
-  .carousel-dots .flickity-page-dots {
+  .flickity-page-dots {
     display: flex !important;
-    justify-content: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 10;
     gap: 8px;
-    position: static !important;
   }
 
   .flickity-page-dots .dot {
-    all: unset;
     display: block;
     width: 24px;
     height: 25px;
@@ -269,7 +277,7 @@
   .carousel-arrows {
     display: flex;
     gap: 10px;
-    flex-shrink: 0;
+    margin-top: 1rem;
   }
 
   .carousel-arrows button {
@@ -280,86 +288,31 @@
     background: white;
     cursor: pointer;
   }
-
-  .carousel-arrows button:hover {
-    border-color: #999;
-  }
 </style>
 {% endstyle %}
 
-<section class="outdoor-carousel-section section_width_{{ section.settings.section_width }}"
-         style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
-  <div class="outdoor-carousel-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}">
-    <div class="small-heading">{{ section.settings.heading }}</div>
-    <h2>{{ section.settings.subheading }}</h2>
-  </div>
-
-  <div class="carousel-wrapper section_width_{{ section.settings.section_width }}">
-    <div class="flickity-carousel"
-         data-flickity='{
-           "wrapAround": true,
-           "imagesLoaded": true,
-           "pageDots": false,
-           "prevNextButtons": false,
-           "cellAlign": "center",
-           "contain": true
-         }'>
-      {% for block in section.blocks %}
-        <div class="carousel-cell size-{{ section.settings.slide_size }} relative"
-             style="height: {{ section.settings.slide_height }}px;">
-          {% if block.settings.image %}
-            <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image">
-          {% endif %}
-          {% if block.settings.caption %}
-            <div class="carousel-caption">{{ block.settings.caption }}</div>
-          {% endif %}
-          {% if block.settings.description_block %}
-            <div class="carousel-description_block">{{ block.settings.description_block }}</div>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="controls section_content_width_{{ section.settings.section_content_width }}">
-    <div class="carousel-dots-container">
-      <div class="carousel-dots"></div>
-    </div>
-    {% if section.settings.show_arrows %}
-      <div class="carousel-arrows">
-        <button class="usp-arrow prev" aria-label="Previous">‹</button>
-        <button class="usp-arrow next" aria-label="Next">›</button>
-      </div>
-    {% endif %}
-  </div>
-</section>
-
-{% javascript %}
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.querySelector('.flickity-carousel');
-    const customDotsContainer = document.querySelector('.carousel-dots');
+document.addEventListener("DOMContentLoaded", function () {
+  const carousel = document.querySelector('.flickity-carousel');
+  const dotsTarget = document.querySelector('.carousel-dots-container');
 
-    let flkty = new Flickity(carousel, {
-      wrapAround: true,
-      imagesLoaded: true,
-      pageDots: false,
-      prevNextButtons: false,
-      cellAlign: "center",
-      contain: true
-    });
-
-    flkty.on('ready', function () {
-      if (typeof flkty.createPageDots === 'function') {
-        flkty.createPageDots();
-      }
-      if (flkty.pageDots && flkty.pageDots.element && customDotsContainer) {
-        customDotsContainer.appendChild(flkty.pageDots.element);
-      }
-    });
-
-    document.querySelector('.usp-arrow.prev')?.addEventListener('click', () => flkty.previous());
-    document.querySelector('.usp-arrow.next')?.addEventListener('click', () => flkty.next());
+  let flkty = new Flickity(carousel, {
+    wrapAround: true,
+    imagesLoaded: true,
+    pageDots: {{ section.settings.show_dots | json }},
+    prevNextButtons: false,
+    cellAlign: "center",
+    contain: true
   });
+
+  flkty.on('ready', function () {
+    const dots = carousel.querySelector('.flickity-page-dots');
+    if (dots && dotsTarget) {
+      dotsTarget.appendChild(dots);
+    }
+  });
+
+  document.querySelector('.usp-arrow.prev')?.addEventListener('click', () => flkty.previous());
+  document.querySelector('.usp-arrow.next')?.addEventListener('click', () => flkty.next());
+});
 </script>
-{% endjavascript %}

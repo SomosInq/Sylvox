@@ -1,6 +1,7 @@
 {% schema %}
 {
   "name": "Somos Image/Text Block",
+      "max_blocks": 20,
   "settings": [
     {
   "type": "color",
@@ -140,11 +141,7 @@
 }
 {% endschema %}
 
-<style>
-  .image-text-blocks-section img {
-    margin: 0 auto 20px auto;
-}
-</style>
+
 
 {% assign text_align = settings.alignment | default: 'center' %}
 
@@ -169,7 +166,7 @@
   <img
     src="{{ block.settings.image | image_url: width: 1200 }}"
     alt="Section image"
-    class="mb-4 inline-block"
+    class="mb-4 inline-block itfb_image"
     loading="lazy"
   />
 </div>
