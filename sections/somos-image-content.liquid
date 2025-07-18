@@ -88,26 +88,10 @@
       "name": "Grid Box",
       "settings": [
         {
-          "type": "select",
-          "id": "layout",
-          "label": "Layout Direction",
-          "default": "horizontal",
-          "options": [
-            { "value": "horizontal", "label": "Side by Side" },
-            { "value": "vertical", "label": "Stacked" }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "image_position",
-          "label": "Image Position",
-          "default": "left",
-          "options": [
-            { "value": "left", "label": "Left (for horizontal)" },
-            { "value": "right", "label": "Right (for horizontal)" },
-            { "value": "top", "label": "Top (for vertical)" },
-            { "value": "bottom", "label": "Bottom (for vertical)" }
-          ]
+          "type": "checkbox",
+          "id": "image_left",
+          "label": "Image on Left?",
+          "default": true
         },
         {
           "type": "image_picker",
@@ -132,10 +116,46 @@
           "step": 5,
           "default": 60
         },
-        { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-        { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-        { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-        { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 0,
+          "unit": "px"
+        },
         {
           "type": "text",
           "id": "subtitle",
@@ -173,9 +193,6 @@
 {% endschema %}
 
 {% style %}
-.icon-grid-row.layout-vertical .text-col {
-  text-align: center !important;
-}
 #shopify-section-{{ section.id }} {
   background-color: {{ section.settings.background_color }};
   {% if section.settings.background_image != blank %}
@@ -187,28 +204,23 @@
   padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
   margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
 }
-.icon-grid-row.layout-vertical {
-  flex-direction: column;
-}
-.icon-grid-row.layout-horizontal {
-  flex-direction: row;
-}
-@media screen and (max-width: 768px) {
-  .icon-grid-row {
-    flex-direction: column !important;
-    gap: 20px;
+  @media screen and (max-width: 768px) {
+    .icon-grid-row {
+      flex-direction: column !important;
+      gap: 20px;
+    }
+    .icon-grid-row .image-col,
+    .icon-grid-row .text-col {
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
   }
-  .icon-grid-row .image-col,
-  .icon-grid-row .text-col {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
+
+  .text-col h4 {
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
   }
-}
-.text-col h4 {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-}
 {% endstyle %}
 
 <section class="section_width_{{ section.settings.section_width }}" id="shopify-section-{{ section.id }}">
@@ -225,51 +237,51 @@
     </div>
 
     {% for block in section.blocks %}
-      {% assign layout = block.settings.layout %}
-      {% assign image_pos = block.settings.image_position %}
       {% assign image_width = block.settings.image_width | append: "%" %}
       {% assign content_width = block.settings.content_width | append: "%" %}
+      <div
+  class="icon-grid-row"
+  style="
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    margin-top: {{ block.settings.margin_top }}px;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+    gap: 20px;
+  "
+  {{ block.shopify_attributes }}
+>
+  {% assign image_width = block.settings.image_width | append: "%" %}
+  {% assign content_width = block.settings.content_width | append: "%" %}
 
-      <div class="icon-grid-row layout-{{ layout }} image-{{ image_pos }}"
-           style="
-             display: flex;
-             flex-direction: {% if layout == 'vertical' %}column{% else %}row{% endif %};
-             align-items: center;
-             justify-content: space-between;
-             margin-top: {{ block.settings.margin_top }}px;
-             margin-bottom: {{ block.settings.margin_bottom }}px;
-             padding-top: {{ block.settings.padding_top }}px;
-             padding-bottom: {{ block.settings.padding_bottom }}px;
-             gap: 20px;
-           "
-           {{ block.shopify_attributes }}
-      >
-
-        {% capture image_html %}
-          {% if block.settings.image %}
-            <div class="image-col" style="flex: 0 0 {{ image_width }}; max-width: {{ image_width }};">
-              <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
-            </div>
-          {% endif %}
-        {% endcapture %}
-
-        {% capture text_html %}
-          <div class="text-col" style="flex: 0 0 {{ content_width }}; max-width: {{ content_width }}; color: {{ block.settings.text_color }};">
-            <h4>{{ block.settings.subtitle }}</h4>
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </div>
-        {% endcapture %}
-
-        {% case image_pos %}
-          {% when 'left' or 'top' %}
-            {{ image_html }}
-            {{ text_html }}
-          {% when 'right' or 'bottom' %}
-            {{ text_html }}
-            {{ image_html }}
-        {% endcase %}
-      </div>
+  {% if block.settings.image_left %}
+    <div class="image-col" style="flex: 0 0 {{ image_width }}; max-width: {{ image_width }};">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+      {% endif %}
+    </div>
+    <div class="text-col" style="flex: 0 0 {{ content_width }}; max-width: {{ content_width }}; color: {{ block.settings.text_color }};">
+      <h4>{{ block.settings.subtitle }}</h4>
+      <h3>{{ block.settings.title }}</h3>
+      <p>{{ block.settings.text }}</p>
+    </div>
+  {% else %}
+    <div class="text-col" style="flex: 0 0 {{ content_width }}; max-width: {{ content_width }}; color: {{ block.settings.text_color }};">
+      <h4>{{ block.settings.subtitle }}</h4>
+      <h3>{{ block.settings.title }}</h3>
+      <p>{{ block.settings.text }}</p>
+    </div>
+    <div class="image-col" style="flex: 0 0 {{ image_width }}; max-width: {{ image_width }};">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
     {% endfor %}
   </div>
 </section>
