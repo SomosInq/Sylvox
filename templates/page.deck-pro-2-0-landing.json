@@ -94,7 +94,9 @@
           }
         }
       },
-      "block_order": ["heading_A6zfqX"],
+      "block_order": [
+        "heading_A6zfqX"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -113,7 +115,9 @@
           }
         }
       },
-      "block_order": ["image_yaGMXV"],
+      "block_order": [
+        "image_yaGMXV"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -251,7 +255,10 @@
           }
         }
       },
-      "block_order": ["heading_339rBV", "richtext_c9B6TT"],
+      "block_order": [
+        "heading_339rBV",
+        "richtext_c9B6TT"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -282,64 +289,52 @@
         "vertical_alignment": "flex-start"
       }
     },
-    "image_text_XdLFDc": {
-      "type": "image-text",
+    "somos_image_text_comparison_4wc93V": {
+      "type": "somos-image-text-comparison",
       "blocks": {
-        "image_4A76MR": {
+        "image_KAMyxG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "image": "shopify://shop_images/Property_1_Variant2.png",
             "image_alignment": "center"
           }
         },
-        "title_eaCfMw": {
-          "type": "title",
-          "settings": {
-            "title": "3x Brighter Than Indoor TVs"
-          }
-        },
-        "text_KeymhD": {
-          "type": "text",
-          "settings": {
-            "text": "1.000-Nit Peak Brightness"
-          }
-        },
-        "image_kQViJN": {
+        "image_tnR9zX": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Nits.png",
+            "image": "shopify://shop_images/Property_1_Variant3.png",
             "image_alignment": "center"
-          }
-        },
-        "text_hj4kVK": {
-          "type": "text",
-          "settings": {
-            "text": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp."
           }
         }
       },
       "block_order": [
-        "image_4A76MR",
-        "title_eaCfMw",
-        "text_KeymhD",
-        "image_kQViJN",
-        "text_hj4kVK"
+        "image_KAMyxG",
+        "image_tnR9zX"
       ],
-      "name": "Image/Text Flex Blocks",
+      "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
         "alignment": "center",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "heading": "Bright & Beautiful 4K UHD",
+        "heading_description": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
+        "base_description": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp.",
+        "heading_size": "h2",
+        "heading_position": "center",
+        "fullwidth": true,
+        "slider_style": "minimal",
+        "height": 900,
+        "color": "#ffffff"
       }
     },
     "feature_showcase_PjMJrh": {
@@ -366,7 +361,10 @@
           }
         }
       },
-      "block_order": ["feature_PemNRF", "feature_wqii3a"],
+      "block_order": [
+        "feature_PemNRF",
+        "feature_wqii3a"
+      ],
       "name": "Feature Showcase",
       "settings": {
         "section_width": "standard",
@@ -418,7 +416,11 @@
           }
         }
       },
-      "block_order": ["image_tEFxXp", "heading_qPYaaN", "richtext_g7C6di"],
+      "block_order": [
+        "image_tEFxXp",
+        "heading_qPYaaN",
+        "richtext_g7C6di"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -455,7 +457,8 @@
         "grid_box_4m3bhU": {
           "type": "grid_box",
           "settings": {
-            "image_left": true,
+            "layout": "horizontal",
+            "image_position": "left",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_3.png",
             "image_width": 40,
             "content_width": 40,
@@ -472,7 +475,8 @@
         "grid_box_jHUB8q": {
           "type": "grid_box",
           "settings": {
-            "image_left": false,
+            "layout": "horizontal",
+            "image_position": "right",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4.png",
             "image_width": 40,
             "content_width": 40,
@@ -489,9 +493,10 @@
         "grid_box_mejXwx": {
           "type": "grid_box",
           "settings": {
-            "image_left": true,
+            "layout": "vertical",
+            "image_position": "bottom",
             "image": "shopify://shop_images/Voice_Control.png",
-            "image_width": 40,
+            "image_width": 100,
             "content_width": 60,
             "margin_top": 0,
             "margin_bottom": 0,
@@ -504,7 +509,11 @@
           }
         }
       },
-      "block_order": ["grid_box_4m3bhU", "grid_box_jHUB8q", "grid_box_mejXwx"],
+      "block_order": [
+        "grid_box_4m3bhU",
+        "grid_box_jHUB8q",
+        "grid_box_mejXwx"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -549,7 +558,10 @@
           }
         }
       },
-      "block_order": ["heading_gXrCtx", "subheading_JMFnK4"],
+      "block_order": [
+        "heading_gXrCtx",
+        "subheading_JMFnK4"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -590,7 +602,9 @@
           }
         }
       },
-      "block_order": ["title_bNFbiR"],
+      "block_order": [
+        "title_bNFbiR"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -642,7 +656,11 @@
           }
         }
       },
-      "block_order": ["tab_gGFphP", "tab_BtCiEc", "tab_ethewf"],
+      "block_order": [
+        "tab_gGFphP",
+        "tab_BtCiEc",
+        "tab_ethewf"
+      ],
       "name": "Feature Banner Tabs",
       "settings": {
         "autoplay_enabled": true,
@@ -682,7 +700,11 @@
           }
         }
       },
-      "block_order": ["image_aY3FV9", "title_UccEdf", "text_gpAU3F"],
+      "block_order": [
+        "image_aY3FV9",
+        "title_UccEdf",
+        "text_gpAU3F"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -794,7 +816,11 @@
           }
         }
       },
-      "block_order": ["slide_mDWGbn", "slide_xF49fq", "slide_b6LEyw"],
+      "block_order": [
+        "slide_mDWGbn",
+        "slide_xF49fq",
+        "slide_b6LEyw"
+      ],
       "name": "Somos Left Right Media",
       "settings": {
         "section_width": "full",
@@ -1177,7 +1203,11 @@
           }
         }
       },
-      "block_order": ["slide_GpEpTM", "slide_3dFEVa", "slide_LgjQzQ"],
+      "block_order": [
+        "slide_GpEpTM",
+        "slide_3dFEVa",
+        "slide_LgjQzQ"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -1193,7 +1223,9 @@
         "text_alignment": "left",
         "heading": "Rain, Snow, or Heat - It Just Works.",
         "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
+        "description": "Add Description",
         "show_arrows": false,
+        "show_dots": true,
         "slide_size": "large",
         "slide_height": 500
       }
@@ -1223,7 +1255,11 @@
           }
         }
       },
-      "block_order": ["question_eefaCG", "question_94Yzrr", "question_mAYTiE"],
+      "block_order": [
+        "question_eefaCG",
+        "question_94Yzrr",
+        "question_mAYTiE"
+      ],
       "name": "Accordian",
       "settings": {
         "heading": "Have a question ? We are here to help.",
@@ -1254,7 +1290,7 @@
     "image_text_PDRFtF",
     "icon_grid_f4ecNH",
     "somos_banner_gLazR9",
-    "image_text_XdLFDc",
+    "somos_image_text_comparison_4wc93V",
     "feature_showcase_PjMJrh",
     "somos_banner_RMW7rJ",
     "somos_image_content_HHm83y",
