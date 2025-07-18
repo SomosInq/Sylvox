@@ -11,10 +11,10 @@
   "type": "footer",
   "name": "t:sections.footer-group.name",
   "sections": {
-    "support_aMcTiV": {
+    "support_VzArKF": {
       "type": "support",
       "blocks": {
-        "link_item_ekeTHk": {
+        "link_item_T3NYki": {
           "type": "link_item",
           "settings": {
             "text": "Contact Us",
@@ -22,7 +22,7 @@
             "icon": "shopify://shop_images/SVG_2.svg"
           }
         },
-        "link_item_f8TzGR": {
+        "link_item_crVQwi": {
           "type": "link_item",
           "settings": {
             "text": "FAQs",
@@ -30,7 +30,7 @@
             "icon": "shopify://shop_images/SVG_2.svg"
           }
         },
-        "link_item_i88UN7": {
+        "link_item_MU4Hay": {
           "type": "link_item",
           "settings": {
             "text": "Compare",
@@ -38,7 +38,7 @@
             "icon": "shopify://shop_images/SVG_2.svg"
           }
         },
-        "link_item_4f4qid": {
+        "link_item_4bNcVq": {
           "type": "link_item",
           "settings": {
             "text": "User Manual",
@@ -46,7 +46,7 @@
             "icon": "shopify://shop_images/SVG_2.svg"
           }
         },
-        "link_item_h4Qnja": {
+        "link_item_yQbYYV": {
           "type": "link_item",
           "settings": {
             "text": "Become a Reseller",
@@ -56,13 +56,12 @@
         }
       },
       "block_order": [
-        "link_item_ekeTHk",
-        "link_item_f8TzGR",
-        "link_item_i88UN7",
-        "link_item_4f4qid",
-        "link_item_h4Qnja"
+        "link_item_T3NYki",
+        "link_item_crVQwi",
+        "link_item_MU4Hay",
+        "link_item_4bNcVq",
+        "link_item_yQbYYV"
       ],
-      "disabled": true,
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -81,7 +80,6 @@
     },
     "signup_newsletter_iPeWaE": {
       "type": "signup-newsletter",
-      "disabled": true,
       "settings": {
         "background_image": "shopify://shop_images/Image_Placeholder.png",
         "heading": "Join Our Newsletter",
@@ -231,7 +229,7 @@
     }
   },
   "order": [
-    "support_aMcTiV",
+    "support_VzArKF",
     "signup_newsletter_iPeWaE",
     "join_community_NEVzTD",
     "advanced_content_xHiJr8",

@@ -1,0 +1,181 @@
+{% stylesheet %}
+@import url('https://unpkg.com/flickity@2/dist/flickity.min.css');
+
+.you-may-like-wrapper {
+  padding: 40px 0;
+}
+
+.you-may-like-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.you-may-like-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.you-may-like-carousel {
+  margin-bottom: 10px;
+}
+
+.carousel-cell {
+  width: 285px;
+  margin-right: 15px;
+}
+
+.flickity-page-dots {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.flickity-page-dots .dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+  background: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.flickity-page-dots .dot.is-selected {
+  background: #297f67;
+}
+
+.flickity-nav-buttons {
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  display: flex;
+  gap: 10px;
+}
+
+.flickity-nav-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #636363;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  font-size: 30px;
+  color: #636363;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flickity-nav-button:hover {
+  background: #297f67;
+  color: #fff;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-cell {
+    width: 70vw;
+  }
+}
+{% endstylesheet %}
+
+<div class="you-may-like-wrapper section_width_{{ section.settings.section_width }}">
+  <div class="you-may-like-header section_content_width_{{ section.settings.section_content_width }}">
+    <div class="you-may-like-heading">
+      {{ section.settings.heading }}
+    </div>
+    <div class="flickity-nav-buttons">
+      <button class="flickity-nav-button prev">‹</button>
+      <button class="flickity-nav-button next">›</button>
+    </div>
+  </div>
+
+  <div
+    class="you-may-like-carousel flickity-carousel js-flickity"
+    data-flickity='{
+      "cellAlign": "left",
+      "contain": true,
+      "wrapAround": false,
+      "pageDots": true,
+      "prevNextButtons": false,
+      "groupCells": true
+    }'
+  >
+    {% for product in section.settings.collection.products limit: section.settings.limit %}
+      <div class="carousel-cell">
+        {% render 'product-card', product: product %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector('.js-flickity');
+    if (!carousel) return;
+
+    const flkty = Flickity.data(carousel);
+    document.querySelector('.flickity-nav-button.prev').addEventListener('click', () => flkty.previous());
+    document.querySelector('.flickity-nav-button.next').addEventListener('click', () => flkty.next());
+  });
+</script>
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "You May Also Like",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You May Also Like"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Product Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Number of Products",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "full",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "You May Also Like"
+    }
+  ]
+}
+{% endschema %}
