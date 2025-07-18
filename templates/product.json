@@ -411,7 +411,6 @@
         "grid_box_rbPzQT": {
           "type": "grid_box",
           "settings": {
-            "image_left": true,
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_3.png",
             "image_width": 40,
             "content_width": 40,
@@ -428,7 +427,6 @@
         "grid_box_8ApDLM": {
           "type": "grid_box",
           "settings": {
-            "image_left": false,
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4.png",
             "image_width": 40,
             "content_width": 40,
@@ -445,7 +443,6 @@
         "grid_box_7tKYVJ": {
           "type": "grid_box",
           "settings": {
-            "image_left": true,
             "image": "shopify://shop_images/Voice_Control.png",
             "image_width": 40,
             "content_width": 60,
@@ -583,7 +580,6 @@
         "grid_box_3tryC3": {
           "type": "grid_box",
           "settings": {
-            "image_left": true,
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_1.png",
             "image_width": 50,
             "content_width": 45,
@@ -600,7 +596,6 @@
         "grid_box_JxaDph": {
           "type": "grid_box",
           "settings": {
-            "image_left": false,
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_2.png",
             "image_width": 50,
             "content_width": 40,
@@ -1429,35 +1424,6 @@
         "margin_left": 0,
         "margin_right": 0
       }
-    },
-    "more-products-vendor": {
-      "type": "more-products-vendor",
-      "settings": {
-        "products_per_row": 5,
-        "max_products": 5
-      }
-    },
-    "more-products-collection": {
-      "type": "more-products-collection",
-      "disabled": true,
-      "settings": {
-        "products_per_row": 3,
-        "max_products": 5
-      }
-    },
-    "recently-viewed": {
-      "type": "recently-viewed",
-      "disabled": true,
-      "settings": {}
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "disabled": true,
-      "settings": {
-        "product_recommendations_heading": "You may also like",
-        "related_count": 5,
-        "products_per_row": 3
-      }
     }
   },
   "order": [
@@ -1481,10 +1447,6 @@
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
-    "accordian_fLLR39",
-    "more-products-vendor",
-    "more-products-collection",
-    "recently-viewed",
-    "recommendations"
+    "accordian_fLLR39"
   ]
 }

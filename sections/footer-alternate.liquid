@@ -1,0 +1,438 @@
+{% comment %}
+  Custom section: Footer Alternate | footer-alternate.liquid
+{% endcomment %}
+
+<section class="footer-alternate" id="{{ section.id }}">
+  <div class="footer-alternate__grid">
+    <div class="footer-alternate__brand-row">
+      {% if section.settings.logo != blank %}
+        <div class="footer-alternate__logo">
+          {{ section.settings.logo | image_url: width: 180 | image_tag: alt: 'Sylvox logo' }}
+        </div>
+      {% endif %}
+
+      <div class="footer-alternate__heading-thumbnails">
+        <div>
+          {% if section.settings.subtitle != blank %}
+            <p class="footer-alternate__subtitle">{{ section.settings.subtitle }}</p>
+          {% endif %}
+          <h2 class="footer-alternate__heading">{{ section.settings.heading }}</h2>
+        </div>
+        <div class="footer-alternate__thumbnails">
+          {% if section.settings.image_1 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_1 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+          {% if section.settings.image_2 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_2 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+          {% if section.settings.image_3 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_3 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+          {% if section.settings.image_4 != blank %}
+            <div class="footer-alternate__thumbnail">{{ section.settings.image_4 | image_url: width: 64 | image_tag }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-alternate__divider">
+
+    <div class="footer-alternate__content">
+      <div class="footer-alternate__newsletter">
+        <p class="footer-alternate__newsletter-label">{{ section.settings.newsletter_label }}</p>
+        <p class="footer-alternate__newsletter-text">{{ section.settings.newsletter_text }}</p>
+        <button class="footer-alternate__newsletter-button">
+          <span class="footer-alternate__button-pill">{{ section.settings.newsletter_button_label }}</span>
+          {% if section.settings.button_icon != blank %}
+            {{ section.settings.button_icon | image_url: width: 16 | image_tag: class: 'newsletter-icon' }}
+          {% endif %}
+        </button>
+      </div>
+
+      <div class="footer-alternate__links">
+        {% for block in section.blocks %}
+          {% if block.type == 'menu_group' %}
+            <div class="footer-alternate__link-group">
+              <h3>{{ block.settings.menu_title }}</h3>
+              <ul>
+                {% for link in linklists[block.settings.menu].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="footer-alternate__bottom">
+  <div class="footer-alternate__socials">
+    {% for block in section.blocks %}
+      {% if block.type == 'social_link' %}
+        <a href="{{ block.settings.url }}" target="_blank" rel="noopener">{{ block.settings.label }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="footer-alternate__right-links">
+    {% for block in section.blocks %}
+      {% if block.type == 'right_link' %}
+        <a href="{{ block.settings.url }}" target="_blank" rel="noopener">{{ block.settings.label }}</a>
+      {% endif %}
+    {% endfor %}
+    <span class="footer-alternate__language">{{ section.settings.language_switcher }}</span>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<style>
+  .footer-alternate {
+    background-color: #fafafa;
+    padding: 60px 20px;
+    font-family: var(--font-body-family);
+  }
+
+  .footer-alternate__grid {
+    max-width: 1608px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .footer-alternate__brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .footer-alternate__heading-thumbnails {
+    display: flex;
+    align-items: center;
+    gap: 164.33px;
+  }
+
+  .footer-alternate__subtitle {
+    font-size: 12px;
+    color: #7e8182;
+    margin-bottom: 4px;
+  }
+
+  .footer-alternate__heading {
+    font-size: 30px;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin: 0;
+  }
+
+  .footer-alternate__logo img {
+    max-width: 180px;
+    height: auto;
+  }
+
+  .footer-alternate__thumbnails {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-alternate__thumbnail img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+  }
+
+  .footer-alternate__divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .footer-alternate__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .footer-alternate__newsletter {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-alternate__newsletter-label {
+    font-size: 14px;
+    color: #7e8182;
+  }
+
+  .footer-alternate__newsletter-text {
+    font-size: 16px;
+    color: #0a0a0a;
+  }
+
+  .footer-alternate__newsletter-button {
+    width: 120px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+        padding: 8px 18px;
+    border-radius: 40px;
+border: 1px solid #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  @media (max-width: 767px) {
+    .footer-alternate__newsletter-button {
+    width: 100%;
+    }
+  }
+
+  .footer-alternate__button-pill {
+    {% comment %} padding: 8px 18px;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 9999px;
+    font-weight: 400;
+    line-height: 1; {% endcomment %}
+  }
+
+
+  .newsletter-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-alternate__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 32px;
+    max-width: 795.33px;
+  }
+
+  .footer-alternate__link-group h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #7e8182;
+    margin-bottom: 8px;
+  }
+
+  .footer-alternate__link-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-alternate__link-group li {
+    margin-bottom: 6px;
+  }
+
+  .footer-alternate__link-group a {
+    font-size: 14px;
+    color: #0a0a0a;
+    text-decoration: none;
+  }
+
+  .footer-alternate__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #7e8182;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-alternate__socials {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-alternate__right-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-alternate__right-links a {
+    color: #0a0a0a;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .footer-alternate__language {
+    color: #7e8182;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .footer-alternate__content {
+      flex-direction: column;
+    }
+
+    .footer-alternate__links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-alternate__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-alternate__brand-row {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footer-alternate__heading-thumbnails {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer Alternate",
+  "tag": "section",
+  "class": "section footer-alternate",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle (above heading)",
+      "default": "Facebook Community"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Join Sylvox Community"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Community image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Community image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Community image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Community image 4"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_label",
+      "label": "Newsletter Label",
+      "default": "Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter Description",
+      "default": "Be the first to know about product launches and all-things inside Sylvox."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Newsletter Button Text",
+      "default": "Sign Up"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_icon",
+      "label": "Button Icon (optional)"
+    },
+    {
+  "type": "text",
+  "id": "language_switcher",
+  "label": "Language Switcher Text",
+  "default": "NL | EN"
+}
+
+  ],
+  "blocks": [
+    {
+      "type": "menu_group",
+      "name": "Menu group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu Title"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+  "type": "social_link",
+  "name": "Social Link",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Social Link Label",
+      "default": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Social Link URL"
+    }
+  ]
+},
+{
+  "type": "right_link",
+  "name": "Right Footer Link",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Link Label",
+      "default": "Privacy Policy"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Link URL"
+    }
+  ]
+}
+  ],
+  "presets": [
+    {
+      "name": "Footer Alternate",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
