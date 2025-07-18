@@ -5,7 +5,6 @@
 <div class="stat-cards-grid" id="{{ section.id }}">
   <div class="stat-cards-grid__outer-wrapper">
     <div class="stat-cards-grid__row">
-
       {% if section.blocks.size > 0 %}
         {% assign block1 = section.blocks[0] %}
         <div class="stat-cards-grid__card" {{ block1.shopify_attributes }}>
@@ -31,7 +30,9 @@
           </div>
         </div>
       {% endif %}
+    </div>
 
+    <div class="stat-cards-grid__row">
       {% if section.blocks.size > 2 %}
         {% assign block3 = section.blocks[2] %}
         <div class="stat-cards-grid__card" {{ block3.shopify_attributes }}>
@@ -44,37 +45,9 @@
           </div>
         </div>
       {% endif %}
-    </div>
 
-    <div class="stat-cards-grid__row">
       {% if section.blocks.size > 3 %}
         {% assign block4 = section.blocks[3] %}
-        <div class="stat-cards-grid__card" {{ block4.shopify_attributes }}>
-          <div class="stat-cards-grid__inner">
-            <div>
-              <p class="stat-cards-grid__label">{{ block4.settings.label }}</p>
-              <h2 class="stat-cards-grid__stat">{{ block4.settings.stat }}</h2>
-            </div>
-            <p class="stat-cards-grid__description">{{ block4.settings.description }}</p>
-          </div>
-        </div>
-      {% endif %}
-
-      {% if section.blocks.size > 4 %}
-        {% assign block4 = section.blocks[4] %}
-        <div class="stat-cards-grid__card" {{ block4.shopify_attributes }}>
-          <div class="stat-cards-grid__inner">
-            <div>
-              <p class="stat-cards-grid__label">{{ block4.settings.label }}</p>
-              <h2 class="stat-cards-grid__stat">{{ block4.settings.stat }}</h2>
-            </div>
-            <p class="stat-cards-grid__description">{{ block4.settings.description }}</p>
-          </div>
-        </div>
-      {% endif %}
-
-      {% if section.blocks.size > 5 %}
-        {% assign block4 = section.blocks[5] %}
         <div class="stat-cards-grid__card" {{ block4.shopify_attributes }}>
           <div class="stat-cards-grid__inner">
             <div>
@@ -256,54 +229,6 @@
     {
       "type": "card_4",
       "name": "Card 4",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Label"
-        },
-        {
-          "type": "text",
-          "id": "stat",
-          "label": "Stat",
-          "default": "0"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description",
-          "default": "Description text"
-        }
-      ]
-    },
-    {
-      "type": "card_5",
-      "name": "Card 5",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Label"
-        },
-        {
-          "type": "text",
-          "id": "stat",
-          "label": "Stat",
-          "default": "0"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description",
-          "default": "Description text"
-        }
-      ]
-    },
-    {
-      "type": "card_6",
-      "name": "Card 6",
       "settings": [
         {
           "type": "text",

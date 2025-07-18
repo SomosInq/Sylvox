@@ -1,67 +1,63 @@
-{% if section.settings.custom_id != blank %}
-  <style>
-    @media screen and (max-width: 749px) {
-      #{{ section.settings.custom_id }} {
-        padding-top: {{ section.settings.mobile_padding_top }}px !important;
-        padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;
-        padding-left: {{ section.settings.mobile_padding_left }}px !important;
-        padding-right: {{ section.settings.mobile_padding_right }}px !important;
-        min-height: {{ section.settings.mobile_section_height }}px !important;
-      }
+<style>
+  .btn--sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+  .btn--base { padding: 0.5rem 1rem; font-size: 1rem; }
+  .btn--lg { padding: 0.75rem 1.5rem; font-size: 1.25rem; }
 
-      #{{ section.settings.custom_id }} > div {
-        max-width: {{ section.settings.mobile_content_width }}% !important;
-      }
-    }
-  </style>
-{% endif %}
+  .hover-zoom img:hover { transform: scale(1.05); transition: 0.3s ease; }
+  .hover-grayscale img:hover { filter: grayscale(100%); transition: 0.3s ease; }
+  .hover-fade img:hover { opacity: 0.7; transition: 0.3s ease; }
+
+@media screen and (max-width: 749px) {
+  #{{ section.settings.custom_id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px !important;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;
+    padding-left: {{ section.settings.mobile_padding_left }}px !important;
+    padding-right: {{ section.settings.mobile_padding_right }}px !important;
+    min-height: {{ section.settings.mobile_section_height }}px !important;
+  }
+
+  #{{ section.settings.custom_id }} > div {
+    max-width: {{ section.settings.mobile_content_width }}% !important;
+  }
+}
+</style>
 
 <div
   class="section_width_{{ section.settings.section_width }} section-content {{ section.settings.custom_class }}
     {% if section.settings.hide_desktop %}hide-desktop{% endif %}
     {% if section.settings.hide_tablet %}hide-tablet{% endif %}
     {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
-  {% if section.settings.custom_id != blank %}id="{{ section.settings.custom_id }}"{% endif %}
+  id="{{ section.settings.custom_id }}"
   style="
     position: relative;
     background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | img_url: 'master' }});
+      background-size: cover;
+      background-position: center;
+    {% endif %}
     min-height: {{ section.settings.section_height }}px;
+
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     display: flex;
     flex-direction: column;
     justify-content: {{ section.settings.vertical_alignment }};
-    text-align: {{ section.settings.text_alignment }};
-    overflow: hidden;
   "
 >
-  {% if section.settings.background_image %}
-    <div style="
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url({{ section.settings.background_image | img_url: 'master' }});
-      background-size: cover;
-      background-position: {{ section.settings.background_position }};
-      transform: scale({{ section.settings.background_zoom | divided_by: 100.0 }});
-      transform-origin: {{ section.settings.background_position }};
-      z-index: 0;
-    "></div>
-  {% endif %}
-
   {% if section.settings.banner_overlay_opacity > 0 %}
-    <div class="content" style="
+    <div style="
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background-color: {{ section.settings.banner_overlay_color }};
       opacity: {{ section.settings.banner_overlay_opacity }};
       pointer-events: none;
-      z-index: 1;
     "></div>
   {% endif %}
 
   {% if section.settings.custom_content_width_enabled %}
-    <div style="max-width: {{ section.settings.custom_content_width }}%; margin: 0 auto; position: relative; z-index: 2;">
+    <div style="max-width: {{ section.settings.custom_content_width }}%; margin: 0 auto; text-align: {{ section.settings.text_alignment }}; position: relative;">
   {% else %}
-    <div style="max-width: 100%; margin: 0 auto; position: relative; z-index: 2;">
+    <div style="max-width: 100%; margin: 0 auto; text-align: {{ section.settings.text_alignment }}; position: relative;">
   {% endif %}
 
     {% for block in section.blocks %}
@@ -72,20 +68,20 @@
               color: {{ block.settings.color }};
               font-weight: {{ block.settings.font_weight }};
               font-style: {% if block.settings.italic %}italic{% else %}normal{% endif %};
-              text-align: {{ block.settings.alignment | default: section.settings.text_alignment }};
+              text-align: {{ block.settings.alignment }};
             "
             {{ block.shopify_attributes }}>
             {{ block.settings.text }}
           </{{ block.settings.heading_tag }}>
 
         {% when 'subheading' %}
-          <div style="color: {{ block.settings.color }}; text-align: {{ block.settings.alignment | default: section.settings.text_alignment }};" {{ block.shopify_attributes }}>
+          <div style="color: {{ block.settings.color }}; text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
             <p>{{ block.settings.text }}</p>
           </div>
 
         {% when 'richtext' %}
           <div
-            style="color: {{ block.settings.color }}; text-align: {{ block.settings.alignment | default: section.settings.text_alignment }};"
+            style="color: {{ block.settings.color }}; text-align: {{ block.settings.alignment }};"
             {{ block.shopify_attributes }}>
             {{ block.settings.content }}
           </div>
@@ -120,7 +116,7 @@
           {% endif %}
 
         {% when 'button' %}
-          <div style="text-align: {{ block.settings.alignment | default: section.settings.text_alignment }}; margin-top: 14px;">
+          <div style="text-align: {{ block.settings.alignment }}; margin-top: 14px;">
             <a
               href="{{ block.settings.url }}"
               class="btn btn--{{ block.settings.size }}"
@@ -189,12 +185,6 @@
     { "type": "range", "id": "mobile_section_height", "label": "Mobile Section Height", "min": 100, "max": 1000, "step": 10, "default": 500, "unit": "px" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
-    { "type": "range", "id": "background_zoom", "label": "Background Image Zoom (%)", "min": 100, "max": 150, "step": 5, "default": 100 },
-    { "type": "select", "id": "background_position", "label": "Background Image Position", "default": "center", "options": [
-      { "value": "left", "label": "Left" },
-      { "value": "center", "label": "Center" },
-      { "value": "right", "label": "Right" }
-    ]},
     { "type": "color", "id": "banner_overlay_color", "label": "Banner Overlay Color", "default": "#000000" },
     { "type": "range", "id": "banner_overlay_opacity", "label": "Banner Overlay Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.4 },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0, "unit": "px" },
@@ -221,7 +211,6 @@
       { "value": "flex-end", "label": "Bottom" }
     ]}
   ],
-
   "blocks": [
     {
       "type": "heading",
