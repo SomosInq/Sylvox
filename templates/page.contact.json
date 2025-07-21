@@ -1,1 +1,140 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{}},"rich-text":{"type":"rich-text","blocks":{"e955a2f0-2c83-43ee-a644-e2c4588a3ca3":{"type":"heading","settings":{"title":"Contact Us","heading_size":"h2"}},"text":{"type":"text","settings":{"enlarge_text":false,"text":"<p>Feel free to connect with us anytime if you have any questions or concerns. Our dedicated customer service team is here to assist you with everything from placing orders to tracking deliveries and providing product details. Even if you're all set, we'd still love to hear your feedback. Your opinions matter greatly to us, and we're committed to continuously improving to better serve you.<\/p><p><strong>After-Sale:<\/strong><\/p><p>Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us at <strong>service@sylvoxtv.com<\/strong>. <\/p><p><strong>Pre-Sale<\/strong>:<\/p><p>For pre-sales questions, such as inquiries about purchasing multiple units or product specifications, feel free to reach out to us at <strong>presale@sylvoxtv.com<\/strong><\/p><p><strong>Service Hotline: +1 (866) 979-5869<\/strong><\/p><p>(Monday-Friday, 9:00AM-5:00PM EST)      <\/p><p><\/p><p>Warehouse Address: 1440 Brooks St. Suite #4 Ontario, CA, 91762.       <\/p><p>Hongkong Office: 5th Floor, Tai Yip Building, 141 Thomson Road, Wan Chai, Hong Kong   <br\/><\/p>"}}},"block_order":["e955a2f0-2c83-43ee-a644-e2c4588a3ca3","text"],"settings":{"align_text":"center","narrow_column":true,"color_scheme":"none","divider":false}},"form":{"type":"contact-form","settings":{"title":"","heading_size":"h2","heading_position":"left","text":"","show_phone":true,"narrow_column":true,"color_scheme":"none"}}},"order":["main","rich-text","form"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "usp_grid_wzUN6L": {
+      "type": "usp-grid",
+      "blocks": {
+        "usp_item_JDAHJF": {
+          "type": "usp_item",
+          "settings": {
+            "image_size": "medium",
+            "title": "After service",
+            "text": "Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us:\n<br>\nservice@sylvoxtv.com",
+            "base_text": "Write Us a Message",
+            "base_icon": "shopify://shop_images/Vector.svg",
+            "base_text_color": "#d3dac9",
+            "text_color": "#ffffff",
+            "background_color": "#336256",
+            "link": ""
+          }
+        },
+        "usp_item_pDECaD": {
+          "type": "usp_item",
+          "settings": {
+            "image_size": "medium",
+            "title": "Pre-Sale",
+            "text": "For pre-sales questions, such as inquiries about purchasing multiple units or product specifications, feel free to reach out to us\n<br>\npresale@sylvoxtv.com",
+            "base_text": "Write Us a Message",
+            "base_icon": "shopify://shop_images/Vector.svg",
+            "base_text_color": "#d3dac9",
+            "text_color": "#ffffff",
+            "background_color": "#336256",
+            "link": ""
+          }
+        },
+        "usp_item_j7PNe9": {
+          "type": "usp_item",
+          "settings": {
+            "image_size": "medium",
+            "title": "Working Hours & Service Hotline",
+            "text": "Monday - Friday\n<br><br>\n9:00 AM - 5:00 PM EST Time\n<br><br>\nService Hotline: +1 (866) 979-5869",
+            "base_text": "",
+            "base_text_color": "#d3dac9",
+            "text_color": "#ffffff",
+            "background_color": "#336256",
+            "link": ""
+          }
+        },
+        "usp_item_DxXdNX": {
+          "type": "usp_item",
+          "settings": {
+            "image_size": "medium",
+            "title": "Live Chat",
+            "text": "24 hours a day\n<br><br>\nMonday - Friday",
+            "base_text": "",
+            "base_text_color": "#d3dac9",
+            "text_color": "#ffffff",
+            "background_color": "#336256",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_JDAHJF",
+        "usp_item_pDECaD",
+        "usp_item_j7PNe9",
+        "usp_item_DxXdNX"
+      ],
+      "name": "USP Grid",
+      "settings": {
+        "enable_slider": false,
+        "section_width": "standard",
+        "heading": "Contact Information",
+        "subtext": "Feel free to connect with us anytime if you have any questions or concerns. Our dedicated customer service team is here to assist you with everything from placing orders to tracking deliveries and providing product details. Even if you're all set, we'd still love to hear your feedback. Your opinions matter greatly to us, and we're committed to continuously improving to better serve you.",
+        "heading_alignment": "left",
+        "show_arrows": false,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "e955a2f0-2c83-43ee-a644-e2c4588a3ca3": {
+          "type": "heading",
+          "settings": {
+            "title": "Contact Us",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": false,
+            "text": "<p>Feel free to connect with us anytime if you have any questions or concerns. Our dedicated customer service team is here to assist you with everything from placing orders to tracking deliveries and providing product details. Even if you're all set, we'd still love to hear your feedback. Your opinions matter greatly to us, and we're committed to continuously improving to better serve you.</p><p><strong>After-Sale:</strong></p><p>Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us at <strong>service@sylvoxtv.com</strong>. </p><p><strong>Pre-Sale</strong>:</p><p>For pre-sales questions, such as inquiries about purchasing multiple units or product specifications, feel free to reach out to us at <strong>presale@sylvoxtv.com</strong></p><p><strong>Service Hotline: +1 (866) 979-5869</strong></p><p>(Monday-Friday, 9:00AM-5:00PM EST)      </p><p></p><p>Warehouse Address: 1440 Brooks St. Suite #4 Ontario, CA, 91762.       </p><p>Hongkong Office: 5th Floor, Tai Yip Building, 141 Thomson Road, Wan Chai, Hong Kong   <br/></p>"
+          }
+        }
+      },
+      "block_order": ["e955a2f0-2c83-43ee-a644-e2c4588a3ca3", "text"],
+      "disabled": true,
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "title": "Write Us a Message",
+        "heading_size": "h2",
+        "heading_position": "left",
+        "text": "<p>For B2B, Media, KOL, Affiliate Marketing Cooperation Submissions;In order to provide you a better service and speed up responding time, Please select the corresponding email address to contact and do provide the relevant information before submitting an inquiry.  We aim to respond to all inquires within 24 hours.</p>",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "none"
+      }
+    }
+  },
+  "order": ["main", "usp_grid_wzUN6L", "rich-text", "form"]
+}
