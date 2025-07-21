@@ -1,1 +1,448 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{}},"slideshow":{"type":"slideshow","blocks":{"slideshow-0":{"type":"hero","settings":{"link_text":""}}},"block_order":["slideshow-0"],"settings":{}},"rich-text":{"type":"rich-text","blocks":{"heading":{"type":"heading","settings":{}},"text":{"type":"text","settings":{}}},"block_order":["heading","text"],"settings":{"color_scheme":"none"}},"map":{"type":"map","settings":{}},"text-columns":{"type":"text-columns","blocks":{"column1":{"type":"text_block","settings":{}},"column2":{"type":"text_block","settings":{}},"column3":{"type":"text_block","settings":{}}},"block_order":["column1","column2","column3"],"settings":{}},"featured-collection":{"type":"featured-collection","settings":{}},"form":{"type":"contact-form","settings":{"color_scheme":"none"}}},"order":["main","slideshow","rich-text","text-columns","map","featured-collection","form"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "somos_banner_kLaeqi": {
+      "type": "somos-banner",
+      "blocks": {
+        "subheading_cKnAyr": {
+          "type": "subheading",
+          "settings": {
+            "text": "Inspiring well-being with technology.",
+            "color": "#f7f7f7",
+            "alignment": "center"
+          }
+        },
+        "heading_mUebgn": {
+          "type": "heading",
+          "settings": {
+            "text": "Feel Good, Live Outdoors.",
+            "heading_tag": "h2",
+            "color": "#f7f7f7",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": ["subheading_cKnAyr", "heading_mUebgn"],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": false,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 880,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/20105295d8aff1b84c44f90d2028131d1d967718_4e59f643-f30b-495d-ad46-515af7dd105b.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "image_text_7GbYEg": {
+      "type": "image-text",
+      "blocks": {
+        "title_TT4cMq": {
+          "type": "title",
+          "settings": {
+            "title": "At Sylvox, we believe in enhancing everyday well-being by bringing high-quality entertainment outdoors."
+          }
+        },
+        "text_79TTDX": {
+          "type": "text",
+          "settings": {
+            "text": "Founded by Mr. Golden, a visionary with decades of experience in display technology, Sylvox was created to make outdoor entertainment accessible, immersive, and enjoyable for everyone."
+          }
+        }
+      },
+      "block_order": ["title_TT4cMq", "text_79TTDX"],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "background_gradient": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "image_text_cAQDiG": {
+      "type": "image-text",
+      "blocks": {
+        "image_FMJh4q": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/49eb2164b6172f04eb4fc78972e95b0bba46ee27.png",
+            "image_alignment": "center"
+          }
+        },
+        "text_78Na7V": {
+          "type": "text",
+          "settings": {
+            "text": "Driven by innovation, Sylvox combines advanced technology with durable design to deliver TVs that thrive in diverse outdoor settings."
+          }
+        }
+      },
+      "block_order": ["image_FMJh4q", "text_78Na7V"],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "background_gradient": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "new_banner_slider_xziDeF": {
+      "type": "new-banner-slider",
+      "blocks": {
+        "slide_RLkAxR": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/7cac0a1597c10b0d1cd7e3ffb78ca6d9c1c296be.jpg",
+            "caption": "Accessibility",
+            "description_block": "Makes high-quality outdoor TVs that are accessible to more people, making outdoor entertainment a part of everyday life."
+          }
+        },
+        "slide_whyfwT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
+            "caption": "Works Even After Heavy Rain",
+            "description_block": "Outdoor Dining Area"
+          }
+        }
+      },
+      "block_order": ["slide_RLkAxR", "slide_whyfwT"],
+      "name": "New Banner Slider",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "text_alignment": "center",
+        "heading": "",
+        "subheading": "Feel Good, Live Outdoors.",
+        "description": "We’re more than a TV brand; we’re inspiring new ways to live in the great outdoors.",
+        "show_arrows": true,
+        "show_dots": true,
+        "slide_size": "large",
+        "slide_height": 900
+      }
+    },
+    "image_text_ycy7Tj": {
+      "type": "image-text",
+      "blocks": {
+        "image_jGhLik": {
+          "type": "image",
+          "settings": {
+            "image_alignment": "center"
+          }
+        },
+        "title_AVjgnQ": {
+          "type": "title",
+          "settings": {
+            "title": "50,000+"
+          }
+        },
+        "title_rrLN9Y": {
+          "type": "title",
+          "settings": {
+            "title": "have chosen Sylvox to  experience the outdoors like never before."
+          }
+        },
+        "text_6NpGWM": {
+          "type": "text",
+          "settings": {
+            "text": "With over 15 years of innovation, Sylvox has become a global leader in outdoor TV solutions. At Sylvox, we don't just provide outdoor TVs – we redefine outdoor entertainment."
+          }
+        }
+      },
+      "block_order": [
+        "image_jGhLik",
+        "title_AVjgnQ",
+        "title_rrLN9Y",
+        "text_6NpGWM"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "image_grid_UMc3df": {
+      "type": "image-grid",
+      "blocks": {
+        "media_item_ANJBXH": {
+          "type": "media_item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/SMB-1_jpg.png",
+            "image_width": 100,
+            "image_ratio": "1/1",
+            "image_hover": "none",
+            "lazy_load": true,
+            "video_url": "",
+            "autoplay": false,
+            "mute": false,
+            "loop": false
+          }
+        },
+        "media_item_ti6k3b": {
+          "type": "media_item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/P2_007_jpg.png",
+            "image_width": 100,
+            "image_ratio": "1/1",
+            "image_hover": "none",
+            "lazy_load": true,
+            "video_url": "",
+            "autoplay": false,
+            "mute": false,
+            "loop": false
+          }
+        },
+        "media_item_tjFcxY": {
+          "type": "media_item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/SMB_jpg.png",
+            "image_width": 100,
+            "image_ratio": "1/1",
+            "image_hover": "none",
+            "lazy_load": true,
+            "video_url": "",
+            "autoplay": false,
+            "mute": false,
+            "loop": false
+          }
+        },
+        "media_item_te7awW": {
+          "type": "media_item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/S1-Brand_jpg.png",
+            "image_width": 100,
+            "image_ratio": "1/1",
+            "image_hover": "none",
+            "lazy_load": true,
+            "video_url": "",
+            "autoplay": false,
+            "mute": false,
+            "loop": false
+          }
+        },
+        "media_item_wdNFzL": {
+          "type": "media_item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Group_1321320704_jpg.png",
+            "image_width": 100,
+            "image_ratio": "1/1",
+            "image_hover": "none",
+            "lazy_load": true,
+            "video_url": "",
+            "autoplay": false,
+            "mute": false,
+            "loop": false
+          }
+        }
+      },
+      "block_order": [
+        "media_item_ANJBXH",
+        "media_item_ti6k3b",
+        "media_item_tjFcxY",
+        "media_item_te7awW",
+        "media_item_wdNFzL"
+      ],
+      "name": "Image Grid",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "full",
+        "custom_id": "",
+        "custom_class": "",
+        "background_color": "",
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "heading": "",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "center",
+        "heading_weight": "700",
+        "text": "",
+        "text_color": "",
+        "text_align": "center",
+        "text_italic": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "right",
+        "enable_slider": false
+      }
+    },
+    "stat_cards_grid_mBy44i": {
+      "type": "stat-cards-grid",
+      "blocks": {
+        "card_1_WPYxNp": {
+          "type": "card_1",
+          "settings": {
+            "label": "Happy Customers",
+            "stat": "50,000+",
+            "description": "Delivering exceptional satisfaction with high-quality TVs worldwide."
+          }
+        },
+        "card_2_UmHGNc": {
+          "type": "card_2",
+          "settings": {
+            "label": "Years of Innovation",
+            "stat": "15+",
+            "description": "Pioneering outdoor TV solutions with over a decade of expertise."
+          }
+        },
+        "card_4_FqyFwT": {
+          "type": "card_4",
+          "name": "Card 5",
+          "settings": {
+            "label": "Global Warehouses",
+            "stat": "15+",
+            "description": "Ensuring fast and reliable delivery through strategic global distribution."
+          }
+        },
+        "card_3_aXHfxi": {
+          "type": "card_3",
+          "settings": {
+            "label": "Countries & Regions",
+            "stat": "100+",
+            "description": "Expanding global reach, trusted by customers in diverse markets."
+          }
+        },
+        "card_4_3qDHeE": {
+          "type": "card_4",
+          "settings": {
+            "label": "Patents",
+            "stat": "100+",
+            "description": "Innovating cutting-edge technology with a focus on performance and durability."
+          }
+        },
+        "card_4_6p4n69": {
+          "type": "card_4",
+          "name": "Card 6",
+          "settings": {
+            "label": "Strategic Partners",
+            "stat": "200+",
+            "description": "Collaborating with top-tier partners to provide world-class service and support."
+          }
+        }
+      },
+      "block_order": [
+        "card_1_WPYxNp",
+        "card_2_UmHGNc",
+        "card_4_FqyFwT",
+        "card_3_aXHfxi",
+        "card_4_3qDHeE",
+        "card_4_6p4n69"
+      ],
+      "name": "Stat Cards Grid",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "somos_banner_kLaeqi",
+    "image_text_7GbYEg",
+    "image_text_cAQDiG",
+    "new_banner_slider_xziDeF",
+    "image_text_ycy7Tj",
+    "image_grid_UMc3df",
+    "stat_cards_grid_mBy44i",
+    "main"
+  ]
+}
