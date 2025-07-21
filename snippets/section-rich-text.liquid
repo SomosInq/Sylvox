@@ -69,12 +69,30 @@
                 %}
               {%- endif -%}
             </div>
-          {%- when 'button' -%}
-            <div class="rte clearfix">
-              <a href="{{ block.settings.link }}" class="btn">
-                {{ block.settings.link_text }}
-              </a>
-            </div>
+           {% when 'button' %}
+          <div style="text-align: {{ block.settings.alignment | default: section.settings.text_alignment }}; margin-top: 14px;">
+            <a
+              href="{{ block.settings.url }}"
+              class="btn btn--{{ block.settings.size }}"
+              style="
+                border-radius: 30px;
+                color: {{ block.settings.text_color }};
+                background-color: {{ block.settings.background }};
+                {% if block.settings.style == 'outline' %}
+                  border: 2px solid {{ block.settings.outline_color }};
+                  background-color: transparent;
+                {% endif %}
+              "
+              {{ block.shopify_attributes }}>
+              {% if block.settings.icon_position == 'left' and block.settings.icon != blank %}
+                <span>{{ block.settings.icon }}</span>
+              {% endif %}
+              {{ block.settings.text }}
+              {% if block.settings.icon_position == 'right' and block.settings.icon != blank %}
+                <span>{{ block.settings.icon }}</span>
+              {% endif %}
+            </a>
+          </div>
         {%- endcase -%}
       </div>
     {%- endfor -%}

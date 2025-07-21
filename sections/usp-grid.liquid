@@ -1,23 +1,173 @@
+<style>
+  .usp-box {
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .usp-icon.small { width: 32px; }
+  .usp-icon.medium { width: 48px; }
+  .usp-icon.large { width: 64px; }
+
+  .usp-base-text {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .usp-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .usp-grid .usp-box {
+    flex: 1 1 200px;
+    max-width: 300px;
+  }
+
+  .usp-arrows {
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  .usp-arrow {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    margin-left: 4px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    .usp-grid-section {
+      padding: 60px 30px !important;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .carousel-cell {
+    opacity: 1 !important;
+  }
+
+.usp-grid-section .carousel-cell {
+  {% comment %} width: 300px;
+  margin-right: 20px;
+  flex: none; {% endcomment %}
+}
+</style>
+
+<section class="usp-grid-section section_width_{{ section.settings.section_width }}"
+  style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+
+  {% if section.settings.heading != blank %}
+    <div class="usp-heading-wrapper" style="text-align: {{ section.settings.heading_alignment }};">
+      <h2 class="usp-heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.subtext != blank %}
+        <div class="usp-subtext">{{ section.settings.subtext }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.enable_slider %}
+    {% if section.settings.show_arrows %}
+      <div class="usp-arrows">
+        <button class="usp-arrow prev" aria-label="Previous">‹</button>
+        <button class="usp-arrow next" aria-label="Next">›</button>
+      </div>
+    {% endif %}
+    <div class="usp-slider js-flickity"
+      data-flickity='{"wrapAround": true, "pageDots": false, "contain": true, "prevNextButtons": false, "cellAlign": "left"}'>
+      {% for block in section.blocks %}
+        {% assign size_class = block.settings.image_size %}
+        <a href="{{ block.settings.link | default: '#' }}" class="usp-box carousel-cell"
+          style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }};"
+          {{ block.shopify_attributes }}>
+          <div class="usp-inner">
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | img_url: '150x150' }}" alt="{{ block.settings.title }}"
+                class="usp-icon {{ size_class }}">
+            {% endif %}
+            <h3 class="usp-title">{{ block.settings.title }}</h3>
+            <div class="usp-text">{{ block.settings.text }}</div>
+            {% if block.settings.base_text != blank %}
+              <div class="usp-base-text" style="color: {{ block.settings.base_text_color }}">
+                <span>{{ block.settings.base_text }}</span>
+                {% if block.settings.base_icon %}
+                  <img src="{{ block.settings.base_icon | img_url: '32x32' }}" alt="Base Icon">
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="usp-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" class="usp-box"
+          style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }};"
+          {{ block.shopify_attributes }}>
+          <div class="usp-inner">
+            {% if block.settings.icon %}
+              <img src="{{ block.settings.icon | img_url: '150x150' }}" alt="{{ block.settings.title }}"
+                class="usp-icon {{ block.settings.image_size }}">
+            {% endif %}
+            <h3 class="usp-title" style="color: {{ block.settings.text_color }};">{{ block.settings.title }}</h3>
+            <div class="usp-text"style="color: {{ block.settings.text_color }};">{{ block.settings.text }}</div>
+            {% if block.settings.base_text != blank %}
+              <div class="usp-base-text" style="color: {{ block.settings.base_text_color }}">
+                {% if block.settings.base_icon %}
+                  <img src="{{ block.settings.base_icon | img_url: '32x32' }}" alt="Base Icon">
+                {% endif %}
+                <span>{{ block.settings.base_text }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+
+{% if section.settings.enable_slider %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var flkty = new Flickity('.js-flickity');
+    var prevBtn = document.querySelector('.usp-arrow.prev');
+    var nextBtn = document.querySelector('.usp-arrow.next');
+
+    if (prevBtn && nextBtn && flkty) {
+      prevBtn.addEventListener('click', () => flkty.previous());
+      nextBtn.addEventListener('click', () => flkty.next());
+    }
+  });
+</script>
+{% endif %}
+
 {% schema %}
 {
   "name": "USP Grid",
   "settings": [
-     {
-  "type": "select",
-  "id": "section_width",
-  "label": "Section Width",
-  "default": "standard",
-  "options": [
     {
-      "value": "standard",
-      "label": "50% Width"
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable as Slider",
+      "default": true
     },
     {
-      "value": "full",
-      "label": "Full Width"
-    }
-  ]
-},
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
     {
       "type": "text",
       "id": "heading",
@@ -47,14 +197,14 @@
       "label": "Show Navigation Arrows",
       "default": true
     },
-    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
   ],
   "blocks": [
     {
@@ -84,10 +234,35 @@
           "default": "Authenticity Guarantee"
         },
         {
-          "type": "text",
+          "type": "html",
           "id": "text",
-          "label": "Text",
-          "default": "100% Genuine, Quality Assured"
+          "label": "Main Text (HTML)",
+          "default": "<p>100% Genuine, Quality Assured</p>"
+        },
+        {
+          "type": "text",
+          "id": "base_text",
+          "label": "Base Text (Optional)"
+        },
+        {
+          "type": "image_picker",
+          "id": "base_icon",
+          "label": "Icon next to Base Text"
+        },
+        {
+          "type": "color",
+          "id": "base_text_color",
+          "label": "Base Text Color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color"
         },
         {
           "type": "url",
@@ -105,77 +280,3 @@
   ]
 }
 {% endschema %}
-
-<section class="usp-grid-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
-  {% if section.settings.heading != blank %}
-    <div class="usp-heading-wrapper" style="text-align: {{ section.settings.heading_alignment }};">
-      <h2 class="usp-heading">{{ section.settings.heading }}</h2>
-      {% if section.settings.subtext != blank %}
-        <div class="usp-subtext">{{ section.settings.subtext }}</div>
-      {% endif %}
-    </div>
-  {% endif %}
-
-  <div class="usp-slider-wrapper">
-    {% if section.settings.show_arrows %}
-      <div class="usp-arrows">
-        <button class="usp-arrow prev" aria-label="Previous">‹</button>
-        <button class="usp-arrow next" aria-label="Next">›</button>
-      </div>
-    {% endif %}
-
-    <div 
-      class="usp-slider js-flickity" 
-      data-flickity='{
-        "wrapAround": true,
-        "pageDots": false,
-        "contain": true,
-        "prevNextButtons": false,
-        "cellAlign": "left"
-      }'>
-
-      {% for block in section.blocks %}
-        {% assign size_class = block.settings.image_size %}
-        <a href="{{ block.settings.link | default: '#' }}" class="usp-box carousel-cell" {{ block.shopify_attributes }}>
-          <div class="usp-inner">
-            {% if block.settings.icon %}
-              <img 
-                src="{{ block.settings.icon | img_url: '150x150' }}" 
-                alt="{{ block.settings.title }}" 
-                class="usp-icon {{ size_class }}">
-            {% endif %}
-            <h3 class="usp-title">{{ block.settings.title }}</h3>
-            <p class="usp-text">{{ block.settings.text }}</p>
-          </div>
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<style>
-
-  #shopify-section-{{ section.id }} .carousel-cell {
-    opacity: 1 !important;
-  }
-
-  @media screen and (max-width: 768px) {
-    #shopify-section-{{ section.id }} .usp-grid-section {
-      padding: 60px 30px !important;
-    }
-  }
-
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var flkty = new Flickity('.js-flickity');
-    var prevBtn = document.querySelector('.usp-arrow.prev');
-    var nextBtn = document.querySelector('.usp-arrow.next');
-
-    if (prevBtn && nextBtn && flkty) {
-      prevBtn.addEventListener('click', () => flkty.previous());
-      nextBtn.addEventListener('click', () => flkty.next());
-    }
-  });
-</script>

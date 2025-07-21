@@ -1,0 +1,445 @@
+<style>
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_width_full {
+    width: 100%;
+  }
+
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_content_width_full {
+    width: 100%;
+  }
+
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .custom-imagegrid-section {
+    display: block;
+    position: relative;
+  }
+
+  .custom-imagegrid-slider {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .custom-imagegrid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .custom-imagegrid-item {
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .hide-desktop { display: none !important; }
+  @media (max-width: 1024px) {
+    .hide-tablet { display: none !important; }
+  }
+  @media (max-width: 749px) {
+    .hide-mobile { display: none !important; }
+  }
+</style>
+
+{% assign section_id = section.settings.custom_id | default: 'shopify-section-' | append: section.id %}
+<section
+  id="{{ section_id }}"
+  class="custom-imagegrid-section section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}
+    {% if section.settings.hide_desktop %}hide-desktop{% endif %}
+    {% if section.settings.hide_tablet %}hide-tablet{% endif %}
+    {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image != blank %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover; background-position: center;{% endif %}
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  "
+>
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    {% if section.settings.heading != blank %}
+      <{{ section.settings.heading_tag }} class="title" style="color: {{ section.settings.heading_color }}; text-align: {{ section.settings.heading_align }}; font-weight: {{ section.settings.heading_weight }}">
+        {{ section.settings.heading | escape }}
+      </{{ section.settings.heading_tag }}>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="rich-text" style="text-align: {{ section.settings.text_align }}; color: {{ section.settings.text_color }}; font-style: {% if section.settings.text_italic %}italic{% else %}normal{% endif %};">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="btn {% if section.settings.button_style == 'secondary' %}btn--secondary{% else %}btn--primary{% endif %}">
+        {% if section.settings.button_icon != blank and section.settings.button_icon_position == 'left' %}
+          <span class="icon icon-left">{{ section.settings.button_icon }}</span>
+        {% endif %}
+        {{ section.settings.button_label }}
+        {% if section.settings.button_icon != blank and section.settings.button_icon_position == 'right' %}
+          <span class="icon icon-right">{{ section.settings.button_icon }}</span>
+        {% endif %}
+      </a>
+    {% endif %}
+
+    <div class="{% if section.settings.enable_slider %}custom-imagegrid-slider{% else %}custom-imagegrid-grid{% endif %}">
+      {% for block in section.blocks %}
+        <div class="custom-imagegrid-item">
+          {% if block.settings.media_type == 'image' %}
+            <img
+              src="{{ block.settings.image | image_url }}"
+              loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+              style="width: {{ block.settings.image_width }}%; aspect-ratio: {{ block.settings.image_ratio }}; {% if block.settings.image_hover == 'zoom' %}transition: transform .3s;{% endif %}"
+              class="{% if block.settings.image_hover == 'zoom' %}hover-zoom{% elsif block.settings.image_hover == 'fade' %}hover-fade{% elsif block.settings.image_hover == 'grayscale' %}hover-grayscale{% endif %}"
+            >
+          {% elsif block.settings.media_type == 'video' %}
+            {% if block.settings.video_url contains 'youtube.com' or block.settings.video_url contains 'vimeo.com' %}
+              <iframe src="{{ block.settings.video_url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            {% else %}
+              <video
+                {% if block.settings.autoplay %}autoplay{% endif %}
+                {% if block.settings.mute %}muted{% endif %}
+                {% if block.settings.loop %}loop{% endif %}
+                poster="{{ block.settings.video_thumbnail | image_url }}"
+                controls>
+                <source src="{{ block.settings.video_url }}" type="video/mp4">
+              </video>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+
+{
+      "name": "Image Grid",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "Hide on Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_tablet",
+      "label": "Hide on Tablet"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "Hide on Mobile"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_left",
+      "label": "Margin Left",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "margin_right",
+      "label": "Margin Right",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading Tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Font Weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "text_italic",
+      "label": "Italic Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "default": "primary",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "button_icon",
+      "label": "Button Icon (SVG or Text)"
+    },
+    {
+      "type": "select",
+      "id": "button_icon_position",
+      "label": "Button Icon Position",
+      "default": "right",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable Slider"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_item",
+      "name": "Media Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "Media Type",
+          "options": [
+            { "value": "image", "label": "Image" },
+            { "value": "video", "label": "Video" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (%)",
+          "min": 10,
+          "max": 100,
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image Ratio",
+          "options": [
+            { "value": "1/1", "label": "Square" },
+            { "value": "16/9", "label": "Landscape" },
+            { "value": "3/4", "label": "Portrait" }
+          ],
+          "default": "1/1"
+        },
+        {
+          "type": "select",
+          "id": "image_hover",
+          "label": "Image Hover Effect",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "zoom", "label": "Zoom" },
+            { "value": "grayscale", "label": "Grayscale" },
+            { "value": "fade", "label": "Fade" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "checkbox",
+          "id": "lazy_load",
+          "label": "Lazy Load Image",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay Video"
+        },
+        {
+          "type": "checkbox",
+          "id": "mute",
+          "label": "Mute Video"
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "Loop Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumbnail",
+          "label": "Video Thumbnail"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Grid",
+      "category": "Somos Custom"
+    }
+  ]
+}
+
+
+{% endschema %}

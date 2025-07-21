@@ -3237,6 +3237,7 @@ label[for] {
 
 .form-vertical .btn:not(:last-child) {
     margin-bottom: 30px;
+    background-color: #336256;
   }
 
 small {
