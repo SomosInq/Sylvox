@@ -34,13 +34,13 @@
             "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
+            "overlay_color": "#000000",
+            "overlay_opacity": 40,
             "image_size": 100
           }
         }
       },
-      "block_order": [
-        "slide_4PVewK"
-      ],
+      "block_order": ["slide_4PVewK"],
       "name": "Somos Slider Collection",
       "settings": {
         "section_width": "full",
@@ -49,7 +49,7 @@
         "show_dots": false,
         "collection_subheading": "",
         "category_title": "",
-        "slide_height": 500,
+        "slide_height": 800,
         "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -106,9 +106,7 @@
           }
         }
       },
-      "block_order": [
-        "liquid_PXXaeb"
-      ],
+      "block_order": ["liquid_PXXaeb"],
       "disabled": true,
       "settings": {
         "full_width": false,
@@ -157,7 +155,8 @@
           "type": "subheading",
           "settings": {
             "text": "Outdoor TV Finder",
-            "color": "#ffffff"
+            "color": "#ffffff",
+            "alignment": "left"
           }
         },
         "heading_TWpQCb": {
@@ -165,14 +164,18 @@
           "settings": {
             "text": "Not Sure What Outdoor TV Fits you Best?",
             "heading_tag": "h2",
-            "color": "#ffffff"
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "left"
           }
         },
         "richtext_t8hnjr": {
           "type": "richtext",
           "settings": {
             "content": "<p>About AR Outdoor tv finder</p>",
-            "color": "#ffffff"
+            "color": "#ffffff",
+            "alignment": "left"
           }
         },
         "button_HMG69q": {
@@ -184,7 +187,10 @@
             "size": "base",
             "text_color": "#ffffff",
             "background": "#20413b",
-            "outline_color": "#000000"
+            "outline_color": "#000000",
+            "icon": "",
+            "icon_position": "left",
+            "alignment": "left"
           }
         }
       },
@@ -198,71 +204,98 @@
       "settings": {
         "section_width": "standard",
         "section_content_width": "standard",
+        "custom_content_width_enabled": false,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
         "section_height": 330,
+        "mobile_section_height": 500,
         "background_color": "#ffffff",
-        "background_image": "shopify://shop_images/4f105a4ebfa257c4b0a64a6b063a33aa3bc87138.png",
-        "padding_top": 60,
+        "background_image": "shopify://shop_images/c1bd112c9886b41200f3ad1d55623cef7c718ee9_2.png",
+        "background_zoom": 125,
+        "background_position": "left",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.2,
+        "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "text_alignment": "left"
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "left",
+        "vertical_alignment": "center"
       }
     },
-    "comparison_table_prb7MT": {
+    "comparison_table_3NJqCG": {
       "type": "comparison-table",
       "blocks": {
-        "values_cTXTRc": {
+        "values_XEqAWy": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
+            "main_image": "shopify://shop_images/76d29d9a8c078cbd7284e62951171bd6381c0aea.png",
             "header_title": "",
-            "icon": "shopify://shop_images/Icons-1_a8276d13-b406-42e0-8367-dc1870c79980.png",
+            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
             "title": "Partial Sun",
             "price": "",
             "button_label": "Learn More",
-            "button_link": "shopify://collections/2024-summer-sale-pool-series",
-            "value_1": "<p>Value</p>",
-            "value_2": "<p>Value</p>",
-            "value_3": "<p>Value</p>",
-            "value_4": "<p>Value</p>",
-            "value_5": "<p>Value</p>",
-            "value_6": "<p>Value</p>",
-            "value_7": "<p>Value</p>",
+            "button_link": "shopify://collections/2024-summer-sale-pool-pro-2-0",
+            "button_image": "shopify://shop_images/SVG_1.svg",
+            "value_1": "<p>Shaded patios, covered decks, <br/>semi-outdoor entertainment areas</p>",
+            "value_2": "<p>1000 nits</p>",
+            "value_image_2": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "value_3": "<p>IP55 (Water & dust resistant)</p>",
+            "value_image_3": "shopify://shop_images/Icons-1_71c62b09-25b1-4a0f-b5ea-c2a0862a6b03.png",
+            "value_4": "<p>Typically -22℉ to 122℉ (-30°C to 50°C)</p>",
+            "value_image_4": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "value_5": "<p>Great color and contrast for shaded areas</p>",
+            "value_image_5": "shopify://shop_images/Icons-3_7f79dbc3-96ed-4980-9bf9-b30e8bd88587.png",
+            "value_6": "<p>Google TV, Smart TV apps, voice control</p>",
+            "value_image_6": "shopify://shop_images/Icons-4_0dc2d095-0cd1-4bfb-827a-4e056e18c935.png",
+            "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
             "value_8": "",
             "value_9": "",
             "value_10": ""
           }
         },
-        "values_bE8dXt": {
+        "values_kXCrka": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_08c58724-0891-44f3-b536-ada53ca17206.png",
+            "main_image": "shopify://shop_images/3c0bdd2efba9b5a8e31e7724f16fd77322936476.png",
             "header_title": "",
-            "icon": "shopify://shop_images/Icons-3_38b39895-e177-42f6-bb0b-1031e1bf1953.png",
+            "icon": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
             "title": "Full Sun",
             "price": "",
             "button_label": "Learn More",
             "button_link": "shopify://collections/2024-summer-sale-pool-pro-2-0",
-            "value_1": "<p>Value</p>",
-            "value_2": "<p>Value</p>",
-            "value_3": "<p>Value</p>",
-            "value_4": "<p>Value</p>",
-            "value_5": "<p>Value</p>",
-            "value_6": "<p>Value</p>",
-            "value_7": "<p>Value</p>",
+            "button_image": "shopify://shop_images/SVG_1.svg",
+            "value_1": "<p>Shaded patios, covered decks, <br/>semi-outdoor entertainment areas</p>",
+            "value_2": "<p>1000 nits</p>",
+            "value_image_2": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "value_3": "<p>IP55 (Water & dust resistant)</p>",
+            "value_image_3": "shopify://shop_images/Icons-1_71c62b09-25b1-4a0f-b5ea-c2a0862a6b03.png",
+            "value_4": "<p>Typically -22℉ to 122℉ (-30°C to 50°C)</p>",
+            "value_image_4": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "value_5": "<p>Great color and contrast for shaded areas</p>",
+            "value_image_5": "shopify://shop_images/Icons-3_7f79dbc3-96ed-4980-9bf9-b30e8bd88587.png",
+            "value_6": "<p>Google TV, Smart TV apps, voice control</p>",
+            "value_image_6": "shopify://shop_images/Icons-4_0dc2d095-0cd1-4bfb-827a-4e056e18c935.png",
+            "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
             "value_8": "",
             "value_9": "",
             "value_10": ""
           }
         }
       },
-      "block_order": [
-        "values_cTXTRc",
-        "values_bE8dXt"
-      ],
+      "block_order": ["values_XEqAWy", "values_kXCrka"],
       "name": "Comparison Table",
       "settings": {
-        "title": "",
+        "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
         "button_text": "",
         "button_url": "",
@@ -272,8 +305,8 @@
         "button_size": 16,
         "background_color": "",
         "section_width": "standard",
-        "text_alignment": "left",
-        "padding_top": 0,
+        "text_alignment": "center",
+        "padding_top": 50,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
@@ -283,13 +316,15 @@
         "margin_right": 0,
         "view_all_text": "View All Comparisons",
         "view_all_url": "",
-        "heading_1": "Head",
-        "heading_2": "Head",
-        "heading_3": "Head",
-        "heading_4": "Head",
-        "heading_5": "Head",
-        "heading_6": "Head",
-        "heading_7": "Head",
+        "show_view_all_comparisons": false,
+        "show_see_all_specs": false,
+        "heading_1": "Best For",
+        "heading_2": "Peak Brightness",
+        "heading_3": "Weather Resistance",
+        "heading_4": "Temperature Resistance",
+        "heading_5": "Color & Contrast",
+        "heading_6": "Smart Features",
+        "heading_7": "Recommended Usage",
         "heading_8": "",
         "heading_9": "",
         "heading_10": "",
@@ -305,95 +340,107 @@
         "heading_20": ""
       }
     },
-    "comparison_table_wy3rrk": {
+    "comparison_table_9fjT4M": {
       "type": "comparison-table",
       "blocks": {
-        "values_q3Lcya": {
+        "values_YmCWYm": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
-            "header_title": "Deck Pro 2.0",
-            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "title": "Full Shade, Partial Sun",
+            "main_image": "shopify://shop_images/23bb980516018b3a8370382d77dd1f104ce38d1c_1.png",
+            "header_title": "Deck Pro",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
             "price": "from $1,149.00",
             "button_label": "Buy it now",
-            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-            "value_1": "<p>Value</p>",
+            "button_link": "shopify://collections/all",
+            "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Value</p>",
-            "value_3": "<p>Value</p>",
-            "value_4": "<p>Value</p>",
-            "value_5": "<p>Value</p>",
-            "value_6": "<p>Value</p>",
+            "value_2": "<p>Android TV</p>",
+            "value_image_2": "shopify://shop_images/png__1_2_1.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
             "value_7": "",
             "value_8": "",
             "value_9": "",
             "value_10": ""
           }
         },
-        "values_hXT8NR": {
+        "values_W4YEg9": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
+            "main_image": "shopify://shop_images/f7a02dd66eb20b01194b48f023b3a42c671b52ca_1.jpg",
             "header_title": "Deck Pro 2.0",
-            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "title": "Full Shade, Partial Sun",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
             "price": "from $1,149.00",
             "button_label": "Buy it now",
-            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-            "value_1": "<p>Value</p>",
+            "button_link": "shopify://collections/all",
+            "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Value</p>",
-            "value_3": "<p>Value</p>",
-            "value_4": "<p>Value</p>",
-            "value_5": "<p>Value</p>",
-            "value_6": "<p>Value</p>",
+            "value_2": "<p>Google TV</p>",
+            "value_image_2": "shopify://shop_images/Icons_37e82f67-7342-40d9-9d7f-1b6a055f88d2.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
             "value_7": "",
             "value_8": "",
             "value_9": "",
             "value_10": ""
           }
         },
-        "values_xj3d9w": {
+        "values_BnpAAw": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
-            "header_title": "Deck Pro 2.0",
-            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "title": "Full Shade, Partial Sun",
+            "main_image": "shopify://shop_images/76d29d9a8c078cbd7284e62951171bd6381c0aea_1.png",
+            "header_title": "Deck Pro QLED 2.0",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
             "price": "from $1,149.00",
             "button_label": "Buy it now",
-            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-            "value_1": "<p>Value</p>",
+            "button_link": "shopify://collections/all",
+            "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Value</p>",
-            "value_3": "<p>Value</p>",
-            "value_4": "<p>Value</p>",
-            "value_5": "<p>Value</p>",
-            "value_6": "<p>Value</p>",
+            "value_2": "<p>Google TV</p>",
+            "value_image_2": "shopify://shop_images/Icons_37e82f67-7342-40d9-9d7f-1b6a055f88d2.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
             "value_7": "",
             "value_8": "",
             "value_9": "",
             "value_10": ""
           }
         },
-        "values_3Ck6Dr": {
+        "values_GkXGDX": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_1c46059d-a8e0-4143-9b41-3ca27ce886d9.png",
-            "header_title": "Deck Pro 2.0",
-            "icon": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "title": "Full Shade, Partial Sun",
+            "main_image": "shopify://shop_images/2723d9098f0afa53107a23f2a5bea92d85940c61.png",
+            "header_title": "Gaming Series",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
             "price": "from $1,149.00",
             "button_label": "Buy it now",
-            "button_link": "shopify://products/1-year-extended-warranty-for-sylvox-cinema-pro-110-tv-total-3-years",
-            "value_1": "<p>Value</p>",
+            "button_link": "shopify://collections/all",
+            "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Value</p>",
-            "value_3": "<p>Value</p>",
-            "value_4": "<p>Value</p>",
-            "value_5": "<p>Value</p>",
-            "value_6": "<p>Value</p>",
+            "value_2": "<p>Google TV</p>",
+            "value_image_2": "shopify://shop_images/Icons_37e82f67-7342-40d9-9d7f-1b6a055f88d2.png",
+            "value_3": "<p>1000 nits</p>",
+            "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+            "value_4": "<p>4K UHD 3840x2160</p>",
+            "value_image_4": "shopify://shop_images/Icons_5.png",
+            "value_5": "",
+            "value_6": "",
             "value_7": "",
             "value_8": "",
             "value_9": "",
@@ -402,14 +449,14 @@
         }
       },
       "block_order": [
-        "values_q3Lcya",
-        "values_hXT8NR",
-        "values_xj3d9w",
-        "values_3Ck6Dr"
+        "values_YmCWYm",
+        "values_W4YEg9",
+        "values_BnpAAw",
+        "values_GkXGDX"
       ],
       "name": "Comparison Table",
       "settings": {
-        "title": "",
+        "title": "Which Partial Sun Area TV is the Best for You?",
         "description": "",
         "button_text": "",
         "button_url": "",
@@ -419,9 +466,9 @@
         "button_size": 16,
         "background_color": "",
         "section_width": "standard",
-        "text_alignment": "left",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "text_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -430,12 +477,14 @@
         "margin_right": 0,
         "view_all_text": "View All Comparisons",
         "view_all_url": "",
-        "heading_1": "Head",
-        "heading_2": "Head",
-        "heading_3": "Head",
-        "heading_4": "Head",
-        "heading_5": "Head",
-        "heading_6": "Head",
+        "show_view_all_comparisons": true,
+        "show_see_all_specs": true,
+        "heading_1": "Outdoor Areas",
+        "heading_2": "TV OS",
+        "heading_3": "Peak Brightness",
+        "heading_4": "Resolution",
+        "heading_5": "",
+        "heading_6": "",
         "heading_7": "",
         "heading_8": "",
         "heading_9": "",
@@ -465,28 +514,35 @@
         "question_XpiPtM": {
           "type": "question",
           "settings": {
-            "question": "Do you ship overseas?",
+            "question": "Do I need to setup an account to place an order?",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
         "question_wpgzGK": {
           "type": "question",
           "settings": {
-            "question": "Do you ship overseas?",
+            "question": "Do you offer gift wrapping",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
         "question_mfBW9c": {
           "type": "question",
           "settings": {
-            "question": "Do you ship overseas?",
+            "question": "How long will it take to get my orders?",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
         "question_akNVjL": {
           "type": "question",
           "settings": {
-            "question": "Do you ship overseas?",
+            "question": "What is your return policy?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_afydKc": {
+          "type": "question",
+          "settings": {
+            "question": "Any question?",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         }
@@ -496,7 +552,8 @@
         "question_XpiPtM",
         "question_wpgzGK",
         "question_mfBW9c",
-        "question_akNVjL"
+        "question_akNVjL",
+        "question_afydKc"
       ],
       "name": "Accordian",
       "settings": {
@@ -504,7 +561,7 @@
         "subheading": "Check out the most common questions our customers asked. Still have questions? Contact our customer support.",
         "heading_color": "#000000",
         "subheading_color": "#000000",
-        "heading_size": 24,
+        "heading_size": 36,
         "subheading_size": 16,
         "bg_color": "#ffffff",
         "arrow_image": "shopify://shop_images/Overlay.png",
@@ -529,8 +586,8 @@
     "main-collection",
     "recently-viewed",
     "somos_banner_zJ33mX",
-    "comparison_table_prb7MT",
-    "comparison_table_wy3rrk",
+    "comparison_table_3NJqCG",
+    "comparison_table_9fjT4M",
     "accordian_6Ea77K"
   ]
 }
