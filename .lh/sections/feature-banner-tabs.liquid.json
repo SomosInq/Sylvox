@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 10,
             "patches": [
                 {
                     "date": 1752059714230,
@@ -40,6 +40,14 @@
                 {
                     "date": 1752062370842,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -228,9 +228,9 @@\n \n .feature-banner-tabs__progress .dot {\n   width: 8px;\n   height: 8px;\n-  background: #c2c4c5;\n+  background: rgba(0, 0, 0, 0.10);\n   border-radius: 50%;\n   transition: all 0.3s ease;\n }\n \n"
+                },
+                {
+                    "date": 1753175900910,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,8 +98,15 @@\n       </div>\n     </div>\n   </div>\n \n+  {% if section.settings.show_arrows %}\n+        <div class=\"carousel-arrows content-right\">\n+          <button class=\"usp-arrow prev\" aria-label=\"Previous\">‹</button>\n+          <button class=\"usp-arrow next\" aria-label=\"Next\">›</button>\n+        </div>\n+      {% endif %}\n+\n   <div class=\"feature-banner-tabs__progress\">\n     {% for block in section.blocks %}\n       <span class=\"dot{% if forloop.first %} active{% endif %}\" data-index=\"{{ forloop.index0 }}\"></span>\n     {% endfor %}\n"
+                },
+                {
+                    "date": 1753175919734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,16 +97,10 @@\n         </div>\n       </div>\n     </div>\n   </div>\n+  \n \n-  {% if section.settings.show_arrows %}\n-        <div class=\"carousel-arrows content-right\">\n-          <button class=\"usp-arrow prev\" aria-label=\"Previous\">‹</button>\n-          <button class=\"usp-arrow next\" aria-label=\"Next\">›</button>\n-        </div>\n-      {% endif %}\n-\n   <div class=\"feature-banner-tabs__progress\">\n     {% for block in section.blocks %}\n       <span class=\"dot{% if forloop.first %} active{% endif %}\" data-index=\"{{ forloop.index0 }}\"></span>\n     {% endfor %}\n"
                 }
             ],
             "date": 1752059714230,

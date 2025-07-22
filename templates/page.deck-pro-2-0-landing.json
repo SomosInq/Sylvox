@@ -80,7 +80,8 @@
         "mobile_slide_height": 400,
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 60
+        "overlay_opacity": 60,
+        "custom_id": ""
       }
     },
     "rich_text_FhLDYX": {
@@ -94,9 +95,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_A6zfqX"
-      ],
+      "block_order": ["heading_A6zfqX"],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -115,9 +114,7 @@
           }
         }
       },
-      "block_order": [
-        "image_yaGMXV"
-      ],
+      "block_order": ["image_yaGMXV"],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -255,10 +252,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_339rBV",
-        "richtext_c9B6TT"
-      ],
+      "block_order": ["heading_339rBV", "richtext_c9B6TT"],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -270,6 +264,8 @@
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_732a6102-d9e2-4e94-8082-4f81737cadea.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
         "banner_overlay_color": "#000000",
         "banner_overlay_opacity": 0.4,
         "padding_top": 60,
@@ -307,10 +303,7 @@
           }
         }
       },
-      "block_order": [
-        "image_KAMyxG",
-        "image_tnR9zX"
-      ],
+      "block_order": ["image_KAMyxG", "image_tnR9zX"],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -361,10 +354,7 @@
           }
         }
       },
-      "block_order": [
-        "feature_PemNRF",
-        "feature_wqii3a"
-      ],
+      "block_order": ["feature_PemNRF", "feature_wqii3a"],
       "name": "Feature Showcase",
       "settings": {
         "section_width": "standard",
@@ -416,11 +406,7 @@
           }
         }
       },
-      "block_order": [
-        "image_tEFxXp",
-        "heading_qPYaaN",
-        "richtext_g7C6di"
-      ],
+      "block_order": ["image_tEFxXp", "heading_qPYaaN", "richtext_g7C6di"],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -432,6 +418,8 @@
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
         "banner_overlay_color": "#000000",
         "banner_overlay_opacity": 0.4,
         "padding_top": 0,
@@ -509,11 +497,7 @@
           }
         }
       },
-      "block_order": [
-        "grid_box_4m3bhU",
-        "grid_box_jHUB8q",
-        "grid_box_mejXwx"
-      ],
+      "block_order": ["grid_box_4m3bhU", "grid_box_jHUB8q", "grid_box_mejXwx"],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -558,10 +542,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_gXrCtx",
-        "subheading_JMFnK4"
-      ],
+      "block_order": ["heading_gXrCtx", "subheading_JMFnK4"],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -573,6 +554,8 @@
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c.png",
+        "background_zoom": 100,
+        "background_position": "center",
         "banner_overlay_color": "#000000",
         "banner_overlay_opacity": 0.4,
         "padding_top": 0,
@@ -602,9 +585,7 @@
           }
         }
       },
-      "block_order": [
-        "title_bNFbiR"
-      ],
+      "block_order": ["title_bNFbiR"],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -656,11 +637,7 @@
           }
         }
       },
-      "block_order": [
-        "tab_gGFphP",
-        "tab_BtCiEc",
-        "tab_ethewf"
-      ],
+      "block_order": ["tab_gGFphP", "tab_BtCiEc", "tab_ethewf"],
       "name": "Feature Banner Tabs",
       "settings": {
         "autoplay_enabled": true,
@@ -700,11 +677,7 @@
           }
         }
       },
-      "block_order": [
-        "image_aY3FV9",
-        "title_UccEdf",
-        "text_gpAU3F"
-      ],
+      "block_order": ["image_aY3FV9", "title_UccEdf", "text_gpAU3F"],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -816,11 +789,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_mDWGbn",
-        "slide_xF49fq",
-        "slide_b6LEyw"
-      ],
+      "block_order": ["slide_mDWGbn", "slide_xF49fq", "slide_b6LEyw"],
       "name": "Somos Left Right Media",
       "settings": {
         "section_width": "full",
@@ -1018,22 +987,23 @@
         "margin_bottom": 0
       }
     },
-    "comparison_table_nwWE3E": {
+    "comparison_table_WEHMNn": {
       "type": "comparison-table",
       "blocks": {
-        "values_X8DNQz": {
+        "values_yEyEm9": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
+            "main_image": "shopify://shop_images/23bb980516018b3a8370382d77dd1f104ce38d1c_1.png",
+            "header_title": "Deck Pro",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
             "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
             "value_2": "<p>Android TV</p>",
-            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_image_2": "shopify://shop_images/png__1_2_1.png",
             "value_3": "<p>1000 nits</p>",
             "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
             "value_4": "<p>4K UHD 3840x2160</p>",
@@ -1046,19 +1016,20 @@
             "value_10": ""
           }
         },
-        "values_eQjGGX": {
+        "values_MxPMp3": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
+            "main_image": "shopify://shop_images/f7a02dd66eb20b01194b48f023b3a42c671b52ca_1.jpg",
+            "header_title": "Deck Pro 2.0",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
             "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Android TV</p>",
-            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_2": "<p>Google TV</p>",
+            "value_image_2": "shopify://shop_images/Icons_37e82f67-7342-40d9-9d7f-1b6a055f88d2.png",
             "value_3": "<p>1000 nits</p>",
             "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
             "value_4": "<p>4K UHD 3840x2160</p>",
@@ -1071,19 +1042,20 @@
             "value_10": ""
           }
         },
-        "values_9qF4Td": {
+        "values_Q3aUjd": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
+            "main_image": "shopify://shop_images/76d29d9a8c078cbd7284e62951171bd6381c0aea_1.png",
+            "header_title": "Deck Pro QLED 2.0",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
             "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Android TV</p>",
-            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_2": "<p>Google TV</p>",
+            "value_image_2": "shopify://shop_images/Icons_37e82f67-7342-40d9-9d7f-1b6a055f88d2.png",
             "value_3": "<p>1000 nits</p>",
             "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
             "value_4": "<p>4K UHD 3840x2160</p>",
@@ -1096,19 +1068,20 @@
             "value_10": ""
           }
         },
-        "values_FiKyYL": {
+        "values_hcENp6": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/3d4408c8738e6ed420e7e514a97a8bf9_2c6c6827-7467-45a5-a45e-4bc1cecc58b2.png",
-            "header_title": "",
-            "title": "",
-            "price": "",
-            "button_label": "",
-            "button_link": "",
+            "main_image": "shopify://shop_images/2723d9098f0afa53107a23f2a5bea92d85940c61.png",
+            "header_title": "Gaming Series",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755.png",
+            "title": "Full Shade, Partial Sun Google TV",
+            "price": "from $1,149.00",
+            "button_label": "Buy it now",
+            "button_link": "shopify://collections/all",
             "value_1": "<p>Partial Sun</p>",
             "value_image_1": "shopify://shop_images/Icons_395d3850-ca7e-444a-a32b-6f7a48b06a12.png",
-            "value_2": "<p>Android TV</p>",
-            "value_image_2": "shopify://shop_images/Icons-3_75a3c895-1789-4462-a373-3125ee54e0d9.png",
+            "value_2": "<p>Google TV</p>",
+            "value_image_2": "shopify://shop_images/Icons_37e82f67-7342-40d9-9d7f-1b6a055f88d2.png",
             "value_3": "<p>1000 nits</p>",
             "value_image_3": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
             "value_4": "<p>4K UHD 3840x2160</p>",
@@ -1123,14 +1096,14 @@
         }
       },
       "block_order": [
-        "values_X8DNQz",
-        "values_eQjGGX",
-        "values_9qF4Td",
-        "values_FiKyYL"
+        "values_yEyEm9",
+        "values_MxPMp3",
+        "values_Q3aUjd",
+        "values_hcENp6"
       ],
       "name": "Comparison Table",
       "settings": {
-        "title": "Which TV is the Best for You?",
+        "title": "Which Partial Sun Area TV is the Best for You?",
         "description": "",
         "button_text": "",
         "button_url": "",
@@ -1141,8 +1114,8 @@
         "background_color": "",
         "section_width": "standard",
         "text_alignment": "center",
-        "padding_top": 30,
-        "padding_bottom": 30,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -1203,11 +1176,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_GpEpTM",
-        "slide_3dFEVa",
-        "slide_LgjQzQ"
-      ],
+      "block_order": ["slide_GpEpTM", "slide_3dFEVa", "slide_LgjQzQ"],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -1255,11 +1224,7 @@
           }
         }
       },
-      "block_order": [
-        "question_eefaCG",
-        "question_94Yzrr",
-        "question_mAYTiE"
-      ],
+      "block_order": ["question_eefaCG", "question_94Yzrr", "question_mAYTiE"],
       "name": "Accordian",
       "settings": {
         "heading": "Have a question ? We are here to help.",
@@ -1302,7 +1267,7 @@
     "left_right_media_9KAkw8",
     "icon_grid_aUWbL6",
     "usp_accordion_3MVwD3",
-    "comparison_table_nwWE3E",
+    "comparison_table_WEHMNn",
     "new_banner_slider_w4q6Cq",
     "accordian_MBTAMU"
   ]

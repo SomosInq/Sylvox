@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1748525330074,
@@ -12,6 +12,10 @@
                 {
                     "date": 1748527022237,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,6 @@\n {%- render 'section-rich-text' -%}\n \n-{% style %}\n-a.button {\n-    border-radius: 60px;\n-    background: var(--Dark-Green, #20413B);\n-    padding: 12px 44.18px 11px 43.82px;\n-    justify-content: center;\n-    align-items: center;\n-    color: white;\n-}\n-{% endstyle %}\n-\n {% schema %}\n {\n   \"name\": \"t:labels.rich_text\",\n   \"settings\": [\n"
+                },
+                {
+                    "date": 1753112451420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -117,21 +117,34 @@\n       ]\n     },\n     {\n       \"type\": \"button\",\n-      \"name\": \"t:labels.button\",\n+      \"name\": \"Button\",\n       \"settings\": [\n-        {\n-          \"type\": \"url\",\n-          \"id\": \"link\",\n-          \"label\": \"t:labels.button_link\"\n-        },\n-        {\n-          \"type\": \"text\",\n-          \"id\": \"link_text\",\n-          \"label\": \"t:labels.button_text\",\n-          \"default\": \"Button\"\n-        }\n+        { \"type\": \"text\", \"id\": \"text\", \"label\": \"Text\" },\n+        { \"type\": \"url\", \"id\": \"url\", \"label\": \"Link\" },\n+        { \"type\": \"select\", \"id\": \"style\", \"label\": \"Style\", \"default\": \"fill\", \"options\": [\n+          { \"value\": \"fill\", \"label\": \"Fill\" },\n+          { \"value\": \"outline\", \"label\": \"Outline\" }\n+        ]},\n+        { \"type\": \"select\", \"id\": \"size\", \"label\": \"Size\", \"default\": \"base\", \"options\": [\n+          { \"value\": \"sm\", \"label\": \"Small\" },\n+          { \"value\": \"base\", \"label\": \"Medium\" },\n+          { \"value\": \"lg\", \"label\": \"Large\" }\n+        ]},\n+        { \"type\": \"color\", \"id\": \"text_color\", \"label\": \"Text Color\", \"default\": \"#ffffff\" },\n+        { \"type\": \"color\", \"id\": \"background\", \"label\": \"Background Color\", \"default\": \"#000000\" },\n+        { \"type\": \"color\", \"id\": \"outline_color\", \"label\": \"Outline Color\", \"default\": \"#000000\" },\n+        { \"type\": \"text\", \"id\": \"icon\", \"label\": \"Icon (HTML or Unicode)\" },\n+        { \"type\": \"select\", \"id\": \"icon_position\", \"label\": \"Icon Position\", \"default\": \"left\", \"options\": [\n+          { \"value\": \"left\", \"label\": \"Left\" },\n+          { \"value\": \"right\", \"label\": \"Right\" }\n+        ]},\n+        { \"type\": \"select\", \"id\": \"alignment\", \"label\": \"Alignment\", \"default\": \"center\", \"options\": [\n+          { \"value\": \"left\", \"label\": \"Left\" },\n+          { \"value\": \"center\", \"label\": \"Center\" },\n+          { \"value\": \"right\", \"label\": \"Right\" }\n+        ]}\n       ]\n     },\n     {\n       \"type\": \"page\",\n"
                 }
             ],
             "date": 1748525330073,

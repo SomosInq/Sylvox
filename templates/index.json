@@ -91,11 +91,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_U4WUax",
-        "slide_fXUwAp",
-        "slide_X9a3Fm"
-      ],
+      "block_order": ["slide_U4WUax", "slide_fXUwAp", "slide_X9a3Fm"],
       "settings": {
         "section_width": "standard",
         "content_section_width": "standard",
@@ -283,7 +279,7 @@
         "values_TqCTNF": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/Icons-2_0279093f-72e5-4b22-b76d-8da469706fad.png",
+            "main_image": "shopify://shop_images/76d29d9a8c078cbd7284e62951171bd6381c0aea.png",
             "header_title": "",
             "icon": "shopify://shop_images/Icons-1_a8276d13-b406-42e0-8367-dc1870c79980.png",
             "title": "Partial Sun",
@@ -311,7 +307,7 @@
         "values_BEzx44": {
           "type": "values",
           "settings": {
-            "main_image": "shopify://shop_images/Icons_61e39666-0161-4daf-b797-9900d8b291c2.png",
+            "main_image": "shopify://shop_images/3c0bdd2efba9b5a8e31e7724f16fd77322936476.png",
             "header_title": "",
             "icon": "shopify://shop_images/Icons-3_38b39895-e177-42f6-bb0b-1031e1bf1953.png",
             "title": "Full Sun",
@@ -337,10 +333,7 @@
           }
         }
       },
-      "block_order": [
-        "values_TqCTNF",
-        "values_BEzx44"
-      ],
+      "block_order": ["values_TqCTNF", "values_BEzx44"],
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
@@ -406,10 +399,7 @@
           }
         }
       },
-      "block_order": [
-        "tab_EaHJ7G",
-        "tab_BhYH4G"
-      ],
+      "block_order": ["tab_EaHJ7G", "tab_BhYH4G"],
       "settings": {
         "section_width": "standard",
         "left_image": "shopify://shop_images/Sylvox_5.png",
@@ -446,8 +436,8 @@
           "type": "scenario",
           "settings": {
             "image": "shopify://shop_images/Sylvox_2.png",
-            "title": "By the Pool",
-            "description": "Enjoy seamless 4K gaming like never before.",
+            "title": "By the Garden or Patio",
+            "description": "Enjoy your favorite content with unmatched brightness!",
             "link": ""
           }
         },
@@ -455,7 +445,7 @@
           "type": "scenario",
           "settings": {
             "image": "shopify://shop_images/Sylvox_3.png",
-            "title": "By the Pool",
+            "title": "By a Covered Deck",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
           }
@@ -464,8 +454,8 @@
           "type": "scenario",
           "settings": {
             "image": "shopify://shop_images/Sylvox_4.png",
-            "title": "By the Pool",
-            "description": "Enjoy seamless 4K gaming like never before.",
+            "title": "By a Rooftop Terrace",
+            "description": "Enjoy your favorite content with unmatched brightness!",
             "link": ""
           }
         }
@@ -557,7 +547,8 @@
         "mobile_slide_height": 1000,
         "text_color": "#ffffff",
         "overlay_color": "#ffffff",
-        "overlay_opacity": 30
+        "overlay_opacity": 30,
+        "custom_id": ""
       }
     },
     "rich_text_g7wbE4": {
@@ -571,9 +562,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_mm9kKm"
-      ],
+      "block_order": ["heading_mm9kKm"],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -657,10 +646,7 @@
           }
         }
       },
-      "block_order": [
-        "image_3eAxPx",
-        "image_4JgVnB"
-      ],
+      "block_order": ["image_3eAxPx", "image_4JgVnB"],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -678,6 +664,7 @@
         "margin_right": 0,
         "heading": "Bright & Beautiful 4K UHD",
         "heading_description": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
+        "base_description": "",
         "heading_size": "h2",
         "heading_position": "center",
         "fullwidth": true,
@@ -714,11 +701,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_ktPLKQ",
-        "slide_M46t3f",
-        "slide_hbD7ck"
-      ],
+      "block_order": ["slide_ktPLKQ", "slide_M46t3f", "slide_hbD7ck"],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -733,7 +716,9 @@
         "text_alignment": "left",
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
+        "description": "Add Description",
         "show_arrows": true,
+        "show_dots": true,
         "slide_size": "large",
         "slide_height": 1000
       }
@@ -774,9 +759,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_EyXPFe"
-      ],
+      "block_order": ["heading_EyXPFe"],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -789,7 +772,8 @@
         "mobile_slide_height": 400,
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 30,
+        "custom_id": ""
       }
     },
     "rich_text_cbmRYc": {
@@ -805,15 +789,20 @@
         "button_BEFJ9i": {
           "type": "button",
           "settings": {
-            "link": "",
-            "link_text": "Learn More"
+            "text": "Learn more",
+            "url": "#",
+            "style": "fill",
+            "size": "base",
+            "text_color": "#ffffff",
+            "background": "#20413b",
+            "outline_color": "#000000",
+            "icon": "",
+            "icon_position": "left",
+            "alignment": "center"
           }
         }
       },
-      "block_order": [
-        "heading_3m8b3q",
-        "button_BEFJ9i"
-      ],
+      "block_order": ["heading_3m8b3q", "button_BEFJ9i"],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -831,6 +820,10 @@
             "image_size": "medium",
             "title": "Authenticity Guarantee",
             "text": "100% Genuine, Quality Assured",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
             "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
           }
         },
@@ -839,8 +832,12 @@
           "settings": {
             "icon": "shopify://shop_images/Icons-1.png",
             "image_size": "medium",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
+            "title": "Secure Payment",
+            "text": "Supports Multiple Payment Methods",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
             "link": ""
           }
         },
@@ -849,28 +846,54 @@
           "settings": {
             "icon": "shopify://shop_images/Icons-2.png",
             "image_size": "medium",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
+            "title": "Buy Now Pay Later",
+            "text": "Flexible Installment Plans Available",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
             "link": ""
           }
         },
         "usp_item_9KGR88": {
           "type": "usp_item",
           "settings": {
-            "icon": "shopify://shop_images/Icons-4.png",
+            "icon": "shopify://shop_images/png__1_2_1_3.png",
             "image_size": "medium",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
+            "title": "Fast & Free Shipping",
+            "text": "2-5 Business Days Fedex Shipping",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
             "link": ""
           }
         },
-        "usp_item_dbAXpY": {
+        "usp_item_9cqzbe": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/877fd4961b457516e0b7165db6e3731a5b4764d2.png",
+            "image_size": "medium",
+            "title": "Sylvox Membership",
+            "text": "Earn Sylvox Points, Redeem Benefits",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "link": ""
+          }
+        },
+        "usp_item_LaJ4nV": {
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/Icons-5.png",
             "image_size": "medium",
-            "title": "Authenticity Guarantee",
-            "text": "100% Genuine, Quality Assured",
+            "title": "Free Warranty",
+            "text": "Up to 1 Year Warranty",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
             "link": ""
           }
         }
@@ -880,12 +903,14 @@
         "usp_item_e3nJLx",
         "usp_item_WExUKh",
         "usp_item_9KGR88",
-        "usp_item_dbAXpY"
+        "usp_item_9cqzbe",
+        "usp_item_LaJ4nV"
       ],
       "settings": {
+        "enable_slider": true,
         "section_width": "standard",
         "heading": "Sylvox’s exclusive advantages",
-        "subtext": "Explore our core benefits below",
+        "subtext": "",
         "heading_alignment": "left",
         "show_arrows": true,
         "padding_top": 20,

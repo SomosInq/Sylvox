@@ -1,3 +1,228 @@
+{% comment %}
+  Product Slider with working Flickity, tab switching, and Shop All top right
+{% endcomment %}
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
+
+<style>
+  .product-slider-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    flex-direction: {% if section.settings.image_position == 'right' %}row-reverse{% else %}row{% endif %};
+  }
+
+  .product-slider-left-image { flex: 1 1 30%; }
+  .product-slider-right-content { flex: 1 1 65%; }
+
+  .tabs-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0 2rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .tab-buttons button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .tab-buttons button.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .product-carousel {
+    width: 100%;
+  }
+
+  .flickity-enabled {
+    display: block !important;
+  }
+
+  .flickity-slider {
+    display: flex;
+  }
+
+  .product-carousel .product-card {
+    width: 250px;
+    margin-right: 1rem;
+  }
+
+  .product-card {
+    text-align: center;
+  }
+
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .shop-all-btn {
+    border: 1px solid currentColor;
+    padding: 6px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    .product-slider-section {
+      flex-direction: column;
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    .product-slider-left-image,
+    .product-slider-right-content {
+      flex: 1 1 100%;
+    }
+    .tabs-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  {% if section.settings.show_arrows_desktop == false %}
+    @media (min-width: 769px) {
+      .flickity-prev-next-button { display: none !important; }
+    }
+  {% endif %}
+  {% if section.settings.show_arrows_mobile == false %}
+    @media (max-width: 768px) {
+      .flickity-prev-next-button { display: none !important; }
+    }
+  {% endif %}
+</style>
+
+<section class="product-slider-section section_width_{{ section.settings.section_width }}">
+  {% if section.settings.left_image != blank %}
+    <div class="product-slider-left-image">
+      <img src="{{ section.settings.left_image | image_url: width: 800 }}" alt="Left Image" loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="product-slider-right-content">
+    {% if section.settings.subheading %}<p>{{ section.settings.subheading }}</p>{% endif %}
+    {% if section.settings.heading %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+
+    <div class="tabs-header-row">
+      <div class="tab-buttons">
+        {% assign first = true %}
+        {% for block in section.blocks %}
+          <button class="tab-toggle{% if first %} active{% endif %}" data-tab="{{ block.id }}">
+            {{ block.settings.tab_name }}
+          </button>
+          {% assign first = false %}
+        {% endfor %}
+      </div>
+      {% if section.settings.shop_all_url %}
+        <a href="{{ section.settings.shop_all_url }}" class="shop-all-btn">Shop All</a>
+      {% endif %}
+    </div>
+
+    {% assign first = true %}
+    {% for block in section.blocks %}
+      {% assign block_collection = collections[block.settings.collection] %}
+      <div class="product-carousel js-flickity"
+        data-tab-content="{{ block.id }}"
+        style="display: {% if first %}block{% else %}none{% endif %};"
+        data-flickity-options='{
+          "contain": true,
+          "wrapAround": true,
+          "pageDots": false,
+          "cellAlign": "left",
+          "groupCells": false
+        }'>
+        {% if block_collection != blank %}
+          {% for product in block_collection.products limit: 10 %}
+            <div class="product-card">
+              <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
+                <h4>{{ product.title }}</h4>
+                <p>From {{ product.price | money }}</p>
+              </a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No products found in this collection.</p>
+        {% endif %}
+      </div>
+      {% assign first = false %}
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.product-slider-section');
+    const flickityInstances = {};
+
+    const initFlickity = (carousel) => {
+      const options = JSON.parse(carousel.dataset.flickityOptions);
+      return new Flickity(carousel, options);
+    };
+
+    const toggleTabs = (targetId) => {
+      section.querySelectorAll('.tab-toggle').forEach(btn =>
+        btn.classList.toggle('active', btn.dataset.tab === targetId)
+      );
+
+      section.querySelectorAll('.product-carousel').forEach(carousel => {
+        const isTarget = carousel.dataset.tabContent === targetId;
+        carousel.style.display = isTarget ? 'block' : 'none';
+
+        if (isTarget) {
+          if (!flickityInstances[targetId]) {
+            flickityInstances[targetId] = initFlickity(carousel);
+          } else {
+            flickityInstances[targetId].resize();
+          }
+        }
+      });
+    };
+
+    section.querySelectorAll('.tab-toggle').forEach(tab => {
+      tab.addEventListener('click', () => toggleTabs(tab.dataset.tab));
+    });
+
+    const flickityScript = () => {
+      const firstCarousel = section.querySelector('.product-carousel');
+      if (firstCarousel) {
+        const id = firstCarousel.dataset.tabContent;
+        flickityInstances[id] = initFlickity(firstCarousel);
+        firstCarousel.style.display = 'block';
+      }
+    };
+
+    if (typeof Flickity === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
+      script.onload = flickityScript;
+      document.head.appendChild(script);
+    } else {
+      flickityScript();
+    }
+  });
+</script>
+
 {% schema %}
 {
   "name": "Product Slider",
@@ -13,265 +238,44 @@
       ]
     },
     {
-      "type": "image_picker",
-      "id": "left_image",
-      "label": "Left Side Image"
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
     },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Customer Favorites"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Best Sellers"
-    },
-    {
-      "type": "url",
-      "id": "shop_all_url",
-      "label": "Shop All Button URL"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_arrows_mobile",
-      "label": "Show arrows on Mobile",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_arrows_desktop",
-      "label": "Show arrows on Desktop",
-      "default": true
-    },
-    { "type": "range", "id": "padding_top", "label": "Padding top (Desktop)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_bottom", "label": "Padding bottom (Desktop)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (Mobile)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (Mobile)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
-    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
+    { "type": "image_picker", "id": "left_image", "label": "Left Side Image" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Customer Favorites" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Best Sellers" },
+    { "type": "url", "id": "shop_all_url", "label": "Shop All Button URL" },
+    { "type": "checkbox", "id": "show_arrows_mobile", "label": "Show arrows on Mobile", "default": true },
+    { "type": "checkbox", "id": "show_arrows_desktop", "label": "Show arrows on Desktop", "default": true },
+    { "type": "range", "id": "padding_top", "label": "Padding Top (Desktop)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom (Desktop)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding Top (Mobile)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding Bottom (Mobile)", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" }
   ],
   "blocks": [
     {
       "type": "tab",
       "name": "Collection Tab",
       "settings": [
-        {
-          "type": "text",
-          "id": "tab_name",
-          "label": "Tab Label",
-          "default": "Best Sellers"
-        },
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection"
-        }
+        { "type": "text", "id": "tab_name", "label": "Tab Label", "default": "Best Sellers" },
+        { "type": "collection", "id": "collection", "label": "Collection" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Product Slider",
-      "category": "Somos Custom"
-    }
+    { "name": "Product Slider", "category": "Custom" }
   ]
 }
 {% endschema %}
-
-
-<style>
-  .collection-tabs-section {
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-    padding-left: {{ section.settings.padding_left }}px;
-    padding-right: {{ section.settings.padding_right }}px;
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-  }
-
-  @media (max-width: 768px) {
-    .collection-tabs-section {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-    }
-  }
-</style>
-
-<section class="collection-tabs-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_bottom_mobile }}px">
-  <div class="left-image">
-    {% if section.settings.left_image != blank %}
-      <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Left Image">
-    {% endif %}
-  </div>
-
-  {% if section.settings.show_arrows_desktop == false %}
-  <style>
-    @media (min-width: 769px) {
-      .collection-tabs-section .flickity-prev-next-button {
-        display: none !important;
-      }
-    }
-  </style>
-{% endif %}
-
-{% if section.settings.show_arrows_mobile == false %}
-  <style>
-    @media (max-width: 768px) {
-      .collection-tabs-section .flickity-prev-next-button {
-        display: none !important;
-      }
-    }
-  </style>
-{% endif %}
-
-  <div class="right-content">
-    <div class="tab-header">
-      <div class="tab-title-group">
-        <div class="tab-titles">
-          <h3>{{ section.settings.subheading }}</h3>
-          <h2>{{ section.settings.heading }}</h2>
-        </div>
-        {% if section.settings.shop_all_url %}
-          <a href="{{ section.settings.shop_all_url }}" class="shop-all-btn">Shop All</a>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="tab-buttons">
-      {% for block in section.blocks %}
-        <button
-          class="{% if forloop.first %}active{% endif %}"
-          data-tab="tab-{{ forloop.index }}">
-          {{ block.settings.tab_name }}
-        </button>
-      {% endfor %}
-    </div>
-
-    {% for block in section.blocks %}
-      {% assign block_collection = collections[block.settings.collection] %}
-      <div
-        class="product-carousel js-flickity {% if forloop.first %}active{% endif %}"
-        data-tab="tab-{{ forloop.index }}"
-        data-flickity-options='{
-          "contain": true,
-          "wrapAround": true,
-          "pageDots": false
-        }'
-        data-arrows-mobile="{{ section.settings.show_arrows_mobile }}"
-        data-arrows-desktop="{{ section.settings.show_arrows_desktop }}"
-      >
-        {% if block_collection != blank %}
-          {% for product in block_collection.products limit: 10 %}
-            <div class="product-card">
-              <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
-                <h4>{{ product.title }}</h4>
-                <p>From {{ product.price | money }}</p>
-              </a>
-            </div>
-          {% endfor %}
-        {% else %}
-          <p>No products found in this collection.</p>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
-</section>
-
-{% javascript %}
-function initCollectionTabsSlider(section) {
-  if (!section) return;
-
-  const buttons = section.querySelectorAll('.tab-buttons button');
-  const carousels = section.querySelectorAll('.product-carousel');
-
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetTab = button.dataset.tab;
-
-      buttons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      carousels.forEach(carousel => {
-        if (carousel.dataset.tab === targetTab) {
-          carousel.classList.add('active');
-        } else {
-          carousel.classList.remove('active');
-        }
-      });
-    });
-  });
-
-  carousels.forEach(carousel => {
-    initFlickityWithViewport(carousel);
-  });
-
-  // Debounced resize handling
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      carousels.forEach(carousel => {
-        maybeReinitFlickity(carousel);
-      });
-    }, 200);
-  });
-}
-
-function initFlickityWithViewport(carousel) {
-  const flickityOptions = JSON.parse(carousel.getAttribute('data-flickity-options'));
-  const showArrowsMobile = carousel.dataset.arrowsMobile === 'true';
-  const showArrowsDesktop = carousel.dataset.arrowsDesktop === 'true';
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-  flickityOptions.prevNextButtons = isMobile ? showArrowsMobile : showArrowsDesktop;
-
-  // Store which mode it's using
-  carousel._flickityBreakpoint = isMobile ? 'mobile' : 'desktop';
-
-  // Destroy any old
-  if (carousel.flickityInstance) {
-    carousel.flickityInstance.destroy();
-  }
-
-  // Create new
-  carousel.flickityInstance = new Flickity(carousel, flickityOptions);
-}
-
-function maybeReinitFlickity(carousel) {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const currentBreakpoint = isMobile ? 'mobile' : 'desktop';
-
-  if (carousel._flickityBreakpoint !== currentBreakpoint) {
-    initFlickityWithViewport(carousel);
-  }
-}
-
-function loadFlickityAndInitSection(section) {
-  if (typeof Flickity === 'undefined') {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
-    script.onload = () => initCollectionTabsSlider(section);
-    document.head.appendChild(script);
-  } else {
-    initCollectionTabsSlider(section);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.collection-tabs-section').forEach(section => {
-    loadFlickityAndInitSection(section);
-  });
-});
-
-document.addEventListener('shopify:section:load', (event) => {
-  const section = event.target.querySelector('.collection-tabs-section');
-  loadFlickityAndInitSection(section);
-});
-{% endjavascript %}
