@@ -113,6 +113,37 @@
         "margin_right": 0
       }
     },
+    "rich_text_Qq7xiy": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_GJaiqY": {
+          "type": "heading",
+          "settings": {
+            "title": "test json file <-----------------",
+            "heading_size": "h2"
+          }
+        },
+        "text_qFVUq7": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GJaiqY",
+        "text_qFVUq7"
+      ],
+      "disabled": true,
+      "name": "t:labels.rich_text",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    },
     "tab_products_i4fR76": {
       "type": "tab-products",
       "blocks": {
@@ -241,7 +272,7 @@
         "link_text": "View all",
         "enable_parallax": false,
         "image_size": "auto",
-        "tabs_position": 45,
+        "tabs_position": 100,
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -402,7 +433,7 @@
           "type": "tab",
           "settings": {
             "tab_name": "New Arrivals",
-            "collection": "new-outdoor-tv"
+            "collection": "deck"
           }
         }
       },
@@ -414,7 +445,7 @@
         "section_width": "standard",
         "left_image": "shopify://shop_images/Sylvox_5.png",
         "subheading": "Customer Favorites",
-        "heading": "Best Sellers",
+        "heading": "",
         "shop_all_url": "shopify://collections",
         "show_arrows_mobile": true,
         "show_arrows_desktop": false,
@@ -714,12 +745,30 @@
             "caption": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
+        },
+        "slide_f6mdUK": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/14e05d62ebe767f82f77c31d300c9d2e33bc554e.jpg",
+            "caption": "Outdoor Dining Area",
+            "description_block": "Outdoor Dining Area"
+          }
+        },
+        "slide_cX99tK": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/74a1a00cf11556c67aff97a187c512eb9a149348.png",
+            "caption": "Outdoor Dining Area",
+            "description_block": "Outdoor Dining Area"
+          }
         }
       },
       "block_order": [
         "slide_ktPLKQ",
         "slide_M46t3f",
-        "slide_hbD7ck"
+        "slide_hbD7ck",
+        "slide_f6mdUK",
+        "slide_cX99tK"
       ],
       "settings": {
         "section_width": "full",
@@ -742,6 +791,85 @@
         "slide_height": 1000
       }
     },
+    "keyword_filter_grid_gMCHwn": {
+      "type": "keyword-filter-grid",
+      "blocks": {
+        "keyword_N376HU": {
+          "type": "keyword",
+          "settings": {
+            "label": "HD"
+          }
+        },
+        "keyword_UcpY4C": {
+          "type": "keyword",
+          "settings": {
+            "label": "Handheld"
+          }
+        },
+        "keyword_LNHeQD": {
+          "type": "keyword",
+          "settings": {
+            "label": "Voice Assistant"
+          }
+        },
+        "keyword_8RBY8b": {
+          "type": "keyword",
+          "settings": {
+            "label": "Beginner"
+          }
+        },
+        "keyword_TNNKCD": {
+          "type": "keyword",
+          "settings": {
+            "label": "Parking Mode"
+          }
+        },
+        "keyword_UM9f9c": {
+          "type": "keyword",
+          "settings": {
+            "label": "Cloud Storage"
+          }
+        },
+        "keyword_KANHcP": {
+          "type": "keyword",
+          "settings": {
+            "label": "Motorbike"
+          }
+        },
+        "collection_tab_EFWDFq": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_label": "Best Sellers",
+            "collection": "43-outdoor-tv"
+          }
+        },
+        "collection_tab_7Mxxd4": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_label": "New Arrivals",
+            "collection": "new-outdoor-tv"
+          }
+        }
+      },
+      "block_order": [
+        "keyword_N376HU",
+        "keyword_UcpY4C",
+        "keyword_LNHeQD",
+        "keyword_8RBY8b",
+        "keyword_TNNKCD",
+        "keyword_UM9f9c",
+        "keyword_KANHcP",
+        "collection_tab_EFWDFq",
+        "collection_tab_7Mxxd4"
+      ],
+      "name": "Keyword Filter Grid",
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#0a0a0a",
+        "button_color": "#2e2e2e",
+        "button_text_color": "#ffffff"
+      }
+    },
     "large_product_BDXMM6": {
       "type": "large-product",
       "settings": {
@@ -751,9 +879,9 @@
         "icon1": "shopify://shop_images/gtv-dark_1.png",
         "icon2": "shopify://shop_images/Partial_Sun_147b558b-d06e-4a79-be58-4c8a0056d2b8.png",
         "icon3": "shopify://shop_images/Dolby-Atmos-Logo_1.png",
-        "product": "43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series",
+        "product": "2-year-extended-warranty-for-sylvox-pool-pro-65-2-0-total-3-years",
         "show_title": false,
-        "product_image_width": 720,
+        "product_image_width": 800,
         "price_text": "From USD $1,149.00",
         "button_link": "",
         "button_label": "Buy Now",
@@ -931,7 +1059,7 @@
         "usp_item_LaJ4nV"
       ],
       "settings": {
-        "enable_slider": true,
+        "enable_slider": false,
         "section_width": "standard",
         "heading": "Sylvox’s exclusive advantages",
         "subtext": "",
@@ -1233,6 +1361,7 @@
   },
   "order": [
     "somos_slider_PRQtHJ",
+    "rich_text_Qq7xiy",
     "tab_products_i4fR76",
     "info_section_JEKir6",
     "comparison_table_eVYTCb",
@@ -1243,6 +1372,7 @@
     "box_section_NjjNqW",
     "somos_image_text_comparison_NTEhyJ",
     "new_banner_slider_D3WkxM",
+    "keyword_filter_grid_gMCHwn",
     "large_product_BDXMM6",
     "image_with_text_overlay_4yErEx",
     "rich_text_cbmRYc",
