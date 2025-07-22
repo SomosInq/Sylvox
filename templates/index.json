@@ -91,7 +91,11 @@
           }
         }
       },
-      "block_order": ["slide_U4WUax", "slide_fXUwAp", "slide_X9a3Fm"],
+      "block_order": [
+        "slide_U4WUax",
+        "slide_fXUwAp",
+        "slide_X9a3Fm"
+      ],
       "settings": {
         "section_width": "standard",
         "content_section_width": "standard",
@@ -333,7 +337,10 @@
           }
         }
       },
-      "block_order": ["values_TqCTNF", "values_BEzx44"],
+      "block_order": [
+        "values_TqCTNF",
+        "values_BEzx44"
+      ],
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
@@ -399,7 +406,10 @@
           }
         }
       },
-      "block_order": ["tab_EaHJ7G", "tab_BhYH4G"],
+      "block_order": [
+        "tab_EaHJ7G",
+        "tab_BhYH4G"
+      ],
       "settings": {
         "section_width": "standard",
         "left_image": "shopify://shop_images/Sylvox_5.png",
@@ -562,7 +572,9 @@
           }
         }
       },
-      "block_order": ["heading_mm9kKm"],
+      "block_order": [
+        "heading_mm9kKm"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -646,7 +658,10 @@
           }
         }
       },
-      "block_order": ["image_3eAxPx", "image_4JgVnB"],
+      "block_order": [
+        "image_3eAxPx",
+        "image_4JgVnB"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -701,7 +716,11 @@
           }
         }
       },
-      "block_order": ["slide_ktPLKQ", "slide_M46t3f", "slide_hbD7ck"],
+      "block_order": [
+        "slide_ktPLKQ",
+        "slide_M46t3f",
+        "slide_hbD7ck"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -716,7 +735,7 @@
         "text_alignment": "left",
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
-        "description": "Add Description",
+        "description": "",
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
@@ -759,7 +778,9 @@
           }
         }
       },
-      "block_order": ["heading_EyXPFe"],
+      "block_order": [
+        "heading_EyXPFe"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -802,7 +823,10 @@
           }
         }
       },
-      "block_order": ["heading_3m8b3q", "button_BEFJ9i"],
+      "block_order": [
+        "heading_3m8b3q",
+        "button_BEFJ9i"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
