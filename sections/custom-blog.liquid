@@ -1,9 +1,14 @@
 {{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
 {{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
 
+
+{% comment %}
+  Custom section: Custom Blog | custom-blog.liquid
+{% endcomment %}
 <section class="custom-blog" style="background: {{ section.settings.bg_color }};">
-  {% assign featured_article = blog.articles.first %}
-  {% assign override_img = section.settings.custom_banner_override_image %}
+
+  {%- assign featured_article = blog.articles.first -%}
+  {%- assign override_img = section.settings.custom_banner_override_image -%}
 
   <!-- Banner -->
   <div class="custom-blog__banner" style="background-image: url('{{ override_img | default: featured_article.image | image_url: width: 2000 }}');">
@@ -24,38 +29,22 @@
   </div>
 
   <!-- Slider -->
-  <div class="custom-blog__slider-wrapper">
-    <div class="custom-blog__slider js-flickity"
-         data-flickity='{
-           "wrapAround": true,
-           "pageDots": true,
-           "prevNextButtons": false,
-           "cellAlign": "left",
-           "contain": true
-         }'>
-      {% for article in blog.articles limit: 6 %}
-        <div class="custom-blog__slider-item">
-          <a href="{{ article.url }}" class="custom-blog__slider-card">
-            {% if article.image %}
-              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}">
-            {% endif %}
-            <div class="custom-blog__slider-caption">
-              <span class="custom-blog__slider-date">{{ article.published_at | date: "%B %d, %Y" }}</span>
-              <h3 class="custom-blog__slider-title">{{ article.title }}</h3>
-            </div>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-
-    <div class="custom-blog__slider-controls">
-      <div class="custom-blog__dots"></div>
-      <div class="custom-blog__arrows">
-        <button class="custom-blog__prev" aria-label="Previous">&lt;</button>
-        <button class="custom-blog__next" aria-label="Next">&gt;</button>
+  {% comment %} <div class="custom-blog__slider js-flickity"
+       data-flickity='{"wrapAround": true, "pageDots": false, "cellAlign": "left"}'>
+    {% for article in blog.articles limit: 6 %}
+      <div class="custom-blog__slider-item">
+        <a href="{{ article.url }}">
+          {% if article.image %}
+            <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}">
+          {% endif %}
+          <div class="custom-blog__slider-caption">
+            <span class="custom-blog__slider-date">{{ article.published_at | date: "%B %d, %Y" }}</span>
+            <h3 class="custom-blog__slider-title">{{ article.title }}</h3>
+          </div>
+        </a>
       </div>
-    </div>
-  </div>
+    {% endfor %}
+  </div> {% endcomment %}
 
   <!-- Blog List Title -->
   <h2 class="custom-blog__list-title" style="text-align:center; margin-top: 40px;">
@@ -64,8 +53,25 @@
 
   <!-- Filter/Sort Row -->
   <div class="custom-blog__filter-sort">
-    <button class="custom-blog__filter-btn">Filter</button>
-    <button class="custom-blog__sort-btn">Sort</button>
+    <button class="custom-blog__filter-btn">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+          <path d="M0 5H16" stroke="#6C707A"/>
+          <path d="M0 11H16" stroke="#6C707A"/>
+          <path d="M14 3H12V7H14V3Z" fill="#6C707A"/>
+          <path d="M5 9H3V13H5V9Z" fill="#6C707A"/>
+        </svg>
+      </span>
+      Filter
+    </button>
+    <button class="custom-blog__sort-btn">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+          <path d="M3 6L8 11L13 6" stroke="#6C707A"/>
+        </svg>
+      </span>
+      Sort
+    </button>
   </div>
 
   {% paginate blog.articles by 9 %}
@@ -76,7 +82,10 @@
           <div class="custom-blog__card-image">
             {% if article.image %}
               <a href="{{ article.url }}">
-                <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}">
+                <img
+                  src="{{ article.image | image_url: width: 600 }}"
+                  alt="{{ article.title }}"
+                  style="aspect-ratio: 520 / 288; max-width: 519.98px; max-height: 287.98px; width: 100%; height: auto; object-fit: cover;">
               </a>
             {% else %}
               <div class="custom-blog__image-placeholder"></div>
@@ -122,12 +131,19 @@
   {% endpaginate %}
 </section>
 
+
+
 {% schema %}
 {
   "name": "Custom Blog",
   "tag": "section",
   "class": "custom-blog",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Background Image"
+    },
     {
       "type": "image_picker",
       "id": "custom_banner_override_image",
@@ -142,18 +158,19 @@
       "type": "text",
       "id": "banner_label",
       "label": "Banner Label",
-      "default": "News"
+      "default": "Education"
     },
     {
       "type": "text",
       "id": "banner_subtitle",
       "label": "Banner Subtitle",
-      "default": "Author Name"
+      "default": "Education & Industry"
     },
     {
       "type": "url",
-            "banner_link",
-      "label": "Banner Link"
+      "id": "banner_link",
+      "label": "Banner Arrow Link",
+      "default": "/"
     },
     {
       "type": "text",
@@ -177,152 +194,284 @@
 }
 {% endschema %}
 
+
 {% style %}
-/* Slider + Dots + Arrows */
-.custom-blog__slider-wrapper {
-  position: relative;
-  max-width: 1600px;
-  margin: 60px auto 80px;
-}
-
+/* Add this to your existing <style> block or merge it */
 .custom-blog__slider {
-  margin-bottom: 40px;
+  max-width: 1600px;
+  margin: 40px auto;
 }
-
 .custom-blog__slider-item {
-  width: 100%;
-  max-width: 519.98px;
-  background: #fff;
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+  width: 300px;
+  margin-right: 20px;
 }
-
 .custom-blog__slider-item img {
-  width: 50%;
+  width: 100%;
   height: auto;
+  border-radius: 4px;
   object-fit: cover;
 }
-
 .custom-blog__slider-caption {
-  padding: 20px;
-  background: #FAFAFA;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  padding-top: 10px;
 }
-
 .custom-blog__slider-date {
   font-size: 12px;
   color: #777;
 }
-
 .custom-blog__slider-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: #1D1D1B;
-  line-height: 1.4;
 }
-
-.custom-blog__slider-controls {
+/* New CSS */
+.custom-blog__banner {
+  height: 600px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+}
+.custom-blog__banner-inner {
+  position: absolute;
+  left: 157px;
+  top: 154.5px;
+  gap: 20px;
+  max-width: 688px;
+  display: flex;
+  flex-direction: column;
+}
+.custom-blog__label {
+  padding: 6px 10px;
+  background: #1D1D1B;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+}
+.custom-blog__subtitle {
+  font-size: 18px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: white;
+}
+.custom-blog__heading {
+  font-size: 56px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: white;
+  max-width: 657px;
+  line-height: 1.2;
+}
+.custom-blog__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 4px;
+  width: auto;
+  height: auto;
+}
+ .custom-blog__arrow rect {
+  stroke: #ffffff;
+ }
+  .custom-blog__arrow path { 
+  fill: #ffffff;
+}
+.custom-blog__nav {
+  background-color: #1a1a1a;
+  margin-bottom: 40px;
+}
+.custom-blog__nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  height: 60px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.custom-blog__nav a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 12px;
+}
+.custom-blog__nav a.active {
+  font-weight: 600;
+}
+.custom-blog__nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 24px;
+  background: #ffffff;
+}
+.custom-blog__filter-sort {
+  display: flex;
+  justify-content: left;
+  gap: 16px;
+  margin: 40px auto;
+  max-width: 1608px;
+}
+.custom-blog__filter-btn,
+.custom-blog__sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #bdbdbd;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.custom-blog__grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) !important;
+  gap: 48px 24px;
+  max-width: 1608px;
+  margin: 0 auto 60px;
+  padding: 0;
+}
+.custom-blog__card {
+background: #fff;
+    display: flex;
+    flex-direction: row !important;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    /* max-width: 519.98px; */
+    width: 100%;
+    display: flex
+;
+}
+.custom-blog__card-image {
+  position: relative;
+}
+.custom-blog__card-image img {
+  width: 100%;
+  height: auto;
+  max-width: 519.98px;
+  max-height: 287.98px;
+  aspect-ratio: 520 / 288;
+  object-fit: cover;
+  display: block;
+}
+.custom-blog__card-content {
+  background: #FAFAFA;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+}
+.custom-blog__card-image .custom-blog__card-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #1a1a1a;
+  padding: 6px 12px;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  border-radius: 0;
+  z-index: 2;
+}
+.custom-blog__card-title {
+  font-size: 24px;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1D1D1B;
+}
+.custom-blog__card-title a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+.custom-blog__card-excerpt-arrow {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 12px;
-}
-
-.custom-blog__dots .dot {
-  width: 24px;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.2);
-  margin: 0 6px;
-  border-radius: 2px;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.custom-blog__dots .dot.is-selected {
-  background: #DB4B97;
-  width: 48px;
-}
-
-.custom-blog__arrows {
-  display: flex;
+  align-items: flex-end;
   gap: 12px;
 }
-
-.custom-blog__arrows button {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #999;
-  background: transparent;
-  border-radius: 9999px;
+.custom-blog__card-excerpt {
   font-size: 16px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #636363;
+  max-height: none;
+  overflow: visible;
+  margin: 0;
+}
+.custom-blog__card-arrow {
+  position: static;
+  display: inline-flex;
   justify-content: center;
-  cursor: pointer;
+  align-items: center;
+  padding: 0;
+  border-radius: 2px;
+}
+.custom-blog__pagination {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.custom-blog__pagination a,
+.custom-blog__pagination span {
+  margin: 0 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1a1a1a;
+  border-radius: 4px;
+}
+.custom-blog__pagination .current {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 767px) {
-  .custom-blog__slider-item {
-    flex-direction: column;
+  .custom-blog__banner {
+    height: 600px;
+    background-position: center;
   }
-
-  .custom-blog__slider-item img {
-    width: 100%;
+  .custom-blog__banner-inner {
+    top: 354px;
+    left: 24px;
+    gap: 22px;
+    max-width: 282px;
   }
-
-  .custom-blog__slider-controls {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  .custom-blog__label {
+    font-size: 14px;
   }
-
-  .custom-blog__arrows {
-    justify-content: center;
+  .custom-blog__subtitle {
+    font-size: 14px;
+  }
+  .custom-blog__heading {
+    font-size: 24px;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+  .custom-blog__grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 40px 24px;
   }
 }
 {% endstyle %}
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var slider = document.querySelector('.custom-blog__slider');
-    if (slider) {
-      var flkty = new Flickity(slider, {
-        wrapAround: true,
-        cellAlign: 'left',
-        pageDots: true,
-        prevNextButtons: false,
-        contain: true
-      });
-
-      var prevBtn = document.querySelector('.custom-blog__prev');
-      var nextBtn = document.querySelector('.custom-blog__next');
-      var dotsWrapper = document.querySelector('.custom-blog__dots');
-
-      flkty.on('ready', function() {
-        var dots = slider.querySelector('.flickity-page-dots');
-        if (dotsWrapper && dots) {
-          dotsWrapper.appendChild(dots);
-        }
-      });
-
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', function() {
-          flkty.previous();
-        });
-        nextBtn.addEventListener('click', function() {
-          flkty.next();
-        });
-      }
-    }
-  });
-</script>
 

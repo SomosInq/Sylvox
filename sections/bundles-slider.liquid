@@ -1,0 +1,191 @@
+{% comment %} Bundles Slider Section with Tab Switching, Flickity, Custom Dot/Arrow Placement {% endcomment %}
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
+
+<style>
+  .bundles-slider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bundles-slider .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    background: #FAFAFA;
+    padding: 12px 20px;
+    border-radius: 9999px;
+    margin: 0 auto 24px;
+    width: fit-content;
+    flex-wrap: wrap;
+  }
+
+  .bundles-slider .tab {
+    padding: 8px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .bundles-slider .tab.active {
+    background: #20413B;
+    color: white;
+  }
+
+  .bundles-slider .tab-content { display: none; }
+  .bundles-slider .tab-content.active { display: block; }
+
+  .bundle-card {
+    position: relative;
+    background: #F2F2F2;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+
+  .bundle-card .savings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #DB4B97;
+    color: white;
+    padding: 4px 10px;
+    font-size: 14px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .bundle-card img {
+    width: var(--bundle-image-size, 60%);
+    height: auto;
+    margin: 1rem auto;
+  }
+
+  .flickity-prev-next-button {
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    color: black;
+    font-size: 24px;
+  }
+
+  .bundles-slider .slider-controls-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+
+  .bundles-slider .flickity-page-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    position: static;
+  }
+
+  .bundles-slider .flickity-page-dots .dot {
+    width: 24px;
+    height: 25px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bundles-slider .flickity-page-dots .dot.is-selected {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.bundles-slider .tab');
+    const contents = document.querySelectorAll('.bundles-slider .tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+        const tabId = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        contents.forEach(c => {
+          c.classList.remove('active');
+          if (c.classList.contains('tab-' + tabId)) {
+            c.classList.add('active');
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  :root {
+    --bundle-image-size: 60%;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Bundles Slider",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 4, "default": 0 },
+    { "type": "text", "id": "section_title", "label": "Section Title" },
+    { "type": "select", "id": "section_title_tag", "label": "Title Tag", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" } ], "default": "h2" },
+    { "type": "color", "id": "section_title_color", "label": "Title Color", "default": "#000000" },
+    { "type": "select", "id": "section_title_align", "label": "Title Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "center" },
+    { "type": "select", "id": "section_title_weight", "label": "Title Font Weight", "options": [ { "value": "300", "label": "Light" }, { "value": "400", "label": "Normal" }, { "value": "700", "label": "Bold" } ], "default": "400" },
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "Standard" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "Standard" }, { "value": "full", "label": "Full Width" } ] },
+    {
+  "type": "range",
+  "id": "image_size",
+  "label": "Image Size (%)",
+  "min": 20,
+  "max": 100,
+  "step": 5,
+  "default": 60
+},
+    { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true },
+    { "type": "checkbox", "id": "show_dots", "label": "Show Dots", "default": true },
+    { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
+    { "type": "text", "id": "custom_id", "label": "Custom ID" }
+  ],
+  "blocks": [
+    {
+      "type": "bundle",
+      "name": "Bundle",
+      "settings": [
+        { "type": "text", "id": "tab_id", "label": "Tab Group ID", "default": "tv_mount" },
+        { "type": "text", "id": "tab_label", "label": "Tab Label", "default": "TV + Mount Bundles" },
+        { "type": "text", "id": "title", "label": "Bundle Title" },
+        { "type": "textarea", "id": "text", "label": "Bundle Description" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "save_label", "label": "Save Label", "default": "Save $100" },
+        { "type": "checkbox", "id": "lazy_loading", "label": "Lazy Load Image", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Bundles Slider", "category": "Somos Custom" }
+  ]
+}
+{% endschema %}
