@@ -169,6 +169,7 @@
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -184,7 +185,8 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 900
+        "slide_height": 900,
+        "slide_width": 1800
       }
     },
     "image_text_ycy7Tj": {
