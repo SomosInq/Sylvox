@@ -95,7 +95,9 @@
           }
         }
       },
-      "block_order": ["heading_A6zfqX"],
+      "block_order": [
+        "heading_A6zfqX"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -114,7 +116,9 @@
           }
         }
       },
-      "block_order": ["image_yaGMXV"],
+      "block_order": [
+        "image_yaGMXV"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -129,7 +133,12 @@
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
       }
     },
     "icon_grid_f4ecNH": {
@@ -252,7 +261,10 @@
           }
         }
       },
-      "block_order": ["heading_339rBV", "richtext_c9B6TT"],
+      "block_order": [
+        "heading_339rBV",
+        "richtext_c9B6TT"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -303,7 +315,10 @@
           }
         }
       },
-      "block_order": ["image_KAMyxG", "image_tnR9zX"],
+      "block_order": [
+        "image_KAMyxG",
+        "image_tnR9zX"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -354,7 +369,10 @@
           }
         }
       },
-      "block_order": ["feature_PemNRF", "feature_wqii3a"],
+      "block_order": [
+        "feature_PemNRF",
+        "feature_wqii3a"
+      ],
       "name": "Feature Showcase",
       "settings": {
         "section_width": "standard",
@@ -406,7 +424,11 @@
           }
         }
       },
-      "block_order": ["image_tEFxXp", "heading_qPYaaN", "richtext_g7C6di"],
+      "block_order": [
+        "image_tEFxXp",
+        "heading_qPYaaN",
+        "richtext_g7C6di"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -483,7 +505,7 @@
           "settings": {
             "layout": "vertical",
             "image_position": "bottom",
-            "image": "shopify://shop_images/Voice_Control.png",
+            "image": "shopify://shop_images/Voice_Control_86832f27-95d7-4d9f-b583-239cd558cfbd.png",
             "image_width": 100,
             "content_width": 60,
             "margin_top": 0,
@@ -497,7 +519,11 @@
           }
         }
       },
-      "block_order": ["grid_box_4m3bhU", "grid_box_jHUB8q", "grid_box_mejXwx"],
+      "block_order": [
+        "grid_box_4m3bhU",
+        "grid_box_jHUB8q",
+        "grid_box_mejXwx"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -542,7 +568,10 @@
           }
         }
       },
-      "block_order": ["heading_gXrCtx", "subheading_JMFnK4"],
+      "block_order": [
+        "heading_gXrCtx",
+        "subheading_JMFnK4"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -585,7 +614,9 @@
           }
         }
       },
-      "block_order": ["title_bNFbiR"],
+      "block_order": [
+        "title_bNFbiR"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -600,7 +631,12 @@
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
       }
     },
     "feature_banner_tabs_gkzFYF": {
@@ -623,26 +659,30 @@
             "heading": "100% Waterproof & Durable",
             "description": "Never worry about rain ruining your entertainment. The Sylvox Deck Pro 2.0 is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands.",
             "background": "shopify://shop_images/7a5adc473342b79760f7462787386fffd4dfb1a4.jpg",
-            "text_color": "#1d1d1b"
+            "text_color": "#000000"
           }
         },
         "tab_ethewf": {
           "type": "tab",
           "settings": {
             "label": "Handles Extreme Temperatures",
-            "heading": "Built for Year-Round Outdoor Use",
-            "description": "From freezing winters to blazing summers, the Deck Pro 2.0 is designed to withstand it all. Tested to perform in temperatures from -22°F to 122°F, it’s built to keep running in both icy conditions and scorching heat.",
-            "background": "shopify://shop_images/fe51c809052ce59d053f61772f0d1464da844bcc.png",
-            "text_color": "#1d1d1b"
+            "heading": "Built to Last",
+            "description": "Unlike standard indoor TVs, the Deck Pro 2.0 is built with a full-metal, corrosion-resistant frame, protecting it from humidity, salt air, rust, and wear over time. Whether you live in a coastal area with high moisture or an arid climate with intense sun, your TV stays strong, sleek, and reliable for years.",
+            "background": "shopify://shop_images/0baf296874c32e38ece2c88dd907471b2a51c6e1_1.gif",
+            "text_color": "#ffffff"
           }
         }
       },
-      "block_order": ["tab_gGFphP", "tab_BtCiEc", "tab_ethewf"],
+      "block_order": [
+        "tab_gGFphP",
+        "tab_BtCiEc",
+        "tab_ethewf"
+      ],
       "name": "Feature Banner Tabs",
       "settings": {
         "autoplay_enabled": true,
         "autoplay_interval": 5,
-        "banner_height": 610,
+        "banner_height": 750,
         "banner_height_mobile": 480,
         "padding_top": 60,
         "padding_bottom": 60,
@@ -677,7 +717,11 @@
           }
         }
       },
-      "block_order": ["image_aY3FV9", "title_UccEdf", "text_gpAU3F"],
+      "block_order": [
+        "image_aY3FV9",
+        "title_UccEdf",
+        "text_gpAU3F"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -692,7 +736,12 @@
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
       }
     },
     "somos_left_right_media_XGX7Q9": {
@@ -731,15 +780,15 @@
         "slide_xF49fq": {
           "type": "slide",
           "settings": {
-            "pre_title": "Immersive, Three-Dimensional Sound<br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Full-Range Audio Without Extra Equipment</span><br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Clear, Crisp, Outdoor-Optimized Audio</span>",
+            "pre_title": "<span style=\"color: var(--Dark-Grey, #636363);\">Immersive, Three-Dimensional Sound</span><br>\n\nFull-Range Audio Without Extra Equipment\n<br>\n<span style=\"color: var(--Dark-Grey, #636363);\">\nClear, Crisp, Outdoor-Optimized Audio\n</span>",
             "pre_title_padding": 100,
-            "subtitle": "Immersive, Three-Dimensional Sound",
-            "heading": "Dolby Atmos Support",
+            "subtitle": "Full-Range Audio Without Extra Equipment",
+            "heading": "2 x 10W Built-In Speakers",
             "heading_type": "h2",
             "heading_color": "#000000",
             "heading_align": "left",
             "heading_weight": "400",
-            "body": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
+            "body": "Powerful, full-range speakers deliver rich, room-filling sound without the need for external sound systems. Optimized for outdoor acoustics, these speakers ensure you hear every detail—even in open-air spaces.",
             "body_color": "#333333",
             "body_align": "left",
             "button_text": "",
@@ -761,15 +810,15 @@
         "slide_b6LEyw": {
           "type": "slide",
           "settings": {
-            "pre_title": "Immersive, Three-Dimensional Sound<br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Full-Range Audio Without Extra Equipment</span><br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Clear, Crisp, Outdoor-Optimized Audio</span>",
+            "pre_title": "<span style=\"color: var(--Dark-Grey, #636363);\">Immersive, Three-Dimensional Sound</span><br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Full-Range Audio Without Extra Equipment</span><br>\nClear, Crisp, Outdoor-Optimized Audio",
             "pre_title_padding": 100,
-            "subtitle": "Immersive, Three-Dimensional Sound",
-            "heading": "Dolby Atmos Support",
+            "subtitle": "Clear, Crisp, Outdoor-Optimized Audio",
+            "heading": "Engineered for Open Spaces",
             "heading_type": "h2",
             "heading_color": "#000000",
             "heading_align": "left",
             "heading_weight": "400",
-            "body": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
+            "body": "Outdoor environments can absorb sound, but the Deck Pro 2.0 is designed to overcome that challenge. Advanced audio engineering ensures voice clarity, deep bass, and dynamic sound projection, so every conversation, song, and dramatic scene is heard just as intended.",
             "body_color": "#333333",
             "body_align": "left",
             "button_text": "",
@@ -783,13 +832,17 @@
             "slide_padding_left": 40,
             "slide_background": "#20413b",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4_8913a879-70f3-4e6b-82b5-7e7334df99e3.png",
+            "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4_1.png",
             "image_fit": "cover",
             "video_url": ""
           }
         }
       },
-      "block_order": ["slide_mDWGbn", "slide_xF49fq", "slide_b6LEyw"],
+      "block_order": [
+        "slide_mDWGbn",
+        "slide_xF49fq",
+        "slide_b6LEyw"
+      ],
       "name": "Somos Left Right Media",
       "settings": {
         "section_width": "full",
@@ -1148,39 +1201,166 @@
         "heading_20": ""
       }
     },
+    "bundles_slider_LJaeRF": {
+      "type": "bundles-slider",
+      "blocks": {
+        "bundle_XUQJGq": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount",
+            "tab_label": "TV + Mount bundles",
+            "title": "Deck Pro 2.0 + Wall Mount",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/07be327639fd2258a218600b41d316e7_png.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        },
+        "bundle_Yg8FP8": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount2",
+            "tab_label": "TV Mounts + Soundbar bundles",
+            "title": "Deck Pro 2.0 + Ceiling Mount",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/image_99ed1135-e23a-4b85-8d48-a150efd81f3b.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        },
+        "bundle_m9dzG3": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount",
+            "tab_label": "TV + Mount bundles",
+            "title": "Deck Pro 2.0 + Eletric Ceiling Mount",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/image-1_f6b8b4e0-1d44-4443-99e2-bbc57a416c19.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        },
+        "bundle_EmUmdD": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount",
+            "tab_label": "TV + Mount bundles",
+            "title": "Deck Pro 2.0 + Rolling TV Cart",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/image-2_c00616de-d993-4e2f-9e73-f16c9d75e8f5.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        },
+        "bundle_jAkcJf": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount2",
+            "tab_label": "TV Mounts + Soundbar bundles",
+            "title": "Deck Pro 2.0 + Ceiling Mount",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/image_99ed1135-e23a-4b85-8d48-a150efd81f3b.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        },
+        "bundle_8LiRLw": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount",
+            "tab_label": "TV + Mount bundles",
+            "title": "Deck Pro 2.0 + Eletric Ceiling Mount",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/image-1_f6b8b4e0-1d44-4443-99e2-bbc57a416c19.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        },
+        "bundle_HNcpbM": {
+          "type": "bundle",
+          "settings": {
+            "tab_id": "tv_mount",
+            "tab_label": "TV + Mount bundles",
+            "title": "Deck Pro 2.0 + Rolling TV Cart",
+            "text": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "image": "shopify://shop_images/image-2_c00616de-d993-4e2f-9e73-f16c9d75e8f5.png",
+            "save_label": "Save $100",
+            "lazy_loading": true
+          }
+        }
+      },
+      "block_order": [
+        "bundle_XUQJGq",
+        "bundle_Yg8FP8",
+        "bundle_m9dzG3",
+        "bundle_EmUmdD",
+        "bundle_jAkcJf",
+        "bundle_8LiRLw",
+        "bundle_HNcpbM"
+      ],
+      "name": "Bundles Slider",
+      "settings": {
+        "background_color": "#fafafa",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "section_title": "Bundles offer the best savings",
+        "section_title_tag": "h2",
+        "section_title_color": "#000000",
+        "section_title_align": "center",
+        "section_title_weight": "300",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "image_size": 300,
+        "show_arrows": true,
+        "show_dots": true,
+        "custom_class": "",
+        "custom_id": ""
+      }
+    },
     "new_banner_slider_w4q6Cq": {
       "type": "new-banner-slider",
       "blocks": {
-        "slide_GpEpTM": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/3008dbb71d9d1087131aa4212d7bfe1a4429c3aa.jpg",
-            "caption": "Works Even After Heavy Rain",
-            "description_block": "Outdoor Dining Area"
-          }
-        },
         "slide_3dFEVa": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/3008dbb71d9d1087131aa4212d7bfe1a4429c3aa.jpg",
-            "caption": "Works Even After Heavy Rain",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
+          }
+        },
+        "slide_GpEpTM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/412a3b60cd6326c4e736d37806d0b00e3e23c711_3.jpg",
+            "caption": "",
+            "description_block": "Family movie nights"
           }
         },
         "slide_LgjQzQ": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/8425f10569f72751d51559fe3588d563aae58665.jpg",
-            "caption": "Works Even After Heavy Rain",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
           }
         }
       },
-      "block_order": ["slide_GpEpTM", "slide_3dFEVa", "slide_LgjQzQ"],
+      "block_order": [
+        "slide_3dFEVa",
+        "slide_GpEpTM",
+        "slide_LgjQzQ"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#fafafa",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -1190,48 +1370,77 @@
         "margin_left": 0,
         "margin_right": 0,
         "text_alignment": "left",
-        "heading": "Rain, Snow, or Heat - It Just Works.",
-        "subheading": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
-        "description": "Add Description",
-        "show_arrows": false,
+        "heading": "Your Outdoor Oasis, Upgraded.",
+        "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
+        "description": "",
+        "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 500
+        "slide_height": 700,
+        "slide_width": 1400
       }
     },
-    "accordian_MBTAMU": {
+    "accordian_T3jRfT": {
       "type": "accordian",
       "blocks": {
-        "question_eefaCG": {
+        "question_attGgN": {
           "type": "question",
           "settings": {
             "question": "Do you ship overseas?",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
-        "question_94Yzrr": {
+        "question_Ujgzp8": {
           "type": "question",
           "settings": {
             "question": "Do I need to setup an account to place an order?",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
         },
-        "question_mAYTiE": {
+        "question_FPtbw4": {
           "type": "question",
           "settings": {
             "question": "Do you offer gift wrapping",
             "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
           }
+        },
+        "question_frieFb": {
+          "type": "question",
+          "settings": {
+            "question": "How long will it take to get my orders?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_J9KbDA": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_LYCqjQ": {
+          "type": "question",
+          "settings": {
+            "question": "Any question?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
         }
       },
-      "block_order": ["question_eefaCG", "question_94Yzrr", "question_mAYTiE"],
+      "block_order": [
+        "question_attGgN",
+        "question_Ujgzp8",
+        "question_FPtbw4",
+        "question_frieFb",
+        "question_J9KbDA",
+        "question_LYCqjQ"
+      ],
       "name": "Accordian",
       "settings": {
         "heading": "Have a question ? We are here to help.",
         "subheading": "Check out the most common questions our customers asked. Still have questions? Contact our customer support.",
         "heading_color": "#000000",
         "subheading_color": "#000000",
-        "heading_size": 24,
+        "heading_size": 36,
         "subheading_size": 16,
         "bg_color": "#ffffff",
         "arrow_image": "shopify://shop_images/Overlay.png",
@@ -1268,7 +1477,8 @@
     "icon_grid_aUWbL6",
     "usp_accordion_3MVwD3",
     "comparison_table_WEHMNn",
+    "bundles_slider_LJaeRF",
     "new_banner_slider_w4q6Cq",
-    "accordian_MBTAMU"
+    "accordian_T3jRfT"
   ]
 }
