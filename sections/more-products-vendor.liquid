@@ -1,26 +1,282 @@
-{%- render 'section-more-products-vendor' -%}
+{% comment %}
+  Custom section: More Products by Vendor | Flickity Slider (Non-AJAX)
+{% endcomment %}
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
+
+<style>
+  .usp-heading {
+    margin-bottom: 5px;
+  }
+
+  .usp-subtext {
+    margin-bottom: 0;
+  }
+
+  .video-swiper-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .content-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-right {
+    display: flex;
+    gap: 10px;
+  }
+
+  .usp-arrow {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #636363;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #636363;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .usp-arrow:hover {
+    background: #297f67;
+    color: #fff;
+    border: none;
+  }
+
+  .flickity-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .flickity-carousel {
+    display: flex;
+  }
+
+  .carousel-cell {
+    min-width: 285px;
+    margin-right: 15px;
+  }
+
+  .product-card,
+  .product-card-wrapper {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .video-swiper-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .content-right {
+      margin-top: 10px;
+    }
+  }
+</style>
+
+<div class="index-section index-section--sub-product section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+
+    <div class="video-swiper-content">
+      <div class="content-left">
+        {% if section.settings.morefrom_sub_title != blank %}
+          <div class="usp-subtext">{{ section.settings.morefrom_sub_title }}</div>
+        {% endif %}
+        {% if section.settings.morefrom_title != blank %}
+          <h2 class="usp-heading">{{ section.settings.morefrom_title }}</h2>
+        {% endif %}
+      </div>
+      <div class="content-right">
+        <button class="usp-arrow prev" aria-label="Previous slide">‹</button>
+        <button class="usp-arrow next" aria-label="Next slide">›</button>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+{% if recommendations.products != blank %}
+  <div class="flickity-container">
+    <div class="flickity-carousel" id="VendorProductsSlider-{{ section.id }}">
+      {% for product in recommendations.products limit: section.settings.max_products %}
+        <div class="carousel-cell">
+          {% render 'product-grid-item', product: product %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+</div>
+
+<script>
+  function initVendorFlickity{{ section.id }}() {
+    const slider = document.querySelector('#VendorProductsSlider-{{ section.id }}');
+    if (!slider || slider.classList.contains('flickity-enabled')) return;
+
+    const flkty = new Flickity(slider, {
+      cellAlign: 'left',
+      contain: true,
+      groupCells: 4,
+      wrapAround: true,
+      pageDots: false,
+      prevNextButtons: false,
+      draggable: true
+    });
+
+    const container = slider.closest('.index-section');
+    const prevBtn = container.querySelector('.usp-arrow.prev');
+    const nextBtn = container.querySelector('.usp-arrow.next');
+
+    prevBtn?.addEventListener('click', () => flkty.previous());
+    nextBtn?.addEventListener('click', () => flkty.next());
+  }
+
+  document.addEventListener('DOMContentLoaded', initVendorFlickity{{ section.id }});
+
+  document.addEventListener('shopify:section:load', function(e) {
+    if (e.detail.sectionId === '{{ section.id }}') {
+      initVendorFlickity{{ section.id }}();
+    }
+  });
+</script>
+
 
 {% schema %}
 {
-  "name": "t:labels.more_from_vendor",
+  "name": "Vendor Product Slider",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "t:labels.more_from_vendor"
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
     },
     {
       "type": "range",
-      "id": "products_per_row",
-      "label": "t:labels.desktop_products_per",
-      "default": 3,
-      "min": 2,
-      "max": 5,
-      "step": 1
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "label": "Margin left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "label": "Margin right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "id": "morefrom_title",
+      "type": "text",
+      "label": "Heading",
+      "default": "Sylvox Community"
+    },
+    {
+      "id": "morefrom_sub_title",
+      "type": "text",
+      "label": "Subtext",
+      "default": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology."
     },
     {
       "type": "range",
       "id": "max_products",
-      "label": "t:labels.maximum_products_to",
+      "label": "Max Products",
       "default": 5,
       "min": 2,
       "max": 10,

@@ -2,16 +2,26 @@
   Custom section: Sidebar Collection Filter | filter-collection-with-sidebar.liquid
 {% endcomment %}
 
-<div class="filter-collection" id="{{ section.id }}">
+<div class="filter-collection section_width_{{ section.settings.section_width }}" id="{{ section.id }}" 
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url: width: 2000 }}); background-size: cover; background-position: center;{% endif %}
+    padding: {{ section.settings.padding_top }}px !important; {{ section.settings.padding_right }}px !important; {{ section.settings.padding_bottom }}px !important; {{ section.settings.padding_left }}px !important;
+    margin-top: {{ section.settings.margin_top }}px !important; margin-bottom: {{ section.settings.margin_bottom }}px !important;
+  ">
   <div class="filter-collection__wrapper">
     <div class="filter-collection__overlay" onclick="document.querySelector('.filter-collection__drawer').classList.remove('is-open');document.querySelector('.filter-collection__overlay').classList.remove('is-active')"></div>
     <div class="filter-collection__drawer">
       <div class="filter-collection__drawer-inner">
         <aside class="filter-collection__sidebar">
-          <details open>
+          <details>
             <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
               <span class="filter-collection__group-heading">Sort By</span>
-              <span class="filter-collection__chevron">⌄</span>
+  {% if section.settings.chevron_icon != blank %}
+    <img src="{{ section.settings.chevron_icon | image_url: width: 16 }}" class="filter-collection__chevron-img" alt="Chevron" />
+  {% else %}
+    <span class="filter-collection__chevron-text">⌄</span>
+  {% endif %}
             </summary>
             <ul class="filter-collection__series-list">
               <li class="filter-collection__series-item">Featured</li>
@@ -21,71 +31,92 @@
           </details>
           <div class="filter-collection__divider"></div>
 
-          <details open>
+          <details>
             <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
-              <span class="filter-collection__group-heading">Series</span>
-              <span class="filter-collection__chevron">⌄</span>
-            </summary>
+  <span class="filter-collection__group-heading">Series</span>
+  {% if section.settings.chevron_icon != blank %}
+    <img src="{{ section.settings.chevron_icon | image_url: width: 16 }}" class="filter-collection__chevron-img" alt="Chevron" />
+  {% else %}
+    <span class="filter-collection__chevron-text">⌄</span>
+  {% endif %}
+</summary>
             <ul class="filter-collection__series-list">
               <li class="filter-collection__series-item active">
                 {% if section.settings.image_all != blank %}
-                  <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="22" height="22" alt="All" />
+                  <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="30" height="30" alt="All" />
                 {% endif %}
                 <span>ALL</span>
               </li>
               <li class="filter-collection__series-item">
-                {% if section.settings.image_360 != blank %}
-                  <img src="{{ section.settings.image_360 | image_url: width: 77 }}" width="76.68" height="30" alt="360" />
+                {% if section.settings.image_Full_Sun != blank %}
+                  <img src="{{ section.settings.image_Full_Sun | image_url: width: 77 }}" width="30" height="30"" alt="Full_Sun" />
                 {% endif %}
-                <span>360</span>
+                <span>Full Sun</span>
               </li>
               <li class="filter-collection__series-item">
-                {% if section.settings.image_nexus != blank %}
-                  <img src="{{ section.settings.image_nexus | image_url: width: 30 }}" width="30" height="30" alt="Nexus" />
+                {% if section.settings.image_Partial_Sun != blank %}
+                  <img src="{{ section.settings.image_Partial_Sun | image_url: width: 30 }}" width="30" height="30" alt="Partial_Sun" />
                 {% endif %}
-                <span>Nexus</span>
+                <span>Partial Sun</span>
               </li>
               <li class="filter-collection__series-item active">
-                {% if section.settings.image_element != blank %}
-                  <img src="{{ section.settings.image_element | image_url: width: 30 }}" width="30" height="30" alt="Element" />
+                {% if section.settings.image_Lift_Cabinet != blank %}
+                  <img src="{{ section.settings.image_Lift_Cabinet | image_url: width: 30 }}" width="30" height="30" alt="Lift_Cabinet" />
                 {% endif %}
-                <span>Element</span>
-              </li>
-              <li class="filter-collection__series-item">
-                {% if section.settings.image_sonnet != blank %}
-                  <img src="{{ section.settings.image_sonnet | image_url: width: 30 }}" width="30" height="30" alt="Sonnet" />
-                {% endif %}
-                <span>Sonnet</span>
-              </li>
-              <li class="filter-collection__series-item">
-                {% if section.settings.image_falcon != blank %}
-                  <img src="{{ section.settings.image_falcon | image_url: width: 30 }}" width="30" height="30" alt="Falcon" />
-                {% endif %}
-                <span>Falcon</span>
-              </li>
-              <li class="filter-collection__series-item">
-                {% if section.settings.image_ondash != blank %}
-                  <img src="{{ section.settings.image_ondash | image_url: width: 30 }}" width="30" height="30" alt="OnDash" />
-                {% endif %}
-                <span>OnDash</span>
-              </li>
-              <li class="filter-collection__series-item">
-                {% if section.settings.image_pilot != blank %}
-                  <img src="{{ section.settings.image_pilot | image_url: width: 30 }}" width="30" height="30" alt="Pilot" />
-                {% endif %}
-                <span>Pilot</span>
+                <span>Lift Cabinet</span>
               </li>
             </ul>
           </details>
+
           <div class="filter-collection__divider"></div>
 
-          <div class="filter-collection__group-heading-wrapper">
-            <p class="filter-collection__group-heading">Accessories</p>
-          </div>
+<details>
+  <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
+    <span class="filter-collection__group-heading">Size</span>
+    {% if section.settings.chevron_icon != blank %}
+      <img src="{{ section.settings.chevron_icon | image_url: width: 16 }}" class="filter-collection__chevron-img" alt="Chevron" />
+    {% else %}
+      <span class="filter-collection__chevron-text">⌄</span>
+    {% endif %}
+  </summary>
+  <ul class="filter-collection__series-list">
+    <li class="filter-collection__series-item">Small</li>
+    <li class="filter-collection__series-item">Medium</li>
+    <li class="filter-collection__series-item">Large</li>
+  </ul>
+</details>
+
+<div class="filter-collection__divider"></div>
+
+<details>
+  <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
+    <span class="filter-collection__group-heading">Accessories</span>
+    {% if section.settings.chevron_icon != blank %}
+      <img src="{{ section.settings.chevron_icon | image_url: width: 16 }}" class="filter-collection__chevron-img" alt="Chevron" />
+    {% else %}
+      <span class="filter-collection__chevron-text">⌄</span>
+    {% endif %}
+  </summary>
+  <ul class="filter-collection__series-list">
+    <li class="filter-collection__series-item">Remote</li>
+    <li class="filter-collection__series-item">Wall Mount</li>
+    <li class="filter-collection__series-item">Covers</li>
+  </ul>
+</details>
+
 
           <div class="filter-collection__compare-wrapper">
             <div class="filter-collection__compare-button">
-              <button class="filter-collection__button">Compare</button>
+<button class="filter-collection__button" style="background-color: {{ section.settings.compare_button_bg_color }};">
+  <span class="compare-button__content">
+    {% if section.settings.compare_button_icon %}
+      <img src="{{ section.settings.compare_button_icon | image_url: width: 16 }}" alt="Icon" class="compare-button__icon" />
+    {% endif %}
+    <span>Compare</span>
+  </span>
+</button>
+
+
             </div>
           </div>
           <div class="filter-collection__apply-wrapper">
@@ -94,12 +125,12 @@
         </aside>
       </div>
     </div>
-<button class="filter-collection__filter-toggle" onclick="document.querySelector('.filter-collection__drawer').classList.toggle('is-open');document.querySelector('.filter-collection__overlay').classList.toggle('is-active')">
-  Filter
-</button>
+    <button class="filter-collection__filter-toggle" onclick="document.querySelector('.filter-collection__drawer').classList.toggle('is-open');document.querySelector('.filter-collection__overlay').classList.toggle('is-active')">
+      Filter
+    </button>
 
     <div class="filter-collection__products">
-      <div class="filter-collection__grid">
+    <div class="filter-collection__grid" style="grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);">
         {% for product in collection.products %}
           <div class="filter-collection__item">
             <div class="filter-collection__image-wrapper">
@@ -108,7 +139,7 @@
               </a>
             </div>
             <div class="filter-collection__meta">
-              <span class="filter-collection__tag">Element</span>
+              <span class="filter-collection__tag">Lift Cabinet</span>
               <h3 class="filter-collection__title">{{ product.title }}</h3>
               <p class="filter-collection__price">
                 From {{ product.price | money }}
@@ -129,7 +160,69 @@
   </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggles = document.querySelectorAll('.filter-collection__series-toggle');
+
+  toggles.forEach(summary => {
+    const details = summary.closest('details');
+    summary.addEventListener('click', () => {
+      setTimeout(() => {
+        const chevronImg = summary.querySelector('.filter-collection__chevron-img');
+        const chevronText = summary.querySelector('.filter-collection__chevron-text');
+        const isOpen = details.hasAttribute('open');
+
+        if (chevronImg) {
+          chevronImg.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+        if (chevronText) {
+          chevronText.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      }, 0);
+    });
+  });
+});
+
+</script>
+
 {% style %}
+@import url('https://fonts.googleapis.com/css2?family=Questrial&family=Roboto&display=swap');
+
+{{ 'filter-collection-with-sidebar.css' | asset_url | stylesheet_tag }}
+
+.filter-collection__chevron-img,
+.filter-collection__chevron-text {
+  transition: transform 0.6s ease;
+}
+
+details[open] .filter-collection__chevron-img,
+details[open] .filter-collection__chevron-text {
+  transform: rotate(180deg);
+}
+
+.compare-button__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-button__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+
+.filter-collection__chevron {
+  width: 13px;
+  height: 8px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
 .filter-collection__pagination span.prev,
 .filter-collection__pagination span.next,  {
     width: 19px !important;
@@ -217,6 +310,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+      margin-bottom: 30px;
 }
 .filter-collection__group-heading {
   font-family: 'Questrial', sans-serif;
@@ -303,7 +397,7 @@
   column-gap: 25px;
 }
 .filter-collection__item {
-  width: 282px;
+  width: 100%;
   height: 472px;
   border-radius: 6px;
   background: #ffffff;
@@ -314,7 +408,7 @@
   align-items: flex-start;
 }
 .filter-collection__image-wrapper {
-  max-width: 283px;
+  width: 100%;
   max-height: 322px;
   aspect-ratio: 283 / 322;
   background-size: cover;
@@ -563,45 +657,59 @@
   "class": "section",
   "settings": [
     {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 200, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 200, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 200, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 200, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 200, "step": 4, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 200, "step": 4, "default": 0 },
+
+    { "type": "range", "id": "products_per_row", "label": "Products Per Row", "min": 1, "max": 6, "step": 1, "default": 4 },
+    {
       "type": "image_picker",
       "id": "image_all",
       "label": "ALL Image"
     },
     {
       "type": "image_picker",
-      "id": "image_360",
-      "label": "360 Image"
+      "id": "image_Full_Sun",
+      "label": "Full Sun Image"
     },
     {
       "type": "image_picker",
-      "id": "image_nexus",
-      "label": "Nexus Image"
+      "id": "image_Partial_Sun",
+      "label": "Partial Sun Image"
     },
     {
       "type": "image_picker",
-      "id": "image_element",
-      "label": "Element Image"
+      "id": "image_Lift_Cabinet",
+      "label": "Lift Cabinet Image"
     },
     {
-      "type": "image_picker",
-      "id": "image_sonnet",
-      "label": "Sonnet Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_falcon",
-      "label": "Falcon Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_ondash",
-      "label": "OnDash Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_pilot",
-      "label": "Pilot Image"
-    }
+  "type": "image_picker",
+  "id": "chevron_icon",
+  "label": "Chevron Icon"
+},
+{
+  "type": "color",
+  "id": "compare_button_bg_color",
+  "label": "Compare Button Background",
+  "default": "#101820"
+},
+{
+  "type": "image_picker",
+  "id": "compare_button_icon",
+  "label": "Compare Button Icon"
+}
   ],
   "presets": [
     {

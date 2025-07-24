@@ -1,0 +1,22 @@
+{
+    "sourceFile": "sections/recently-viewed.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1753371101828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753371118818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n {%- render 'section-recently-viewed' -%}\n \n {% schema %}\n {\n-  \"name\": \"Recently Viewed\",\n+  \"name\": \"t:labels.recently_viewed\",\n   \"class\": \"recently-viewed__section\",\n   \"settings\": [\n     {\n       \"type\": \"paragraph\",\n"
+                }
+            ],
+            "date": 1753371101828,
+            "name": "Commit-0",
+            "content": "{%- render 'section-recently-viewed' -%}\n\n{% schema %}\n{\n  \"name\": \"Recently Viewed\",\n  \"class\": \"recently-viewed__section\",\n  \"settings\": [\n    {\n      \"type\": \"paragraph\",\n      \"content\": \"t:info.recently_viewed_products_only_visible\"\n    }\n  ],\n  \"disabled_on\": {\n    \"groups\": [\"footer\", \"header\", \"custom.popups\"]\n  }\n}\n{% endschema %}\n"
+        }
+    ]
+}

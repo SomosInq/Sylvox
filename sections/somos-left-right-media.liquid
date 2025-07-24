@@ -30,22 +30,26 @@
 .slide-content-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: stretch;
   gap: 20px;
+  height: 100%;
+  min-height: 100%;
 }
-
-.slide-text {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.flickity-enabled.is-draggable .flickity-viewport {
+    height: 807.172px !important;
 }
-
+.slide-text,
 .slide-media {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: left;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Optional: Center content vertically in .slide-text */
+.slide-text {
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -59,7 +63,7 @@
 .slide-media video,
 .slide-media iframe {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: {{ block.settings.image_fit | default: 'cover' }};
 }
 
@@ -88,8 +92,9 @@
 }
 {% endstyle %}
 
+
 <div id="{{ section.settings.custom_id }}" class="atomos_slider_container section_width_{{ section.settings.section_width }}">
-  <div class="text-center" style="width: 100%;">
+  <div class="text-left" style="width: 100%;">
     {% if section.settings.top_image != blank %}
       <div class="top-image" style="text-align: center;">
         <img src="{{ section.settings.top_image | image_url }}" alt="Top Image" style="max-height: 40px; margin: 0 auto;">

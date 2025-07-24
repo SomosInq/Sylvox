@@ -36,14 +36,39 @@
   .bundles-slider .tab-content { display: none; }
   .bundles-slider .tab-content.active { display: block; }
 
-  .bundle-card {
+  .bundle-slider {
     position: relative;
-    background: #F2F2F2;
-    border-radius: 12px;
-    overflow: hidden;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    text-align: center;
+    width: 100%;
+  }
+
+  .bscarousel-cell {
+    width: 25%;
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+.bundle-card {
+  position: relative;
+  background: #F2F2F2;
+  border-radius: 0px;
+  overflow: hidden;
+  padding: 40px 16px;
+  text-align: left;
+      box-shadow: none;
+}
+
+
+  .bundle-card h3,
+  .bundle-card p {
+    margin: 0 0 12px 0;
+  }
+
+  .bundle-card img {
+    margin-top: 12px;
+    height: auto;
+    transition: transform 0.3s ease;
+    margin: 0 auto;
   }
 
   .bundle-card .savings {
@@ -57,11 +82,12 @@
     border-bottom-left-radius: 8px;
   }
 
-  .bundle-card img {
-    width: var(--bundle-image-size, 60%);
-    height: auto;
-    margin: 1rem auto;
-  }
+  .flickity-enabled.is-draggable .flickity-viewport {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: grab;
+    {% comment %} height: 517.172px !important; {% endcomment %}
+}
 
   .flickity-prev-next-button {
     background: white;
@@ -103,36 +129,259 @@
   .bundles-slider .flickity-page-dots .dot.is-selected {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
   }
+
+  .bundle-slider .flickity-slider {
+  overflow: visible;
+}
+.bundle-slider .flickity-prev-next-button {
+  position: absolute;
+  bottom: 0px;
+  top: auto;
+  transform: none;
+}
+
+.bundle-slider .flickity-prev-next-button.previous {
+  right: 60px;
+}
+
+.bundle-slider .flickity-prev-next-button.next {
+  right: 10px;
+}
+
+.slider-controls-wrapper {
+  position: relative;
+  margin-top: 3rem; /* ensure space for arrows */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.slider-arrows {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.slider-arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.slider-dot {
+  width: 24px;
+  height: 2px;
+  background-color: #636363;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+{% comment %} .slider-dot.active {
+  background-color: #DB4B97;
+} {% endcomment %}
+
+.slider-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.slider-arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  background: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 </style>
 
+<section id="bundles-slider-{{ section.id }}" class="bundles-slider section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
+  style="background: {{ section.settings.background_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    {% if section.settings.section_title != blank %}
+      <{{ section.settings.section_title_tag }} style="text-align:{{ section.settings.section_title_align }}; color:{{ section.settings.section_title_color }}; font-weight:{{ section.settings.section_title_weight }};">
+        {{ section.settings.section_title }}
+      </{{ section.settings.section_title_tag }}>
+    {% endif %}
+
+    {% assign tab_ids = '' %}
+    {% assign tab_labels = '' %}
+    {% for block in section.blocks %}
+      {% unless tab_ids contains block.settings.tab_id %}
+        {% assign tab_ids = tab_ids | append: block.settings.tab_id | append: ',' %}
+        {% assign tab_labels = tab_labels | append: block.settings.tab_label | append: '|' %}
+      {% endunless %}
+    {% endfor %}
+
+    <div class="tabs">
+      {% assign tab_array = tab_ids | split: ',' %}
+      {% assign label_array = tab_labels | split: '|' %}
+      {% for tid in tab_array %}
+        {% unless tid == blank %}
+          <div class="tab {% if forloop.first %}active{% endif %}" data-tab="{{ tid }}">{{ label_array[forloop.index0] }}</div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+
+    {% for tid in tab_array %}
+      {% unless tid == blank %}
+        
+        <div class="tab-content tab-{{ tid }} {% if forloop.first %}active{% endif %}">
+          <div class="bundle-slider js-flickity"
+            data-flickity='{
+              "wrapAround": true,
+              "cellAlign": "left",
+              "groupCells": 4,
+              "pageDots": false,
+              "prevNextButtons": false
+            }'>
+            {% for block in section.blocks %}
+              {% if block.settings.tab_id == tid %}
+                <div class="bscarousel-cell">
+                  <div class="bundle-card">
+                    <div class="savings">{{ block.settings.save_label }}</div>
+                    <h5>{{ block.settings.title }}</h5>
+                    <p>{{ block.settings.text }}</p>
+                    {% if block.settings.image %}
+                      <img 
+                        src="{{ block.settings.image | image_url: width: 1000 }}" 
+                        style="width: {{ section.settings.image_size }}px; min-width: {{ section.settings.image_size }}px;" 
+                        loading="{{ block.settings.lazy_loading | default: true | json }}"
+                        alt="{{ block.settings.title }}">
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;">
+      <div class="slider-dots">
+  {% assign index = 0 %}
+  {% for block in section.blocks %}
+    {% if block.settings.tab_id == tid %}
+      <span class="slider-dot{% if index == 0 %} active{% endif %}" data-index="{{ index }}"></span>
+      {% assign index = index | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+      {% if section.settings.show_arrows %}
+        <div class="slider-arrows">
+          <button class="slider-arrow prev">‹</button>
+          <button class="slider-arrow next">›</button>
+        </div>
+      {% endif %}
+    </div>
+
+          
+
+
+      {% endunless %}
+    {% endfor %}
+  </div>
+</section>
+
+
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const tabs = document.querySelectorAll('.bundles-slider .tab');
-    const contents = document.querySelectorAll('.bundles-slider .tab-content');
+document.addEventListener('DOMContentLoaded', function () {
+  const tabs = document.querySelectorAll('.bundles-slider .tab');
+  const tabContents = document.querySelectorAll('.bundles-slider .tab-content');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', function () {
-        const tabId = tab.dataset.tab;
+  function initFlickitySlider(container) {
+    if (!container || container.flickityInstance) return;
 
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+    const flickity = new Flickity(container, {
+      wrapAround: true,
+      cellAlign: 'left',
+      groupCells: 4,
+      pageDots: false,
+      prevNextButtons: false
+    });
 
-        contents.forEach(c => {
-          c.classList.remove('active');
-          if (c.classList.contains('tab-' + tabId)) {
-            c.classList.add('active');
-          }
+    container.flickityInstance = flickity;
+
+    const tabContent = container.closest('.tab-content');
+    const dots = tabContent.querySelectorAll('.slider-dot');
+    const prevBtn = tabContent.querySelector('.slider-arrow.prev');
+    const nextBtn = tabContent.querySelector('.slider-arrow.next');
+
+    // ✅ Bind dot clicks
+    if (dots.length) {
+      dots.forEach((dot) => {
+        const index = parseInt(dot.getAttribute('data-index'));
+        dot.addEventListener('click', () => flickity.select(index));
+      });
+
+      // ✅ Update dot styles on change
+      flickity.on('select', () => {
+        const selectedIndex = flickity.selectedIndex;
+        dots.forEach((dot) => {
+          const index = parseInt(dot.getAttribute('data-index'));
+          dot.classList.toggle('active', index === selectedIndex);
         });
+      });
+    }
+
+    // ✅ Arrows
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => flickity.previous());
+      nextBtn.addEventListener('click', () => flickity.next());
+    }
+  }
+
+  // ✅ Init first visible slider
+  const firstTabContent = document.querySelector('.bundles-slider .tab-content.active .bundle-slider.js-flickity');
+  if (firstTabContent) initFlickitySlider(firstTabContent);
+
+  // ✅ Handle tab switching
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+      const targetTabId = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      tabContents.forEach(c => {
+        const isTarget = c.classList.contains('tab-' + targetTabId);
+        c.classList.toggle('active', isTarget);
+        if (isTarget) {
+          const slider = c.querySelector('.bundle-slider.js-flickity');
+          initFlickitySlider(slider);
+        }
       });
     });
   });
+});
 </script>
 
-<style>
-  :root {
-    --bundle-image-size: 60%;
-  }
-</style>
+
 
 
 {% schema %}
@@ -156,14 +405,14 @@
     { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "Standard" }, { "value": "full", "label": "Full Width" } ] },
     { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "Standard" }, { "value": "full", "label": "Full Width" } ] },
     {
-  "type": "range",
-  "id": "image_size",
-  "label": "Image Size (%)",
-  "min": 20,
-  "max": 100,
-  "step": 5,
-  "default": 60
-},
+      "type": "range",
+      "id": "image_size",
+      "label": "Image Size (PX)",
+      "min": 100,
+      "max": 1000,
+      "step": 100,
+      "default": 600
+    },
     { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true },
     { "type": "checkbox", "id": "show_dots", "label": "Show Dots", "default": true },
     { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
