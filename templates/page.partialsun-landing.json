@@ -539,7 +539,7 @@
       "name": "Feature Banner Tabs",
       "settings": {
         "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c_e3f39822-5787-49eb-b513-96febd3602d3.png",
-        "icon_size": 20,
+        "icon_size": 3,
         "pre_heading": "Rain or Shine, Sylvox Performs",
         "pre_description": "Built for year-round outdoor enjoyment",
         "autoplay_enabled": true,
