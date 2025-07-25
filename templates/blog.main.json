@@ -69,6 +69,8 @@
       ],
       "disabled": true,
       "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
         "parallax": false,
         "color": "#000000",
         "overlay": 54,
@@ -84,8 +86,52 @@
         "code_cus_css": ".SectionID {\nbackground-color:red\n}"
       }
     },
+    "custom_blog_4UJhQP": {
+      "type": "custom-blog",
+      "name": "Custom Blog",
+      "settings": {
+        "banner_section_width": "full",
+        "banner_section_content_width": "standard",
+        "custom_banner_override_image": "shopify://shop_images/39ed5ad12e60ec44d2c54dc41cced237a8992087.png",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.5,
+        "banner_content_position": "center",
+        "banner_share_text": "",
+        "banner_cta_text": "Learn more",
+        "banner_cta_link": "shopify://blogs/news/prime-day-outdoor-tv-deals-2025",
+        "show_share_tiktok": false,
+        "show_share_linkedin": false,
+        "show_share_youtube": false,
+        "show_share_facebook": false,
+        "show_share_x": false,
+        "show_share_pinterest": false,
+        "show_share_instagram": false,
+        "custom_banner_title": "",
+        "blog_list_title": "More Articles",
+        "bg_color": "#ffffff",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "text_alignment": "left",
+        "heading": "",
+        "subheading": "More Articles",
+        "description": "",
+        "slide_width": 480,
+        "show_arrows": true,
+        "hide_filter_sort": true
+      }
+    },
     "slider": {
       "type": "blog_slider",
+      "disabled": true,
       "settings": {
         "blog": "fashion",
         "limit": 6,
@@ -126,6 +172,8 @@
         "cl_bg_gradient": "",
         "mg": ",,,",
         "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
         "mg_mb": ",,30px,",
         "pd_mb": "",
         "use_cus_css": false,
@@ -134,8 +182,26 @@
     },
     "main": {
       "type": "main-blog",
+      "disabled": true,
       "settings": {
-        "show_tags": false
+        "allow_transparent_header": false,
+        "inline_title": false,
+        "content": "<p>Get access to our latest news by signing up for our newsletter.</p>",
+        "show_newsletter_form": true,
+        "show_tags": false,
+        "banner_background": "",
+        "banner_text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "articles_per_page": 6,
+        "feature_first_article": true,
+        "feature_article_background": "",
+        "feature_article_text_color": "",
+        "show_excerpt": true,
+        "show_date": true,
+        "show_author": false,
+        "show_comments_count": false,
+        "show_category": true
       }
     },
     "sidebar": {
@@ -185,10 +251,5 @@
       }
     }
   },
-  "order": [
-    "heading",
-    "slider",
-    "main",
-    "sidebar"
-  ]
+  "order": ["heading", "custom_blog_4UJhQP", "slider", "main", "sidebar"]
 }
