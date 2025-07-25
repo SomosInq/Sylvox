@@ -25,7 +25,9 @@
           }
         }
       },
-      "block_order": ["heading_kMBJ7r"],
+      "block_order": [
+        "heading_kMBJ7r"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -162,11 +164,15 @@
           }
         }
       },
-      "block_order": ["slide_EPKTFq", "slide_GiRCFb"],
+      "block_order": [
+        "slide_EPKTFq",
+        "slide_GiRCFb"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -182,7 +188,8 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 900
+        "slide_height": 900,
+        "slide_width": 600
       }
     },
     "comparison_table_qDatme": {
@@ -273,7 +280,11 @@
           }
         }
       },
-      "block_order": ["values_FtmcxQ", "values_hMyGMi", "values_FdVYLz"],
+      "block_order": [
+        "values_FtmcxQ",
+        "values_hMyGMi",
+        "values_FdVYLz"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -434,7 +445,9 @@
           }
         }
       },
-      "block_order": ["heading_339rBV"],
+      "block_order": [
+        "heading_339rBV"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -485,7 +498,10 @@
           }
         }
       },
-      "block_order": ["image_wQqkqU", "image_KPDHny"],
+      "block_order": [
+        "image_wQqkqU",
+        "image_KPDHny"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -571,7 +587,11 @@
           }
         }
       },
-      "block_order": ["grid_box_Etk3iE", "grid_box_wMVxbh", "grid_box_6HLhDR"],
+      "block_order": [
+        "grid_box_Etk3iE",
+        "grid_box_wMVxbh",
+        "grid_box_6HLhDR"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -627,7 +647,11 @@
           }
         }
       },
-      "block_order": ["tab_jpz97e", "tab_j9XfaX", "tab_qBghai"],
+      "block_order": [
+        "tab_jpz97e",
+        "tab_j9XfaX",
+        "tab_qBghai"
+      ],
       "name": "Feature Banner Tabs",
       "settings": {
         "autoplay_enabled": true,
@@ -675,7 +699,11 @@
           }
         }
       },
-      "block_order": ["subheading_8AcT6L", "heading_gXrCtx", "richtext_YbeHfE"],
+      "block_order": [
+        "subheading_8AcT6L",
+        "heading_gXrCtx",
+        "richtext_YbeHfE"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "standard",
@@ -770,11 +798,12 @@
         "hide_tablet": false,
         "hide_mobile": false,
         "heading": "Pool",
+        "heading_small": "Pro 2.0",
         "heading_tag": "h2",
         "heading_color": "",
         "heading_align": "left",
         "heading_weight": "normal",
-        "text": "<p>Outdoor Entertainment, Perfected</p>",
+        "text": "<p>Starting at</p>",
         "text_color": "",
         "text_align": "left",
         "text_weight": "normal",
@@ -850,12 +879,95 @@
         "hide_desktop": false,
         "hide_tablet": false,
         "hide_mobile": false,
-        "heading": "Pool Pro QLED 2.0",
+        "heading": "Pool",
+        "heading_small": "Pro QLED 2.0",
         "heading_tag": "h2",
         "heading_color": "",
         "heading_align": "left",
         "heading_weight": "normal",
-        "text": "<p>Outdoor Entertainment, Perfected</p>",
+        "text": "<p>Starting at</p>",
+        "text_color": "",
+        "text_align": "left",
+        "text_weight": "normal",
+        "image_width": 100,
+        "image_ratio": "1 / 1",
+        "lazyload": true,
+        "image_hover": "none",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "left"
+      }
+    },
+    "featured_product_grid_a4D9BJ": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "icon_DfkB74": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "icon_text": "Engineered for Outdoor Life"
+          }
+        },
+        "icon_GrM3rX": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "icon_text": "Bright & Beautiful 4K UHD"
+          }
+        },
+        "icon_kDLMMz": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+            "icon_text": "Smart & Simple Entertainment"
+          }
+        },
+        "icon_RHjizR": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+            "icon_text": "Built to Last"
+          }
+        }
+      },
+      "block_order": [
+        "icon_DfkB74",
+        "icon_GrM3rX",
+        "icon_kDLMMz",
+        "icon_RHjizR"
+      ],
+      "name": "Featured Product Grid",
+      "settings": {
+        "big_title": "",
+        "big_title_color": "#000000",
+        "big_title_size": 36,
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "price": "$1,699.00",
+        "image_position": "right",
+        "bg_color": "#f7f7f7",
+        "custom_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "product": "sylvox-cinema-pro-86-helio-qled-outdoor-tv",
+        "padding_top": 31,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "heading": "Cinema",
+        "heading_small": "Series",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "left",
+        "heading_weight": "normal",
+        "text": "<p>Starting at</p>",
         "text_color": "",
         "text_align": "left",
         "text_weight": "normal",
@@ -1187,6 +1299,7 @@
     "somos_banner_TWzKkD",
     "featured_product_grid_jxbnr3",
     "featured_product_grid_Ar4y3b",
+    "featured_product_grid_a4D9BJ",
     "comparison_table_QPVnKr",
     "testimonials_pCCwW7",
     "accordian_fxWXNE"
