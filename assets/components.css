@@ -6299,6 +6299,17 @@ picture img {
 .site-nav__item li {
     display: block;
     margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .site-nav__item li {
+    padding: 0 0 1em 0; margin: 0 0 1em 0;
+  }
+  .site-nav__item li a {
+    padding: 0; margin: 0;
+  }
+  .site-nav__item li:last-child,
+  .site-nav__item li a:last-child {
+    border: none;
   }
 
 .site-nav__item .icon-chevron-down {
@@ -6463,6 +6474,9 @@ details[open] .site-nav__dropdown {
 .site-nav__dropdown-animate {
   transform: translateY(-10px);
   opacity: 0;
+  background: #fff;
+  padding: 3em 3.5em 2em 3.5em !important;
+    width: 350px;
 }
 
 details[open] .site-nav__dropdown-animate {

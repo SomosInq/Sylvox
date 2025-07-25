@@ -10,6 +10,27 @@
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
   "
 >
+
+<div class="feature-banner-tabs__above">
+  {% if section.settings.icon %}
+    <img 
+      src="{{ section.settings.icon | image_url: width: 300 }}"
+      style="width: {{ section.settings.icon_size }}%; max-width: 100%; height: auto;"
+      alt="Icon"
+      class="feature-banner-tabs__icon"
+    >
+  {% endif %}
+
+  {% if section.settings.pre_heading %}
+    <h2 class="feature-banner-tabs__pre-title">{{ section.settings.pre_heading }}</h2>
+  {% endif %}
+
+  {% if section.settings.pre_description %}
+    <p class="feature-banner-tabs__pre-description">{{ section.settings.pre_description }}</p>
+  {% endif %}
+</div>
+
+
   <div class="feature-banner-tabs__tabs-wrapper">
     <div class="feature-banner-tabs__tabs">
       {% for block in section.blocks %}
@@ -20,6 +41,7 @@
     </div>
     <span class="feature-banner-tabs__underline"></span>
   </div>
+
 
   <div class="feature-banner-tabs__carousel">
     {% assign last_block = section.blocks | last %}
@@ -108,6 +130,29 @@
 </div>
 
 {% style %}
+.feature-banner-tabs__above {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.feature-banner-tabs__above .feature-banner-tabs__icon {
+  margin-bottom: 12px;
+  margin: 0 auto;
+}
+
+.feature-banner-tabs__pre-title {
+  margin-bottom: 8px;
+  color: #0a0a0a;
+}
+
+.feature-banner-tabs__pre-description {
+  font-size: 16px;
+  color: #5a5a5a;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+
 .feature-banner-tabs {
   position: relative;
 }
@@ -425,6 +470,30 @@
 {
   "name": "Feature Banner Tabs",
   "settings": [
+            {
+  "type": "image_picker",
+  "id": "icon",
+  "label": "Icon"
+},
+{
+  "type": "range",
+  "id": "icon_size",
+  "label": "Icon Size (%)",
+  "min": 1,
+  "max": 100,
+  "step": 1,
+  "default": 20
+},
+{
+  "type": "text",
+  "id": "pre_heading",
+  "label": "Above Slider Title"
+},
+{
+  "type": "textarea",
+  "id": "pre_description",
+  "label": "Above Slider Description"
+},
     {
       "type": "checkbox",
       "id": "autoplay_enabled",
