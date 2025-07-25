@@ -1,0 +1,232 @@
+<div class="anchor-nav-section" 
+     style="--bg-color:{{ section.settings.background_color }};--text-color:{{ section.settings.text_color }};">
+  <div class="page-width">
+    <div class="anchor-nav-row">
+      <div class="anchor-nav-title">
+        {{ section.settings.title | escape }}
+      </div>
+      <div class="anchor-nav-content">
+         <nav class="anchor-nav" role="navigation" aria-label="Section Navigation">
+            <ul class="anchor-nav__list">
+              {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when 'nav_item' -%}
+                    {%- if block.settings.title != blank and block.settings.anchor_id != blank -%}
+                      <li class="anchor-nav__item" {{ block.shopify_attributes }}>
+                        <a href="#{{ block.settings.anchor_id }}" 
+                          class="anchor-nav__link"
+                          data-anchor-link="{{ block.settings.anchor_id }}">
+                          {{ block.settings.title }}
+                        </a>
+                      </li>
+                    {%- endif -%}
+                {%- endcase -%}
+              {%- endfor -%}
+            </ul>
+          </nav>
+      </div>
+      <div class="anchor-nav-cta">
+        <a href="#" class="anchor-nav-cta-buy-now">Buy It Now</a>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: sticky;
+    top: 0;
+   z-index: 9991;
+  }
+  #shopify-section-{{ section.id }} .anchor-nav-section {
+    background: var(--bg-color);
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .anchor-nav-section.visible {
+    height: auto;
+    padding: 12px 20px;
+  }
+  .anchor-nav-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .anchor-nav-title {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  nav.anchor-nav ul.anchor-nav__list {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+  }
+
+  nav.anchor-nav ul.anchor-nav__list a.anchor-nav__link {
+    color: #C6C6C6;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+  }
+
+  nav.anchor-nav ul.anchor-nav__list a.anchor-nav__link.active {
+    color: #A7DCB7;
+    font-weight: 500;
+  }
+
+  a.anchor-nav-cta-buy-now {
+    display: inline-block;
+    padding: 12px 38.18px 11px 38.82px;
+    justify-content: center;
+    border-radius: 60px;
+    background: #FFF;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      display: none;
+    }
+  }
+</style>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const anchorLinks = document.querySelectorAll('[data-anchor-link]');
+    const navItems = document.querySelectorAll('.anchor-nav__link');
+    const anchorNavSection = document.querySelector('.anchor-nav-section');
+    
+    // Smooth scrolling for anchor links
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-anchor-link');
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Remove active class from all nav items
+          navItems.forEach(item => item.classList.remove('active'));
+          // Add active class to clicked item
+          this.classList.add('active');
+          
+          // Smooth scroll to target
+          const offsetTop = targetElement.offsetTop - 100; // Account for fixed nav
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Update active state on scroll and handle visibility
+    function updateNavOnScroll() {
+      const scrollPosition = window.scrollY + 150;
+      
+      // Check if we've scrolled past the first section
+      if (anchorNavSection) {
+        if (window.scrollY > 700) {
+          anchorNavSection.classList.add('visible');
+        } else {
+          anchorNavSection.classList.remove('visible');
+        }
+      }
+      
+      // Update active nav item
+      anchorLinks.forEach(link => {
+        const targetId = link.getAttribute('data-anchor-link');
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const elementTop = targetElement.offsetTop;
+          const elementBottom = elementTop + targetElement.offsetHeight;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            navItems.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    }
+    
+    // Throttle scroll event
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateNavOnScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    
+    // Set initial active state
+    if (anchorLinks.length > 0) {
+      anchorLinks[0].classList.add('active');
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Anchor Navigation",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Navigation Appearance"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Navigate to Sections"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#336256"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#C6C6C6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Navigation Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Section Title"
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Anchor ID",
+          "info": "The ID of the section to navigate to (without the #)",
+          "default": "section-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Anchor Navigation",
+      "category": "Navigation" 
+    }
+  ]
+}
+{% endschema %}
