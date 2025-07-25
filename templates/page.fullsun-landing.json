@@ -25,9 +25,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_kMBJ7r"
-      ],
+      "block_order": ["heading_kMBJ7r"],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -164,10 +162,7 @@
           }
         }
       },
-      "block_order": [
-        "slide_EPKTFq",
-        "slide_GiRCFb"
-      ],
+      "block_order": ["slide_EPKTFq", "slide_GiRCFb"],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -280,11 +275,7 @@
           }
         }
       },
-      "block_order": [
-        "values_FtmcxQ",
-        "values_hMyGMi",
-        "values_FdVYLz"
-      ],
+      "block_order": ["values_FtmcxQ", "values_hMyGMi", "values_FdVYLz"],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -445,9 +436,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_339rBV"
-      ],
+      "block_order": ["heading_339rBV"],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -498,10 +487,7 @@
           }
         }
       },
-      "block_order": [
-        "image_wQqkqU",
-        "image_KPDHny"
-      ],
+      "block_order": ["image_wQqkqU", "image_KPDHny"],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -587,11 +573,7 @@
           }
         }
       },
-      "block_order": [
-        "grid_box_Etk3iE",
-        "grid_box_wMVxbh",
-        "grid_box_6HLhDR"
-      ],
+      "block_order": ["grid_box_Etk3iE", "grid_box_wMVxbh", "grid_box_6HLhDR"],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -647,11 +629,7 @@
           }
         }
       },
-      "block_order": [
-        "tab_jpz97e",
-        "tab_j9XfaX",
-        "tab_qBghai"
-      ],
+      "block_order": ["tab_jpz97e", "tab_j9XfaX", "tab_qBghai"],
       "name": "Feature Banner Tabs",
       "settings": {
         "autoplay_enabled": true,
@@ -699,19 +677,15 @@
           }
         }
       },
-      "block_order": [
-        "subheading_8AcT6L",
-        "heading_gXrCtx",
-        "richtext_YbeHfE"
-      ],
+      "block_order": ["subheading_8AcT6L", "heading_gXrCtx", "richtext_YbeHfE"],
       "name": "Somos Banner",
       "settings": {
-        "section_width": "standard",
+        "section_width": "full",
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 70,
         "mobile_content_width": 90,
-        "section_height": 500,
+        "section_height": 800,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/26f53b57c0a8fe6134830445e49d43e5e63c2bc2.jpg",
