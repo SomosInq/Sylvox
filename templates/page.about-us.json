@@ -111,7 +111,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/49eb2164b6172f04eb4fc78972e95b0bba46ee27.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 100
           }
         },
         "text_78Na7V": {
@@ -158,13 +159,34 @@
         "slide_whyfwT": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
+            "image": "shopify://shop_images/Well-being.png",
             "caption": "Works Even After Heavy Rain",
+            "description_block": "Outdoor Dining Area"
+          }
+        },
+        "slide_zATreX": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Slide.png",
+            "caption": "Outdoor Dining Area",
+            "description_block": "Outdoor Dining Area"
+          }
+        },
+        "slide_dKWTEi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Full-Metal.png",
+            "caption": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         }
       },
-      "block_order": ["slide_RLkAxR", "slide_whyfwT"],
+      "block_order": [
+        "slide_RLkAxR",
+        "slide_whyfwT",
+        "slide_zATreX",
+        "slide_dKWTEi"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -195,7 +217,8 @@
         "image_jGhLik": {
           "type": "image",
           "settings": {
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 100
           }
         },
         "title_AVjgnQ": {
