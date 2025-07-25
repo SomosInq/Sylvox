@@ -17,7 +17,7 @@
 
 {% if show_breadcrumbs %}
   {% unless template.name == 'index' or template.name == 'cart' %}
-    <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+    <nav class="breadcrumb  section_content_width_{{ section.settings.section_content_width }}" role="navigation" aria-label="breadcrumbs">
       <a
         href="{{ routes.root_url }}"
         title="

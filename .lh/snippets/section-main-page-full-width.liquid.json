@@ -1,0 +1,22 @@
+{
+    "sourceFile": "snippets/section-main-page-full-width.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1753452505685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753452625074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   Usage:\n   {% render 'section-main-page-full-width' %}\n {%- endcomment -%}\n \n-<div class=\"page-content\">\n+<div class=\"page-full page-content\">\n   <header class=\"section-header\">\n     <h1 class=\"section-header__title\">\n       {{ page.title | escape }}\n     </h1>\n"
+                }
+            ],
+            "date": 1753452505685,
+            "name": "Commit-0",
+            "content": "{% # components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | \"Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)\" License  %}\n{%- comment -%}\n  Renders a full-width page section with its title and content.\n\n  Accepts:\n  - page {page} - The page object\n\n  Usage:\n  {% render 'section-main-page-full-width' %}\n{%- endcomment -%}\n\n<div class=\"page-content\">\n  <header class=\"section-header\">\n    <h1 class=\"section-header__title\">\n      {{ page.title | escape }}\n    </h1>\n  </header>\n\n  {%- render 'rte', slot: page.content, class: 'rte--nomargin' -%}\n</div>\n"
+        }
+    ]
+}
