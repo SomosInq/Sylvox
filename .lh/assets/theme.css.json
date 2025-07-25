@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 166,
+            "activePatchIndex": 167,
             "patches": [
                 {
                     "date": 1748526641710,
@@ -672,6 +672,10 @@
                 {
                     "date": 1753110837641,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -583,9 +583,8 @@\n   margin-bottom: 0.5rem;\n }\n .usp-text {\n   font-size: 0.875rem;\n-  color: #555;\n }\n .usp-arrows {\n   position: absolute;\n   top: -50px;\n"
+                },
+                {
+                    "date": 1753443178247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -176,8 +176,57 @@\n     margin: 0 auto !important;\n   }\n }\n \n+/* Banner Width */\n+  .banner_section_width_standard,\n+  .banner_section_width_full {\n+    transition: all 0.3s ease;\n+  }\n+  .banner_section_width_full {\n+    width: 100%;\n+  }\n+  .banner_section_width_standard {\n+    max-width: 1608px;\n+    margin: 0 auto !important;\n+  }\n+\n+  .banner_section_content_width_standard,\n+  .banner_section_content_width_full {\n+    transition: all 0.3s ease;\n+  }\n+  .banner_section_content_width_full {\n+    width: 100%;\n+  }\n+  .banner_section_content_width_standard {\n+    max-width: 1608px;\n+    margin: 0 auto !important;\n+  }\n+\n+  @media (max-width: 1654px) {\n+    .banner_section_content_width_standard {\n+      max-width: 1218px;\n+      margin: 0 auto !important;\n+      padding-left: 60px !important;\n+    padding-right: 60px !important;\n+    }\n+  }\n+  \n+  @media (max-width: 768px) {\n+  #shopify-section-{{ section.id }} .banner_section_content_width_standard {\n+    width: 100% !important;\n+    padding-left: 25px !important;\n+    padding-right: 25px !important;\n+    margin: 0 auto !important;\n+  }\n+  #shopify-section-{{ section.id }} .banner_section_width_standard {\n+    width: 100% !important;\n+    padding-left: 25px !important;\n+    padding-right: 25px !important;\n+    margin: 0 auto !important;\n+  }\n+}\n+\n /* Show/Hide */\n   .hide-desktop { display: none !important; }\n   @media (max-width: 1024px) {\n     .hide-tablet { display: none !important; }\n"
                 }
             ],
             "date": 1748526641710,
