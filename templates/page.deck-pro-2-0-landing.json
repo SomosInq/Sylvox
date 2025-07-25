@@ -14,6 +14,91 @@
       "disabled": true,
       "settings": {}
     },
+    "anchor_navigation_LyYXbm": {
+      "type": "anchor-navigation",
+      "blocks": {
+        "nav_item_6mCpLc": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Overview",
+            "anchor_id": "shopify-section-template--24907925422443__rich_text_FhLDYX"
+          }
+        },
+        "nav_item_pJTTxi": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Optimized Viewing",
+            "anchor_id": "shopify-section-template--24907925422443__somos_banner_gLazR9"
+          }
+        },
+        "nav_item_xV3fwQ": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Smart TV",
+            "anchor_id": "shopify-section-template--24907925422443__somos_image_content_HHm83y"
+          }
+        },
+        "nav_item_9dcDjw": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Built to Last",
+            "anchor_id": "shopify-section-template--24907925422443__image_text_hz8E4C"
+          }
+        },
+        "nav_item_BpWEgX": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Immersive Sound",
+            "anchor_id": "shopify-section-template--24907925422443__somos_left_right_media_XGX7Q9"
+          }
+        },
+        "nav_item_wC46Vc": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Connectivity",
+            "anchor_id": "shopify-section-template--24907925422443__left_right_media_9KAkw8"
+          }
+        },
+        "nav_item_bXY6nj": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Easy Setup",
+            "anchor_id": "shopify-section-template--24907925422443__usp_accordion_3MVwD3"
+          }
+        },
+        "nav_item_8bVf6r": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Comparison",
+            "anchor_id": "shopify-section-template--24907925422443__comparison_table_WEHMNn"
+          }
+        },
+        "nav_item_aN4YiY": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Bundles",
+            "anchor_id": "shopify-section-template--24907925422443__bundles_slider_LJaeRF"
+          }
+        }
+      },
+      "block_order": [
+        "nav_item_6mCpLc",
+        "nav_item_pJTTxi",
+        "nav_item_xV3fwQ",
+        "nav_item_9dcDjw",
+        "nav_item_BpWEgX",
+        "nav_item_wC46Vc",
+        "nav_item_bXY6nj",
+        "nav_item_8bVf6r",
+        "nav_item_aN4YiY"
+      ],
+      "name": "Anchor Navigation",
+      "settings": {
+        "title": "Sylvox Pool Pro 2.0",
+        "background_color": "#336256",
+        "text_color": "#C6C6C6"
+      }
+    },
     "image_with_text_overlay_JByhYn": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -1459,6 +1544,7 @@
   },
   "order": [
     "main",
+    "anchor_navigation_LyYXbm",
     "image_with_text_overlay_JByhYn",
     "rich_text_FhLDYX",
     "image_text_PDRFtF",
