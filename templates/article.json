@@ -1,1 +1,86 @@
-{"sections":{"main":{"type":"article-template","settings":{"blog_capitalize_first":true,"blog_show_tags":true,"blog_show_date":true,"blog_show_comments":true,"blog_show_author":false}},"sidebar":{"type":"blog-sidebar","blocks":{"tags":{"type":"tags","settings":{}},"share":{"type":"share","settings":{}}},"block_order":["tags","share"],"disabled":true,"settings":{}}},"order":["main","sidebar"],"wrapper":"div.page-width.page-content.blog-layout"}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article-template",
+      "settings": {
+        "banner_section_width": "full",
+        "banner_section_content_width": "standard",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "banner_content_position": "center",
+        "banner_cta_text": "",
+        "banner_cta_link": "",
+        "banner_cta_icon": "",
+        "blog_show_article": true,
+        "show_banner": true,
+        "show_breadcrumbs": false,
+        "show_blog_title": false,
+        "show_blog_category": true,
+        "show_blog_date": false,
+        "show_blog_author": false,
+        "blog_capitalize_first": false,
+        "blog_show_tags": false,
+        "blog_show_date": false,
+        "blog_show_commentss": false,
+        "blog_show_comments": false,
+        "blog_show_author": false,
+        "banner_share_text": "Share",
+        "show_share_tiktok": true,
+        "show_share_linkedin": true,
+        "show_share_youtube": true,
+        "show_share_facebook": true,
+        "show_share_x": true,
+        "show_share_pinterest": true,
+        "show_share_instagram": true,
+        "custom_banner_title": "",
+        "blog_list_title": "More Articles",
+        "bg_color": "#ffffff",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "text_alignment": "left",
+        "heading": "Latest News",
+        "subheading": "From the Blog",
+        "description": "See what's new at Sylvox.",
+        "slide_width": 360,
+        "show_arrows": true,
+        "hide_filter_sort": false
+      }
+    },
+    "sidebar": {
+      "type": "blog-sidebar",
+      "blocks": {
+        "tags": {
+          "type": "tags",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": ["tags", "share"],
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": ["main", "sidebar"],
+  "wrapper": "div.page-width.page-content.blog-layout"
+}
