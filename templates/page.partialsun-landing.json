@@ -49,7 +49,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/png__1_2_1_2.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 4
           }
         },
         "title_nGUygQ": {
@@ -167,6 +168,7 @@
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -182,7 +184,8 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 900
+        "slide_height": 900,
+        "slide_width": 2000
       }
     },
     "comparison_table_9GzXp3": {
@@ -449,6 +452,110 @@
         "margin_right": 0
       }
     },
+    "image_text_jTHEH7": {
+      "type": "image-text",
+      "blocks": {
+        "image_FjzxaG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/81ec3d2ae09f558dc985c2ca9d0fb0f932379347.png",
+            "image_alignment": "center",
+            "image_width": 3
+          }
+        },
+        "title_Q3EnVG": {
+          "type": "title",
+          "settings": {
+            "title": "Installation Positioning"
+          }
+        },
+        "image_8pfdfc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/c465e52bd7c3eb31c788abce261d9bcd0e0b10b3.png",
+            "image_alignment": "center",
+            "image_width": 100
+          }
+        }
+      },
+      "block_order": ["image_FjzxaG", "title_Q3EnVG", "image_8pfdfc"],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "feature_banner_tabs_Hxtw6p": {
+      "type": "feature-banner-tabs",
+      "blocks": {
+        "tab_H3j4Be": {
+          "type": "tab",
+          "settings": {
+            "label": "Full-Metal, Corrosion-Resistant Body",
+            "heading": "100% Waterproof & Durable",
+            "description": "Never worry about rain ruining your entertainment. The Sylvox Tvs is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands.",
+            "background": "shopify://shop_images/bf03e841dd8c66457c743848f0dbb3936f8bec2b.jpg",
+            "text_color": "#1d1d1b"
+          }
+        },
+        "tab_T9xiqC": {
+          "type": "tab",
+          "settings": {
+            "label": "Works Even After Heavy Rain",
+            "heading": "100% Waterproof & Durable",
+            "description": "Never worry about rain ruining your entertainment. The Sylvox Deck Pro 2.0 is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands.",
+            "background": "shopify://shop_images/7a5adc473342b79760f7462787386fffd4dfb1a4.jpg",
+            "text_color": "#1d1d1b"
+          }
+        },
+        "tab_dYB4zm": {
+          "type": "tab",
+          "settings": {
+            "label": "Handles Extreme Temperatures",
+            "heading": "Built for Year-Round Outdoor Use",
+            "description": "From freezing winters to blazing summers, the Deck Pro 2.0 is designed to withstand it all. Tested to perform in temperatures from -22°F to 122°F, it’s built to keep running in both icy conditions and scorching heat.",
+            "background": "shopify://shop_images/fe51c809052ce59d053f61772f0d1464da844bcc.png",
+            "text_color": "#1d1d1b"
+          }
+        }
+      },
+      "block_order": ["tab_H3j4Be", "tab_T9xiqC", "tab_dYB4zm"],
+      "name": "Feature Banner Tabs",
+      "settings": {
+        "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c_e3f39822-5787-49eb-b513-96febd3602d3.png",
+        "icon_size": 20,
+        "pre_heading": "Rain or Shine, Sylvox Performs",
+        "pre_description": "Built for year-round outdoor enjoyment",
+        "autoplay_enabled": true,
+        "autoplay_interval": 5,
+        "banner_height": 610,
+        "banner_height_mobile": 480,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "somos_banner_TJ6f4c": {
       "type": "somos-banner",
       "blocks": {
@@ -488,7 +595,7 @@
         "custom_content_width_enabled": true,
         "custom_content_width": 70,
         "mobile_content_width": 90,
-        "section_height": 500,
+        "section_height": 800,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/26f53b57c0a8fe6134830445e49d43e5e63c2bc2.jpg",
@@ -511,6 +618,252 @@
         "custom_id": "",
         "text_alignment": "center",
         "vertical_alignment": "center"
+      }
+    },
+    "featured_product_grid_4Jj7jP": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "icon_mPWVp8": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "icon_text": "Engineered for Outdoor Life"
+          }
+        },
+        "icon_rnej4X": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "icon_text": "Bright & Beautiful 4K UHD"
+          }
+        },
+        "icon_HDWcBB": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+            "icon_text": "Smart & Simple Entertainment"
+          }
+        },
+        "icon_ient7e": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+            "icon_text": "Built to Last"
+          }
+        }
+      },
+      "block_order": [
+        "icon_mPWVp8",
+        "icon_rnej4X",
+        "icon_HDWcBB",
+        "icon_ient7e"
+      ],
+      "name": "Featured Product Grid",
+      "settings": {
+        "big_title": "Meet Partial Sun TV Series",
+        "big_title_color": "#000000",
+        "big_title_size": 36,
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "price": "$1,699.00",
+        "image_position": "right",
+        "bg_color": "#f7f7f7",
+        "custom_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "heading": "Sylvox Deck",
+        "heading_small": "Pro 2.0",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "left",
+        "heading_weight": "normal",
+        "text": "<p>Starting at</p>",
+        "text_color": "",
+        "text_align": "left",
+        "text_weight": "normal",
+        "image_width": 100,
+        "image_ratio": "1 / 1",
+        "lazyload": true,
+        "image_hover": "none",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "left"
+      }
+    },
+    "featured_product_grid_gdnLgF": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "icon_mzQXCF": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "icon_text": "Engineered for Outdoor Life"
+          }
+        },
+        "icon_9kdytc": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "icon_text": "Bright & Beautiful 4K UHD"
+          }
+        },
+        "icon_pRwmgM": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+            "icon_text": "Smart & Simple Entertainment"
+          }
+        },
+        "icon_RRAPbN": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+            "icon_text": "Built to Last"
+          }
+        }
+      },
+      "block_order": [
+        "icon_mzQXCF",
+        "icon_9kdytc",
+        "icon_pRwmgM",
+        "icon_RRAPbN"
+      ],
+      "name": "Featured Product Grid",
+      "settings": {
+        "big_title": "",
+        "big_title_color": "#000000",
+        "big_title_size": 36,
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "price": "$1,599.00",
+        "image_position": "left",
+        "bg_color": "#f7f7f7",
+        "custom_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "heading": "Sylvox Deck",
+        "heading_small": "Pro QLED 2.0",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "left",
+        "heading_weight": "normal",
+        "text": "<p>Starting at</p>",
+        "text_color": "",
+        "text_align": "left",
+        "text_weight": "normal",
+        "image_width": 100,
+        "image_ratio": "1 / 1",
+        "lazyload": true,
+        "image_hover": "none",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "left"
+      }
+    },
+    "featured_product_grid_DkiRVT": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "icon_GwjGG7": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "icon_text": "Engineered for Outdoor Life"
+          }
+        },
+        "icon_93CDCT": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "icon_text": "Bright & Beautiful 4K UHD"
+          }
+        },
+        "icon_FTfEGT": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+            "icon_text": "Smart & Simple Entertainment"
+          }
+        },
+        "icon_CFpULA": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+            "icon_text": "Built to Last"
+          }
+        }
+      },
+      "block_order": [
+        "icon_GwjGG7",
+        "icon_93CDCT",
+        "icon_FTfEGT",
+        "icon_CFpULA"
+      ],
+      "name": "Featured Product Grid",
+      "settings": {
+        "big_title": "",
+        "big_title_color": "#000000",
+        "big_title_size": 36,
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "price": "$1,699.00",
+        "image_position": "right",
+        "bg_color": "#f7f7f7",
+        "custom_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "product": "sylvox-cinema-pro-86-helio-qled-outdoor-tv",
+        "padding_top": 31,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "heading": "Gaming",
+        "heading_small": "Series",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "left",
+        "heading_weight": "normal",
+        "text": "<p>Starting at</p>",
+        "text_color": "",
+        "text_align": "left",
+        "text_weight": "normal",
+        "image_width": 100,
+        "image_ratio": "1 / 1",
+        "lazyload": true,
+        "image_hover": "none",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "left"
       }
     },
     "comparison_table_eH3hYK": {
@@ -674,6 +1027,70 @@
         "heading_20": ""
       }
     },
+    "testimonials_GLfpjz": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_9bcRY7": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "testimonial_NWdbje": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "testimonial_yhgNYU": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "testimonial_M7CiCN": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "testimonial_xy8yeH": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_9bcRY7",
+        "testimonial_NWdbje",
+        "testimonial_yhgNYU",
+        "testimonial_M7CiCN",
+        "testimonial_xy8yeH"
+      ],
+      "name": "t:labels.testimonials",
+      "settings": {
+        "title": "From our customers",
+        "align_text": "center",
+        "round_images": true,
+        "color_scheme": "none"
+      }
+    },
     "accordian_A6wXnq": {
       "type": "accordian",
       "blocks": {
@@ -760,8 +1177,14 @@
     "comparison_table_9GzXp3",
     "somos_banner_npnyQG",
     "somos_image_content_G9VF8j",
+    "image_text_jTHEH7",
+    "feature_banner_tabs_Hxtw6p",
     "somos_banner_TJ6f4c",
+    "featured_product_grid_4Jj7jP",
+    "featured_product_grid_gdnLgF",
+    "featured_product_grid_DkiRVT",
     "comparison_table_eH3hYK",
+    "testimonials_GLfpjz",
     "accordian_A6wXnq"
   ]
 }
