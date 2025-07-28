@@ -1,0 +1,867 @@
+{{ 'kiks-video.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+  assign se_blocks = section.blocks
+  assign block_first = se_blocks.first
+  assign stt_layout = se_stts.layout
+  assign stt_image_bg = se_stts.image_bg
+  if stt_layout == 't4s-se-container'
+    assign html_layout = '<div class="t4s-container container">__</div></div>' | split: '__'
+  elsif stt_layout == 't4s-container-wrap'
+    assign html_layout = '<div class="t4s-container container">__</div>' | split: '__'
+  else
+    assign html_layout = '__' | split: '__'
+  endif
+  assign use_button = false
+  assign use_carousel = false
+  assign t4s_se_class = 't4s_nt_se_' | append: sid
+  if se_stts.use_cus_css and se_stts.code_cus_css != blank
+    render 'se_cus_css', code_cus_css: se_stts.code_cus_css, t4s_se_class: t4s_se_class
+  endif
+-%}
+{%- assign section_identifier = '#shopify-section-' | append: section.id -%}
+{%- assign padding_top = section.settings.padding_top | append: 'px' -%}
+{%- assign padding_bottom = section.settings.padding_bottom | append: 'px' -%}
+
+{%- assign padding_mobile_top = section.settings.padding_top_mob | append: 'px' -%}
+{%- assign padding_mobile_bottom = section.settings.padding_bottom_mob | append: 'px' -%}
+{%- style -%}
+   {{ section_identifier }} .t4s-section-inner {
+     padding-top: {{padding_top}};
+     padding-bottom: {{padding_bottom}};
+     overflow:hidden;
+   }
+   {{ section_identifier }} button.tab:hover,
+   {{ section_identifier }} .tab.active{
+     color: {{ section.settings.tab_active_color }};
+   }
+
+   {{ section_identifier }} .tab.active span.t4s-iconbox-icon svg path,
+   .tab.active span.t4s-iconbox-icon {
+     color: {{ section.settings.tab_active_color }};
+     fill: {{ section.settings.tab_active_color }};
+   }
+
+   {{ section_identifier }} button.tab.active::before{
+     background: {{ section.settings.tab_active_color }};
+   }
+   {{ section_identifier }}.kik-video-slider .swiper-button-next{
+     rotate: 180deg;
+   }
+
+   {{ section_identifier }}.kik-video-slider .swiper-button-next, .kik-video-slider .swiper-button-prev{
+     background: {{ section.settings.slide_button_background }};
+   }
+
+   {{ section_identifier }}.kik-video-slider .swiper-button-next:hover, .kik-video-slider .swiper-button-prev:hover{
+     background: {{ section.settings.slide_button_hover_background }};
+   }
+
+   {{ section_identifier }}.kik-video-slider .swiper-button-next:hover path, .kik-video-slider .swiper-button-prev:hover path{
+     fill: {{ section.settings.arrow_hover_color }};
+   }
+
+   {{ section_identifier }}.kik-video-slider .swiper-button-next path, .kik-video-slider .swiper-button-prev path{
+     fill: {{ section.settings.arrow_color }};
+   }
+   .swiper-custom-arrow.swiper-button-next svg,
+   .swiper-custom-arrow.swiper-button-prev svg{
+     width:32px;
+     height:32px;
+   }
+   .swiper-custom-arrow.swiper-button-prev svg{
+     transform:rotate(180deg);
+   }
+  @media only screen and (max-width: 430px) {
+     {{ section_identifier }} .t4s-section-inner{
+       padding-top: {{ padding_mobile_top }};
+       padding-bottom: {{ padding_mobile_bottom }};
+     }
+   }
+{%- endstyle -%}
+<section>
+  <div
+    class="t4s-section-inner {{t4s_se_class}} t4s_nt_se_{{sid}} {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 't4s-se-container' %} t4s-has-imgbg lazyloadt4s{% endif %}"
+    {% if stt_image_bg != blank and stt_layout != 't4s-se-container' %}
+      data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto" data-optimumx="1.5"
+    {% endif %}
+    {% render 'section_style', se_stts: se_stts -%}
+  >
+    {{- html_layout[0] -}}
+    {%- if stt_layout == 't4s-se-container' -%}
+      <div
+        class="t4s-container-inner{% if stt_image_bg != blank %} t4s-has-imgbg lazyloadt4s{% endif %}"
+        {% if stt_image_bg != blank %}
+          data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto" data-optimumx="1.5"
+        {% endif %}
+      >
+    {% endif -%}
+    <div class="video-section media-main-container">
+      <div class="info-tab-container">
+        <!-- Tabs -->
+        <div class="section-heading">
+          <h3 class="t4s-section-title t4s-title">
+            <span>{{ section.settings.title }}</span>
+          </h3>
+          {{ section.settings.description }}
+        </div>
+        <div class="tabs">
+          {% for block in section.blocks %}
+            {%- case block.type -%}
+              {%- when 'upload-video' -%}
+                <button class="tab {% if forloop.first %}active{% endif %}" data-tab="{{ block.settings.tab_id }}">
+                  <span
+                    class="t4s-iconbox-icon t4s-iconbox-icon__svg"
+                    style="--w-image-svg:{{bk_stts.w_image_svg}}px;--w-image-svg-mb:{{bk_stts.w_image_svg_mb}}px;"
+                  >
+                    {{- block.settings.img_svg -}}
+                  </span>
+                  {{ block.settings.tab_title }}
+                </button>
+              {%- when 'video-Url' -%}
+                <button class="tab {% if forloop.first %}active{% endif %}" data-tab="{{ block.settings.tab_id }}">
+                  <span
+                    class="t4s-iconbox-icon t4s-iconbox-icon__svg"
+                    style="--w-image-svg:{{bk_stts.w_image_svg}}px;--w-image-svg-mb:{{bk_stts.w_image_svg_mb}}px;"
+                  >
+                    {{- block.settings.img_svg -}}
+                  </span>
+                  {{ block.settings.tab_title }}
+                </button>
+            {%- endcase -%}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="videos-container relative">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when 'upload-video' -%}
+              {%- assign media_blocks = 'image,image2,image3,image4,image5' | split: ',' %}
+              {%- assign video_blocks = 'video_shopify,video_shopif2,video_shopif3,video_shopif4,video_shopif5'
+                | split: ','
+              %}
+              {%- assign description_blocks = 'video_description,video_descriptio2,video_descriptio3,video_descriptio4,video_descriptio5'
+                | split: ','
+              %}
+              {% comment %} New client request  {% endcomment %}
+              {%- assign avatar_blocks = 'avatar1,avatar2,avatar3,avatar4,avatar5' | split: ',' %}
+              {%- assign name_blocks = 'name1,name2,name3,name4,name5' | split: ',' %}
+              {%- assign link_blocks = 'link1,link2,link3,link4,link5' | split: ',' %}
+              {%- assign num_blocks = 'num_sub1,num_sub2,num_sub3,num_sub4,num_sub5' | split: ',' %}
+
+              <div class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ block.settings.tab_id }}">
+                <div class="swiper-shopify-video swiper-container" data-swiper="{{ forloop.index }}">
+                  <div class="shopify-video-container swiper-wrapper">
+                    {%- for i in (0..4) %}
+                      {%- assign image = block.settings[media_blocks[i]] %}
+                      {%- assign video = block.settings[video_blocks[i]] %}
+                      {%- assign video_description = block.settings[description_blocks[i]] %}
+
+                      {% comment %} New client request  {% endcomment %}
+                      {%- assign avatar = block.settings[avatar_blocks[i]] %}
+                      {%- assign name = block.settings[name_blocks[i]] %}
+                      {%- assign number = block.settings[num_blocks[i]] | append: 'k Subscribers' %}
+                      {%- assign linkUrl = block.settings[link_blocks[i]] %}
+
+                      {%- assign media_type = 'image' %}
+                      {%- assign using_video_tag = false %}
+
+                      {%- if video != blank %}
+                        {%- assign media_type = 'video' %}
+                        {%- assign using_video_tag = true %}
+                        {%- if image == blank %}
+                          {%- assign image = video.preview_image %}
+                        {%- endif %}
+                      {%- endif %}
+
+                      {%- capture video_component %}
+                      <video-component class="has-video absolute top-0 left-0 w-full h-full"
+                                        data-video-id="{{ block.id }}"
+                                        data-autoplay="{{ block.settings.video_autoplay | default: false }}"
+                                        data-background="false"
+                                        data-natural-width="true"
+                                        data-description="{{ video_description | escape }}">
+                        {%- if using_video_tag %}
+                          {{ video | video_tag: playsinline: true, controls: true, poster: '' | replace: '<img ', '<img loading="lazy" hidden ' }}
+                        {%- else %}
+                          <div></div>
+                        {%- endif %}
+                      </video-component>
+                    {%- endcapture %}
+                      {%- if video != blank %}
+                        <div class="swiper-slide video-item media-with-media video-section relative flex flex-col justify-center overflow-hidden">
+                          <div class="media w-full absolute video-section__media video-played-hidden">
+                            {%- if image != blank %}
+                              {%- render 'kiks-image',
+                                image: image,
+                                widths: '480, 980, 1200, 1400, 1600, 1920, 2560, 3200',
+                                src_width: 3200,
+                                src_placeholder: true,
+                                sizes: sizes,
+                                quality: 1,
+                                fetchpriority: 'low',
+                                lazy_load: lazy_load,
+                                class: 'lazy2 img-fit'
+                              %}
+                            {%- elsif media_type == 'image' %}
+                              {{ 'image' | placeholder_svg_tag: 'media__placeholder dark' }}
+                            {%- else %}
+                              {% assign poster_image = video.preview_image %}
+                              {% if poster_image != blank %}
+                                <img
+                                  src="{{ poster_image | img_url: 'master' }}"
+                                  alt="{{ video_description | escape }}"
+                                  loading="lazy"
+                                  class="video-poster img-fit"
+                                >
+                              {% endif %}
+                            {%- endif %}
+                          </div>
+
+                          <deferred-media class="video-section__media relative">
+                            <button
+                              type="button"
+                              class="video-section__play-btn absolute top-0 left-0 flex justify-center items-center w-full h-full js-load-media"
+                            >
+                              {%- render 'icon-play' %}
+                            </button>
+                            <template>
+                              {{ video_component }}
+                            </template>
+                          </deferred-media>
+                          {%- if avatar != blank -%}
+                            <a
+                              href="{%- if linkUrl != blank -%}{{ linkUrl }}{%- else -%}javascript:void(0);{%- endif -%}"
+                              class="video-profile-container"
+                            >
+                              <div class="avatar-container relative">
+                                {%- render 'kiks-image',
+                                  image: avatar,
+                                  widths: '480, 980, 1200, 1400, 1600, 1920, 2560, 3200',
+                                  src_width: 3200,
+                                  src_placeholder: true,
+                                  sizes: sizes,
+                                  quality: 1,
+                                  fetchpriority: 'low',
+                                  lazy_load: lazy_load,
+                                  class: 'lazy2 img-fit'
+                                %}
+                              </div>
+                              <div class="profile-info">
+                                <h6 class="profile-name">{{ name }}</h6>
+                                <p class="sub-count">{{ number }}</p>
+                              </div>
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      {%- endif %}
+                    {%- endfor %}
+                  </div>
+                </div>
+                {%- if block.settings.showarrow -%}
+                  <div class="swiper-arrow-container">
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-custom-arrow swiper-button-prev">
+                      {%- render 'kik-arrow' -%}
+                    </div>
+                    <div class="swiper-custom-arrow swiper-button-next">
+                      {%- render 'kik-arrow' -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+                <!-- If we need scrollbar -->
+                <div
+                  class="swiper-scrollbar swiper-scrollbar-{{ forloop.index }}"
+                  data-swiper="{{ forloop.index }}"
+                ></div>
+              </div>
+
+            {%- when 'video-Url' -%}
+              <div class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ block.settings.tab_id }}">
+                <div class="swiper-url-container">
+                  <div class="swiper-container-url inner-video-url swiper-url-video">
+                    <div class="swiper-wrapper video-item video-content-url has-iframe">
+                      {%- assign video_keys = 'video_url,video_url2,video_url3,video_url4,video_url5' | split: ',' -%}
+
+                      {%- for video_key in video_keys -%}
+                        {%- assign video_url = block.settings[video_key] -%}
+                        {%- if video_url.type == 'youtube' -%}
+                          <div class="swiper-slide">
+                            <iframe
+                              class="lazyloadt4s"
+                              loading="lazy"
+                              src="//www.youtube.com/embed/{{ video_url.id }}?controls=1{% if autoplay %}&autoplay=1{% endif %}{% if loop %}&playlist={{ video_url.id }}&loop=1{% endif %}&showinfo=0&rel=0&modestbranding=1"
+                              data-src="//www.youtube.com/embed/{{ video_url.id }}?controls=1{% if autoplay %}&autoplay=1{% endif %}{% if loop %}&playlist={{ video_url.id }}&loop=1{% endif %}&showinfo=0&rel=0&modestbranding=1"
+                              frameborder="0"
+                              allowfullscreen
+                            >
+                            </iframe>
+                          </div>
+                        {%- elsif video_url.type == 'vimeo' -%}
+                          <div class="swiper-slide">
+                            <iframe
+                              class="lazyloadt4s"
+                              data-src="//player.vimeo.com/video/{{ video_url.id }}?portrait=0{% if autoplay %}&autoplay=1{% endif %}{% if loop %}&loop=1{% endif %}&byline=0&color={{ settings.accent_color | remove_first: '#' }}"
+                              frameborder="0"
+                            >
+                            </iframe>
+                          </div>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                    {%- if block.settings.showarrow -%}
+                      <div class="swiper-arrow-container">
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-custom-arrow swiper-button-prev">
+                          {%- render 'kik-arrow' -%}
+                        </div>
+                        <div class="swiper-custom-arrow swiper-button-next">
+                          {%- render 'kik-arrow' -%}
+                        </div>
+                      </div>
+                    {%- endif -%}
+                    <div
+                      class="swiper-scrollbar-url swiper-scrollbar-{{ forloop.index }}"
+                      data-swiper="{{ forloop.index }}"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+          {%- endcase -%}
+        {% endfor %}
+      </div>
+    </div>
+    {{- html_layout[1] -}}
+  </div>
+</section>
+<script src="{{ 'kiks-video.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Kikstart Video Slider",
+  "class": "kik-video-slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "default": "t4s-container-wrap",
+      "label": "Layout",
+      "options": [
+        { "value": "t4s-se-container", "label": "Container" },
+        { "value": "t4s-container-wrap", "label": "Wrapped container" },
+        { "value": "t4s-container-fluid", "label": "Full width" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "cl_bg",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "cl_bg_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_color",
+      "label": "Tab active color",
+      "default": "#0073e6"
+    },
+    {
+      "type": "color",
+      "id": "slide_button_background",
+      "label": "Slide button background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "slide_button_hover_background",
+      "label": "Slide button hover background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Slide button arrow color",
+      "default": "#0073e6"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Slide button hover arrow color",
+      "default": "#0073e6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "mg",
+      "label": "Margin",
+      "info": "Margin top, margin right, margin bottom, margin left. If you not use to blank",
+      "default": ",,50px,",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd",
+      "label": "Padding",
+      "info": "Padding top, padding right, padding bottom, padding left. If you not use to blank",
+      "placeholder": "50px,,50px,"
+    },
+    {
+      "type": "header",
+      "content": "+ Design mobile options"
+    },
+    {
+      "type": "text",
+      "id": "mg_mb",
+      "label": "Margin",
+      "default": ",,30px,",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd_mb",
+      "label": "Padding",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "header",
+      "content": "2. Custom css"
+    },
+    {
+      "id": "use_cus_css",
+      "type": "checkbox",
+      "label": "Use custom css",
+      "default": false,
+      "info": "If you want custom style for this section."
+    },
+    {
+      "id": "code_cus_css",
+      "type": "textarea",
+      "label": "Code custom css",
+      "info": "Use selector .SectionID to style css"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Help You Choose"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Join the #NarwalFamily and share your experience with us.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Kikstart Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "For Mobile Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "For Mobile Padding Bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "upload-video",
+      "name": "Upload Video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Tab Title"
+        },
+        {
+          "type": "text",
+          "id": "tab_id",
+          "label": "Title id",
+          "default": "tab-title",
+          "info": "Please add a tab id if 2 words (tab-title) if 1 word (title) maintain the lowercase."
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "html",
+          "label": "Image svg",
+          "id": "img_svg",
+          "info": "Only used for source svg"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "id": "showarrow",
+          "type": "checkbox",
+          "label": "Show Arrow",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Cover Image"
+        },
+        {
+          "type": "video",
+          "id": "video_shopify",
+          "label": "Video Upload",
+          "info": "Hosted by Shopify. Replaces external video if both are set."
+        },
+        {
+          "type": "text",
+          "id": "video_description",
+          "label": "Video Description",
+          "default": "Video Description",
+          "info": "Describe the video for customers using screen readers."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar1",
+          "label": "Profile Picture"
+        },
+        {
+          "type": "text",
+          "id": "name1",
+          "label": "Name",
+          "default": "My_name"
+        },
+        {
+          "type": "number",
+          "id": "num_sub1",
+          "label": "Number of Subscribers",
+          "default": 546
+        },
+        {
+          "type": "url",
+          "id": "link1",
+          "label": "Profile Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Cover Image"
+        },
+        {
+          "type": "video",
+          "id": "video_shopif2",
+          "label": "Video Upload",
+          "info": "Hosted by Shopify. Replaces external video if both are set."
+        },
+        {
+          "type": "text",
+          "id": "video_descriptio2",
+          "label": "Video Description",
+          "default": "Video Description",
+          "info": "Describe the video for customers using screen readers."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar2",
+          "label": "Profile Picture"
+        },
+        {
+          "type": "text",
+          "id": "name2",
+          "label": "Name",
+          "default": "My_name"
+        },
+        {
+          "type": "number",
+          "id": "num_sub2",
+          "label": "Number of Subscribers",
+          "default": 546
+        },
+        {
+          "type": "url",
+          "id": "link2",
+          "label": "Profile Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Cover Image"
+        },
+        {
+          "type": "video",
+          "id": "video_shopif3",
+          "label": "Video Upload",
+          "info": "Hosted by Shopify. Replaces external video if both are set."
+        },
+        {
+          "type": "text",
+          "id": "video_descriptio3",
+          "label": "Video Description",
+          "default": "Video Description",
+          "info": "Describe the video for customers using screen readers."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar3",
+          "label": "Profile Picture"
+        },
+        {
+          "type": "text",
+          "id": "name3",
+          "label": "Name",
+          "default": "My_name"
+        },
+        {
+          "type": "number",
+          "id": "num_sub3",
+          "label": "Number of Subscribers",
+          "default": 546
+        },
+        {
+          "type": "url",
+          "id": "link3",
+          "label": "Profile Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Cover Image"
+        },
+        {
+          "type": "video",
+          "id": "video_shopif4",
+          "label": "Video Upload",
+          "info": "Hosted by Shopify. Replaces external video if both are set."
+        },
+        {
+          "type": "text",
+          "id": "video_descriptio4",
+          "label": "Video Description",
+          "default": "Video Description",
+          "info": "Describe the video for customers using screen readers."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar4",
+          "label": "Profile Picture"
+        },
+        {
+          "type": "text",
+          "id": "name4",
+          "label": "Name",
+          "default": "My_name"
+        },
+        {
+          "type": "number",
+          "id": "num_sub4",
+          "label": "Number of Subscribers",
+          "default": 546
+        },
+        {
+          "type": "url",
+          "id": "link4",
+          "label": "Profile Link"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "image_picker",
+          "id": "image5",
+          "label": "Cover Image"
+        },
+        {
+          "type": "video",
+          "id": "video_shopif5",
+          "label": "Video Upload",
+          "info": "Hosted by Shopify. Replaces external video if both are set."
+        },
+        {
+          "type": "text",
+          "id": "video_descriptio5",
+          "label": "Video Description",
+          "default": "Video Description",
+          "info": "Describe the video for customers using screen readers."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar5",
+          "label": "Profile Picture"
+        },
+        {
+          "type": "text",
+          "id": "name5",
+          "label": "Name",
+          "default": "My_name"
+        },
+        {
+          "type": "number",
+          "id": "num_sub5",
+          "label": "Number of Subscribers",
+          "default": 546
+        },
+        {
+          "type": "url",
+          "id": "link5",
+          "label": "Profile Link"
+        }
+      ]
+    },
+    {
+      "type": "video-Url",
+      "name": "Video URL",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Tab Title"
+        },
+        {
+          "type": "text",
+          "id": "tab_id",
+          "label": "Title id",
+          "default": "tab-title",
+          "info": "Please add a tab id if 2 words (tab-title) if 1 word (title) maintain the lowercase."
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "html",
+          "label": "Image svg",
+          "id": "img_svg",
+          "info": "Only used for source svg"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "id": "showarrow",
+          "type": "checkbox",
+          "label": "Show Arrow",
+          "default": false
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "1. Video url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url2",
+          "label": "2. Video url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url3",
+          "label": "3. Video url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url4",
+          "label": "4. Video url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "paragraph",
+          "content": "—————————————————"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url5",
+          "label": "5. Video url",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kikstart Video Slider"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

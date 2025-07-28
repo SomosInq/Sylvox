@@ -1,0 +1,153 @@
+
+
+<div class="section">
+
+	<div class="titled-carousel__header">
+		<div class="left">
+			<h2 class="h1 titled-carousel__heading">{{ section.settings.title }}</h2>
+			<p class="titled-carousel__subheading">{{ section.settings.subtitle }}</p>
+		</div>
+		<div class="titled-carousel__controls">
+			<div class="titled-carousel-prev titled-carousel-prev-{{section.id}}">
+				{% render 'icon-arrow-next' %}
+			</div>
+			<div class="titled-carousel-next titled-carousel-next-{{section.id}}">
+				{% render 'icon-arrow-next' %}
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<div class="swiper titled-carousel titled-carousel-{{section.id}}">
+
+	<div class="swiper-wrapper">
+
+		{% for block in section.blocks %}
+
+			<div class="swiper-slide titled-carousel__item">
+
+				{%- assign alt_text = block.settings.image.alt | default: block.settings.title | strip -%}
+				<img 
+					src="{{ block.settings.image | image_url: width: 800 }}" 
+					alt="{{ alt_text | escape }}" 
+					loading="lazy"
+				>
+
+				<p>{{ block.settings.text }}</p>
+
+			</div>
+
+		{% endfor %}
+
+	</div>
+
+
+    <div class="swiper-control">
+      <div class="swiper-pagination swiper-pagination-{{section.id}}"></div>
+    </div>
+
+
+
+</div> 
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+	// Select the Swiper container
+    const swiperContainer = document.querySelector('.titled-carousel-{{section.id}}');
+
+	const titledCarousel = new Swiper(swiperContainer, {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+        loop: true,
+        centeredSlides: true,
+		pagination: {
+			el: '.swiper-pagination-{{section.id}}',
+			clickable: true,
+		},
+        navigation: {
+			nextEl: '.titled-carousel-next-{{section.id}}',
+			prevEl: '.titled-carousel-prev-{{section.id}}',
+        },
+		breakpoints: {
+			500: {
+				slidesPerView: 1.5,
+				spaceBetween: 35,
+			},
+			1100: {
+				slidesPerView: 2,
+			},
+			1300: {
+				slidesPerView: 3,
+			}
+		},
+	});
+
+
+    // Slide forward when clicked whilst ignoring pagination bullets, navigation arrows, or buttons
+    swiperContainer.addEventListener('click', function() {
+
+        if (titledCarousel && titledCarousel.slideNext) {
+            titledCarousel.slideNext(); // Slide forward by 1
+        }
+    });
+
+
+
+}); 
+
+</script>
+
+
+
+
+{%  schema  %}
+{
+	"name": "Titled carousel",
+	"class": "section-titled-carousel",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title",
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"label": "Subtitle",
+		}
+	],
+	"blocks": [
+		{
+			"name": "Carousel item",
+			"type": "carousel_item",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				},
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Text",
+				},
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Titled carousel"
+		}
+	]
+}
+{% endschema %}
+
+
+

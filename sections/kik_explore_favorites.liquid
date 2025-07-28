@@ -1,0 +1,490 @@
+{{ 'kik-explore-favorites.css' | asset_url | stylesheet_tag }}
+<style>
+    .kik_explore-c{
+      background-color: {{ section.settings.bk }};
+      background: {{ section.settings.background_gradient }};
+      padding-top:72px;
+      padding-bottom:72px;
+    }
+    #shopify-section-{{ section.id }} .essentials-product-info{
+      padding:16px;
+      padding-bottom:24px;
+      background: {{ section.settings.info_background }};
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    #shopify-section-{{ section.id }} .essentials_adc:hover {
+      background-color: {{ section.settings.add_to_button }};
+      border-color: {{ section.settings.add_to_button }};
+    }
+    #shopify-section-{{ section.id }} .essentials-product-price div{
+      color: {{ section.settings.discount_color }};
+      border: 1px solid {{ section.settings.discount_color }};
+    }
+    #shopify-section-{{ section.id }} .essentials_btn.kik_buy_btn{
+      flex: 0 0 100% !important;
+      display: flex;
+      column-gap: 8px;
+      color:#ffffff;
+    }
+
+    #shopify-section-{{ section.id }} .essentials_adc{
+      border:1px solid #FFFFFF;
+      border-radius:12px;
+      padding:10px 5px;
+      background: {{ section.settings.add_button }};
+      font-size:16px;
+      line-height:1.5;
+      font-weight:500;
+      width:100%;
+      text-align:center;
+    }
+
+    #shopify-section-{{ section.id }} button.button{
+      border:1px solid #FFFFFF;
+      border-radius:12px;
+      padding:10px 5px;
+      background: {{ section.settings.add_button }};
+      font-size:16px;
+      line-height:1.5;
+      font-weight:500;
+      width:100%;
+      text-align:center;
+    }
+
+    .kik_explore_left h2{
+      font-size:34px;
+      line-height:1.2;
+      margin:0;
+      margin-bottom:8px;
+      color: {{ section.settings.heading_color }};
+    }
+    .kik_explore-c .essentials-product-info h3 {
+      color: {{ section.settings.product_title }};
+    }
+    .kik_explore_left > p{
+      font-size:21px;
+      line-height:27px;
+      margin:0;
+      margin-bottom:16px;
+      color: {{ section.settings.heading_color }};
+    }
+
+    .kik_explore_title h4{
+      font-size:18px;
+      line-height:1.5;
+      padding-left:16px;
+      border-left:3px solid;
+      margin:0;
+      cursor:pointer;
+      color: {{ section.settings.heading_color }};
+    }
+    .kik_explore_title.active h4{
+      color: {{ section.settings.active_title_color }};
+    }
+    .kik_explore_content p{
+      display:none;
+      font-size:16px;
+      line-height:1.5;
+      margin:0;
+      color: {{ section.settings.heading_color }};
+    }
+
+    #shopify-section-{{ section.id }} .essentials_btn{
+      background: {{ section.settings.buy_button_color }};
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 5px;
+      font-size:16px;
+      line-height:1.5;
+      font-weight:500;
+      column-gap:8px;
+      width: 50%;
+    }
+    #shopify-section-{{ section.id }} .kik_buy_btn span{
+      color: {{ section.settings.buy_button_text }};
+    }
+    #shopify-section-{{ section.id }} .essentials_btn:hover{
+      background: {{ section.settings.buy_button_hover }};
+    }
+    .favorites-button-prev,
+    .favorites-button-next{
+      height: 48px;
+      width: 48px;
+      background: {{ section.settings.slide_button_background }};
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .favorites-button-prev svg path,
+    .favorites-button-next svg path{
+      fill:#1b80fa !important;
+    }
+
+  #shopify-section-{{ section.id }} button.button:hover {
+    background-color: {{ section.settings.add_to_button }};
+    border-color: {{ section.settings.add_to_button }};
+  }
+</style>
+<div id="shopify-section-{{ section.id }}">
+  <div class="kik_explore-c kik_linked_to" id="{{ section.settings.link_to }}">
+    <div class="kik_explore t4s-container container ">
+      <div class="kik_explore_left">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.content }}</p>
+        <div class="kik_explore_titles">
+          {% for block in section.blocks %}
+            <div
+              class="kik_explore_tab kik_explore_title {% if forloop.first %} active{% endif %}"
+              data_open="{{ forloop.index }}"
+              data-tab="{{ block.settings.tab_id }}"
+            >
+              <h4>{{ block.settings.heading }}</h4>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="kik_explore_contents">
+          {% for block in section.blocks %}
+            <div class="kik_explore_content {% if forloop.first %} active{% endif %}" data_open="{{ forloop.index }}">
+              <p>{{ block.settings.content }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        <div class="kik-explore-panel{% if forloop.first %} active{% endif %}" id="{{ block.settings.tab_id }}">
+          <div class="kik_explore_right">
+            <div class="swiper-wrapper">
+              {% if block.settings.collection != blank and block.settings.collection.products.size > 0 %}
+                {% for product in block.settings.collection.products %}
+                  <div class="essentials-product swiper-slide">
+                    <div class="product_image">
+                      <a href="{{ product.url }}">
+                        <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                      </a>
+                    </div>
+
+                    <div class="essentials-product-info">
+                      <a href="{{ product.url }}">
+                        <h3>{{ product.title }}</h3>
+                      </a>
+
+                      {% if product.tags != blank %}
+                        <div class="product_tags">
+                          {% for tag in product.tags %}
+                            <div>{{ tag }}</div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+
+                      <div class="essentials-product-price">
+                        <p>{{ product.price | money }}</p>
+                        {% if product.compare_at_price != blank %}
+                          <div>Save {{ product.compare_at_price | minus: product.price | money }}</div>
+                          <span>{{ product.compare_at_price | money }}</span>
+                        {% endif %}
+                      </div>
+
+                      {% if section.settings.static_promo or product.metafields.custom.promo_code != blank %}
+                        <div class="essentials_promo">
+                          <div class="promo_left">
+                            {% render 'perc_label_icon' %}
+                            <p>
+                              Code:
+                              {% if section.settings.static_promo %}
+                                {{ section.settings.promo_code }}
+                              {% else %}
+                                {{ product.metafields.custom.promo_code }}
+                              {% endif %}
+                            </p>
+                          </div>
+                          <div class="promo_icon">
+                            <input type="text" value="{{ product.metafields.custom.promo_code }}" id="myInput">
+                            {% render 'copy_icon' %}
+                          </div>
+                        </div>
+                      {% endif %}
+
+                      <div class="essentials_product_cta kik_buttons_c">
+                        {% if product.available %}
+                          {% comment %}
+                            <a href="{{ product.url }}" class="t4s-pr-addtocart essentials_adc"
+                              data-variant-id="{{ product.variants.first.id }}" data-action-atc="" rel="nofollow">
+                              <span class="t4s-text-pr">Add To Cart</span>
+                            </a>
+                          {% endcomment %}
+                          {%- assign quick_add_label = 'Add To Cart' -%}
+
+                          {%- if product.variants.size == 1 and product.selling_plan_groups.size == 0 -%}
+                            {%- form 'product', product, is: 'product-form' -%}
+                              <input
+                                type="hidden"
+                                name="id"
+                                value="{{ product.selected_or_first_available_variant.id }}"
+                              >
+
+                              <div class="pointer-fine:hidden">
+                                <button
+                                  type="submit"
+                                  is="custom-button"
+                                  class="product-card__mobile-quick-buy-button"
+                                  aria-label="{{ quick_add_label | escape }}"
+                                >
+                                  {%- render 'icon' with 'quick-buy-cart' -%}
+                                </button>
+                              </div>
+
+                              <div class="pointer-coarse:hidden">
+                                {%- render 'button', type: 'submit', content: quick_add_label -%}
+                              </div>
+                            {%- endform -%}
+                          {%- else -%}
+                            {%- capture quick_buy_id -%}quick-buy-{{ section.id }}-{{ product.id }}{%- endcapture -%}
+
+                            <div class="pointer-fine:hidden">
+                              <button
+                                type="button"
+                                aria-controls="{{ quick_buy_id }}"
+                                aria-expanded="false"
+                                aria-label="{{ quick_add_label | escape }}"
+                                is="custom-button"
+                                class="product-card__mobile-quick-buy-button"
+                              >
+                                {%- render 'icon' with 'quick-buy-cart' -%}
+                              </button>
+                            </div>
+
+                            <div class="pointer-coarse:hidden">
+                              {%- render 'button', content: quick_add_label, aria_controls: quick_buy_id -%}
+                            </div>
+
+                            <quick-buy-drawer
+                              id="{{ quick_buy_id }}"
+                              header-bordered
+                              open-from="bottom"
+                              handle="{{ product.handle }}?variant={{ product.selected_or_first_available_variant.id }}"
+                              role="region"
+                              aria-live="polite"
+                              class="quick-buy-drawer drawer"
+                            >
+                              {%- comment -%}Quick buy content is filled on demand for performance reasons {%- endcomment -%}
+                            </quick-buy-drawer>
+                          {%- endif -%}
+
+                          <form method="POST" action="/cart/add">
+                            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="return_to" value="/checkout">
+                            <button type="submit" class="essentials_btn kik_buy_btn">Buy Now</button>
+                          </form>
+                        {% else %}
+                          <a href="{{ product.url }}" class="ots-btn" rel="nofollow" style="pointer-events:none;">
+                            <span class="t4s-text-pr">Out Of Stock</span>
+                          </a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <p>No products found in the selected collection.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="kik_favorites_btns">
+      <div class="first-elem"></div>
+      <div class="favorites_swiper_btn">
+        <span class="favorites-button-prev ">
+          {% render 'button-prev' %}
+        </span>
+        <span class="favorites-button-next">
+          {% render 'button-next' %}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.kik_explore_tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      // Remove 'active' class from all tabs and panes
+      document.querySelectorAll('.kik_explore_tab').forEach((t) => t.classList.remove('active'));
+      document.querySelectorAll('.kik-explore-panel').forEach((pane) => pane.classList.remove('active'));
+
+      // Add 'active' class to the clicked tab and its corresponding content
+      tab.classList.add('active');
+      const tabId = tab.getAttribute('data-tab');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "kik explore favorites",
+  "class": "kik-explore-favorites-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "link_to",
+      "label": "link to",
+      "info": "for sticky bar"
+    },
+    {
+      "type": "color",
+      "id": "bk",
+      "label": "background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient",
+      "default": "linear-gradient(103deg, #0346B3, #323333, #323333, #0047BB )"
+    },
+    {
+      "type": "color",
+      "id": "info_background",
+      "label": "Product info background"
+    },
+    {
+      "type": "color",
+      "id": "slide_button_background",
+      "label": "Slide button background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Slide button arrow background",
+      "default": "#0047BB"
+    },
+    {
+      "type": "color_background",
+      "id": "buy_button_color",
+      "label": "Buy button color",
+      "default": "linear-gradient(180deg, #FEC327, #FF5B22)"
+    },
+    {
+      "type": "color_background",
+      "id": "buy_button_hover",
+      "label": "Buy button nover",
+      "default": "linear-gradient(180deg, #FEC327, #FF5B22)"
+    },
+    {
+      "type": "color",
+      "id": "buy_button_text",
+      "label": "Buy button text",
+      "default": "#194606"
+    },
+    {
+      "type": "color",
+      "id": "active_title_color",
+      "label": "Active title color",
+      "default": "#1980FA"
+    },
+    {
+      "type": "color",
+      "id": "add_button",
+      "label": "Add to cart button"
+    },
+    {
+      "type": "color",
+      "id": "add_to_button",
+      "label": "Add to cart button hover",
+      "default": "#1b80fa"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "product_title",
+      "label": "Product title",
+      "default": "#194606"
+    },
+    {
+      "type": "color",
+      "id": "discount_color",
+      "label": "Discount color",
+      "default": "#194606"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "content"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "static_promo",
+      "label": "Use Static Promo Code",
+      "default": false,
+      "info": "If you enable this the metafield will not show."
+    },
+    {
+      "type": "text",
+      "id": "promo_code",
+      "label": "Add Promo Code",
+      "default": "BF20"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_id",
+          "label": "Title id",
+          "default": "tab-title",
+          "info": "Please add a tab id if 2 words (tab-title) if 1 word (title) maintain the lowercase."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "collection"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "headign"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "kik explore favorites"
+    }
+  ]
+}
+{% endschema %}

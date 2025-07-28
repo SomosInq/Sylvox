@@ -1,0 +1,83 @@
+
+
+
+
+<div class="blocks">
+
+	{% content_for 'blocks' %}
+
+</div>
+
+
+{%- if section.settings.button_text != blank -%}
+	<div class="section-titles-with__button text-center">
+		{% render 'button', content: section.settings.button_text, href: section.settings.button_url, size: 'lg', background: section.settings.button_background, text_color: section.settings.button_text_color, style: section.settings.style %}
+	</div>
+{%- endif -%}
+
+
+
+{% schema %}
+{
+  "name": "Titles with",
+  "class": "section section-titles-with",
+  "settings": [
+	{
+	  "type": "checkbox",
+	  "id": "full_width",
+	  "label": "Full width",
+	  "default": true
+	},
+	{
+	  "type": "text",
+	  "id": "button_text",
+	  "label": "Button text",
+	  "default": "LEARN MORE"
+	},
+	{
+	  "type": "select",
+	  "id": "style",
+	  "label": "Button Style",
+	  "options": [
+		{
+		  "value": "outline",
+		  "label": "Outline"
+		},
+		{
+		  "value": "fill",
+		  "label": "Solid"
+		}
+	  ],
+	  "default": "fill"
+	},
+	{
+	  "type": "url",
+	  "id": "button_url",
+	  "label": "Button link"
+	},
+	{
+	  "type": "color",
+	  "id": "button_background",
+	  "label": "Button background"
+	},
+	{
+	  "type": "color",
+	  "id": "button_text_color",
+	  "label": "Button text"
+	}
+  ],
+  "blocks": [
+	{
+	  "type": "_title-with-description"
+	},
+	{
+	  "type": "_title-with-features"
+	}
+  ],
+  "presets": [
+	{
+	  "name": "Titles with"
+	}
+  ]
+}
+{% endschema %}

@@ -1,0 +1,360 @@
+{{ 'compare-popup.css' | asset_url | stylesheet_tag }}
+<style>
+    #shopify-section-{{ section.id }}  .kik_white_text h1,
+    #shopify-section-{{ section.id }} .kik_white_text h2,
+    #shopify-section-{{ section.id }} .kik_white_text h3,
+    #shopify-section-{{ section.id }} .kik_white_text h4,
+    #shopify-section-{{ section.id }} .kik_white_text h5,
+    #shopify-section-{{ section.id }} .kik_white_text p,
+    #shopify-section-{{ section.id }} .kik_white_text span:not(.t4s-mb__menu span):not(.t4s-product__info-wrapper span){
+     color: {{section.settings.cl-text}};
+  }
+  #shopify-section-{{ section.id }} .custom_open_popup{
+    background: {{section.settings.bk}};
+    padding:20px 0;
+  }
+</style>
+<div class="custom_open_popup">
+    <div class="t4s-container container">
+{% if section.settings.show_compare %}
+    <button class="compare_openpopup" open_popup="{{ section.id }}">
+      <span>{{ section.settings.compare_text }}</span>
+      {% render 'icon-arrow-next' %}
+    </button>
+{% endif %}
+</div>
+</div>
+
+<div class="essentials_popup_c" onscroll="popup_sticky_names(this)">
+  <div class="essentials_popup_overlay"></div>
+  <div class="essentials_popup_products">
+    <div class="essentials_popup_close">
+      {%- render 'kik-close-icon' -%}
+    </div>
+    <div class="essentials_sticky_names">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'popup_collection' %}
+            {% assign product = block.settings.product %}
+            {% if product.available %}
+              <div class="sticky_names">{{ product.title }}</div>  
+              {% endif %}
+            {% endcase %}
+        {% endfor %}
+    </div>
+    <div class="essentials_popup_content">
+      <div class="content_products col-item-{{ section.settings.total_block }}">
+        
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'popup_collection' %}
+              {% assign product = block.settings.product %}
+              {% if product.available %}
+              <div class="popup_product_c col-item-{{ section.settings.total_block }}">
+                <div class="popup_product_image">
+                  <a href="{{ product.url }}">
+                    <img src="{{ product.featured_image  | img_url:"master" }}">
+                  </a>
+                </div>
+                <div class="product_spec_info">
+                  <a href="{{ product.url }}">
+                    <p>{{ product.title }}</p>
+                  </a>
+                  <div class="popup_product-price">
+                    <p>{{ product.price | money }}</p>
+                    <span>{{ product.compare_at_price | money }}</span>
+                  </div>
+                  <div class="kik_buttons_c">
+                    {% if product.available %}
+                      <a
+                        href="{{ product.url }}"
+                        class="t4s-pr-addtocart"
+                        data-variant-id="{{ product.variants.first.id }}"
+                        data-action-atc=""
+                        rel="nofollow"
+                      >
+                        <span class="t4s-text-pr">Add To Cart</span>
+                      </a>
+                      <form method="POST" action="/cart/add">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="return_to" value="/checkout">
+                        <button type="submit" class="popup_cta kik_buy_btn"><span>Buy Now</span>
+                        {%- render 'kik-cart-icon' -%}</button>
+                      </form> 
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <div class="content_specs col-item-{{ section.settings.total_block }}">
+        {% for ii in (1..10) %}
+          {% assign comparator_title = 'comparator_title_' | append: forloop.index %}
+          {% assign comparator = 'comparator_' | append: forloop.index %}
+          {% if section.settings[comparator_title] != blank %}
+            <div class="specs">
+              <h3>{{ section.settings[comparator_title] }}</h3>
+            </div>
+          {% endif %}
+          {%- if section.settings[comparator] != blank -%}
+          <div class="specs">
+            <div class="specs_comparator">
+              <h3>{{ section.settings[comparator] }}</h3>
+              <p class="mobile_item">
+                {% assign popup_count = 0 %}
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'popup_collection' %}
+                      {% assign popup_count = popup_count | plus: 1 %}
+                      {% assign product = block.settings.product %}
+                      {% if popup_count == 1 and product.available %}
+                        {{ block.settings[comparator] }}
+                      {% endif %}
+                  {% endcase %}
+                {% endfor %}
+              </p>
+            </div>
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'popup_collection' %}
+                  {% assign product = block.settings.product %}
+                  {% if product.available %}
+                  <div class="specs_comparator">
+                      <p>{{ block.settings[comparator] }}</p>
+                  </div>
+                {% endif %}
+              {% endcase %}
+            {% endfor %}
+          </div>
+         {%- endif -%}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function popup_sticky_names(a){
+   // console.log(a.scrollTop);
+    if(a.scrollTop > 600){
+          document.querySelector(".essentials_sticky_names").classList.add("active");
+    }else{
+      document.querySelector(".essentials_sticky_names").classList.remove("active");
+    }
+  }
+  
+ // document.querySelector(".essentials_popup_c").onscroll = popup_sticky_names()
+</script>
+{% schema %}
+    {
+      "name": "kik compare button",
+      "class": "kik-compare-button",
+      "tag": "section",
+      "settings": [
+        {
+          "type": "range",
+          "id": "total_block",
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "unit": "px",
+          "label": "Show total product",
+          "default": 6
+        },
+        {
+          "type": "color",
+          "id": "bk",
+          "label": "background"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_compare",
+          "label": "show compare",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "compare_text",
+          "label": "compare text",
+          "default": "Compare Ottocast Driving Essentials"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_1",
+          "label": "comparator 1 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_1",
+          "label": "comparator 1"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_2",
+          "label": "comparator 2 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_2",
+          "label": "comparator 2"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_3",
+          "label": "comparator 3 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_3",
+          "label": "comparator 3"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_4",
+          "label": "comparator 4 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_4",
+          "label": "comparator 4"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_5",
+          "label": "comparator 5 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_5",
+          "label": "comparator 5"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_6",
+          "label": "comparator 6 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_6",
+          "label": "comparator 6"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_7",
+          "label": "comparator 7 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_7",
+          "label": "comparator 7"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_8",
+          "label": "comparator 8 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_8",
+          "label": "comparator 8"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_9",
+          "label": "comparator 9 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_9",
+          "label": "comparator 9"
+        },
+        {
+          "type": "text",
+          "id": "comparator_title_10",
+          "label": "comparator 10 title"
+        },
+        {
+          "type": "text",
+          "id": "comparator_10",
+          "label": "comparator 10"
+        },
+        {
+          "type": "color",
+          "id": "cl-text",
+          "label": "Text Color",
+          "default": "#ffffff"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "popup_collection",
+          "name": "popup collection",
+          "limit": 6,
+          "settings": [
+            {
+              "type": "product",
+              "id": "product",
+              "label": "product"
+            },
+            {
+              "type": "text",
+              "id": "comparator_1",
+              "label": "comparator 1"
+            },
+            {
+              "type": "text",
+              "id": "comparator_2",
+              "label": "comparator 2"
+            },
+            {
+              "type": "text",
+              "id": "comparator_3",
+              "label": "comparator 3"
+            },
+            {
+              "type": "text",
+              "id": "comparator_4",
+              "label": "comparator 4"
+            },
+            {
+              "type": "text",
+              "id": "comparator_5",
+              "label": "comparator 5"
+            },
+            {
+              "type": "text",
+              "id": "comparator_6",
+              "label": "comparator 6"
+            },
+            {
+              "type": "text",
+              "id": "comparator_7",
+              "label": "comparator 7"
+            },
+            {
+              "type": "text",
+              "id": "comparator_8",
+              "label": "comparator 8"
+            },
+            {
+              "type": "text",
+              "id": "comparator_9",
+              "label": "comparator 9"
+            },
+            {
+              "type": "text",
+              "id": "comparator_10",
+              "label": "comparator 10"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "kik compare button"
+        }
+      ]
+    }
+    {% endschema %}

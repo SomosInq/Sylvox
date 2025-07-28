@@ -1,0 +1,143 @@
+<style>
+  #shopify-block-{{ block.id }} .rich-text__wrapper {
+    color: {{ block.settings.color }};
+    font-size: {{ block.settings.desktop_font_size }}px;
+  }
+
+  #shopify-block-{{ block.id }} em {
+    color: {{ block.settings.highlight_color }};
+    font-style: unset;
+  }
+
+  @media screen and (min-width: 769px) {
+      {% if block.settings.desktop_hidden %}
+        #shopify-block-{{ block.id }} {
+          display: none;
+        }
+      {% endif %}
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-block-{{ block.id }} .rich-text__wrapper {
+      font-size: {{ block.settings.mobile_font_size }}px;
+    }
+    #shopify-block-{{ block.id }} .prose {
+      text-align: {{ block.settings.mobile_text_alignment | replace: 'left', 'start' | replace: 'right', 'end' }};
+    }
+    {% if block.settings.mobile_hidden %}
+      #shopify-block-{{ block.id }} {
+        display: none;
+      }
+    {% endif %}
+  }
+</style>
+
+{%- if block.settings.text != blank -%}
+  {%- assign text_alignment = block.settings.text_alignment | replace: 'left', 'start' | replace: 'right', 'end' -%}
+
+  <span class="rich-text justify-{{ text_alignment }}" id="shopify-block-{{ block.id }}">
+    <div
+      class="rich-text__wrapper"
+      style="--rich-text-max-width: {% if block.settings.content_width == 'small' %}650px{% elsif block.settings.content_width == 'medium' %}780px{% else %}100%{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      <div class="justify-items-{{ text_alignment }} text-{{ text_alignment }} prose">
+        {{- block.settings.text -}}
+      </div>
+    </div>
+  </span>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Rich text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "desktop_hidden",
+      "label": "Desktop hidden",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_hidden",
+      "label": "Mobile hidden",
+      "default": false
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Content",
+      "default": "<p>Write some text about your products or your brand.</p>"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center"
+    },
+    {
+      "type": "text_alignment",
+      "id": "mobile_text_alignment",
+      "label": "Mobile text alignment",
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color"
+    },
+    {
+      "type": "range",
+      "id": "desktop_font_size",
+      "label": "Desktop font size",
+      "min": 14,
+      "max": 32,
+      "default": 18,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_font_size",
+      "label": "Mobile font size",
+      "min": 12,
+      "max": 32,
+      "default": 18,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text"
+    }
+  ]
+}
+{% endschema %}

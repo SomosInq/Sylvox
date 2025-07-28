@@ -1,0 +1,148 @@
+<style>
+    @media (min-width: 750px) {
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .cp82-5 {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .cp82-5-img {
+        width: 100%;
+      }
+
+      .cp82-5-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .img-mb {
+        display: none;
+      }
+
+      .cp82-5-text1,
+      .cp82-5-text2,
+      .cp82-5-text3,
+      .cp82-5-text4 {
+        font-size: 1.5vw;
+        font-weight: 400;
+        color: #fff;
+      }
+
+      .cp82-5-text1 {
+        position: absolute;
+        top: 14vw;
+        left: 17vw;
+      }
+
+      .cp82-5-text2 {
+        position: absolute;
+        top: 14vw;
+        left: 72vw;
+      }
+
+      .cp82-5-text3 {
+        position: absolute;
+        top: 48vw;
+        left: 15vw;
+      }
+
+      .cp82-5-text4 {
+        position: absolute;
+        top: 48vw;
+        left: 70vw;
+      }
+    }
+
+    @media (max-width: 750px) {
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .cp82-5 {
+        width: 100%;
+        position: relative;
+      }
+
+      .cp82-5-img {
+        width: 100%;
+      }
+
+      .cp82-5-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .img-pc {
+        display: none;
+      }
+
+      .cp82-5-text1,
+      .cp82-5-text2,
+      .cp82-5-text3,
+      .cp82-5-text4 {
+        font-size: 2vw;
+        font-weight: 500;
+        color: #fff;
+      }
+
+      .cp82-5-text1 {
+        position: absolute;
+        top: 22vw;
+        left: 7vw;
+      }
+
+      .cp82-5-text2 {
+        position: absolute;
+        top: 22vw;
+        left: 80vw;
+      }
+
+      .cp82-5-text3 {
+        position: absolute;
+        top: 77vw;
+        left: 3vw;
+      }
+
+      .cp82-5-text4 {
+        position: absolute;
+        top: 77vw;
+        left: 77vw;
+      }
+    }
+</style>
+
+<div class="cp82-5">
+  <div class="cp82-5-img">
+    <img src="https://cdn.shopify.com/s/files/1/0268/6592/6342/files/cp82-pc-5.jpg?v=1730167391" alt="" class="img-pc">
+    <img src="https://cdn.shopify.com/s/files/1/0268/6592/6342/files/cp82-mb-5.jpg?v=1730167761" alt="" class="img-mb">
+  </div>
+  <div class="cp82-5-text1">{{ section.settings.cp82-5-text1 }}</div>
+  <div class="cp82-5-text2">{{ section.settings.cp82-5-text2 }}</div>
+  <div class="cp82-5-text3">{{ section.settings.cp82-5-text3 }}</div>
+  <div class="cp82-5-text4">{{ section.settings.cp82-5-text4 }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "cp82-5",
+  "presets": [
+  {
+    "name": "cp82-5"
+  }
+],
+  "settings": [
+    { "type": "textarea","id": "cp82-5-text1","label": "cp82-5-text1","default": "Wireless CarPlay" },
+    { "type": "textarea","id": "cp82-5-text2","label": "cp82-5-text2","default": "RGB Indicator" },
+    { "type": "textarea","id": "cp82-5-text3","label": "cp82-5-text3","default": "One-click Disconnection" },
+    { "type": "textarea","id": "cp82-5-text4","label": "cp82-5-text4","default": "Flash Connection" }
+  ]
+}
+{% endschema %}

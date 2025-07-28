@@ -1,0 +1,30 @@
+<style>
+  .nav-link{
+    width: 100%;
+    height: 1px;
+  }
+</style>
+
+<div id="{{ section.settings.nav-link }}" class="nav-link"></div>
+
+
+
+{% schema %}
+{
+  "name": "nav1-link",
+  "presets": [
+  {
+    "name": "nav1-link"
+  }
+],
+  "settings": [
+    { "type": "text","id": "nav-link","label": "nav-link" },
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

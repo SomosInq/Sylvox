@@ -1,0 +1,243 @@
+<style>
+  /* #region goc_productTabCut */
+  /* html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    height: 3000px;
+    background: #666;
+  } */
+
+  .maodian a:hover,
+  .maodian a.active {
+    color: red;
+  }
+
+  #shopify-section-template--23480921424177__nav_9eeEeL {
+    position: sticky;
+    top: 0px;
+    z-index: 30;
+  }
+
+  .goc_productTabCut {
+    width: 100%;
+    height: 4.1666666666666vw;
+    background: #1f1f1f;
+  }
+
+  .goc_width {
+    width: 86vw;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .TabCut_text1 {
+    font-size: 1.0416666666666vw;
+    font-family: "TeX Gyre Adventor";
+    font-weight: bold;
+    height: 100%;
+    line-height: 4.16666666666666vw;
+  }
+
+  .TabCut_Tab {
+    height: 100%;
+    line-height: 4.16666666666666vw;
+    font-family: "TeX Gyre Adventor";
+  }
+
+  .TabCut_Tab a {
+    margin: 0 23px;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .TabCut_btn {
+    width: 113px;
+    height: 37px;
+    background: #FF591A;
+    font-size: 16px;
+    font-family: "TeXGyreAdventor, TeXGyreAdventor";
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 37px;
+    text-align: center;
+    margin-left: 87px;
+  }
+
+  @media (max-width: 749px) {
+    .goc_width {
+      width: 100vw;
+      height: 40px;
+      margin: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: normal;
+      scroll-behavior: smooth;
+    }
+
+    .TabCut_Tab {
+      /* width: 92vw; */
+      display: flex;
+      height: 5.3333333333333vw;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      flex: 1 0 auto;
+      /* margin-left: 6px; */
+    }
+
+    .goc_productTabCut {
+      height: 40px;
+    }
+
+    .TabCut_Tab a {
+      margin: 0 5px;
+      font-size: 12px;
+      margin: 0;
+      display: block;
+      /* line-height: 0; */
+      height: 20px;
+      line-height: 20px;
+      margin-left: 26px !important;
+    }
+
+    .TabCut_text1 {
+      height: 14.13333333333vw;
+      font-size: 12px;
+      line-height: 14.13333333333vw;
+    }
+
+    .TabCut_btn {
+      width: 15.46666666666vw;
+      height: 6.93333333333vw;
+      line-height: 6.93333333333vw;
+      font-size: 10px;
+      margin-left: 0;
+      white-space: nowrap;
+      flex: 1 0 auto;
+      margin-left: 26px;
+    }
+
+    .TabCut_Tab a {
+      margin: 0;
+    }
+  }
+
+  /* #endregion */
+</style>
+
+<div class="goc_productTabCut">
+  <div class="goc_width">
+    <!-- {% comment %} <div class="TabCut_text1">EDS-TX</div> {% endcomment %} -->
+    <!-- <div class="TabCut_btn">
+      <a style="height: 100%; width: 100%; display: block;" href="#link0" id="link0">Buy Now</a>
+    </div> -->
+    <div class="TabCut_Tab maodian">
+      <a href="#link1">Overview</a>
+      <a href="#link2">Specs</a>
+      <a href="#link3">FAQ</a>
+      <a href="#link4">Review</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// document.addEventListener("DOMContentLoaded", () => {
+//     const tabCut = document.querySelector(".goc_productTabCut");
+//     const header = document.querySelector('.header__outer-wrapper');
+
+//     window.addEventListener("scroll", () => {
+//         const tabCutTop = tabCut.getBoundingClientRect().top; // 获取goc_productTabCut的顶部位置
+//         console.log('TabCut top value:', tabCutTop); // 调试输出
+
+//         if (tabCutTop <= 100) { // 当距离顶部100px时
+//             header.style.position = 'fixed';
+//             header.style.top = '0';
+//             header.style.width = '100%';
+//             header.style.zIndex = '1000'; // 确保在其他元素之上
+//         } else {
+//             header.style.position = 'relative';
+//             header.style.top = '';
+//         }
+//     });
+// });
+
+
+
+
+  
+    document.addEventListener("DOMContentLoaded", () => {
+    // #region tab切换顶导航     
+    // const el = document.querySelector('#shopify-section-template--16315947548724__goc_product_tab_cut_bgVwy3')
+    const el=document.querySelector(".goc_productTabCut").parentElement;
+    const header = document.querySelector('.header__outer-wrapper');
+    window.addEventListener("scroll", () => {
+        const top = el.getBoundingClientRect().top
+        console.log(top);
+        const height = header.getBoundingClientRect().height
+        if(top < height) {
+            header.style.top = top >= 0 ? `-${height - top}px` : `-${height}px`
+        } else {
+            header.style.top = 50px
+        }
+    })
+    // #endregion
+
+
+
+
+    
+    // #region 点击导航加粗
+    let headerLi = document.querySelectorAll("#shopify-section-header > header > div.header__links > ul > li > a > div.anchor-item-active-text")
+    // 添加点击事件监听器
+    headerLi.forEach(li => {
+        li.addEventListener('click', function() {
+            // 移除所有 li 元素上的 active 类
+            headerLi.forEach(li => {
+            li.classList.remove('active');
+            });
+            // 添加当前点击的 li 元素上的 active 类
+            console.log(11);
+            this.classList.add('active');
+        });
+    });
+
+    // 在 body 上添加点击事件监听器
+    document.querySelector("html").addEventListener('click', function(event) {
+        // 检查点击的元素是否在 .header__links-list 内部
+        if (!event.target.closest('.anchor-item-active-text')) {
+            // 如果不在 .header__links-list 内部，则移除所有 li 元素上的 active 类
+            headerLi.forEach(li => {
+            li.classList.remove('active');
+            });
+        }
+    });
+    // #endregion
+
+
+
+
+})
+</script>
+
+{% schema %}
+{
+  "name": "nav1",
+  "presets": [
+  {
+    "name": "nav1"
+  }
+],
+  "settings": [
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

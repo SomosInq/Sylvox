@@ -1,0 +1,22 @@
+{
+    "sourceFile": "sections/sidemenu-content.liquid",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1753718088445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753718156687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,39 @@\n \n {\n \t\"name\": \"Sidemenu content\",\n \t\"class\": \"section section-sidemenu-content\",\n+\t\"settings\": [\n+    { \"type\": \"image_picker\", \"id\": \"bg_image\", \"label\": \"Background Image\" },\n+    { \"type\": \"color\", \"id\": \"bg_color\", \"label\": \"Background Color\", \"default\": \"#ffffff\" },\n+    {\n+      \"type\": \"select\", \"id\": \"section_width\", \"label\": \"Section Width\", \"default\": \"standard\",\n+      \"options\": [\n+        { \"value\": \"standard\", \"label\": \"50% Width\" },\n+        { \"value\": \"full\", \"label\": \"Full Width\" }\n+      ]\n+    },\n+    {\n+      \"type\": \"select\", \"id\": \"section_content_width\", \"label\": \"Content Width\", \"default\": \"standard\",\n+      \"options\": [\n+        { \"value\": \"standard\", \"label\": \"50% Width\" },\n+        { \"value\": \"full\", \"label\": \"Full Width\" }\n+      ]\n+    },\n+    { \"type\": \"range\", \"id\": \"padding_top\", \"label\": \"Padding Top\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"padding_bottom\", \"label\": \"Padding Bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"padding_left\", \"label\": \"Padding Left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"padding_right\", \"label\": \"Padding Right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"margin_top\", \"label\": \"Margin Top\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"margin_bottom\", \"label\": \"Margin Bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"margin_left\", \"label\": \"Margin Left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+    { \"type\": \"range\", \"id\": \"margin_right\", \"label\": \"Margin Right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0 },\n+\t\t{\n+\t\t\t\"type\": \"link_list\",\n+\t\t\t\"id\": \"menu\",\n+\t\t\t\"label\": \"Select menu\"\n+\t\t}\n+\t],\n \t\"blocks\": [\n \t\t{\n \t\t\t\"type\": \"_sidemenu\"\n \t\t},\n"
+                }
+            ],
+            "date": 1753718088445,
+            "name": "Commit-0",
+            "content": "<div class=\"blocks  section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');\">\n\t{% content_for 'blocks' %}\n</div>\n\n\n\n{% schema %}\n\n{\n\t\"name\": \"Sidemenu content\",\n\t\"class\": \"section section-sidemenu-content\",\n\t\"blocks\": [\n\t\t{\n\t\t\t\"type\": \"_sidemenu\"\n\t\t},\n\t\t{\n\t\t\t\"type\": \"_page-content\"\n\t\t}\n\t],\n\t\"presets\": [\n\t\t{\n\t\t\t\"name\": \"Sidemenu content\"\n\t\t}\n\t]\n}\n\n\n\n{% endschema %}\n"
+        }
+    ]
+}

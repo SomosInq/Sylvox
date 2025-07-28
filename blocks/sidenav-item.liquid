@@ -1,0 +1,36 @@
+
+
+<li class="sidenav__item">
+	
+    {% if block.settings.title != blank %}
+        <a href="{{ block.settings.url }}" class="sidenav__link">
+            {{ block.settings.title }}
+        </a>
+    {% endif %}
+</li>
+
+
+
+{% schema %}
+{
+	"name": "Sidenav item",
+	"class": "block-sidenav-item",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		},
+		{
+			"type": "url",
+			"id": "url",
+			"label": "URL"
+		}
+	],
+	"presets": [
+		{
+			"name": "Sidenav item"
+		}
+	]
+}
+{% endschema %}

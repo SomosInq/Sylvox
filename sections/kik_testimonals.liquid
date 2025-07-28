@@ -1,0 +1,208 @@
+{{ 'kik-testimonials.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .kik_testimonals{
+    padding-top:72px;
+    padding-bottom: 48px;
+    background: {{ section.settings.bk }};
+  }
+
+  .testimonal_item{
+    padding:32px;
+    background: {{ section.settings.item_background }};
+    width:419px;
+    flex:0 0 419px;
+    height:auto
+  }
+
+  .testi-button-next, .testi-button-prev{
+    height:48px;
+    width:48px;
+    position:absolute;
+    top:calc(50% - 24px);
+    background: {{ section.settings.slide_button_background }};
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+    cursor:pointer
+  }
+  .testi-button-next:hover, .testi-button-prev:hover{
+    background: {{ section.settings.slide_button_hover_background }};
+  }
+  .testi-button-next:hover path, .testi-button-prev:hover path{
+    fill: {{ section.settings.arrow_hover_color }};
+  }
+
+  .kik_testimonals_slides .testimonal_item h3,
+  .kik_testimonals_slides .testimonal_item p {
+    color: {{ section.settings.text_color }};
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .testi-button-prev,
+    #shopify-section-{{ section.id }} .testi-button-next {
+      display: none;
+    }
+  }
+{%- endstyle -%}
+<div class="kik_testimonals">
+  <div class="container relative t4s-container">
+    <div class="kik_testimonals_heading">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    <div class="kik_testimonals_items">
+      <div class="slide_main_card relative">
+        <div class="main_card_image">
+          <img
+            src="{{  section.settings.image | img_url:'300x300' }}"
+            srcset="{{ section.settings.image | img_url: '400x400' }} 400w, {{ section.settings.image | img_url: '800x800' }} 800w, {{ section.settings.image | img_url: '1024x1024' }} 1024w"
+            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1024px"
+            alt="{{ section.settings.image .title }}"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          >
+        </div>
+        <div class="main_card_content">
+          <div class="card_stars">
+            {% render 'kik_star' %}
+            <h3>{{ section.settings.card_title }}</h3>
+          </div>
+          <p>{{ section.settings.card_content }}</p>
+        </div>
+      </div>
+      <div class="kik_testimonals_slides relative">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="testimonal_item swiper-slide">
+              <div class="testimonals_item_h">
+                {% render 'kik_stars' %}
+                <p>{{ block.settings.name }}</p>
+              </div>
+              <h3>{{ block.settings.testi_h }}</h3>
+              <p>
+                {{ block.settings.content }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+        <span class="testi-button-prev">
+          {% render 'button-prev' %}
+        </span>
+        <span class="testi-button-next">
+          {% render 'button-next' %}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Kiks testimonals",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bk",
+      "label": "background"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Slide button arrow color",
+      "default": "#0047BB"
+    },
+    {
+      "type": "color",
+      "id": "slide_button_background",
+      "label": "Slide button background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "slide_button_hover_background",
+      "label": "Slide button hover background",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Arrow hover color",
+      "default": "#0047BB"
+    },
+    {
+      "type": "color",
+      "id": "item_background",
+      "label": "Item background",
+      "default": "#3F4040"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "card title"
+    },
+    {
+      "type": "textarea",
+      "id": "card_content",
+      "label": "card content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "name"
+        },
+        {
+          "type": "text",
+          "id": "testi_h",
+          "label": "heading"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kiks testimonals",
+      "category": "Carousel",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

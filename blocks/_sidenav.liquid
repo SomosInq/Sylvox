@@ -1,0 +1,24 @@
+
+
+<ul class="sidenav">
+	{% content_for 'blocks' %}
+</ul>
+
+
+
+{% schema %}
+{
+	"name": "Sidenav",
+	"class": "block-sidenav",
+	"blocks": [
+		{
+			"type": "_sidenav-item"
+		},
+	],
+	"presets": [
+		{
+			"name": "Sidenav"
+		}
+	]
+}
+{% endschema %}

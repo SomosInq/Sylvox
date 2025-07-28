@@ -1,0 +1,620 @@
+<style>
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+
+  @media screen and (max-width: 549px){
+
+    #shopify-section-{{ section.id }} .product-title {
+      margin-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} tbody tr,
+    #shopify-section-{{ section.id }} thead tr  {
+      display: grid;
+      grid-template-columns: repeat(3, 160px);
+    }
+
+    #shopify-section-{{ section.id }} .feature-value {
+      padding-left: 40px;
+    }
+
+    #shopify-section-{{ section.id }} thead th:first-child {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table td.feature-label {
+      grid-column: span 3;
+      border-bottom: 0;
+      font-size: 14px;
+    }
+
+  }
+
+
+  
+</style>
+
+<div class="compare-section section section-{{ section.id }}-padding" {% if section.settings.custom_id != blank %}id="{{ section.settings.custom_id }}"{% endif %}>
+  <h2>{{ section.settings.section_heading }}</h2>
+  {{section.settings.paragraph}}
+  <div class="compare-table-wrap">
+    <table class="compare-table">
+      <!-- Table Header -->
+      <thead>
+        <tr>
+          <!-- First cell is for "Features" label -->
+          <th></th>
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'product' %}
+                <th>
+                    {% if block.settings.product_image %}
+                      <img
+                        src="{{ block.settings.product_image | image_url: width: 400 }}"
+                        alt="{{ block.settings.product_title }}"
+                        class="product-image"
+                        width="150"
+                        height="auto"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                    <span class="product-title">{{ block.settings.product_title }}</span>
+                </th>
+              {% when 'current_product' %}
+                <th>
+                  <img
+                    src="{{ product.featured_image | image_url: width: 400 }}"
+                    alt="{{ product.featured_image.alt }}"
+                    class="product-image"
+                    width="150"
+                    height="auto"
+                    loading="lazy"
+                  >
+                  <span class="product-title">{{ product.title }}</span>
+                  <span class="product-price">{{ product.price | money_with_currency }}</span>
+                  <a
+                    href="{{ shop.url }}/cart/{{ product.variants.first.id }}:1"
+                    class="button__buy-now"
+                    >Buy Now</a>
+                </th>
+                {% when 'other_product' %}
+                  <th>
+                    <img
+                      src="{{ block.settings.product.featured_image | image_url: width: 400 }}"
+                      alt="{{ block.settings.product.featured_image.alt }}"
+                      class="product-image"
+                      width="150"
+                      height="auto"
+                      loading="lazy"
+                    >
+                    <span class="product-title">{{ block.settings.product.title }}</span>
+                    <span class="product-price">{{ block.settings.product.price | money_with_currency }}</span>
+                    <a
+                    href="{{ shop.url }}/cart/{{ block.settings.product.variants.first.id }}:1"
+                    class="button__buy-now"
+                    >Buy Now</a>
+                  </th>
+            {% endcase %}
+          {% endfor %}
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for i in (1..6) %}
+          {% assign feature_title_key = 'feature_' | append: i | append: '_title' %}
+          {% assign feature_title = section.settings[feature_title_key] %}
+          <tr>
+            <td class="feature-label">{{ feature_title }}</td>
+            {% for block in section.blocks %}
+              {% assign feature_value_key = 'feature_' | append: i | append: '_value' %}
+              {% assign feature_desc_key = 'feature_' | append: i %}
+              {% assign feature_value = block.settings[feature_value_key] %}
+              {% assign feature_description = block.settings[feature_desc_key] %}
+              <td class="feature-value">
+                <div class="feature-value__content">
+                {% case feature_value %}
+                  {% when 'check' %}
+                    <span class="icon-check" aria-label="{{ feature_description }}">
+                      <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 8.8L6.14286 14L19 1" stroke="#179C99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  {% when 'xmark' %}
+                    <span class="icon-xmark" aria-label="{{ feature_description }}">
+                      <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.939941 3.5907L12.9399 15.5907L15.0599 13.4707L3.05994 1.4707L0.939941 3.5907ZM3.05994 15.5907L15.0599 3.5907L12.9399 1.4707L0.939941 13.4707L3.05994 15.5907Z" fill="#AF0C0C"/>
+                      </svg>
+                    </span>
+                  {% when 'warning' %}
+                      <span class="icon-warning" aria-label="{{ feature_description }}">
+                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.6957 13.172L10.9443 1.60912C10.0798 0.130294 7.92014 0.130294 7.05577 1.60912L0.304388 13.172C-0.560069 14.6508 0.519759 16.5 2.24646 16.5H15.7536C17.4803 16.5 18.56 14.6509 17.6957 13.172ZM8.99993 14.5155C8.36861 14.5155 7.85719 14.0099 7.85719 13.3857C7.85719 12.7615 8.36861 12.2559 8.99993 12.2559C9.63124 12.2559 10.1427 12.7615 10.1427 13.3857C10.1427 14.0091 9.63124 14.5155 8.99993 14.5155ZM10.1774 5.62793L9.95097 9.57127C9.92062 10.0681 9.50467 10.4581 8.99993 10.4581C8.49518 10.4581 8.07922 10.0689 8.04888 9.57127L7.82241 5.62793C7.78318 4.9584 8.32051 4.39424 8.99993 4.39424C9.65492 4.39424 10.1797 4.91962 10.1797 5.55841C10.1797 5.58256 10.1797 5.60378 10.1774 5.62793Z" fill="#179C99"/>
+                        </svg>
+                      </span>
+                    </span>
+                  {% else %}
+                      {% comment %} None {% endcomment %}
+                {% endcase %}
+                {{ feature_description }}
+                </div>
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Compare Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Compare"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Description",
+      "default": "<p>Compare our most popular products below.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Features Title"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Feature 1 Title",
+      "default": "Feature 1"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Feature 2 Title",
+      "default": "Feature 2"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Feature 3 Title",
+      "default": "Feature 3"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Feature 4 Title",
+      "default": "Feature 4"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_title",
+      "label": "Feature 5 Title",
+      "default": "Feature 5"
+    },
+    {
+      "type": "text",
+      "id": "feature_6_title",
+      "label": "Feature 6 Title",
+      "default": "Feature 6"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Custom ID"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID",
+      "info": "Used for internal linking."
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Title",
+          "default": "Nano 4 SE80"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "Feature 1 Description",
+          "default": "AI Voice Control"
+        },
+        {
+          "type": "select",
+          "id": "feature_1_value",
+          "label": "Feature 1",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_2",
+          "label": "Feature 2 Description",
+          "default": "Wireless CarPlay / Android Auto"
+        },
+        {
+          "type": "select",
+          "id": "feature_2_value",
+          "label": "Feature 2",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_3",
+          "label": "Feature 3 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_3_value",
+          "label": "Feature 3",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_4",
+          "label": "Feature 4 Description",
+          "default": "Easy Installation 4"
+        },
+        {
+          "type": "select",
+          "id": "feature_4_value",
+          "label": "Feature 4",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_5",
+          "label": "Feature 5 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_5_value",
+          "label": "Feature 5",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_6",
+          "label": "Feature 6 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_6_value",
+          "label": "Feature 6",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        }
+      ]
+    },
+    {
+      "type": "current_product",
+      "name": "Current Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "Feature 1 Description",
+          "default": "AI Voice Control"
+        },
+        {
+          "type": "select",
+          "id": "feature_1_value",
+          "label": "Feature 1",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_2",
+          "label": "Feature 2 Description",
+          "default": "Wireless CarPlay / Android Auto"
+        },
+        {
+          "type": "select",
+          "id": "feature_2_value",
+          "label": "Feature 2",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_3",
+          "label": "Feature 3 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_3_value",
+          "label": "Feature 3",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_4",
+          "label": "Feature 4 Description",
+          "default": "Easy Installation 4"
+        },
+        {
+          "type": "select",
+          "id": "feature_4_value",
+          "label": "Feature 4",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_5",
+          "label": "Feature 5 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_5_value",
+          "label": "Feature 5",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_6",
+          "label": "Feature 6 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_6_value",
+          "label": "Feature 6",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        }
+      ]
+    },
+    {
+      "type": "other_product",
+      "name": "Other Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "Feature 1 Description",
+          "default": "AI Voice Control"
+        },
+        {
+          "type": "select",
+          "id": "feature_1_value",
+          "label": "Feature 1",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_2",
+          "label": "Feature 2 Description",
+          "default": "Wireless CarPlay / Android Auto"
+        },
+        {
+          "type": "select",
+          "id": "feature_2_value",
+          "label": "Feature 2",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_3",
+          "label": "Feature 3 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_3_value",
+          "label": "Feature 3",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_4",
+          "label": "Feature 4 Description",
+          "default": "Easy Installation 4"
+        },
+        {
+          "type": "select",
+          "id": "feature_4_value",
+          "label": "Feature 4",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_5",
+          "label": "Feature 5 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_5_value",
+          "label": "Feature 5",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "feature_6",
+          "label": "Feature 6 Description",
+          "default": "Easy Installation"
+        },
+        {
+          "type": "select",
+          "id": "feature_6_value",
+          "label": "Feature 6",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "check", "label": "Check (✓)" },
+            { "value": "xmark", "label": "X (✗)" },
+            { "value": "warning", "label": "Warning (!)" }
+          ],
+          "default": "none"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Compare Products"
+    }
+  ]
+}
+{% endschema %}

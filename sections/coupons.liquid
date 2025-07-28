@@ -1,0 +1,253 @@
+
+
+
+
+<div class="coupons__header" {% if section.settings.custom_id %}id="{{ section.settings.custom_id }}"{% endif %}>
+
+	<h2 class="h1">{{ section.settings.title }}</h2>
+	<div class="simply-countdown"></div>
+
+</div>
+
+
+<div class="coupons coupons-{{section.id}}">
+
+	{% for block in section.blocks %}
+		<div class="coupon">
+
+			{%- assign alt_text = block.settings.image.alt | default: block.settings.title | strip -%}
+
+			<img 
+				src="{{ block.settings.image | image_url: width: 800 }}" 
+				alt="{{ alt_text | escape }}" 
+				class="coupon__img" 
+				loading="lazy"
+			>
+
+			<div class="coupon__text">
+				<p class="coupon__title">{{ block.settings.title }}</p>
+				<p class="coupon__code" data-coupon-code="{{ block.settings.code }} ">
+					CODE: {{ block.settings.code }} 
+					<span class="coupon__code__clipboard">{% render 'icon-clipboard' %}</span>	
+				</p>
+				<button class="button button--xl coupon__button" data-coupon-code="{{ block.settings.code }} ">{{ block.settings.button_text }}</button>
+			</div>
+		</div>
+	{% endfor %}
+
+
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const breakpoint = 700;
+    const contentContainer = document.querySelector('.coupons-{{section.id}}');
+    const originalItems = Array.from(contentContainer.children); // save original structure
+    let swiperInstance = null;
+
+    function enableSwiper() {
+        // Only enable if not already initialized
+        if (contentContainer.classList.contains('swiper-initialized')) return;
+
+        // Create Swiper structure
+        const swiperWrapper = document.createElement('div');
+        swiperWrapper.classList.add('swiper-wrapper');
+
+        originalItems.forEach(item => {
+            const swiperSlide = document.createElement('div');
+            swiperSlide.classList.add('swiper-slide');
+            swiperSlide.appendChild(item);
+            swiperWrapper.appendChild(swiperSlide);
+        });
+
+        contentContainer.classList.add('swiper');
+        contentContainer.innerHTML = ''; // clear container
+        contentContainer.appendChild(swiperWrapper);
+
+        // Add pagination
+        const pagination = document.createElement('div');
+        pagination.classList.add('swiper-pagination');
+        contentContainer.appendChild(pagination);
+
+        // Initialize Swiper
+        swiperInstance = new Swiper(contentContainer, {
+            slidesPerView: 1,
+            spaceBetween: 15,
+      		centeredSlides: false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            loop: true,
+			breakpoints: {
+				700: {
+					slidesPerView: 2,
+					spaceBetween: 35,
+				}
+			},
+        });
+    }
+
+    function disableSwiper() {
+        if (!contentContainer.classList.contains('swiper-initialized') && !swiperInstance) return;
+
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true);
+            swiperInstance = null;
+        }
+
+        // Reset DOM
+        contentContainer.classList.remove('swiper');
+        contentContainer.innerHTML = '';
+        originalItems.forEach(item => contentContainer.appendChild(item));
+    }
+
+    function checkBreakpoint() {
+        if (window.innerWidth < breakpoint) {
+            enableSwiper();
+        } else {
+            disableSwiper();
+        }
+    }
+
+    // Initial check
+    checkBreakpoint();
+
+    // On resize
+    window.addEventListener('resize', checkBreakpoint);
+});
+</script>
+
+
+
+
+
+<!-- Toast box -->
+<div id="couponToast"></div>
+
+<script>
+
+	document.addEventListener("DOMContentLoaded", function () {
+
+			// Show the toast with message
+			function showToast(message) {
+				const toast = document.getElementById('couponToast');
+				toast.textContent = message;
+				toast.style.opacity = '1';
+
+				setTimeout(() => {
+					toast.style.opacity = '0';
+				}, 4000); // Hide after 4 seconds
+			}
+
+			// Add event listener to all elements with data-coupon-code
+			document.querySelectorAll('[data-coupon-code]').forEach(function(element) {
+				element.addEventListener('click', function(event) {
+					event.preventDefault();
+					const couponCode = this.getAttribute('data-coupon-code');
+					navigator.clipboard.writeText(couponCode)
+						.then(() => {
+							showToast('Coupon "' + couponCode + '" copied! Apply it at checkout.');
+						})
+						.catch(err => {
+							console.error('Failed to copy: ', err);
+						});
+				});
+			});
+
+
+	}); 
+</script>
+
+
+
+
+<script  type="module" type="text/javascript" src="{{ 'simplyCountdown.umd.js' | asset_url }}"></script>
+
+<script>
+
+	document.addEventListener("DOMContentLoaded", function () {
+
+		simplyCountdown(".simply-countdown", {
+			year: {{ section.settings.coundown_year }},
+			month: {{ section.settings.coundown_month }},
+			day: {{ section.settings.coundown_day }},
+		});
+
+	}); 
+
+</script>
+
+
+
+
+{% schema %}
+
+{
+	"name": "Coupons",
+	"class": "section-coupons section",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title",
+		},
+		{
+			"type": "number",
+			"id": "coundown_year",
+			"label": "Coundown year",
+		},
+		{
+			"type": "number",
+			"id": "coundown_month",
+			"label": "Coundown month",
+		},
+		{
+			"type": "number",
+			"id": "coundown_day",
+			"label": "Coundown day",
+		},
+		{
+			"type": "text",
+			"id": "custom_id",
+			"label": "Custom ID"
+		}
+	],
+	"blocks": [
+		{
+			"name": "Coupon",
+			"type": "coupon",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image",
+				},
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title"
+				},
+				{
+					"type": "text",
+					"id": "code",
+					"label": "Code"
+				},
+				{
+					"type": "text",
+					"id": "button_text",
+					"label": "Button Text"
+				},
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Coupons"
+		}
+	]
+}
+
+{% endschema %}

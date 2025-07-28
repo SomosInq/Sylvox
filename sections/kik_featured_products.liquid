@@ -1,0 +1,262 @@
+{% comment %} 475 {% endcomment %}
+{{ 'kik-featured-products.css' | asset_url | stylesheet_tag }}
+<style>
+  .kik_featured_products{
+    padding: 72px 0;
+    background: {{ section.settings.bk }};
+  }
+
+  .kik_product{
+    display:flex;
+    background: {{ section.settings.product_background }};
+    border-radius:8px;
+    overflow:hidden;
+  }
+
+  .kik_product-info > div h2{
+    font-size:34px;
+    line-height: 1.2;
+    margin: 0;
+    margin-bottom:48px;
+    color: {{ section.settings.info_color }};
+  }
+  #shopify-section-{{ section.id }} .kik_product-info > div p, .kik_product-info > div span{
+    color: {{ section.settings.info_color }};
+  }
+
+  .kik_products_h h1,p{
+    color: {{ section.settings.date_color }};
+  }
+
+  #shopify-section-{{ section.id }} .product_link a{
+    display: flex;
+    column-gap: 8px;
+    border-radius: 12px;
+    background: {{ section.settings.button_background }};
+    padding: 10px 32px;
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 500;
+    justify-content:center;
+  }
+  #shopify-section-{{ section.id }} .product_link a span{
+    color: {{ section.settings.button_text_color }};
+  }
+  .product_link a:hover{
+    background: {{ section.settings.button_background_hover }};
+  }
+</style>
+<div class="kik_featured_products kik_linked_to kik_white_text" id="{{ section.settings.link_to }}">
+  <div class="t4s-container container ">
+    <div class="kik_products_h">
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.content }}</p>
+    </div>
+    <div class="kik_products_items">
+      {% for block in section.blocks %}
+        <div class="kik_product">
+          <div class="kik_product_images">
+            <img src="{{ block.settings.image | img_url:"master" }}">
+            {% if block.settings.second_image != blank %}
+              <img class="second_image" src="{{ block.settings.second_image | img_url:"master" }}">
+            {% endif %}
+            {% if block.settings.badge_label != blank %}
+              <div class="badge_product" style="--badge-color:{{ block.settings.badge_color }}">
+                <div>
+                  {{ block.settings.badge_label -}}
+                  <span>OFF</span>
+                </div>
+                <div>
+                  {% render 'arrow-down-badge' %}
+                </div>
+              </div>
+            {% endif %}
+            {% if block.settings.match_label != blank %}
+              <div class="badge_product_match">
+                <div>Price Match</div>
+                <div>
+                  {{ block.settings.match_label }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="kik_product-info">
+            <div>
+              <h2>{{ block.settings.product.title }}</h2>
+              <div class="kik_product-item-icons">
+                {% for ii in (1..4) %}
+                  {% assign icon_image = 'icon_' | append: forloop.index %}
+                  {% assign icon_text = 'icon_text_' | append: forloop.index %}
+                  {% if block.settings[icon_image] != blank %}
+                    <div class="item-icons_item">
+                      <img src="{{ block.settings[icon_image] | img_url:"50x50" }}">
+                      <p>{{ block.settings[icon_text] }}</p>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div class="product_info_price_btn">
+                <div class="price_item">
+                  <p>{{ block.settings.product.price | money }}</p>
+                  <span>{{ block.settings.product.compare_at_price | money }}</span>
+                </div>
+                <div class="product_link">
+                  <a href="{{ block.settings.product.url }}">
+                    <span>Shop Now</span>
+                    {% render 'cart-icon' %}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "kik featured products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "link_to",
+      "label": "link to",
+      "info": "for sticky bar"
+    },
+    {
+      "type": "color",
+      "id": "bk",
+      "label": "background"
+    },
+    {
+      "type": "color",
+      "id": "product_background",
+      "label": "Product background",
+      "default": "#3F4040"
+    },
+    {
+      "type": "color_background",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "linear-gradient(180deg, #FEC327, #FF5B22)"
+    },
+    {
+      "type": "color_background",
+      "id": "button_background_hover",
+      "label": "Button background hover",
+      "default": "linear-gradient(180deg, #FEC327, #FEC327)"
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Heading color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "info_color",
+      "label": "Info color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "main image"
+        },
+        {
+          "type": "image_picker",
+          "id": "second_image",
+          "label": "second image"
+        },
+        {
+          "type": "text",
+          "id": "badge_label",
+          "label": "badge label"
+        },
+        {
+          "type": "text",
+          "id": "match_label",
+          "label": "price match text",
+          "default": "30 Days"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "icon 1"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_1",
+          "label": "icon 1 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "icon 2"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_2",
+          "label": "icon 2 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "icon 3"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_3",
+          "label": "icon 3 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4",
+          "label": "icon 4"
+        },
+        {
+          "type": "text",
+          "id": "icon_text_4",
+          "label": "icon 4 text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "kik featured products"
+    }
+  ]
+}
+{% endschema %}

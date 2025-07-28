@@ -480,6 +480,16 @@
         "name": "single_line_text_field",
         "category": "TEXT"
       }
+    },
+    {
+      "key": "variant_included_products",
+      "namespace": "custom",
+      "name": "Variant Included Products",
+      "description": "",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "shop": [

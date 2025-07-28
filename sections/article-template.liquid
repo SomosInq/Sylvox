@@ -26,84 +26,7 @@
 
   {%- assign override_img = section.settings.custom_banner_override_image -%}
 
-  <!-- Banner -->
-  {% if section.settings.show_banner %}
-  {% if section.settings.banner_overlay_opacity > 0 %}
-<div class="custom-blog__banner banner_section_width_{{ section.settings.banner_section_width }}"
-     style="background-image: url('{{ override_img | default: featured_article.image | image_url: width: 2000 }}');">
 
-  <div class="custom-blog__banner-overlay"
-       style="background-color: {{ section.settings.banner_overlay_color }};
-              opacity: {{ section.settings.banner_overlay_opacity }};"></div>
-
-  <div class="custom-blog__banner-inner banner_section_content_width_{{ section.settings.banner_section_content_width }} banner-align-{{ section.settings.banner_content_position }}">
-    
-    <!-- Fallback Image Rendering (Visible only if image missing) -->
-    {% unless featured_article.image %}
-      <img src="{{ section.settings.banner_fallback_image | image_url: width: 1600 }}" alt="Fallback image" style="position:absolute; inset:0; object-fit:cover; z-index:0;">
-    {% endunless %}
-
-    <!-- Category -->
-{% if section.settings.show_blog_category and featured_article.tags.size > 0 %}
-  <div class="custom-blog__label">
-    {{ featured_article.tags.first }}
-  </div>
-{% endif %}
-
-    <!-- Title -->
-    <h1 class="custom-blog__heading">
-      {{ section.settings.custom_banner_title | default: featured_article.title }}
-    </h1>
-
-    <!-- Author & Date -->
-    <div class="custom-blog__meta">
-      <span class="custom-blog__author">{{ featured_article.author }}</span>
-      <span class="custom-blog__date">{{ featured_article.published_at | date: "%B %d, %Y" }}</span>
-
-      <!-- Social Icons -->
-      <div class="custom-blog__social-icons">
-        {{ section.settings.banner_share_text }}
-      {% if section.settings.show_share_tiktok %}
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'icon-tiktok' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_linkedin %}
-        <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'icon-linkedin' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_youtube %}
-        <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'icon-youtube' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_facebook %}
-        <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'icon-facebook' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_x %}
-        <a href="https://x.com" target="_blank" class="social-icon">{% render 'icon-x' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_pinterest %}
-        <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'icon-pinterest' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_instagram %}
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'icon-instagram' %}</a>
-      {% endif %}
-    </div>
-    </div>
-
-    <!-- Optional CTA Button -->
-    {% if section.settings.banner_cta_text != blank and section.settings.banner_cta_link != blank %}
-      <a href="{{ section.settings.banner_cta_link }}" class="custom-blog__banner-cta">
-  {{ section.settings.banner_cta_text }}
-  {% if section.settings.banner_cta_icon != blank %}
-    <span class="custom-blog__cta-icon">{% render section.settings.banner_cta_icon %}</span>
-  {% endif %}
-</a>
-
-    {% endif %}
-  </div>
-</div>
-
-
-  {% endif %}
-
-{% endif %}
 
 
 
@@ -456,67 +379,7 @@
 </script>
 <!-- / Article -->
 
-    <!-- Slider -->
-{% comment %} Blog Slider with scroll snapping, dots + arrows (no blocks) {% endcomment %}
-<section id="blog-slider-{{ section.id }}"
-  class="blog-slider section_width_{{ section.settings.section_width }}"
-  style="
-    background-color: {{ section.settings.background_color }};
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-  "
->
-  {% assign blog_handle = section.settings.blog | default: 'news' %}
-  {% assign blog_posts = blogs[blog_handle].articles | slice: 0, 10 %}
-  {% if blog_posts.size > 0 %}
-
-    <div class="slider-carousel">
-      <div class="slider-track">
-        {% for article in blog_posts %}
-          <div class="slider-slide" data-index="{{ forloop.index0 }}">
-            <div class="blog-post-card">
-              {% if article.image %}
-                <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}">
-              {% endif %}
-              <div class="blog-post-content">
-                {% comment %} <div class="blog-post-tags">
-                  {% for tag in article.tags limit: 2 %}
-                    <span class="tag">{{ tag }}</span>
-                  {% endfor %}
-                </div> {% endcomment %}
-                <div class="blog-post-date">{{ article.published_at | date: "%B %d, %Y" }}</div>
-                <div class="blog-post-title">{{ article.title }}</div>
-                <div class="custom-blog__card-excerpt-arrow">
-              {% comment %} <p class="custom-blog__card-excerpt">
-                {{ article.excerpt_or_content | strip_html | truncate: 140 }}
-              </p> {% endcomment %}
-              <a class="custom-blog__card-arrow" href="{{ article.url }}">
-                {% render 'diagonal-bottom-left-arrow.svg' %}
-              </a>
-            </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}">
-      <div class="slider-dots">
-        {% for article in blog_posts %}
-          <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
-        {% endfor %}
-      </div>
-      {% if section.settings.show_arrows %}
-        <div class="slider-arrows">
-          <button class="slider-arrow prev">‹</button>
-          <button class="slider-arrow next">›</button>
-        </div>
-      {% endif %}
-    </div>
-
-    
-  {% endif %}
+   
 </section>
 
 
@@ -526,7 +389,7 @@
 
 {% schema %}
 {
-  "name": "t:labels.article_pages",
+  "name": "Article",
   "class": "blog-layout__main",
   "settings": [
     {
@@ -826,13 +689,24 @@
   ],
   "disabled_on": {
     "groups": ["footer", "header", "custom.popups"]
-  }
+  },
+  "presets": [
+    {
+       "name": "Article",
+      "category": "Somos Custom"
+    }
+  ]
 }
 {% endschema %}
 
 {% style %}
 /* Banner */
-
+.custom-blog {
+    margin: unset !important;
+    max-width: unset !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
 .blog-layout {
     margin: unset !important;
     max-width: unset !important;
