@@ -1,0 +1,70 @@
+{% if product.variants.size > 1 %}
+  <div class="product-selection-label">Check Out Your Selections</div>
+    <div class="variant-inlcuded-products">
+      <div class="default-included included-product-row">
+        <div class="inclued-product-image">
+          <img src="{{ product.featured_image |  image_url: width: 110  }}" alt="">
+        </div>
+        <div class="included-product-content">
+          <div class="included-product-title">{{ product.title }}</div>
+          <div class="included-product-price">{{ product.price | money }}</div>
+        </div>
+        <div class="included-product-qty">x1</div>
+      </div>
+      {% for variant in product.variants %}
+        <div class="display-selected-variant" data-variant-id="{{ variant.id }}"  style="display: none;">
+          {% for included_product in variant.metafields.custom.variant_included_products.value %}
+            <div class="included-product-row">
+              <div class="inclued-product-image">
+                <img src="{{ included_product.featured_image |  image_url: width: 110  }}" alt="">
+              </div>
+              <div class="included-product-content">
+                <div class="included-product-title">{{ included_product.title }}</div>
+                <div class="included-product-price">{{ included_product.price | money }}</div>
+              </div>
+              <div class="included-product-qty">x1</div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    <style>
+      .product-selection-label{
+        color:#1D1D1B;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+      .variant-inlcuded-products {
+        background: #FAFAFA;
+        padding: 25px;
+      }
+      .included-product-row {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #C6C6C6;
+      }
+
+      .inclued-product-image {
+        width: 88px;
+      }
+
+      .included-product-content {
+        width: calc(100% - 200px);
+      }
+
+      .included-product-qty{
+        width: 20px;
+        font-size: 16px;
+        font-weight: 300;
+        color: #1D1D1B;
+      }
+      .included-product-title {
+        font-size: 16px;
+        color: #1D1D1B;
+      }
+    </style>
+{% endif %}

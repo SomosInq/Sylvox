@@ -135,10 +135,10 @@
       id="{{ id }}"
       data-index="option{{ option.position }}"
     >
-
+    {% assign value_name_handle = value.name | handle %}
     <label
       for="{{ id }}"
-      class="variant__button-label custom-variant-box {{ value | handle }}"
+      class="variant__button-label custom-variant-box {{ value.name | handle }}"
       {% if is_color %}
         data-color-swatch="{{ option.name }}"
       {% endif %}
@@ -166,7 +166,7 @@
         {% endif %}
         {% if option.name == 'Need an Outdoor Soundbar?' %}
           <div class="accessories-variant-description">
-            {{ variant.metafields.custom.variant_description }}
+            {{ shop.metaobjects['tv_addon_description'][value_name_handle].option_description.value }}
           </div>
         {% endif %}
       </div>
@@ -179,9 +179,9 @@
       <div class="saving-badge">Save {{ savings | money }}</div>
     {% endif %}
     </label>
-    {% if option.name == 'Model' and variant.metafields.custom.variant_description != blank %}
+    {% if option.name == 'Model' and shop.metaobjects['tv_addon_description'][value_name_handle] != blank %}
       <div class="variant-description">
-        {{ variant.metafields.custom.variant_description }}
+        {{ shop.metaobjects['tv_addon_description'][value_name_handle].option_description.value }}
       </div>
     {% endif %}
     
@@ -207,11 +207,12 @@
 border: 2px solid var(--Mid-Green, #336256);
 background: #FFF;
   }
-
+  
   .custom-variant-content {
     display: flex;
     flex-direction: column;
     text-align: left;
+    width: calc(100% - 135px);
   }
 
   .custom-variant-size {

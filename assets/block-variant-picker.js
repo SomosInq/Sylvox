@@ -29,6 +29,15 @@ class BlockVariantPicker extends HTMLElement {
 
     if (this.currentVariant) {
       this.updateURL()
+      console.log('Current variant:', this.currentVariant.id)
+      if(document.querySelectorAll('.display-selected-variant').length > 0) {
+        document.querySelectorAll('.display-selected-variant').forEach((element) => {
+          element.style.display = 'none'
+        })
+      }
+      if(document.querySelector(`.display-selected-variant[data-variant-id="${this.currentVariant.id}"]`) !== null) {
+        document.querySelector(`.display-selected-variant[data-variant-id="${this.currentVariant.id}"]`).style.display = 'block'
+      }
       const html = await this.getProductInfo()
 
       this.dispatchEvent(

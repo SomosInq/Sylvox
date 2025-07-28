@@ -44,6 +44,8 @@
           render 'block-share', block: block
         when 'size_picker'
           render 'product-size-picker', block: block
+        when 'current_selection'
+          render 'product-current-selection', block: block
       endcase
     endfor
   endcapture
@@ -706,6 +708,10 @@
     {
       "type": "size_picker",
       "name": "Size Picker"
+    },
+    {
+      "type": "current_selection",
+      "name": "Current Selection"
     }
   ]
 }
