@@ -1,0 +1,125 @@
+<style>
+  #shopify-section-{{ section.id }} .kik_white_text span:not(.t4s-mb__menu span):not(.t4s-product__info-wrapper span), h1, h2, h3, h4, h5, p{
+     color: {{section.settings.cl-text}};
+  }
+  #shopify-section-{{ section.id }} .kik_as_seen_in{
+    padding-top:48px;
+    padding-bottom:72px;
+    background:{{section.settings.bk}};
+  }
+  #shopify-section-{{ section.id }} .kik_as_seen_in h1{
+    margin:0;
+    margin-bottom:24px;
+    text-align:center;
+    font-size: 34px;
+    line-height: 40.8px;
+    color: {{ section.settings.cl-text }};
+  }
+  #shopify-section-{{ section.id }}  .as_seen_on_items{
+    display:flex;
+    justify-content:space-between;
+    column-gap:10px;
+  }
+  #shopify-section-{{ section.id }} .as_seen_on_icon img{
+    height:104px;
+    max-width:200px;
+    object-fit:contain;
+    width:100%;
+  }
+  @media (max-width:1299px){
+    #shopify-section-{{ section.id }} .kik_as_seen_in{
+      padding:48px 50px 72px;
+    }
+  }
+  @media (max-width:767.98px){
+    #shopify-section-{{ section.id }} .kik_as_seen_in{
+      padding-top:24px;
+      padding-bottom:72px;
+    }
+    #shopify-section-{{ section.id }} .kik_as_seen_in h1{
+      font-size:24px;
+      line-height:1.2;
+    }
+    #shopify-section-{{ section.id }}  .as_seen_on_items{
+      display:flex;
+      flex-wrap:wrap;
+      row-gap:20px;
+      justify-content:space-between;
+    }
+    #shopify-section-{{ section.id }}  .as_seen_on_icon{
+       flex:0 0 calc(50% - 5px);
+       text-align:center;
+    }
+    #shopify-section-{{ section.id }}  .as_seen_on_icon img{
+      height:80px;
+      max-width:200px;
+      object-fit:contain;
+      width:100%;
+    }
+   }
+</style>
+<div class="kik_as_seen_in kik_white_text">
+  <div class="t4s-container container">
+    <h1>{{ section.settings.heading }}</h1>
+    <div class="as_seen_on_items">
+      {% for block in section.blocks %}
+        <div class="as_seen_on_icon">
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+          <img src="{{ block.settings.image | img_url:"200x200" }}">
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "kik as seen in",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bk",
+      "label": "background"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "color",
+      "id": "cl-text",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "icon",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "kik as seen in"
+    }
+  ]
+}
+{% endschema %}

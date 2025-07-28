@@ -1,0 +1,60 @@
+<div class="blocks  section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');">
+	{% content_for 'blocks' %}
+</div>
+
+
+
+{% schema %}
+
+{
+	"name": "Sidemenu content",
+	"class": "section section-sidemenu-content",
+	"settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
+    {
+      "type": "select", "id": "section_width", "label": "Section Width", "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0 },
+		{
+			"type": "link_list",
+			"id": "menu",
+			"label": "Select menu"
+		}
+	],
+	"blocks": [
+		{
+			"type": "_sidemenu"
+		},
+		{
+			"type": "_page-content"
+		}
+	],
+	"presets": [
+		{
+			"name": "Sidemenu content"
+		}
+	]
+}
+
+
+
+{% endschema %}

@@ -1,0 +1,339 @@
+
+
+<div class="mobile-sidemenu">
+	<div class="form-control" id="menu-level-1">
+		<select>
+			<option value="">Select a section</option>
+			{% for top in linklists[block.settings.menu].links %}
+				<option
+					value="{{ top.url }}"
+					data-children='{% capture children %}[{% for child in top.links %}{"title":"{{ child.title | escape }}","url":"{{ child.url }}","children":[{% for grand in child.links %}{"title":"{{ grand.title | escape }}","url":"{{ grand.url }}"}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}{{ children | strip_newlines | escape }}'
+				>
+					{{ top.title }}
+				</option>
+			{% endfor %}
+		</select>
+		{%- render 'icon' with 'chevron-bottom', class: 'select-chevron' -%}
+	</div>
+
+	<div class="form-control hidden" id="menu-level-2">
+		<select></select>
+		{%- render 'icon' with 'chevron-bottom', class: 'select-chevron' -%}
+	</div>
+
+	<div class="form-control hidden" id="menu-level-3">
+		<select></select>
+		{%- render 'icon' with 'chevron-bottom', class: 'select-chevron' -%}
+	</div>
+</div>
+
+
+
+<script id="request-path" type="application/json">
+	{{ request.path | json }}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const level1 = document.querySelector('#menu-level-1');
+	const level2 = document.querySelector('#menu-level-2');
+	const level3 = document.querySelector('#menu-level-3');
+
+	const select1 = level1.querySelector('select');
+	const select2 = level2.querySelector('select');
+	const select3 = level3.querySelector('select');
+
+	const currentPath = JSON.parse(document.getElementById('request-path').textContent);
+
+	function reset(wrapper) {
+		const select = wrapper.querySelector('select');
+		select.innerHTML = '';
+		wrapper.classList.add('hidden');
+	}
+
+	function populate(wrapper, items, selectedUrl = null) {
+		reset(wrapper);
+		if (!items || !items.length) return;
+
+		const select = wrapper.querySelector('select');
+		select.innerHTML = `<option value="">Select an option</option>`;
+		items.forEach(item => {
+			const opt = document.createElement('option');
+			opt.value = item.url;
+			opt.textContent = item.title;
+			opt.dataset.children = JSON.stringify(item.children || []);
+
+			if (selectedUrl && item.url.includes(selectedUrl)) {
+				opt.selected = true;
+			}
+			select.appendChild(opt);
+		});
+		wrapper.classList.remove('hidden');
+	}
+
+	function findMatch(links, path) {
+		for (const top of links) {
+			if (top.url.includes(path)) return { level: 1, item: top };
+			for (const child of top.children || []) {
+				if (child.url.includes(path)) return { level: 2, parent: top, item: child };
+				for (const grand of child.children || []) {
+					if (grand.url.includes(path)) {
+						return { level: 3, top: top, child: child, item: grand };
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	// Step 1: Build data from select1 options
+	const options = [...select1.options].slice(1);
+	const links = options.map(opt => ({
+		title: opt.textContent,
+		url: opt.value,
+		children: JSON.parse(opt.dataset.children || '[]')
+	}));
+
+	const match = findMatch(links, currentPath);
+
+	// Step 2: Pre-populate
+	if (match) {
+		if (match.level === 1) {
+			populate(level1, links, match.item.url);
+		}
+		if (match.level === 2) {
+			populate(level1, links, match.parent.url);
+			populate(level2, match.parent.children, match.item.url);
+		}
+		if (match.level === 3) {
+			populate(level1, links, match.top.url);
+			populate(level2, match.top.children, match.child.url);
+			populate(level3, match.child.children, match.item.url);
+		}
+	} else {
+		populate(level1, links);
+	}
+
+	// Step 3: Handle change
+	select1.addEventListener('change', function () {
+		const selected = this.selectedOptions[0];
+		const children = selected.dataset.children ? JSON.parse(selected.dataset.children) : [];
+
+		reset(level2);
+		reset(level3);
+
+		if (children.length) {
+			populate(level2, children);
+		} else if (this.value) {
+			window.location.href = this.value;
+		}
+	});
+
+	select2.addEventListener('change', function () {
+		const selected = this.selectedOptions[0];
+		const children = selected.dataset.children ? JSON.parse(selected.dataset.children) : [];
+
+		reset(level3);
+
+		if (children.length) {
+			populate(level3, children);
+		} else if (this.value) {
+			window.location.href = this.value;
+		}
+	});
+
+	select3.addEventListener('change', function () {
+		if (this.value) {
+			window.location.href = this.value;
+		}
+	});
+});
+</script>
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const menuData = JSON.parse(document.getElementById('menu-data').textContent);
+	const level1 = document.getElementById('menu-level-1');
+	const level2 = document.getElementById('menu-level-2');
+	const level3 = document.getElementById('menu-level-3');
+
+	function reset(select) {
+		select.innerHTML = '';
+		select.classList.add('hidden');
+	}
+
+	function populate(select, items) {
+		reset(select);
+		if (!items || items.length === 0) return;
+
+		select.innerHTML = `<option value="">Select an option</option>`;
+		items.forEach((item, i) => {
+			const opt = document.createElement('option');
+			opt.value = item.url;
+			opt.textContent = item.title;
+			opt.dataset.index = i;
+			opt.dataset.children = JSON.stringify(item.links || []);
+			select.appendChild(opt);
+		});
+		select.classList.remove('hidden');
+	}
+
+	// Populate level 1
+	populate(level1, menuData.links);
+
+	level1.addEventListener('change', function () {
+		const selected = this.selectedOptions[0];
+		const children = JSON.parse(selected.dataset.children || '[]');
+
+		reset(level2);
+		reset(level3);
+
+		if (children.length) {
+			populate(level2, children);
+		} else if (this.value) {
+			window.location.href = this.value;
+		}
+	});
+
+	level2.addEventListener('change', function () {
+		const selected = this.selectedOptions[0];
+		const children = JSON.parse(selected.dataset.children || '[]');
+
+		reset(level3);
+
+		if (children.length) {
+			populate(level3, children);
+		} else if (this.value) {
+			window.location.href = this.value;
+		}
+	});
+
+	level3.addEventListener('change', function () {
+		if (this.value) {
+			window.location.href = this.value;
+		}
+	});
+});
+</script>
+
+
+<nav class="sidemenu">
+    <ul class="menu-level-1">
+        {% for link in linklists[block.settings.menu].links %}
+            {% assign link_active = false %}
+
+            {% for child_link in link.links %}
+                {% if child_link.url contains request.path %}
+                    {% assign link_active = true %}
+                {% endif %}
+                {% for grandchild_link in child_link.links %}
+                    {% if grandchild_link.url contains request.path %}
+                        {% assign link_active = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+            <li class="{% if link.links != blank %}has-children{% endif %} {% if link_active %}is-active{% endif %} {% if link.url contains request.path %}is-current{% endif %}">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+
+                {% if link.links != blank %}
+                    <ul class="menu-level-2">
+                        {% for child_link in link.links %}
+                            {% assign child_active = false %}
+                            {% if child_link.url contains request.path %}
+                                {% assign child_active = true %}
+                            {% endif %}
+                            {% for grandchild_link in child_link.links %}
+                                {% if grandchild_link.url contains request.path %}
+                                    {% assign child_active = true %}
+                                {% endif %}
+                            {% endfor %}
+
+                            <li class="{% if child_link.links != blank %}has-children{% endif %} {% if child_active %}is-active{% endif %}">
+                                <a href="{{ child_link.url }}" class="{% if child_link.url contains request.path %}is-current{% endif %}">
+                                    {%- assign child_url_parts = child_link.url | split: '/' -%}
+                                    {%- if child_url_parts[1] == 'collections' -%}
+                                        {%- assign child_handle = child_url_parts[2] -%}
+                                        {%- assign child_collection = collections[child_handle] -%}
+                                        {%- if child_collection.image != blank -%}
+                                            <img src="{{ child_collection.image | image_url: width: 60 }}" alt="{{ child_collection.title }}" class="menu-collection-icon">
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                    {{ child_link.title }}
+									{% if child_link.links != blank %} {% render 'icon-arrow-next' %}{% endif %}
+                                </a>
+
+                                {% if child_link.links != blank %}
+                                    <ul class="menu-level-3">
+                                        {% for grandchild_link in child_link.links %}
+                                            <li class="{% if grandchild_link.url contains request.path %}is-current{% endif %}">
+                                                <a href="{{ grandchild_link.url }}">
+                                                    {{ grandchild_link.title }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelectorAll('.sidemenu a').forEach(function(link) {
+		link.addEventListener('click', function(e) {
+			const parentItem = this.parentElement;
+			const isTopLevel = parentItem.parentElement.classList.contains('menu-level-1');
+
+			// Check if this item has children
+			if (parentItem.classList.contains('has-children')) {
+				e.preventDefault(); // prevent link navigation
+
+				if (isTopLevel) {
+					// Remove is-active from all other top-level items
+					document.querySelectorAll('.menu-level-1 > li.is-active').forEach(function(item) {
+						if (item !== parentItem) {
+							item.classList.remove('is-active');
+						}
+					});
+				}
+
+				// Toggle is-active on clicked item
+				parentItem.classList.toggle('is-active');
+			}
+		});
+	});
+});
+</script>
+
+
+{% schema %}
+{
+	"name": "Sidemenu",
+	"class": "block-sidemenu",
+	"settings": [
+		{
+			"type": "link_list",
+			"id": "menu",
+			"label": "Select menu"
+		}
+	],
+	"presets": [
+		{
+			"name": "Sidemenu"
+		}
+	]
+}
+{% endschema %}

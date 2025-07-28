@@ -1,0 +1,37 @@
+
+
+
+
+<div class="title">
+	{{ block.settings.title }}
+</div>
+
+<div class="desc">
+	{{ block.settings.description }}
+</div>
+
+
+
+{% schema %}
+{
+	"name": "Title with description",
+	"class": "title-with-description",
+	"settings": [
+		{
+			"type": "richtext",
+			"id": "title",
+			"label": "Title"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"label": "Description"
+		}
+	],
+	"presets": [
+		{
+			"name": "Title with description"
+		}
+	]
+}
+{% endschema %}

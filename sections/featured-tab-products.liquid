@@ -1,0 +1,773 @@
+{{ 'section-tab-products.css' | asset_url | stylesheet_tag }}
+
+<style>
+  {%- assign section_background = section.settings.background | default: settings.background -%}
+  {%- assign card_background = section.settings.product_card_background | default: settings.product_card_background -%}
+  {%- assign card_blends = false -%}
+
+  {%- unless section_background != 'rgba(0,0,0,0)' and card_background != 'rgba(0,0,0,0)' and section_background != card_background -%}
+    {%- assign card_blends = true -%}
+  {%- endunless -%}
+
+  #shopify-section-{{ section.id }} .product-list {
+    --product-list-gap: {% if section.settings.stack_products and section.settings.products_per_row_mobile == '2' %}{% if card_blends %}var(--product-list-row-gap){% endif %} var(--spacing-2){% else %}var(--product-list-row-gap) var(--product-list-column-gap){% endif %};
+    --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+    --product-list-carousel-item-width: 74vw;
+    --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+      --product-list-items-per-row: 2;
+      --product-list-carousel-item-width: 36vw;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+      --product-list-carousel-item-width: calc(var(--container-inner-width) / {{ section.settings.products_per_row_desktop }} - (var(--product-list-column-gap) / {{ section.settings.products_per_row_desktop }} * {{ section.settings.products_per_row_desktop | minus: 1 }}));
+    }
+  }
+
+ 
+</style>
+
+<div class="tab-products section section-blends section-full text-custom featured-tab-products 
+  {% if section.settings.custom_class %}{{ section.settings.custom_class }}{% endif %} 
+        {% if section.settings.hide_banner == true %}banner-hidden{% endif %}" 
+    data-section-id="{{ section.id }}" 
+     {% if section.settings.custom_id %}id="{{ section.settings.custom_id }}"{% endif %}  
+    >
+  
+
+
+  {% if section.settings.hide_banner == true %}
+
+    <h2 class="h1 featured-tab-products-heading--banner-hidden">{{ section.settings.title }}</h2>
+
+  {% endif %}
+
+
+  <div class="tabs-wrap">
+    <div class="tabs" style="--tab-position: {{ section.settings.tabs_position }}%;">
+      {% for block in section.blocks %}
+        <div class="tab-product" data-tab-id="{{ forloop.index0 }}" data-section-id="{{ section.id }}">
+          {{ block.settings.tab_label }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  {% for block in section.blocks %}
+    <div class="tab-product-content" id="tab-product-content-{{ section.id }}-{{ forloop.index0 }}">
+
+
+    {% if section.settings.hide_banner != true %}
+
+      <div class="tab-product-content__banner">
+        {% comment %} {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url }}"
+            alt="{{ block.settings.title }}"
+            width="100%"
+            height="auto"
+          >
+        {% endif %} {% endcomment %}
+        {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+        <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
+          {%- if block.settings.image != blank -%}
+            {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
+            {%- capture fetch_priority -%}{% if section.index == 1 %}high{% else %}low{% endif %}{%- endcapture -%}
+      
+            <picture>
+              {%- if block.settings.image_mobile != blank -%}
+                <source
+                  media="(max-width: 699px)"
+                  srcset="{{ block.settings.image_mobile | image_url: width: 400 }} 400w, {{ block.settings.image_mobile | image_url: width: 600 }} 600w, {{ blcok.settings.image_mobile | image_url: width: 800 }} 800w, {{ section.settings.image_mobile | image_url: width: 1000 }} 1000w, {{ block.settings.image_mobile | image_url: width: 1200 }} 1200w"
+                  width="{{ block.settings.image_mobile.width }}"
+                  height="{{ block.settings.image_mobile.height }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+      
+              {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: sizes: sizes, loading: 'lazy', fetchpriority: fetch_priority, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
+            </picture>
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
+          {%- endif -%}
+
+          <div class="tab-product-content__info {{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}"
+            style="
+            --tab-text-color: {{ block.settings.text_color }};
+            --tab-content-max-width: {{ block.settings.content_max_width }}px;
+            "
+          >
+            <div class="tab-product-content__info-title">
+            <h3 class="{{ block.settings.heading_tag }}">{{ block.settings.title }}</h3>
+            {% if block.settings.inline_title != blank %}
+            <span>{{ block.settings.inline_title }}</span>
+            {% endif %}
+            </div>
+            <div class="tab-product-content__info-desc">
+              {{ block.settings.description }}
+            </div>
+
+        </div>
+        </image-banner>
+
+
+      </div>
+    {%- endif -%}
+
+
+
+      {% if block.settings.product != blank or block.settings.product_2 != blank %}
+        <div class="tab-products__featured">
+          {% if block.settings.product != blank %}
+            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{block.settings.featured_text_color}};">
+                <div class="tab-products__featured-info">
+                    <h4>{{ block.settings.product_title }}</h4>
+                    <p>From {{ block.settings.product.price | money_with_currency }}</p>
+                    {% comment %} <p>{{ block.settings.product_description }}</p> {% endcomment %}
+              </div>
+              
+              {% if block.settings.product_image %}
+                <img
+                  src="{{ block.settings.product_image | image_url: width: 800 }}"
+                  alt="{{ block.settings.product_title }}"
+                  width="100%"
+                  height="auto"
+                  loading="lazy"
+                >
+              {% endif %}
+              <div class="tab-products__featured-price">
+                {% comment %} <p>From {{ block.settings.product.price }}</p> {% endcomment %}
+                {% comment %} <a href="{{ block.settings.product.url }}" class="btn">Shop now</a> {% endcomment %}
+                {% render 'button',
+                content: block.settings.product_link_text,
+                href: block.settings.product.url,
+                size: "base",
+                style: "outline",
+                background: block.settings.background,
+                text_color: block.settings.btn_text_color
+              %}
+              </div>
+            </div>
+          {% endif %}
+          {% if block.settings.product_2 != blank %}
+            <div class="tab-products__featured-product" style="--tab-featured-text-color: {{block.settings.featured_text_color}};">
+                <div class="tab-products__featured-info">
+              <h4>{{ block.settings.product_title_2 }}</h4>
+              <p>From {{ block.settings.product_2.price | money_with_currency }}</p>
+              </div>
+              {% if block.settings.product_image_2 %}
+                <img
+                  src="{{ block.settings.product_image_2 | image_url: width: 800 }}"
+                  alt="{{ block.settings.product_title_2 }}"
+                  width="100%"
+                  height="auto"
+                  loading="lazy"
+                >
+              {% endif %}
+              <div class="tab-products__featured-price">
+                {% comment %} <a href="{{ block.settings.product_2.url }}" class="btn">Shop now</a> {% endcomment %}
+
+                {% render 'button',
+                content: block.settings.product_link_text_2,
+                href: block.settings.product_2.url,
+                size: "base",
+                style: "outline",
+                background: block.settings.background,
+                text_color: block.settings.btn_text_color
+              %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
+      {% endif %}
+
+
+      {% if section.settings.hide_extra_products != true %}
+
+          <div class="tabs-product__grid">
+            <div class="section-stack">
+              {%- assign link_url = section.settings.link_url | default: block.settings.collection.url -%}
+              {%- render 'section-header',
+                subheading: section.settings.subheading,
+                heading: block.settings.collection.title,
+                heading_color: section.settings.heading_color,
+                heading_gradient: section.settings.heading_gradient,
+                content: section.settings.content,
+                link_text: section.settings.link_text,
+                link_url: link_url
+              -%}
+
+
+              <div class="floating-controls-container">
+                {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+                <scroll-carousel
+                  selector="product-card"
+                  id="{{ scroll_area_id }}"
+                  class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}"
+                >
+                  <reveal-items selector=".product-list > *">
+                    <product-list class="product-list">
+                      {%- assign products = block.settings.collection.products -%}
+
+                      {%- for product in products limit: section.settings.products_count -%}
+                        {%- render 'product-card',
+                          product: product,
+                          stacked: true,
+                          position: forloop.index,
+                          show_badges: true
+                        -%}
+                      {%- else -%}
+                        {%- for i in (1..section.settings.products_count) -%}
+                          {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
+                          {%- render 'product-card-placeholder',
+                            stacked: true,
+                            placeholder_image: placeholder_image,
+                            text_alignment: settings.product_info_alignment
+                          -%}
+                        {%- endfor -%}
+                      {%- endfor -%}
+                    </product-list>
+                  </reveal-items>
+                </scroll-carousel>
+              </div>
+            </div>
+          </div>
+
+      {% endif %}
+
+
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  function initializeTabbedSection(sectionId) {
+    const section = document.querySelector(`[data-section-id='${sectionId}']`);
+    if (!section) return;
+
+    const tabs = section.querySelectorAll('.tab-product');
+    const contents = section.querySelectorAll('.tab-product-content');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', function () {
+        const tabId = tab.getAttribute('data-tab-id');
+
+        tabs.forEach((t) => t.classList.remove('active'));
+        contents.forEach((c) => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        section.querySelector(`#tab-product-content-${sectionId}-${tabId}`).classList.add('active');
+      });
+    });
+
+    // Set the first tab as active by default
+    if (tabs.length > 0) {
+      tabs[0].classList.add('active');
+      contents[0].classList.add('active');
+    }
+  }
+
+  function initializeAllTabbedSections() {
+    document.querySelectorAll('.tab-products').forEach((section) => {
+      initializeTabbedSection(section.getAttribute('data-section-id'));
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initializeAllTabbedSections);
+
+  // Fix for Shopify Customizer
+  document.addEventListener('shopify:section:load', function (event) {
+    const section = event.target.querySelector('.tab-products');
+    if (section) {
+      const sectionId = section.getAttribute('data-section-id');
+      initializeTabbedSection(sectionId);
+    }
+  });
+</script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+	const sectionId = "{{ section.id }}";
+	const sectionSelector = `#shopify-section-${sectionId}`;
+	const carousel = document.querySelector(`${sectionSelector} .tab-products__featured`);
+	const slides = document.querySelectorAll(`${sectionSelector} .tab-products__featured-product`);
+	const paginationContainer = document.querySelector(`${sectionSelector} .swiper-pagination`);
+
+	if (!carousel || slides.length === 0 || !paginationContainer) return;
+
+	// Create dots dynamically
+	slides.forEach((_, index) => {
+		const dot = document.createElement('span');
+		dot.className = 'swiper-pagination-bullet';
+		dot.setAttribute('tabindex', '0');
+		dot.setAttribute('role', 'button');
+		dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+		if (index === 0) {
+			dot.classList.add('swiper-pagination-bullet-active');
+			dot.setAttribute('aria-current', 'true');
+		}
+		paginationContainer.appendChild(dot);
+	});
+
+	const dots = paginationContainer.querySelectorAll('.swiper-pagination-bullet');
+
+	// Sync active dot on scroll
+	carousel.addEventListener('scroll', () => {
+		let closestIndex = 0;
+		let closestDistance = Infinity;
+
+		slides.forEach((slide, index) => {
+			const rect = slide.getBoundingClientRect();
+			const distanceToCenter = Math.abs(rect.left + rect.width / 2 - window.innerWidth / 2);
+
+			if (distanceToCenter < closestDistance) {
+				closestDistance = distanceToCenter;
+				closestIndex = index;
+			}
+		});
+
+		dots.forEach((dot, index) => {
+			dot.classList.toggle('swiper-pagination-bullet-active', index === closestIndex);
+			dot.removeAttribute('aria-current');
+			if (index === closestIndex) {
+				dot.setAttribute('aria-current', 'true');
+			}
+		});
+	});
+
+	// Scroll to slide when a dot is clicked
+	dots.forEach((dot, index) => {
+		dot.addEventListener('click', () => {
+			const slide = slides[index];
+			if (slide) {
+				const slideLeft = slide.offsetLeft;
+				const offset = slide.offsetWidth / 2 - carousel.offsetWidth / 2;
+				carousel.scrollTo({
+					left: slideLeft - offset,
+					behavior: 'smooth'
+				});
+			}
+		});
+	});
+});
+</script>
+
+
+
+
+
+{% schema %}
+{
+  "name": "Featured Tab Products",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_banner",
+      "label": "Hide banner",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_extra_products",
+      "label": "Hide extra products",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_products",
+      "label": "Stack products",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "label": "Products to show",
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "products_per_row_mobile",
+      "label": "Products per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 5,
+      "label": "Products per row (desktop)",
+      "default": 4,
+      "step": 1
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL",
+      "info": "Default to collection URL."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "View all"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable parallax effect",
+      "info": "Parallax crops images.",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Original image ratio"
+        },
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        },
+        {
+          "value": "fill",
+          "label": "Fill screen"
+        }
+      ],
+      "info": "Choose \"Original image ratio\" to avoid image cropping. [Learn more](https://help.shopify.com/en/manual/online-store/images/theme-images#best-practices-for-slideshows-and-full-widtw-images)",
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_position",
+      "label": "Mobile content position",
+      "options": [
+        {
+          "value": "place-self-start text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "place-self-start-center text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "place-self-start-end text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "place-self-center-start text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "place-self-center text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "place-self-center-end text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "place-self-end-start text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "place-self-end-center text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "place-self-end text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "place-self-center text-center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_position",
+      "label": "Desktop content position",
+      "options": [
+        {
+          "value": "sm:place-self-start sm:text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "sm:place-self-start-center sm:text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "sm:place-self-start-end sm:text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "sm:place-self-center-start sm:text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "sm:place-self-center sm:text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "sm:place-self-center-end sm:text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "sm:place-self-end-start sm:text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "sm:place-self-end-center sm:text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "sm:place-self-end sm:text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "sm:place-self-center sm:text-center"
+    },
+    {
+      "type": "range",
+      "id": "tabs_position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Tab vertical position",
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "text",
+          "id": "inline_title",
+          "label": "Product inline title",
+          "default": "Series"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "range",
+          "id": "content_max_width",
+          "label": "Content maximum width",
+          "min": 400,
+          "max": 1200,
+          "step": 20,
+          "unit": "px",
+          "default": 780
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#000000"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Banner Image Mobile"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "header",
+          "content": "Featured product 1"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product title",
+          "default": "New Nano AI"
+        },
+        {
+          "type": "text",
+          "id": "product_description",
+          "label": "Product description",
+          "default": "<p>The new Nano AI is the most powerful device we've ever created.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product image"
+        },
+        {
+          "type": "text",
+          "id": "product_link_text",
+          "label": "Link text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "header",
+          "content": "Featured product 2"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "product_title_2",
+          "label": "Product title",
+          "default": "New Nano AI"
+        },
+        {
+          "type": "text",
+          "id": "product_description_2",
+          "label": "Product description",
+          "default": "The new Nano AI is the most powerful device we've ever created."
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_2",
+          "label": "Product image"
+        },
+        {
+          "type": "text",
+          "id": "product_link_text_2",
+          "label": "Link text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "header",
+          "content": "Styling"
+        },
+        {
+        "type": "color",
+        "id": "featured_text_color",
+        "label": "Featured text color"
+      },
+        {
+        "type": "color",
+        "id": "background",
+        "label": "Button Background"
+      },
+      {
+        "type": "color",
+        "id": "btn_text_color",
+        "label": "Button text color"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Tab products"
+    }
+  ]
+}
+{% endschema %}

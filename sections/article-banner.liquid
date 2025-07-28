@@ -1,205 +1,885 @@
-{% comment %}
-  Custom section: Article Banner | article-banner.liquid
-{% endcomment %}
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
 
-<div
-  class="article-banner"
-  id="article-banner-{{ section.id }}"
-  style="background-image: url({{ section.settings.banner_image | image_url: width: 1920 }});"
->
-  <div class="article-banner__content">
-    <span class="article-banner__category-label">{{ section.settings.primary_tag }}</span>
-    <p class="article-banner__category">{{ section.settings.secondary_tag }}</p>
-    <h1 class="article-banner__title">{{ section.settings.title }}</h1>
-    <div class="article-banner__meta">
-      <span>{{ section.settings.author }}</span>
-      <span class="article-banner__dot">•</span>
-      <span>{{ section.settings.date }}</span>
-      <span class="article-banner__dot">•</span>
-      <span>{{ section.settings.share_label }}</span>
-      <div class="article-banner__socials">
-        {% if section.settings.tiktok != blank %}
-          <a href="{{ section.settings.tiktok }}" aria-label="TikTok">{% render 'tiktok.svg' %}</a>
-        {% endif %}
-        {% if section.settings.linkedin != blank %}
-          <a href="{{ section.settings.linkedin }}" aria-label="LinkedIn">{% render 'linkedin.svg' %}</a>
-        {% endif %}
-        {% if section.settings.youtube != blank %}
-          <a href="{{ section.settings.youtube }}" aria-label="YouTube">{% render 'youtube.svg' %}</a>
-        {% endif %}
-        {% if section.settings.facebook != blank %}
-          <a href="{{ section.settings.facebook }}" aria-label="Facebook">{% render 'facebook.svg' %}</a>
-        {% endif %}
-        {% if section.settings.x != blank %}
-          <a href="{{ section.settings.x }}" aria-label="X">{% render 'x.svg' %}</a>
-        {% endif %}
-        {% if section.settings.pinterest != blank %}
-          <a href="{{ section.settings.pinterest }}" aria-label="Pinterest">{% render 'pinterest.svg' %}</a>
-        {% endif %}
-        {% if section.settings.instagram != blank %}
-          <a href="{{ section.settings.instagram }}" aria-label="Instagram">{% render 'instagram.svg' %}</a>
-        {% endif %}
+
+{% comment %}
+  Custom section: Custom Blog | custom-blog.liquid
+{% endcomment %}
+<section class="custom-blog banner_section_width_{{ section.settings.banner_section_width }}" style="background: {{ section.settings.bg_color }};">
+
+  {%- assign featured_article = blog.articles.first -%}
+  {%- assign override_img = section.settings.custom_banner_override_image -%}
+
+  <!-- Banner -->
+  {% if section.settings.banner_overlay_opacity > 0 %}
+<div class="custom-blog__banner"
+     style="background-image: url('{{ override_img | default: featured_article.image | image_url: width: 2000 }}');">
+
+  <div class="custom-blog__banner-overlay"
+       style="background-color: {{ section.settings.banner_overlay_color }};
+              opacity: {{ section.settings.banner_overlay_opacity }};"></div>
+
+  <div class="custom-blog__banner-inner banner_section_content_width_{{ section.settings.banner_section_content_width }} banner-align-{{ section.settings.banner_content_position }}">
+    
+    <!-- Fallback Image Rendering (Visible only if image missing) -->
+    {% unless featured_article.image %}
+      <img src="{{ section.settings.banner_fallback_image | image_url: width: 1600 }}" alt="Fallback image" style="position:absolute; inset:0; object-fit:cover; z-index:0;">
+    {% endunless %}
+
+    <!-- Category -->
+    {% if featured_article.tags.size > 0 %}
+      <div class="custom-blog__label">
+        {{ featured_article.tags.first }}
       </div>
+    {% endif %}
+
+    <!-- Title -->
+    <h1 class="custom-blog__heading">
+      {{ section.settings.custom_banner_title | default: featured_article.title }}
+    </h1>
+
+    <!-- Author & Date -->
+    <div class="custom-blog__meta">
+      <span class="custom-blog__author">{{ featured_article.author }}</span>
+      <span class="custom-blog__date">{{ featured_article.published_at | date: "%B %d, %Y" }}</span>
+
+      <!-- Social Icons -->
+      <div class="custom-blog__social-icons">
+        {{ section.settings.banner_share_text }}
+      {% if section.settings.show_share_tiktok %}
+        <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'icon-tiktok' %}</a>
+      {% endif %}
+      {% if section.settings.show_share_linkedin %}
+        <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'icon-linkedin' %}</a>
+      {% endif %}
+      {% if section.settings.show_share_youtube %}
+        <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'icon-youtube' %}</a>
+      {% endif %}
+      {% if section.settings.show_share_facebook %}
+        <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'icon-facebook' %}</a>
+      {% endif %}
+      {% if section.settings.show_share_x %}
+        <a href="https://x.com" target="_blank" class="social-icon">{% render 'icon-x' %}</a>
+      {% endif %}
+      {% if section.settings.show_share_pinterest %}
+        <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'icon-pinterest' %}</a>
+      {% endif %}
+      {% if section.settings.show_share_instagram %}
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'icon-instagram' %}</a>
+      {% endif %}
     </div>
+    </div>
+
+    <!-- Optional CTA Button -->
+    {% if section.settings.banner_cta_text != blank and section.settings.banner_cta_link != blank %}
+      <a href="{{ section.settings.banner_cta_link }}" class="custom-blog__banner-cta">
+  {{ section.settings.banner_cta_text }}
+  {% if section.settings.banner_cta_icon != blank %}
+    <span class="custom-blog__cta-icon">{% render section.settings.banner_cta_icon %}</span>
+  {% endif %}
+</a>
+
+    {% endif %}
   </div>
 </div>
 
-{% style %}
-.article-banner {
-  position: relative;
-  height: 600px;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding-left: 80px;
-}
 
-.article-banner__content {
-  max-width: 680px;
-}
+  {% endif %}
 
-.article-banner__category-label {
-  display: inline-block;
-  background: #1A1A1A;
-  color: #ffffff;
-  font-size: 13px;
-  line-height: 1;
-  padding: 5px 10px;
-  margin-bottom: 12px;
-  font-family: Roboto, sans-serif;
-}
+</section>
 
-.article-banner__category {
-  font-size: 14px;
-  font-family: Roboto, sans-serif;
-  color: #ffffff;
-  margin: 0 0 20px;
-}
 
-.article-banner__title {
-  font-family: Questrial, sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 32px;
-  color: #ffffff;
-}
-
-.article-banner__meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-family: Roboto, sans-serif;
-  font-size: 14px;
-  color: #ffffff;
-}
-
-.article-banner__dot {
-  font-size: 12px;
-}
-
-.article-banner__socials {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.article-banner__socials a svg {
-  width: 18px;
-  height: 18px;
-  fill: #ffffff;
-}
-{% endstyle %}
 
 {% schema %}
 {
-  "name": "Article Banner",
+  "name": "Article Blog Banner",
   "tag": "section",
-  "class": "section",
+  "class": "custom-blog",
   "settings": [
     {
+  "type": "header",
+  "content": "Banner Settings"
+},
+    {
+      "type": "select",
+      "id": "banner_section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "banner_section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
       "type": "image_picker",
-      "id": "banner_image",
-      "label": "Banner Image"
+      "id": "custom_banner_override_image",
+      "label": "Override Banner Image (optional)"
+    },
+    { "type": "color", "id": "banner_overlay_color", "label": "Banner Overlay Color", "default": "#000000" },
+    { "type": "range", "id": "banner_overlay_opacity", "label": "Banner Overlay Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.4 },
+    {
+  "type": "select",
+  "id": "banner_content_position",
+  "label": "Banner Content Vertical Alignment",
+  "options": [
+    { "value": "top", "label": "Top" },
+    { "value": "center", "label": "Center" },
+    { "value": "bottom", "label": "Bottom" }
+  ],
+  "default": "center"
+},
+{
+  "type": "text",
+  "id": "banner_cta_text",
+  "label": "CTA Button Text"
+},
+{
+  "type": "url",
+  "id": "banner_cta_link",
+  "label": "CTA Button Link"
+},
+{
+  "type": "text",
+  "id": "banner_cta_icon",
+  "label": "CTA Icon Snippet (e.g. 'icon-arrow-right')"
+},
+{
+  "type": "header",
+  "content": "Social Share Options"
+},{
+  "type": "text",
+  "id": "banner_share_text",
+  "label": "Social Share Text"
+},
+{
+  "type": "checkbox",
+  "id": "show_share_tiktok",
+  "label": "Show TikTok Share",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "show_share_linkedin",
+  "label": "Show LinkedIn Share",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "show_share_youtube",
+  "label": "Show YouTube Share",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "show_share_facebook",
+  "label": "Show Facebook Share",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "show_share_x",
+  "label": "Show X (Twitter) Share",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "show_share_pinterest",
+  "label": "Show Pinterest Share",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "show_share_instagram",
+  "label": "Show Instagram Share",
+  "default": false
+},
+
+    {
+      "type": "text",
+      "id": "custom_banner_title",
+      "label": "Custom Banner Title (optional)"
     },
     {
       "type": "text",
-      "id": "primary_tag",
-      "label": "Primary Tag",
-      "default": "Education"
+      "id": "blog_list_title",
+      "label": "Blog List Section Title",
+      "default": "More Articles"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },{
+  "type": "header",
+  "content": "Slider Settings"
+},
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 40 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 20 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 20 },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0 },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
     },
     {
       "type": "text",
-      "id": "secondary_tag",
-      "label": "Secondary Tag",
-      "default": "Education & Industry"
+      "id": "heading",
+      "label": "Small Heading",
+      "default": "Latest News"
     },
     {
       "type": "text",
-      "id": "title",
-      "label": "Article Title",
-      "default": "Dash Cam Struggles to Turn On When Cold: Why?"
+      "id": "subheading",
+      "label": "Main Heading",
+      "default": "From the Blog"
     },
     {
-      "type": "text",
-      "id": "author",
-      "label": "Author",
-      "default": "TeamVantrue"
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "See what's new at Sylvox."
     },
     {
-      "type": "text",
-      "id": "date",
-      "label": "Date",
-      "default": "Jan 09"
+      "type": "range",
+      "id": "slide_width",
+      "label": "Slide Width",
+      "min": 280,
+      "max": 1000,
+      "step": 20,
+      "default": 360
     },
     {
-      "type": "text",
-      "id": "share_label",
-      "label": "Share Text",
-      "default": "Share"
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
     },
     {
-      "type": "url",
-      "id": "tiktok",
-      "label": "TikTok Link"
-    },
-    {
-      "type": "url",
-      "id": "linkedin",
-      "label": "LinkedIn Link"
-    },
-    {
-      "type": "url",
-      "id": "youtube",
-      "label": "YouTube Link"
-    },
-    {
-      "type": "url",
-      "id": "facebook",
-      "label": "Facebook Link"
-    },
-    {
-      "type": "url",
-      "id": "x",
-      "label": "X Link"
-    },
-    {
-      "type": "url",
-      "id": "pinterest",
-      "label": "Pinterest Link"
-    },
-    {
-      "type": "url",
-      "id": "instagram",
-      "label": "Instagram Link"
-    }
+  "type": "checkbox",
+  "id": "hide_filter_sort",
+  "label": "Hide Filter and Sort",
+  "default": false
+}
   ],
   "presets": [
     {
-      "name": "Article Banner",
-      "category": "Custom"
+      "name": "Article Blog Banner",
+      "category": "Somos Custom"
     }
   ]
 }
 {% endschema %}
+
+{% style %}
+/* Banner */
+.custom-blog {
+    margin: unset !important;
+    max-width: unset !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+.custom-blog__banner {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.custom-blog__banner-cta {
+    background: #20413B !important;
+  color: #ffffff !important;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    width: 150px !important;
+}
+
+.custom-blog__banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.custom-blog__banner-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-blog__cta-icon {
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+.custom-blog__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  color: #fff;
+  font-size: 14px;
+}
+.custom-blog__social-icons {
+  display: flex;
+  gap: 12px;
+}
+.social-icon {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.social-icon:hover {
+  opacity: 1;
+}
+.custom-blog__banner-cta {
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+
+/* Alignment variations */
+.banner-align-top {
+  justify-content: flex-start;
+}
+.banner-align-center {
+  justify-content: center;
+}
+.banner-align-bottom {
+  justify-content: flex-end;
+}
+
+
+.custom-blog__card-excerpt-arrow {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.custom-blog__card-arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.blog-post-content {
+  background: #FAFAFA;
+  padding: 1.5em;
+  position: relative;
+}
+
+
+/* Sidebar */
+
+.custom-blog__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 280px;
+}
+
+.custom-blog__dropdown {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 24px;
+}
+
+.custom-blog__dropdown-title {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-blog__dropdown-title::after {
+  content: '⌄';
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.custom-blog__dropdown[open] .custom-blog__dropdown-title::after {
+  transform: rotate(180deg);
+}
+
+.custom-blog__dropdown-list {
+  margin-top: 16px;
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.custom-blog__dropdown-list li label {
+  font-size: 15px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.custom-blog__dropdown-list input[type="radio"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #1a1a1a;
+  border-radius: 50%;
+  position: relative;
+}
+
+.custom-blog__dropdown-list input[type="radio"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 50%;
+}
+
+
+/* Slider */
+.slider-track {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+  }
+
+.slider-slide {
+  flex: 0 0 auto;
+  width: {{ section.settings.slide_width }}px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-post-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  height: 100%;
+}
+
+.slider-carousel .slider-track {
+  align-items: stretch;
+}
+
+
+
+  .slider-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .slider-dot {
+    width: 24px;
+    height: 25px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  .slider-dot.active {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
+  }
+
+  .slider-arrows {
+    display: flex;
+    gap: 10px;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+.slider-track {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+  .blog-post-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.blog-post-content {
+    background: #FAFAFA;
+    padding: 1.5em;
+}
+
+
+.custom-blog__slider {
+  max-width: 1600px;
+  margin: 40px auto;
+}
+.custom-blog__slider-item {
+  width: 300px;
+  margin-right: 20px;
+}
+.custom-blog__slider-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.custom-blog__slider-caption {
+  padding-top: 10px;
+}
+.custom-blog__slider-date {
+  font-size: 12px;
+  color: #777;
+}
+.custom-blog__slider-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1D1D1B;
+}
+/* New CSS */
+.custom-blog__banner {
+  height: 600px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+}
+.custom-blog__banner-inner {
+  /* position: absolute;
+  left: 157px;
+  top: 154.5px; */
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.custom-blog__label {
+  /* padding: 6px 10px; */
+  /* background: #1D1D1B; */
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+}
+.custom-blog__subtitle {
+  font-size: 18px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: white;
+}
+.custom-blog__heading {
+  font-size: 56px;
+  font-family: Questrial, sans-serif;
+  font-weight: 400;
+  color: white;
+  /* max-width: 657px; */
+  line-height: 1.2;
+}
+.custom-blog__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 4px;
+  width: auto;
+  height: auto;
+}
+ .custom-blog__arrow rect {
+  stroke: #ffffff;
+ }
+  .custom-blog__arrow path { 
+  fill: #ffffff;
+}
+.custom-blog__nav {
+  background-color: #1a1a1a;
+  margin-bottom: 40px;
+}
+.custom-blog__nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  height: 60px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.custom-blog__nav a {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 12px;
+}
+.custom-blog__nav a.active {
+  font-weight: 600;
+}
+.custom-blog__nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 24px;
+  background: #ffffff;
+}
+.custom-blog__filter-sort {
+  display: flex;
+  justify-content: left;
+  gap: 16px;
+  margin: 40px auto;
+  max-width: 1608px;
+}
+.custom-blog__filter-btn,
+.custom-blog__sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #bdbdbd;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.custom-blog__grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr) !important;
+  gap: 48px 24px;
+  max-width: 1608px;
+  margin: 0 auto 60px;
+  padding: 0;
+}
+.custom-blog__card {
+background: #fff;
+    display: flex;
+    flex-direction: row !important;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    /* max-width: 519.98px; */
+    width: 100%;
+    display: flex
+;
+}
+.custom-blog__card-image {
+  position: relative;
+}
+.custom-blog__card-image img {
+  width: 100%;
+  height: auto;
+  max-width: 519.98px;
+  max-height: 287.98px;
+  aspect-ratio: 520 / 288;
+  object-fit: cover;
+  display: block;
+}
+.custom-blog__card-content {
+  background: #FAFAFA;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+}
+.custom-blog__card-image .custom-blog__card-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #1a1a1a;
+  padding: 6px 12px;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  border-radius: 0;
+  z-index: 2;
+}
+.custom-blog__card-title {
+  font-size: 24px;
+  font-family: 'Questrial', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1D1D1B;
+}
+.custom-blog__card-title a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+.custom-blog__card-excerpt-arrow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+.custom-blog__card-excerpt {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #636363;
+  max-height: none;
+  overflow: visible;
+  margin: 0;
+}
+.custom-blog__card-arrow {
+  position: static;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 2px;
+}
+.custom-blog__pagination {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.custom-blog__pagination a,
+.custom-blog__pagination span {
+  margin: 0 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1a1a1a;
+  border-radius: 4px;
+}
+.custom-blog__pagination .current {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-blog__banner {
+    height: 600px;
+    background-position: center;
+  }
+  .custom-blog__banner-inner {
+    top: 354px;
+    left: 24px;
+    gap: 22px;
+    max-width: 282px;
+  }
+  .custom-blog__label {
+    font-size: 14px;
+  }
+  .custom-blog__subtitle {
+    font-size: 14px;
+  }
+  .custom-blog__heading {
+    font-size: 24px;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+  .custom-blog__grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 40px 24px;
+  }
+}
+{% endstyle %}
+

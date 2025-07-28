@@ -1,0 +1,192 @@
+{{ 'kik-timeline.css' | asset_url | stylesheet_tag }}
+<style>
+    #shopify-section-{{ section.id }} .kik_timeline_container{
+      background:{{ section.settings.bk}};
+      padding-top:72px;
+      padding-bottom:72px;
+    }
+
+    {% for block in section.blocks %}
+      #kik_timeline-{{ block.id }} .kik_item_bottom{
+        background: {{ block.settings.background }};
+        height: 100%;
+        min-height: 274px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 24px;
+        border-radius: 0px 0px 16px 16px;
+        justify-content: center;
+      }
+
+      #kik_timeline-{{ block.id }} .kik_item_bottom p{
+        margin:0;
+        font-size:16px;
+        line-height:24px;
+        color: {{ block.settings.text_color }};
+      }
+
+      #kik_timeline-{{ block.id }} .kik_item_bottom h2{
+        margin:0;
+        margin-bottom:8px;
+        font-size:32px;
+        line-height:40px;
+        color: {{ block.settings.text_color }};
+      }
+
+      #kik_timeline-{{ block.id }} .kik_item_top{
+        background: {{ block.settings.top_background }};
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 25px;
+        font-weight: 500;
+        border-radius: 16px 16px 0px 0;
+        padding: 0 16px;
+        flex:1;
+      }
+
+      #kik_timeline-{{ block.id }} .kik_item_top span{
+        color: {{ block.settings.text_color }};
+      }
+    {% endfor %}
+  /* New client request */
+</style>
+<div class="kik_timeline_container kik_white_text">
+  <div class="kik_timeline_c t4s-container container ">
+    {% for block in section.blocks %}
+      <div id="kik_timeline-{{ block.id }}" class="kik_timeline_item">
+        <div class="kik_item_top">
+          <div class="timeline_dots">
+            <div class="dot_item">
+              <div class="black_dot"></div>
+              <div class="white_line">
+                <div class="white_inter_line"></div>
+              </div>
+            </div>
+            <div class="dot_item">
+              <div class="black_dot"></div>
+              <div class="white_line">
+                <div class="white_inter_line"></div>
+              </div>
+            </div>
+          </div>
+          <span>{{ block.settings.date }}</span>
+          <div class="timeline_dots">
+            <div class="dot_item">
+              <div class="black_dot"></div>
+              <div class="white_line">
+                <div class="white_inter_line"></div>
+              </div>
+            </div>
+            <div class="dot_item">
+              <div class="black_dot"></div>
+              <div class="white_line">
+                <div class="white_inter_line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="kik_item_bottom">
+          <div>
+            <h2>{{ block.settings.title }}</h2>
+            <p>{{ block.settings.content }}</p>
+          </div>
+          {% if block.settings.image != blank %}
+            <img class="first_image" src="{{ block.settings.image | img_url:" master" }}" height="100%" width="100%">
+          {% endif %}
+          {% if section.settings.discount_text %}
+            <div class="timeline_discount">
+              {{ block.settings.discount_text }}
+            </div>
+          {% endif %}
+          {% if block.settings.second_image != blank %}
+            <img
+              class="second_image"
+              src="{{ block.settings.second_image | img_url:"master" }}"
+              height="100%"
+              width="100%"
+            >
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "kik timeline",
+  "class": "kik-timeline-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bk",
+      "label": "background"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "block",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "date",
+          "label": "date"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "discount_text",
+          "label": "discount text"
+        },
+        {
+          "type": "image_picker",
+          "id": "second_image",
+          "label": "second image"
+        },
+        {
+          "type": "color_background",
+          "id": "background",
+          "label": "Background",
+          "default": "linear-gradient(90deg, #0047BB 0%, #2B7CFF 30%, #2B7CFF 70%, #1966E2 100%)"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#fff"
+        },
+        {
+          "type": "color_background",
+          "id": "top_background",
+          "label": "Top background",
+          "default": "linear-gradient(90deg, #0047BB, #80AFFE)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "kik timeline"
+    }
+  ]
+}
+{% endschema %}

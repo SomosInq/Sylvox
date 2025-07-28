@@ -1,0 +1,116 @@
+<style>
+     @media (min-width: 750px) {
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .ct3-5 {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .ct3-5-img {
+        width: 100%;
+      }
+
+      .ct3-5-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .img-mb {
+        display: none;
+      }
+
+      .ct3-5-title1 {
+        font-size: 3vw;
+        font-weight: 600;
+        color: #fff;
+        position: absolute;
+        top: 7vw;
+        left: 5vw;
+      }
+
+      .ct3-5-title2 {
+        font-size: 3vw;
+        font-weight: 600;
+        color: #fff;
+        position: absolute;
+        top: 7vw;
+        left: 38vw;
+      }
+    }
+
+    @media (max-width: 750px) {
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .ct3-5 {
+        width: 100%;
+        position: relative;
+      }
+
+      .ct3-5-img {
+        width: 100%;
+      }
+
+      .ct3-5-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .img-pc {
+        display: none;
+      }
+
+      .ct3-5-title1 {
+        font-size: 5vw;
+        font-weight: 600;
+        color: #fff;
+        position: absolute;
+        top: 7vw;
+        left: 9vw;
+      }
+
+      .ct3-5-title2 {
+        font-size: 5vw;
+        font-weight: 600;
+        color: #fff;
+        position: absolute;
+        top: 57vw;
+        left: 9vw;
+      }
+    }
+</style>
+
+<div class="ct3-5">
+  <div class="ct3-5-img">
+    <img src="https://cdn.shopify.com/s/files/1/0268/6592/6342/files/ca361c3-en-pc-5.jpg?v=1725007398" alt=""
+      class="img-pc">
+    <img src="https://cdn.shopify.com/s/files/1/0268/6592/6342/files/ca361c3-en-mb-5.jpg?v=1725008501" alt=""
+      class="img-mb">
+  </div>
+  <div class="ct3-5-title1">{{ section.settings.ct3-5-title1 }}</div>
+  <div class="ct3-5-title2">{{ section.settings.ct3-5-title2 }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "new-before-after",
+  "presets": [
+    {
+    "name": "new--before-after"
+    }
+  ],
+  "settings": [
+    { "type": "textarea","id": "ct3-5-title1","label": "ct3-5-title1","default": "Before" },
+    { "type": "textarea","id": "ct3-5-title2","label": "ct3-5-title2","default": "After" }
+  ]
+}
+{% endschema %}

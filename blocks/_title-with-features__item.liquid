@@ -1,0 +1,46 @@
+
+
+{%- if block.settings.icon != blank -%}
+	{%- assign alt_text = block.settings.icon.alt | strip -%}
+	{%- if alt_text == blank -%}
+		{%- assign alt_text = block.settings.icon | split: '/' | last | split: '.' | first -%}
+	{%- endif -%}
+	<img 
+		src="{{ block.settings.icon | image_url: width: 200 }}" 
+		alt="{{ alt_text | escape }}" 
+		class="image" 
+		loading="lazy"
+	>
+{%- endif -%}
+
+{%- if block.settings.description != blank -%}
+	<div class="text">
+		{{ block.settings.description }}
+	</div>
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Title with features item",
+  "class": "title-with-features__item",
+  "settings": [
+	{
+		"type": "image_picker",
+		"id": "icon",
+		"label": "Icon",
+		"info": "SVG recommended"
+	},
+	{
+		"type": "richtext",
+		"id": "description",
+		"label": "Description"
+	}
+  ],
+  "presets": [
+	{
+		"name": "Title with features item"
+	}
+  ]
+}
+{% endschema %}

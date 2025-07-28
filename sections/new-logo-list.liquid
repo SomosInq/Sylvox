@@ -1,0 +1,493 @@
+{%- unless section.settings.full_width -%}
+  {%- render 'section-spacing-collapsing' -%}
+{%- endunless -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings.full_width -%}
+      --section-outer-spacing-block: 0;
+    {%- endif -%}
+
+    --content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+
+    {%- if section.settings.allow_transparent_header -%}
+      margin-block-start: calc(-1 * var(--header-height) * var(--section-is-first));
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .content-over-media{
+    align-items: {{ section.settings.mobile_align_items }};
+  }
+
+  #shopify-section-{{ section.id }} .logo-list__item{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .bg-secondary{
+    background: unset;
+  }
+
+    {% for block in section.blocks %}
+      #block-{{ section.id }}-{{ block.id }} .paragraph{
+        line-height: {{- block.settings.line_height -}};
+      }
+    {% endfor %}
+
+  @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} .content-over-media{
+        align-items: {{ section.settings.desktop_align_items }};
+      }
+      {% for block in section.blocks %}
+        #block-{{ section.id }}-{{ block.id }} .paragraph{
+          font-size: {{- block.settings.paragraph_font_size -}}px;
+          line-height: {{- block.settings.line_height -}};
+        }
+
+        .content-over-media>:not(img,video,iframe,svg,video-media){
+          max-width: {{ block.settings.content_max_width }}px;
+        }
+      {% endfor %}
+  }
+
+  #shopify-section-{{ section.id }} {
+    --logo-list-item-max-size: 280px;
+    --logo-list-grid: {% if section.settings.stack_mobile %}auto-flow 1fr / repeat(var(--logo-list-items-per-row), minmax(0, 1fr)){% else %}1fr / auto-flow 52vw{% endif %};
+    --logo-list-items-per-row: {{ section.settings.mobile_items_per_row | at_most : section.blocks.size }};
+    --logo-list-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} {
+      --logo-list-grid: auto-flow 1fr / repeat(var(--logo-list-items-per-row), 1fr);
+      --logo-list-items-per-row: {{ 3 | at_most : section.blocks.size }};
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} {
+      --logo-list-items-per-row: {{ 4 | at_most: section.settings.desktop_items_per_row | at_most: section.blocks.size }};
+    }
+  }
+
+  @media screen and (min-width: 1150px) {
+    #shopify-section-{{ section.id }} {
+      --logo-list-items-per-row: {{ section.settings.desktop_items_per_row | at_most: section.blocks.size }};
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
+  {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+
+  <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
+    {%- if section.settings.image != blank -%}
+      {%- capture image_class -%}{% if section.settings.mobile_image != blank %}hidden sm:block{% endif %}{%- endcapture -%}
+      {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
+
+      {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: image_class -}}
+
+      {%- if section.settings.mobile_image != blank -%}
+        {{- section.settings.mobile_image | image_url: width: section.settings.mobile_image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600', class: 'sm:hidden' -}}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
+    {%- endif -%}
+
+    <div class="section-stack {% if section.settings.text_alignment == 'center' %}sm:justify-items-center{% endif %}">
+      <div class="prose {% if section.settings.text_alignment == 'center' %}text-center{% endif %} {{ section.settings.desktop_text_position }}">
+        {%- if section.settings.title != blank -%}
+          <h2 class="{{- section.settings.heading_tag |  default: h2 -}}">
+            {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.content != blank -%}
+          <div class="{{ section.settings.text_size }}">
+            {%- render 'styled-text', content: section.settings.content, text_color: section.settings.text_color -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <reveal-items class="logo-list {% unless section.settings.stack_mobile %}scroll-area bleed sm:unbleed{% endunless %}">
+        {%- for block in section.blocks -%}
+          {%- capture block_content -%}
+            {%- if block.settings.logo != blank -%}
+              {%- capture sizes -%}{{ block.settings.logo_width }}px{%- endcapture -%}
+              {%- capture widths -%}{{ block.settings.logo_width }}, {{ block.settings.logo_width | times: 2 | at_most:
+              block.settings.logo.width }}{%- endcapture -%}
+              {%- capture max_width -%}--logo-list-image-max-width: {{ block.settings.logo_width }}px{%- endcapture -%}
+              {{- block.settings.logo | image_url: width: block.settings.logo.width | image_tag: style: max_width, loading: 'lazy',
+              widths: widths, class: 'logo-list__image', sizes: sizes -}}
+            {%- endif -%}
+          {%- endcapture -%} 
+          {% capture item_attribute %}
+            {%- render 'surface', class: 'logo-list__item', background: section.settings.logo_item_background, background_fallback:
+            'bg-secondary' -%}
+          {%- endcapture -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" {{ item_attribute }} {{ block.shopify_attributes }}>
+              {{- block_content -}}
+              <div class="{{ block.settings.text_size }}">
+                {%- render 'styled-text', content: block.settings.block_text, text_color: block.settings.text_color -%}
+              </div>
+            </a>
+          {%- else -%}
+            <div {{ item_attribute }} {{ block.shopify_attributes }}>
+              {{- block_content -}}
+              <div class="{{ block.settings.text_size }}">
+                {%- render 'styled-text', content: block.settings.block_text, text_color: block.settings.text_color -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </reveal-items>
+    </div>
+  </image-banner>
+</div>
+
+{% schema %}
+{
+  "name": "New logo list",
+  "class": "shopify-section--image-with-text-overlay",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "allow_transparent_header",
+      "label": "Allow transparent header",
+      "info": "This setting only applies when this section is the first one.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable parallax effect",
+      "info": "Parallax crops images.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_mobile",
+      "label": "Stack on mobile",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Logo list"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "X-Large"
+        },
+        {
+          "value": "h2",
+          "label": "Large"
+        },
+        {
+          "value": "h3",
+          "label": "Medium"
+        },
+        {
+          "value": "h4",
+          "label": "Small"
+        },
+        {
+          "value": "h5",
+          "label": "X-Small"
+        },
+        {
+          "value": "h6",
+          "label": "XX-Small"
+        },
+        {
+          "value": "text-xs",
+          "label": "text-xs"
+        },
+        {
+          "value": "text-sm",
+          "label": "text-sm"
+        },
+        {
+          "value": "text-base",
+          "label": "text-base"
+        },
+        {
+          "value": "text-lg",
+          "label": "text-lg"
+        }
+      ],
+      "default": "h4"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options":[
+        {
+          "value": "text-xs",
+          "label": "text-xs"
+        },
+        {
+          "value": "text-sm",
+          "label": "text-sm"
+        },
+        {
+          "value": "text-base",
+          "label": "text-base"
+        },
+        {
+          "value": "text-lg",
+          "label": "text-lg"
+        },
+        {
+          "value": "text-xlg",
+          "label": "text-xlg"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Original image ratio"
+        },
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        },
+        {
+          "value": "fill",
+          "label": "Fill screen"
+        }
+      ],
+      "info": "Choose \"Original image ratio\" to avoid image cropping. [Learn more](https://help.shopify.com/en/manual/online-store/images/theme-images#best-practices-for-slideshows-and-full-widtw-images)",
+      "default": "auto"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "3200 x 1600px .jpg recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "1300 x 1500px .jpg recommended. Default to desktop image."
+    },
+    {
+      "type": "select",
+      "id": "mobile_align_items",
+      "label": "Mobile content position",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "end",
+          "label": "end"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_align_items",
+      "label": "Desktop content position",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "end",
+          "label": "end"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "range",
+      "id": "desktop_items_per_row",
+      "min": 3,
+      "max": 12,
+      "label": "Items per row (mobile)",
+      "default": 5
+    },
+    {
+    "type": "range",
+    "id": "mobile_items_per_row",
+    "min": 1,
+    "max": 12,
+    "label": "Items per row (desktop)",
+    "default": 12
+    },
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "300 x 90px .jpg recommended"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 10,
+          "max": 300,
+          "unit": "px",
+          "step": 10,
+          "label": "Logo width",
+          "default": 120
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "block_text",
+          "label": "Block text"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "Text size",
+          "options":[
+            {
+              "value": "text-xs",
+              "label": "text-xs"
+            },
+            {
+              "value": "text-sm",
+              "label": "text-sm"
+            },
+            {
+              "value": "text-base",
+              "label": "text-base"
+            },
+            {
+              "value": "text-lg",
+              "label": "text-lg"
+            },
+            {
+              "value": "text-xlg",
+              "label": "text-xlg"
+            }
+          ]
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New logo list",
+      "blocks": [
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

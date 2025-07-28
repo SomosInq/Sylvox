@@ -1,0 +1,1176 @@
+{{ 'quiz_popup.css' | asset_url | stylesheet_tag }}
+
+<div class="t4s-container-wrap">
+  <div class="quiz-popup-button-wrapper">
+    {% comment %}
+      <button id="open-quiz" class="open-quiz-btn">{{ section.settings.button_label }}</button>
+    {% endcomment %}
+  </div>
+  <div id="quiz-popup" class="quiz-popup hidden"> 
+    <div class="quiz-overlay"></div>
+    <div class="quiz-content">
+      <button class="close-quiz">{% render 'close-icon-2' %}</button>
+      {% for block in section.blocks %}
+
+        {% comment %} {% assign current_step_number = forloop.index %}
+        {% assign filtered_metaobjects = shop.metaobjects.quiz_step.values %}
+
+        {% for metaobject in filtered_metaobjects %}
+          {% if metaobject.step_number == current_step_number %}
+            <div class="metaobject-entry">
+              <h4>Step Number : {{metaobject.step_number }}</h4>
+              <h4>Next Step: {{ metaobject.next_step }}</h4>
+              <h4>conditions: {{ metaobject.conditions }}</h4>
+              <h4>handle: {{ metaobject.result_handle }}</h4>
+            </div>
+          {% endif %}
+        {% endfor %} {% endcomment %}
+
+        {% case block.type %}
+          {% when 'step_1' %}
+            <div
+              id="quiz-step-{{forloop.index }}"
+              class="quiz-step {% if forloop.index == 1 %}active {% endif %} {% if forloop.index == 3 %}quiz-step-5 {% endif %} "
+            >
+              {% if block.settings.step_heading != blank %}
+                <h3>{{ block.settings.step_heading }}</h3>
+              {% endif %}
+              {% liquid
+                assign option_category = block.settings.option_category
+                assign option_1_name = block.settings.option_1_name
+                assign option_1_value = block.settings.option_1_value
+                assign option_2_name = block.settings.option_2_name
+                assign option_2_value = block.settings.option_2_value
+                assign option_3_name = block.settings.option_3_name
+                assign option_3_value = block.settings.option_3_value
+              %}
+              <div class="options-container">
+                {% if option_1_name != blank and option_1_value != blank %}
+                  <div class="option step-{{ forloop.index }}">
+                    {% if block.settings.option_1_image != blank %}
+                      <img src="{{ block.settings.option_1_image | image_url }}" alt="{{option_1_name }}">
+                    {% endif %}
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_1_value}}"
+                      id="{{option_category}}_{{ option_1_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_1_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>{{ option_1_name }}</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_2_name != blank and option_2_value != blank %}
+                  <div class="option step-{{ forloop.index }}">
+                    {% if block.settings.option_2_image != blank %}
+                      <img src="{{ block.settings.option_2_image | image_url }}" alt="{{option_2_name }}">
+                    {% endif %}
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_2_value}}"
+                      id="{{option_category}}_{{ option_2_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_2_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>{{ option_2_name }}</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_3_name != blank and option_3_value != blank %}
+                  <div class="option step-{{ forloop.index }}">
+                    {% if block.settings.option_3_image != blank %}
+                      <img src="{{ block.settings.option_3_image | image_url }}" alt="{{option_3_name }}">
+                    {% endif %}
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_3_value}}"
+                      id="{{option_category}}_{{ option_3_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_3_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>{{ option_2_name }}</div>
+                    </label>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="prev-next-btn-wrapper">
+                {% if forloop.index != 1 %}
+                  <button class="prev-step active" data-open="{{ forloop.index | minus: 1 }}">Prev</button>
+                {% else %}
+                  <button class="prev-step" disabled>Prev</button>
+                {% endif %}
+                <button class="next-step">Next</button>
+              </div>
+            </div>
+          {% when 'step_2' %}
+            <div id="quiz-step-2" class="quiz-step">
+              {% if block.settings.step_heading != blank %}
+                <h3>{{ block.settings.step_heading }}</h3>
+              {% endif %}
+              {% liquid
+                assign option_1_name = block.settings.option_1_name
+                assign option_1_value = block.settings.option_1_value
+                assign option_2_name = block.settings.option_2_name
+                assign option_2_value = block.settings.option_2_value
+                assign option_3_name = block.settings.option_3_name
+                assign option_3_value = block.settings.option_3_value
+                assign option_category = block.settings.option_category
+              %}
+              {% if block.settings.step_image != blank %}
+                <img
+                  src="{{block.settings.step_image | image_url }}"
+                  alt="Does your car already support CarPlay or Android Auto?"
+                >
+              {% endif %}
+              <div class="options-container">
+                {% if option_1_name != blank and option_1_value != blank %}
+                  <div class="option">
+                    <input type="radio" name="carSupport" value="Yes" id="carSupport-yes">
+                    <label for="carSupport-yes">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>Yes</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_2_name != blank and option_2_value != blank %}
+                  <div class="option">
+                    <input type="radio" name="carSupport" value="No" id="carSupport-no">
+                    <label for="carSupport-no">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>No</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_3_name != blank and option_3_value != blank %}
+                  <div class="option">
+                    <input type="radio" name="carSupport" value="I don't know" id="carSupport-dont">
+                    <label for="carSupport-dont">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>I don’t know</div>
+                    </label>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="prev-next-btn-wrapper">
+                {% if forloop.index != 1 %}
+                  <button class="prev-step active" data-open="{{ forloop.index | minus: 1 }}">Prev</button>
+                {% else %}
+                  <button class="prev-step active" disabled>Prev</button>
+                {% endif %}
+                <button class="next-step">Next</button>
+              </div>
+            </div>
+          {% when 'step_4' %}
+            <div id="quiz-step-{{forloop.index }}" class="quiz-step">
+              <div class="step-{{forloop.index }}-bk"></div>
+              {% if block.settings.step_heading != blank %}
+                <h3>{{ block.settings.step_heading }}</h3>
+              {% endif %}
+              {% comment %}
+                <label for="carModel">Car Model:</label>
+                <select id="carModel" name="carModel">
+                  <option value="Model1">Model 1</option>
+                  <option value="Model2">Model 2</option>
+                  <option value="Model3">Model 3</option>
+                  <option value="Model4">Model 4</option>
+                  <option value="Model5">Model 5</option>
+                  <option value="Model6">Model 6</option>
+                  <option value="Model7">Model 7</option>
+                  <option value="Model8">Model 8</option>
+                  <option value="Model9">Model 9</option>
+                  <option value="Model10">Model 10</option>
+                </select>
+              {% endcomment %}
+              {% liquid
+                assign option_1_name = block.settings.option_1_name
+                assign option_1_value = block.settings.option_1_value
+                assign option_2_name = block.settings.option_2_name
+                assign option_2_value = block.settings.option_2_value
+                assign option_category = block.settings.option_category
+              %}
+
+              <div class="hidden">
+                <label class="hidden"
+                  ><input
+                    type="radio"
+                    id="{{option_category}}_{{ option_1_value| downcase | replace: ' ', '_' }}"
+                    name="{{block.settings.option_category}}"
+                    value="{{option_1_value}}"
+                  >
+                  {{ option_1_name -}}
+                </label>
+                <label
+                  ><input
+                    type="radio"
+                    name="carModel"
+                    id="{{option_category}}_{{ option_2_value| downcase | replace: ' ', '_' }}"
+                    value="{{option_2_value}}"
+                  >
+                  {{ option_2_name -}}
+                </label>
+              </div>
+              <div class="kik_type_selector">
+                <div class="custom_cars_names">
+                  <div class="cars_names_title">
+                    <input
+                      maxlength="256"
+                      name="Car-brand-model"
+                      placeholder="{{ block.settings.step_option_placeholder }}"
+                      type="text"
+                    >
+                    <svg
+                      class="t4s-icon-select-arrow t4s-pe-none"
+                      role="presentation"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 19 12"
+                    >
+                      <use xlink:href="#t4s-select-arrow"></use>
+                    </svg>
+                  </div>
+                  {% comment %}
+                    <div class="custom_names_data">
+
+                    </div>
+                  {% endcomment %}
+
+                  {% render 'all_cars_names' %}
+
+                  {% render 'all_cars_android' %}
+                </div>
+                <div class="no_cars_tab">
+                  <p>I don’t see me my car here</p>
+                </div>
+              </div>
+              {% if forloop.index != 1 %}
+                <button class="prev-step active" data-open="{{ forloop.index | minus: 1 }}">Prev</button>
+              {% else %}
+                <button class="prev-step active" disabled>Prev</button>
+              {% endif %}
+              <button class="next-step">Next</button>
+            </div>
+          {% when 'step_5' %}
+            <div id="quiz-step-{{forloop.index }}" class="quiz-step">
+              {% if block.settings.step_heading != blank %}
+                <h3>{{ block.settings.step_heading }}</h3>
+              {% endif %}
+              {% liquid
+                assign option_category = block.settings.option_category
+                assign option_1_name = block.settings.option_1_name
+                assign option_1_value = block.settings.option_1_value
+                assign option_2_name = block.settings.option_2_name
+                assign option_2_value = block.settings.option_2_value
+                assign option_3_name = block.settings.option_3_name
+                assign option_3_value = block.settings.option_3_value
+                assign option_4_name = block.settings.option_4_name
+                assign option_4_value = block.settings.option_4_value
+              %}
+              <div class="options-container quiz-step-{{forloop.index }}">
+                {% if option_1_name != blank and option_1_value != blank %}
+                  <div class="option step-{{forloop.index }} step-wireless">
+                    {% if block.settings.option_1_image != blank %}
+                      <img src="{{ block.settings.option_1_image | image_url }}" alt="{{option_1_name }}">
+                    {% endif %}
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_1_value}}"
+                      id="{{option_category}}_{{ option_1_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_1_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>{{ option_1_name }}</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_2_name != blank and option_2_value != blank %}
+                  <div class="option step-{{forloop.index }}">
+                    {% if block.settings.option_2_image != blank %}
+                      <img src="{{ block.settings.option_2_image | image_url }}" alt="{{option_2_name }}">
+                    {% endif %}
+
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_2_value}}"
+                      id="{{option_category}}_{{ option_2_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_2_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>{{ option_2_name }}</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_3_name != blank and option_3_value != blank %}
+                  <div class="option step-{{forloop.index }}">
+                    {% if block.settings.option_3_image != blank %}
+                      <img src="{{ block.settings.option_3_image | image_url }}" alt="{{option_3_name }}">
+                    {% endif %}
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_3_value}}"
+                      id="{{option_category}}_{{ option_3_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_3_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>{{ option_3_name }}</div>
+                    </label>
+                  </div>
+                {% endif %}
+                {% if option_4_name != blank and option_4_value != blank %}
+                  <div class="option step-{{forloop.index }}">
+                    {% if block.settings.option_4_image != blank %}
+                      <img src="{{ block.settings.option_4_image | image_url }}" alt="{{option_4_name }}">
+                    {% endif %}
+                    <input
+                      type="radio"
+                      name="{{option_category}}"
+                      value="{{option_4_value}}"
+                      id="{{option_category}}_{{ option_4_value| downcase | replace: ' ', '_' }}"
+                    >
+                    <label for="{{option_category}}_{{ option_4_value| downcase | replace: ' ', '_' }}">
+                      <div class="box_check">{% render 'icon-check' %}</div>
+                      <div>
+                        {{ option_4_name }}
+                      </div>
+                    </label>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="prev-next-btn-wrapper">
+                {% if forloop.index != 1 %}
+                  <button class="prev-step active" data-open="{{ forloop.index | minus: 1 }}">Prev</button>
+                {% else %}
+                  <button class="prev-step active" disabled>Prev</button>
+                {% endif %}
+                <button class="next-step">Next</button>
+              </div>
+            </div>
+          {% else %}
+            {{ block.type }}
+        {% endcase %}
+      {% endfor %}
+
+      <div id="quiz-result" class="quiz-step quizz-results">
+        {% if section.settings.qr_heading != blank %}
+          <h3>{{ section.settings.qr_heading }}</h3>
+        {% endif %}
+        {% assign products = 'play2video-all-in-1-wireless-carplay-android-auto-adapter,carplay-car-screen,u2-air-pro,a2air-pro,ottoaibox-p3-carplay-ai-box,ottoaibox-i3,car-tv-mate-hdml-multimedia-wireless-carplay-adapter,car-tv-mate-pro-universal-wireless-carplay-android-auto'
+          | split: ','
+        %}
+        {% for handle in products %}
+          {% assign product = all_products[handle] %}
+          <div class="product-card" id="product-{{ handle }}" style="display: none;">
+            {% if product.title != blank %}
+              <a href="{{product.url }}" class="pro-img">
+              <img
+                src="{{ product.featured_image | img_url: 'master' }}"
+                alt="{{ product.title }}"
+                class="product-image"
+              >
+              </a>
+              <div class="product-info">
+              <a href="{{product.url }}"><h4>{{ product.title }}</h4></a>
+                {% comment %}
+                  <p>{{ product.description }}</p>
+                {% endcomment %}
+                <div class="result_price">
+                  <p>{{ product.price | money }}</p>
+                  <span>{{ product.compare_at_price | money }}</span>
+                </div>
+                {% comment %}
+                  <a href="/cart/add?id={{ product.variants.first.id }}" class="btn add-to-cart">Add to Cart</a>
+                  <a href="/products/{{ product.handle }}" class="btn buy-now">Buy Now</a>
+                {% endcomment %}
+      
+                <div class="essentials_product_cta kik_buttons_c">
+                  {% if product.available %}
+                    {%- assign quick_add_label = 'Add To Cart'-%}
+
+                    {%- if product.variants.size == 1 and product.selling_plan_groups.size == 0 -%}
+                      {%- form 'product', product, is: 'product-form' -%}
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+                        <div class="pointer-fine:hidden">
+                          <button type="submit" is="custom-button" class="product-card__mobile-quick-buy-button" aria-label="{{ quick_add_label | escape }}">
+                            {%- render 'icon' with 'quick-buy-cart' -%}
+                          </button>
+                        </div>
+          
+                        <div class="pointer-coarse:hidden">
+                          {%- render 'button', type: 'submit', content: quick_add_label -%}
+                        </div>
+                      {%- endform -%}
+                    {%- else -%}
+                      {%- capture quick_buy_id -%}quick-buy-{{ section.id }}-{{ product.id }}{%- endcapture -%}
+          
+                      <div class="pointer-fine:hidden">
+                        <button type="button" aria-controls="{{ quick_buy_id }}" aria-expanded="false" aria-label="{{ quick_add_label | escape }}" is="custom-button" class="product-card__mobile-quick-buy-button">
+                          {%- render 'icon' with 'quick-buy-cart' -%}
+                        </button>
+                      </div>
+          
+                      <div class="pointer-coarse:hidden">
+                        {%- render 'button', content: quick_add_label, aria_controls: quick_buy_id -%}
+                      </div>
+          
+                      <quick-buy-drawer id="{{ quick_buy_id }}" header-bordered open-from="bottom" handle="{{ product.handle }}?variant={{ product.selected_or_first_available_variant.id }}" role="region" aria-live="polite" class="quick-buy-drawer drawer">
+                        {%- comment -%}Quick buy content is filled on demand for performance reasons {%- endcomment -%}
+                      </quick-buy-drawer>
+                    {%- endif -%}    
+                  {% endif %}
+                  <form method="POST" action="/cart/add">
+                    <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="return_to" value="/checkout">
+                    <button type="submit" class="essentials_btn kik_buy_btn">Buy Now</button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                      <path d="M11.6625 10.2529C12.225 10.2529 12.72 9.94543 12.975 9.48043L15.66 4.61293C15.7232 4.49925 15.7556 4.37103 15.7541 4.24097C15.7525 4.11091 15.717 3.98351 15.6511 3.87138C15.5852 3.75924 15.4911 3.66627 15.3783 3.60164C15.2654 3.53702 15.1376 3.50299 15.0075 3.50293H3.9075L3.2025 2.00293H0.75V3.50293H2.25L4.95 9.19543L3.9375 11.0254C3.39 12.0304 4.11 13.2529 5.25 13.2529H14.25V11.7529H5.25L6.075 10.2529H11.6625ZM4.62 5.00293H13.7325L11.6625 8.75293H6.3975L4.62 5.00293ZM5.25 14.0029C4.425 14.0029 3.7575 14.6779 3.7575 15.5029C3.7575 16.3279 4.425 17.0029 5.25 17.0029C6.075 17.0029 6.75 16.3279 6.75 15.5029C6.75 14.6779 6.075 14.0029 5.25 14.0029ZM12.75 14.0029C11.925 14.0029 11.2575 14.6779 11.2575 15.5029C11.2575 16.3279 11.925 17.0029 12.75 17.0029C13.575 17.0029 14.25 16.3279 14.25 15.5029C14.25 14.6779 13.575 14.0029 12.75 14.0029Z" fill="white"/>
+                    </svg>
+                  </form> 
+                </div>
+              </div>
+            {% else %}
+              {% if section.settings.default_result_product != blank %}
+                {% assign product = section.settings.default_result_product %}
+                <a href="{{product.url }}" class="pro-img">
+                <img
+                  src="{{ product.featured_image | img_url: 'master' }}"
+                  alt="{{ product.title }}"
+                  class="product-image"
+                >
+                </a>
+                <div class="product-info">
+                  <a href="{{product.url }}"><h4>{{ product.title }}</h4></a>
+                  {% comment %}
+                    <p>{{ product.description }}</p>
+                  {% endcomment %}
+                  <div class="result_price">
+                    <p>{{ product.price | money }}</p>
+                    <span>{{ product.compare_at_price | money }}</span>
+                  </div>
+                 
+                  {% comment %}
+                    <a href="/cart/add?id={{ product.variants.first.id }}" class="btn add-to-cart">Add to Cart</a>
+                    <a href="/products/{{ product.handle }}" class="btn buy-now">Buy Now</a>
+                  {% endcomment %}
+                  <div class="essentials_product_cta kik_buttons_c">
+                    {% if product.available %}
+                      {%- assign quick_add_label = 'Add To Cart'-%}
+
+                      {%- if product.variants.size == 1 and product.selling_plan_groups.size == 0 -%}
+                        {%- form 'product', product, is: 'product-form' -%}
+                          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            
+                          <div class="pointer-fine:hidden">
+                            <button type="submit" is="custom-button" class="product-card__mobile-quick-buy-button" aria-label="{{ quick_add_label | escape }}">
+                              {%- render 'icon' with 'quick-buy-cart' -%}
+                            </button>
+                          </div>
+            
+                          <div class="pointer-coarse:hidden">
+                            {%- render 'button', type: 'submit', content: quick_add_label -%}
+                          </div>
+                        {%- endform -%}
+                      {%- else -%}
+                        {%- capture quick_buy_id -%}quick-buy-{{ section.id }}-{{ product.id }}{%- endcapture -%}
+            
+                        <div class="pointer-fine:hidden">
+                          <button type="button" aria-controls="{{ quick_buy_id }}" aria-expanded="false" aria-label="{{ quick_add_label | escape }}" is="custom-button" class="product-card__mobile-quick-buy-button">
+                            {%- render 'icon' with 'quick-buy-cart' -%}
+                          </button>
+                        </div>
+            
+                        <div class="pointer-coarse:hidden">
+                          {%- render 'button', content: quick_add_label, aria_controls: quick_buy_id -%}
+                        </div>
+            
+                        <quick-buy-drawer id="{{ quick_buy_id }}" header-bordered open-from="bottom" handle="{{ product.handle }}?variant={{ product.selected_or_first_available_variant.id }}" role="region" aria-live="polite" class="quick-buy-drawer drawer">
+                          {%- comment -%}Quick buy content is filled on demand for performance reasons {%- endcomment -%}
+                        </quick-buy-drawer>
+                      {%- endif -%}    
+                    {% endif %}
+                    <form method="POST" action="/cart/add">
+                      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                      <input type="hidden" name="quantity" value="1">
+                      <input type="hidden" name="return_to" value="/checkout">
+                      <button type="submit" class="essentials_btn kik_buy_btn">Buy Now</button>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
+                        <path d="M11.6625 10.2529C12.225 10.2529 12.72 9.94543 12.975 9.48043L15.66 4.61293C15.7232 4.49925 15.7556 4.37103 15.7541 4.24097C15.7525 4.11091 15.717 3.98351 15.6511 3.87138C15.5852 3.75924 15.4911 3.66627 15.3783 3.60164C15.2654 3.53702 15.1376 3.50299 15.0075 3.50293H3.9075L3.2025 2.00293H0.75V3.50293H2.25L4.95 9.19543L3.9375 11.0254C3.39 12.0304 4.11 13.2529 5.25 13.2529H14.25V11.7529H5.25L6.075 10.2529H11.6625ZM4.62 5.00293H13.7325L11.6625 8.75293H6.3975L4.62 5.00293ZM5.25 14.0029C4.425 14.0029 3.7575 14.6779 3.7575 15.5029C3.7575 16.3279 4.425 17.0029 5.25 17.0029C6.075 17.0029 6.75 16.3279 6.75 15.5029C6.75 14.6779 6.075 14.0029 5.25 14.0029ZM12.75 14.0029C11.925 14.0029 11.2575 14.6779 11.2575 15.5029C11.2575 16.3279 11.925 17.0029 12.75 17.0029C13.575 17.0029 14.25 16.3279 14.25 15.5029C14.25 14.6779 13.575 14.0029 12.75 14.0029Z" fill="white"/>
+                      </svg>
+                    </form> 
+                  </div>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+        <div class="repeat-quizz">
+          {% render 'repeat-icon' %}
+          <p>Take the quiz again</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const steps = document.querySelectorAll('.quiz-step');
+    const popup = document.getElementById('quiz-popup');
+    const recommendedProduct = document.getElementById('recommended-product');
+    const productLink = document.getElementById('product-link');
+    const closeBtn = document.querySelector('.close-quiz');
+    const overlay = document.querySelector('.quiz-overlay');
+    const repeat_quizz = document.querySelector('.repeat-quizz');
+    let currentStep = 0;
+    let answers = {};
+
+    function showStep(stepIndex) {
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index === stepIndex);
+      });
+    }
+
+    /*
+  //fetching cars models
+  let url = 'https://cdn.shopify.com/s/files/1/0268/6592/6342/files/jsonlist.json?v=1733791927';
+
+fetch(url)
+.then(res => res.json())
+.then(out => {
+for (const x in out) {
+  console.log(out[x]);
+  for (const y in out[x].models) {
+  //console.log(out[x].models, out[x].models[y].model);
+  document.querySelector(".custom_names_data").innerHTML += "<p>" + out[x].brand +' '+ out[x].models[y].model + ' '+ out[x].models[y].year +"</p>"
+}
+}
+
+    }
+)
+.catch(err => console.log(err));
+
+
+*/
+    //step 3 select functions
+
+    document.querySelector('.cars_names_title input').addEventListener('focus', function () {
+      if (answers.phone === 'Android Phone') {
+        document.querySelector('.android_names_data').classList.add('active');
+      } else {
+        document.querySelector('.custom_names_data').classList.add('active');
+      }
+    });
+    /*document.querySelector(".cars_names_title input").addEventListener("focusout",function(){
+  setTimeout(function(){
+    document.querySelector(".custom_names_data").classList.remove('active');
+    document.querySelector(".android_names_data").classList.remove('active');
+  },150)
+})*/
+    document.querySelector('.step-4-bk').addEventListener('click', function () {
+      setTimeout(function () {
+        document.querySelector('.custom_names_data').classList.remove('active');
+        document.querySelector('.android_names_data').classList.remove('active');
+      }, 150);
+    });
+    document.querySelectorAll('.custom_names_data p:not(.last_other)').forEach(function (item) {
+      item.addEventListener('click', function () {
+        document.querySelector('.cars_names_title input').value = item.innerHTML;
+        document.querySelector('.custom_names_data').classList.remove('active');
+        document.querySelector('#carModel_listed').checked = true;
+      });
+    });
+
+    document.querySelectorAll('.android_names_data p:not(.last_other)').forEach(function (item) {
+      item.addEventListener('click', function () {
+        document.querySelector('.cars_names_title input').value = item.innerHTML;
+        document.querySelector('.android_names_data').classList.remove('active');
+        document.querySelector('#carModel_listed').checked = true;
+      });
+    });
+
+    document.querySelector('.cars_names_title input').addEventListener('input', function () {
+      let input_element = this;
+      let elem_found = false;
+      if (answers.phone === 'Android Phone') {
+        document.querySelectorAll('.android_names_data p').forEach(function (item) {
+          if (item.innerHTML.toLowerCase().includes(input_element.value.toLowerCase())) {
+            item.style.display = 'block';
+            elem_found = true;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        if (!elem_found) {
+          document.querySelector('.android_names_data .last_other').style.display = 'block';
+          document.querySelector('.android_names_data .last_other span').innerHTML = input_element.value;
+        } else {
+          document.querySelector('.android_names_data .last_other').style.display = 'none';
+        }
+      } else {
+        document.querySelectorAll('.custom_names_data p').forEach(function (item) {
+          if (item.innerHTML.toLowerCase().includes(input_element.value.toLowerCase())) {
+            item.style.display = 'block';
+            elem_found = true;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        if (!elem_found) {
+          document.querySelector('.custom_names_data .last_other').style.display = 'block';
+          document.querySelector('.custom_names_data .last_other span').innerHTML = input_element.value;
+        } else {
+          document.querySelector('.custom_names_data .last_other').style.display = 'none';
+        }
+      }
+
+      if (input_element.value != '') {
+        document.querySelector('#carModel_listed').checked = true;
+      } else {
+        document.querySelector('#carModel_listed').checked = false;
+      }
+    });
+
+    document.querySelector('.no_cars_tab p').addEventListener('click', function () {
+      document.querySelector('#carModel_not_listed').checked = true;
+      setTimeout(function () {
+        document.querySelector('.no_cars_tab p').closest('.quiz-step').querySelector('.next-step').click();
+      }, 50);
+    });
+    // function getRecommendation() {
+    //   if (answers.carSupport === "No") {
+    //     return { name: "CarPlay Car Screen", link: "/products/carplay-screen" };
+    //   } else if (answers.carYear === "Before 2016") {
+    //     return { name: "CarPlay Car Screen", link: "/products/carplay-screen" };
+    //   } else if (answers.carYear === "BMW") {
+    //     return { name: "OttoAiBox i3 BMW Android 13.0 AI Box", link: "/products/ottoai-bmw" };
+    //   } else if (answers.features === "Wireless") {
+    //     return answers.phone === "iPhone"
+    //       ? { name: "U2air Pro Wireless CarPlay Adapter", link: "/products/u2air" }
+    //       : { name: "A2air Pro Wireless Android Auto Adapter", link: "/products/a2air" };
+    //   } else if (answers.features === "Streaming") {
+    //     return { name: "Wireless 3-in-1 Adapter with YouTube/Netflix", link: "/products/3-in-1-adapter" };
+    //   } else if (answers.features === "HDMI") {
+    //     //return { name: "Car TV Mate Pro", link: "/products/car-tv-mate-pro" };
+    //      if (answers.phone === "iPhone") {
+    //       return { name: "Car TV Mate Pro - HDMI Multimedia", link: "/products/car-tv-mate-pro" };
+    //     } else if (answers.phone === "Android Phone") {
+    //       return { name: "Car TV Mate Pro Universal - HDMI Multimedia", link: "/products/car-tv-mate-universal" };
+    //     }
+    //   } else {
+    //     return { name: "OttAiBox P3 Android 12.0 AI Box", link: "/products/ottaibox" };
+    //   }
+    // }
+
+    function getRecommendation() {
+      let handle;
+
+      if (answers.carSupport === 'No' || answers.carYear === 'Before 2016') {
+        handle = 'carplay-car-screen';
+      } else if (answers.carModel === 'I don’t see me my car here') {
+        handle = 'carplay-car-screen';
+      } else if (answers.carYear === 'BMW') {
+        handle = 'ottoaibox-i3';
+      } else if (answers.features === 'Wireless') {
+        handle = answers.phone === 'iPhone' ? 'u2-air-pro' : 'a2air-pro';
+      } else if (answers.features === 'Streaming') {
+        handle = 'play2video-all-in-1-wireless-carplay-android-auto-adapter';
+      } else if (answers.features === 'Advanced') {
+        handle = 'ottoaibox-p3-carplay-ai-box';
+      } else if (answers.features === 'HDMI') {
+        handle =
+          answers.phone === 'iPhone'
+            ? 'car-tv-mate-hdml-multimedia-wireless-carplay-adapter'
+            : 'car-tv-mate-pro-universal-wireless-carplay-android-auto';
+      } else {
+        handle = 'ottoaibox-p3-carplay-ai-box';
+      }
+
+      return { handle }; // Return the recommended product handle
+    }
+
+    document.querySelectorAll('.prev-step.active').forEach((button) => {
+      button.addEventListener('click', function () {
+        console.log(button.dataset.open);
+        currentStep = button.dataset.open - 1;
+        showStep(button.dataset.open - 1);
+      });
+    });
+
+    document.querySelectorAll('.next-step').forEach((button) => {
+      button.addEventListener('click', function () {
+        const currentStepElement = steps[currentStep];
+        const selectedOption = currentStepElement.querySelector('input:checked');
+
+        if (!selectedOption) {
+          alert('Please select an option to proceed.');
+          return;
+        }
+
+        const answer = selectedOption.value;
+if (currentStepElement.id === 'quiz-step-1') answers.phone = answer;
+        if (answers.phone === 'Both') {
+          document.querySelector('.step-wireless').style.display = 'none';
+        } else {
+          document.querySelector('.step-wireless').style.display = 'block';
+        }
+        if (currentStepElement.id === 'quiz-step-2') {
+          answers.carSupport = answer;
+          if (answer === 'Yes') {
+            currentStep = 4; // Skip Steps 3 and 4, go to Step 5
+            document.querySelector('#quiz-step-5 .prev-step').setAttribute('data-open', '2');
+            showStep(currentStep);
+            return;
+          } else if (answer === 'No') {
+            const recommendation = getRecommendation(); // Get the recommended product's handle
+            console.log(recommendation);
+            // Show the recommended product card by handle
+            const allProducts = document.querySelectorAll('.product-card');
+            allProducts.forEach((product) => (product.style.display = 'none')); // Hide all product cards
+
+            const recommendedProduct = document.getElementById(`product-${recommendation.handle}`);
+            if (recommendedProduct) {
+              recommendedProduct.style.display = 'flex'; // Show the recommended product card
+            }
+
+            showStep(steps.length - 1); // Proceed to the result step to display the recommendation
+            return;
+          } else if (answer === "I don't know") {
+            currentStep = 2; // Go to Step 3
+            showStep(currentStep);
+            return;
+          }
+        }
+
+        // if (currentStepElement.id === "quiz-step-3") {
+        //   answers.carYear = answer;
+        //   if (answer === "Before 2016" || answer === "BMW") {
+        //     const recommendation = getRecommendation();
+        //     recommendedProduct.textContent = recommendation.name;
+        //     productLink.href = recommendation.link;
+        //     showStep(steps.length - 1); // Show result step
+        //     return;
+        //   }
+        // }
+
+        if (currentStepElement.id === 'quiz-step-3') {
+          answers.carYear = answer; // Capture the selected car year
+
+          if (answer === 'Before 2016' || answer === 'BMW') {
+            const recommendation = getRecommendation(); // Get the recommended product's handle
+
+            // Hide all product cards
+            const allProducts = document.querySelectorAll('.product-card');
+            allProducts.forEach((product) => (product.style.display = 'none'));
+
+            // Show the recommended product card
+            const recommendedProduct = document.getElementById(`product-${recommendation.handle}`);
+            if (recommendedProduct) {
+              recommendedProduct.style.display = 'flex'; // Display the recommended product
+            }
+
+            showStep(steps.length - 1); // Proceed to the result step
+            return;
+          }
+        }
+
+        //if (currentStepElement.id === "quiz-step-4") answers.carModel = answer;
+
+        if (currentStepElement.id === 'quiz-step-4') {
+          answers.carModel = answer; // Capture the selected car model
+          console.log('car model answer is' + answer);
+          if (answer === 'I don’t see me my car here') {
+            const recommendation = getRecommendation(); // Get the recommended product's handle
+
+            // Hide all product cards
+            const allProducts = document.querySelectorAll('.product-card');
+            allProducts.forEach((product) => (product.style.display = 'none'));
+
+            // Show the recommended product card
+            const recommendedProduct = document.getElementById(`product-${recommendation.handle}`);
+            if (recommendedProduct) {
+              recommendedProduct.style.display = 'flex'; // Display the recommended product
+            }
+
+            showStep(steps.length - 1); // Proceed to the result step
+            return;
+          }
+          currentStep = 4; // Skip Steps 3 and 4, go to Step 5
+          showStep(currentStep);
+          return;
+        }
+
+        // if (currentStepElement.id === "quiz-step-5") {
+        //   answers.features = answer;
+        //   const recommendation = getRecommendation();
+        //   recommendedProduct.textContent = recommendation.name;
+        //   productLink.href = recommendation.link;
+        //   showStep(steps.length - 1); // Show result step
+        //   return;
+        // }
+
+        if (currentStepElement.id === 'quiz-step-5') {
+          answers.features = answer; // Capture the selected feature
+          const recommendation = getRecommendation(); // Get the recommended product's handle
+
+          // Hide all product cards
+          const allProducts = document.querySelectorAll('.product-card');
+          allProducts.forEach((product) => (product.style.display = 'none'));
+
+          // Show the recommended product card
+          const recommendedProduct = document.getElementById(`product-${recommendation.handle}`);
+          if (recommendedProduct) {
+            recommendedProduct.style.display = 'flex'; // Display the recommended product
+          }
+
+          // Proceed to the result step
+          showStep(steps.length - 1);
+          return;
+        } 
+        currentStep++;
+        showStep(currentStep);
+      });
+    });
+
+    closeBtn.addEventListener('click', function () {
+      popup.classList.add('hidden');
+    });
+
+    overlay.addEventListener('click', function () {
+      popup.classList.add('hidden');
+    });
+    repeat_quizz.addEventListener('click', function () {
+      showStep(0);
+      currentStep = 0;
+      answers = {};
+    });
+
+    document.querySelector('#open-quiz').addEventListener('click', function () {
+      popup.classList.remove('hidden');
+      showStep(0);
+      currentStep = 0;
+      answers = {};
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Quiz Popup",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Button Label",
+      "id": "button_label",
+      "default": "Take a Quiz",
+      "placeholder": "Take a Quiz"
+    },
+    {
+      "type": "header",
+      "content": "Quiz Result"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "qr_heading",
+      "default": "Recommended For You"
+    },
+    {
+      "type": "product_list",
+      "label": "Result Product List",
+      "id": "result_product_list",
+      "info": "Please add all product here you want to add as product result."
+    },
+    {
+      "type": "product",
+      "label": "Default Result Product",
+      "id": "default_result_product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step_1",
+      "name": "Option with Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_heading",
+          "label": "Step Heading",
+          "default": "What kind of phone do you use?"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_1_image",
+          "label": "Option 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_category",
+          "label": "Option Category",
+          "default": "phone",
+          "info": "For ex : phone,carSupport,cartYear,carModel,features"
+        },
+        {
+          "type": "text",
+          "id": "option_1_name",
+          "label": "Option 1 Name",
+          "default": "iPhone"
+        },
+        {
+          "type": "text",
+          "id": "option_1_value",
+          "label": "Option 1 Value",
+          "default": "iPhone"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_2_image",
+          "label": "Option 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_2_name",
+          "label": "Option 2 Name",
+          "default": "Android Phone"
+        },
+        {
+          "type": "text",
+          "id": "option_2_value",
+          "label": "Option 2 Value",
+          "default": "Android Phone"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_3_image",
+          "label": "Option 3 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_3_name",
+          "label": "Option 3 Name",
+          "default": "Both iPhone and Android Phone"
+        },
+        {
+          "type": "text",
+          "id": "option_3_value",
+          "label": "Option 3 Value",
+          "default": "Both"
+        }
+      ]
+    },
+    {
+      "type": "step_2",
+      "name": "Option Without Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_heading",
+          "label": "Heading Text",
+          "default": "Does your car already support CarPlay or Android Auto?"
+        },
+        {
+          "type": "image_picker",
+          "id": "step_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "owi_option_category",
+          "label": "Option Category",
+          "default": "phone",
+          "info": "For ex : phone,carSupport,cartYear,carModel,features"
+        },
+        {
+          "type": "text",
+          "id": "option_category",
+          "label": "Option Category",
+          "default": "phone",
+          "info": "For ex : phone,carSupport,cartYear,carModel,features"
+        },
+        {
+          "type": "text",
+          "id": "option_1_name",
+          "label": "Option 1 Name",
+          "default": "Yes"
+        },
+        {
+          "type": "text",
+          "id": "option_1_value",
+          "label": "Option 1 Value",
+          "default": "Yes"
+        },
+        {
+          "type": "text",
+          "id": "option_2_name",
+          "label": "Option 2 Name",
+          "default": "No"
+        },
+        {
+          "type": "text",
+          "id": "option_2_value",
+          "label": "Option 2 Value",
+          "default": "No"
+        },
+        {
+          "type": "text",
+          "id": "option_3_name",
+          "label": "Option 3 Name",
+          "default": "I don't know"
+        },
+        {
+          "type": "text",
+          "id": "option_3_value",
+          "label": "Option 3 Value",
+          "default": "I don't know"
+        }
+      ]
+    },
+    {
+      "type": "step_4",
+      "name": "Option Select",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_heading",
+          "label": "Heading Text",
+          "default": "Does your car already support CarPlay or Android Auto?"
+        },
+        {
+          "type": "text",
+          "id": "step_option_placeholder",
+          "label": "Select Option Placeholder",
+          "default": "Type or select your car brand & model here."
+        },
+        {
+          "type": "text",
+          "id": "option_category",
+          "label": "Option Category",
+          "default": "phone",
+          "info": "For ex : phone,carSupport,cartYear,carModel,features"
+        },
+        {
+          "type": "text",
+          "id": "option_1_name",
+          "label": "Option 1 Name",
+          "default": "Yes"
+        },
+        {
+          "type": "text",
+          "id": "option_1_value",
+          "label": "Option 1 Value",
+          "default": "Yes"
+        },
+        {
+          "type": "text",
+          "id": "option_2_name",
+          "label": "Option 2 Name",
+          "default": "No"
+        },
+        {
+          "type": "text",
+          "id": "option_2_value",
+          "label": "Option 2 Value",
+          "default": "No"
+        }
+      ]
+    },
+    {
+      "type": "step_5",
+      "name": "Feature Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_heading",
+          "label": "Step Heading",
+          "default": "What kind of phone do you use?"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_1_image",
+          "label": "Option 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_category",
+          "label": "Option Category",
+          "default": "phone",
+          "info": "For ex : phone,carSupport,cartYear,carModel,features"
+        },
+        {
+          "type": "text",
+          "id": "option_1_name",
+          "label": "Option 1 Name",
+          "default": "iPhone"
+        },
+        {
+          "type": "text",
+          "id": "option_1_value",
+          "label": "Option 1 Value",
+          "default": "iPhone"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_2_image",
+          "label": "Option 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_2_name",
+          "label": "Option 2 Name",
+          "default": "Android Phone"
+        },
+        {
+          "type": "text",
+          "id": "option_2_value",
+          "label": "Option 2 Value",
+          "default": "Android Phone"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_3_image",
+          "label": "Option 3 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_3_name",
+          "label": "Option 3 Name",
+          "default": "Both iPhone and Android Phone"
+        },
+        {
+          "type": "text",
+          "id": "option_3_value",
+          "label": "Option 3 Value",
+          "default": "Both"
+        },
+        {
+          "type": "image_picker",
+          "id": "option_4_image",
+          "label": "Option 4 Image"
+        },
+        {
+          "type": "text",
+          "id": "option_4_name",
+          "label": "Option 4 Name",
+          "default": "Both iPhone and Android Phone"
+        },
+        {
+          "type": "text",
+          "id": "option_4_value",
+          "label": "Option 4 Value",
+          "default": "Both"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiz Popup (Dynamic)"
+    }
+  ]
+}
+{% endschema %}

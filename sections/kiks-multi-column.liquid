@@ -1,0 +1,707 @@
+<!-- sections/our_mission.liquid -->
+{{ 'section.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+  assign se_blocks = section.blocks
+  assign stt_layout = se_stts.layout
+  assign stt_image_bg = se_stts.image_bg
+  if stt_layout == 't4s-se-container'
+    assign html_layout = '<div class="t4s-container">__</div></div>' | split: '__'
+  elsif stt_layout == 't4s-container-wrap'
+    assign html_layout = '<div class="t4s-container">__</div>' | split: '__'
+  else
+    assign html_layout = '__' | split: '__'
+  endif
+  assign t4s_se_class = 't4s_nt_se_' | append: sid
+  if se_stts.use_cus_css and se_stts.code_cus_css != blank
+    render 'se_cus_css', code_cus_css: se_stts.code_cus_css, t4s_se_class: t4s_se_class
+  endif
+-%}
+{%- assign section_identifier = '#shopify-section-' | append: section.id -%}
+{%- assign padding_top = section.settings.padding_top | append: 'px' -%}
+{%- assign padding_bottom = section.settings.padding_bottom | append: 'px' -%}
+
+{%- assign padding_mobile_top = section.settings.padding_top_mob | append: 'px' -%}
+{%- assign padding_mobile_bottom = section.settings.padding_bottom_mob | append: 'px' -%}
+{% assign textColor = section.settings.cl_text %}
+{% style %}
+  {{ section_identifier }} .kiks-column-container{
+     padding-top: {{padding_top}};
+     padding-bottom: {{padding_bottom}};
+   }
+   {{ section_identifier }} .kiks-column-container .t4s-col-item {
+     margin-top: 0;
+     color: {{ textColor }};
+   }
+
+     .t4s-our-mission h3{
+       margin-bottom:16px;
+       font-size: 34px;
+       line-height:54px;
+     }
+
+     .t4s-our-mission p{
+       margin:0px;
+       margin-bottom:10px;
+       font-size:21px;
+       line-height:27px;
+     }
+     @media (max-width:767.98px){
+          .t4s-our-mission h3{
+       font-size: 24px;
+       line-height:1.2;
+     }
+
+     .t4s-our-mission p{
+       font-size:18px;
+       line-height:1.5;
+     }
+     }
+  @media only screen and (max-width: 430px) {
+     {{ section_identifier }} .kiks-column-container {
+       padding-top: {{ padding_mobile_top }};
+       padding-bottom: {{ padding_mobile_bottom }};
+     }
+   }
+{% endstyle %}
+<div
+  class="t4s-section-inner c_multi_c {{t4s_se_class}} t4s_nt_se_{{sid}} {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 't4s-se-container' %} t4s-has-imgbg lazyloadt4s{% endif %}"
+  {% if stt_image_bg != blank and stt_layout != 't4s-se-container' %}
+    data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto" data-optimumx="1.5"
+  {% endif %}
+  {% render 'section_style', se_stts: se_stts -%}
+>
+  {{- html_layout[0] -}}
+  {%- if stt_layout == 't4s-se-container' -%}
+    <div
+      class="t4s-container-inner{% if stt_image_bg != blank %} t4s-has-imgbg lazyloadt4s{% endif %}"
+      {% if stt_image_bg != blank %}
+        data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto" data-optimumx="1.5"
+      {% endif %}
+    >
+  {% endif -%}
+  {%- render 'section_tophead', se_stts: se_stts -%}
+  <div class="t4s-our-mission__list kiks-column-container t4s-row t4s-gx-md-{{se_stts.space_h_item}} t4s-gy-md-{{se_stts.space_v_item}} t4s-gx-{{se_stts.space_h_item_mb}} t4s-gy-{{se_stts.space_v_item_mb}}">
+    {%- for block in se_blocks -%}
+      {%- assign bk_stts = block.settings -%}
+      {%- assign button_style = bk_stts.button_style -%}
+      {% assign textColor = section.settings.cl_text %}
+      <div class="t4s-col-item t4s-col-md-{{bk_stts.col_tb}} t4s-col-{{bk_stts.col_mb}} t4s-text-{{bk_stts.text_align}}">
+        <h3 style="color: {{ textColor }};">{{ bk_stts.heading }}</h3>
+        {% comment %} <p style="color: {{ textColor }};">{{bk_stts.content}}</p> {% endcomment %}
+        <div class="content_richtext ">
+          {{ bk_stts.content_richtext }}
+        </div>
+        {% if bk_stts.read_more %}{% endif %}
+        <a
+          style="color:#1980FA;"
+          href="{% if bk_stts.read_more %}javascript:void(0);{% else %}{{bk_stts.button_link}}{% endif %}"
+          target="{{bk_stts.target_link}}"
+          class="{% if bk_stts.read_more %}read-more-js {% endif %}t4s-btn t4s-btn-custom t4s-pe-auto t4s-fnt-fm-{{bk_stts.fontf}} t4s-btn-style-{{button_style}} {% if button_style == 'default' or button_style == 'outline'%}t4s-btn-effect-{{bk_stts.button_effect}}{% endif %}"
+          id="b_{{block.id}}"
+          {{ block.shopify_attributes }}
+          {%- render 'bk_cus_style', type: 'custom_button', bk_stts: bk_stts, ani_delay: ani_delay -%}
+        >
+          {{- bk_stts.button_text -}}
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+  {{- html_layout[1] -}}
+</div>
+
+{% if bk_stts.read_more %}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const readMoreBtn = document.querySelector('a.read-more-js');
+      const contentRichtext = document.querySelector('.content_richtext');
+
+      if (!readMoreBtn || !contentRichtext) {
+        console.error('Either the button or the content container is missing.');
+        return;
+      }
+
+      // Count <p> and <ul> tags inside .content_richtext
+      const paragraphAndUlCount = contentRichtext.querySelectorAll('p, ul').length;
+
+      // Toggle the visibility of the readMoreBtn based on the count
+      if (paragraphAndUlCount <= 3) {
+        readMoreBtn.style.display = 'none'; // Hide the button if 3 or fewer elements
+        return; // No need to process further if the button is hidden
+      } else {
+        readMoreBtn.style.display = 'inline-block'; // Ensure the button is visible
+      }
+
+      const fullHTML = contentRichtext.innerHTML.trim(); // Save the full HTML content, including tags
+      const truncatedHTML = fullHTML.substring(0, 500) + '...'; // Adjust the character limit (500) as needed
+
+      let isTruncated = true; // Keep track of the current state
+
+      // Initially set the truncated text
+      contentRichtext.innerHTML = truncatedHTML;
+
+      readMoreBtn.addEventListener('click', () => {
+        if (isTruncated) {
+          contentRichtext.innerHTML = fullHTML; // Restore full HTML with tags
+          readMoreBtn.textContent = 'Read Less';
+        } else {
+          contentRichtext.innerHTML = truncatedHTML; // Show truncated HTML with tags intact
+          readMoreBtn.textContent = 'Read More';
+        }
+        isTruncated = !isTruncated; // Toggle the state
+      });
+    });
+  </script>
+{% endif %}
+{%- schema -%}
+{
+  "name": "Kiks Multi Column",
+  "tag": "section",
+  "class": "t4s-section t4s-section-all t4s-our-mission kiks-multi-column",
+  "settings": [
+    {
+      "type": "header",
+      "content": "1. Heading options"
+    },
+    {
+      "type": "select",
+      "id": "design_heading",
+      "label": "+ Design heading",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "Design 01"
+        },
+        {
+          "value": "2",
+          "label": "Design 02"
+        },
+        {
+          "value": "3",
+          "label": "Design 03"
+        },
+        {
+          "value": "4",
+          "label": "Design 04"
+        },
+        {
+          "value": "5",
+          "label": "Design 05"
+        },
+        {
+          "value": "6",
+          "label": "Design 06 (width line-awesome)"
+        },
+        {
+          "value": "7",
+          "label": "Design 07"
+        },
+        {
+          "value": "8",
+          "label": "Design 08"
+        },
+        {
+          "value": "9",
+          "label": "Design 09"
+        },
+        {
+          "value": "10",
+          "label": "Design 10"
+        },
+        {
+          "value": "11",
+          "label": "Design 11"
+        },
+        {
+          "value": "12",
+          "label": "Design 12"
+        },
+        {
+          "value": "13",
+          "label": "Design 13"
+        },
+        {
+          "value": "14",
+          "label": "Design 14"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "+ Heading align",
+      "default": "t4s-text-center",
+      "options": [
+        {
+          "value": "t4s-text-start",
+          "label": "Left"
+        },
+        {
+          "value": "t4s-text-center",
+          "label": "Center"
+        },
+        {
+          "value": "t4s-text-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "top_heading",
+      "label": "+ Heading"
+    },
+    {
+      "type": "text",
+      "id": "icon_heading",
+      "label": "Enter a name icon [LineAwesome](https://kalles.the4.co/font-lineawesome/)",
+      "info": "Only used for design 6",
+      "default": "las la-gem"
+    },
+    {
+      "type": "textarea",
+      "id": "top_subheading",
+      "label": "+ Subheading"
+    },
+    {
+      "type": "number",
+      "id": "tophead_mb",
+      "label": "+ Space bottom (px)",
+      "info": "The vertical spacing between heading and content.",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "2. General options"
+    },
+    {
+      "type": "select",
+      "id": "space_h_item",
+      "options": [
+        {
+          "value": "0",
+          "label": "0"
+        },
+        {
+          "value": "2",
+          "label": "2px"
+        },
+        {
+          "value": "4",
+          "label": "4px"
+        },
+        {
+          "value": "6",
+          "label": "6px"
+        },
+        {
+          "value": "8",
+          "label": "8px"
+        },
+        {
+          "value": "10",
+          "label": "10px"
+        },
+        {
+          "value": "20",
+          "label": "20px"
+        },
+        {
+          "value": "30",
+          "label": "30px"
+        }
+      ],
+      "label": "Space horizontal between items",
+      "default": "30"
+    },
+    {
+      "type": "select",
+      "id": "space_v_item",
+      "options": [
+        {
+          "value": "0",
+          "label": "0"
+        },
+        {
+          "value": "2",
+          "label": "2px"
+        },
+        {
+          "value": "4",
+          "label": "4px"
+        },
+        {
+          "value": "6",
+          "label": "6px"
+        },
+        {
+          "value": "8",
+          "label": "8px"
+        },
+        {
+          "value": "10",
+          "label": "10px"
+        },
+        {
+          "value": "20",
+          "label": "20px"
+        },
+        {
+          "value": "30",
+          "label": "30px"
+        }
+      ],
+      "label": "Space vertical vertical items",
+      "default": "30"
+    },
+    {
+      "type": "select",
+      "id": "space_h_item_mb",
+      "options": [
+        {
+          "value": "0",
+          "label": "0"
+        },
+        {
+          "value": "2",
+          "label": "2px"
+        },
+        {
+          "value": "4",
+          "label": "4px"
+        },
+        {
+          "value": "6",
+          "label": "6px"
+        },
+        {
+          "value": "8",
+          "label": "8px"
+        },
+        {
+          "value": "10",
+          "label": "10px"
+        },
+        {
+          "value": "20",
+          "label": "20px"
+        },
+        {
+          "value": "30",
+          "label": "30px"
+        }
+      ],
+      "label": "Space horizontal between items (Mobile)",
+      "default": "10"
+    },
+    {
+      "type": "select",
+      "id": "space_v_item_mb",
+      "options": [
+        {
+          "value": "0",
+          "label": "0"
+        },
+        {
+          "value": "2",
+          "label": "2px"
+        },
+        {
+          "value": "4",
+          "label": "4px"
+        },
+        {
+          "value": "6",
+          "label": "6px"
+        },
+        {
+          "value": "8",
+          "label": "8px"
+        },
+        {
+          "value": "10",
+          "label": "10px"
+        },
+        {
+          "value": "20",
+          "label": "20px"
+        },
+        {
+          "value": "30",
+          "label": "30px"
+        }
+      ],
+      "label": "Space vertical vertical items (Mobile)",
+      "default": "10"
+    },
+    {
+      "type": "header",
+      "content": "3.Design options"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "default": "t4s-container-wrap",
+      "label": "Layout",
+      "options": [
+        { "value": "t4s-se-container", "label": "Container" },
+        { "value": "t4s-container-wrap", "label": "Wrapped container" },
+        { "value": "t4s-container-fluid", "label": "Full width" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "cl_text",
+      "label": "Text Color"
+    },
+    {
+      "type": "color",
+      "id": "cl_bg",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "cl_bg_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "mg",
+      "label": "Margin",
+      "info": "Margin top, margin right, margin bottom, margin left. If you not use to blank",
+      "default": ",,50px,",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd",
+      "label": "Padding",
+      "info": "Padding top, padding right, padding bottom, padding left. If you not use to blank",
+      "placeholder": "50px,,50px,"
+    },
+    {
+      "type": "header",
+      "content": "+ Design mobile options"
+    },
+    {
+      "type": "text",
+      "id": "mg_mb",
+      "label": "Margin",
+      "default": ",,30px,",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd_mb",
+      "label": "Padding",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "header",
+      "content": "4. Custom css"
+    },
+    {
+      "id": "use_cus_css",
+      "type": "checkbox",
+      "label": "Use custom css",
+      "default": false,
+      "info": "If you want custom style for this section."
+    },
+    {
+      "id": "code_cus_css",
+      "type": "textarea",
+      "label": "Code custom css",
+      "info": "Use selector .SectionID to style css"
+    },
+    {
+      "type": "header",
+      "content": "Kikstart Spacing Settings",
+      "info": "Inner Space"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "For Mobile Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "For Mobile Padding Bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "om_item",
+      "name": "Kiks Multi Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Kiks Multi Column"
+        },
+        {
+          "type": "checkbox",
+          "id": "read_more",
+          "label": "Enable Read More and Read Less",
+          "default": true
+        },
+        {
+          "type": "richtext",
+          "id": "content_richtext",
+          "label": "Content",
+          "default": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <em>totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae</em> vitae dicta sunt explicabo nemo enim ipsam.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button label",
+          "default": "Button label",
+          "info": "If set blank will not show"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link",
+          "info": "If set blank will not show"
+        },
+        {
+          "type": "select",
+          "id": "target_link",
+          "label": "Open link in",
+          "default": "_self",
+          "options": [
+            {
+              "value": "_self",
+              "label": "Current window"
+            },
+            {
+              "value": "_blank",
+              "label": "New window"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "label": "Default",
+              "value": "default"
+            },
+            {
+              "label": "Outline",
+              "value": "outline"
+            },
+            {
+              "label": "Bordered bottom",
+              "value": "bordered"
+            },
+            {
+              "label": "Link",
+              "value": "link"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "default": "start",
+          "options": [
+            {
+              "label": "Left",
+              "value": "start"
+            },
+            {
+              "label": "Center",
+              "value": "center"
+            },
+            {
+              "label": "Right",
+              "value": "end"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "col_tb",
+          "label": "Width",
+          "default": "6",
+          "options": [
+            {
+              "value": "12",
+              "label": "100%"
+            },
+            {
+              "value": "6",
+              "label": "50%"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "col_mb",
+          "label": "Width (Tablet)",
+          "default": "6",
+          "options": [
+            {
+              "value": "12",
+              "label": "100%"
+            },
+            {
+              "value": "6",
+              "label": "50%"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kiks Multi Column",
+      "category": "homepage",
+      "blocks": [{ "type": "om_item" }, { "type": "om_item" }, { "type": "om_item" }, { "type": "om_item" }]
+    }
+  ]
+}
+{%- endschema -%}

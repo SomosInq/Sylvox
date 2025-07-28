@@ -1,0 +1,31 @@
+
+
+
+<div class="title">
+  {{ block.settings.title }}
+</div>
+
+<div class="title-with-features__items">
+  {% content_for 'blocks' %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Title with features",
+  "class": "title-with-features",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [{ "type": "_title-with-features__item" }],
+  "presets": [
+    {
+      "name": "Title with features"
+    }
+  ]
+}
+{% endschema %}

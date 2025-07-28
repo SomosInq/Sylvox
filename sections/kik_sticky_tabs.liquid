@@ -1,0 +1,91 @@
+{{ 'kik-sticky-tabs.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .sticky_tabs{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: rgb(76,118,227);
+    background: {{ section.settings.background_color }};
+    overflow:scroll;
+  }
+   .sticky_tab_item.active{
+    background: {{ section.settings.background_color_active }};
+  }
+  #shopify-section-{{ section.id }} .sticky_tab_item a{
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .sticky_tab_item.active a{
+     color: {{ section.settings.text_color_active }};
+   }
+</style>
+
+<div class="sticky_tabs">
+  {% for block in section.blocks %}
+    <div class="sticky_tab_item {% if forloop.first %} active{% endif %}">
+      <a href="#{{ block.settings.link_to }}">{{ block.settings.title }}</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "kik sticky tabs",
+  "tag": "section",
+  "class": "sticky_tab_c",
+  "settings": [
+    {
+      "type": "color_background",
+      "id": "background_color_active",
+      "label": "Background color active",
+      "default": "linear-gradient(90deg, #0047BB, #80AFFE)"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "linear-gradient(90deg, rgba(76,118,227,1) 0%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(76,118,227,1) 100%)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#323333"
+    },
+    {
+      "type": "color",
+      "id": "text_color_active",
+      "label": "Text color active",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_to",
+          "label": "link to"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "kik sticky tabs"
+    }
+  ]
+}
+{% endschema %}

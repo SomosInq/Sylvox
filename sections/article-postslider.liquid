@@ -10,81 +10,15 @@
   {%- assign featured_article = blog.articles.first -%}
   {%- assign override_img = section.settings.custom_banner_override_image -%}
 
-  <!-- Banner -->
-  {% if section.settings.banner_overlay_opacity > 0 %}
-<div class="custom-blog__banner banner_section_width_{{ section.settings.banner_section_width }}"
-     style="background-image: url('{{ override_img | default: featured_article.image | image_url: width: 2000 }}');">
-
-  <div class="custom-blog__banner-overlay"
-       style="background-color: {{ section.settings.banner_overlay_color }};
-              opacity: {{ section.settings.banner_overlay_opacity }};"></div>
-
-  <div class="custom-blog__banner-inner banner_section_content_width_{{ section.settings.banner_section_content_width }} banner-align-{{ section.settings.banner_content_position }}">
-    
-    <!-- Fallback Image Rendering (Visible only if image missing) -->
-    {% unless featured_article.image %}
-      <img src="{{ section.settings.banner_fallback_image | image_url: width: 1600 }}" alt="Fallback image" style="position:absolute; inset:0; object-fit:cover; z-index:0;">
-    {% endunless %}
-
-    <!-- Category -->
-    {% if featured_article.tags.size > 0 %}
-      <div class="custom-blog__label">
-        {{ featured_article.tags.first }}
-      </div>
-    {% endif %}
-
-    <!-- Title -->
-    <h1 class="custom-blog__heading">
-      {{ section.settings.custom_banner_title | default: featured_article.title }}
-    </h1>
-
-    <!-- Author & Date -->
-    <div class="custom-blog__meta">
-      <span class="custom-blog__author">{{ featured_article.author }}</span>
-      <span class="custom-blog__date">{{ featured_article.published_at | date: "%B %d, %Y" }}</span>
-
-      <!-- Social Icons -->
-      <div class="custom-blog__social-icons">
-        {{ section.settings.banner_share_text }}
-      {% if section.settings.show_share_tiktok %}
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'icon-tiktok' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_linkedin %}
-        <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'icon-linkedin' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_youtube %}
-        <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'icon-youtube' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_facebook %}
-        <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'icon-facebook' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_x %}
-        <a href="https://x.com" target="_blank" class="social-icon">{% render 'icon-x' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_pinterest %}
-        <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'icon-pinterest' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_instagram %}
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'icon-instagram' %}</a>
-      {% endif %}
-    </div>
-    </div>
-
-    <!-- Optional CTA Button -->
-    {% if section.settings.banner_cta_text != blank and section.settings.banner_cta_link != blank %}
-      <a href="{{ section.settings.banner_cta_link }}" class="custom-blog__banner-cta">
-  {{ section.settings.banner_cta_text }}
-  {% if section.settings.banner_cta_icon != blank %}
-    <span class="custom-blog__cta-icon">{% render section.settings.banner_cta_icon %}</span>
+  <div class="custom-blog__slider-heading section_content_width_{{ section.settings.section_content_width }}">
+  {% if section.settings.heading %}
+    <h2 class="custom-blog__heading" style="color: 000;">{{ section.settings.heading }}</h2>
   {% endif %}
-</a>
-
-    {% endif %}
-  </div>
+  {% if section.settings.subheading %}
+    <p class="custom-blog__subtitle" style="color: 000;">{{ section.settings.subheading }}</p>
+  {% endif %}
 </div>
 
-
-  {% endif %}
 
   <!-- Slider -->
 {% comment %} Blog Slider with scroll snapping, dots + arrows (no blocks) {% endcomment %}
@@ -184,264 +118,25 @@
 </script>
 
 
-  <!-- Blog List Title -->
-
-   <!-- Blog List Title -->
-<div class="slider-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 40px; margin-top: 20px !important; padding-bottom: 40px;">
-  <div class="slider-heading-small">{{ section.settings.heading }}</div>
-  <h2 class="custom-blog__list-title">{{ section.settings.subheading }}</h2>
-  <div class="slider-description">{{ section.settings.description }}</div>
-</div>
-
-
-  <!-- Filter/Sort Row -->
-
-  {% unless section.settings.hide_filter_sort %}
-  <div class="custom-blog__filter-sort">
-    <button class="custom-blog__filter-btn">
-      <span class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-          <path d="M0 5H16" stroke="#6C707A"/>
-          <path d="M0 11H16" stroke="#6C707A"/>
-          <path d="M14 3H12V7H14V3Z" fill="#6C707A"/>
-          <path d="M5 9H3V13H5V9Z" fill="#6C707A"/>
-        </svg>
-      </span>
-      Filter
-    </button>
-    <button class="custom-blog__sort-btn">
-      <span class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-          <path d="M3 6L8 11L13 6" stroke="#6C707A"/>
-        </svg>
-      </span>
-      Sort
-    </button>
-  </div>
-{% endunless %}
-
-  {% paginate blog.articles by 9 %}
-    <!-- Blog Grid -->
-    <div class="custom-blog__main-layout" style="display: flex; gap: 40px; max-width: 1608px; margin: 0 auto 60px;">
-    <div class="custom-blog__grid" style="flex: 3;">
-      {% for article in blog.articles %}
-        <div class="custom-blog__card" data-category="{{ article.tags | join: ' ' }}">
-          <div class="custom-blog__card-image">
-            {% if article.image %}
-              <a href="{{ article.url }}">
-                <img
-                  src="{{ article.image | image_url: width: 600 }}"
-                  alt="{{ article.title }}"
-                  style="aspect-ratio: 520 / 288; max-width: 519.98px; max-height: 287.98px; width: 100%; height: auto; object-fit: cover;">
-              </a>
-            {% else %}
-              <div class="custom-blog__image-placeholder"></div>
-            {% endif %}
-            {% if article.tags.size > 0 %}
-              <div class="custom-blog__card-label">{{ article.tags.first }}</div>
-            {% endif %}
-          </div>
-
-          <div class="custom-blog__card-content">
-            <h3 class="custom-blog__card-title">
-              <a href="{{ article.url }}">{{ article.title }}</a>
-            </h3>
-            <div class="custom-blog__card-excerpt-arrow">
-              <p class="custom-blog__card-excerpt">
-                {{ article.excerpt_or_content | strip_html | truncate: 140 }}
-              </p>
-              <a class="custom-blog__card-arrow" href="{{ article.url }}">
-                {% render 'diagonal-bottom-left-arrow.svg' %}
-              </a>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-
-    <aside class="custom-blog__sidebar">
-  <details class="custom-blog__dropdown" open>
-    <summary class="custom-blog__dropdown-title">Sort By</summary>
-    <ul class="custom-blog__dropdown-list">
-      <li><label><input type="radio" name="sort" checked> Latest</label></li>
-      <li><label><input type="radio" name="sort"> Sylvox Top Picks</label></li>
-    </ul>
-  </details>
-
-  <details class="custom-blog__dropdown" open>
-    <summary class="custom-blog__dropdown-title">Filter</summary>
-    <ul class="custom-blog__dropdown-list">
-  {% assign tag_options = blog.all_tags %}
-  {% for tag in tag_options %}
-    <li>
-      <label>
-        <input type="radio" name="filter" value="{{ tag }}" {% if current_tags contains tag %}checked{% endif %}>
-        {{ tag }}
-      </label>
-    </li>
-  {% endfor %}
-</ul>
-
-  </details>
-</aside>
-
-</div>
-
-    <!-- Pagination -->
-    <div class="custom-blog__pagination">
-      {% if paginate.previous %}
-        <a href="{{ paginate.previous.url }}">&lt;</a>
-      {% endif %}
-      {% for part in paginate.parts %}
-        {% if part.is_link %}
-          <a href="{{ part.url }}">{{ part.title }}</a>
-        {% else %}
-          <span class="current">{{ part.title }}</span>
-        {% endif %}
-      {% endfor %}
-      {% if paginate.next %}
-        <a href="{{ paginate.next.url }}">&gt;</a>
-      {% endif %}
-    </div>
-    
-  {% endpaginate %}
 </section>
-
 
 
 {% schema %}
 {
-  "name": "Custom Blog",
+  "name": "Article Blog Slider",
   "tag": "section",
   "class": "custom-blog",
   "settings": [
     {
-  "type": "header",
-  "content": "Banner Settings"
-},
-    {
-      "type": "select",
-      "id": "banner_section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "Standard Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "banner_section_content_width",
-      "label": "Content Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "Standard Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "image_picker",
-      "id": "custom_banner_override_image",
-      "label": "Override Banner Image (optional)"
-    },
-    { "type": "color", "id": "banner_overlay_color", "label": "Banner Overlay Color", "default": "#000000" },
-    { "type": "range", "id": "banner_overlay_opacity", "label": "Banner Overlay Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.4 },
-    {
-  "type": "select",
-  "id": "banner_content_position",
-  "label": "Banner Content Vertical Alignment",
-  "options": [
-    { "value": "top", "label": "Top" },
-    { "value": "center", "label": "Center" },
-    { "value": "bottom", "label": "Bottom" }
-  ],
-  "default": "center"
-},
-{
   "type": "text",
-  "id": "banner_cta_text",
-  "label": "CTA Button Text"
+  "id": "heading",
+  "label": "Main Heading",
+  "default": "Latest from the Blog"
 },
 {
-  "type": "url",
-  "id": "banner_cta_link",
-  "label": "CTA Button Link"
-},
-{
-  "type": "text",
-  "id": "banner_cta_icon",
-  "label": "CTA Icon Snippet (e.g. 'icon-arrow-right')"
-},
-{
-  "type": "header",
-  "content": "Social Share Options"
-},{
-  "type": "text",
-  "id": "banner_share_text",
-  "label": "Social Share Text"
-},
-{
-  "type": "checkbox",
-  "id": "show_share_tiktok",
-  "label": "Show TikTok Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_linkedin",
-  "label": "Show LinkedIn Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_youtube",
-  "label": "Show YouTube Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_facebook",
-  "label": "Show Facebook Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_x",
-  "label": "Show X (Twitter) Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_pinterest",
-  "label": "Show Pinterest Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_instagram",
-  "label": "Show Instagram Share",
-  "default": false
-},
-
-    {
-      "type": "text",
-      "id": "custom_banner_title",
-      "label": "Custom Banner Title (optional)"
-    },
-    {
-      "type": "text",
-      "id": "blog_list_title",
-      "label": "Blog List Section Title",
-      "default": "More Articles"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "#ffffff"
-    },{
-  "type": "header",
-  "content": "Slider Settings"
+  "type": "textarea",
+  "id": "subheading",
+  "label": "Subheading"
 },
     {
       "type": "select",
@@ -469,6 +164,17 @@
       "label": "Background Color",
       "default": "#ffffff"
     },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Outer Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 40 },
     { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 40 },
     { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 20 },
@@ -477,35 +183,6 @@
     { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
     { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0 },
     { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 5, "default": 0 },
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "Text Alignment",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Small Heading",
-      "default": "Latest News"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Main Heading",
-      "default": "From the Blog"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Section Description",
-      "default": "See what's new at Sylvox."
-    },
     {
       "type": "range",
       "id": "slide_width",
@@ -520,22 +197,17 @@
       "id": "show_arrows",
       "label": "Show Arrows",
       "default": true
-    },
-    {
-  "type": "checkbox",
-  "id": "hide_filter_sort",
-  "label": "Hide Filter and Sort",
-  "default": false
-}
+    }
   ],
   "presets": [
     {
-      "name": "Custom Blog",
-      "category": "Somos Custom"
+      "name": "Article Blog Slider",
+      "category": "Custom"
     }
   ]
 }
 {% endschema %}
+
 
 {% style %}
 /* Banner */

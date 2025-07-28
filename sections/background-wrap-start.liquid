@@ -1,0 +1,33 @@
+
+
+<div data-background-wrap-start="true"  data-background-image="{{ section.settings.bg_image | image_url }}" data-background-color="{{ section.settings.bg_color }}" data-custom-class="{{ section.settings.custom_class }}"></div>
+
+
+{% schema %}
+{
+  "name": "Background Wrap Start",
+  "class": "background-wrap-start",
+  "settings": [
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom class",
+      }
+  ],
+  "presets": [
+    {
+      "name": "Background Wrap Start"
+    }
+  ]
+}
+{% endschema %}

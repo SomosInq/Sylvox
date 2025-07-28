@@ -1,0 +1,20 @@
+
+
+{% if page %}
+
+		{{ page.content }}
+
+{% endif %}
+
+
+{% schema %}
+{
+	"name": "Page Content",
+	"class": "block-page-content",
+	"presets": [
+		{
+			"name": "Page Content"
+		}
+	]
+}
+{% endschema %}

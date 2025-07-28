@@ -1,0 +1,948 @@
+{% comment %} 1230 {% endcomment %}
+ 
+{{ 'kik-essentials.css' | asset_url | stylesheet_tag }}
+
+<style>
+  
+    #shopify-section-{{ section.id }} .essentials_adc:hover {
+      background-color: {{ section.settings.add_to_button }};
+      border-color: {{ section.settings.add_to_button }};
+    }
+    
+    #shopify-section-{{ section.id }} button.button:hover {
+      background-color: {{ section.settings.add_to_button }};
+      border-color: {{ section.settings.add_to_button }};
+    }
+    #shopify-section-{{ section.id }} .essentials-product-price div{
+      color: {{ section.settings.discount_color }};
+      border: 1px solid {{ section.settings.discount_color }};
+    }
+    .kik_essentials_c{
+      padding: 72px 0;
+      background: {{ section.settings.bk }};
+    }
+    
+    .essentials-header h1{
+      font-size:34px;
+      line-height:1.2;
+      margin-bottom:8px;
+      color: {{ section.settings.text_color }};
+    }
+    .essentials-header p{
+      font-size:21px;
+      line-height:1.3;
+      color: {{ section.settings.text_color }};
+    }
+    
+    #shopify-section-{{ section.id }} .t4s-text-pr{
+      color: {{ section.settings.buy_button_text }};
+    }
+    #shopify-section-{{ section.id }} .essentials-product-info{
+      padding:16px;
+      padding-bottom:24px;
+      background: {{ section.settings.info_background }};
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    }
+    .essentials-product-info > a h3{
+      font-size:18px;
+      line-height:26px;
+      margin:0;
+      margin-bottom:4px;
+      color: {{ section.settings.product_title_color }};
+    }
+    
+    #shopify-section-{{ section.id }} .kik_buy_btn span{
+      color: {{ section.settings.buy_button_text }};
+    }
+   
+    .essentials-product-price p{
+      font-size:18px;
+      line-height:1.2;
+      color: {{ section.settings.price_color }};
+      margin:0;
+      margin-right:8px;
+      font-weight:600;
+    }
+    .essentials-product-price p span{
+      font-size:18px;
+      line-height:1.2;
+      color: {{ section.settings.price_color }};
+      margin:0;
+      margin-right:8px;
+      font-weight:600;
+    }
+   .essentials-product-price div span{
+      color: {{ section.settings.price_color }};
+      font-size: 11px;
+      line-height: 13.2px;
+      font-weight:600;
+    }
+   
+    #shopify-section-{{ section.id }} .essentials_adc{
+      border:1px solid #FFFFFF;
+      border-radius:12px;
+      padding:10px 5px;
+      background: {{ section.settings.add_button }};
+      font-size:16px;
+      line-height:1.5;
+      font-weight:500;
+      width:100%;
+      text-align:center;
+    }
+
+    #shopify-section-{{ section.id }} button.button{
+      border:1px solid #FFFFFF;
+      border-radius:12px;
+      padding:10px 5px;
+      background: {{ section.settings.add_button }};
+      font-size:16px;
+      line-height:1.5;
+      font-weight:500;
+      width:100%;
+      text-align:center;
+    }
+  
+    #shopify-section-{{ section.id }} .essentials_btn{
+      background: {{ section.settings.buy_button_color }};
+      flex: 0 0 calc(50% - 4px);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 5px;
+      font-size:16px;
+      line-height:1.5;
+      font-weight:500;
+      column-gap:8px;
+    }
+    #shopify-section-{{ section.id }} .essentials_btn:hover{
+      background: {{ section.settings.button_hover_color }};
+      box-shadow: 0px 0px 0px 2px white;
+    }
+    
+    .product_tags div{
+      padding:5px 8px;
+      background: {{ section.settings.tag_background }};
+      border-radius:8px;
+      color: {{ section.settings.tag_color }};
+      border: 1px solid {{ section.settings.tag_color }};
+      font-size:13px;
+      line-height:15.6px;
+      font-weight:500;
+    }
+
+    @media screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .testi-button-prev,
+      #shopify-section-{{ section.id }} .testi-button-next {
+        display: none;
+      }
+    }
+  </style>
+  <div id="shopify-section-{{ section.id }}">
+    <div class="kik_essentials_c kik_linked_to kik_white_text" id="{{ section.settings.link_to }}">
+      <div class="t4s-container container ">
+        <div class="essentials-header">
+          <div class="essentials_icons">
+            {% for block in section.blocks %}
+            {% case block.type %}
+            {% when "icon" %}
+              <img src='{{ block.settings.icon | img_url:"150x150" }}'>
+            {% endcase %}
+            {% endfor %}
+          </div>
+          <h1>{{ section.settings.heading }}</h1>
+          <p>{{ section.settings.content }}</p>
+        </div>
+        {% assign collection_index = 0 %}
+        {% for block in section.blocks %}
+        {% case block.type %}
+        {% when "collection" %}
+        {% assign collection_index = collection_index | plus:1 %}
+        {% endcase %}
+        {% endfor %}
+        {% if collection_index > 1 %}
+        <div class="essentials_links">
+          {% assign collection_index = 0 %}
+          {% for block in section.blocks %}
+          {% case block.type %}
+          {% when "collection" %}
+          {% assign collection_index = collection_index | plus:1 %}
+          <div class="essentials_link_item {% if collection_index == 1 %} active{% endif %}"
+            data_collection="{{ forloop.index }}">
+            <p>{{ block.settings.top_text }}</p>
+            <span>{{ block.settings.bottom_text }}</span>
+          </div>
+          {% endcase %}
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="kik_essentials_collections">
+          {% assign collection_index = 0 %}
+          {% for block in section.blocks %}
+          {% case block.type %}
+          {% when "collection" %}
+          {% assign collection_index = collection_index | plus:1 %}
+          <div class="essentials_collection_x {% if collection_index == 1 %} active{% endif %}"
+            data_collection='{{ forloop.index }}'>
+            <div class="essentials_collection ">
+              {% assign collection_length = 0 %}
+              {% for product in block.settings.collection.products %}
+              {% assign collection_length = collection_length | plus : 1 %}
+              {% endfor %}
+              <div class="swiper-wrapper" data-products="{{ collection_length  }}">
+                {% for product in block.settings.collection.products %}
+    
+                <div class="essentials-product swiper-slide">
+                  <div class="product_image">
+                    <a href="{{ product.url }}">
+                      {%- if product.metafields.custom.essential_product_image != blank -%}
+                        <img src="{{ product.metafields.custom.essential_product_image | img_url: 'master' }}" alt="{{ product.title }}">
+                        {%- else -%}
+                        <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                      {%- endif -%}
+                    </a>
+  
+                  </div>
+    
+                  <div class="essentials-product-info">
+                    <a href="{{ product.url }}">
+                      <h3>{{ product.title }}</h3>
+                    </a>
+                    {% if product.tags != blank %}
+                    <div class="product_tags">
+                      {% for tag in product.tags %}
+                      <div>{{ tag }}</div>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="essentials-product-price">
+                      {% if product.compare_at_price != blank %}
+                      {% assign p_s = product.compare_at_price | minus : product.price %}
+                      {% endif %}
+                      <p>{{ product.price | money }}</p>
+                      {% if product.compare_at_price != blank %}
+                      <div>Save {{ p_s | money }}</div>
+                      <span>{{ product.compare_at_price | money }}</span>
+                      {% endif %}
+                    </div>
+    
+                    {% if product.metafields.custom.promo_code != blank %}
+                    <div class="essentials_promo">
+                      <div class="promo_left">
+                        {% render 'perc_label_icon' %}
+                        <p>Code: {{ product.metafields.custom.promo_code }}</p>
+                      </div>
+                      <div class="promo_icon">
+                        <input type="text" value="{{ product.metafields.custom.promo_code }}" id="myInput">
+                        {% render 'copy_icon' %}
+                      </div>
+                    </div>
+                    {% endif %}
+    
+                    <div class="essentials_product_cta kik_buttons_c">
+                      
+                      {% if product.available %}
+                        {%- assign quick_add_label = 'Add To Cart'-%}
+
+                        {%- if product.variants.size == 1 and product.selling_plan_groups.size == 0 -%}
+                          {%- form 'product', product, is: 'product-form' -%}
+                            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              
+                            <div class="pointer-fine:hidden">
+                              <button type="submit" is="custom-button" class="product-card__mobile-quick-buy-button" aria-label="{{ quick_add_label | escape }}">
+                                {%- render 'icon' with 'quick-buy-cart' -%}
+                              </button>
+                            </div>
+              
+                            <div class="pointer-coarse:hidden">
+                              {%- render 'button', type: 'submit', content: quick_add_label -%}
+                            </div>
+                          {%- endform -%}
+                        {%- else -%}
+                          {%- capture quick_buy_id -%}quick-buy-{{ section.id }}-{{ product.id }}{%- endcapture -%}
+              
+                          <div class="pointer-fine:hidden">
+                            <button type="button" aria-controls="{{ quick_buy_id }}" aria-expanded="false" aria-label="{{ quick_add_label | escape }}" is="custom-button" class="product-card__mobile-quick-buy-button">
+                              {%- render 'icon' with 'quick-buy-cart' -%}
+                            </button>
+                          </div>
+              
+                          <div class="pointer-coarse:hidden">
+                            {%- render 'button', content: quick_add_label, aria_controls: quick_buy_id -%}
+                          </div>
+              
+                          <quick-buy-drawer id="{{ quick_buy_id }}" header-bordered open-from="bottom" handle="{{ product.handle }}?variant={{ product.selected_or_first_available_variant.id }}" role="region" aria-live="polite" class="quick-buy-drawer drawer">
+                            {%- comment -%}Quick buy content is filled on demand for performance reasons {%- endcomment -%}
+                          </quick-buy-drawer>
+                        {%- endif -%}    
+
+                      <form method="POST" action="/cart/add">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="return_to" value="/checkout">
+                        <button type="submit" class="essentials_btn kik_buy_btn">Buy Now</button>
+                      </form>                      
+                      {% else %}
+                      <a href="{{ product.url }}" class="ots-btn" rel="nofollow" style="pointer-events:none;">
+                        <span class="t4s-text-pr">Out Of Stock</span>
+                      </a>
+                      {% endif %}
+                    </div>
+    
+                  </div>
+    
+                </div>
+    
+                {% endfor %}
+              </div>
+              {% if block.settings.collection.all_products_count > 4 %}
+              <span class="testi-button-prev">
+                {% render 'arrow_svg' %}
+              </span>
+              <span class="testi-button-next">
+                {% render 'arrow_svg' %}
+              </span>
+              {% endif %}
+            </div>
+            <div class="essentials_collection_bottom_links {% if collection_index == 1 %} active{% endif %}"
+              data_collection='{{ forloop.index }}'>
+              {% if collection_length >= 4 %}
+                <div class="show-less-button" style="color: white;">
+                  View less
+                  <div class="arrow-rotate">
+                    {%- render 'arrow-bottom' -%}
+                  </div>
+                </div>
+                
+                <div class="show-all-button" style="color: white;">
+                  View all
+                  <span></span>
+                    {%- render 'arrow-bottom' -%}
+                  </span>
+                </div>
+              {% endif %}
+              {% if section.settings.show_compare %}
+              <button class="compare_openpopup " open_popup='{{ forloop.index }}'>
+                <span>{{ section.settings.compare_text }}</span>
+                {% render 'icon-arrow-next' %}
+              </button>
+              {% endif %}
+            </div>
+          </div>
+          {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('shopify-section-{{ section.id }}').querySelector('.show-all-button').addEventListener('click',()=>{
+      document.getElementById('shopify-section-{{ section.id }}').querySelectorAll('.essentials-product').forEach(item => {
+        item.classList.add('show-all-products');
+        document.getElementById('shopify-section-{{ section.id }}').querySelector('.show-all-button').style.display = "none";
+        document.getElementById('shopify-section-{{ section.id }}').querySelector('.show-less-button').style.display = "block";
+      });
+    })
+  
+    document.getElementById('shopify-section-{{ section.id }}').querySelector('.show-less-button').addEventListener('click', () => {
+        document.getElementById('shopify-section-{{ section.id }}').querySelectorAll('.essentials-product').forEach(item => {
+          item.classList.remove('show-all-products');
+          document.getElementById('shopify-section-{{ section.id }}').querySelector('.show-all-button').style.display = "block";
+          document.getElementById('shopify-section-{{ section.id }}').querySelector('.show-less-button').style.display = "none";
+        });
+      })
+  </script>
+    <style>
+      .essentials_popup_c{
+        position:fixed;
+        top:0;
+        z-index:100;
+        display:none;
+        justify-content:center;
+        align-items:center;
+        
+      }
+      .essentials_popup_c.active{
+        display:flex;
+            width: 100%;
+      height: 100%;
+      }
+      .essentials_popup_overlay{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:#0000008c;
+      }
+      .essentials_popup_products{
+        margin-top:20px;
+        margin-bottom:20px;
+        position:relative;
+        max-width:calc(100% - 300px);
+        width:100%;
+        background:white;
+        border-radius:16px;
+        padding:80px 64px;
+        max-height: 100vh;
+      }
+      .essentials_popup_close{
+           position: sticky;
+        top: -70px;
+        margin-top: -40px;
+        right: -30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        background: #A7A8A9;
+        z-index: 999;
+        cursor: pointer;
+        margin: -40px 0 50px auto;
+        margin-right: -50px;
+      }
+      .content_products{
+        display:flex;
+        column-gap:20px;
+        justify-content:flex-end;
+            /* position: sticky;
+        top: 0; */
+        background: white;
+      }
+      .popup_product_c{
+        flex:0 0 calc(25% - 15px);
+      }
+      .popup_product_image{
+        position:relative;
+        padding-top:100%;
+        border-radius:8px;
+        overflow:hidden;
+      }
+      .popup_product_image img{
+         position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+      .product_spec_info{
+        margin-top:8px;
+      }
+      .product_spec_info a p{
+        font-size:18px;
+        line-height:26px;
+        margin:0;
+        color:#323333;
+        font-weight:500;
+        margin-bottom:8px;
+      }
+      .popup_product-price{
+        display:flex;
+        column-gap:8px;
+      }
+      .popup_product-price p,.popup_product-price span{
+        font-size:16px;
+        line-height:1.5;
+        margin:0;
+        color:#323333;
+        font-weight:500;
+      }
+      .popup_product-price span{
+        opacity:.5;
+        text-decoration:line-through;
+      }
+      .popup_cta{
+        display:flex;
+        align-items:center;
+        background:#0047BB;
+        color:white;
+           font-size:16px;
+        line-height:1.5;
+        margin-top:16px;
+        font-weight:500;
+        border-radius:12px;
+        padding:10px 32px;
+        column-gap:8px;
+      }
+      .popup_cta span{
+        display:flex;
+      }
+      .content_specs{
+        margin-top:40px;
+      }
+      .specs{
+        display:flex;
+        column-gap:20px;
+        align-items:center;
+        padding:24px 0;
+        border-top:1px solid #323333;
+      }
+      .specs_comparator{
+        flex:0 0 calc(25% - 15px);
+      }
+      .specs_comparator h3{
+        margin:0;
+        font-size:20px;
+        line-height:1.2;
+        font-weight:500;
+        color:#323333;
+      }
+        .specs_comparator p{
+        margin:0;
+        font-size:16px;
+        line-height:1.5;
+        font-weight:400;
+          color:#323333;
+      }
+      .mobile_item{
+        display:none;
+      }
+      .product_spec_info .t4s-pr-addtocart{
+            visibility: hidden;
+        height: 0;
+        width: 0;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+    
+      .popup_product_c{
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .product_spec_info{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .product_spec_info .kik_buttons_c{
+        margin-top: auto;
+        margin-bottom: 0;
+      }
+      @media (max-width:1309px){
+         .essentials_popup_products{
+          max-width:calc(100% - 100px);
+         }
+      }
+      @media (max-width:899px){
+      .essentials_popup_products{
+        max-width:calc(100% - 32px);
+        padding:48px 16px;
+        overflow:scroll;
+      }
+          .mobile_item{
+        display:block;
+      }
+      .kik-essentials  .specs_comparator:nth-child(2){
+          display:none;
+        }
+      .essentials_popup_close{
+          top: -15px;
+        right: -3px;
+        height: 40px;
+        width: 40px;
+        opacity: 0.5;
+      }
+      .content_products{
+        column-gap:10px;
+        justify-content:flex-start;
+      }
+      .popup_product_c{
+        flex:0 0 43%;
+      }
+      .product_spec_info a p{
+        font-size:13px;
+        line-height:15.6px;
+      }
+      .popup_product-price p,.popup_product-price span{
+        font-size:13px;
+        line-height:18px;
+      }
+      .popup_cta{
+        padding:10px 15px;
+        margin-top:8px;
+      }
+    
+      .content_specs{
+        margin-top:32px;
+        overflow: hidden;
+      }
+      .specs{
+        column-gap:10px;
+        align-items:center;
+        padding:16px 0;
+        border-top:1px solid #323333;
+      }
+      .specs_comparator{
+        flex:0 0 43%;
+      }
+      .specs_comparator h3{
+        font-size:16px;
+        line-height:1.5;
+      }
+        .specs_comparator p{
+        font-size:13px;
+        line-height:18px;
+      }
+      }
+      @media only screen and (max-width: 430px) {
+  
+      .kik-essentials  .essentials_popup_content .content_products {
+            justify-content: unset !important;
+            overflow: hidden; 
+            width: 370px;
+            overflow-x: auto;
+        }
+        .kik-essentials  .essentials_popup_close {
+            top: 0;
+            right: 30px;
+            margin: -25px 0 25px auto;
+        }
+        .kik-essentials  .essentials_popup_products {
+          overflow: unset;
+        }
+  
+        .kik-essential .content_specs {
+              overflow-y: auto;
+              height: 400px;
+          }
+          .kik-essentials .popup_product_c {
+              flex: 0 0 50%;
+          }
+          .kik-essentials  .specs_comparator {
+            flex: 0 0 30%;
+        }
+        .kik-essentials  .specs {
+          justify-content: space-between;
+        }
+        .kik-essentials .specs .specs_comparator:last-child {
+            text-align: end;
+        }
+        .kik-essentials  .content_specs .specs .specs_comparator:nth-last-child(2) {
+              text-align: center;
+          }
+      }
+    </style>
+    <div class="essentials_popup_c">
+      <div class="essentials_popup_overlay"></div>
+      <div class="essentials_popup_products">
+        <div class="essentials_popup_close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="{{ section.settings.buy_button_text }}">
+              <path d="M24.4003 7.61339C24.2769 7.48978 24.1304 7.39172 23.9691 7.32481C23.8078 7.2579 23.6349 7.22346 23.4603 7.22346C23.2857 7.22346 23.1128 7.2579 22.9515 7.32481C22.7902 7.39172 22.6436 7.48978 22.5203 7.61339L16.0003 14.1201L9.4803 7.60005C9.35686 7.47661 9.21031 7.37869 9.04902 7.31188C8.88774 7.24508 8.71487 7.21069 8.5403 7.21069C8.36572 7.21069 8.19286 7.24508 8.03157 7.31188C7.87029 7.37869 7.72374 7.47661 7.6003 7.60005C7.47686 7.7235 7.37894 7.87004 7.31213 8.03133C7.24532 8.19261 7.21094 8.36548 7.21094 8.54005C7.21094 8.71463 7.24532 8.88749 7.31213 9.04878C7.37894 9.21006 7.47686 9.35661 7.6003 9.48005L14.1203 16.0001L7.6003 22.5201C7.47686 22.6435 7.37894 22.79 7.31213 22.9513C7.24532 23.1126 7.21094 23.2855 7.21094 23.4601C7.21094 23.6346 7.24532 23.8075 7.31213 23.9688C7.37894 24.1301 7.47686 24.2766 7.6003 24.4001C7.72374 24.5235 7.87029 24.6214 8.03157 24.6882C8.19286 24.755 8.36572 24.7894 8.5403 24.7894C8.71487 24.7894 8.88774 24.755 9.04902 24.6882C9.21031 24.6214 9.35686 24.5235 9.4803 24.4001L16.0003 17.8801L22.5203 24.4001C22.6437 24.5235 22.7903 24.6214 22.9516 24.6882C23.1129 24.755 23.2857 24.7894 23.4603 24.7894C23.6349 24.7894 23.8077 24.755 23.969 24.6882C24.1303 24.6214 24.2769 24.5235 24.4003 24.4001C24.5237 24.2766 24.6217 24.1301 24.6885 23.9688C24.7553 23.8075 24.7897 23.6346 24.7897 23.4601C24.7897 23.2855 24.7553 23.1126 24.6885 22.9513C24.6217 22.79 24.5237 22.6435 24.4003 22.5201L17.8803 16.0001L24.4003 9.48005C24.907 8.97339 24.907 8.12005 24.4003 7.61339Z" fill="{{ section.settings.buy_button_text }}"/>
+          </svg>
+        </div>
+        <div class="essentials_popup_content">
+          <div class="content_products">
+            {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when "popup_collection" %}
+                    {% assign product = block.settings.product %}
+                 <div class="popup_product_c" >
+                   <div class="popup_product_image">
+                     <a href="{{ product.url }}">
+                     <img src="{{ product.featured_image  | img_url:"master" }}">
+                     </a>
+                   </div>
+                   <div class="product_spec_info">
+                     <a href="{{ product.url }}"><p>{{ product.title }}</p></a>
+                     <div class="popup_product-price">
+                       <p>{{ product.price | money }}</p>
+                       <span>{{ product.compare_at_price | money }}</span>
+                     </div>
+                    <div class="kik_buttons_c">
+                    {% if product.available %}
+                         {% comment %} <a href="{{ product.url }}" class="t4s-pr-addtocart" data-variant-id="{{ product.variants.first.id }}" data-action-atc="" rel="nofollow">
+                         <span class="t4s-text-pr">Add To Cart</span>
+                       </a> {% endcomment %}
+                       {%- assign quick_add_label = 'product.general.quick_add' | t -%}
+                       {%- capture quick_buy_id -%}quick-buy-{{ section.id }}-{{ product.id }}{%- endcapture -%}
+
+                       <div class="pointer-coarse:hidden">
+                        {%- render 'button', content: quick_add_label, aria_controls: quick_buy_id -%}
+                      </div>
+          
+                      <quick-buy-drawer id="{{ quick_buy_id }}" header-bordered open-from="bottom" handle="{{ product.handle }}?variant={{ product.selected_or_first_available_variant.id }}" role="region" aria-live="polite" class="quick-buy-drawer drawer">
+                        {%- comment -%}Quick buy content is filled on demand for performance reasons {%- endcomment -%}
+                      </quick-buy-drawer>
+                      
+                      <form method="POST" action="/cart/add">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="return_to" value="/checkout">
+                        <button type="submit" class="popup_cta kik_buy_btn"><span>Buy Now</span>
+                        {%- render 'kik-cart-icon' -%}</button>
+                      </form>     
+                            {% endif %}
+                    </div>
+                   </div>
+                 </div>
+                {% endcase %}
+            {% endfor %}
+          </div>
+          <div class="content_specs">
+                  {% for ii in (1..6) %}
+                {% assign comparator = "comparator_" | append: forloop.index %}
+            <div class="specs">
+               <div class="specs_comparator">
+              <h3>{{ section.settings[comparator] }}</h3>
+              <p class="mobile_item">
+                {% assign popup_count = 0 %}
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when "popup_collection" %}
+                    {% assign popup_count = popup_count | plus:1 %}
+                    {% if popup_count == 1 %}
+                        {{ block.settings[comparator] }}
+                      {% endif %}
+                    {% endcase %}
+                  {% endfor %}
+              </p>
+               </div>
+              {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when "popup_collection" %}
+                        <div class="specs_comparator">
+                          <p>{{ block.settings[comparator] }}</p>
+                        </div>
+                    {% endcase %}
+                  {% endfor %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>      
+    {% schema %}
+    {
+      "name": "kik essentials",
+      "class": "kik-essentials",
+      "tag": "section",
+        "settings": [
+          {
+            "type": "text",
+            "id": "link_to",
+            "label": "link to",
+            "info": "for sticky bar"
+          },
+          {
+            "type": "color",
+            "id": "bk",
+            "label": "background"
+          },
+          {
+            "type": "color",
+            "id": "info_background",
+            "label": "Product info background"
+          },
+          {
+            "type": "color_background",
+            "id": "buy_button_color",
+            "label": "Buy button color",
+            "default": "linear-gradient(180deg, #FEC327, #FF5B22)"
+          },
+          {
+            "type": "color",
+            "id": "price_color",
+            "label": "Price color",
+            "default": "#1980FA"
+          },
+          {
+            "type": "color_background",
+            "id": "button_hover_color",
+            "label": "Buy now button hover color",
+            "default": "linear-gradient(180deg, #FFBE13 , #FFBE13 )"
+          },
+          {
+            "type": "color",
+            "id": "add_button",
+            "label": "Add to cart button"
+          },
+          {
+            "type": "color",
+            "id": "add_to_button",
+            "label": "Add to cart button hover",
+            "default": "#1b80fa"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "heading"
+          },
+          {
+            "type": "textarea",
+            "id": "content",
+            "label": "content"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Header and content color",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "product_title_color",
+            "label": "Product title color",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "tag_color",
+            "label": "Tag color",
+            "default": "#194606"
+          },
+          {
+            "type": "color",
+            "id": "tag_background",
+            "label": "Tag background"
+          },
+          {
+            "type": "color",
+            "id": "buy_button_text",
+            "label": "Buy buttont text",
+            "default": "#194606"
+          },
+          {
+            "type": "color",
+            "id": "discount_color",
+            "label": "Discount color",
+            "default": "#194606"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_compare",
+            "label": "show compare",
+            "default":true
+          },
+          {
+            "type": "textarea",
+            "id": "compare_text",
+            "label": "compare text",
+            "default":"Compare Ottocast Driving Essentials"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "compare popup collection"
+          },
+          {
+            "type": "text",
+            "id": "comparator_1",
+            "label": "comparator 1"
+          },
+          {
+            "type": "text",
+            "id": "comparator_2",
+            "label": "comparator 2"
+          },
+          {
+            "type": "text",
+            "id": "comparator_3",
+            "label": "comparator 3"
+          },
+          {
+            "type": "text",
+            "id": "comparator_4",
+            "label": "comparator 4"
+          },
+          {
+            "type": "text",
+            "id": "comparator_5",
+            "label": "comparator 5"
+          },
+          {
+            "type": "text",
+            "id": "comparator_6",
+            "label": "comparator 6"
+          }
+        ],
+          "blocks": [
+            {
+              "type": "icon",
+              "name": "icon",
+              "settings": [
+                {
+                  "type": "image_picker",
+                  "id": "icon",
+                  "label": "icon"
+                },
+              ]
+            },
+            {
+              "type": "collection",
+              "name": "collection",
+              "settings": [
+                {
+                  "type": "collection",
+                  "id": "collection",
+                  "label": "collection"
+                },
+                {
+                  "type": "text",
+                  "id": "top_text",
+                  "label": "top text"
+                },
+                {
+                  "type": "text",
+                  "id": "bottom_text",
+                  "label": "bottom text"
+                },
+              ]
+            },
+            {
+              "type": "popup_collection",
+              "name": "popup collection",
+              "limit": 3,
+              "settings": [
+                {
+                  "type": "product",
+                  "id": "product",
+                  "label": "product"
+                },
+                {
+                  "type": "text",
+                  "id": "comparator_1",
+                  "label": "comparator 1"
+                },
+                {
+                  "type": "text",
+                  "id": "comparator_2",
+                  "label": "comparator 2"
+                },
+                {
+                  "type": "text",
+                  "id": "comparator_3",
+                  "label": "comparator 3"
+                },
+                {
+                  "type": "text",
+                  "id": "comparator_4",
+                  "label": "comparator 4"
+                },
+                {
+                  "type": "text",
+                  "id": "comparator_5",
+                  "label": "comparator 5"
+                },
+                {
+                  "type": "text",
+                  "id": "comparator_6",
+                  "label": "comparator 6"
+                }
+              ]
+            }
+          ],
+      "presets": [
+        {
+          "name": "kik essentials"
+        }
+      ]
+    }
+  {% endschema %}

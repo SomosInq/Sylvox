@@ -1,0 +1,145 @@
+
+<style>
+
+.offer__item {
+	background-image: url('{{ 'icon-offer-bag.svg' | asset_url }}');
+}
+
+</style>
+
+
+
+<div class="offers offers-{{section.id}}">
+    {% for block in section.blocks %}
+        <div class="offer__item">
+            <p class="offer__type">{{ block.settings.type }}</p>
+            <p class="offer__title">{{ block.settings.title }}</p>
+            <p class="offer__desc">{{ block.settings.desc }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const breakpoint = 1400;
+    const offersContainer = document.querySelector('.offers-{{section.id}}');
+    const originalItems = Array.from(offersContainer.children); // save original structure
+    let swiperInstance = null;
+
+    function enableSwiper() {
+        // Only enable if not already initialized
+        if (offersContainer.classList.contains('swiper-initialized')) return;
+
+        // Create Swiper structure
+        const swiperWrapper = document.createElement('div');
+        swiperWrapper.classList.add('swiper-wrapper');
+
+        originalItems.forEach(item => {
+            const swiperSlide = document.createElement('div');
+            swiperSlide.classList.add('swiper-slide');
+            swiperSlide.appendChild(item);
+            swiperWrapper.appendChild(swiperSlide);
+        });
+
+        offersContainer.classList.add('swiper');
+        offersContainer.innerHTML = ''; // clear container
+        offersContainer.appendChild(swiperWrapper);
+
+        // Add pagination
+        const pagination = document.createElement('div');
+        pagination.classList.add('swiper-pagination');
+        offersContainer.appendChild(pagination);
+
+        // Initialize Swiper
+        swiperInstance = new Swiper(offersContainer, {
+            slidesPerView: 1.2,
+            spaceBetween: 15,
+      		centeredSlides: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            loop: true,
+			breakpoints: {
+				820: {
+					slidesPerView: 2,
+					spaceBetween: 35,
+					centeredSlides: false,
+				},
+				1200: {
+					slidesPerView: 3,
+				}
+			},
+        });
+    }
+
+    function disableSwiper() {
+        if (!offersContainer.classList.contains('swiper-initialized') && !swiperInstance) return;
+
+        if (swiperInstance) {
+            swiperInstance.destroy(true, true);
+            swiperInstance = null;
+        }
+
+        // Reset DOM
+        offersContainer.classList.remove('swiper');
+        offersContainer.innerHTML = '';
+        originalItems.forEach(item => offersContainer.appendChild(item));
+    }
+
+    function checkBreakpoint() {
+        if (window.innerWidth < breakpoint) {
+            enableSwiper();
+        } else {
+            disableSwiper();
+        }
+    }
+
+    // Initial check
+    checkBreakpoint();
+
+    // On resize
+    window.addEventListener('resize', checkBreakpoint);
+});
+</script>
+
+
+{% schema %}
+
+{
+	"name": "Offers",
+	"class": "section-offers section",
+	"max_blocks": 3,
+	"blocks": [
+		{
+			"name": "Offer item",
+			"type": "offer_item",
+			"settings": [
+				{
+					"type": "text",
+					"id": "type",
+					"label": "Type",
+				},
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title",
+				},
+				{
+					"type": "text",
+					"id": "desc",
+					"label": "Description",
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Offers"
+		}
+	]
+}
+
+{% endschema %}

@@ -1,0 +1,844 @@
+<style>
+  * {
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+      padding: 0
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0
+    }
+  img {
+      border: 0
+    }
+  audio,
+    canvas,
+    iframe,
+    img,
+    svg,
+    video {
+      max-width: 100%;
+      vertical-align: middle
+    }
+  *,
+    *:before,
+    *:after {
+      box-sizing: border-box
+    }
+
+    /* .comparison {
+      background-color: #fff;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizelegibility;
+      -ms-overflow-style: auto;
+      font-size: 62.5%
+    } */
+
+    html.nav-open {
+      overflow: hidden
+    }
+
+    /* .comparison {
+      font-family: Garnett, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.1;
+      color: #14103b
+    } */
+  h1,
+    h2,
+    h3,
+    h4 {
+      font-family: Garnett, Arial, sans-serif;
+      font-weight: 800;
+      margin-bottom: 16px
+    }
+
+    h1 {
+      font-size: 40px
+    }
+
+    h2 {
+      font-size: 32px
+    }
+
+    h3 {
+      font-size: 28px
+    }
+
+    h4 {
+      font-size: 24px
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 16px
+    }
+  table {
+      width: 100%;
+      max-width: 100%
+    }
+
+    table th,
+    table td {
+      padding: 15px;
+      border: 1px solid "light-grey";
+      vertical-align: top
+    }
+  .comparisonNew__container {
+      max-width: 144rem;
+      padding: 6rem 2rem;
+      margin: 0 auto
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__container {
+        padding: 9rem 4.4rem
+      }
+    }
+
+    @media (min-width: 85.374rem) {
+      .comparisonNew__container {
+        padding: 9rem 8rem
+      }
+    }
+
+    .comparisonNew--twoRows .comparisonNew__container {
+      max-width: 102.4rem
+    }
+
+    .comparisonNew__heading {
+      text-align: center
+    }
+
+    .comparisonNew__headingWrap {
+      margin-bottom: 3.6rem
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__headingWrap {
+        margin-bottom: 6rem
+      }
+    }
+
+    .comparisonNew__subheading {
+      text-align: center;
+      font-size: 1.6rem;
+      letter-spacing: .032rem;
+      line-height: 2.4rem;
+      font-weight: 700;
+      margin-top: .6rem
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__subheading {
+        font-size: 2rem;
+        letter-spacing: .04rem;
+        line-height: 3rem;
+        font-weight: 700;
+        margin-top: 1.2rem
+      }
+    }
+
+    .comparisonNew__table {
+      display: flex;
+      flex-direction: column;
+      width: 100%
+    }
+
+    .comparisonNew__tableTop,
+    .comparisonNew__tableBottom {
+      display: flex;
+      flex-wrap: wrap
+    }
+
+    .comparisonNew__tableHead {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      padding: .8rem .4rem;
+      flex-flow: column;
+      text-align: center;
+      min-height: 4.4rem
+    }
+
+    .comparisonNew__tableHead:not(:first-of-type) {
+      border-left: dashed .1rem #e6e5e2;
+      border-top: dashed .1rem #e6e5e2
+    }
+
+    .comparisonNew__tableHead:last-of-type {
+      border-right: dashed .1rem #e6e5e2
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableHead {
+        text-align: inherit;
+        padding: 1.2rem 1.8rem;
+        gap: 1rem;
+        min-height: 12rem
+      }
+    }
+
+    .comparisonNew__tableHead--stroke {
+      border-top: .1rem solid #ea2c00 !important;
+      border-left: .1rem solid #ea2c00 !important;
+      border-right: .1rem solid #ea2c00 !important;
+      margin-top: -1.2rem;
+      border-radius: .6rem .6rem 0 0;
+      border-bottom: 0;
+      padding-top: 2.4rem
+    }
+
+    @media (max-width: 63.99rem) {
+      .comparisonNew__tableHead--stroke {
+        background-color: #f8f3ee
+      }
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableHead--stroke {
+        padding-top: 2.6rem
+      }
+    }
+
+    .comparisonNew__tableHead--stroke .comparisonNew__tableHeadTitle {
+      opacity: 1
+    }
+
+    .comparisonNew__tableHeadImageWrap {
+      justify-content: center;
+      width: 100%;
+      width: 4.8rem;
+      height: 4.8rem
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableHeadImageWrap {
+        height: auto;
+        width: 6rem;
+        display: block
+      }
+    }
+
+    .comparisonNew__tableHeadImageWrap img {
+      -o-object-fit: contain;
+      object-fit: contain
+    }
+
+    .comparisonNew__tableHeadImage {
+      width: 100%
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableHeadImage {
+        display: block;
+        min-width: 6rem;
+        height: auto
+      }
+    }
+
+    .comparisonNew__tableHeadTitle {
+      color: #14103b;
+      margin-bottom: 0;
+      font-size: 1.2rem;
+      letter-spacing: .024rem;
+      line-height: 1.8rem;
+      font-weight: 500
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableHeadTitle {
+        font-size: 1.6rem;
+        letter-spacing: .032rem;
+        line-height: 2.4rem;
+        font-weight: 500
+      }
+    }
+
+    @media (max-width: 63.99rem) {
+      .comparisonNew__tableHeadTitle {
+        opacity: .6
+      }
+    }
+
+    .comparisonNew__tableHeadDesc {
+      margin-bottom: 0;
+      color: #14103b;
+      display: none;
+      font-size: 1.1rem;
+      letter-spacing: .025rem;
+      line-height: 1.8rem;
+      font-weight: 400
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableHeadDesc {
+        display: block;
+        font-size: 1.4rem;
+        letter-spacing: .025rem;
+        line-height: 2rem;
+        font-weight: 400
+      }
+    }
+
+    .comparisonNew__tableHead--dehighlight .comparisonNew__tableHeadDesc {
+      color: #858585
+    }
+
+    .comparisonNew__tableListWrap,
+    .comparisonNew__tableHead {
+      width: 25%
+    }
+
+    .comparisonNew--twoRows .comparisonNew__tableListWrap,
+    .comparisonNew--twoRows .comparisonNew__tableHead {
+      width: 33.3%
+    }
+
+    .comparisonNew__tableList {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .comparisonNew__tableList--products {
+      text-align: center
+    }
+
+    .comparisonNew__tableListItem {
+      padding: .4rem;
+      min-height: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: dashed .1rem #e6e5e2;
+      border-left: dashed .1rem #e6e5e2
+    }
+
+    .comparisonNew--twoRows .comparisonNew__tableListItem {
+      min-height: 6rem
+    }
+
+    .comparisonNew__tableListItem:last-child {
+      border-bottom: dashed .1rem #e6e5e2
+    }
+
+    .comparisonNew__tableListItem:last-of-type {
+      border-right: dashed .1rem #e6e5e2
+    }
+
+    .comparisonNew__tableListItem:first-child .comparisonNew__tableText b {
+      color: #14103b
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableListItem {
+        min-height: 5.8rem;
+        padding: .4rem 2rem
+      }
+
+      .comparisonNew__tableListItem:nth-child(odd) {
+        background-color: #f9f9f8
+      }
+    }
+
+    .comparisonNew__tableListItemFeatures {
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: .02rem;
+      line-height: 1.2rem;
+      font-weight: 400
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableListItemFeatures {
+        font-size: 1.4rem;
+        letter-spacing: .028rem;
+        line-height: 1.6rem;
+        font-weight: 400
+      }
+    }
+
+    .comparisonNew__tableText {
+      font-size: 1.2rem;
+      letter-spacing: .024rem;
+      line-height: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 0;
+      display: flex;
+      flex-flow: column;
+      color: #14103b
+    }
+
+    .comparisonNew__tableText b {
+      font-size: 1.2rem;
+      letter-spacing: .024rem;
+      line-height: 1.8rem;
+      font-weight: 800
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableText {
+        font-size: 1.5rem;
+        letter-spacing: .025rem;
+        line-height: 2.4rem;
+        font-weight: 400
+      }
+
+      .comparisonNew__tableText b {
+        font-size: 1.5rem;
+        letter-spacing: .025rem;
+        line-height: 2.4rem;
+        font-weight: 800
+      }
+    }
+
+    @media (max-width: 63.99rem) {
+      .comparisonNew__tableText--review {
+        font-size: 1rem;
+        letter-spacing: .02rem;
+        line-height: 1.5rem;
+        font-weight: 400
+      }
+    }
+
+    .comparisonNew__tableText--orange b {
+      color: #ea2c00
+    }
+
+    .comparisonNew--twoRows .comparisonNew__tableText--orange b {
+      color: #14103b
+    }
+
+    .comparisonNew__tableText--bottom {
+      margin-top: -.5rem
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableText--bottom {
+        margin-top: -.7rem
+      }
+    }
+
+    .comparisonNew__tableListWrap:last-of-type .comparisonNew__tableListItem {
+      border-right: dashed .1rem #e6e5e2
+    }
+
+    .comparisonNew__tableListItem--reviews {
+      display: flex;
+      flex-flow: column
+    }
+
+    .comparisonNew__tableTextListItem {
+      color: #14103b;
+      padding-right: .8rem;
+      font-size: 1.1rem;
+      letter-spacing: .025rem;
+      line-height: 1.8rem;
+      font-weight: 500
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__tableTextListItem {
+        font-size: 1.5rem;
+        letter-spacing: .025rem;
+        line-height: 2.4rem;
+        font-weight: 500
+      }
+    }
+
+    .comparisonNew__tableListWrap--stroke {
+      border-top: 0;
+      border-left: .1rem solid #ea2c00 !important;
+      border-right: .1rem solid #ea2c00;
+      border-bottom: .1rem solid #ea2c00;
+      border-radius: 0 0 .6rem .6rem;
+      overflow: hidden
+    }
+
+    .comparisonNew__tableListWrap--stroke .comparisonNew__tableListItem:last-child {
+      border-bottom: 0;
+      border-right: 0;
+      border-left: 0
+    }
+
+    @media (max-width: 63.99rem) {
+      .comparisonNew__tableListWrap--stroke {
+        background-color: #f8f3ee
+      }
+    }
+
+    .comparisonNew__tableBulletList {
+      display: flex;
+      flex-direction: column
+    }
+
+    .comparisonNew__tableBulletListItem {
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    @media (max-width: 63.99rem) {
+      .comparisonNew__tableListIcon {
+        width: 2.4rem;
+        height: 2.4rem
+      }
+    }
+
+    .comparisonNew__btnWrap {
+      width: 100%;
+      text-align: center;
+      margin-top: 3.6rem
+    }
+
+    @media (min-width: 64rem) {
+      .comparisonNew__btnWrap {
+        margin-top: 4.8rem
+      }
+    }
+@media (max-width: 750px) {
+  .comparisonNew__tableListItem{
+        font-size: 12px !important;
+    font-weight: 600;
+  }
+  .comparisonNew__tableText,.comparisonNew__tableText b,.comparisonNew__tableHeadTitle{
+     font-size: 12px !important;
+    line-height: 20px;
+            font-weight: 600;
+  }
+}
+</style>
+
+<div>
+  <div class="comparison comparisonNew ">
+    <div class="comparison__container comparisonNew__container">
+      <div class="comparisonNew__headingWrap">
+        <h3 class="comparisonNew__heading  heading__primary heading__primary--light"> Why Choose Freebird?</h3>
+        <h3 class="comparisonNew__heading heading__primary">Compare The Difference</h3>
+        <p class="comparisonNew__subheading">The #1 Most Reviewed Head Shaver</p>
+      </div>
+
+      <div class="comparisonNew__table">
+        <div class="comparison__tableTop comparisonNew__tableTop">
+          <div class="comparisonNew__tableHead">
+            <div class="comparisonNew__tableHeadImageWrap"></div>
+            <div class="comparison__tableHeadTextWrap comparisonNew__tableHeadTextWrap"></div>
+          </div>
+
+          <div class="comparisonNew__tableHead comparisonNew__tableHead--stroke">
+            <div class="comparisonNew__tableHeadImageWrap">
+              <picture id="imageId" class="image comparisonNew__tableHeadImage image--square"
+                style="--maxw: 121px;--maxh: 121px;--aspect-ratio:var(--ov-aspect-ratio, 1.0);--image-fit:contain;"
+                data-loaded="true">
+                <img class="comparisonNew__tableHeadImg image__elem"
+                  src="https://cdn.shopify.com/s/files/1/0817/3505/7713/files/s46_37ef8e5d-6055-412a-9b64-aaf6e13bfdd7.jpg?v=1716532598"
+                  alt="">
+              </picture>
+            </div>
+            <div class="comparison__tableHeadTextWrap comparisonNew__tableHeadTextWrap">
+              <p class="comparison__tableHeadTitle comparisonNew__tableHeadTitle">P3 CarPlay AI Box</p>
+            </div>
+          </div>
+
+          <div class="comparisonNew__tableHead">
+            <div class="comparisonNew__tableHeadImageWrap">
+              <picture id="imageId" class="image comparisonNew__tableHeadImage image--square"
+                style="--maxw: 121px;--maxh: 121px;--aspect-ratio:var(--ov-aspect-ratio, 1.0);--image-fit:contain;;"
+                data-loaded="true">
+                <img class="comparisonNew__tableHeadImg image__elem" src="https://cdn.shopify.com/s/files/1/0817/3505/7713/files/s46_37ef8e5d-6055-412a-9b64-aaf6e13bfdd7.jpg?v=1716532598" alt="">
+              </picture>
+            </div>
+            <div class="comparison__tableHeadTextWrap comparisonNew__tableHeadTextWrap">
+              <p class="comparison__tableHeadTitle comparisonNew__tableHeadTitle">P3 CarPlay AI Box</p>
+            </div>
+          </div>
+
+          <div class="comparisonNew__tableHead">
+            <div class="comparisonNew__tableHeadImageWrap">
+              <picture id="imageId" class="image comparisonNew__tableHeadImage image--square"
+                style="--maxw: 121px;--maxh: 121px;--aspect-ratio:var(--ov-aspect-ratio, 1.0);--image-fit:contain;;"
+                data-loaded="true">
+                <img class="comparisonNew__tableHeadImg image__elem" src="https://cdn.shopify.com/s/files/1/0817/3505/7713/files/s46_37ef8e5d-6055-412a-9b64-aaf6e13bfdd7.jpg?v=1716532598" alt="">
+              </picture>
+            </div>
+            <div class="comparison__tableHeadTextWrap comparisonNew__tableHeadTextWrap">
+              <p class="comparison__tableHeadTitle comparisonNew__tableHeadTitle">P3 CarPlay AI Box</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison__tableBottom comparisonNew__tableBottom">
+          <div class="comparisonNew__tableListWrap">
+            <ul class="comparison__tableList comparison__tableTextList comparisonNew__tableList">
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Shave Trial</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Warranty</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Free Shipping</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Hair Clipper</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Nose Trimmer</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Exfoliate Brush</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Scalp Scrubber</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Replacement Blade Price</li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItemFeatures">Total Price</li>
+            </ul>
+          </div>
+
+          <div class="comparisonNew__tableListWrap comparisonNew__tableListWrap--stroke">
+            <ul class="comparison__tableList comparisonNew__tableList comparisonNew__tableList--products">
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>30 Day</b></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>Lifetime</b></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                  <path
+                    d="M14.0384 20.684L22.4423 12.2801L21.125 10.9629L14.0384 18.0494L10.4759 14.4869L9.15866 15.8042L14.0384 20.684ZM15.8146 27.2416C14.1721 27.2416 12.6284 26.93 11.1832 26.3066C9.738 25.6833 8.4809 24.8374 7.41188 23.7688C6.34283 22.7003 5.49651 21.4437 4.87291 19.9992C4.2493 18.5546 3.9375 17.0112 3.9375 15.3688C3.9375 13.7263 4.24917 12.1826 4.8725 10.7374C5.49583 9.2922 6.34177 8.0351 7.41031 6.96608C8.47888 5.89703 9.73543 5.05071 11.18 4.42711C12.6245 3.8035 14.168 3.4917 15.8104 3.4917C17.4528 3.4917 18.9966 3.80337 20.4418 4.4267C21.8869 5.05003 23.144 5.89597 24.2131 6.96451C25.2821 8.03307 26.1284 9.28963 26.752 10.7342C27.3756 12.1787 27.6874 13.7222 27.6874 15.3646C27.6874 17.007 27.3758 18.5508 26.7524 19.996C26.1291 21.4411 25.2832 22.6982 24.2146 23.7673C23.1461 24.8363 21.8895 25.6826 20.445 26.3062C19.0005 26.9298 17.457 27.2416 15.8146 27.2416Z"
+                    fill="#FF4613"></path>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>FREE</b></span>
+                  <span class="comparisonNew__tableText--bottom"><s>$19.95</s></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>FREE</b></span>
+                  <span class="comparisonNew__tableText--bottom"><s>$19.95</s></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>FREE</b></span>
+                  <span class="comparisonNew__tableText--bottom"> <s>$19.95</s></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>FREE</b></span>
+                  <span class="comparisonNew__tableText--bottom"><s>$19.95</s></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top">Starting at </span>
+                  <span class="comparisonNew__tableText--bottom"><b>$17.95</b></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText comparisonNew__tableText--orange">
+                  <span class="comparisonNew__tableText--top"><b>$39.95</b></span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem comparisonNew__tableListItem--reviews ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="86" height="23" viewBox="0 0 86 23" fill="none">
+                  <path
+                    d="M5.76042 18.3506L7.0625 12.6979L2.75 8.90064L8.40625 8.39362L10.625 3.06451L12.8438 8.4152L18.5 8.90064L14.1875 12.6979L15.4896 18.3506L10.625 15.3517L5.76042 18.3506Z"
+                    fill="#FFD100"></path>
+                  <path
+                    d="M21.7604 18.3506L23.0625 12.6979L18.75 8.90064L24.4062 8.39362L26.625 3.06451L28.8438 8.4152L34.5 8.90064L30.1875 12.6979L31.4896 18.3506L26.625 15.3517L21.7604 18.3506Z"
+                    fill="#FFD100"></path>
+                  <path
+                    d="M37.7604 18.3506L39.0625 12.6979L34.75 8.90064L40.4062 8.39362L42.625 3.06451L44.8438 8.4152L50.5 8.90064L46.1875 12.6979L47.4896 18.3506L42.625 15.3517L37.7604 18.3506Z"
+                    fill="#FFD100"></path>
+                  <path
+                    d="M53.7604 18.3506L55.0625 12.6979L50.75 8.90064L56.4062 8.39362L58.625 3.06451L60.8438 8.4152L66.5 8.90064L62.1875 12.6979L63.4896 18.3506L58.625 15.3517L53.7604 18.3506Z"
+                    fill="#FFD100"></path>
+                  <path
+                    d="M69.7604 18.3506L71.0625 12.6979L66.75 8.90064L72.4062 8.39362L74.625 3.06451L76.8438 8.4152L82.5 8.90064L78.1875 12.6979L79.4896 18.3506L74.625 15.3517L69.7604 18.3506Z"
+                    fill="#FFD100"></path>
+                </svg>
+                <p class="comparisonNew__tableText comparisonNew__tableText--review">30,619 reviews</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="comparisonNew__tableListWrap">
+            <ul class="comparison__tableList comparisonNew__tableList comparisonNew__tableList--products">
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">30 Day</span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">1-Year</span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <path
+                    d="M13.4134 20.684L21.8173 12.2801L20.5 10.9629L13.4134 18.0494L9.85094 14.4869L8.53366 15.8042L13.4134 20.684ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416Z"
+                    fill="#14103B"></path>
+                </svg>
+              </li>
+
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">$31.49</span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">$99.89</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="comparisonNew__tableListWrap">
+            <ul class="comparison__tableList comparison__tableBulletList comparisonNew__tableList comparisonNew__tableList--products">
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">90 Day</span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">1-Year</span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <path
+                    d="M13.4134 20.684L21.8173 12.2801L20.5 10.9629L13.4134 18.0494L9.85094 14.4869L8.53366 15.8042L13.4134 20.684ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416Z"
+                    fill="#14103B"></path>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <svg class="comparisonNew__tableListIcon" xmlns="http://www.w3.org/2000/svg" width="31" height="31"
+                  viewBox="0 0 31 31" fill="none">
+                  <g opacity="0.4">
+                    <path
+                      d="M10.6875 21.184L15.1875 16.684L19.6875 21.184L21.0048 19.8667L16.5048 15.3667L21.0048 10.8667L19.6875 9.54939L15.1875 14.0494L10.6875 9.54939L9.37019 10.8667L13.8702 15.3667L9.37019 19.8667L10.6875 21.184ZM15.1896 27.2416C13.5471 27.2416 12.0034 26.93 10.5582 26.3066C9.113 25.6833 7.8559 24.8374 6.78688 23.7688C5.71783 22.7003 4.87151 21.4437 4.24791 19.9992C3.6243 18.5546 3.3125 17.0112 3.3125 15.3688C3.3125 13.7263 3.62417 12.1826 4.2475 10.7374C4.87083 9.2922 5.71677 8.0351 6.78531 6.96608C7.85388 5.89703 9.11043 5.05071 10.555 4.42711C11.9995 3.8035 13.543 3.4917 15.1854 3.4917C16.8278 3.4917 18.3716 3.80337 19.8168 4.4267C21.2619 5.05003 22.519 5.89597 23.5881 6.96451C24.6571 8.03307 25.5034 9.28963 26.127 10.7342C26.7506 12.1787 27.0624 13.7222 27.0624 15.3646C27.0624 17.007 26.7508 18.5508 26.1274 19.996C25.5041 21.4411 24.6582 22.6982 23.5896 23.7673C22.5211 24.8363 21.2645 25.6826 19.82 26.3062C18.3755 26.9298 16.832 27.2416 15.1896 27.2416ZM15.1875 25.3667C17.9791 25.3667 20.3437 24.3979 22.2812 22.4604C24.2187 20.5229 25.1875 18.1583 25.1875 15.3667C25.1875 12.575 24.2187 10.2104 22.2812 8.27292C20.3437 6.33542 17.9791 5.36667 15.1875 5.36667C12.3958 5.36667 10.0312 6.33542 8.09372 8.27292C6.15622 10.2104 5.18747 12.575 5.18747 15.3667C5.18747 18.1583 6.15622 20.5229 8.09372 22.4604C10.0312 24.3979 12.3958 25.3667 15.1875 25.3667Z"
+                      fill="#14103B"></path>
+                  </g>
+                </svg>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">$29.99</span>
+                </p>
+              </li>
+              <li class="comparisonNew__tableListItem">
+                <p class="comparisonNew__tableText">
+                  <span class="comparisonNew__tableText--top">$99.99</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+
+{% schema %}
+{
+  "name": "pt-contrast",
+  "presets": [
+  {
+    "name": "pt-contrast"
+  }
+],
+  "settings": [
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

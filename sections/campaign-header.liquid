@@ -1,0 +1,91 @@
+
+<div class="campaign-header" 
+	{% if section.settings.background_image != blank %}
+		style="background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');"
+	{% endif %}
+>
+	<div class="section">
+		<div class="text">
+			<p class="campaign-header__tag">{{ section.settings.badge_text }}</p>
+			<h1 class="campaign-header__title">{{ section.settings.title }}</h1>
+			<p class="campaign-header__subtitle">{{ section.settings.subtitle }}</p>
+			<p class="campaign-header__desc">{{ section.settings.desc }}</p>
+			<a class="button button--outline campaign-header__link" href="{{ section.settings.button_link }}">{{ section.settings.button_text}}</a>
+		</div>
+		<div class="media">
+			{% if section.settings.foreground_image != blank %}
+				{% assign fg_image = section.settings.foreground_image %}
+				<img 
+					src="{{ fg_image | image_url: width: 800 }}" 
+					alt="{{ fg_image.alt | escape }}" 
+					loading="lazy"
+				>
+			{% endif %}
+
+			<a class="button button--outline campaign-header__link" href="{{ section.settings.button_link }}">{{ section.settings.button_text}}</a>
+		</div>
+		
+	</div>
+</div>
+
+
+{% schema %}
+
+{
+	"name": "Campaign header",
+	"class": "section-campaign-header",
+	"settings": [
+		{
+			"type": "text",
+			"id": "badge_text",
+			"label": "Badge text",
+		},
+		{
+			"type":"color",
+			"id": "badge_color",
+			"label": "Badge color",
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title",
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"label": "Subtitle",
+		},
+		{
+			"type": "text",
+			"id": "desc",
+			"label": "Description",
+		},
+		{
+			"type": "text",
+			"id": "button_text",
+			"label": "Button text",
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "Button link",
+		},
+		{
+			"type": "image_picker",
+			"id": "background_image",
+			"label": "Background image",
+		},
+		{
+			"type": "image_picker",
+			"id": "foreground_image",
+			"label": "Foreground image",
+		},
+	],
+	"presets": [
+		{
+			"name": "Campaign header"
+		}
+	]
+}
+
+{% endschema %}
