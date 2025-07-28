@@ -57,7 +57,7 @@
       {%- endif -%}
       <div class="product-grid__content product--description product-single__sticky grid__item {{ product_description_width }}">
         <div class="product-single__meta">
-          {%- render 'breadcrumbs' -%}
+          {% comment %} {%- render 'breadcrumbs' -%} {% endcomment %}
           {{- slot -}}
         </div>
       </div>

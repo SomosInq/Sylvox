@@ -42,6 +42,8 @@
           render 'block-custom', block: block
         when 'share'
           render 'block-share', block: block
+        when 'size_picker'
+          render 'product-size-picker', block: block
       endcase
     endfor
   endcapture
@@ -700,6 +702,10 @@
           "content": "t:info.choose_which_platforms_share_theme_settings"
         }
       ]
+    },
+    {
+      "type": "size_picker",
+      "name": "Size Picker"
     }
   ]
 }

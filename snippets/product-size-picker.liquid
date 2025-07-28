@@ -1,0 +1,19 @@
+<div data-template-suffix="{{ product.template_suffix }}">
+  <span class="label variant__label">
+    Size
+  </span>
+  <div class="size_picker__container">
+  {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', product.template_suffix %}
+  {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
+  {% for get_product in collections_by_suffix %}
+      <a href="{{ get_product.url }}" class="size-picker__item {% if get_product.url == product.url %}active{% endif %}">
+        <span class="product__title">
+        {{ get_product.title | split : '"' | first}}"
+        </span>
+        <span class="product_option__price">
+          {{ cart.currency.iso_code }} {{ get_product.price | money }}
+        </span>
+      </a>
+  {% endfor %}
+  </div>
+</div>

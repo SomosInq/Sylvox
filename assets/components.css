@@ -3973,7 +3973,7 @@ th,
   }
 
 .product-single__meta {
-  padding-top: 65px;
+  padding-top: 0;
   padding-left: 45px;
 }
 
@@ -15996,7 +15996,7 @@ form + .footer__social {
 .variant-button-wrap {
   border: 0;
   padding: 0;
-  margin: 0 0 calc(var(--label-bottom-margin) * -1);
+  margin: 0 0 24px;
   position: relative;
 }
 
@@ -16011,6 +16011,7 @@ form + .footer__social {
     overflow: hidden;
     border-radius: 4px;
     border: 1px solid var(--Light-Grey, #C6C6C6);
+    width: 100%;
   }
 
 .variant-button-wrap label[data-color-swatch] {
@@ -16087,4 +16088,108 @@ video-media > video:not(:fullscreen) {
 video-media:not([loaded]) > video, video-media:not([loaded]) > iframe, video-media[loaded] > img, video-media[loaded] > svg {
   visibility: hidden;
   opacity: 0;
+}
+
+.size_picker__container{
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+a.size-picker__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: 4px;
+    border: 1px solid #C6C6C6;
+    background: #FFF;
+    text-decoration: none;
+}
+
+a.size-picker__item.active {
+    border: 2px solid #336256;
+}
+
+a.size-picker__item .product__title {
+    color: #636363;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+a.size-picker__item.active .product__title {
+    color: #1D1D1B;
+}
+
+a.size-picker__item .product_option__price{
+  color: #636363;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.176px;
+}
+
+
+.custom-variant-box-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.custom-variant-box .saving-badge {
+  border-radius: 0 0 0 8px;
+  background: var(--Pink, #DB4B97);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 12px;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.24px;
+}
+
+.custom-vairant-compare {
+  color: var(--Light-Grey, #C6C6C6);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.176px;
+  text-decoration: line-through;
+  margin-right: 6px;
+}
+
+fieldset.variant-button-wrap[data-option-handle="need-extended-warranty-by-sylvox"] {
+    display: none;
+}
+.custom-variant-box.no {
+    display: none;
+}
+
+.jdgm-preview-badge .jdgm-star.jdgm-star{
+  color: #336256 !important;
+}
+
+.custom-variant-box + .variant-description {
+    padding: 26px 26px 18px 26px;
+    border-radius: 0 0 8px 8px;
+    border: 2px solid #F7F9FA;
+    background: var(--Off-White, #FAFAFA);
+    margin-top: -20px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #636363;
+    display: none;
+}
+input[type="radio"]:checked + .custom-variant-box + .variant-description {
+    display: block;
+}
+
+.accessories-variant-description {
+    font-size: 14px;
+    color: #636363;
 }

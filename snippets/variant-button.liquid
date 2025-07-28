@@ -50,9 +50,15 @@
   endcapture
 -%}
 
-<fieldset class="variant-button-wrap">
+<fieldset class="variant-button-wrap" data-option-handle="{{ option.name | handle }}">
   <legend class="label variant__label {% unless block.settings.variant_labels %}visually-hidden{% endunless %}">
+  {% if option.name == 'Model' %}
+    Bundles offer the best savings
+  {% elsif option.name == 'Need an Outdoor Soundbar?' %}
+    Don't Miss Top Accessories
+  {% else %}
     {{ option.name }}
+  {% endif %}
     {%- if connect_to_sizechart and is_size -%}
       <span class="variant__label-info">
         &mdash;
@@ -132,18 +138,53 @@
 
     <label
       for="{{ id }}"
-      class="variant__button-label custom-variant-box"
+      class="variant__button-label custom-variant-box {{ value | handle }}"
       {% if is_color %}
         data-color-swatch="{{ option.name }}"
       {% endif %}
     >
+    <div class="custom-variant-box-inner">
+      {% assign variant = value.variant %}
+      <div class="custom-variant-image">
+        <img src="{{ variant.featured_image |  image_url: width: 110 }}" alt="">
+      </div>
       <div class="custom-variant-content">
-        <div class="custom-variant-size">{{ value | escape }}</div>
+        {% if value.name contains 'TV+' %}
+          <div class="custom-variant-size">{{ value.name | split: '+' | first }} + {{ value.name | split: '+' | last }}</div>
+        {% else %}
+          <div class="custom-variant-size">{{ value.name | escape }}</div>
+        {% endif %}
         {% if variant %}
-          <div class="custom-variant-price">{{ variant.price | money }}</div>
+          <div class="custom-variant-price">
+            <span class="custom-vairant-compare">
+              {{ variant.compare_at_price | money }}
+            </span>
+            <span class="custom-vairant-actual">
+              {{ variant.price | money }}
+            </span>
+          </div>
+        {% endif %}
+        {% if option.name == 'Need an Outdoor Soundbar?' %}
+          <div class="accessories-variant-description">
+            {{ variant.metafields.custom.variant_description }}
+          </div>
         {% endif %}
       </div>
+    </div>
+    {% assign savings = 0 %}
+    {% if variant %}
+      {% assign savings = variant.compare_at_price | minus: variant.price %}
+    {% endif %}
+    {% if savings > 0 %}
+      <div class="saving-badge">Save {{ savings | money }}</div>
+    {% endif %}
     </label>
+    {% if option.name == 'Model' and variant.metafields.custom.variant_description != blank %}
+      <div class="variant-description">
+        {{ variant.metafields.custom.variant_description }}
+      </div>
+    {% endif %}
+    
   {%- endfor -%}
 </fieldset>
 
@@ -170,7 +211,7 @@ background: #FFF;
   .custom-variant-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: left;
   }
 
   .custom-variant-size {
@@ -180,7 +221,7 @@ background: #FFF;
   }
 
   .custom-variant-price {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 16px;
+    color: #636363;
   }
 </style>
