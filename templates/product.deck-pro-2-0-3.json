@@ -16,11 +16,15 @@
           "type": "title",
           "settings": {
             "vendor_enable": false,
-            "sku_enable": true
+            "sku_enable": false
           }
         },
         "f30b01a8-3eae-4965-8bc3-af47ad84da34": {
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "size_picker_anHCWr": {
+          "type": "size_picker",
           "settings": {}
         },
         "variant_picker": {
@@ -32,50 +36,19 @@
             "color_swatches": false
           }
         },
-        "bundle_block_W9Ve8J": {
-          "type": "bundle_block",
-          "settings": {
-            "heading": "SAVE BIG IN BUNDLES YOU’LL LOVE",
-            "image_1": "shopify://shop_images/S3-55_deck_pro.jpg",
-            "title_1": "E360 ACE + LTE Box + Hardwire kit",
-            "sale_price_1": "$499.99",
-            "original_price_1": "$629.97",
-            "savings_1": "$129.98",
-            "description_1": "This package includes the E360 ACE Dash Cam, Hardwire Kit for parking mode and LTE Box for cloud connectivity.",
-            "image_2": "shopify://shop_images/S2-55_deck_pro.jpg",
-            "title_2": "E360 + LTE Box + Hardwire kit",
-            "sale_price_2": "$469.99",
-            "original_price_2": "$569.97",
-            "savings_2": "$99.98"
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
         "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38": {
           "type": "description",
           "settings": {
             "is_tab": false
           }
         },
-        "1b07c23f-a116-48c6-9393-6b5ea55b7516": {
-          "type": "quantity_selector",
+        "current_selection_m8cm9w": {
+          "type": "current_selection",
           "settings": {}
         },
-        "inventory_status": {
-          "type": "inventory_status",
-          "settings": {
-            "inventory_threshold": 10,
-            "inventory_transfers_enable": true
-          }
-        },
-        "sales_point_aMwrgV": {
-          "type": "sales_point",
-          "settings": {
-            "icon": "globe",
-            "text": "Free shipping"
-          }
+        "price": {
+          "type": "price",
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -105,13 +78,11 @@
       "block_order": [
         "title_RyMHkM",
         "f30b01a8-3eae-4965-8bc3-af47ad84da34",
+        "size_picker_anHCWr",
         "variant_picker",
-        "bundle_block_W9Ve8J",
-        "price",
         "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38",
-        "1b07c23f-a116-48c6-9393-6b5ea55b7516",
-        "inventory_status",
-        "sales_point_aMwrgV",
+        "current_selection_m8cm9w",
+        "price",
         "buy_buttons",
         "tab_VMgkry",
         "tab_rnPhnR"
@@ -150,7 +121,9 @@
           }
         }
       },
-      "block_order": ["heading_8HaYdw"],
+      "block_order": [
+        "heading_8HaYdw"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -319,7 +292,10 @@
           }
         }
       },
-      "block_order": ["image_PRK3G6", "image_RXhEGM"],
+      "block_order": [
+        "image_PRK3G6",
+        "image_RXhEGM"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -370,7 +346,10 @@
           }
         }
       },
-      "block_order": ["heading_kLc8Pa", "richtext_PFJ7Nt"],
+      "block_order": [
+        "heading_kLc8Pa",
+        "richtext_PFJ7Nt"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -461,7 +440,11 @@
           }
         }
       },
-      "block_order": ["grid_box_rbPzQT", "grid_box_8ApDLM", "grid_box_7tKYVJ"],
+      "block_order": [
+        "grid_box_rbPzQT",
+        "grid_box_8ApDLM",
+        "grid_box_7tKYVJ"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -503,11 +486,15 @@
           }
         }
       },
-      "block_order": ["slide_QqP7Lp", "slide_bmLipF"],
+      "block_order": [
+        "slide_QqP7Lp",
+        "slide_bmLipF"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -546,11 +533,16 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/797b8f0df03fdcd3f6294c17b924114874f7d62e.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 100
           }
         }
       },
-      "block_order": ["title_GFaQcd", "text_qkpUEk", "image_N9az4U"],
+      "block_order": [
+        "title_GFaQcd",
+        "text_qkpUEk",
+        "image_N9az4U"
+      ],
       "name": "Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -613,7 +605,10 @@
           }
         }
       },
-      "block_order": ["grid_box_3tryC3", "grid_box_JxaDph"],
+      "block_order": [
+        "grid_box_3tryC3",
+        "grid_box_JxaDph"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "Immersive, Three-Dimensional Sound",
@@ -1320,7 +1315,10 @@
           }
         }
       },
-      "block_order": ["values_jnCGh7", "values_tY64we"],
+      "block_order": [
+        "values_jnCGh7",
+        "values_tY64we"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -1376,7 +1374,9 @@
           "settings": {}
         }
       },
-      "block_order": ["judgeme_review_widget_5fe97322"],
+      "block_order": [
+        "judgeme_review_widget_5fe97322"
+      ],
       "settings": {
         "full_width": false,
         "space_around": true

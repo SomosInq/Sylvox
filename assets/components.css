@@ -16005,7 +16005,7 @@ form + .footer__social {
     position: relative;
     display: inline-block;
     font-weight: normal;
-    padding: 7px 15px 7px;
+    padding: 20px 15px;
     margin: 0 8px var(--label-bottom-margin) 0;
     background-color: var(--color-body);
     overflow: hidden;
@@ -16137,6 +16137,7 @@ a.size-picker__item .product_option__price{
     display: flex;
     align-items: center;
     gap: 24px;
+    flex-wrap: wrap;
 }
 
 .custom-variant-box .saving-badge {
@@ -16192,4 +16193,18 @@ input[type="radio"]:checked + .custom-variant-box + .variant-description {
 .accessories-variant-description {
     font-size: 14px;
     color: #636363;
+        margin-top: 6px;
+}
+.custom-variant-image {
+    width: 88px;
+}
+
+block-price.block-price.product-block {
+    padding: 0 24px;
+    background: #FAFAFA;
+    margin-bottom: 0;
+}
+
+block-price.block-price.product-block span.label.variant__label{
+  display: none;
 }
