@@ -1,1 +1,255 @@
-{"sections":{"main":{"type":"blog-template","settings":{"blog_show_rss":false,"blog_show_tags":true,"blog_show_date":true,"blog_show_comments":true,"blog_show_author":false,"blog_image_size":"wide"}},"sidebar":{"type":"blog-sidebar","blocks":{"tags":{"type":"tags","settings":{}}},"block_order":["tags"],"settings":{}}},"order":["main","sidebar"],"wrapper":"div.page-width.page-content.blog-layout"}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "3fcc5c0e-3b55-4490-bb0f-778533d18142": {
+          "type": "1",
+          "settings": {
+            "heading": "Page Heading",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 20,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 15,
+            "hidden_mobile": false,
+            "text_fs_mb": 20,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 10
+          }
+        },
+        "190dccc0-921d-4bc6-8dbb-51e27461095d": {
+          "type": "2",
+          "settings": {
+            "content": "<p>Sub title page content</p>",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 16,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 16,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 0
+          }
+        },
+        "9c516f81-c531-4ce6-903a-a0493715b39a": {
+          "type": "3",
+          "settings": {
+            "breadcrumb_color": "#f2f2f2",
+            "brc_mgb": 5
+          }
+        }
+      },
+      "block_order": [
+        "3fcc5c0e-3b55-4490-bb0f-778533d18142",
+        "190dccc0-921d-4bc6-8dbb-51e27461095d",
+        "9c516f81-c531-4ce6-903a-a0493715b39a"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "custom_blog_4UJhQP": {
+      "type": "custom-blog",
+      "name": "Custom Blog",
+      "settings": {
+        "banner_section_width": "full",
+        "banner_section_content_width": "standard",
+        "custom_banner_override_image": "shopify://shop_images/39ed5ad12e60ec44d2c54dc41cced237a8992087.png",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.5,
+        "banner_content_position": "center",
+        "banner_share_text": "",
+        "banner_cta_text": "Learn more",
+        "banner_cta_link": "shopify://blogs/news/prime-day-outdoor-tv-deals-2025",
+        "show_share_tiktok": false,
+        "show_share_linkedin": false,
+        "show_share_youtube": false,
+        "show_share_facebook": false,
+        "show_share_x": false,
+        "show_share_pinterest": false,
+        "show_share_instagram": false,
+        "custom_banner_title": "",
+        "blog_list_title": "More Articles",
+        "bg_color": "#ffffff",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "text_alignment": "left",
+        "heading": "",
+        "subheading": "More Articles",
+        "description": "",
+        "slide_width": 480,
+        "show_arrows": true,
+        "hide_filter_sort": true
+      }
+    },
+    "slider": {
+      "type": "blog_slider",
+      "disabled": true,
+      "settings": {
+        "blog": "fashion",
+        "limit": 6,
+        "date": "date",
+        "col_dk": "3",
+        "col_tb": "2",
+        "col_mb": "1",
+        "show_author": true,
+        "show_date": true,
+        "show_comment": false,
+        "image_ratio": "ratio4_3",
+        "image_position": "8",
+        "image_size": "cover",
+        "img_effect": "zoom",
+        "b_effect": "pervasive-circle",
+        "cl": "#ffffff",
+        "cl2": "#878787",
+        "bg": "#000000",
+        "overlay": 80,
+        "loop": true,
+        "au_time": 0,
+        "au_hover": true,
+        "nav_btn": true,
+        "btn_vi": "hover",
+        "btn_owl": "outline",
+        "btn_shape": "round",
+        "btn_cl": "dark",
+        "btn_size": "small",
+        "btn_hidden_mobile": false,
+        "nav_dot": false,
+        "dot_owl": "default",
+        "dots_cl": "dark",
+        "dots_round": false,
+        "dots_space": 10,
+        "dots_hidden_mobile": false,
+        "layout": "t4s-container-fluid",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": ",,,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": "",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "settings": {
+        "allow_transparent_header": false,
+        "inline_title": false,
+        "content": "<p>Get access to our latest news by signing up for our newsletter.</p>",
+        "show_newsletter_form": true,
+        "show_tags": false,
+        "banner_background": "",
+        "banner_text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "articles_per_page": 6,
+        "feature_first_article": true,
+        "feature_article_background": "",
+        "feature_article_text_color": "",
+        "show_excerpt": true,
+        "show_date": true,
+        "show_author": false,
+        "show_comments_count": false,
+        "show_category": true
+      }
+    },
+    "sidebar": {
+      "type": "sidebar-blog",
+      "blocks": {
+        "d8aac4b9-39f0-4d61-bda2-147ff729bd69": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "main-menu",
+            "count": true
+          }
+        },
+        "aa039b15-ee15-46c7-9edd-fab236515c2a": {
+          "type": "tags",
+          "settings": {
+            "title": "Blog tags",
+            "count": true
+          }
+        },
+        "3f3fa516-998a-40b8-80f9-bd2783aae214": {
+          "type": "collection",
+          "settings": {
+            "title": "Sale Products",
+            "collection": "women",
+            "limit_pr": 3,
+            "image_ratio": "t4s_ratioadapt",
+            "image_size": "t4s_cover",
+            "image_position": "t4s_position_8"
+          }
+        }
+      },
+      "block_order": [
+        "d8aac4b9-39f0-4d61-bda2-147ff729bd69",
+        "aa039b15-ee15-46c7-9edd-fab236515c2a",
+        "3f3fa516-998a-40b8-80f9-bd2783aae214"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": true,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    }
+  },
+  "order": ["heading", "custom_blog_4UJhQP", "slider", "main", "sidebar"]
+}
