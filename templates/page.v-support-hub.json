@@ -1,0 +1,502 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "a4760147-34c7-4142-9a70-d9581745c095": {
+          "type": "1",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 35,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 30,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 0
+          }
+        }
+      },
+      "block_order": ["a4760147-34c7-4142-9a70-d9581745c095"],
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#ff4e00",
+        "overlay": 100,
+        "padding": 20,
+        "paddingmb": 15,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": ["f69681ed-b75e-42de-be58-fdf73b3b7e08"],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "image_banner_reqyCY": {
+      "type": "image-banner",
+      "blocks": {
+        "subheading_pGyxkn": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Support</p>",
+            "text_color": "#ffffff",
+            "subheading_width_desktop": 600,
+            "subheading_width_mobile": 340,
+            "subheading_font_size_desktop": 18,
+            "subheading_font_size_mobile": 14,
+            "subheading_font_weight_desktop": "400",
+            "subheading_font_weight_mobile": "400"
+          }
+        },
+        "heading_aHBmHB": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Welcome to</p><p>Vantrue Support</p>",
+            "text_color": "#ffffff",
+            "heading_width_desktop": 600,
+            "heading_width_mobile": 340,
+            "heading_font_size_desktop": 56,
+            "heading_font_size_mobile": 24,
+            "heading_font_weight_desktop": "400",
+            "heading_font_weight_mobile": "400"
+          }
+        }
+      },
+      "block_order": ["subheading_pGyxkn", "heading_aHBmHB"],
+      "custom_css": [
+        "@media screen and (max-width: 768px) {.image-banner__content {justify-content: center; text-align: center; }}"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "desktop_image": "shopify://shop_images/14945a05e7552e013a20f4257c039344b45bb081.png",
+        "height_mode": "custom",
+        "custom_height_desktop": 580,
+        "custom_height_mobile": 500,
+        "image_fit": "cover",
+        "content_alignment_desktop": "left",
+        "content_alignment_mobile": "left",
+        "vertical_alignment_desktop": "middle",
+        "vertical_alignment_mobile": "bottom",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_left_desktop": 0,
+        "margin_right_desktop": 0,
+        "margin_left_mobile": 0,
+        "margin_right_mobile": 0
+      }
+    },
+    "tabbed_slider_jTgzKG": {
+      "type": "tabbed-slider",
+      "blocks": {
+        "tab_h89RLW": {
+          "type": "tab",
+          "settings": {
+            "tab_reference": "usermanual",
+            "tab_label": "User Manual & Firmware"
+          }
+        },
+        "tab_cNwqNJ": {
+          "type": "tab",
+          "settings": {
+            "tab_reference": "app",
+            "tab_label": "APP & Player"
+          }
+        },
+        "image_label_tdqddt": {
+          "type": "image_label",
+          "settings": {
+            "title": "360 Series",
+            "tab_reference": "usermanual",
+            "link": ""
+          }
+        },
+        "image_label_VXEmbH": {
+          "type": "image_label",
+          "settings": {
+            "title": "Nexus Series",
+            "tab_reference": "usermanual",
+            "link": ""
+          }
+        },
+        "image_label_XFHwtH": {
+          "type": "image_label",
+          "settings": {
+            "image": "shopify://shop_images/image-2.png",
+            "title": "Element Series",
+            "tab_reference": "usermanual",
+            "link": ""
+          }
+        },
+        "image_label_TiT9qb": {
+          "type": "image_label",
+          "settings": {
+            "title": "Falcon Series",
+            "tab_reference": "usermanual",
+            "link": ""
+          }
+        },
+        "image_label_xXjfRj": {
+          "type": "image_label",
+          "settings": {
+            "title": "OnDash Series",
+            "tab_reference": "usermanual",
+            "link": ""
+          }
+        },
+        "image_label_VWLcqq": {
+          "type": "image_label",
+          "settings": {
+            "title": "Pilot Series",
+            "tab_reference": "usermanual",
+            "link": ""
+          }
+        },
+        "image_label_miN6Tp": {
+          "type": "image_label",
+          "settings": {
+            "title": "text",
+            "tab_reference": "app",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_h89RLW",
+        "tab_cNwqNJ",
+        "image_label_tdqddt",
+        "image_label_VXEmbH",
+        "image_label_XFHwtH",
+        "image_label_TiT9qb",
+        "image_label_xXjfRj",
+        "image_label_VWLcqq",
+        "image_label_miN6Tp"
+      ],
+      "settings": {}
+    },
+    "video_grid_Pn8mHz": {
+      "type": "video-grid",
+      "blocks": {
+        "video_heAaha": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_9zTrGP": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
+            "video_type": "How-To Tutorials",
+            "link_url": ""
+          }
+        },
+        "video_3yPjTM": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-2_92114025-b2da-444b-ad2e-3f79cd99e10f.png",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_eU6qM3": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-2_92114025-b2da-444b-ad2e-3f79cd99e10f.png",
+            "video_type": "How-To Tutorials",
+            "link_url": ""
+          }
+        },
+        "video_i3hdxA": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-1_3f7bebb9-1197-4ae9-b5c0-da44b3515fb6.png",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_nB3XEd": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-1_3f7bebb9-1197-4ae9-b5c0-da44b3515fb6.png",
+            "video_type": "Real User Stories",
+            "link_url": ""
+          }
+        },
+        "video_eEgLK8": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-3_92fa0bd1-e1b0-456e-9b51-d0a60f8715ff.png",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_YFkPUK": {
+          "type": "video",
+          "settings": {
+            "title": "Video Title",
+            "video_url": "",
+            "video_thumbnail": "shopify://shop_images/Rectangle_124-3_92fa0bd1-e1b0-456e-9b51-d0a60f8715ff.png",
+            "video_type": "Real User Stories",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_heAaha",
+        "video_9zTrGP",
+        "video_3yPjTM",
+        "video_eU6qM3",
+        "video_i3hdxA",
+        "video_nB3XEd",
+        "video_eEgLK8",
+        "video_YFkPUK"
+      ],
+      "name": "Video Media",
+      "settings": {
+        "heading": "Experience the Outdoors Like Never Before.",
+        "header_alignment": "center",
+        "bg_color": "#ffffff",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "usp_grid_6xpF7D": {
+      "type": "usp-grid",
+      "blocks": {
+        "usp_item_NaBpxB": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/programming-module-three--code-three-module-programming-plugin--Streamline-Core.svg",
+            "image_size": "medium",
+            "title": "How to Choose?",
+            "title_font_size": 24,
+            "text": "",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "#20413b",
+            "button_text_color": "#ffffff",
+            "button_icon": "shopify://shop_images/SVG_2_e72d356d-56f2-49ad-824a-c82025a80cb0.svg"
+          }
+        },
+        "usp_item_Q3BNte": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/shopping-cart-basket-3--shopping-basket--Streamline-Core.svg",
+            "image_size": "medium",
+            "title": "How to Buy",
+            "title_font_size": 24,
+            "text": "",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "#20413b",
+            "button_text_color": "#ffffff",
+            "button_icon": "shopify://shop_images/SVG_2_e72d356d-56f2-49ad-824a-c82025a80cb0.svg"
+          }
+        },
+        "usp_item_zfY3AT": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/shopping-store-1--store-shop-shops-stores--Streamline-Core.svg",
+            "image_size": "medium",
+            "title": "Where to Buy",
+            "title_font_size": 24,
+            "text": "",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "#20413b",
+            "button_text_color": "#ffffff",
+            "button_icon": "shopify://shop_images/SVG_2_e72d356d-56f2-49ad-824a-c82025a80cb0.svg"
+          }
+        }
+      },
+      "block_order": ["usp_item_NaBpxB", "usp_item_Q3BNte", "usp_item_zfY3AT"],
+      "name": "USP Grid",
+      "settings": {
+        "enable_slider": false,
+        "section_width": "standard",
+        "heading": "Shopping Guide",
+        "heading_font_size": 32,
+        "subtext": "",
+        "heading_alignment": "center",
+        "show_arrows": true,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "image_banner_with_links_JN6DGC": {
+      "type": "image-banner-with-links",
+      "blocks": {
+        "link_item_KADFLC": {
+          "type": "link_item",
+          "settings": {
+            "title": "Warranty",
+            "link": ""
+          }
+        },
+        "link_item_df4rNn": {
+          "type": "link_item",
+          "settings": {
+            "title": "Shipping Policy",
+            "link": ""
+          }
+        },
+        "link_item_mHpxCR": {
+          "type": "link_item",
+          "settings": {
+            "title": "Return Policy",
+            "link": ""
+          }
+        },
+        "link_item_yfpyTL": {
+          "type": "link_item",
+          "settings": {
+            "title": "Privacy Policy",
+            "link": ""
+          }
+        },
+        "link_item_y6hnhq": {
+          "type": "link_item",
+          "settings": {
+            "title": "Terms",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_item_KADFLC",
+        "link_item_df4rNn",
+        "link_item_mHpxCR",
+        "link_item_yfpyTL",
+        "link_item_y6hnhq"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/f4b4a98cd21d1a44dd757026bf00e558c0f21644.png",
+        "banner_link": "",
+        "heading": "Have a question ?",
+        "heading_color": "#ffffff",
+        "subtext": "Check out the most common questions our customers asked.",
+        "subtext_color": "#ffffff",
+        "button_color": "#ffffff",
+        "link_color": "#2e2e2e"
+      }
+    },
+    "text_section_gNxHjB": {
+      "type": "text-section",
+      "name": "Text Section",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "image_banner_reqyCY",
+    "tabbed_slider_jTgzKG",
+    "video_grid_Pn8mHz",
+    "usp_grid_6xpF7D",
+    "image_banner_with_links_JN6DGC",
+    "text_section_gNxHjB"
+  ]
+}
