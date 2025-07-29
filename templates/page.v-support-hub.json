@@ -35,7 +35,9 @@
           }
         }
       },
-      "block_order": ["a4760147-34c7-4142-9a70-d9581745c095"],
+      "block_order": [
+        "a4760147-34c7-4142-9a70-d9581745c095"
+      ],
       "disabled": true,
       "settings": {
         "heading_fullwidth": false,
@@ -72,7 +74,9 @@
           }
         }
       },
-      "block_order": ["f69681ed-b75e-42de-be58-fdf73b3b7e08"],
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
       "disabled": true,
       "settings": {
         "enable_drawer": false,
@@ -114,7 +118,10 @@
           }
         }
       },
-      "block_order": ["subheading_pGyxkn", "heading_aHBmHB"],
+      "block_order": [
+        "subheading_pGyxkn",
+        "heading_aHBmHB"
+      ],
       "custom_css": [
         "@media screen and (max-width: 768px) {.image-banner__content {justify-content: center; text-align: center; }}"
       ],
@@ -159,6 +166,7 @@
         "image_label_tdqddt": {
           "type": "image_label",
           "settings": {
+            "image": "shopify://shop_images/NEW.jpg",
             "title": "360 Series",
             "tab_reference": "usermanual",
             "link": ""
@@ -167,6 +175,7 @@
         "image_label_VXEmbH": {
           "type": "image_label",
           "settings": {
+            "image": "shopify://shop_images/31ad06cb125b3421b0f0c61c6b16a23cd8e38f18.jpg",
             "title": "Nexus Series",
             "tab_reference": "usermanual",
             "link": ""
@@ -184,6 +193,7 @@
         "image_label_TiT9qb": {
           "type": "image_label",
           "settings": {
+            "image": "shopify://shop_images/80fb6a02680759dc61e0d366e48d3c00662f6342.png",
             "title": "Falcon Series",
             "tab_reference": "usermanual",
             "link": ""
@@ -192,6 +202,7 @@
         "image_label_xXjfRj": {
           "type": "image_label",
           "settings": {
+            "image": "shopify://shop_images/165fc9e9ca53d84715d39e60ae62cc138335a2d7_a81a1984-3e0e-48a1-af67-59931e933589.jpg",
             "title": "OnDash Series",
             "tab_reference": "usermanual",
             "link": ""
@@ -200,6 +211,7 @@
         "image_label_VWLcqq": {
           "type": "image_label",
           "settings": {
+            "image": "shopify://shop_images/a81a03768d288538bf826aea1a84aaef34f4cff9.jpg",
             "title": "Pilot Series",
             "tab_reference": "usermanual",
             "link": ""
@@ -399,7 +411,11 @@
           }
         }
       },
-      "block_order": ["usp_item_NaBpxB", "usp_item_Q3BNte", "usp_item_zfY3AT"],
+      "block_order": [
+        "usp_item_NaBpxB",
+        "usp_item_Q3BNte",
+        "usp_item_zfY3AT"
+      ],
       "name": "USP Grid",
       "settings": {
         "enable_slider": false,
@@ -408,6 +424,7 @@
         "heading_font_size": 32,
         "subtext": "",
         "heading_alignment": "center",
+        "box_height": 300,
         "show_arrows": true,
         "padding_top": 0,
         "padding_bottom": 60,
