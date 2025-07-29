@@ -1,0 +1,280 @@
+{% comment %}
+  Unified USP + Contact Form Section
+  - Flickity-powered USP slider/grid
+  - Auto-selects first USP/form on load
+  - Styled contact form using section-stack layout
+{% endcomment %}
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
+
+<style>
+  .usp-box {
+    padding: 20px;
+    text-align: var(--usp-align, center);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 calc(25% - 2rem);
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+  }
+  .usp-forms {
+    border-top: var(--stroke-weight-1, 1px) solid rgba(0, 0, 0, 0.08);
+    padding-top: 20px;
+    margin-top: 40px;
+}
+  .usp-box img {
+    max-width: 100%; height: auto;
+  }
+  .usp-box.is-active {
+    background: #39685c;
+    {% comment %} outline: 2px solid #000; {% endcomment %}
+    {% comment %} box-shadow: 0 0 0 3px rgba(0,0,0,0.06) inset; {% endcomment %}
+  }
+  .usp-grid, .usp-slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .usp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--usp-link-color, inherit);
+    font-weight: normal;
+  }
+  .usp-link svg {
+    width: 1em;
+    height: 1em;
+  }
+  .form-block { display: none; }
+  .form-block.is-visible { display: block; }
+  .contact-form button {
+    border-radius: 50px;
+    background-color: var(--btn-bg, #000);
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+  }
+  .fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .fieldset input[type="text"] {
+    flex: 1 1 calc(25% - 16px);
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  textarea[name="contact[body]"] {
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+</style>
+
+<section class="usp-grid-section section_width_{{ section.settings.section_width }}"
+  style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+
+  {% if section.settings.heading != blank %}
+    <div class="usp-heading-wrapper" style="text-align: {{ section.settings.heading_alignment }};">
+      <h2 class="usp-heading" style="font-size: {{ section.settings.heading_font_size }}px;">
+        {{ section.settings.heading }}
+      </h2>
+      {% if section.settings.subtext != blank %}
+        <div class="usp-subtext">{{ section.settings.subtext }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="{% if section.settings.enable_slider %}usp-slider js-flickity{% else %}usp-grid{% endif %}"
+    {% if section.settings.enable_slider %}
+      data-flickity='{"wrapAround": true, "pageDots": false, "contain": true, "prevNextButtons": false, "cellAlign": "left"}'
+    {% endif %}>
+    {% for block in section.blocks %}
+      {% if block.type == 'usp_block' %}
+        <div class="usp-box {% if section.settings.enable_slider %}carousel-cell{% endif %}"
+          data-form-id="{{ block.settings.form_id }}"
+          style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; height: {{ section.settings.box_height }}px; --usp-align: {{ block.settings.align_text }}; --usp-link-color: {{ block.settings.link_color }};">
+          {% if block.settings.icon %}
+            <img src="{{ block.settings.icon | img_url: '150x150' }}" class="usp-icon {{ block.settings.image_size }}">
+          {% endif %}
+          <h3 class="usp-title" style="font-size: {{ block.settings.title_font_size }}px;">{{ block.settings.title }}</h3>
+          <div class="usp-text">{{ block.settings.text }}</div>
+          {% if block.settings.link_text != blank %}
+            <span class="usp-link">{{ block.settings.link_text }}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></span>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="usp-forms">
+    {% for block in section.blocks %}
+      {% if block.type == 'form_block' %}
+        <div class="form-block" data-form-id="{{ block.settings.form_id }}">
+          <div class="section-stack section-stack--center">
+            <div class="section-stack__main">
+              <div class="contact-form rounded" style="--btn-bg: {{ block.settings.button_bg_color }};">
+                <h3>{{ block.settings.form_title }}</h3>
+                {% if block.settings.form_description != blank %}<p>{{ block.settings.form_description }}</p>{% endif %}
+                {% form block.settings.form_post_to | default: 'contact' %}
+                  <div class="fieldset">
+                    {% for i in (1..8) %}
+                      {% capture show_key %}show_field_{{ i }}{% endcapture %}
+                      {% capture label_key %}field_label_{{ i }}{% endcapture %}
+                      {% assign show_field = block.settings[show_key] %}
+                      {% assign field_label = block.settings[label_key] %}
+                      {% if show_field %}
+                        <input type="text" name="contact[{{ field_label | handle }}]" placeholder="{{ field_label }}">
+                      {% endif %}
+                    {% endfor %}
+                    {% if block.settings.show_upload %}
+                      <input type="file" name="contact[upload]">
+                    {% endif %}
+                    <textarea name="contact[body]" placeholder="Message"></textarea>
+                    
+                  </div>
+                  <button type="submit" style="margin-top: 20px;">{{ block.settings.button_label }}</button>
+                {% endform %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const boxes = document.querySelectorAll('.usp-box');
+    const forms = document.querySelectorAll('.form-block');
+    if (!boxes.length) return;
+
+    function activateForm(formId) {
+      boxes.forEach(b => b.classList.remove('is-active'));
+      forms.forEach(f => f.classList.remove('is-visible'));
+      const activeBox = [...boxes].find(b => b.dataset.formId === formId);
+      const activeForm = [...forms].find(f => f.dataset.formId === formId);
+      if (activeBox) activeBox.classList.add('is-active');
+      if (activeForm) activeForm.classList.add('is-visible');
+    }
+
+    boxes.forEach(box => {
+      box.addEventListener('click', () => activateForm(box.dataset.formId));
+    });
+
+    activateForm(boxes[0].dataset.formId);
+  });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Contact Area",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get in Touch" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext" },
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [
+      { "value": "standard", "label": "Standard" },
+      { "value": "full", "label": "Full Width" }
+    ] },
+    { "type": "range", "id": "heading_font_size", "label": "Heading Font Size", "min": 12, "max": 60, "default": 32 },
+    { "type": "select", "id": "heading_alignment", "label": "Heading Alignment", "default": "center", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ] },
+    { "type": "checkbox", "id": "enable_slider", "label": "Enable Flickity Slider", "default": false },
+    { "type": "range", "id": "box_height", "label": "USP Box Height", "min": 100, "max": 600, "step": 5, "default": 240 },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 20 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 20 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 20 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 20 },
+    { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "default": 0 },
+    { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "default": 0 },
+    { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "usp_block",
+      "name": "USP Block",
+      "settings": [
+        { "type": "text", "id": "form_id", "label": "Form ID" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "select", "id": "image_size", "label": "Icon Size", "default": "medium", "options": [
+          { "value": "small", "label": "Small" },
+          { "value": "medium", "label": "Medium" },
+          { "value": "large", "label": "Large" }
+        ] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Support Topic" },
+        { "type": "range", "id": "title_font_size", "label": "Title Font Size", "min": 12, "max": 48, "default": 20 },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        {
+  "type": "text",
+  "id": "link_text",
+  "label": "Link Text"
+},
+{
+  "type": "color",
+  "id": "link_color",
+  "label": "Link Text Color"
+},
+        { "type": "url", "id": "link_url", "label": "Link URL" },
+        { "type": "select", "id": "align_text", "label": "Text Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ] },
+        { "type": "color", "id": "text_color", "label": "Text Color" },
+        { "type": "color", "id": "background_color", "label": "Background Color" },
+      ]
+    },
+    {
+      "type": "form_block",
+      "name": "Form Block",
+      "settings": [
+        { "type": "text", "id": "form_id", "label": "Form ID" },
+        { "type": "text", "id": "form_title", "label": "Form Title" },
+        { "type": "textarea", "id": "form_description", "label": "Form Description" },
+        { "type": "text", "id": "form_post_to", "label": "Form Post To (e.g., contact)" },
+        { "type": "text", "id": "button_label", "label": "Submit Button Label", "default": "Submit" },
+        { "type": "color", "id": "button_bg_color", "label": "Submit Button Background Color", "default": "#000000" },
+        { "type": "checkbox", "id": "show_upload", "label": "Show Upload Field", "default": false },
+        { "type": "header", "content": "Custom Fields" },
+        { "type": "checkbox", "id": "show_field_1", "label": "Show Field 1", "default": false },
+        { "type": "text", "id": "field_label_1", "label": "Field 1 Label" },
+        { "type": "checkbox", "id": "show_field_2", "label": "Show Field 2", "default": false },
+        { "type": "text", "id": "field_label_2", "label": "Field 2 Label" },
+        { "type": "checkbox", "id": "show_field_3", "label": "Show Field 3", "default": false },
+        { "type": "text", "id": "field_label_3", "label": "Field 3 Label" },
+        { "type": "checkbox", "id": "show_field_4", "label": "Show Field 4", "default": false },
+        { "type": "text", "id": "field_label_4", "label": "Field 4 Label" },
+        { "type": "checkbox", "id": "show_field_5", "label": "Show Field 5", "default": false },
+        { "type": "text", "id": "field_label_5", "label": "Field 5 Label" },
+        { "type": "checkbox", "id": "show_field_6", "label": "Show Field 6", "default": false },
+        { "type": "text", "id": "field_label_6", "label": "Field 6 Label" },
+        { "type": "checkbox", "id": "show_field_7", "label": "Show Field 7", "default": false },
+        { "type": "text", "id": "field_label_7", "label": "Field 7 Label" },
+        { "type": "checkbox", "id": "show_field_8", "label": "Show Field 8", "default": false },
+        { "type": "text", "id": "field_label_8", "label": "Field 8 Label" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Area with USP Toggle",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

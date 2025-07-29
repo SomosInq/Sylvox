@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1753698174353,
@@ -24,6 +24,14 @@
                 {
                     "date": 1753699352495,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -319,9 +319,14 @@\n {% endschema %}\n \n {% style %}\n /* Banner */\n-\n+.custom-blog {\n+    margin: unset !important;\n+    max-width: unset !important;\n+    padding: 0 !important;\n+    width: 100% !important;\n+}\n .custom-blog__banner {\n   position: relative;\n   display: flex;\n   align-items: stretch;\n"
+                },
+                {
+                    "date": 1753791073608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -665,14 +665,14 @@\n   font-weight: 400;\n   color: white;\n }\n .custom-blog__heading {\n-  font-size: 56px;\n+  /* font-size: 56px;\n   font-family: Questrial, sans-serif;\n   font-weight: 400;\n-  color: white;\n+  color: white; */\n   /* max-width: 657px; */\n-  line-height: 1.2;\n+  /* line-height: 1.2; */\n }\n .custom-blog__arrow {\n   display: inline-flex;\n   align-items: center;\n@@ -871,9 +871,9 @@\n   .custom-blog__subtitle {\n     font-size: 14px;\n   }\n   .custom-blog__heading {\n-    font-size: 24px;\n+    /* font-size: 24px; */\n     max-width: 100%;\n     line-height: 1.3;\n   }\n   .custom-blog__grid {\n"
+                },
+                {
+                    "date": 1753791159712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -322,9 +322,9 @@\n /* Banner */\n .custom-blog {\n     margin: unset !important;\n     max-width: unset !important;\n-    padding: 0 !important;\n+    /* padding: 0 !important; */\n     width: 100% !important;\n }\n .custom-blog__banner {\n   position: relative;\n"
                 }
             ],
             "date": 1753698174353,

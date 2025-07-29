@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 220,
+            "activePatchIndex": 224,
             "patches": [
                 {
                     "date": 1748349377145,
@@ -888,6 +888,22 @@
                 {
                     "date": 1753173910193,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,15 @@\n+{% for block in section.blocks %}\n+  {% if block.settings.image %}\n+    <link rel=\"preload\"\n+          as=\"image\"\n+          href=\"{{ block.settings.image | image_url }}\"\n+          imagesrcset=\"{{ block.settings.image | image_url: width: 800 }} 800w, {{ block.settings.image | image_url: width: 1200 }} 1200w\"\n+          imagesizes=\"100vw\">\n+  {% endif %}\n+{% endfor %}\n+\n+\n {{ 'section-tab-products.css' | asset_url | stylesheet_tag }}\n \n <style>\n   .tabs {\n"
+                },
+                {
+                    "date": 1753777522635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,12 @@\n   .product-filter-buttons p {\n     margin: 0;\n   }\n \n+  .product-meta-info {\n+    text-align: left;\n+}\n+\n   .filter-btn {\n     border: none;\n     cursor: pointer;\n     padding: 0;\n"
+                },
+                {
+                    "date": 1753777649672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,8 +76,14 @@\n   .product-meta-info {\n     text-align: left;\n }\n \n+.collection-title-row a.button {\n+  border-radius: 30px;\n+border: 1px solid rgba(0, 0, 0, 0.30);\n+background: none;\n+}\n+\n   .filter-btn {\n     border: none;\n     cursor: pointer;\n     padding: 0;\n"
+                },
+                {
+                    "date": 1753777667831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,8 +80,9 @@\n .collection-title-row a.button {\n   border-radius: 30px;\n border: 1px solid rgba(0, 0, 0, 0.30);\n background: none;\n+color: rgba(0, 0, 0, 0.30);\n }\n \n   .filter-btn {\n     border: none;\n"
+                },
+                {
+                    "date": 1753777695367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,9 +80,9 @@\n .collection-title-row a.button {\n   border-radius: 30px;\n border: 1px solid rgba(0, 0, 0, 0.30);\n background: none;\n-color: rgba(0, 0, 0, 0.30);\n+color: #000;\n }\n \n   .filter-btn {\n     border: none;\n"
                 }
             ],
             "date": 1748349377144,

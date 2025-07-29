@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 115,
+            "activePatchIndex": 119,
             "patches": [
                 {
                     "date": 1753187190063,
@@ -468,6 +468,22 @@
                 {
                     "date": 1753445218513,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -756,14 +756,10 @@\n .slider-carousel .slider-track {\n   align-items: stretch;\n }\n \n-.blog-post-card {\n-  height: 100%;\n-  display: flex;\n-  flex-direction: column;\n-}\n \n+\n   .slider-controls {\n     display: flex;\n     justify-content: space-between;\n     align-items: center;\n"
+                },
+                {
+                    "date": 1753789818767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1007,10 +1007,10 @@\n   left: 20px;\n   font-size: 12px;\n   font-weight: 500;\n   color: #ffffff;\n-  background: #1a1a1a;\n-  padding: 6px 12px;\n+  /* background: #1a1a1a; */\n+  /* padding: 6px 12px; */\n   text-transform: capitalize;\n   letter-spacing: 0.2px;\n   border-radius: 0;\n   z-index: 2;\n"
+                },
+                {
+                    "date": 1753791011684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -879,14 +879,14 @@\n   font-weight: 400;\n   color: white;\n }\n .custom-blog__heading {\n-  font-size: 56px;\n+  /* font-size: 56px;\n   font-family: Questrial, sans-serif;\n   font-weight: 400;\n   color: white;\n   /* max-width: 657px; */\n-  line-height: 1.2;\n+  line-height: 1.2; */\n }\n .custom-blog__arrow {\n   display: inline-flex;\n   align-items: center;\n"
+                },
+                {
+                    "date": 1753791032674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1085,9 +1085,9 @@\n   .custom-blog__subtitle {\n     font-size: 14px;\n   }\n   .custom-blog__heading {\n-    font-size: 24px;\n+    /* font-size: 24px; */\n     max-width: 100%;\n     line-height: 1.3;\n   }\n   .custom-blog__grid {\n"
+                },
+                {
+                    "date": 1753791058086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -884,9 +884,9 @@\n   font-family: Questrial, sans-serif;\n   font-weight: 400;\n   color: white;\n   /* max-width: 657px; */\n-  line-height: 1.2; */\n+  /* line-height: 1.2;  */\n }\n .custom-blog__arrow {\n   display: inline-flex;\n   align-items: center;\n"
                 }
             ],
             "date": 1753187190063,

@@ -133,7 +133,7 @@
 
     <div class="media-right media-content vertical-{{ section.settings.content_vertical_align }}"
          style="
-           width: {{ section.settings.content_width }}%;
+           width: {{ section.settings.content_width }}% !important;
            padding: {{ section.settings.content_padding }}px;
            padding-left: {{ section.settings.content_padding_left }}px;
            background-color: {{ section.settings.content_bg_color }};
@@ -237,7 +237,7 @@
   "settings": [
     { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
     { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
-    { "type": "range", "id": "content_width", "label": "Content Width (%)", "min": 50, "max": 100, "step": 5, "default": 100 },
+    { "type": "range", "id": "content_width", "label": "Content Width (%)", "min": 0, "max": 100, "step": 5, "default": 100 },
     { "type": "range", "id": "content_padding_left", "label": "Content Padding Left (px)", "min": 0, "max": 100, "step": 5, "default": 0 },
     { "type": "image_picker", "id": "heading_icon", "label": "Heading Icon" },
     { "type": "image_picker", "id": "left_image", "label": "Desktop Image" },

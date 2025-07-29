@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1753699469932,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753791169091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -91,9 +91,9 @@\n   {% style %}\n   .custom-blog {\n     margin: unset !important;\n     max-width: unset !important;\n-    padding: 0 !important;\n+    /* padding: 0 !important; */\n     width: 100% !important;\n }\n     .article-content {\n       background-color: #ffffff;\n"
                 }
             ],
             "date": 1753699469932,

@@ -91,7 +91,11 @@
           }
         }
       },
-      "block_order": ["slide_U4WUax", "slide_fXUwAp", "slide_X9a3Fm"],
+      "block_order": [
+        "slide_U4WUax",
+        "slide_fXUwAp",
+        "slide_X9a3Fm"
+      ],
       "settings": {
         "section_width": "standard",
         "content_section_width": "standard",
@@ -127,7 +131,10 @@
           }
         }
       },
-      "block_order": ["heading_GJaiqY", "text_qFVUq7"],
+      "block_order": [
+        "heading_GJaiqY",
+        "text_qFVUq7"
+      ],
       "disabled": true,
       "name": "t:labels.rich_text",
       "settings": {
@@ -280,10 +287,10 @@
       "type": "info-section",
       "settings": {
         "section_width": "standard",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "padding_left": 15,
+        "padding_right": 15,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
@@ -361,7 +368,10 @@
           }
         }
       },
-      "block_order": ["values_TqCTNF", "values_BEzx44"],
+      "block_order": [
+        "values_TqCTNF",
+        "values_BEzx44"
+      ],
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
         "description": "",
@@ -427,7 +437,10 @@
           }
         }
       },
-      "block_order": ["tab_EaHJ7G", "tab_BhYH4G"],
+      "block_order": [
+        "tab_EaHJ7G",
+        "tab_BhYH4G"
+      ],
       "settings": {
         "section_width": "standard",
         "image_position": "left",
@@ -591,7 +604,9 @@
           }
         }
       },
-      "block_order": ["heading_mm9kKm"],
+      "block_order": [
+        "heading_mm9kKm"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -675,7 +690,10 @@
           }
         }
       },
-      "block_order": ["image_3eAxPx", "image_4JgVnB"],
+      "block_order": [
+        "image_3eAxPx",
+        "image_4JgVnB"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -709,7 +727,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -717,7 +735,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/14e05d62ebe767f82f77c31d300c9d2e33bc554e.jpg",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -725,7 +743,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/74a1a00cf11556c67aff97a187c512eb9a149348.png",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -733,7 +751,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/14e05d62ebe767f82f77c31d300c9d2e33bc554e.jpg",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -741,7 +759,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/74a1a00cf11556c67aff97a187c512eb9a149348.png",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
             "description_block": "Outdoor Dining Area"
           }
         }
@@ -756,6 +774,7 @@
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -787,6 +806,7 @@
         "product": "2-year-extended-warranty-for-sylvox-pool-pro-65-2-0-total-3-years",
         "show_title": false,
         "product_image_width": 800,
+        "product_image_override": "shopify://shop_images/Deck_Pro_2.0_1.png",
         "price_text": "From USD $1,149.00",
         "button_link": "",
         "button_label": "Buy Now",
@@ -811,7 +831,9 @@
           }
         }
       },
-      "block_order": ["heading_EyXPFe"],
+      "block_order": [
+        "heading_EyXPFe"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -854,7 +876,10 @@
           }
         }
       },
-      "block_order": ["heading_3m8b3q", "button_BEFJ9i"],
+      "block_order": [
+        "heading_3m8b3q",
+        "button_BEFJ9i"
+      ],
       "settings": {
         "align_text": "center",
         "narrow_column": true,
@@ -871,12 +896,16 @@
             "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
             "image_size": "medium",
             "title": "Authenticity Guarantee",
+            "title_font_size": 20,
             "text": "100% Genuine, Quality Assured",
             "base_text": "",
             "base_text_color": "",
             "text_color": "",
             "background_color": "",
-            "link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen"
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
           }
         },
         "usp_item_e3nJLx": {
@@ -885,12 +914,16 @@
             "icon": "shopify://shop_images/Icons-1.png",
             "image_size": "medium",
             "title": "Secure Payment",
+            "title_font_size": 20,
             "text": "Supports Multiple Payment Methods",
             "base_text": "",
             "base_text_color": "",
             "text_color": "",
             "background_color": "",
-            "link": ""
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
           }
         },
         "usp_item_WExUKh": {
@@ -899,12 +932,16 @@
             "icon": "shopify://shop_images/Icons-2.png",
             "image_size": "medium",
             "title": "Buy Now Pay Later",
+            "title_font_size": 20,
             "text": "Flexible Installment Plans Available",
             "base_text": "",
             "base_text_color": "",
             "text_color": "",
             "background_color": "",
-            "link": ""
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
           }
         },
         "usp_item_9KGR88": {
@@ -913,12 +950,16 @@
             "icon": "shopify://shop_images/png__1_2_1_3.png",
             "image_size": "medium",
             "title": "Fast & Free Shipping",
+            "title_font_size": 20,
             "text": "2-5 Business Days Fedex Shipping",
             "base_text": "",
             "base_text_color": "",
             "text_color": "",
             "background_color": "",
-            "link": ""
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
           }
         },
         "usp_item_9cqzbe": {
@@ -927,12 +968,16 @@
             "icon": "shopify://shop_images/877fd4961b457516e0b7165db6e3731a5b4764d2.png",
             "image_size": "medium",
             "title": "Sylvox Membership",
+            "title_font_size": 20,
             "text": "Earn Sylvox Points, Redeem Benefits",
             "base_text": "",
             "base_text_color": "",
             "text_color": "",
             "background_color": "",
-            "link": ""
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
           }
         },
         "usp_item_LaJ4nV": {
@@ -941,12 +986,16 @@
             "icon": "shopify://shop_images/Icons-5.png",
             "image_size": "medium",
             "title": "Free Warranty",
+            "title_font_size": 20,
             "text": "Up to 1 Year Warranty",
             "base_text": "",
             "base_text_color": "",
             "text_color": "",
             "background_color": "",
-            "link": ""
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
           }
         }
       },
@@ -962,8 +1011,10 @@
         "enable_slider": false,
         "section_width": "standard",
         "heading": "Sylvox’s exclusive advantages",
+        "heading_font_size": 32,
         "subtext": "",
         "heading_alignment": "left",
+        "box_height": 300,
         "show_arrows": true,
         "padding_top": 20,
         "padding_bottom": 20,

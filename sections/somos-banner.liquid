@@ -66,7 +66,13 @@
     "></div>
   {% endif %}
 
-  <div class="custom-content-wrapper" style="margin: 0 auto; position: relative; z-index: 2;">
+<div class="custom-content-wrapper section_content_width_{{ section.settings.section_content_width }}"
+     style="
+       margin: 0 auto;
+       position: relative;
+       z-index: 2;
+       text-align: {{ section.settings.text_alignment }};
+     ">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'heading' %}

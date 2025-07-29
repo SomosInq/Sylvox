@@ -14,88 +14,6 @@
       "disabled": true,
       "settings": {}
     },
-    "usp_grid_wzUN6L": {
-      "type": "usp-grid",
-      "blocks": {
-        "usp_item_JDAHJF": {
-          "type": "usp_item",
-          "settings": {
-            "image_size": "medium",
-            "title": "After service",
-            "text": "Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us:\n<br>\nservice@sylvoxtv.com",
-            "base_text": "Write Us a Message",
-            "base_icon": "shopify://shop_images/Vector.svg",
-            "base_text_color": "#d3dac9",
-            "text_color": "#ffffff",
-            "background_color": "#336256",
-            "link": ""
-          }
-        },
-        "usp_item_pDECaD": {
-          "type": "usp_item",
-          "settings": {
-            "image_size": "medium",
-            "title": "Pre-Sale",
-            "text": "For pre-sales questions, such as inquiries about purchasing multiple units or product specifications, feel free to reach out to us\n<br>\npresale@sylvoxtv.com",
-            "base_text": "Write Us a Message",
-            "base_icon": "shopify://shop_images/Vector.svg",
-            "base_text_color": "#d3dac9",
-            "text_color": "#ffffff",
-            "background_color": "#336256",
-            "link": ""
-          }
-        },
-        "usp_item_j7PNe9": {
-          "type": "usp_item",
-          "settings": {
-            "image_size": "medium",
-            "title": "Working Hours & Service Hotline",
-            "text": "Monday - Friday\n<br><br>\n9:00 AM - 5:00 PM EST Time\n<br><br>\nService Hotline: +1 (866) 979-5869",
-            "base_text": "",
-            "base_text_color": "#d3dac9",
-            "text_color": "#ffffff",
-            "background_color": "#336256",
-            "link": ""
-          }
-        },
-        "usp_item_DxXdNX": {
-          "type": "usp_item",
-          "settings": {
-            "image_size": "medium",
-            "title": "Live Chat",
-            "text": "24 hours a day\n<br><br>\nMonday - Friday",
-            "base_text": "",
-            "base_text_color": "#d3dac9",
-            "text_color": "#ffffff",
-            "background_color": "#336256",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "usp_item_JDAHJF",
-        "usp_item_pDECaD",
-        "usp_item_j7PNe9",
-        "usp_item_DxXdNX"
-      ],
-      "name": "USP Grid",
-      "settings": {
-        "enable_slider": false,
-        "section_width": "standard",
-        "heading": "Contact Information",
-        "subtext": "Feel free to connect with us anytime if you have any questions or concerns. Our dedicated customer service team is here to assist you with everything from placing orders to tracking deliveries and providing product details. Even if you're all set, we'd still love to hear your feedback. Your opinions matter greatly to us, and we're committed to continuously improving to better serve you.",
-        "heading_alignment": "left",
-        "show_arrows": false,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0
-      }
-    },
     "rich-text": {
       "type": "rich-text",
       "blocks": {
@@ -114,7 +32,10 @@
           }
         }
       },
-      "block_order": ["e955a2f0-2c83-43ee-a644-e2c4588a3ca3", "text"],
+      "block_order": [
+        "e955a2f0-2c83-43ee-a644-e2c4588a3ca3",
+        "text"
+      ],
       "disabled": true,
       "settings": {
         "align_text": "center",
@@ -123,8 +44,189 @@
         "divider": false
       }
     },
+    "contact_area_FJkLtn": {
+      "type": "contact-area",
+      "blocks": {
+        "usp_block_YMyNrr": {
+          "type": "usp_block",
+          "settings": {
+            "form_id": "warranty_form",
+            "image_size": "medium",
+            "title": "After service",
+            "title_font_size": 20,
+            "text": "Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us:\n<br>\nservice@sylvoxtv.com",
+            "link_text": "Write us a message",
+            "link_color": "",
+            "link_url": "",
+            "align_text": "left",
+            "text_color": "#ffffff",
+            "background_color": "#336256"
+          }
+        },
+        "usp_block_rr7kth": {
+          "type": "usp_block",
+          "settings": {
+            "form_id": "presale",
+            "image_size": "medium",
+            "title": "Pre Sale",
+            "title_font_size": 20,
+            "text": "For pre-sales questions, such as inquiries about purchasing multiple units or product specifications, feel free to reach out to us\n<br>\npresale@sylvoxtv.com",
+            "link_text": "Write us a message",
+            "link_color": "",
+            "link_url": "",
+            "align_text": "left",
+            "text_color": "#ffffff",
+            "background_color": "#336256"
+          }
+        },
+        "usp_block_FrUX3Q": {
+          "type": "usp_block",
+          "settings": {
+            "form_id": "workinghours",
+            "image_size": "medium",
+            "title": "Working Hours & Service Hotline",
+            "title_font_size": 20,
+            "text": "Monday - Friday\n<br><br>\n9:00 AM - 5:00 PM EST Time\n<br><br>\nService Hotline: +1 (866) 979-5869",
+            "link_text": "Write us a message",
+            "link_color": "",
+            "link_url": "",
+            "align_text": "left",
+            "text_color": "#ffffff",
+            "background_color": "#336256"
+          }
+        },
+        "usp_block_U3Vf9p": {
+          "type": "usp_block",
+          "settings": {
+            "form_id": "livechat",
+            "image_size": "medium",
+            "title": "Live Chat",
+            "title_font_size": 20,
+            "text": "24 hours a day\n<br><br>\nMonday - Friday",
+            "link_text": "",
+            "link_color": "",
+            "link_url": "",
+            "align_text": "left",
+            "text_color": "#ffffff",
+            "background_color": "#336256"
+          }
+        },
+        "form_block_MRfeyV": {
+          "type": "form_block",
+          "settings": {
+            "form_id": "warranty_form",
+            "form_title": "Write Us a Message",
+            "form_description": "For B2B, Media, KOL, Affiliate Marketing Cooperation Submissions;\nIn order to provide you a better service and speed up responding time, Please select the corresponding email address to contact and do provide the relevant information before submitting an inquiry. \n We aim to respond to all inquires within 24 hours.",
+            "form_post_to": "",
+            "button_label": "Submit",
+            "button_bg_color": "#20413b",
+            "show_upload": false,
+            "show_field_1": true,
+            "field_label_1": "First Name*",
+            "show_field_2": true,
+            "field_label_2": "Last Name*",
+            "show_field_3": true,
+            "field_label_3": "Your Email*",
+            "show_field_4": true,
+            "field_label_4": "Your Phone Number",
+            "show_field_5": false,
+            "field_label_5": "",
+            "show_field_6": false,
+            "field_label_6": "",
+            "show_field_7": false,
+            "field_label_7": "",
+            "show_field_8": false,
+            "field_label_8": ""
+          }
+        },
+        "form_block_eQRjch": {
+          "type": "form_block",
+          "settings": {
+            "form_id": "presale",
+            "form_title": "Presale",
+            "form_description": "In order to provide you a better service and speed up responding time, Please select the corresponding email address to contact and do provide the relevant information before submitting an inquiry. \n We aim to respond to all inquires within 24 hours.",
+            "form_post_to": "",
+            "button_label": "Submits",
+            "button_bg_color": "#20413b",
+            "show_upload": false,
+            "show_field_1": true,
+            "field_label_1": "First Name*",
+            "show_field_2": true,
+            "field_label_2": "Last Name*",
+            "show_field_3": true,
+            "field_label_3": "Your Email*",
+            "show_field_4": true,
+            "field_label_4": "Your Phone Number",
+            "show_field_5": true,
+            "field_label_5": "Which product are you interested in?",
+            "show_field_6": true,
+            "field_label_6": "How many units?",
+            "show_field_7": true,
+            "field_label_7": "Which country are you located in?",
+            "show_field_8": false,
+            "field_label_8": ""
+          }
+        },
+        "form_block_FKQ64h": {
+          "type": "form_block",
+          "settings": {
+            "form_id": "workinghours",
+            "form_title": "After Service",
+            "form_description": "In order to provide you a better service and speed up responding time, Please select the corresponding email address to contact and do provide the relevant information before submitting an inquiry. \n We aim to respond to all inquires within 24 hours.",
+            "form_post_to": "",
+            "button_label": "Submits",
+            "button_bg_color": "#20413b",
+            "show_upload": true,
+            "show_field_1": true,
+            "field_label_1": "First Name*",
+            "show_field_2": true,
+            "field_label_2": "Last Name*",
+            "show_field_3": true,
+            "field_label_3": "Your Email*",
+            "show_field_4": true,
+            "field_label_4": "Your Phone Number",
+            "show_field_5": true,
+            "field_label_5": "Which platform did you purchase from?",
+            "show_field_6": true,
+            "field_label_6": "What is your order number?*",
+            "show_field_7": true,
+            "field_label_7": "Do you need a refund or a replacement?",
+            "show_field_8": false,
+            "field_label_8": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp_block_YMyNrr",
+        "usp_block_rr7kth",
+        "usp_block_FrUX3Q",
+        "usp_block_U3Vf9p",
+        "form_block_MRfeyV",
+        "form_block_eQRjch",
+        "form_block_FKQ64h"
+      ],
+      "name": "USP Toggle Forms",
+      "settings": {
+        "heading": "Contact information",
+        "subtext": "Feel free to connect with us anytime if you have any questions or concerns. Our dedicated customer service team is here to assist you with everything from placing orders to tracking deliveries and providing product details. Even if you're all set, we'd still love to hear your feedback. Your opinions matter greatly to us, and we're committed to continuously improving to better serve you.",
+        "section_width": "standard",
+        "heading_font_size": 32,
+        "heading_alignment": "left",
+        "enable_slider": false,
+        "box_height": 240,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
     "form": {
       "type": "contact-form",
+      "disabled": true,
       "settings": {
         "title": "Write Us a Message",
         "heading_size": "h2",
@@ -136,5 +238,10 @@
       }
     }
   },
-  "order": ["main", "usp_grid_wzUN6L", "rich-text", "form"]
+  "order": [
+    "main",
+    "rich-text",
+    "contact_area_FJkLtn",
+    "form"
+  ]
 }

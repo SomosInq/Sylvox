@@ -106,22 +106,25 @@
       </div>
     </div>
 
+    {% assign fallback_collection = collections[section.settings.fallback_collection] %}
+    {% assign products_to_show = recommendations.products %}
+    {% if products_to_show == blank and fallback_collection != blank %}
+      {% assign products_to_show = fallback_collection.products %}
+    {% endif %}
 
-
-
-  </div>
-
-{% if recommendations.products != blank %}
-  <div class="flickity-container">
-    <div class="flickity-carousel" id="VendorProductsSlider-{{ section.id }}">
-      {% for product in recommendations.products limit: section.settings.max_products %}
-        <div class="carousel-cell">
-          {% render 'product-grid-item', product: product %}
+    {% if products_to_show != blank %}
+      <div class="flickity-container">
+        <div class="flickity-carousel" id="VendorProductsSlider-{{ section.id }}">
+          {% for product in products_to_show limit: section.settings.max_products %}
+            <div class="carousel-cell">
+              {% render 'product-grid-item', product: product %}
+            </div>
+          {% endfor %}
         </div>
-      {% endfor %}
-    </div>
+      </div>
+    {% endif %}
+
   </div>
-{% endif %}
 </div>
 
 <script>
@@ -155,7 +158,6 @@
     }
   });
 </script>
-
 
 {% schema %}
 {
@@ -272,6 +274,12 @@
       "type": "text",
       "label": "Subtext",
       "default": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology."
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Fallback Collection",
+      "info": "Used if vendor recommendations are unavailable"
     },
     {
       "type": "range",

@@ -25,7 +25,9 @@
           }
         }
       },
-      "block_order": ["heading_kMBJ7r"],
+      "block_order": [
+        "heading_kMBJ7r"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -49,7 +51,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/png__1_2_1_1.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 6
           }
         },
         "title_p3eFxr": {
@@ -149,7 +152,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/4f60864db00489467f11e2a08d76ba49a0404e0e_c2a82125-e857-41f1-b7ce-e3a83f5c3b5d.jpg",
-            "caption": "Poolside Entertainment",
+            "caption": "",
+            "caption_small": "Poolside Entertainment",
             "description_block": "Watch your favorite shows, sports, or music videos while relaxing in or by the pool."
           }
         },
@@ -157,12 +161,16 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
-            "caption": "Works Even After Heavy Rain",
+            "caption": "",
+            "caption_small": "Works Even After Heavy Rain",
             "description_block": "Outdoor Dining Area"
           }
         }
       },
-      "block_order": ["slide_EPKTFq", "slide_GiRCFb"],
+      "block_order": [
+        "slide_EPKTFq",
+        "slide_GiRCFb"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -184,7 +192,7 @@
         "show_dots": true,
         "slide_size": "large",
         "slide_height": 900,
-        "slide_width": 600
+        "slide_width": 1800
       }
     },
     "comparison_table_qDatme": {
@@ -275,7 +283,11 @@
           }
         }
       },
-      "block_order": ["values_FtmcxQ", "values_hMyGMi", "values_FdVYLz"],
+      "block_order": [
+        "values_FtmcxQ",
+        "values_hMyGMi",
+        "values_FdVYLz"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -436,7 +448,9 @@
           }
         }
       },
-      "block_order": ["heading_339rBV"],
+      "block_order": [
+        "heading_339rBV"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -487,7 +501,10 @@
           }
         }
       },
-      "block_order": ["image_wQqkqU", "image_KPDHny"],
+      "block_order": [
+        "image_wQqkqU",
+        "image_KPDHny"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -573,7 +590,11 @@
           }
         }
       },
-      "block_order": ["grid_box_Etk3iE", "grid_box_wMVxbh", "grid_box_6HLhDR"],
+      "block_order": [
+        "grid_box_Etk3iE",
+        "grid_box_wMVxbh",
+        "grid_box_6HLhDR"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -605,7 +626,7 @@
             "heading": "100% Waterproof & Durable",
             "description": "Never worry about rain ruining your entertainment. The Sylvox Tvs is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands.",
             "background": "shopify://shop_images/8f90876b2ac1412bc1e768ea869c7f85dff4a8e1_6a2f973a-89a7-40b9-97fd-dc9b7bea5f34.jpg",
-            "text_color": "#1d1d1b"
+            "text_color": "#ffffff"
           }
         },
         "tab_j9XfaX": {
@@ -629,9 +650,16 @@
           }
         }
       },
-      "block_order": ["tab_jpz97e", "tab_j9XfaX", "tab_qBghai"],
+      "block_order": [
+        "tab_jpz97e",
+        "tab_j9XfaX",
+        "tab_qBghai"
+      ],
       "name": "Feature Banner Tabs",
       "settings": {
+        "icon_size": 20,
+        "pre_heading": "",
+        "pre_description": "",
         "autoplay_enabled": true,
         "autoplay_interval": 5,
         "banner_height": 610,
@@ -677,13 +705,17 @@
           }
         }
       },
-      "block_order": ["subheading_8AcT6L", "heading_gXrCtx", "richtext_YbeHfE"],
+      "block_order": [
+        "subheading_8AcT6L",
+        "heading_gXrCtx",
+        "richtext_YbeHfE"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
-        "custom_content_width": 70,
+        "custom_content_width": 75,
         "mobile_content_width": 90,
         "section_height": 800,
         "mobile_section_height": 500,
@@ -706,7 +738,7 @@
         "hide_mobile": false,
         "custom_class": "",
         "custom_id": "",
-        "text_alignment": "center",
+        "text_alignment": "left",
         "vertical_alignment": "center"
       }
     },

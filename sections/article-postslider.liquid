@@ -5,30 +5,30 @@
 {% comment %}
   Custom section: Custom Blog | custom-blog.liquid
 {% endcomment %}
-<section class="custom-blog" style="background: {{ section.settings.bg_color }};">
+<section class="custom-blog" style="background: {{ section.settings.bg_color }};" style="
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;">
 
   {%- assign featured_article = blog.articles.first -%}
   {%- assign override_img = section.settings.custom_banner_override_image -%}
 
-  <div class="custom-blog__slider-heading section_content_width_{{ section.settings.section_content_width }}">
+<div class="custom-blog__slider-heading section_content_width_{{ section.settings.section_content_width }}">
   {% if section.settings.heading %}
-    <h2 class="custom-blog__heading" style="color: 000;">{{ section.settings.heading }}</h2>
+    {% assign heading_tag = section.settings.heading_tag | default: 'h2' %}
+    <{{ heading_tag }} class="custom-blog__heading" style="color: #000;">{{ section.settings.heading }}</{{ heading_tag }}>
   {% endif %}
   {% if section.settings.subheading %}
-    <p class="custom-blog__subtitle" style="color: 000;">{{ section.settings.subheading }}</p>
+    <p class="custom-blog__subtitle" style="color: #000;">{{ section.settings.subheading }}</p>
   {% endif %}
 </div>
+
 
 
   <!-- Slider -->
 {% comment %} Blog Slider with scroll snapping, dots + arrows (no blocks) {% endcomment %}
 <section id="blog-slider-{{ section.id }}"
   class="blog-slider section_width_{{ section.settings.section_width }}"
-  style="
-    background-color: {{ section.settings.background_color }};
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-  "
 >
   {% assign blog_handle = section.settings.blog | default: 'news' %}
   {% assign blog_posts = blogs[blog_handle].articles | slice: 0, 10 %}
@@ -66,11 +66,13 @@
     </div>
 
     <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}">
+      {% if section.settings.show_dots %}
       <div class="slider-dots">
         {% for article in blog_posts %}
           <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
         {% endfor %}
       </div>
+      {% endif %}
       {% if section.settings.show_arrows %}
         <div class="slider-arrows">
           <button class="slider-arrow prev">‹</button>
@@ -98,13 +100,18 @@
     let current = 0;
 
     function goTo(index) {
-      if (index < 0 || index >= slides.length) return;
-      current = index;
-      const slide = slides[index];
-      track.scrollTo({ left: slide.offsetLeft - 12, behavior: 'smooth' });
-      slides.forEach((s, i) => s.classList.toggle('active', i === index));
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    }
+  if (index < 0 || index >= slides.length) return;
+  current = index;
+  const slide = slides[index];
+  track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' }); // removed offset
+  slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+}
+
+// Ensure track starts at beginning
+track.scrollLeft = 0;
+goTo(0);
+
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => goTo(i));
@@ -133,6 +140,21 @@
   "label": "Main Heading",
   "default": "Latest from the Blog"
 },
+{
+  "type": "select",
+  "id": "heading_tag",
+  "label": "Heading Tag for Title",
+  "default": "h2",
+  "options": [
+    { "value": "h1", "label": "H1" },
+    { "value": "h2", "label": "H2" },
+    { "value": "h3", "label": "H3" },
+    { "value": "h4", "label": "H4" },
+    { "value": "h5", "label": "H5" },
+    { "value": "h6", "label": "H6" }
+  ]
+},
+
 {
   "type": "textarea",
   "id": "subheading",
@@ -194,6 +216,12 @@
     },
     {
       "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
       "id": "show_arrows",
       "label": "Show Arrows",
       "default": true
@@ -214,7 +242,7 @@
 .custom-blog {
     margin: unset !important;
     max-width: unset !important;
-    padding: 0 !important;
+    /* padding: 0 !important; */
     width: 100% !important;
 }
 .custom-blog__banner {
@@ -557,10 +585,10 @@
   color: white;
 }
 .custom-blog__heading {
-  font-size: 56px;
-  font-family: Questrial, sans-serif;
-  font-weight: 400;
-  color: white;
+  /* font-size: 56px; */
+  /* font-family: Questrial, sans-serif; */
+  /* font-weight: 400; */
+  /* color: white; */
   /* max-width: 657px; */
   line-height: 1.2;
 }
@@ -763,7 +791,7 @@ background: #fff;
     font-size: 14px;
   }
   .custom-blog__heading {
-    font-size: 24px;
+    /* font-size: 24px; */
     max-width: 100%;
     line-height: 1.3;
   }

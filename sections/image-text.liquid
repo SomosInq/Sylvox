@@ -153,6 +153,28 @@
       ]
     },
     {
+  "type": "paragraph",
+  "name": "Paragraph with Font Size",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Paragraph Text",
+      "default": "Your paragraph content goes here."
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    }
+  ]
+},
+    {
       "type": "button",
       "name": "Button",
       "settings": [
@@ -210,6 +232,11 @@
   
   {% for block in section.blocks %}
     {% case block.type %}
+
+      {% when 'paragraph' %}
+  <p class="itfb-paragraph mb-4" style="font-size: {{ block.settings.font_size }}px;">
+    {{ block.settings.text }}
+  </p>
 
       {% when 'image' %}
         {% if block.settings.image %}

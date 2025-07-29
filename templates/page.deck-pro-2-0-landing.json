@@ -96,7 +96,7 @@
       "settings": {
         "title": "Sylvox Pool Pro 2.0",
         "background_color": "#336256",
-        "text_color": "#C6C6C6"
+        "text_color": "#c6c6c6"
       }
     },
     "image_with_text_overlay_JByhYn": {
@@ -197,7 +197,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/843b1532672617160c8b065a231c85f53323dd5c.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 100
           }
         }
       },
@@ -323,6 +324,42 @@
         "margin_right": 0
       }
     },
+    "image_text_rbKbGT": {
+      "type": "image-text",
+      "blocks": {
+        "paragraph_CEBQVa": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
+            "font_size": 30
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_CEBQVa"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
     "somos_banner_gLazR9": {
       "type": "somos-banner",
       "blocks": {
@@ -334,7 +371,7 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "left"
+            "alignment": "center"
           }
         },
         "richtext_c9B6TT": {
@@ -342,7 +379,7 @@
           "settings": {
             "content": "<p>Enjoy every detail with ultra-bright, high-contrast visuals. Designed for outdoor settings, Sylvox Deck Pro 2.0 ensures you never have to squint at a screen again.</p>",
             "color": "#ffffff",
-            "alignment": "left"
+            "alignment": "center"
           }
         }
       },
@@ -378,7 +415,7 @@
         "hide_mobile": false,
         "custom_class": "",
         "custom_id": "",
-        "text_alignment": "left",
+        "text_alignment": "center",
         "vertical_alignment": "flex-start"
       }
     },
@@ -419,8 +456,9 @@
         "margin_bottom": 0,
         "margin_left": 0,
         "margin_right": 0,
-        "heading": "Bright & Beautiful 4K UHD",
-        "heading_description": "HDR technology and 1000-nit brightness for crystal-clear viewing in sunlight.",
+        "heading_icon": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "heading": "3x Brighter Than Indoor TVs",
+        "heading_description": "1.000-Nit Peak Brightness",
         "base_description": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors, the Deck Pro 2.0’s 1.000-nit brightness keeps your picture vivid and sharp.",
         "heading_size": "h2",
         "heading_position": "center",
@@ -765,6 +803,9 @@
       ],
       "name": "Feature Banner Tabs",
       "settings": {
+        "icon_size": 20,
+        "pre_heading": "",
+        "pre_description": "",
         "autoplay_enabled": true,
         "autoplay_interval": 5,
         "banner_height": 750,
@@ -786,7 +827,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Icons_4.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 4
           }
         },
         "title_UccEdf": {
@@ -938,8 +980,8 @@
         "top_button_link": "",
         "top_button_style": "primary",
         "background_color": "#ffffff",
-        "padding_top": 30,
-        "padding_bottom": 30,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "show_arrows": false,
@@ -955,7 +997,7 @@
         "section_width": "full",
         "section_content_width": "full",
         "content_width": 50,
-        "content_padding_left": 30,
+        "content_padding_left": 20,
         "heading_icon": "shopify://shop_images/b57de234d7223ab88e90f104710b49d570ab2242.png",
         "left_image": "shopify://shop_images/9be961560fe8e24e54e91a764421434bc5014fe9_e04c64da-0f1a-46d3-955b-567040d5bdc7.png",
         "image_radius": 0,
@@ -1386,7 +1428,7 @@
       "name": "Bundles Slider",
       "settings": {
         "background_color": "#fafafa",
-        "padding_top": 0,
+        "padding_top": 60,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
@@ -1416,6 +1458,7 @@
           "settings": {
             "image": "shopify://shop_images/3008dbb71d9d1087131aa4212d7bfe1a4429c3aa.jpg",
             "caption": "",
+            "caption_small": "",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -1424,6 +1467,7 @@
           "settings": {
             "image": "shopify://shop_images/412a3b60cd6326c4e736d37806d0b00e3e23c711_3.jpg",
             "caption": "",
+            "caption_small": "",
             "description_block": "Family movie nights"
           }
         },
@@ -1432,6 +1476,7 @@
           "settings": {
             "image": "shopify://shop_images/8425f10569f72751d51559fe3588d563aae58665.jpg",
             "caption": "",
+            "caption_small": "",
             "description_block": "Outdoor Dining Area"
           }
         }
@@ -1458,8 +1503,8 @@
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
         "description": "",
-        "show_arrows": true,
-        "show_dots": true,
+        "show_arrows": false,
+        "show_dots": false,
         "slide_size": "large",
         "slide_height": 700,
         "slide_width": 1400
@@ -1549,6 +1594,7 @@
     "rich_text_FhLDYX",
     "image_text_PDRFtF",
     "icon_grid_f4ecNH",
+    "image_text_rbKbGT",
     "somos_banner_gLazR9",
     "somos_image_text_comparison_4wc93V",
     "feature_showcase_PjMJrh",

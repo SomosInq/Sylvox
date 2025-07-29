@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 18,
+            "activePatchIndex": 19,
             "patches": [
                 {
                     "date": 1748871942191,
@@ -80,6 +80,10 @@
                 {
                     "date": 1752074001675,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -265,8 +265,14 @@\n   color: #A7DCB7;\n   margin-bottom: 0.5rem;\n   font-weight: 500;\n }\n+\n+@media (max-width: 768px) {\n+  .accordion-left {\n+    display: none;\n+  }\n+}\n {% endstyle %}\n \n <div class=\"section_width_{{ section.settings.section_width }}\">\n   <div class=\"section_content_width_{{ section.settings.section_content_width }} usp-accordion-section\">\n"
+                },
+                {
+                    "date": 1753779258586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -345,4 +345,10 @@\n     imageEl.src = newImage;\n   }\n }\n </script>\n+\n+<script>\n+  document.addEventListener('DOMContentLoaded', function () {\n+    toggleAccordion(1); // Open the first item by default\n+  });\n+</script>\n"
                 }
             ],
             "date": 1748871942190,

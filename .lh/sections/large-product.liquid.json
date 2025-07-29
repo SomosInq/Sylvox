@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 15,
             "patches": [
                 {
                     "date": 1748438366014,
@@ -48,6 +48,26 @@
                 {
                     "date": 1748526995851,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,57 +99,10 @@\n   ]\n }\n {% endschema %}\n \n-{% stylesheet %}\n-.section_width_standard,\n-.section_width_full {\n-transition: all 0.3s ease;\n-}\n-.section_width_full {\n-width: 100%;\n-}\n \n-.section_width_standard {\n-margin: 0 auto !important;\n-width: 90%;\n-}\n-.sylvox-section {\n-  text-align: center;\n-  padding: 40px 20px;\n-}\n \n-.sylvox-icons {\n-  display: flex;\n-  justify-content: center;\n-  gap: 20px;\n-  margin: 20px 0;\n-}\n-\n-a.button {\n-    border-radius: 60px;\n-    background: var(--Dark-Green, #20413B);\n-    padding: 12px 44.18px 11px 43.82px;\n-    justify-content: center;\n-    align-items: center;\n-    color: white;\n-}\n-\n-.sylvox-icons img {\n-  height: 20px;\n-}\n-\n-.sylvox-products {\n-  margin-top: 20px;\n-}\n-\n-.sylvox-products img {\n-  max-width: 100%;\n-  height: auto;\n-  margin: 0 auto;\n-}\n-{% endstylesheet %}\n-\n <div class=\"sylvox-section section_width_{{ section.settings.section_width }}\" style=\"padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px\">\n   <p>{{ section.settings.subtitle }}</p>\n   <h2>{{ section.settings.title | newline_to_br }}</h2>\n \n"
+                },
+                {
+                    "date": 1753777008526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,8 +64,13 @@\n       \"max\": 800,\n       \"step\": 10,\n       \"default\": 400\n     },\n+{\n+  \"type\": \"image_picker\",\n+  \"id\": \"product_image_override\",\n+  \"label\": \"Override Product Image\"\n+},\n     {\n       \"type\": \"text\",\n       \"id\": \"price_text\",\n       \"label\": \"Price Text\",\n"
+                },
+                {
+                    "date": 1753777038984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -124,15 +124,18 @@\n   </div>\n \n   <div class=\"sylvox-products\">\n     {% if section.settings.product %}\n-      {% if section.settings.product.featured_image %}\n-        <img \n-          src=\"{{ section.settings.product.featured_image | image_url }}\" \n-          alt=\"{{ section.settings.product.title }}\" \n-          style=\"width: {{ section.settings.product_image_width }}px;\"\n-        >\n-      {% endif %}\n+      {% assign display_image = section.settings.product_image_override | default: section.settings.product.featured_image %}\n+\n+{% if display_image %}\n+  <img \n+    src=\"{{ display_image | image_url }}\" \n+    alt=\"{{ section.settings.product.title }}\" \n+    style=\"width: {{ section.settings.product_image_width }}px;\"\n+  >\n+{% endif %}\n+\n       {% if section.settings.show_title %}\n         <p><strong>{{ section.settings.product.title }}</strong></p>\n       {% endif %}\n     {% endif %}\n"
+                },
+                {
+                    "date": 1753777177514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -124,18 +124,23 @@\n   </div>\n \n   <div class=\"sylvox-products\">\n     {% if section.settings.product %}\n-      {% assign display_image = section.settings.product_image_override | default: section.settings.product.featured_image %}\n-\n-{% if display_image %}\n+{% if section.settings.product_image_override %}\n   <img \n-    src=\"{{ display_image | image_url }}\" \n+    src=\"{{ section.settings.product_image_override | image_url }}\" \n     alt=\"{{ section.settings.product.title }}\" \n     style=\"width: {{ section.settings.product_image_width }}px;\"\n   >\n+{% elsif section.settings.product and section.settings.product.featured_image %}\n+  <img \n+    src=\"{{ section.settings.product.featured_image | image_url }}\" \n+    alt=\"{{ section.settings.product.title }}\" \n+    style=\"width: {{ section.settings.product_image_width }}px;\"\n+  >\n {% endif %}\n \n+\n       {% if section.settings.show_title %}\n         <p><strong>{{ section.settings.product.title }}</strong></p>\n       {% endif %}\n     {% endif %}\n"
+                },
+                {
+                    "date": 1753777249111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -124,17 +124,19 @@\n   </div>\n \n   <div class=\"sylvox-products\">\n     {% if section.settings.product %}\n-{% if section.settings.product_image_override %}\n+\n+      \n+      {% if section.settings.product_image_override %}\n   <img \n-    src=\"{{ section.settings.product_image_override | image_url }}\" \n-    alt=\"{{ section.settings.product.title }}\" \n+    src=\"{{ section.settings.product_image_override | image_url: width: section.settings.product_image_width }}\" \n+    alt=\"Custom Product Image\" \n     style=\"width: {{ section.settings.product_image_width }}px;\"\n   >\n {% elsif section.settings.product and section.settings.product.featured_image %}\n   <img \n-    src=\"{{ section.settings.product.featured_image | image_url }}\" \n+    src=\"{{ section.settings.product.featured_image | image_url: width: section.settings.product_image_width }}\" \n     alt=\"{{ section.settings.product.title }}\" \n     style=\"width: {{ section.settings.product_image_width }}px;\"\n   >\n {% endif %}\n"
+                },
+                {
+                    "date": 1753777342410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -147,9 +147,9 @@\n       {% endif %}\n     {% endif %}\n   </div>\n \n-  <p>{{ section.settings.price_text }}</p>\n+  <p style=\"margin-top: 20px;\">{{ section.settings.price_text }}</p>\n   <a href=\"{{ section.settings.button_link }}\" class=\"button\">\n     {{ section.settings.button_label }}\n   </a>\n </div>\n"
                 }
             ],
             "date": 1748438366014,

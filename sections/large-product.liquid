@@ -65,6 +65,11 @@
       "step": 10,
       "default": 400
     },
+{
+  "type": "image_picker",
+  "id": "product_image_override",
+  "label": "Override Product Image"
+},
     {
       "type": "text",
       "id": "price_text",
@@ -120,20 +125,30 @@
 
   <div class="sylvox-products">
     {% if section.settings.product %}
-      {% if section.settings.product.featured_image %}
-        <img 
-          src="{{ section.settings.product.featured_image | image_url }}" 
-          alt="{{ section.settings.product.title }}" 
-          style="width: {{ section.settings.product_image_width }}px;"
-        >
-      {% endif %}
+
+      
+      {% if section.settings.product_image_override %}
+  <img 
+    src="{{ section.settings.product_image_override | image_url: width: section.settings.product_image_width }}" 
+    alt="Custom Product Image" 
+    style="width: {{ section.settings.product_image_width }}px;"
+  >
+{% elsif section.settings.product and section.settings.product.featured_image %}
+  <img 
+    src="{{ section.settings.product.featured_image | image_url: width: section.settings.product_image_width }}" 
+    alt="{{ section.settings.product.title }}" 
+    style="width: {{ section.settings.product_image_width }}px;"
+  >
+{% endif %}
+
+
       {% if section.settings.show_title %}
         <p><strong>{{ section.settings.product.title }}</strong></p>
       {% endif %}
     {% endif %}
   </div>
 
-  <p>{{ section.settings.price_text }}</p>
+  <p style="margin-top: 20px;">{{ section.settings.price_text }}</p>
   <a href="{{ section.settings.button_link }}" class="button">
     {{ section.settings.button_label }}
   </a>

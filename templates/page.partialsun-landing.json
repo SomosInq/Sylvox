@@ -25,7 +25,9 @@
           }
         }
       },
-      "block_order": ["heading_pbbU9n"],
+      "block_order": [
+        "heading_pbbU9n"
+      ],
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -146,24 +148,29 @@
     "new_banner_slider_TttF6a": {
       "type": "new-banner-slider",
       "blocks": {
-        "slide_DCEgT8": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/4f60864db00489467f11e2a08d76ba49a0404e0e_c2a82125-e857-41f1-b7ce-e3a83f5c3b5d.jpg",
-            "caption": "Poolside Entertainment",
-            "description_block": "Watch your favorite shows, sports, or music videos while relaxing in or by the pool."
-          }
-        },
         "slide_Hx6y3Y": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
-            "caption": "Works Even After Heavy Rain",
-            "description_block": "Outdoor Dining Area"
+            "caption": "",
+            "caption_small": "Covered Patio or Deck",
+            "description_block": "Enjoy movies, sports, or shows while relaxing in a shaded outdoor space."
+          }
+        },
+        "slide_DCEgT8": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/e3139992d397123c050603bbce0b8b6153d4a0a3.jpg",
+            "caption": "",
+            "caption_small": "Outdoor Dining Area",
+            "description_block": "Watch TV while having meals with family and friends in a shaded spot."
           }
         }
       },
-      "block_order": ["slide_DCEgT8", "slide_Hx6y3Y"],
+      "block_order": [
+        "slide_Hx6y3Y",
+        "slide_DCEgT8"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -276,7 +283,11 @@
           }
         }
       },
-      "block_order": ["values_RegbL4", "values_46EbaW", "values_ng4g9c"],
+      "block_order": [
+        "values_RegbL4",
+        "values_46EbaW",
+        "values_ng4g9c"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -339,7 +350,9 @@
           }
         }
       },
-      "block_order": ["heading_nnneBP"],
+      "block_order": [
+        "heading_nnneBP"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -370,6 +383,55 @@
         "custom_id": "",
         "text_alignment": "center",
         "vertical_alignment": "center"
+      }
+    },
+    "somos_image_text_comparison_ixXbm8": {
+      "type": "somos-image-text-comparison",
+      "blocks": {
+        "image_VzYKzf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/7e07b5ee141fe3365f7b32d8345493021c9a0727.png",
+            "image_alignment": "center"
+          }
+        },
+        "image_ATUENw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/7e07b5ee141fe3365f7b32d8345493021c9a0727.png",
+            "image_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "image_VzYKzf",
+        "image_ATUENw"
+      ],
+      "name": "Image/Text + Comparison",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "heading_icon": "shopify://shop_images/Icons_d82a5030-896a-44d9-bb41-a97b99e5575b.png",
+        "heading": "3x Brighter Than Indoor TVs",
+        "heading_description": "1.000-Nit Peak Brightness",
+        "base_description": "Engineered for outdoor conditions, this ultra-bright display ensures crystal-clear visuals—even in sunlight. Unlike standard TVs that look dull outdoors,  2.000-nit brightness keeps your picture vivid and sharp.",
+        "heading_size": "h2",
+        "heading_position": "center",
+        "fullwidth": true,
+        "slider_style": "classic",
+        "height": 600,
+        "color": "#ffffff"
       }
     },
     "somos_image_content_G9VF8j": {
@@ -430,7 +492,11 @@
           }
         }
       },
-      "block_order": ["grid_box_GYjD87", "grid_box_E33bWe", "grid_box_Ye3Nth"],
+      "block_order": [
+        "grid_box_GYjD87",
+        "grid_box_E33bWe",
+        "grid_box_Ye3Nth"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -478,7 +544,11 @@
           }
         }
       },
-      "block_order": ["image_FjzxaG", "title_Q3EnVG", "image_8pfdfc"],
+      "block_order": [
+        "image_FjzxaG",
+        "title_Q3EnVG",
+        "image_8pfdfc"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -535,7 +605,11 @@
           }
         }
       },
-      "block_order": ["tab_H3j4Be", "tab_T9xiqC", "tab_dYB4zm"],
+      "block_order": [
+        "tab_H3j4Be",
+        "tab_T9xiqC",
+        "tab_dYB4zm"
+      ],
       "name": "Feature Banner Tabs",
       "settings": {
         "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c_e3f39822-5787-49eb-b513-96febd3602d3.png",
@@ -587,7 +661,11 @@
           }
         }
       },
-      "block_order": ["subheading_4dQm9D", "heading_pqkEEL", "richtext_7eECUn"],
+      "block_order": [
+        "subheading_4dQm9D",
+        "heading_pqkEEL",
+        "richtext_7eECUn"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -1085,6 +1163,8 @@
       ],
       "name": "t:labels.testimonials",
       "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
         "title": "From our customers",
         "align_text": "center",
         "round_images": true,
@@ -1176,6 +1256,7 @@
     "new_banner_slider_TttF6a",
     "comparison_table_9GzXp3",
     "somos_banner_npnyQG",
+    "somos_image_text_comparison_ixXbm8",
     "somos_image_content_G9VF8j",
     "image_text_jTHEH7",
     "feature_banner_tabs_Hxtw6p",

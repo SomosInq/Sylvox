@@ -32,7 +32,10 @@
           }
         }
       },
-      "block_order": ["subheading_cKnAyr", "heading_mUebgn"],
+      "block_order": [
+        "subheading_cKnAyr",
+        "heading_mUebgn"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -81,7 +84,10 @@
           }
         }
       },
-      "block_order": ["title_TT4cMq", "text_79TTDX"],
+      "block_order": [
+        "title_TT4cMq",
+        "text_79TTDX"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#f7f7f7",
@@ -122,7 +128,10 @@
           }
         }
       },
-      "block_order": ["image_FMJh4q", "text_78Na7V"],
+      "block_order": [
+        "image_FMJh4q",
+        "text_78Na7V"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#f7f7f7",
@@ -152,7 +161,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/7cac0a1597c10b0d1cd7e3ffb78ca6d9c1c296be.jpg",
-            "caption": "Accessibility",
+            "caption": "",
+            "caption_small": "Accessibility",
             "description_block": "Makes high-quality outdoor TVs that are accessible to more people, making outdoor entertainment a part of everyday life."
           }
         },
@@ -160,7 +170,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Well-being.png",
-            "caption": "Works Even After Heavy Rain",
+            "caption": "",
+            "caption_small": "Works Even After Heavy Rain",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -168,7 +179,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Slide.png",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
+            "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -176,7 +188,8 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Full-Metal.png",
-            "caption": "Outdoor Dining Area",
+            "caption": "",
+            "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         }
@@ -426,7 +439,7 @@
           }
         },
         "card_4_3qDHeE": {
-          "type": "card_4",
+          "type": "card_4",Contact informationChoose a topic below
           "settings": {
             "label": "Patents",
             "stat": "100+",

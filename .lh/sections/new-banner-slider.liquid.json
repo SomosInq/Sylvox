@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 112,
+            "activePatchIndex": 114,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -456,6 +456,14 @@
                 {
                     "date": 1753373993877,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n <section id=\"new-banner-slider-{{ section.id }}\"\n   class=\"new-banner-slider section_width_{{ section.settings.section_width }}\"\n   style=\"\n+  background-color: {{ section.settings.background_color }};\n     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;\n     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;\n   \"\n >\n@@ -135,8 +136,9 @@\n   \"name\": \"New Banner Slider\",\n   \"settings\": [\n     { \"type\": \"select\", \"id\": \"section_width\", \"label\": \"Section Width\", \"default\": \"standard\", \"options\": [ { \"value\": \"standard\", \"label\": \"50% Width\" }, { \"value\": \"full\", \"label\": \"Full Width\" } ] },\n     { \"type\": \"select\", \"id\": \"section_content_width\", \"label\": \"Content Width\", \"default\": \"standard\", \"options\": [ { \"value\": \"standard\", \"label\": \"50% Width\" }, { \"value\": \"full\", \"label\": \"Full Width\" } ] },\n+    { \"type\": \"color\", \"id\": \"background_color\", \"label\": \"Background Color\", \"default\": \"#ffffff\" },\n     { \"type\": \"range\", \"id\": \"padding_top\", \"label\": \"Padding top\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n     { \"type\": \"range\", \"id\": \"padding_bottom\", \"label\": \"Padding bottom\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n     { \"type\": \"range\", \"id\": \"padding_left\", \"label\": \"Padding left\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n     { \"type\": \"range\", \"id\": \"padding_right\", \"label\": \"Padding right\", \"min\": 0, \"max\": 100, \"step\": 5, \"default\": 0, \"unit\": \"px\" },\n"
+                },
+                {
+                    "date": 1753778983011,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n             <img src=\"{{ block.settings.image | img_url: '1600x' }}\" alt=\"Slide Image\" style=\"width: 100%; height: 100%; object-fit: cover;\">\n           {% endif %}\n           <div class=\"slider-content\">\n             {% if block.settings.caption %}<h2>{{ block.settings.caption }}</h2>{% endif %}\n+            {% if block.settings.caption_small %}<h4>{{ block.settings.caption_small }}</h4>{% endif %}\n             {% if block.settings.description_block %}<p>{{ block.settings.description_block }}</p>{% endif %}\n           </div>\n         </div>\n       {% endfor %}\n@@ -162,8 +163,9 @@\n       \"name\": \"Slide\",\n       \"settings\": [\n         { \"type\": \"image_picker\", \"id\": \"image\", \"label\": \"Slide Image\" },\n         { \"type\": \"text\", \"id\": \"caption\", \"label\": \"Title\", \"default\": \"Outdoor Dining Area\" },\n+        { \"type\": \"text\", \"id\": \"caption_small\", \"label\": \"Title Small\", \"default\": \"Outdoor Dining Area\" },\n         { \"type\": \"textarea\", \"id\": \"description_block\", \"label\": \"Description\", \"default\": \"Outdoor Dining Area\" }\n       ]\n     }\n   ],\n"
+                },
+                {
+                    "date": 1753781675504,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,13 +30,15 @@\n       {% endfor %}\n     </div>\n \n     <div class=\"slider-controls section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;\">\n+      {% if section.settings.show_dots %}\n       <div class=\"slider-dots\">\n         {% for block in section.blocks %}\n           <span class=\"slider-dot{% if forloop.first %} active{% endif %}\" data-index=\"{{ forloop.index0 }}\"></span>\n         {% endfor %}\n       </div>\n+      {% endif %}\n       {% if section.settings.show_arrows %}\n         <div class=\"slider-arrows\">\n           <button class=\"slider-arrow prev\">‹</button>\n           <button class=\"slider-arrow next\">›</button>\n"
                 }
             ],
             "date": 1748527236205,
