@@ -35,7 +35,9 @@
           }
         }
       },
-      "block_order": ["a4760147-34c7-4142-9a70-d9581745c095"],
+      "block_order": [
+        "a4760147-34c7-4142-9a70-d9581745c095"
+      ],
       "disabled": true,
       "settings": {
         "heading_fullwidth": false,
@@ -72,7 +74,9 @@
           }
         }
       },
-      "block_order": ["f69681ed-b75e-42de-be58-fdf73b3b7e08"],
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
       "disabled": true,
       "settings": {
         "enable_drawer": false,
@@ -114,7 +118,10 @@
           }
         }
       },
-      "block_order": ["subheading_pGyxkn", "heading_aHBmHB"],
+      "block_order": [
+        "subheading_pGyxkn",
+        "heading_aHBmHB"
+      ],
       "custom_css": [
         "@media screen and (max-width: 768px) {.image-banner__content {justify-content: center; text-align: center; }}"
       ],
@@ -145,71 +152,107 @@
         "tab_h89RLW": {
           "type": "tab",
           "settings": {
-            "tab_reference": "usermanual",
-            "tab_label": "User Manual & Firmware"
+            "tab_reference": "outdoortvs",
+            "tab_label": "Outdoor TVs"
           }
         },
         "tab_cNwqNJ": {
           "type": "tab",
           "settings": {
-            "tab_reference": "app",
-            "tab_label": "APP & Player"
+            "tab_reference": "KitchenTVs",
+            "tab_label": "Kitchen TVs"
+          }
+        },
+        "tab_y4kkUa": {
+          "type": "tab",
+          "settings": {
+            "tab_reference": "BathroomTVs",
+            "tab_label": "Bathroom TVs"
+          }
+        },
+        "tab_kbGhCY": {
+          "type": "tab",
+          "settings": {
+            "tab_reference": "RVTVs",
+            "tab_label": "RV TVs"
+          }
+        },
+        "tab_Qj69YA": {
+          "type": "tab",
+          "settings": {
+            "tab_reference": "CommercialTVs",
+            "tab_label": "Commercial TVs"
           }
         },
         "image_label_tdqddt": {
           "type": "image_label",
           "settings": {
-            "title": "360 Series",
-            "tab_reference": "usermanual",
+            "image": "shopify://shop_images/image_b57730ff-bc37-48d4-a107-33756b9e2e3a.png",
+            "title": "Deck Series",
+            "tab_reference": "outdoortvs",
             "link": ""
           }
         },
         "image_label_VXEmbH": {
           "type": "image_label",
           "settings": {
-            "title": "Nexus Series",
-            "tab_reference": "usermanual",
+            "image": "shopify://shop_images/image-1_e1e6432c-23d7-47a1-b7b7-88d9484769ba.png",
+            "title": "Pool Series",
+            "tab_reference": "outdoortvs",
             "link": ""
           }
         },
         "image_label_XFHwtH": {
           "type": "image_label",
           "settings": {
-            "image": "shopify://shop_images/image-2.png",
-            "title": "Element Series",
-            "tab_reference": "usermanual",
+            "image": "shopify://shop_images/image-2_945d1d39-4257-46a5-a354-dea5c2a16cfb.png",
+            "title": "Gaming Series",
+            "tab_reference": "outdoortvs",
             "link": ""
           }
         },
         "image_label_TiT9qb": {
           "type": "image_label",
           "settings": {
-            "title": "Falcon Series",
-            "tab_reference": "usermanual",
+            "image": "shopify://shop_images/image-3.png",
+            "title": "Cinema Series",
+            "tab_reference": "outdoortvs",
             "link": ""
           }
         },
-        "image_label_xXjfRj": {
+        "image_label_WRTjLX": {
           "type": "image_label",
           "settings": {
-            "title": "OnDash Series",
-            "tab_reference": "usermanual",
+            "image": "shopify://shop_images/image_b57730ff-bc37-48d4-a107-33756b9e2e3a.png",
+            "title": "Deck Series",
+            "tab_reference": "KitchenTVs",
             "link": ""
           }
         },
-        "image_label_VWLcqq": {
+        "image_label_txg8EU": {
           "type": "image_label",
           "settings": {
-            "title": "Pilot Series",
-            "tab_reference": "usermanual",
+            "image": "shopify://shop_images/image-1_e1e6432c-23d7-47a1-b7b7-88d9484769ba.png",
+            "title": "Pool Series",
+            "tab_reference": "BathroomTVs",
             "link": ""
           }
         },
-        "image_label_miN6Tp": {
+        "image_label_Q8kzxL": {
           "type": "image_label",
           "settings": {
-            "title": "text",
-            "tab_reference": "app",
+            "image": "shopify://shop_images/image-2_945d1d39-4257-46a5-a354-dea5c2a16cfb.png",
+            "title": "Gaming Series",
+            "tab_reference": "RVTVs",
+            "link": ""
+          }
+        },
+        "image_label_mBHf9j": {
+          "type": "image_label",
+          "settings": {
+            "image": "shopify://shop_images/image-3.png",
+            "title": "Cinema Series",
+            "tab_reference": "CommercialTVs",
             "link": ""
           }
         }
@@ -217,13 +260,17 @@
       "block_order": [
         "tab_h89RLW",
         "tab_cNwqNJ",
+        "tab_y4kkUa",
+        "tab_kbGhCY",
+        "tab_Qj69YA",
         "image_label_tdqddt",
         "image_label_VXEmbH",
         "image_label_XFHwtH",
         "image_label_TiT9qb",
-        "image_label_xXjfRj",
-        "image_label_VWLcqq",
-        "image_label_miN6Tp"
+        "image_label_WRTjLX",
+        "image_label_txg8EU",
+        "image_label_Q8kzxL",
+        "image_label_mBHf9j"
       ],
       "settings": {}
     },
@@ -235,7 +282,7 @@
           "settings": {
             "title": "Video Title",
             "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
+            "video_thumbnail": "shopify://shop_images/e10e2b34f4224bc4b9fbed279b1f38a8d382edbe.jpg",
             "video_type": "Expert Reviews",
             "link_url": ""
           }
@@ -245,7 +292,7 @@
           "settings": {
             "title": "Video Title",
             "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
+            "video_thumbnail": "shopify://shop_images/Frame_1272639015-1.png",
             "video_type": "How-To Tutorials",
             "link_url": ""
           }
@@ -255,7 +302,7 @@
           "settings": {
             "title": "Video Title",
             "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124-2_92114025-b2da-444b-ad2e-3f79cd99e10f.png",
+            "video_thumbnail": "shopify://shop_images/Frame_1272639015-2.png",
             "video_type": "Expert Reviews",
             "link_url": ""
           }
@@ -265,48 +312,8 @@
           "settings": {
             "title": "Video Title",
             "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124-2_92114025-b2da-444b-ad2e-3f79cd99e10f.png",
+            "video_thumbnail": "shopify://shop_images/ffb7e7011277682384d406d679938e51d3002c99.png",
             "video_type": "How-To Tutorials",
-            "link_url": ""
-          }
-        },
-        "video_i3hdxA": {
-          "type": "video",
-          "settings": {
-            "title": "Video Title",
-            "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124-1_3f7bebb9-1197-4ae9-b5c0-da44b3515fb6.png",
-            "video_type": "Expert Reviews",
-            "link_url": ""
-          }
-        },
-        "video_nB3XEd": {
-          "type": "video",
-          "settings": {
-            "title": "Video Title",
-            "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124-1_3f7bebb9-1197-4ae9-b5c0-da44b3515fb6.png",
-            "video_type": "Real User Stories",
-            "link_url": ""
-          }
-        },
-        "video_eEgLK8": {
-          "type": "video",
-          "settings": {
-            "title": "Video Title",
-            "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124-3_92fa0bd1-e1b0-456e-9b51-d0a60f8715ff.png",
-            "video_type": "Expert Reviews",
-            "link_url": ""
-          }
-        },
-        "video_YFkPUK": {
-          "type": "video",
-          "settings": {
-            "title": "Video Title",
-            "video_url": "",
-            "video_thumbnail": "shopify://shop_images/Rectangle_124-3_92fa0bd1-e1b0-456e-9b51-d0a60f8715ff.png",
-            "video_type": "Real User Stories",
             "link_url": ""
           }
         }
@@ -315,19 +322,15 @@
         "video_heAaha",
         "video_9zTrGP",
         "video_3yPjTM",
-        "video_eU6qM3",
-        "video_i3hdxA",
-        "video_nB3XEd",
-        "video_eEgLK8",
-        "video_YFkPUK"
+        "video_eU6qM3"
       ],
       "name": "Video Media",
       "settings": {
-        "heading": "Experience the Outdoors Like Never Before.",
+        "heading": "Video Tutorials",
         "header_alignment": "center",
         "bg_color": "#ffffff",
         "section_width": "full",
-        "section_content_width": "standard",
+        "section_content_width": "full",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -399,7 +402,11 @@
           }
         }
       },
-      "block_order": ["usp_item_NaBpxB", "usp_item_Q3BNte", "usp_item_zfY3AT"],
+      "block_order": [
+        "usp_item_NaBpxB",
+        "usp_item_Q3BNte",
+        "usp_item_zfY3AT"
+      ],
       "name": "USP Grid",
       "settings": {
         "enable_slider": false,
@@ -408,6 +415,7 @@
         "heading_font_size": 32,
         "subtext": "",
         "heading_alignment": "center",
+        "box_height": 300,
         "show_arrows": true,
         "padding_top": 0,
         "padding_bottom": 60,
