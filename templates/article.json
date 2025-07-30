@@ -9,8 +9,9 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "article-template",
+    "article_banner_dHfcTE": {
+      "type": "article-banner",
+      "name": "Article Banner",
       "settings": {
         "banner_section_width": "full",
         "banner_section_content_width": "standard",
@@ -20,8 +21,232 @@
         "banner_cta_text": "",
         "banner_cta_link": "",
         "banner_cta_icon": "",
-        "blog_show_article": true,
+        "banner_share_text": "Share",
+        "show_share_tiktok": true,
+        "show_share_linkedin": true,
+        "show_share_youtube": true,
+        "show_share_facebook": true,
+        "show_share_x": true,
+        "show_share_pinterest": true,
+        "show_share_instagram": true,
+        "custom_banner_title": "",
+        "blog_list_title": "More Articles",
+        "bg_color": "#ffffff",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "text_alignment": "left",
+        "heading": "Latest News",
+        "subheading": "From the Blog",
+        "description": "See what's new at Sylvox.",
+        "slide_width": 360,
+        "show_arrows": true,
+        "hide_filter_sort": false
+      }
+    },
+    "somos_image_content_BQjfAJ": {
+      "type": "somos-image-content",
+      "blocks": {
+        "grid_box_qaY7Nk": {
+          "type": "grid_box",
+          "settings": {
+            "layout": "horizontal",
+            "image_position": "left",
+            "image": "shopify://shop_images/d9b63fda867da393506ee71aeb31c12a37cf7bb7.png",
+            "image_width": 40,
+            "content_width": 60,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "",
+            "title": "Where \"Bring the Good Times Home\" Meets \"Feel Good, Live Outdoors\".",
+            "text": "New Orleans, LA, March 26 — Sylvox, a global leader in Outdoor TV technology, is set to make a strong impression at HPBExpo 2025, the premier trade show for the hearth, patio, and barbecue industries.\n<br><br>\nTaking place March 27–29 at the Ernest N. Morial Convention Center, the event aligns perfectly with Sylvox's mission to \"Feel Good, Live Outdoors,\" and HPBExpo's theme of \"Bring the Good Times Home.\" At the exhibition, Sylvox will showcase its highly anticipated Cinema Series and Gaming Series Outdoor TVs, as well as its Kitchen TV, Bathroom TV, and Portable TV lines.\n<br><br>\nUnlike traditional indoor-focused TV brands, Sylvox is engineered specifically for the outdoors, offering a complete range of durable, weatherproof entertainment solutions. HPBExpo 2025 provides the ideal platform for Sylvox to demonstrate these innovations in action. Attendees will have the opportunity to experience firsthand the durability, brightness, smart features, and outdoor-specific engineering that set Sylvox apart in the Outdoor TV category.",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "grid_box_qaY7Nk"
+      ],
+      "name": "Somos Content/Image",
+      "settings": {
+        "parent_subtitle": "",
+        "heading": "",
+        "description": "",
+        "parent_alignment": "center",
+        "button_label": "",
+        "button_link": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "usp_accordion_cEmR78": {
+      "type": "usp-accordion",
+      "blocks": {
+        "accordion_4xRpg4": {
+          "type": "accordion",
+          "settings": {
+            "question": "Cinema Series Outdoor TV",
+            "subtitle": "\"Cinema Under the Open Skies\"",
+            "answer": "The Sylvox Cinema Series transforms outdoor spaces into theaters with revolutionary Helio QLED technology. Featuring up to 5000-nit brightness and theater-grade features, it delivers immersive movie nights under the stars, vibrant sports viewing in bright daylight, and stunning entertainment for outdoor gatherings year-round. Engineered for all-weather durability with IP55 protection, this series brings theater-quality experiences to your backyard, with prices starting at $2799. The flagship Cinema Pro 110 includes comprehensive care coverage with professional installation, priority support, and exclusive member benefits.",
+            "associated_image": "shopify://shop_images/bd6281babfbf4975da3895dfa6a3d1ffa82193ee.png"
+          }
+        },
+        "accordion_NNMebt": {
+          "type": "accordion",
+          "settings": {
+            "question": "Gaming Series Outdoor TV",
+            "subtitle": "\"Games and Sports in the Great Outdoors\"",
+            "answer": "A fusion of professional gaming performance and weatherproof durability, optimized for outdoor enthusiasts, Sylvox introduces the Gaming Series, delivering ultra-low latency (<8ms) and a 120Hz refresh rate for seamless performance. Paired with weatherproof IP55-rated durability, this series offers the ultimate outdoor gaming and sports-viewing experience in the backyard, patio, or poolside, starting at $1999.",
+            "associated_image": "shopify://shop_images/80fb6a02680759dc61e0d366e48d3c00662f6342.png"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_4xRpg4",
+        "accordion_NNMebt"
+      ],
+      "name": "USP Accordion",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "section_heading": "",
+        "section_description": "",
+        "section_title_color": "#000000",
+        "section_description_color": "#333333",
+        "button_text": "",
+        "button_link": "",
+        "title": "",
+        "text": "",
+        "text_color": "#ffffff",
+        "font_size": 16,
+        "padding_top": 30,
+        "padding_bottom": 60,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "image_text_D8YcWM": {
+      "type": "image-text",
+      "blocks": {
+        "title_C6qKye": {
+          "type": "title",
+          "settings": {
+            "title": "\"At Sylvox, we believe outdoor living should be as seamless and high-quality as indoor experiences,\" said Tracy Lee, Co-Founder & CMO at Sylvox. \"After our impactful debut at CES, HPBExpo 2025 is a key milestone in our journey to bring Sylvox innovations into the heart of outdoor living culture.\""
+          }
+        },
+        "text_4MQEH8": {
+          "type": "text",
+          "settings": {
+            "text": "Visit Sylvox at Ernest N. Morial Convention Center, Halls D-E-F, Booth #2007 to see the latest advancements in outdoor entertainment and experience firsthand how Sylvox is shaping the future of Outdoor TV technology."
+          }
+        }
+      },
+      "block_order": [
+        "title_C6qKye",
+        "text_4MQEH8"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "somos_image_content_tgHXw9": {
+      "type": "somos-image-content",
+      "blocks": {
+        "grid_box_ctReET": {
+          "type": "grid_box",
+          "settings": {
+            "layout": "horizontal",
+            "image_position": "right",
+            "image": "shopify://shop_images/3008dbb71d9d1087131aa4212d7bfe1a4429c3aa_1.jpg",
+            "image_width": 40,
+            "content_width": 60,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "",
+            "title": "Feel Good, Live Outdoors",
+            "text": "Founded in 2009 by Golden Young, Sylvox is dedicated to inspiring well-being and connection through cutting-edge outdoor technology. With a presence in over 100 countries, we've grown into a trusted global brand offering state-of-the-art weatherproof outdoor TVs that transform outdoor spaces into immersive entertainment hubs.\n<br><br>\nPartnering with leading retailers worldwide, Sylvox combines innovation, durability, and sustainability to create premium outdoor entertainment solutions accessible to all. Guided by Accessibility, Well-being, Innovation, and Sustainability, We're not just a TV brand—we're redefining how technology connects people with the outdoors.",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "grid_box_ctReET"
+      ],
+      "name": "Somos Content/Image",
+      "settings": {
+        "parent_subtitle": "",
+        "heading": "About Sylvox",
+        "description": "",
+        "parent_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "main": {
+      "type": "article-template",
+      "disabled": true,
+      "settings": {
+        "banner_section_width": "full",
+        "banner_section_content_width": "standard",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "banner_content_position": "center",
+        "banner_cta_text": "",
+        "banner_cta_link": "",
+        "banner_cta_icon": "",
         "show_banner": true,
+        "blog_show_article": true,
         "show_breadcrumbs": false,
         "show_blog_title": false,
         "show_blog_category": true,
@@ -64,6 +289,31 @@
         "hide_filter_sort": false
       }
     },
+    "article_postslider_Tf7tqD": {
+      "type": "article-postslider",
+      "name": "Article Blog Slider",
+      "settings": {
+        "heading": "Continue Reading",
+        "heading_tag": "h3",
+        "subheading": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "bg_color": "#ffffff",
+        "blog": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "slide_width": 360,
+        "show_dots": false,
+        "show_arrows": false
+      }
+    },
     "sidebar": {
       "type": "blog-sidebar",
       "blocks": {
@@ -76,11 +326,23 @@
           "settings": {}
         }
       },
-      "block_order": ["tags", "share"],
+      "block_order": [
+        "tags",
+        "share"
+      ],
       "disabled": true,
       "settings": {}
     }
   },
-  "order": ["main", "sidebar"],
+  "order": [
+    "article_banner_dHfcTE",
+    "somos_image_content_BQjfAJ",
+    "usp_accordion_cEmR78",
+    "image_text_D8YcWM",
+    "somos_image_content_tgHXw9",
+    "main",
+    "article_postslider_Tf7tqD",
+    "sidebar"
+  ],
   "wrapper": "div.page-width.page-content.blog-layout"
 }
