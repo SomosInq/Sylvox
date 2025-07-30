@@ -74,7 +74,9 @@
           }
         }
       },
-      "block_order": ["grid_box_qaY7Nk"],
+      "block_order": [
+        "grid_box_qaY7Nk"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -118,7 +120,10 @@
           }
         }
       },
-      "block_order": ["accordion_4xRpg4", "accordion_NNMebt"],
+      "block_order": [
+        "accordion_4xRpg4",
+        "accordion_NNMebt"
+      ],
       "name": "USP Accordion",
       "settings": {
         "section_width": "full",
@@ -156,7 +161,10 @@
           }
         }
       },
-      "block_order": ["title_C6qKye", "text_4MQEH8"],
+      "block_order": [
+        "title_C6qKye",
+        "text_4MQEH8"
+      ],
       "name": "Somos Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -201,7 +209,9 @@
           }
         }
       },
-      "block_order": ["grid_box_ctReET"],
+      "block_order": [
+        "grid_box_ctReET"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -316,7 +326,10 @@
           "settings": {}
         }
       },
-      "block_order": ["tags", "share"],
+      "block_order": [
+        "tags",
+        "share"
+      ],
       "disabled": true,
       "settings": {}
     }
