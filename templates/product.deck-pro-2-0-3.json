@@ -168,7 +168,9 @@
           }
         }
       },
-      "block_order": ["heading_8HaYdw"],
+      "block_order": [
+        "heading_8HaYdw"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -337,7 +339,10 @@
           }
         }
       },
-      "block_order": ["image_PRK3G6", "image_RXhEGM"],
+      "block_order": [
+        "image_PRK3G6",
+        "image_RXhEGM"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -388,7 +393,10 @@
           }
         }
       },
-      "block_order": ["heading_kLc8Pa", "richtext_PFJ7Nt"],
+      "block_order": [
+        "heading_kLc8Pa",
+        "richtext_PFJ7Nt"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
@@ -479,7 +487,11 @@
           }
         }
       },
-      "block_order": ["grid_box_rbPzQT", "grid_box_8ApDLM", "grid_box_7tKYVJ"],
+      "block_order": [
+        "grid_box_rbPzQT",
+        "grid_box_8ApDLM",
+        "grid_box_7tKYVJ"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
@@ -523,7 +535,10 @@
           }
         }
       },
-      "block_order": ["slide_QqP7Lp", "slide_bmLipF"],
+      "block_order": [
+        "slide_QqP7Lp",
+        "slide_bmLipF"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
@@ -572,7 +587,11 @@
           }
         }
       },
-      "block_order": ["title_GFaQcd", "text_qkpUEk", "image_N9az4U"],
+      "block_order": [
+        "title_GFaQcd",
+        "text_qkpUEk",
+        "image_N9az4U"
+      ],
       "name": "Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
@@ -635,7 +654,10 @@
           }
         }
       },
-      "block_order": ["grid_box_3tryC3", "grid_box_JxaDph"],
+      "block_order": [
+        "grid_box_3tryC3",
+        "grid_box_JxaDph"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "Immersive, Three-Dimensional Sound",
@@ -1345,7 +1367,10 @@
           }
         }
       },
-      "block_order": ["values_jnCGh7", "values_tY64we"],
+      "block_order": [
+        "values_jnCGh7",
+        "values_tY64we"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -1401,7 +1426,9 @@
           "settings": {}
         }
       },
-      "block_order": ["judgeme_review_widget_5fe97322"],
+      "block_order": [
+        "judgeme_review_widget_5fe97322"
+      ],
       "settings": {
         "full_width": false,
         "space_around": true
