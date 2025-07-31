@@ -329,6 +329,9 @@
         "heading": "Video Tutorials",
         "header_alignment": "center",
         "bg_color": "#ffffff",
+        "hide_tabs": true,
+        "video_background_color": "#fafafa",
+        "video_border_radius": 0,
         "section_width": "full",
         "section_content_width": "full",
         "padding_top": 60,
@@ -508,3 +511,4 @@
     "text_section_gNxHjB"
   ]
 }
+

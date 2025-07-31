@@ -1,0 +1,683 @@
+{% comment %}
+Modular Support Section with:
+- Left navigation with category grouping
+- Banner
+- Download area
+- Page/WYSIWYG content area
+- Accordion
+- Section & content width controls
+- Device visibility, padding, margin, and more
+{% endcomment %}
+
+<style>
+  .support-section {
+    background: none;
+  }
+
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_width_full {
+    width: 100%;
+  }
+
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_content_width_full {
+    width: 100%;
+  }
+
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .support-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .support-nav {
+    width: 240px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 20px;
+    {% comment %} border-right: 1px solid #e0e0e0; {% endcomment %}
+  }
+
+  .left-menu-category {
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .left-menu-link {
+    cursor: pointer;
+    padding: 13px 15px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    color: #444;
+  }
+
+  .left-menu-link.active,
+  .left-menu-link:hover {
+    background-color: #FAFAFA;
+    color: #2C2C2C;
+    border-radius: 0;
+  }
+
+  .support-content {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .accordion-title svg {
+    transition: transform 0.3s;
+  }
+
+  .accordion-title.active svg {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .accordion-title.active + .accordion-content {
+    max-height: 500px;
+    padding: 0 0 1rem 0;
+  }
+
+.support-banner {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 24px;
+  border-radius: 0;
+  background-color: #f5f5f5;
+}
+
+.support-banner-image {
+  flex: 0 0 auto;
+  max-width: 45%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.support-banner-content {
+  flex: 1 1 auto;
+}
+
+
+@media screen and (max-width: 749px) {
+  .support-banner {
+    flex-direction: column;
+  }
+
+  .support-banner-image,
+  .support-banner-content {
+    max-width: 100%;
+  }
+}
+
+
+.support-banner img {
+  max-width: 100%;
+  height: auto;
+  flex: 1 1 45%;
+  border-radius: 8px;
+}
+
+
+  .left-menu-accordion {
+  border-bottom: 1px solid #ddd;
+}
+
+.left-menu-category.accordion-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  {% comment %} padding-right: 8px;
+  padding-top: 0;
+  padding-bottom: 23px; {% endcomment %}
+
+  padding: 13px 15px;
+  gap: 12px;
+}
+
+.left-menu-accordion.open .left-menu-category {
+  background-color: #336256;
+    color: #fff;
+}
+
+.accordion-title-text {
+  flex-grow: 1;
+  text-transform: none;
+  font-size: 19px;
+  font-weight: 500;
+    color: #636363;
+}
+
+.left-menu-links {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  {% comment %} padding-left: 8px; {% endcomment %}
+}
+
+.left-menu-accordion.open .left-menu-links {
+  max-height: 500px; /* Adjust if you expect many links */
+}
+
+.accordion-arrow {
+  transition: transform 0.3s ease;
+}
+
+.left-menu-accordion.open .accordion-arrow {
+  transform: rotate(180deg);
+  filter: grayscale(1);
+}
+
+.left-menu-accordion.open {
+  padding-bottom: 23px;
+}
+
+
+.left-menu-accordion.open .accordion-title-text {
+    color: #fff;
+}
+
+.support-download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 8px;
+}
+
+.support-download .download-icon {
+  max-width: 80px;
+  height: auto;
+  margin: 0 auto 16px auto;
+  display: block;
+}
+
+.download-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  {% comment %} background: #eee; {% endcomment %}
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.download-link:hover {
+  background: #ddd;
+}
+
+.download-link-icon {
+  max-width: 20px;
+  height: auto;
+  display: inline-block;
+}
+
+.download-link-text {
+  display: inline-block;
+}
+.accordion {
+padding: 30px;
+}
+.accordion-arrow-img {
+  transition: transform 0.3s ease;
+}
+
+.accordion-title.active .accordion-arrow-img {
+  transform: rotate(180deg);
+}
+.accordion-arrow-img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.accordion-arrow-img {
+  transition: transform 0.3s ease;
+}
+
+.accordion-title.active .accordion-arrow-img {
+  transform: rotate(180deg);
+}
+.accordion-arrow-img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+  .support-section {
+    background: none;
+  }
+  .section_width_standard, .section_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_width_full { width: 100%; }
+  .section_width_standard { margin: 0 auto !important; width: 90% !important; }
+  .section_content_width_standard, .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+  .section_content_width_full { width: 100%; }
+  .section_content_width_standard { margin: 0 auto !important; width: 90% !important; }
+
+  .support-inner { display: flex; flex-direction: row; align-items: flex-start; gap: 40px; width: 100%; }
+  .support-nav { width: 240px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px; padding-right: 20px; }
+  .left-menu-category {
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .left-menu-link {
+    cursor: pointer;
+    padding: 13px 15px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    color: #444;
+  }
+ .support-hidden {
+  display: none !important;
+}
+</style>
+
+
+<section id="{{ section.settings.custom_id }}" class="support-section section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}" style="background-image: url({{ section.settings.bg_image | image_url }}); padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    <div class="support-inner">
+      <div class="support-nav">
+
+        {% assign grouped_links = section.blocks | where: 'type', 'left_link' %}
+
+{%- assign categories_string = '' -%}
+{%- assign categorized_blocks = '' -%}
+{%- assign uncategorized_blocks = '' -%}
+
+{%- for block in grouped_links -%}
+  {%- assign this_category = block.settings.category | strip -%}
+  {%- if this_category == blank -%}
+    {%- assign uncategorized_blocks = uncategorized_blocks | append: block.id | append: '||' -%}
+  {%- else -%}
+    {%- unless categories_string contains this_category -%}
+      {%- assign categories_string = categories_string | append: this_category | append: '||' -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign category_list = categories_string | split: '||' -%}
+{%- assign uncategorized_ids = uncategorized_blocks | split: '||' -%}
+
+{%- comment -%}
+  Render uncategorized links first
+{%- endcomment -%}
+{%- for block in grouped_links -%}
+  {%- if block.settings.category == blank -%}
+    <div class="left-menu-link" data-id="{{ block.settings.link_id }}">{{ block.settings.link_title }}</div>
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}
+  Render grouped accordion categories
+{%- endcomment -%}
+{%- for category in category_list -%}
+  {% if category != blank %}
+    <div class="left-menu-accordion{% if forloop.first %} open{% endif %}">
+      <div class="left-menu-category accordion-toggle">
+        <span class="accordion-title-text">{{ category }}</span>
+        {% if section.settings.arrow_icon_left != blank %}
+          <img src="{{ section.settings.arrow_icon_left | image_url: width: 24 }}" class="accordion-arrow{% if forloop.first %} rotate{% endif %}" alt="Toggle">
+        {% else %}
+          <svg class="accordion-arrow" width="12" height="12" viewBox="0 0 24 24"><path d="M12 15.5l-8-8h16z"/></svg>
+        {% endif %}
+      </div>
+      <div class="left-menu-links">
+        {% for block in grouped_links %}
+          {% if block.settings.category == category %}
+            <div class="left-menu-link" data-id="{{ block.settings.link_id }}">{{ block.settings.link_title }}</div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{%- endfor -%}
+
+
+</div>
+
+
+      <div class="support-content">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'banner' %}
+
+              <div class="support-banner support-hidden" data-id="{{ block.settings.content_id }}" style=" background-color: {{ block.settings.bg_color | default: '#f5f5f5' }}; padding-top: {{ block.settings.padding_top }}px; padding-right: {{ block.settings.padding_right }}px; padding-bottom: {{ block.settings.padding_bottom }}px; padding-left: {{ block.settings.padding_left }}px;">
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | image_url }}" class="support-banner-image" alt="" style="max-width: {{ block.settings.image_width }}px;">
+                {% endif %}
+                <div class="support-banner-content">
+                  <{{ block.settings.heading_type }} style="color: {{ block.settings.heading_color }}; text-align: {{ block.settings.heading_align }}; font-weight: {{ block.settings.heading_weight }};">
+                    {{ block.settings.title }}
+                  </{{ block.settings.heading_type }}>
+                  <div class="richtext" style="color: {{ block.settings.heading_color }};">{{ block.settings.text }}</div>
+                </div>
+              </div>
+            {% when 'download' %}
+              <div class="support-download support-hidden" data-id="{{ block.settings.content_id }}" style=" background-color: {{ block.settings.bg_color }};">
+                {% if block.settings.icon %}
+                  <img src="{{ block.settings.icon | image_url }}" class="download-icon" alt="Icon">
+                {% endif %}
+                {% if block.settings.download_title %}
+                  <h3 class="download-title">{{ block.settings.download_title }}</h3>
+                {% endif %}
+                {% if block.settings.download_link %}
+                  <a href="{{ block.settings.download_link }}" class="download-link">
+                    {% if block.settings.download_icon %}
+                      <img src="{{ block.settings.download_icon | image_url }}" class="download-link-icon" alt="Link Icon">
+                    {% endif %}
+                    <span class="download-link-text">{{ block.settings.download_text }}</span>
+                  </a>
+                {% endif %}
+              </div>
+{% when 'content' %}
+  <div class="support-html-content support-hidden" data-id="{{ block.settings.content_id }}" style=" color: {{ block.settings.font_color }};">
+    {% assign page_handle = block.settings.page %}
+    {% assign page_obj = pages[page_handle] %}
+    
+    {% if page_obj != blank %}
+      {{ page_obj.content }}
+    {% elsif block.settings.wysiwyg != blank %}
+      {{ block.settings.wysiwyg }}
+    {% else %}
+      <p style="color:red;">No content assigned to '{{ block.settings.content_id }}'</p>
+    {% endif %}
+  </div>
+
+
+            {% when 'accordion' %}
+              <div class="accordion support-hidden" data-id="{{ block.settings.content_id }}" style=" background-color: {{ block.settings.bg_color }};">
+                {% for i in (1..30) %}
+                  {% capture q %}question_{{ i }}{% endcapture %}
+                  {% capture a %}answer_{{ i }}{% endcapture %}
+                  {% assign question = block.settings[q] %}
+                  {% assign answer = block.settings[a] %}
+                  {% if question != blank %}
+                    <div class="accordion-item{% if forloop.first %} open{% endif %}">
+                      <div class="accordion-title{% if forloop.first %} active{% endif %}" style="color: {{ block.settings.qafont_color }};">
+                        <span>{{ question }}</span>
+                        {% if block.settings.arrow_icon %}
+                          <img src="{{ block.settings.arrow_icon | image_url: width: 16 }}" class="accordion-arrow-img" alt="Arrow">
+                        {% else %}
+                          <svg class="accordion-arrow-img" width="16" height="16" viewBox="0 0 24 24"><path d="M12 15.5l-8-8h16z"/></svg>
+                        {% endif %}
+                      </div>
+                      <div class="accordion-content" style="{% if forloop.first %}max-height: 500px;{% endif %} color: {{ block.settings.qafont_color }};">{{ answer }}</div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Toggle category accordions
+    document.querySelectorAll('.accordion-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const parent = toggle.closest('.left-menu-accordion');
+        parent.classList.toggle('open');
+      });
+    });
+
+    const links = document.querySelectorAll('.left-menu-link');
+    const contentBlocks = document.querySelectorAll('.support-content > [data-id]');
+
+    links.forEach(link => {
+      link.addEventListener('click', function () {
+        const clickedId = this.getAttribute('data-id');
+
+        // Hide all blocks
+        contentBlocks.forEach(block => {
+          block.classList.add('support-hidden');
+        });
+
+        // Show only blocks that match clicked ID
+        contentBlocks.forEach(block => {
+          const blockId = block.getAttribute('data-id');
+          if (blockId === clickedId) {
+            block.classList.remove('support-hidden');
+          }
+        });
+
+        // Toggle active state
+        links.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Auto-click first link on load
+    const firstLink = document.querySelector('.left-menu-link');
+    if (firstLink) firstLink.click();
+
+    // Accordion logic for FAQ items
+    document.querySelectorAll('.accordion-title').forEach(title => {
+      title.addEventListener('click', () => {
+        const parent = title.closest('.accordion-item');
+        const content = title.nextElementSibling;
+
+        document.querySelectorAll('.accordion-item').forEach(item => {
+          if (item !== parent) {
+            item.classList.remove('open');
+            item.querySelector('.accordion-title').classList.remove('active');
+            item.querySelector('.accordion-content').style.maxHeight = null;
+          }
+        });
+
+        title.classList.toggle('active');
+        parent.classList.toggle('open');
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Somos Modular",
+  "class": "modular-support-section",
+  "settings": [
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "color", "id": "bg_color", "label": "Background Color" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "default": 0 },
+    { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "default": 0 },
+    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "default": 0 },
+        {
+  "type": "image_picker",
+  "id": "arrow_icon_left",
+  "label": "Left Menu Arrow Icon (optional)"
+},
+    { "type": "text", "id": "custom_id", "label": "Custom ID" },
+    { "type": "text", "id": "custom_class", "label": "Custom Class" }
+  ],
+  "blocks": [
+    {
+      "type": "left_link",
+      "name": "Left Link",
+      "settings": [
+        { "type": "text", "id": "link_title", "label": "Link Title" },
+        { "type": "text", "id": "link_id", "label": "Link ID" },
+        { "type": "text", "id": "category", "label": "Category" }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        { "type": "text", "id": "content_id", "label": "Associated ID" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+  "type": "range",
+  "id": "image_width",
+  "label": "Image Width (PX)",
+  "min": 100,
+  "max": 1000,
+  "step": 100,
+  "default": 100
+},
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "select", "id": "heading_type", "label": "Heading Type", "default": "h2", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }, { "value": "h5", "label": "H5" }, { "value": "h6", "label": "H6" } ] },
+        { "type": "color", "id": "heading_color", "label": "Heading Color" },
+        { "type": "select", "id": "heading_align", "label": "Heading Alignment", "default": "left", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
+        { "type": "select", "id": "heading_weight", "label": "Heading Weight", "default": "400", "options": [ { "value": "300", "label": "Light" }, { "value": "400", "label": "Normal" }, { "value": "700", "label": "Bold" } ] },
+        { "type": "richtext", "id": "text", "label": "Description" },
+        { "type": "color", "id": "bg_color", "label": "Background Color" },
+         {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+      ]
+    },
+    {
+      "type": "download",
+      "name": "Download Area",
+      "settings": [
+        { "type": "text", "id": "content_id", "label": "Associated ID" },
+        { "type": "color", "id": "bg_color", "label": "Background Color" },
+        { "type": "image_picker", "id": "icon", "label": "Top Icon" },
+        { "type": "text", "id": "download_title", "label": "Title" },
+        { "type": "text", "id": "download_text", "label": "Link Text" },
+        { "type": "url", "id": "download_link", "label": "Link URL" },
+        { "type": "image_picker", "id": "download_icon", "label": "Link Icon (Left of Text)" }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "Content Area",
+      "settings": [
+        { "type": "text", "id": "content_id", "label": "Associated ID" },
+        { "type": "page", "id": "page", "label": "Page Content (Overrides WYSIWYG if selected)" },
+        { "type": "html", "id": "wysiwyg", "label": "HTML Content" },
+        { "type": "color", "id": "font_color", "label": "Font Color" }
+
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion Area",
+      "settings": [
+        { "type": "text", "id": "content_id", "label": "Associated ID" },
+        { "type": "color", "id": "bg_color", "label": "Background Color" },
+        { "type": "color", "id": "qafont_color", "label": "Font Color" },
+        {
+  "type": "image_picker",
+  "id": "arrow_icon",
+  "label": "Arrow Icon (optional)"
+},
+        { "type": "text", "id": "question_1", "label": "Question 1" },
+        { "type": "textarea", "id": "answer_1", "label": "Answer 1" },
+        { "type": "text", "id": "question_2", "label": "Question 2" },
+        { "type": "textarea", "id": "answer_2", "label": "Answer 2" },
+        { "type": "text", "id": "question_3", "label": "Question 3" },
+        { "type": "textarea", "id": "answer_3", "label": "Answer 3" },
+        { "type": "text", "id": "question_4", "label": "Question 4" },
+        { "type": "textarea", "id": "answer_4", "label": "Answer 4" },
+        { "type": "text", "id": "question_5", "label": "Question 5" },
+        { "type": "textarea", "id": "answer_5", "label": "Answer 5" },
+        { "type": "text", "id": "question_6", "label": "Question 6" },
+        { "type": "textarea", "id": "answer_6", "label": "Answer 6" },
+        { "type": "text", "id": "question_7", "label": "Question 7" },
+        { "type": "textarea", "id": "answer_7", "label": "Answer 7" },
+        { "type": "text", "id": "question_8", "label": "Question 8" },
+        { "type": "textarea", "id": "answer_8", "label": "Answer 8" },
+        { "type": "text", "id": "question_9", "label": "Question 9" },
+        { "type": "textarea", "id": "answer_9", "label": "Answer 9" },
+        { "type": "text", "id": "question_10", "label": "Question 10" },
+        { "type": "textarea", "id": "answer_10", "label": "Answer 10" },
+        { "type": "text", "id": "question_11", "label": "Question 11" },
+        { "type": "textarea", "id": "answer_11", "label": "Answer 11" },
+        { "type": "text", "id": "question_12", "label": "Question 12" },
+        { "type": "textarea", "id": "answer_12", "label": "Answer 12" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Somos Modular",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}
