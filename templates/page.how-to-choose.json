@@ -1,0 +1,233 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "somos_banner_8pxCzf": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_nNLbPR": {
+          "type": "heading",
+          "settings": {
+            "text": "How to Choose",
+            "heading_tag": "h2",
+            "color": "#000000",
+            "italic": false,
+            "font_weight": "300",
+            "alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nNLbPR"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": true,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/181ea2cc16b3f5d2a0e9ebf9ef99093f4adf7eb8.jpg",
+        "background_zoom": 100,
+        "background_position": "left",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "left",
+        "vertical_alignment": "center"
+      }
+    },
+    "anchor_navigation_6dbKkJ": {
+      "type": "anchor-navigation",
+      "blocks": {
+        "nav_item_MtUmEE": {
+          "type": "nav_item",
+          "settings": {
+            "title": "Choose Your Installation Environment",
+            "anchor_id": "section-1"
+          }
+        }
+      },
+      "block_order": [
+        "nav_item_MtUmEE"
+      ],
+      "name": "Anchor Navigation",
+      "settings": {
+        "title": "Navigate to Sections",
+        "background_color": "#336256",
+        "text_color": "#c6c6c6"
+      }
+    },
+    "image_text_gE43et": {
+      "type": "image-text",
+      "blocks": {
+        "title_34CQBn": {
+          "type": "title",
+          "settings": {
+            "title": "Choose Your Installation Environment"
+          }
+        },
+        "text_6HNyWW": {
+          "type": "text",
+          "settings": {
+            "text": "Where do you plan to place the TV?\nSelect the scene that best fits your space."
+          }
+        }
+      },
+      "block_order": [
+        "title_34CQBn",
+        "text_6HNyWW"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "promo_grid_yyAFdn": {
+      "type": "promo-grid",
+      "blocks": {
+        "advanced_AD8YKA": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "",
+            "textarea": "",
+            "cta_text1": "",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify://shop_images/Frame_1272638891.png",
+            "width": "50",
+            "height": 800,
+            "text_align": "vertical-center horizontal-center",
+            "color_accent": "#fff"
+          }
+        },
+        "advanced_Y8bf9Y": {
+          "type": "advanced",
+          "settings": {
+            "subheading": "",
+            "heading": "",
+            "textarea": "",
+            "cta_text1": "",
+            "cta_link1": "",
+            "cta_text2": "",
+            "cta_link2": "",
+            "image": "shopify://shop_images/Frame_1272638893.png",
+            "width": "50",
+            "height": 800,
+            "text_align": "vertical-center horizontal-center",
+            "color_accent": "#fff"
+          }
+        }
+      },
+      "block_order": [
+        "advanced_AD8YKA",
+        "advanced_Y8bf9Y"
+      ],
+      "name": "t:labels.promotional_grid",
+      "settings": {
+        "full_width": false,
+        "gutter_size": 20,
+        "space_above": true,
+        "space_below": true
+      }
+    },
+    "image_text_HeN8df": {
+      "type": "image-text",
+      "blocks": {
+        "button_hynTxW": {
+          "type": "button",
+          "settings": {
+            "text": "Next",
+            "url": "",
+            "style": "fill",
+            "size": "base",
+            "text_color": "#ffffff",
+            "background": "#56654e",
+            "outline_color": "#000000",
+            "icon": "",
+            "icon_position": "left",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "button_hynTxW"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somos_banner_8pxCzf",
+    "anchor_navigation_6dbKkJ",
+    "image_text_gE43et",
+    "promo_grid_yyAFdn",
+    "image_text_HeN8df"
+  ]
+}
