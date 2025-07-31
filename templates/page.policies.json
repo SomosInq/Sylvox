@@ -129,8 +129,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "somos_modular_8gLmqU"
-  ]
+  "order": ["main", "somos_modular_8gLmqU"]
 }
