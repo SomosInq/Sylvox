@@ -1,0 +1,275 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "somos_modular_HAwAfR": {
+      "type": "somos-modular",
+      "blocks": {
+        "left_link_UGV3Cm": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Deck Series",
+            "link_id": "deckseries",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_Fk6LED": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Pool Series",
+            "link_id": "poolseries",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_t4CDya": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Deck Pro",
+            "link_id": "deckpro",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_P4MQNb": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Pool Pro",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_LJAUVe": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Deck Pro QLED",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_UKCWxL": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Pool Pro QLED",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_HWqPMY": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "2024 Deck Pro 2.0",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_b4E3PA": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "2024 Pool Pro 2.0",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_RFxRh8": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "2024 Pool Pro Qled 2.0",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_BnL6hg": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "2024 Deck Pro Qled 2.0",
+            "link_id": "linktitle1",
+            "category": "Outdoor TVs"
+          }
+        },
+        "left_link_VzrPnd": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Kitchen TVs",
+            "link_id": "linktitle*",
+            "category": "Kitchen TVs"
+          }
+        },
+        "left_link_qUeTza": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "RV TVs",
+            "link_id": "linktitle2",
+            "category": "RV TVs"
+          }
+        },
+        "left_link_pnQNdJ": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Bathroom TV",
+            "link_id": "linktitle3",
+            "category": "Bathroom TV"
+          }
+        },
+        "left_link_CWM3VB": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Commercial TV",
+            "link_id": "linktitle4",
+            "category": "Commercial TV"
+          }
+        },
+        "banner_UdkraB": {
+          "type": "banner",
+          "settings": {
+            "content_id": "deckseries",
+            "image": "shopify://shop_images/Rectangle_510.png",
+            "image_width": 200,
+            "title": "Deck Series",
+            "heading_type": "h2",
+            "heading_color": "#ffffff",
+            "heading_align": "left",
+            "heading_weight": "400",
+            "text": "<p>Here is a comprehensive guide to everything you need about this TV, including manuals and FAQs.</p>",
+            "bg_color": "#20413b",
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_left": 60,
+            "padding_right": 0
+          }
+        },
+        "download_xXC8d3": {
+          "type": "download",
+          "settings": {
+            "content_id": "deckseries",
+            "bg_color": "#fafafa",
+            "icon": "shopify://shop_images/81ec3d2ae09f558dc985c2ca9d0fb0f932379347_ee56335b-7e09-4067-a3ce-ee780cc7e7e4.png",
+            "download_title": "User Manual",
+            "download_text": "Download PDF",
+            "download_link": "shopify://pages/about-us-1",
+            "download_icon": "shopify://shop_images/Camada_1.svg"
+          }
+        },
+        "accordion_yeYFNN": {
+          "type": "accordion",
+          "settings": {
+            "content_id": "deckseries",
+            "bg_color": "#f7f7f7",
+            "qafont_color": "#000000",
+            "arrow_icon": "shopify://shop_images/Frame.svg",
+            "question_1": "Question",
+            "answer_1": "Answer",
+            "question_2": "Question",
+            "answer_2": "Answer",
+            "question_3": "Question",
+            "answer_3": "Answer",
+            "question_4": "Question",
+            "answer_4": "Answer",
+            "question_5": "Question",
+            "answer_5": "Answer",
+            "question_6": "Question",
+            "answer_6": "Answer",
+            "question_7": "Question",
+            "answer_7": "Answer",
+            "question_8": "",
+            "answer_8": "",
+            "question_9": "",
+            "answer_9": "",
+            "question_10": "",
+            "answer_10": "",
+            "question_11": "",
+            "answer_11": "",
+            "question_12": "",
+            "answer_12": ""
+          }
+        },
+        "banner_yeqYtC": {
+          "type": "banner",
+          "settings": {
+            "content_id": "poolseries",
+            "image": "shopify://shop_images/Rectangle_510.png",
+            "image_width": 200,
+            "title": "Pool Series",
+            "heading_type": "h2",
+            "heading_color": "#ffffff",
+            "heading_align": "left",
+            "heading_weight": "400",
+            "text": "<p>Here is a comprehensive guide to everything you need about this TV, including manuals and FAQs.</p>",
+            "bg_color": "#20413b",
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_left": 60,
+            "padding_right": 0
+          }
+        },
+        "banner_aD7n7C": {
+          "type": "banner",
+          "settings": {
+            "content_id": "deckpro",
+            "image": "shopify://shop_images/Rectangle_510.png",
+            "image_width": 200,
+            "title": "Deck Pro",
+            "heading_type": "h2",
+            "heading_color": "#ffffff",
+            "heading_align": "left",
+            "heading_weight": "400",
+            "text": "<p>Here is a comprehensive guide to everything you need about this TV, including manuals and FAQs.</p>",
+            "bg_color": "#20413b",
+            "padding_top": 60,
+            "padding_bottom": 60,
+            "padding_left": 60,
+            "padding_right": 0
+          }
+        }
+      },
+      "block_order": [
+        "left_link_UGV3Cm",
+        "left_link_Fk6LED",
+        "left_link_t4CDya",
+        "left_link_P4MQNb",
+        "left_link_LJAUVe",
+        "left_link_UKCWxL",
+        "left_link_HWqPMY",
+        "left_link_b4E3PA",
+        "left_link_RFxRh8",
+        "left_link_BnL6hg",
+        "left_link_VzrPnd",
+        "left_link_qUeTza",
+        "left_link_pnQNdJ",
+        "left_link_CWM3VB",
+        "banner_UdkraB",
+        "download_xXC8d3",
+        "accordion_yeYFNN",
+        "banner_yeqYtC",
+        "banner_aD7n7C"
+      ],
+      "name": "Somos Modular",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "bg_color": "",
+        "padding_top": 60,
+        "padding_bottom": 100,
+        "padding_left": 0,
+        "padding_right": 0,
+        "arrow_icon_left": "shopify://shop_images/Frame.svg",
+        "custom_id": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somos_modular_HAwAfR"
+  ]
+}
