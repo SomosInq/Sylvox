@@ -1,0 +1,112 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "left_right_X7ULyK": {
+      "type": "left-right",
+      "name": "Left + Right Media",
+      "settings": {
+        "image": "shopify://shop_images/shopping-cart-basket-3--shopping-basket--Streamline-Core.svg",
+        "media_position": "right",
+        "image_width": 40,
+        "image_ratio": "landscape",
+        "lazy_load": true,
+        "image_hover_effect": "zoom",
+        "top_title": "Where to Buy",
+        "top_title_tag": "h2",
+        "top_title_color": "",
+        "top_title_weight": "700",
+        "top_title_align": "left",
+        "top_title_italic": false,
+        "top_text": "<p>Sylvox provides warranty services exclusively to authorized dealers. Products bought from unauthorized dealers do not qualify for warranty coverage. To ensure your purchase is protected, please verify the seller’s name here to confirm they are an authorized Sylvox dealer.</p>",
+        "top_text_color": "",
+        "top_text_align": "left",
+        "top_text_italic": false,
+        "top_button_text": "",
+        "top_button_link": "",
+        "button_style": "primary",
+        "icon_position": "right",
+        "background_color": "#a7dcb7",
+        "overlay_color": "",
+        "overlay_opacity": 0,
+        "section_width": "full",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "media_logo_carousel_Dtha9U": {
+      "type": "media-logo-carousel",
+      "blocks": {
+        "media_item_LdTbC4": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/e11409bb349b16c2beb07dd2c587a88df00b19d8.png",
+            "logo_width": 100,
+            "alt": "",
+            "description": ""
+          }
+        },
+        "media_item_8QBc6C": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/c65311be8c485acbd092f750c5cc614d579b5f1d.png",
+            "logo_width": 100,
+            "alt": "",
+            "description": ""
+          }
+        },
+        "media_item_hpfqx4": {
+          "type": "media_item",
+          "settings": {
+            "quote": "",
+            "logo": "shopify://shop_images/cc2b8653b5342ad73887acf530f78f70b04f0bb1.png",
+            "logo_width": 100,
+            "alt": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_item_LdTbC4",
+        "media_item_8QBc6C",
+        "media_item_hpfqx4"
+      ],
+      "name": "Media Logo Carousel",
+      "settings": {
+        "heading": "Authorized Dealers",
+        "subtext": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "title_alignment": "left",
+        "show_dots": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "left_right_X7ULyK",
+    "media_logo_carousel_Dtha9U"
+  ]
+}

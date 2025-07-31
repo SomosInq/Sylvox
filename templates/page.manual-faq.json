@@ -268,5 +268,8 @@
       }
     }
   },
-  "order": ["main", "somos_modular_HAwAfR"]
+  "order": [
+    "main",
+    "somos_modular_HAwAfR"
+  ]
 }
