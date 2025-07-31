@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 12,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1751978275001,
@@ -56,6 +56,14 @@
                 {
                     "date": 1752248894039,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -182,8 +182,11 @@\n       background-color: #e91e63;\n     }\n \n     @media screen and (max-width: 768px) {\n+      .media-logo-carousel__logo-wrapper {\n+    height: 20px;\n+}\n       .media-logo-carousel__heading {\n         font-size: 32px;\n       }\n \n"
+                },
+                {
+                    "date": 1753966070004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,11 +81,8 @@\n       align-items: flex-end;\n     }\n \n     .media-logo-carousel__heading {\n-      font-family: Questrial, sans-serif;\n-      font-size: 48px;\n-      font-weight: 400;\n       line-height: 1.2;\n       margin: 0;\n       color: #000000;\n     }\n@@ -185,11 +182,9 @@\n     @media screen and (max-width: 768px) {\n       .media-logo-carousel__logo-wrapper {\n     height: 20px;\n }\n-      .media-logo-carousel__heading {\n-        font-size: 32px;\n-      }\n+    \n \n       .media-logo-carousel__carousel {\n         display: grid;\n         grid-template-columns: repeat(2, 1fr);\n"
+                },
+                {
+                    "date": 1753968734021,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,21 +26,24 @@\n           <p class=\"media-logo-carousel__meta\">{{ block.settings.description }}</p>\n         </div>\n       {% endfor %}\n     </div>\n-<div class=\"media-logo-carousel__dots\">\n-  {% assign groups = section.blocks.size | divided_by: 4 %}\n-  {% assign remainder = section.blocks.size | mod: 4 %}\n-  {% if remainder != 0 %}\n-    {% assign groups = groups | plus: 1 %}\n-  {% endif %}\n+{% if section.settings.show_dots %}\n+  <div class=\"media-logo-carousel__dots\">\n+    {% assign groups = section.blocks.size | divided_by: 4 %}\n+    {% assign remainder = section.blocks.size | mod: 4 %}\n+    {% if remainder != 0 %}\n+      {% assign groups = groups | plus: 1 %}\n+    {% endif %}\n \n-  {% for i in (1..groups) %}\n-    {% assign i0 = i | minus: 1 %}\n-    <span class=\"dot {% if forloop.first %}active{% endif %}\" data-group=\"{{ i0 }}\"></span>\n-  {% endfor %}\n-</div>\n+    {% for i in (1..groups) %}\n+      {% assign i0 = i | minus: 1 %}\n+      <span class=\"dot {% if forloop.first %}active{% endif %}\" data-group=\"{{ i0 }}\"></span>\n+    {% endfor %}\n+  </div>\n+{% endif %}\n \n+\n   </div>\n \n   {% style %}\n     .media-logo-carousel {\n@@ -336,9 +339,15 @@\n         { \"value\": \"left\", \"label\": \"Left\" },\n         { \"value\": \"center\", \"label\": \"Center\" },\n         { \"value\": \"right\", \"label\": \"Right\" }\n       ]\n-    }\n+    },\n+    {\n+  \"type\": \"checkbox\",\n+  \"id\": \"show_dots\",\n+  \"label\": \"Show Dots\",\n+  \"default\": true\n+}\n   ],\n   \"blocks\": [\n     {\n       \"type\": \"media_item\",\n"
                 }
             ],
             "date": 1751978275000,

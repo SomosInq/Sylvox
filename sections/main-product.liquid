@@ -46,10 +46,14 @@
           render 'product-size-picker', block: block
         when 'current_selection'
           render 'product-current-selection', block: block
+when 'simple_usp'
+  render 'block-simple-usps', block: block
+
       endcase
     endfor
   endcapture
 -%}
+
 
 {% render 'section-main-product', slot: blocks %}
 
@@ -633,28 +637,39 @@
       ]
     },
     {
-      "type": "tab",
-      "name": "t:labels.tab",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "t:labels.heading",
-          "default": "Shipping information"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "t:labels.tab_content",
-          "default": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>"
-        },
-        {
-          "type": "page",
-          "id": "page",
-          "label": "t:labels.tab_content_from"
-        }
-      ]
+  "type": "tab",
+  "name": "t:labels.tab",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Shipping information"
     },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:labels.tab_content",
+      "default": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "t:labels.tab_content_from"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Tab Icon (optional)"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Collapsible Background Color",
+      "default": "#ffffff"
+    }
+  ]
+},
     {
       "type": "separator",
       "name": "t:labels.separator"
@@ -712,7 +727,59 @@
     {
       "type": "current_selection",
       "name": "Current Selection"
+    },
+{
+  "type": "simple_usp",
+  "name": "Simple USP Block (4)",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1",
+      "default": "USP Title 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2",
+      "default": "USP Title 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title 3",
+      "default": "USP Title 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title 4",
+      "default": "USP Title 4"
     }
+  ]
+}
+
+
   ]
 }
 {% endschema %}

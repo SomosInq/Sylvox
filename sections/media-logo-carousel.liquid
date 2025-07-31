@@ -27,18 +27,21 @@
         </div>
       {% endfor %}
     </div>
-<div class="media-logo-carousel__dots">
-  {% assign groups = section.blocks.size | divided_by: 4 %}
-  {% assign remainder = section.blocks.size | mod: 4 %}
-  {% if remainder != 0 %}
-    {% assign groups = groups | plus: 1 %}
-  {% endif %}
+{% if section.settings.show_dots %}
+  <div class="media-logo-carousel__dots">
+    {% assign groups = section.blocks.size | divided_by: 4 %}
+    {% assign remainder = section.blocks.size | mod: 4 %}
+    {% if remainder != 0 %}
+      {% assign groups = groups | plus: 1 %}
+    {% endif %}
 
-  {% for i in (1..groups) %}
-    {% assign i0 = i | minus: 1 %}
-    <span class="dot {% if forloop.first %}active{% endif %}" data-group="{{ i0 }}"></span>
-  {% endfor %}
-</div>
+    {% for i in (1..groups) %}
+      {% assign i0 = i | minus: 1 %}
+      <span class="dot {% if forloop.first %}active{% endif %}" data-group="{{ i0 }}"></span>
+    {% endfor %}
+  </div>
+{% endif %}
+
 
   </div>
 
@@ -82,9 +85,6 @@
     }
 
     .media-logo-carousel__heading {
-      font-family: Questrial, sans-serif;
-      font-size: 48px;
-      font-weight: 400;
       line-height: 1.2;
       margin: 0;
       color: #000000;
@@ -186,9 +186,7 @@
       .media-logo-carousel__logo-wrapper {
     height: 20px;
 }
-      .media-logo-carousel__heading {
-        font-size: 32px;
-      }
+    
 
       .media-logo-carousel__carousel {
         display: grid;
@@ -342,7 +340,13 @@
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ]
-    }
+    },
+    {
+  "type": "checkbox",
+  "id": "show_dots",
+  "label": "Show Dots",
+  "default": true
+}
   ],
   "blocks": [
     {

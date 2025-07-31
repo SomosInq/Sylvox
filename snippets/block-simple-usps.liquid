@@ -1,0 +1,54 @@
+  <legend class="label variant__label ">
+  
+   Key features
+  
+</legend>
+<div class="usp-container">
+
+
+  {% for i in (1..4) %}
+    {% assign image_key = "image_" | append: i %}
+    {% assign title_key = "title_" | append: i %}
+    {% assign image = block.settings[image_key] %}
+    {% assign title = block.settings[title_key] %}
+
+    {% if image or title %}
+      <div class="usp-block">
+        {% if image %}
+          <div class="usp-image">
+            <img src="{{ image | image_url: width: 100 }}" alt="{{ title | escape }}">
+          </div>
+        {% endif %}
+        {% if title != blank %}
+          <div class="usp-title">{{ title }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<style>
+  .usp-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px 0;
+  }
+  .usp-block {
+    text-align: center;
+    max-width: 150px;
+    flex: 1 1 100px;
+  }
+  .usp-image img {
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto 12px auto;
+  }
+  .usp-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #636363;
+  }
+</style>

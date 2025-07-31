@@ -81,7 +81,8 @@
               color: {{ block.settings.color }};
               font-weight: {{ block.settings.font_weight }};
               font-style: {% if block.settings.italic %}italic{% else %}normal{% endif %};
-              text-align: {{ block.settings.alignment | default: section.settings.text_alignment }};
+              text-align: {{ block.settings.alignment != blank and block.settings.alignment != nil ? block.settings.alignment : section.settings.text_alignment }};
+
             "
             {{ block.shopify_attributes }}>
             {{ block.settings.text }}
