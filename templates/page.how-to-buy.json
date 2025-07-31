@@ -11,10 +11,76 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
+    },
+    "image_text_yiPb3X": {
+      "type": "image-text",
+      "blocks": {
+        "image_Kdeh73": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1272639149.png",
+            "image_alignment": "center",
+            "image_width": 100
+          }
+        },
+        "image_NjmVLy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1272639159.png",
+            "image_alignment": "center",
+            "image_width": 100
+          }
+        },
+        "image_3QfADf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1272639160.png",
+            "image_alignment": "center",
+            "image_width": 100
+          }
+        },
+        "image_nQQLEG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1272639161.png",
+            "image_alignment": "center",
+            "image_width": 100
+          }
+        }
+      },
+      "block_order": [
+        "image_Kdeh73",
+        "image_NjmVLy",
+        "image_3QfADf",
+        "image_nQQLEG"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 100,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_text_yiPb3X"
   ]
 }
