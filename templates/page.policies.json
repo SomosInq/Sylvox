@@ -1,0 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "somos_modular_8gLmqU": {
+      "type": "somos-modular",
+      "blocks": {
+        "left_link_GjBFjn": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Warranty",
+            "link_id": "Warranty",
+            "category": ""
+          }
+        },
+        "left_link_XmtLMg": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Shipping Policy",
+            "link_id": "Shipping Policy",
+            "category": ""
+          }
+        },
+        "left_link_jKzQLR": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Return Policy",
+            "link_id": "Return Policy",
+            "category": ""
+          }
+        },
+        "left_link_DWCK3C": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Privacy Policy",
+            "link_id": "Privacy Policy",
+            "category": ""
+          }
+        },
+        "left_link_EkAWEy": {
+          "type": "left_link",
+          "settings": {
+            "link_title": "Terms",
+            "link_id": "Terms",
+            "category": ""
+          }
+        },
+        "content_P97xth": {
+          "type": "content",
+          "settings": {
+            "content_id": "Warranty",
+            "page": "warranty",
+            "wysiwyg": "",
+            "font_color": "#000000"
+          }
+        },
+        "content_84MD3R": {
+          "type": "content",
+          "settings": {
+            "content_id": "Shipping Policy",
+            "page": "shipping",
+            "wysiwyg": "",
+            "font_color": "#000000"
+          }
+        },
+        "content_W8V6AF": {
+          "type": "content",
+          "settings": {
+            "content_id": "Return Policy",
+            "page": "return-refund-policy",
+            "wysiwyg": "",
+            "font_color": "#000000"
+          }
+        },
+        "content_7kFyxN": {
+          "type": "content",
+          "settings": {
+            "content_id": "Privacy Policy",
+            "page": "privacy-policy",
+            "wysiwyg": "",
+            "font_color": "#000000"
+          }
+        },
+        "content_wajdBd": {
+          "type": "content",
+          "settings": {
+            "content_id": "Terms",
+            "page": "terms-of-services",
+            "wysiwyg": "",
+            "font_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "left_link_GjBFjn",
+        "left_link_XmtLMg",
+        "left_link_jKzQLR",
+        "left_link_DWCK3C",
+        "left_link_EkAWEy",
+        "content_P97xth",
+        "content_84MD3R",
+        "content_W8V6AF",
+        "content_7kFyxN",
+        "content_wajdBd"
+      ],
+      "name": "Somos Modular",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "bg_color": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somos_modular_8gLmqU"
+  ]
+}

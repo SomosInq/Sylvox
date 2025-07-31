@@ -35,7 +35,9 @@
           }
         }
       },
-      "block_order": ["a4760147-34c7-4142-9a70-d9581745c095"],
+      "block_order": [
+        "a4760147-34c7-4142-9a70-d9581745c095"
+      ],
       "disabled": true,
       "settings": {
         "heading_fullwidth": false,
@@ -72,7 +74,9 @@
           }
         }
       },
-      "block_order": ["f69681ed-b75e-42de-be58-fdf73b3b7e08"],
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
       "disabled": true,
       "settings": {
         "enable_drawer": false,
@@ -114,7 +118,10 @@
           }
         }
       },
-      "block_order": ["subheading_pGyxkn", "heading_aHBmHB"],
+      "block_order": [
+        "subheading_pGyxkn",
+        "heading_aHBmHB"
+      ],
       "custom_css": [
         "@media screen and (max-width: 768px) {.image-banner__content {justify-content: center; text-align: center; }}"
       ],
@@ -398,7 +405,11 @@
           }
         }
       },
-      "block_order": ["usp_item_NaBpxB", "usp_item_Q3BNte", "usp_item_zfY3AT"],
+      "block_order": [
+        "usp_item_NaBpxB",
+        "usp_item_Q3BNte",
+        "usp_item_zfY3AT"
+      ],
       "name": "USP Grid",
       "settings": {
         "enable_slider": false,
@@ -500,3 +511,4 @@
     "text_section_gNxHjB"
   ]
 }
+
