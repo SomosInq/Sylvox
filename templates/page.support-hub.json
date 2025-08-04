@@ -7,15 +7,12 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- 
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-        "content_width": "80ch"
-      }
+      "settings": {}
     },
     "breadcrumbs_section_8LmLAx": {
       "type": "breadcrumbs-section",

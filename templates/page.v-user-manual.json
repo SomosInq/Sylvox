@@ -60,17 +60,7 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-        "layout": "t4s-container-wrap",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": "60px,,60px,",
-        "pd": "",
-        "mg_tb": "",
-        "pd_tb": "",
-        "mg_mb": ",,30px,",
-        "pd_mb": ""
-      }
+      "settings": {}
     },
     "sidebar-page": {
       "type": "sidebar-page",
