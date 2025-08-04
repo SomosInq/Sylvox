@@ -1,0 +1,166 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "18952756-58af-4afa-a0cc-b1b54300fb8b": {
+          "type": "1",
+          "settings": {
+            "heading": "",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 20,
+            "text_lh": 20,
+            "text_fw": 500,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 15,
+            "hidden_mobile": false,
+            "text_fs_mb": 20,
+            "text_lh_mb": 20,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 10
+          }
+        },
+        "cc993342-0dd0-41d6-a6c4-a5f3c87e6f96": {
+          "type": "3",
+          "settings": {
+            "breadcrumb_color": "#f2f2f2",
+            "brc_mgb": 5
+          }
+        }
+      },
+      "block_order": [
+        "18952756-58af-4afa-a0cc-b1b54300fb8b",
+        "cc993342-0dd0-41d6-a6c4-a5f3c87e6f96"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "disabled": true,
+      "settings": {
+        "enable_drawer": true,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "faq_support_xmbDcA": {
+      "type": "faq-support",
+      "blocks": {
+        "faq_dQJDXx": {
+          "type": "faq",
+          "settings": {
+            "question": "What memory card do we recommend?",
+            "answer": "We only recommend Vantrue, Samsung Endurance and Sandisk High Endurance/Max Endurance Card. To extend the life of your card, we advise to format your SD card every 3-4 weeks for regular everyday users and 2-3 weeks for heavy users to free up space on your memory card for new recordings. Note: Samsung EVO Plus and PRO Plus cards are NOT recommended for use with Vantrue dash cam."
+          }
+        },
+        "faq_NcRhg6": {
+          "type": "faq",
+          "settings": {
+            "question": "How to upgrade firmware? Is there a simply way?",
+            "answer": ""
+          }
+        },
+        "faq_gFAjCi": {
+          "type": "faq",
+          "settings": {
+            "question": "How to install suction cup mount?",
+            "answer": ""
+          }
+        },
+        "faq_6RiUwY": {
+          "type": "faq",
+          "settings": {
+            "question": "Why my dash cam lost the settings.",
+            "answer": ""
+          }
+        },
+        "faq_KNWG6U": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between motion detection and microwave detection in Parking mode?",
+            "answer": ""
+          }
+        },
+        "faq_6cWMAW": {
+          "type": "faq",
+          "settings": {
+            "question": "How to set up GPS on your dash cam?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_dQJDXx",
+        "faq_NcRhg6",
+        "faq_gFAjCi",
+        "faq_6RiUwY",
+        "faq_KNWG6U",
+        "faq_6cWMAW"
+      ],
+      "name": "FAQ & Support Hub",
+      "settings": {
+        "support_image": "shopify://shop_images/support-image.png",
+        "support_image_mobile": "shopify://shop_images/Background_934b9bf1-3d25-40be-903d-8126504e3aaa.png",
+        "still_bg_image": "shopify://shop_images/Background_99499e88-8f47-46e7-b881-5017382fbe07.png",
+        "still_bg_image_mobile": "shopify://shop_images/blog_5d163886-7519-4dd1-9f1d-50ece0308a14.png",
+        "support_link": "shopify://pages/about-us",
+        "contact_link": "shopify://pages/about-us"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "faq_support_xmbDcA"
+  ]
+}

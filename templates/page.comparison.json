@@ -1,0 +1,203 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "comparison_table_advanced_Q9CYEy": {
+      "type": "comparison-table-advanced",
+      "blocks": {
+        "values_3M4riW": {
+          "type": "values",
+          "settings": {
+            "parent_category_id": "outdoor",
+            "subcategory_vs": true,
+            "subcategory_partial": true,
+            "subcategory_full": false,
+            "main_image": "shopify://shop_images/76d29d9a8c078cbd7284e62951171bd6381c0aea_1.png",
+            "header_title": "",
+            "icon": "shopify://shop_images/png__1_73.png",
+            "title": "Partial Sun",
+            "price": "",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen",
+            "value_1": "<p>Shaded patios, covered decks, <br/>semi-outdoor entertainment areas</p>",
+            "value_2": "<p>1000 nits</p>",
+            "value_image_2": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "value_3": "<p>IP55 (Water & dust resistant)</p>",
+            "value_image_3": "shopify://shop_images/Icons-1_71c62b09-25b1-4a0f-b5ea-c2a0862a6b03.png",
+            "value_4": "<p>Typically -22℉ to 122℉ (-30°C to 50°C)</p>",
+            "value_image_4": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "value_5": "<p>Great color and contrast for shaded areas</p>",
+            "value_image_5": "shopify://shop_images/Icons-3_7f79dbc3-96ed-4980-9bf9-b30e8bd88587.png",
+            "value_6": "<p>Google TV, Smart TV apps, voice control</p>",
+            "value_image_6": "shopify://shop_images/Icons-4_0dc2d095-0cd1-4bfb-827a-4e056e18c935.png",
+            "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_JcHBgD": {
+          "type": "values",
+          "settings": {
+            "parent_category_id": "outdoor",
+            "subcategory_vs": true,
+            "subcategory_partial": false,
+            "subcategory_full": true,
+            "main_image": "shopify://shop_images/3c0bdd2efba9b5a8e31e7724f16fd77322936476.png",
+            "header_title": "",
+            "icon": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "title": "Full Sun",
+            "price": "",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/32-smart-waterproof-mirror-tv-for-bathroom",
+            "value_1": "<p>Shaded patios, covered decks, <br/>semi-outdoor entertainment areas</p>",
+            "value_2": "<p>1000 nits</p>",
+            "value_image_2": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "value_3": "<p>IP55 (Water & dust resistant)</p>",
+            "value_image_3": "shopify://shop_images/Icons-1_71c62b09-25b1-4a0f-b5ea-c2a0862a6b03.png",
+            "value_4": "<p>Typically -22℉ to 122℉ (-30°C to 50°C)</p>",
+            "value_image_4": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "value_5": "<p>Great color and contrast for shaded areas</p>",
+            "value_image_5": "shopify://shop_images/Icons-3_7f79dbc3-96ed-4980-9bf9-b30e8bd88587.png",
+            "value_6": "<p>Google TV, Smart TV apps, voice control</p>",
+            "value_image_6": "shopify://shop_images/Icons-4_0dc2d095-0cd1-4bfb-827a-4e056e18c935.png",
+            "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_baTDa6": {
+          "type": "values",
+          "settings": {
+            "parent_category_id": "kitchen",
+            "subcategory_vs": true,
+            "subcategory_partial": true,
+            "subcategory_full": false,
+            "main_image": "shopify://shop_images/23bb980516018b3a8370382d77dd1f104ce38d1c.png",
+            "header_title": "",
+            "icon": "shopify://shop_images/png__1_73.png",
+            "title": "Partial Sun",
+            "price": "",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen",
+            "value_1": "<p>Shaded patios, covered decks, <br/>semi-outdoor entertainment areas</p>",
+            "value_2": "<p>1000 nits</p>",
+            "value_image_2": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "value_3": "<p>IP55 (Water & dust resistant)</p>",
+            "value_image_3": "shopify://shop_images/Icons-1_71c62b09-25b1-4a0f-b5ea-c2a0862a6b03.png",
+            "value_4": "<p>Typically -22℉ to 122℉ (-30°C to 50°C)</p>",
+            "value_image_4": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "value_5": "<p>Great color and contrast for shaded areas</p>",
+            "value_image_5": "shopify://shop_images/Icons-3_7f79dbc3-96ed-4980-9bf9-b30e8bd88587.png",
+            "value_6": "<p>Google TV, Smart TV apps, voice control</p>",
+            "value_image_6": "shopify://shop_images/Icons-4_0dc2d095-0cd1-4bfb-827a-4e056e18c935.png",
+            "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        },
+        "values_N49Rri": {
+          "type": "values",
+          "settings": {
+            "parent_category_id": "kitchen",
+            "subcategory_vs": true,
+            "subcategory_partial": false,
+            "subcategory_full": true,
+            "main_image": "shopify://shop_images/2723d9098f0afa53107a23f2a5bea92d85940c61.png",
+            "header_title": "",
+            "icon": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "title": "Full Sun",
+            "price": "",
+            "button_label": "Learn More",
+            "button_link": "shopify://products/32-smart-waterproof-mirror-tv-for-bathroom",
+            "value_1": "<p>Shaded patios, covered decks, <br/>semi-outdoor entertainment areas</p>",
+            "value_2": "<p>1000 nits</p>",
+            "value_image_2": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+            "value_3": "<p>IP55 (Water & dust resistant)</p>",
+            "value_image_3": "shopify://shop_images/Icons-1_71c62b09-25b1-4a0f-b5ea-c2a0862a6b03.png",
+            "value_4": "<p>Typically -22℉ to 122℉ (-30°C to 50°C)</p>",
+            "value_image_4": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "value_5": "<p>Great color and contrast for shaded areas</p>",
+            "value_image_5": "shopify://shop_images/Icons-3_7f79dbc3-96ed-4980-9bf9-b30e8bd88587.png",
+            "value_6": "<p>Google TV, Smart TV apps, voice control</p>",
+            "value_image_6": "shopify://shop_images/Icons-4_0dc2d095-0cd1-4bfb-827a-4e056e18c935.png",
+            "value_7": "<p>Backyard pergolas, shaded garden seating, <br/>semi-enclosed outdoor living rooms, apartment balconies</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": ""
+          }
+        }
+      },
+      "block_order": [
+        "values_3M4riW",
+        "values_JcHBgD",
+        "values_baTDa6",
+        "values_N49Rri"
+      ],
+      "name": "Comparison Table Advanced",
+      "settings": {
+        "title": "Which Product Is Right for You?",
+        "description": "",
+        "button_text": "",
+        "button_url": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": "",
+        "button_size": 16,
+        "background_color": "",
+        "section_width": "standard",
+        "text_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "view_all_text": "View All Comparisons",
+        "view_all_url": "",
+        "show_view_all_comparisons": true,
+        "show_see_all_specs": true,
+        "heading_1": "Best for",
+        "heading_2": "Peak Brightness",
+        "heading_3": "Weather Resistance",
+        "heading_4": "Temperature Resistance",
+        "heading_5": "Color & Contrast",
+        "heading_6": "Smart Features",
+        "heading_7": "Recommended Usage",
+        "heading_8": "",
+        "heading_9": "",
+        "heading_10": "",
+        "heading_11": "",
+        "heading_12": "",
+        "heading_13": "",
+        "heading_14": "",
+        "heading_15": "",
+        "heading_16": "",
+        "heading_17": "",
+        "heading_18": "",
+        "heading_19": "",
+        "heading_20": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "comparison_table_advanced_Q9CYEy"
+  ]
+}

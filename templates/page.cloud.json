@@ -1,0 +1,369 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "image_banner_39LNAX": {
+      "type": "image-banner",
+      "blocks": {
+        "subheading_3KKUwR": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>VANTRUE CLOUD</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "heading_cezfYj": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Ride with Confidence, Drive with Vantrue Cloud</p>",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_3KKUwR",
+        "heading_cezfYj"
+      ],
+      "name": "Image Banner",
+      "settings": {
+        "background_color": "#ffffff",
+        "desktop_image": "shopify://shop_images/Picture_19604a06808951beb25ed92431ce947a_jpg_2612a8b5-25d1-4d12-8097-741c38b1725c.png",
+        "mobile_image": "shopify://shop_images/mobile_Picture_19604a06808951beb25ed92431ce947a_986fcd60-7ddd-49ec-a72e-b8cfd3b6b949_jpg.png",
+        "height_mode": "custom",
+        "custom_height_desktop": 600,
+        "custom_height_mobile": 400,
+        "image_fit": "cover",
+        "content_alignment": "center",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "margin_left_desktop": 0,
+        "margin_right_desktop": 0,
+        "margin_left_mobile": 0,
+        "margin_right_mobile": 0
+      }
+    },
+    "content_navigation_KEDwa9": {
+      "type": "content-navigation",
+      "blocks": {
+        "nav_item_Ax83RV": {
+          "type": "nav_item",
+          "settings": {
+            "label": "About Us",
+            "target": "#about-us"
+          }
+        },
+        "nav_item_eg6Gpc": {
+          "type": "nav_item",
+          "settings": {
+            "label": "As seen on",
+            "target": "#as-seen-on"
+          }
+        },
+        "nav_item_a4Fny9": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Vision & Mission",
+            "target": "#vision-mission"
+          }
+        },
+        "nav_item_ihmxCj": {
+          "type": "nav_item",
+          "settings": {
+            "label": "Achievements",
+            "target": "#achievements"
+          }
+        }
+      },
+      "block_order": [
+        "nav_item_Ax83RV",
+        "nav_item_eg6Gpc",
+        "nav_item_a4Fny9",
+        "nav_item_ihmxCj"
+      ],
+      "name": "Content Navigation",
+      "settings": {}
+    },
+    "feature_banner_tabs_AhXEYD": {
+      "type": "feature-banner-tabs",
+      "blocks": {
+        "tab_yKje3D": {
+          "type": "tab",
+          "settings": {
+            "label": "Data Protection",
+            "heading": "Double Protection for Recording Data",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage.",
+            "background": "shopify://shop_images/quiz_background_image.png"
+          }
+        },
+        "tab_L3yTRg": {
+          "type": "tab",
+          "settings": {
+            "label": "Data Protection",
+            "heading": "Double Protection for Recording Data",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage.",
+            "background": "shopify://shop_images/Frame_1272638923.png"
+          }
+        },
+        "tab_XRGQyJ": {
+          "type": "tab",
+          "settings": {
+            "label": "Data Protection",
+            "heading": "Double Protection for Recording Data",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage.",
+            "background": "shopify://shop_images/quiz_background_image.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_yKje3D",
+        "tab_L3yTRg",
+        "tab_XRGQyJ"
+      ],
+      "name": "Feature Banner Tabs",
+      "settings": {
+        "autoplay_enabled": true,
+        "autoplay_interval": 4
+      }
+    },
+    "image_banner_DeLRQV": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_CLRg6M": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Life Happens When You Experience It:<br/>Vantrue Cloud</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "subheading_7cr3Xx": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Vantrue Cloud Dashcam provides you a seamless<br/>connection with your car. With Cloud Dashcam,<br/>you can securely back up your videos,<br/>view footage in real-time, and access various<br/>features through the Vantrue App,<br/>expanding the dash cam's capabilities beyond<br/>local recording.</p>",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CLRg6M",
+        "subheading_7cr3Xx"
+      ],
+      "name": "Image Banner",
+      "settings": {
+        "background_color": "#ffffff",
+        "desktop_image": "shopify://shop_images/backgoorung_image.png",
+        "mobile_image": "shopify://shop_images/backkkroung_imagge_mobile.png",
+        "height_mode": "custom",
+        "custom_height_desktop": 790,
+        "custom_height_mobile": 400,
+        "image_fit": "cover",
+        "content_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 0,
+        "margin_left_desktop": 0,
+        "margin_right_desktop": 0,
+        "margin_left_mobile": 0,
+        "margin_right_mobile": 0
+      }
+    },
+    "custom_collection_CxUzni": {
+      "type": "custom-collection",
+      "blocks": {
+        "product_card_wBnGwU": {
+          "type": "product_card",
+          "settings": {
+            "product": "vantrue-e2",
+            "alt_name": "Element 2",
+            "tag": "Element"
+          }
+        },
+        "product_card_VD8Pkz": {
+          "type": "product_card",
+          "settings": {
+            "product": "vantrue-e2",
+            "alt_name": "Element 2",
+            "tag": "Element"
+          }
+        },
+        "product_card_FthxTX": {
+          "type": "product_card",
+          "settings": {
+            "product": "vantrue-e2",
+            "alt_name": "Element 2",
+            "tag": "Element"
+          }
+        },
+        "product_card_VLNAt4": {
+          "type": "product_card",
+          "settings": {
+            "product": "vantrue-e2",
+            "alt_name": "Element 2",
+            "tag": "Element"
+          }
+        },
+        "product_card_KFhGnF": {
+          "type": "product_card",
+          "settings": {
+            "product": "vantrue-e2",
+            "alt_name": "Element 2",
+            "tag": "Element"
+          }
+        }
+      },
+      "block_order": [
+        "product_card_wBnGwU",
+        "product_card_VD8Pkz",
+        "product_card_FthxTX",
+        "product_card_VLNAt4",
+        "product_card_KFhGnF"
+      ],
+      "name": "Custom Collection",
+      "settings": {
+        "title": "Compatible with",
+        "title_alignment": "center",
+        "text_alignment": "left"
+      }
+    },
+    "split_feature_block_xmDwCB": {
+      "type": "split-feature-block",
+      "blocks": {
+        "feature_VJRLJU": {
+          "type": "feature",
+          "settings": {
+            "title": "Double protection for recording data",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage. This allows important footage captured during parking to be automatically uploaded to the cloud for easy access and secure storage. If the cloud storage fills up, the oldest videos will be automatically cleared to make room for new footage.",
+            "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4.png"
+          }
+        },
+        "feature_nrKGJT": {
+          "type": "feature",
+          "settings": {
+            "title": "Guard for parking modes",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage. This allows important footage captured during parking to be automatically uploaded to the cloud for easy access and secure storage. If the cloud storage fills up, the oldest videos will be automatically cleared to make room for new footage.",
+            "image": "shopify://shop_images/mobile_Picture_19604a06808951beb25ed92431ce947a_986fcd60-7ddd-49ec-a72e-b8cfd3b6b949_jpg.png"
+          }
+        },
+        "feature_XnfXQg": {
+          "type": "feature",
+          "settings": {
+            "title": "Control from anywhere",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage. This allows important footage captured during parking to be automatically uploaded to the cloud for easy access and secure storage. If the cloud storage fills up, the oldest videos will be automatically cleared to make room for new footage.",
+            "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4.png"
+          }
+        },
+        "feature_Rg9LWL": {
+          "type": "feature",
+          "settings": {
+            "title": "Double protection for recording data",
+            "description": "With the LTE Module, Vantrue Cloud Dashcam includes 2GB of free cloud storage alongside SD card storage. This allows important footage captured during parking to be automatically uploaded to the cloud for easy access and secure storage. If the cloud storage fills up, the oldest videos will be automatically cleared to make room for new footage.",
+            "image": "shopify://shop_images/mobile_Picture_19604a06808951beb25ed92431ce947a_986fcd60-7ddd-49ec-a72e-b8cfd3b6b949_jpg.png"
+          }
+        }
+      },
+      "block_order": [
+        "feature_VJRLJU",
+        "feature_nrKGJT",
+        "feature_XnfXQg",
+        "feature_Rg9LWL"
+      ],
+      "name": "Split Feature Block",
+      "settings": {}
+    },
+    "media_text_highlight_NeGiAr": {
+      "type": "media-text-highlight",
+      "name": "Media Text Highlight",
+      "settings": {
+        "image": "shopify://shop_images/media-image.png",
+        "title": "Included Items for Vantrue Cloud Dash Cam",
+        "description": "<p>-A compatible Vantrue dash cam (currently available for S1 Pro and N2X)- A Vantrue LTE Module (LT01) - A SIM card or data card that is purchased separately from the carrier.</p>",
+        "image_1": "shopify://shop_images/image1.png",
+        "image_2": "shopify://shop_images/image2.png",
+        "image_3": "shopify://shop_images/image3.png"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "image_banner_39LNAX",
+    "content_navigation_KEDwa9",
+    "feature_banner_tabs_AhXEYD",
+    "image_banner_DeLRQV",
+    "custom_collection_CxUzni",
+    "split_feature_block_xmDwCB",
+    "media_text_highlight_NeGiAr"
+  ]
+}

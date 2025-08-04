@@ -1,0 +1,187 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "comparison_table_9RCer3": {
+      "type": "comparison-table",
+      "disabled": true,
+      "name": "Comparison Table",
+      "settings": {}
+    },
+    "custom_comparison_KktjNN": {
+      "type": "custom-comparison",
+      "blocks": {
+        "about_UKPDc7": {
+          "type": "about",
+          "settings": {
+            "row_label": "About",
+            "metafield_key": "custom_comparison.about"
+          }
+        },
+        "row_eRtzKt": {
+          "type": "row",
+          "settings": {
+            "row_label": "Sensor",
+            "metafield_key": ""
+          }
+        },
+        "row_7m4XR6": {
+          "type": "row",
+          "settings": {
+            "row_label": "Sensor",
+            "metafield_key": ""
+          }
+        },
+        "row_9NbMjt": {
+          "type": "row",
+          "settings": {
+            "row_label": "Sensor",
+            "metafield_key": ""
+          }
+        },
+        "row_xqE6CK": {
+          "type": "row",
+          "settings": {
+            "row_label": "Sensor",
+            "metafield_key": ""
+          }
+        }
+      },
+      "block_order": [
+        "about_UKPDc7",
+        "row_eRtzKt",
+        "row_7m4XR6",
+        "row_9NbMjt",
+        "row_xqE6CK"
+      ],
+      "name": "Custom Comparison",
+      "settings": {
+        "heading": "Which Product Is Right for You?",
+        "product_source": "newest-products"
+      }
+    },
+    "banner_with_buttons_NP88We": {
+      "type": "banner-with-buttons",
+      "blocks": {
+        "caption_njxU3x": {
+          "type": "caption",
+          "settings": {
+            "content": "<p>Quiz</p>",
+            "font_size": 14,
+            "font_weight": "400",
+            "margin_bottom": 8,
+            "text_color": "#ffffff"
+          }
+        },
+        "heading_NhcbTm": {
+          "type": "heading",
+          "settings": {
+            "content": "<p>Which Series Is Right for Me?</p>",
+            "font_size": 32,
+            "font_weight": "500",
+            "margin_bottom": 8,
+            "text_color": "#ffffff"
+          }
+        },
+        "button_j6V7N3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "text": "Learn More",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "caption_njxU3x",
+        "heading_NhcbTm",
+        "button_j6V7N3"
+      ],
+      "name": "Banner with Buttons",
+      "settings": {
+        "background_image": "shopify://shop_images/Link.png",
+        "height_type": "custom",
+        "custom_height": 195,
+        "margin_top": 40,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "comparison_table_9RCer3",
+    "custom_comparison_KktjNN",
+    "banner_with_buttons_NP88We"
+  ]
+}
