@@ -1,0 +1,192 @@
+{% comment %}
+  Multi-Unit Enquiry Form Section
+{% endcomment %}
+
+<section class="multi-unit-form section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+
+        {% if section.settings.title != blank %}
+      <h1 style="color: {{ section.settings.text_color }};">
+        {{ section.settings.title }}
+      </h1>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <div style="color: {{ section.settings.text_color }}; margin-bottom: 2em;">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+
+    <style>
+      .multi-unit-form {
+        padding: 40px 0;
+      }
+
+      .multi-unit-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 100%;
+      }
+
+      .multi-unit-form .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 16px;
+      }
+
+      .multi-unit-form .checkbox-group,
+      .multi-unit-form .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .multi-unit-form .submit-button {
+        margin-top: 24px;
+      }
+
+      .multi-unit-form input[type="text"],
+      .multi-unit-form input[type="email"],
+      .multi-unit-form input[type="url"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+      }
+
+      .multi-unit-form textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        resize: vertical;
+      }
+
+      .multi-unit-form label {
+        font-weight: 500;
+      }
+
+      .submit-button {
+    border-radius: 9999px;
+background: var(--Dark-Green, #20413B);
+color: white;
+max-width: 140px;
+display: flex;
+padding: 12px 24px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+    }
+    </style>
+
+
+
+    <form action="{{ section.settings.form_action }}" method="post">
+      <div class="form-grid">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="company_name" placeholder="Company Name">
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="url" name="website" placeholder="Website">
+        <input type="text" name="state" placeholder="State">
+        <input type="text" name="zip_code" placeholder="ZIP Code">
+      </div>
+
+      <div class="checkbox-group">
+        <label>1. What quantity of Sylvox TVs are you interested in?*</label>
+        <label><input type="checkbox" name="quantity" value="1-5"> 1–5 units</label>
+        <label><input type="checkbox" name="quantity" value="6-10"> 6–10 units</label>
+        <label><input type="checkbox" name="quantity" value="More than 10"> More than 10 units</label>
+      </div>
+
+      <div class="checkbox-group">
+        <label>2. Which type of Sylvox TVs are you interested in?</label>
+        <label><input type="checkbox" name="type[]" value="Partial Sun Outdoor TV"> Partial Sun Outdoor TV</label>
+        <label><input type="checkbox" name="type[]" value="Full Sun Outdoor TV"> Full Sun Outdoor TV</label>
+        <label><input type="checkbox" name="type[]" value="Commercial Displays"> Commercial Displays</label>
+        <label><input type="checkbox" name="type[]" value="Kitchen TV"> Kitchen TV</label>
+        <label><input type="checkbox" name="type[]" value="Bathroom TV"> Bathroom TV</label>
+        <label><input type="checkbox" name="type[]" value="12V RV TV"> 12V RV TV</label>
+        <label><input type="checkbox" name="type[]" value="Portable TV"> Portable TV</label>
+      </div>
+
+      <div class="checkbox-group">
+        <label>3. Which size of Sylvox TVs are you interested in?</label>
+        <label><input type="checkbox" name="size[]" value="43"> 43 inch</label>
+        <label><input type="checkbox" name="size[]" value="55"> 55 inch</label>
+        <label><input type="checkbox" name="size[]" value="65"> 65 inch</label>
+        <label><input type="checkbox" name="size[]" value="75"> 75 inch</label>
+        <label><input type="checkbox" name="size[]" value="86"> 86 inch</label>
+        <label><input type="checkbox" name="size[]" value="110"> 110 inch</label>
+        <label><input type="text" name="size_other" placeholder="Other (please specify)"> </label>
+      </div>
+
+      <div class="radio-group">
+        <label>4. How would you prefer to complete the payment?</label>
+        <label><input type="radio" name="payment" value="Online Order"> Online Order</label>
+        <label><input type="radio" name="payment" value="Offline Payment"> Offline Payment</label>
+      </div>
+
+      <button type="submit" class="submit-button">Submit →</button>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Multi-Unit Enquiry Form",
+  "tag": "section",
+  "class": "multi-unit-enquiry",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "form_action",
+      "label": "Form Submission URL",
+      "default": "/contact#contact_form"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+      {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+    
+  ],
+  "presets": [
+    {
+      "name": "Multi-Unit Enquiry Form"
+    }
+  ]
+}
+{% endschema %}

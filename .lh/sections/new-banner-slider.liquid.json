@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 114,
+            "activePatchIndex": 115,
             "patches": [
                 {
                     "date": 1748527236205,
@@ -464,6 +464,10 @@
                 {
                     "date": 1753781675504,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,13 +30,15 @@\n       {% endfor %}\n     </div>\n \n     <div class=\"slider-controls section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;\">\n+      {% if section.settings.show_dots %}\n       <div class=\"slider-dots\">\n         {% for block in section.blocks %}\n           <span class=\"slider-dot{% if forloop.first %} active{% endif %}\" data-index=\"{{ forloop.index0 }}\"></span>\n         {% endfor %}\n       </div>\n+      {% endif %}\n       {% if section.settings.show_arrows %}\n         <div class=\"slider-arrows\">\n           <button class=\"slider-arrow prev\">‹</button>\n           <button class=\"slider-arrow next\">›</button>\n"
+                },
+                {
+                    "date": 1754320286368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n         </div>\n       {% endfor %}\n     </div>\n \n-    <div class=\"slider-controls section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;\">\n+    <div class=\"slider-controls section_content_width_{{ section.settings.section_content_width }}\" style=\"display: flex; justify-content: space-between; align-items: center; margin-top: 3rem !important;\">\n       {% if section.settings.show_dots %}\n       <div class=\"slider-dots\">\n         {% for block in section.blocks %}\n           <span class=\"slider-dot{% if forloop.first %} active{% endif %}\" data-index=\"{{ forloop.index0 }}\"></span>\n"
                 }
             ],
             "date": 1748527236205,

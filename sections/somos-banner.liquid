@@ -1,4 +1,5 @@
 {% assign wrapper_id = section.settings.custom_id | default: 'shopify-section-' | append: section.id %}
+
 <style>
   #{{ wrapper_id }} {
     min-height: {{ section.settings.section_height }}px;
@@ -66,23 +67,23 @@
     "></div>
   {% endif %}
 
-<div class="custom-content-wrapper section_content_width_{{ section.settings.section_content_width }}"
-     style="
-       margin: 0 auto;
-       position: relative;
-       z-index: 2;
-       text-align: {{ section.settings.text_alignment }};
-     ">
+  <div class="custom-content-wrapper section_content_width_{{ section.settings.section_content_width }}"
+       style="margin: 0 auto; position: relative; z-index: 2; text-align: {{ section.settings.text_alignment }};">
+    
     {% for block in section.blocks %}
       {% case block.type %}
+
         {% when 'heading' %}
           <{{ block.settings.heading_tag }}
             style="
               color: {{ block.settings.color }};
               font-weight: {{ block.settings.font_weight }};
               font-style: {% if block.settings.italic %}italic{% else %}normal{% endif %};
-              text-align: {{ block.settings.alignment != blank and block.settings.alignment != nil ? block.settings.alignment : section.settings.text_alignment }};
-
+              {% if block.settings.alignment != blank %}
+                text-align: {{ block.settings.alignment }};
+              {% else %}
+                text-align: {{ section.settings.text_alignment }};
+              {% endif %}
             "
             {{ block.shopify_attributes }}>
             {{ block.settings.text }}
@@ -102,10 +103,9 @@
 
         {% when 'image' %}
           {% if block.settings.image != blank %}
-            <div
-              class="image-block hover-{{ block.settings.hover_effect }}"
-              style="text-align: center; position: relative;"
-              {{ block.shopify_attributes }}>
+            <div class="image-block hover-{{ block.settings.hover_effect }}"
+                 style="text-align: center; position: relative;"
+                 {{ block.shopify_attributes }}>
               <img
                 src="{{ block.settings.image | image_url }}"
                 alt="{{ block.settings.image.alt | escape }}"
@@ -129,31 +129,6 @@
             </div>
           {% endif %}
 
-        {% when 'button' %}
-          <div style="text-align: {{ block.settings.alignment | default: section.settings.text_alignment }}; margin-top: 14px;">
-            <a
-              href="{{ block.settings.url }}"
-              class="btn btn--{{ block.settings.size }}"
-              style="
-                border-radius: 30px;
-                color: {{ block.settings.text_color }};
-                background-color: {{ block.settings.background }};
-                {% if block.settings.style == 'outline' %}
-                  border: 2px solid {{ block.settings.outline_color }};
-                  background-color: transparent;
-                {% endif %}
-              "
-              {{ block.shopify_attributes }}>
-              {% if block.settings.icon_position == 'left' and block.settings.icon != blank %}
-                <span>{{ block.settings.icon }}</span>
-              {% endif %}
-              {{ block.settings.text }}
-              {% if block.settings.icon_position == 'right' and block.settings.icon != blank %}
-                <span>{{ block.settings.icon }}</span>
-              {% endif %}
-            </a>
-          </div>
-
         {% when 'video' %}
           <div style="position: relative; text-align: center;" {{ block.shopify_attributes }}>
             {% if block.settings.video_url != blank %}
@@ -175,10 +150,52 @@
               </video>
             {% endif %}
           </div>
+
       {% endcase %}
     {% endfor %}
+
+{% assign buttons = section.blocks | where: "type", "button" %}
+{% if buttons.size > 0 %}
+  <div class="button-row" style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: {{ section.settings.text_alignment }}; margin-top: 16px;">
+    {% for block in buttons %}
+      <div style="flex: 0 1 auto;" {{ block.shopify_attributes }}>
+        <a
+          href="{{ block.settings.url }}"
+          class="btn btn--{{ block.settings.size }}"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 30px;
+            color: {{ block.settings.text_color }};
+            background-color: {{ block.settings.background }};
+            text-decoration: none;
+            {% if block.settings.style == 'outline' %}
+              border: 2px solid {{ block.settings.outline_color }};
+              background-color: transparent;
+            {% endif %}
+          ">
+          {% if block.settings.icon_position == 'left' and block.settings.icon_image != blank %}
+            <img src="{{ block.settings.icon_image | img_url: '32x32' }}" alt="" style="height: 1em; width: auto;">
+
+          {% endif %}
+          <span>{{ block.settings.text }}</span>
+          {% if block.settings.icon_position == 'right' and block.settings.icon_image != blank %}
+            <img src="{{ block.settings.icon_image | img_url: '32x32' }}" alt="" style="height: 1em; width: auto;">
+
+          {% endif %}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
+
   </div>
 </div>
+
 
 
 {% schema %}
@@ -339,7 +356,7 @@
         { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
         { "type": "color", "id": "background", "label": "Background Color", "default": "#000000" },
         { "type": "color", "id": "outline_color", "label": "Outline Color", "default": "#000000" },
-        { "type": "text", "id": "icon", "label": "Icon (HTML or Unicode)" },
+        { "type": "image_picker", "id": "icon_image", "label": "Icon Image" },
         { "type": "select", "id": "icon_position", "label": "Icon Position", "default": "left", "options": [
           { "value": "left", "label": "Left" },
           { "value": "right", "label": "Right" }
