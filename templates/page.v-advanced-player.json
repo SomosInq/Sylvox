@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "a4760147-34c7-4142-9a70-d9581745c095": {
+          "type": "1",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 35,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 30,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "a4760147-34c7-4142-9a70-d9581745c095"
+      ],
+      "disabled": true,
+      "settings": {
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#ff4e00",
+        "overlay": 100,
+        "padding": 20,
+        "paddingmb": 15,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "support_layout_advanced_player_gNxt46": {
+      "type": "support-layout-advanced-player",
+      "blocks": {
+        "sidebar_menu_tLPHhB": {
+          "type": "sidebar_menu",
+          "settings": {
+            "menu": "e-series"
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_menu_tLPHhB"
+      ],
+      "name": "Vantrue Advanced Player",
+      "settings": {
+        "banner_background": "shopify://shop_images/Frame_1272638973_439a7a46-cbd7-41c7-a57d-7929531cd519.png",
+        "banner_logo": "shopify://shop_images/Logo_99b40a2f-19f2-4c09-a667-58a4bda94ce2.svg",
+        "app_logo": "shopify://shop_images/Group_1000004318.svg",
+        "heading": "Vantrue Advanced Player",
+        "description": "Enables easy tracking of GPS data, including accurate position, route and live speed in KM/H or MPH on PC or Smartphone.",
+        "windows_logo": "shopify://shop_images/windows.svg",
+        "windows_version": "Vantrue Player V. 3.03",
+        "windows_link": "/",
+        "mac_logo": "shopify://shop_images/mac.svg",
+        "mac_version": "Vantrue Player",
+        "mac_link": "/"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "support_layout_advanced_player_gNxt46"
+  ]
+}

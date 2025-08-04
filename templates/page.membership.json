@@ -1,0 +1,209 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "membership_kY7CwX": {
+      "type": "membership",
+      "name": "Membership",
+      "settings": {}
+    },
+    "membership_steps_Batjr4": {
+      "type": "membership-steps",
+      "name": "Membership Steps",
+      "settings": {}
+    },
+    "membership_earn_TTnncF": {
+      "type": "membership-earn",
+      "blocks": {
+        "ways_slider_d9rDQK": {
+          "type": "ways_slider",
+          "settings": {
+            "svg": "shopify://shop_images/SVG.svg",
+            "label": "Subscribe Newsletter",
+            "desc": "Subscribe Newsletter and get 10 points"
+          }
+        },
+        "ways_slider_HHRNkm": {
+          "type": "ways_slider",
+          "settings": {
+            "svg": "shopify://shop_images/SVG-1.svg",
+            "label": "Subscribe Newsletter",
+            "desc": "Subscribe Newsletter and get 10 points"
+          }
+        }
+      },
+      "block_order": [
+        "ways_slider_d9rDQK",
+        "ways_slider_HHRNkm"
+      ],
+      "name": "Membership Earn",
+      "settings": {
+        "banner": "shopify://shop_images/Container_e046b7a0-1518-4a7a-bb24-e064a2193a38.png"
+      }
+    },
+    "membership_referrals_EHzEmM": {
+      "type": "membership-referrals",
+      "name": "Referrals",
+      "settings": {
+        "referrals_background": "shopify://shop_images/refferals-membership-image.png",
+        "box_background": "shopify://shop_images/Frame_1272639317.png",
+        "title": "Referrals",
+        "subtitle": "Give your friends a reward and claim your own when they make a purchase.",
+        "you_label": "You",
+        "you_desc": "Get 100 Points",
+        "friend_label": "Your Friend",
+        "friend_desc": "Get 100 Points on any purchase"
+      }
+    },
+    "membership_tiers_fCiQpW": {
+      "type": "membership-tiers",
+      "name": "Membership Tiers",
+      "settings": {
+        "bg_image_1": "shopify://shop_images/basic-tier-background.png",
+        "bg_image_2": "shopify://shop_images/2-tier-background.png",
+        "bg_image_3": "shopify://shop_images/3-tier-background.png",
+        "svg_image_1": "shopify://shop_images/badge-3rd.svg",
+        "svg_image_2": "shopify://shop_images/badge-2nd.svg",
+        "svg_image_3": "shopify://shop_images/bagde-1st.svg",
+        "tier_title_1": "Basic",
+        "tier_amount_1": "0 amount",
+        "tier_note_1": "Spending amount is the total accumulation of the both the member’s personal purchases and the purchases made by referred customers",
+        "tier_reward_1": "5% off on birthday",
+        "tier_1_benefit_1": "Accumulated Reward Points ($1 = 1 point)",
+        "tier_1_benefit_2": "Access to Basic Services, such as new product updates and notifications",
+        "tier_1_benefit_3": "Priority delivery and assisted checkout",
+        "tier_title_2": "VIP",
+        "tier_amount_2": "30000 amount",
+        "tier_note_2": "Spending amount is the total accumulation of the both the member’s personal purchases and the purchases made by referred customers",
+        "tier_reward_2": "10% off on birthday",
+        "tier_2_benefit_1": "Reward Points Accumulation",
+        "tier_2_benefit_2": "Additional Incentives",
+        "tier_2_benefit_3": "Priority Access to New Products",
+        "tier_2_benefit_4": "Dedicated Customer Support",
+        "tier_2_benefit_5": "Exclusive Gifts & Coupons",
+        "tier_2_benefit_6": "Free Product Replacement",
+        "tier_2_benefit_7": "VIP Shopping Discounts for Friends",
+        "tier_2_benefit_8": "Priority Event Access",
+        "tier_2_benefit_9": "Birthday Month Perks",
+        "tier_2_benefit_10": "Extended Return & Exchange Period",
+        "tier_2_benefit_11": "Free Maintenance & Repair Services",
+        "tier_2_benefit_12": "Product Upgrades (AI Features)",
+        "tier_title_3": "VIC",
+        "tier_amount_3": "50000 amount",
+        "tier_note_3": "Spending amount is the total accumulation of the both the member’s personal purchases and the purchases made by referred customers",
+        "tier_reward_3": "Exclusive VIC perks available",
+        "tier_3_benefit_1": "Reward Points Accumulation",
+        "tier_3_benefit_2": "Additional Incentives",
+        "tier_3_benefit_3": "Premium Concierge Service",
+        "tier_3_benefit_4": "Exclusive Brand Event Participation",
+        "tier_3_benefit_5": "Influence Product Development",
+        "tier_3_benefit_6": "Exclusive Limited-Edition Co-Branded Products",
+        "tier_3_benefit_7": "Exclusive Gifts & Coupons",
+        "tier_3_benefit_8": "Free Product Replacement",
+        "tier_3_benefit_9": "VIC Shopping Discounts for Friends",
+        "tier_3_benefit_10": "Birthday Exclusive Privileges",
+        "tier_3_benefit_11": "Extended Return & Exchange Period",
+        "tier_3_benefit_12": "Free Maintenance & Repair Services"
+      }
+    },
+    "faq_rewards_ewChnE": {
+      "type": "faq-rewards",
+      "name": "FAQ Rewards",
+      "settings": {
+        "title": "Frequently asked questions",
+        "q1_question": "What is this?",
+        "q1_answer": "We’re excited to show our appreciation through our exclusive rewards program!...",
+        "q2_question": "Who can join?",
+        "q2_answer": "",
+        "q3_question": "How do I earn points?",
+        "q3_answer": "",
+        "q4_question": "How do I redeem my points?",
+        "q4_answer": "",
+        "q5_question": "Is there a limit to the number of points I can earn?",
+        "q5_answer": "",
+        "q6_question": "What do the 'approved,' 'pending' and 'cancelled' statuses mean?",
+        "q6_answer": ""
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "membership_kY7CwX",
+    "membership_steps_Batjr4",
+    "membership_earn_TTnncF",
+    "membership_referrals_EHzEmM",
+    "membership_tiers_fCiQpW",
+    "faq_rewards_ewChnE"
+  ]
+}

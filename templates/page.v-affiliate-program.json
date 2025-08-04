@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "affiliate_banner_t9EL7A": {
+      "type": "affiliate-banner",
+      "name": "Affiliate Banner",
+      "settings": {
+        "banner_image": "shopify://shop_images/Section_b91a8ace-d9ff-44cf-943e-60a3feb2241a.png",
+        "banner_image_mobile": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp_1beb92c8-d88e-4e99-87ca-ba965636d67b.png",
+        "eyebrow_text": "Affiliate Program",
+        "heading": "Join Vantrue Affiliate Program",
+        "button_1_link": "",
+        "button_1_label": "Join Affiliate CJ",
+        "button_2_link": "",
+        "button_2_label": "Join Affiliate Sharesale"
+      }
+    },
+    "main": {
+      "type": "affiliate-program",
+      "blocks": {
+        "step_BAaq8y": {
+          "type": "step",
+          "settings": {
+            "step_background": "shopify://shop_images/backgrounddesktop.png",
+            "step_background_mobile": "shopify://shop_images/backgroundmobile_ed96a929-d4f9-49b0-9866-6c933d0c1278.png",
+            "step_svg": "shopify://shop_images/Vector.svg",
+            "step_number": "1",
+            "step_title": "Become an affiliate",
+            "step_text": "Sign up and start earning commissions. It only takes a few minutes!"
+          }
+        },
+        "step_9WJbxY": {
+          "type": "step",
+          "settings": {
+            "step_background": "shopify://shop_images/backgrounddesktop.png",
+            "step_background_mobile": "shopify://shop_images/backgroundmobile_ed96a929-d4f9-49b0-9866-6c933d0c1278.png",
+            "step_svg": "shopify://shop_images/Vector2.svg",
+            "step_number": "1",
+            "step_title": "Become an affiliate",
+            "step_text": "Sign up and start earning commissions. It only takes a few minutes!"
+          }
+        },
+        "step_B84wKM": {
+          "type": "step",
+          "settings": {
+            "step_background": "shopify://shop_images/backgrounddesktop.png",
+            "step_background_mobile": "shopify://shop_images/backgroundmobile_ed96a929-d4f9-49b0-9866-6c933d0c1278.png",
+            "step_svg": "shopify://shop_images/Vector3.svg",
+            "step_number": "1",
+            "step_title": "Become an affiliate",
+            "step_text": "Sign up and start earning commissions. It only takes a few minutes!"
+          }
+        }
+      },
+      "block_order": [
+        "step_BAaq8y",
+        "step_9WJbxY",
+        "step_B84wKM"
+      ],
+      "settings": {}
+    },
+    "text_section_BfgENM": {
+      "type": "text-section",
+      "blocks": {
+        "heading_T43XXb": {
+          "type": "heading",
+          "settings": {
+            "text": "Affiliates also receive",
+            "color": "#2e2e2e",
+            "heading_font_size_desktop": 48,
+            "heading_font_size_mobile": 20,
+            "margin_bottom": 28,
+            "heading_max_width_desktop": 1600,
+            "heading_max_width_mobile": 700,
+            "font_weight": "500",
+            "text_transform": "none",
+            "heading_text_align_desktop": "left",
+            "heading_text_align_mobile": "left"
+          }
+        }
+      },
+      "block_order": [
+        "heading_T43XXb"
+      ],
+      "name": "Text Section",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 20,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "feature_grid_wQqeiY": {
+      "type": "feature-grid",
+      "blocks": {
+        "feature_WnbcxR": {
+          "type": "feature",
+          "settings": {
+            "symbol": "shopify://shop_images/circlestar.svg",
+            "text": "100% Products Quality Guarantee"
+          }
+        },
+        "feature_PrRyhf": {
+          "type": "feature",
+          "settings": {
+            "symbol": "shopify://shop_images/blackvan.svg",
+            "text": "Free Shipping On Orders Over $300.00"
+          }
+        },
+        "feature_qwqk6J": {
+          "type": "feature",
+          "settings": {
+            "symbol": "shopify://shop_images/returnvan.svg",
+            "text": "30-Day Return & Exchange Service"
+          }
+        },
+        "feature_bWHHR7": {
+          "type": "feature",
+          "settings": {
+            "symbol": "shopify://shop_images/warrantytick.svg",
+            "text": "18-month Warranty"
+          }
+        }
+      },
+      "block_order": [
+        "feature_WnbcxR",
+        "feature_PrRyhf",
+        "feature_qwqk6J",
+        "feature_bWHHR7"
+      ],
+      "name": "Feature Grid",
+      "settings": {
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_mobile": 20,
+        "symbol_width_desktop": 64,
+        "symbol_width_mobile": 64,
+        "divider_color": "#c6c6c6"
+      }
+    }
+  },
+  "order": [
+    "affiliate_banner_t9EL7A",
+    "main",
+    "text_section_BfgENM",
+    "feature_grid_wQqeiY"
+  ]
+}

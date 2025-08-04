@@ -1,0 +1,193 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "quiz_JKKxTt": {
+      "type": "quiz",
+      "blocks": {
+        "start_TxXm6H": {
+          "type": "start",
+          "settings": {
+            "background": "shopify://shop_images/Frame_1272639046.png",
+            "background_mobile": "shopify://shop_images/mobile.png",
+            "title": "Which Series is Right For Me?",
+            "subtitle": "Take this short quiz to learn!",
+            "button_label": "Start",
+            "duration": "Takes around 1 minute"
+          }
+        },
+        "question_amJr9c": {
+          "type": "question",
+          "settings": {
+            "progress": "1/4",
+            "question_title": "Question 1",
+            "question_description": "Choose the option that fits best.",
+            "image_1": "shopify://shop_images/q1_image_1_desktop.jpg",
+            "label_1": "Answer 1",
+            "image_2": "shopify://shop_images/q1_image_2_desktop.jpg",
+            "label_2": "Answer 2",
+            "image_3": "shopify://shop_images/q1_image_3_desktop.jpg",
+            "label_3": "Answer 3"
+          }
+        },
+        "result_1_eRkdhw": {
+          "type": "result_1",
+          "settings": {
+            "progress": "4/4",
+            "result_heading": "Result",
+            "product_image": "shopify://shop_images/result_image_desktop.png",
+            "product_name": "Vantrue E360",
+            "product_price": "$349.99",
+            "product_description": "Meet the Vantrue E360 Ace, a 5.2K 360° panoramic dash cam designed to capture every angle, every moment, anywhere.",
+            "feature_1_icon": "shopify://shop_images/5kdark.svg",
+            "feature_1_text": "5.2K 360° Recording",
+            "feature_2_icon": "shopify://shop_images/sonydark.svg",
+            "feature_2_text": "Sony STARVIS 2 Night Vision",
+            "feature_3_icon": "shopify://shop_images/quaddark.svg",
+            "feature_3_text": "Quad-Core CPU & LTE",
+            "feature_4_icon": "shopify://shop_images/modedark.svg",
+            "feature_4_text": "Handheld Mode",
+            "feature_5_icon": "shopify://shop_images/controdrak.svg",
+            "feature_5_text": "Intelligent Voice & Touch Control",
+            "feature_6_icon": "shopify://shop_images/carddark.svg",
+            "feature_6_text": "Support up to 512GB microSD card",
+            "feature_7_icon": "shopify://shop_images/removedark.svg",
+            "feature_7_text": "Easy to installand remove",
+            "button_1_label": "Add to Cart",
+            "button_1_link": "",
+            "button_2_label": "Learn More",
+            "button_2_link": ""
+          }
+        },
+        "result_2_4KdfAx": {
+          "type": "result_2",
+          "settings": {
+            "progress": "4/4",
+            "result_heading": "Result",
+            "product_image": "shopify://shop_images/Frame_1272638634.png",
+            "product_name": "Vantrue S2",
+            "product_price": "$289.99",
+            "product_description": "",
+            "feature_1_text": "",
+            "feature_2_text": "",
+            "feature_3_text": "",
+            "feature_4_text": "",
+            "feature_5_text": "",
+            "feature_6_text": "",
+            "feature_7_text": "",
+            "button_1_label": "Add to Cart",
+            "button_1_link": "",
+            "button_2_label": "Learn More",
+            "button_2_link": ""
+          }
+        },
+        "result_3_yEiLrk": {
+          "type": "result_3",
+          "settings": {
+            "progress": "4/4",
+            "result_heading": "Result",
+            "product_image": "shopify://shop_images/Frame_1272638635.png",
+            "product_name": "Vantrue N4",
+            "product_price": "$319.99",
+            "product_description": "",
+            "feature_1_text": "",
+            "feature_2_text": "",
+            "feature_3_text": "",
+            "feature_4_text": "",
+            "feature_5_text": "",
+            "feature_6_text": "",
+            "feature_7_text": "",
+            "button_1_label": "Add to Cart",
+            "button_1_link": "",
+            "button_2_label": "Learn More",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "start_TxXm6H",
+        "question_amJr9c",
+        "result_1_eRkdhw",
+        "result_2_4KdfAx",
+        "result_3_yEiLrk"
+      ],
+      "name": "Quiz",
+      "settings": {}
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "quiz_JKKxTt"
+  ]
+}

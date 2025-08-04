@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "a4760147-34c7-4142-9a70-d9581745c095": {
+          "type": "1",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 35,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 30,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "a4760147-34c7-4142-9a70-d9581745c095"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#ff4e00",
+        "overlay": 100,
+        "padding": 20,
+        "paddingmb": 15,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "support_layout_app_player_aqExqP": {
+      "type": "support-layout-dashcam-app",
+      "blocks": {
+        "sidebar_menu_nbjEej": {
+          "type": "sidebar_menu",
+          "settings": {
+            "menu": "updated-support-sidebar"
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_menu_nbjEej"
+      ],
+      "name": "Support - App & Player",
+      "settings": {
+        "banner_wordmark": "shopify://shop_images/Logo_99b40a2f-19f2-4c09-a667-58a4bda94ce2.svg",
+        "banner_logo": "shopify://shop_images/logo_a52fc578-c81e-4bf6-8d19-33e754489c5b.png",
+        "heading": "Vantrue DashCam App",
+        "banner_background": "shopify://shop_images/Frame_1272638973_439a7a46-cbd7-41c7-a57d-7929531cd519.png",
+        "image_1": "shopify://shop_images/video-sharing.png",
+        "image_2": "shopify://shop_images/gps-track.png",
+        "image_3": "shopify://shop_images/video-editing.png",
+        "image_4": "shopify://shop_images/live-preview.png",
+        "qr_ios": "shopify://shop_images/ios.png",
+        "badge_ios": "shopify://shop_images/appstore.png",
+        "link_ios": "",
+        "qr_android": "shopify://shop_images/android.png",
+        "badge_android": "shopify://shop_images/googleplay.png",
+        "link_android": "",
+        "link_web": ""
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "support_layout_app_player_aqExqP"
+  ]
+}
