@@ -1,0 +1,197 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "somos_banner_wjg6PF": {
+      "type": "somos-banner",
+      "blocks": {
+        "subheading_bkV9bk": {
+          "type": "subheading",
+          "settings": {
+            "text": "Sylvox Bulk Program",
+            "color": "#ffffff",
+            "alignment": "center"
+          }
+        },
+        "heading_GXXK3c": {
+          "type": "heading",
+          "settings": {
+            "text": "Your Global Display Partner.",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_bkV9bk",
+        "heading_GXXK3c"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": true,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/331944528804660a086ce53a4446d524a0f0f0de.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "image_text_eL4MaV": {
+      "type": "image-text",
+      "blocks": {
+        "title_FzFB46": {
+          "type": "title",
+          "settings": {
+            "title": "Sylvox enhances your outdoor lifestyle with innovative technology that brings relaxation and joy. We offer perfect digital signage solutions featuring vibrant 4K displays, industry-leading reliability, and the latest Android and Google operating systems, all tailored to your business needs and budget."
+          }
+        }
+      },
+      "block_order": [
+        "title_FzFB46"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "new_banner_slider_RXFgEB": {
+      "type": "new-banner-slider",
+      "blocks": {
+        "slide_77eGrx": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/4f60864db00489467f11e2a08d76ba49a0404e0e_a83eb9ca-ef6b-481a-a6b1-c7a69d31e6ae.jpg",
+            "caption": "",
+            "caption_small": "Outdoor TV",
+            "description_block": ""
+          }
+        },
+        "slide_DVLge8": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/a7a35281ae06a5d927ca2a1fbad4470686fceffc.png",
+            "caption": "",
+            "caption_small": "Commercial Display",
+            "description_block": ""
+          }
+        },
+        "slide_GcbDtd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/a96b07370ce3c1dc2d7ac9212173494a0291592e.png",
+            "caption": "",
+            "caption_small": "Portable TV",
+            "description_block": ""
+          }
+        },
+        "slide_gGAr39": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/23cb4bc42108ba26375f10881c48894a1945cf5e.png",
+            "caption": "",
+            "caption_small": "Bathroom TV",
+            "description_block": ""
+          }
+        },
+        "slide_QALxJ6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/d396f0a8c6b608775ed669aebe6c929a5c44b9b5.png",
+            "caption": "",
+            "caption_small": "RV TV",
+            "description_block": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_77eGrx",
+        "slide_DVLge8",
+        "slide_GcbDtd",
+        "slide_gGAr39",
+        "slide_QALxJ6"
+      ],
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "text_alignment": "left",
+        "heading": "Your Outdoor Oasis, Upgraded.",
+        "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
+        "description": "",
+        "show_arrows": true,
+        "show_dots": true,
+        "slide_size": "large",
+        "slide_height": 1000,
+        "slide_width": 1600
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somos_banner_wjg6PF",
+    "image_text_eL4MaV",
+    "new_banner_slider_RXFgEB"
+  ]
+}
