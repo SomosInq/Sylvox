@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "a4760147-34c7-4142-9a70-d9581745c095": {
+          "type": "1",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "fontf": "inherit",
+            "text_cl": "#ffffff",
+            "text_fs": 35,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 30,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "a4760147-34c7-4142-9a70-d9581745c095"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading_fullwidth": false,
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#ff4e00",
+        "overlay": 100,
+        "padding": 20,
+        "paddingmb": 15,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "t4s-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "t4s-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "disabled": true,
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "support_layout_nexus_5_Wgw87Q": {
+      "type": "user-manual",
+      "blocks": {
+        "sidebar_menu_QYmrqV": {
+          "type": "sidebar_menu",
+          "settings": {
+            "menu": "updated-support-sidebar"
+          }
+        },
+        "banner_Qd7kKe": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1272638973.png",
+            "heading": "Nexus 5",
+            "description": "Here is a comprehensive guide to everything you need about this dashcam, including manuals, the latest firmware updates, and FAQs."
+          }
+        },
+        "manual_item_actCwe": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511.png",
+            "language": "English"
+          }
+        },
+        "manual_item_Vp3EfJ": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511-1.png",
+            "language": "Deutsch"
+          }
+        },
+        "manual_item_6pqade": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511-2.png",
+            "language": "Français"
+          }
+        },
+        "manual_item_PBM74q": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511-3.png",
+            "language": "Español"
+          }
+        },
+        "manual_item_fEhVcp": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511-4.png",
+            "language": "Polski"
+          }
+        },
+        "manual_item_gDKnKL": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511-5.png",
+            "language": "中文"
+          }
+        },
+        "manual_item_cLEHef": {
+          "type": "manual_item",
+          "settings": {
+            "flag": "shopify://shop_images/Rectangle_511-6.png",
+            "language": "日本語"
+          }
+        },
+        "firmware_header_Bn4F9F": {
+          "type": "firmware_header",
+          "settings": {
+            "svg": "shopify://shop_images/download.svg"
+          }
+        },
+        "firmware_item_tETbgb": {
+          "type": "firmware_item",
+          "settings": {
+            "title": "Firmware Update",
+            "version": "N5_VT-EDL031",
+            "date": "12/11/2024",
+            "description": "Customer Complaint Resolution: Restore the IQ parameters of the interior cameras and address the issue of overexposure.",
+            "link": ""
+          }
+        },
+        "firmware_item_z3qrcN": {
+          "type": "firmware_item",
+          "settings": {
+            "title": "Firmware (Rear Camera)",
+            "version": "RC06_VT-EDA121",
+            "date": "",
+            "description": "",
+            "link": ""
+          }
+        },
+        "faq_item_7T7zV4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How to update the N5 dash cam?",
+            "answer": "We only recommend Vantrue, Samsung Endurance and Sandisk High Endurance/Max Endurance Card. To extend the life of your card, we advise to format your SD card every 3-4 weeks for regular everyday users and 2-3 weeks for heavy users to free up space on your memory card for new recordings.Note: Samsung EVO Plus and PRO Plus cards are NOT recommended for use with Vantrue dash cam."
+          }
+        },
+        "faq_item_XyHR4V": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How to register my product?",
+            "answer": ""
+          }
+        },
+        "faq_item_Vib9Nk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why can't the Vantrue dash cam record videos in loops of 1 hour or longer?",
+            "answer": ""
+          }
+        },
+        "faq_item_kC3Tfr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What SD Card do we recommend?",
+            "answer": ""
+          }
+        },
+        "faq_item_PAcL8X": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What to do if the dash cam shows \"Card Error\" or \"Slow Card\"",
+            "answer": ""
+          }
+        },
+        "faq_item_8nK9gM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why is the GPS not working on my dash cam?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_menu_QYmrqV",
+        "banner_Qd7kKe",
+        "manual_item_actCwe",
+        "manual_item_Vp3EfJ",
+        "manual_item_6pqade",
+        "manual_item_PBM74q",
+        "manual_item_fEhVcp",
+        "manual_item_gDKnKL",
+        "manual_item_cLEHef",
+        "firmware_header_Bn4F9F",
+        "firmware_item_tETbgb",
+        "firmware_item_z3qrcN",
+        "faq_item_7T7zV4",
+        "faq_item_XyHR4V",
+        "faq_item_Vib9Nk",
+        "faq_item_kC3Tfr",
+        "faq_item_PAcL8X",
+        "faq_item_8nK9gM"
+      ],
+      "name": "Support Page - Nexus 5",
+      "settings": {}
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "support_layout_nexus_5_Wgw87Q"
+  ]
+}
