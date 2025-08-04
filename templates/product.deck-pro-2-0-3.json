@@ -23,6 +23,19 @@
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
+        "simple_usp_t7tczA": {
+          "type": "simple_usp",
+          "settings": {
+            "image_1": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "title_1": "Engineered for Outdoor Life",
+            "image_2": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "title_2": "Bright & Beautiful 4K UHD",
+            "image_3": "shopify://shop_images/Icons-1_19a03b67-f305-4fdb-ad3c-e9666c59dbf4.png",
+            "title_3": "Smart & Simple Entertainment",
+            "image_4": "shopify://shop_images/Icons-2_ba1c6d9d-7359-42b0-b852-10d82e00efd8.png",
+            "title_4": "Built to Last"
+          }
+        },
         "size_picker_anHCWr": {
           "type": "size_picker",
           "settings": {}
@@ -58,34 +71,68 @@
             "show_gift_card_recipient": false
           }
         },
+        "text_Qwipjf": {
+          "type": "text",
+          "settings": {
+            "text": "Service & Vorteile"
+          }
+        },
         "tab_VMgkry": {
           "type": "tab",
           "settings": {
-            "title": "Shipping information",
-            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
-            "page": ""
+            "title": "Fast and Free Shipping",
+            "content": "<p>We offer free shipping straight to your door throughout the contiguous US*. It usually takes 3-7 business days* for your package to be delivered, so you can sit back and relax, worry-free. *Please see our shipping policy for more details.</p>",
+            "page": "",
+            "icon": "shopify://shop_images/Icons_ef46d830-91ab-468c-924a-eb9f8cc63999.png",
+            "background_color": "rgba(0,0,0,0)"
           }
         },
         "tab_rnPhnR": {
           "type": "tab",
           "settings": {
-            "title": "User Manual",
-            "content": "<p>Click <strong>here </strong>to download the mini kitchen manual</p>",
-            "page": ""
+            "title": "30-Day Money-Back Guarantee",
+            "content": "<p>Lorum Ipsum</p>",
+            "page": "",
+            "icon": "shopify://shop_images/Icons-1_7dff2306-2131-47ec-940b-f388bbd87e9c.png",
+            "background_color": "#ffffff"
+          }
+        },
+        "tab_HWX7Rq": {
+          "type": "tab",
+          "settings": {
+            "title": "Hassle-Free Warranty",
+            "content": "<p>Lorum Ipsum</p>",
+            "page": "",
+            "icon": "shopify://shop_images/Icons-2_34c1d656-d2e2-4bc0-b9f8-8806f7624a0d.png",
+            "background_color": "#ffffff"
+          }
+        },
+        "tab_amYyFQ": {
+          "type": "tab",
+          "settings": {
+            "title": "Lifetime Customer Support",
+            "content": "<p>Lorum Ipsum</p>",
+            "page": "",
+            "icon": "shopify://shop_images/Icons-3_f9535700-ec1e-464e-bff1-8e94ca84fd54.png",
+            "background_color": "#ffffff"
           }
         }
       },
       "block_order": [
         "title_RyMHkM",
         "f30b01a8-3eae-4965-8bc3-af47ad84da34",
+        "simple_usp_t7tczA",
         "size_picker_anHCWr",
         "variant_picker",
         "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38",
         "current_selection_m8cm9w",
         "price",
         "buy_buttons",
+        "text_Qwipjf",
         "tab_VMgkry",
-        "tab_rnPhnR"
+        "tab_rnPhnR",
+        "tab_HWX7Rq",
+        "tab_amYyFQ"
       ],
       "settings": {
         "image_position": "left",
@@ -474,6 +521,7 @@
           "settings": {
             "image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c_1.png",
             "caption": "Works Even After Heavy Rain",
+            "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -482,6 +530,7 @@
           "settings": {
             "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
             "caption": "Works Even After Heavy Rain",
+            "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         }
@@ -1005,6 +1054,9 @@
         "heading": "Experience the Outdoors Like Never Before.",
         "header_alignment": "center",
         "bg_color": "#ffffff",
+        "hide_tabs": false,
+        "video_background_color": "#ffffff",
+        "video_border_radius": 8,
         "section_width": "full",
         "section_content_width": "standard",
         "padding_top": 60,
@@ -1473,6 +1525,7 @@
         "margin_right": 0,
         "morefrom_title": "You May Also Like",
         "morefrom_sub_title": "",
+        "fallback_collection": "",
         "max_products": 10
       }
     },

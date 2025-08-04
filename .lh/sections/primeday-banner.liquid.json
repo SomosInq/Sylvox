@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 70,
+            "activePatchIndex": 71,
             "patches": [
                 {
                     "date": 1750333385927,
@@ -288,6 +288,10 @@
                 {
                     "date": 1751880997988,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -434,20 +434,8 @@\n     padding: 0;\n }\n \n \n-\n-/* ✅ UPDATE 2: Add responsive content width behavior */\n-@media (max-width: 768px) {\n-  #shopify-section-{{ section.id }} .section_content_width_standard {\n-    padding: 0 16px;\n-  }\n-  #shopify-section-{{ section.id }} .section_width_standard {\n-    padding: 0 16px;\n-  }\n-}\n-\n-/* ✅ UPDATE 3: Mobile image support */\n .countdown__background-image-wrapper {\n   display: block;\n }\n .countdown__mobile-image-wrapper {\n"
+                },
+                {
+                    "date": 1753975582410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -307,9 +307,9 @@\n }\n \n #shopify-section-{{ section.id }} .countdown__display-block .number {\n     border-radius: 8px;\n-background: #F8BB00;\n+background: #DB4B97;\n display: flex;\n padding: 13px 12px;\n justify-content: center;\n align-items: center;\n"
                 }
             ],
             "date": 1750333385927,
