@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 33,
+            "activePatchIndex": 34,
             "patches": [
                 {
                     "date": 1748444519032,
@@ -140,6 +140,10 @@
                 {
                     "date": 1753780393545,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,8 +152,30 @@\n         }\n       ]\n     },\n     {\n+  \"type\": \"paragraph\",\n+  \"name\": \"Paragraph with Font Size\",\n+  \"settings\": [\n+    {\n+      \"type\": \"textarea\",\n+      \"id\": \"text\",\n+      \"label\": \"Paragraph Text\",\n+      \"default\": \"Your paragraph content goes here.\"\n+    },\n+    {\n+      \"type\": \"range\",\n+      \"id\": \"font_size\",\n+      \"label\": \"Font Size\",\n+      \"min\": 12,\n+      \"max\": 48,\n+      \"step\": 1,\n+      \"default\": 16,\n+      \"unit\": \"px\"\n+    }\n+  ]\n+},\n+    {\n       \"type\": \"button\",\n       \"name\": \"Button\",\n       \"settings\": [\n         { \"type\": \"text\", \"id\": \"text\", \"label\": \"Text\" },\n@@ -210,8 +232,13 @@\n   \n   {% for block in section.blocks %}\n     {% case block.type %}\n \n+      {% when 'paragraph' %}\n+  <p class=\"itfb-paragraph mb-4\" style=\"font-size: {{ block.settings.font_size }}px;\">\n+    {{ block.settings.text }}\n+  </p>\n+\n       {% when 'image' %}\n         {% if block.settings.image %}\n           {% assign image_align = block.settings.image_alignment | default: 'center' %}\n           <div class=\"section_content_width_{{ section.settings.section_content_width }} \n"
+                },
+                {
+                    "date": 1754405001379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -258,9 +258,9 @@\n           </div>\n         {% endif %}\n \n       {% when 'title' %}\n-        <h2 class=\"text-2xl md:text-4xl font-bold mb-2\">{{ block.settings.title }}</h2>\n+        <h2 class=\" mb-2\">{{ block.settings.title }}</h2>\n \n       {% when 'text' %}\n         <p class=\"desc\">{{ block.settings.text }}</p>\n \n"
                 }
             ],
             "date": 1748444519032,

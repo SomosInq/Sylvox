@@ -2,10 +2,11 @@
   Custom section: Feature Grid | feature-grid.liquid
 {% endcomment %}
 
-<div
-  class="feature-grid"
-  id="{{ section.id }}"
->
+<div class="feature-grid" id="{{ section.id }}">
+  {% if section.settings.title != blank %}
+    <h2 class="feature-grid__title">{{ section.settings.title }}</h2>
+  {% endif %}
+
   <div class="feature-grid__wrapper feature-grid__desktop">
     <div class="feature-grid__row">
       {% for block in section.blocks %}
@@ -13,13 +14,23 @@
           <div class="feature-grid__divider"></div>
         {% endif %}
         <div class="feature-grid__item" {{ block.shopify_attributes }} id="{{ block.id }}">
+          {% if block.settings.top_image %}
+            <div class="feature-grid__top-image">
+              <img src="{{ block.settings.top_image | image_url: width: block.settings.top_image_width }}" alt="">
+            </div>
+          {% endif %}
+          {% if block.settings.big_word %}
+            <div class="feature-grid__big-word" style="font-size: {{ block.settings.big_word_size }}px;">
+              {{ block.settings.big_word }}
+            </div>
+          {% endif %}
           <div class="feature-grid__line"></div>
           <div class="feature-grid__cell">
             {% if block.settings.symbol %}
               <div class="feature-grid__symbol">
                 <img
                   src="{{ block.settings.symbol | image_url: width: 60 }}"
-                  alt="100% Products Quality Guarantee"
+                  alt="Feature Symbol"
                 >
               </div>
             {% endif %}
@@ -38,7 +49,7 @@
         <div class="feature-grid__mobile-feature-item" id="feature-{{ block.id }}" {{ block.shopify_attributes }}>
           {% if block.settings.symbol %}
             <div class="feature-grid__mobile-feature-item__icon">
-              <img src="{{ block.settings.symbol | image_url: width: 50 }}" alt="100% Products Quality Guarantee">
+              <img src="{{ block.settings.symbol | image_url: width: 50 }}" alt="Feature Symbol">
             </div>
           {% endif %}
           <div class="feature-grid__mobile-feature-item__text">
@@ -63,6 +74,28 @@
     padding: 0 24px;
   }
 
+  .feature-grid__title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .feature-grid__top-image {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .feature-grid__top-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .feature-grid__big-word {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
   .feature-grid__mobile {
     display: none;
   }
@@ -71,12 +104,15 @@
     .feature-grid__desktop {
       display: none;
     }
+
     .feature-grid__mobile {
       display: block;
     }
+
     .feature-grid__mobile {
       padding: 0;
     }
+
     .feature-grid__mobile-features {
       display: flex;
       flex-direction: column;
@@ -131,71 +167,6 @@
       color: #636363;
       text-align: left;
     }
-
-    .feature-grid__row {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-    }
-
-    .feature-grid__divider {
-      width: 1px;
-      background-color: {{ section.settings.divider_color }};
-      margin: 9px 0;
-    }
-
-    .feature-grid__item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      height: 209px;
-      text-align: center;
-      position: relative;
-    }
-
-    .feature-grid__item:nth-child(-n + 2)::before {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 1px;
-      background-color: {{ section.settings.divider_color }};
-      right: 4px;
-      left: auto;
-      top: 0;
-    }
-
-    .feature-grid__item:nth-child(n + 3)::before {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 1px;
-      background-color: {{ section.settings.divider_color }};
-      left: 4px;
-      right: auto;
-      top: 0;
-    }
-
-    .feature-grid__line {
-      display: none;
-    }
-  }
-  
-    .feature-grid__text {
-    font-size: 14px;
-    font-weight: 400;
-    color: {{ section.settings.text_color }};
-    margin-bottom: 0;
-    max-width: 100%;
-  }
-
-  @media screen and (min-width: 768px) {
-    .feature-grid__divider {
-      display: block;
-    }
-
-    .feature-grid__text {
-    max-width: 164px;
-  }
   }
 
   .feature-grid__row {
@@ -216,6 +187,29 @@
     flex-direction: column;
     height: 209px;
     text-align: center;
+    position: relative;
+  }
+
+  .feature-grid__item:nth-child(-n + 2)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    background-color: {{ section.settings.divider_color }};
+    right: 4px;
+    left: auto;
+    top: 0;
+  }
+
+  .feature-grid__item:nth-child(n + 3)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    background-color: {{ section.settings.divider_color }};
+    left: 4px;
+    right: auto;
+    top: 0;
   }
 
   .feature-grid__line {
@@ -240,6 +234,24 @@
     margin-bottom: 24px;
     object-fit: contain;
   }
+
+  .feature-grid__text {
+    font-size: 14px;
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 0;
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .feature-grid__divider {
+      display: block;
+    }
+
+    .feature-grid__text {
+      max-width: 164px;
+    }
+  }
 {% endstyle %}
 
 {% schema %}
@@ -248,6 +260,11 @@
   "tag": "section",
   "class": "feature-grid",
   "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
     {
       "type": "range",
       "id": "padding_top_desktop",
@@ -316,6 +333,34 @@
       "type": "feature",
       "name": "Feature",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "top_image",
+          "label": "Image Above Feature"
+        },
+        {
+          "type": "range",
+          "id": "top_image_width",
+          "label": "Top Image Width (px)",
+          "min": 50,
+          "max": 800,
+          "step": 10,
+          "default": 300
+        },
+        {
+          "type": "text",
+          "id": "big_word",
+          "label": "Big Word Text"
+        },
+        {
+          "type": "range",
+          "id": "big_word_size",
+          "label": "Big Word Font Size",
+          "min": 16,
+          "max": 80,
+          "step": 2,
+          "default": 36
+        },
         {
           "type": "image_picker",
           "id": "symbol",

@@ -44,6 +44,8 @@
           render 'block-share', block: block
         when 'size_picker'
           render 'product-size-picker', block: block
+        when 'value_picker'
+          render 'product-value-picker', block: block
         when 'current_selection'
           render 'product-current-selection', block: block
 when 'simple_usp'
@@ -723,6 +725,10 @@ when 'simple_usp'
     {
       "type": "size_picker",
       "name": "Size Picker"
+    },
+    {
+      "type": "value_picker",
+      "name": "Value Picker"
     },
     {
       "type": "current_selection",

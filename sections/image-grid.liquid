@@ -50,6 +50,27 @@
     text-align: center;
   }
 
+  .media-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .media-overlay {
+    position: absolute;
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    z-index: 2;
+    border-radius: 6px;
+    white-space: pre-line;
+  }
+
+  .overlay-top-left    { top: 10px; left: 10px; }
+  .overlay-top-right   { top: 10px; right: 10px; }
+  .overlay-center      { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .overlay-bottom-left { bottom: 10px; left: 10px; }
+  .overlay-bottom-right{ bottom: 10px; right: 10px; }
+  .overlay-bottom-center{ bottom: 10px; right: 0; left: 0; }
+
   .hide-desktop { display: none !important; }
   @media (max-width: 1024px) {
     .hide-tablet { display: none !important; }
@@ -101,32 +122,42 @@
     <div class="{% if section.settings.enable_slider %}custom-imagegrid-slider{% else %}custom-imagegrid-grid{% endif %}">
       {% for block in section.blocks %}
         <div class="custom-imagegrid-item">
-          {% if block.settings.media_type == 'image' %}
-            <img
-              src="{{ block.settings.image | image_url }}"
-              loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
-              style="width: {{ block.settings.image_width }}%; aspect-ratio: {{ block.settings.image_ratio }}; {% if block.settings.image_hover == 'zoom' %}transition: transform .3s;{% endif %}"
-              class="{% if block.settings.image_hover == 'zoom' %}hover-zoom{% elsif block.settings.image_hover == 'fade' %}hover-fade{% elsif block.settings.image_hover == 'grayscale' %}hover-grayscale{% endif %}"
-            >
-          {% elsif block.settings.media_type == 'video' %}
-            {% if block.settings.video_url contains 'youtube.com' or block.settings.video_url contains 'vimeo.com' %}
-              <iframe src="{{ block.settings.video_url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            {% else %}
-              <video
-                {% if block.settings.autoplay %}autoplay{% endif %}
-                {% if block.settings.mute %}muted{% endif %}
-                {% if block.settings.loop %}loop{% endif %}
-                poster="{{ block.settings.video_thumbnail | image_url }}"
-                controls>
-                <source src="{{ block.settings.video_url }}" type="video/mp4">
-              </video>
+          <div class="media-wrapper">
+            {% if block.settings.media_type == 'image' %}
+              <img
+                src="{{ block.settings.image | image_url }}"
+                loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
+                style="width: {{ block.settings.image_width }}%; aspect-ratio: {{ block.settings.image_ratio }};"
+                class="{% if block.settings.image_hover == 'zoom' %}hover-zoom{% elsif block.settings.image_hover == 'fade' %}hover-fade{% elsif block.settings.image_hover == 'grayscale' %}hover-grayscale{% endif %}"
+              >
+            {% elsif block.settings.media_type == 'video' %}
+              {% if block.settings.video_url contains 'youtube.com' or block.settings.video_url contains 'vimeo.com' %}
+                <iframe src="{{ block.settings.video_url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              {% else %}
+                <video
+                  {% if block.settings.autoplay %}autoplay{% endif %}
+                  {% if block.settings.mute %}muted{% endif %}
+                  {% if block.settings.loop %}loop{% endif %}
+                  poster="{{ block.settings.video_thumbnail | image_url }}"
+                  controls>
+                  <source src="{{ block.settings.video_url }}" type="video/mp4">
+                </video>
+              {% endif %}
             {% endif %}
-          {% endif %}
+
+            {% if block.settings.overlay_text != blank %}
+              <div class="media-overlay overlay-{{ block.settings.overlay_position }}"
+                   style="color: {{ block.settings.overlay_text_color }}; background-color: {{ block.settings.overlay_background_color }};">
+                {{ block.settings.overlay_text }}
+              </div>
+            {% endif %}
+          </div>
         </div>
       {% endfor %}
     </div>
   </div>
 </section>
+
 
 {% schema %}
 
@@ -399,6 +430,37 @@
           ],
           "default": "none"
         },
+        {
+  "type": "text",
+  "id": "overlay_text",
+  "label": "Overlay Text"
+},
+{
+  "type": "color",
+  "id": "overlay_text_color",
+  "label": "Overlay Text Color",
+  "default": "#FFFFFF"
+},
+{
+  "type": "color",
+  "id": "overlay_background_color",
+  "label": "Overlay Background Color",
+  "default": "rgba(0, 0, 0, 0.5)"
+},
+{
+  "type": "select",
+  "id": "overlay_position",
+  "label": "Overlay Position",
+  "default": "center",
+  "options": [
+    { "value": "top-left", "label": "Top Left" },
+    { "value": "top-right", "label": "Top Right" },
+    { "value": "center", "label": "Center" },
+    { "value": "bottom-left", "label": "Bottom Left" },
+    { "value": "bottom-right", "label": "Bottom Right" },
+    { "value": "bottom-center", "label": "Bottom Center" }
+  ]
+},
         {
           "type": "checkbox",
           "id": "lazy_load",

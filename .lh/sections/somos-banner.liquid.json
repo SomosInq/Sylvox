@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 64,
+            "activePatchIndex": 65,
             "patches": [
                 {
                     "date": 1748607251090,
@@ -264,6 +264,10 @@
                 {
                     "date": 1754322098525,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -175,13 +175,15 @@\n               background-color: transparent;\n             {% endif %}\n           \">\n           {% if block.settings.icon_position == 'left' and block.settings.icon_image != blank %}\n-            <img src=\"{{ block.settings.icon_image | image_url: '32x32' }}\" alt=\"\" style=\"height: 1em; width: auto;\">\n+            <img src=\"{{ block.settings.icon_image | img_url: '32x32' }}\" alt=\"\" style=\"height: 1em; width: auto;\">\n+\n           {% endif %}\n           <span>{{ block.settings.text }}</span>\n           {% if block.settings.icon_position == 'right' and block.settings.icon_image != blank %}\n-            <img src=\"{{ block.settings.icon_image | image_url: '32x32' }}\" alt=\"\" style=\"height: 1em; width: auto;\">\n+            <img src=\"{{ block.settings.icon_image | img_url: '32x32' }}\" alt=\"\" style=\"height: 1em; width: auto;\">\n+\n           {% endif %}\n         </a>\n       </div>\n     {% endfor %}\n"
+                },
+                {
+                    "date": 1754403509242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   }\n \n   {% if section.settings.custom_content_width_enabled %}\n     #{{ wrapper_id }} .custom-content-wrapper {\n-      max-width: {{ section.settings.custom_content_width }}%;\n+      width: {{ section.settings.custom_content_width }}%;\n     }\n   {% endif %}\n \n   @media screen and (max-width: 749px) {\n"
                 }
             ],
             "date": 1748607251090,

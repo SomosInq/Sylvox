@@ -1,0 +1,26 @@
+
+  <span class="label variant__label">Select Value</span>
+
+  {% assign value_index = nil %}
+
+  {%- for option in product.options -%}
+    {% if option == "Value" %}
+      {% assign value_index = forloop.index0 %}
+    {% endif %}
+  {%- endfor -%}
+
+  {% if value_index != nil %}
+    <div class="size_picker__container">
+      {% for variant in product.variants %}
+        {% assign value = variant.options[value_index] %}
+
+        <a href="{{ product.url }}?variant={{ variant.id }}" class="size-picker__item {% if variant.id == product.selected_or_first_available_variant.id %}active{% endif %}">
+          <span class="product__title">{{ value }}</span>
+          <span class="product_option__price">{{ cart.currency.iso_code }} {{ variant.price | money }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No “Value” option found for this product.</p>
+  {% endif %}
+
