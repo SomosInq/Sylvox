@@ -186,12 +186,32 @@
         "slide_height": 1000,
         "slide_width": 1600
       }
+    },
+    "multi_unit_enquiry_pirqBG": {
+      "type": "multi-unit-enquiry",
+      "name": "Multi-Unit Enquiry Form",
+      "settings": {
+        "title": "",
+        "description": "",
+        "form_action": "/contact#contact_form",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
     }
   },
   "order": [
     "main",
     "somos_banner_wjg6PF",
     "image_text_eL4MaV",
-    "new_banner_slider_RXFgEB"
+    "new_banner_slider_RXFgEB",
+    "multi_unit_enquiry_pirqBG"
   ]
 }
