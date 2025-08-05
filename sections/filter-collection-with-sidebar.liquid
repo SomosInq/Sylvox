@@ -107,14 +107,15 @@
 
           <div class="filter-collection__compare-wrapper">
             <div class="filter-collection__compare-button">
-<button class="filter-collection__button" style="background-color: {{ section.settings.compare_button_bg_color }};">
+<a href="{{ section.settings.compare_button_link | default: '#' }}" class="filter-collection__button" style="background-color: {{ section.settings.compare_button_bg_color }};">
   <span class="compare-button__content">
     {% if section.settings.compare_button_icon %}
       <img src="{{ section.settings.compare_button_icon | image_url: width: 16 }}" alt="Icon" class="compare-button__icon" />
     {% endif %}
     <span>Compare</span>
   </span>
-</button>
+</a>
+
 
 
             </div>
@@ -709,6 +710,11 @@ details[open] .filter-collection__chevron-text {
   "type": "image_picker",
   "id": "compare_button_icon",
   "label": "Compare Button Icon"
+},
+{
+  "type": "url",
+  "id": "compare_button_link",
+  "label": "Compare Button Link"
 }
   ],
   "presets": [

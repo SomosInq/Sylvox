@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 24,
+            "activePatchIndex": 26,
             "patches": [
                 {
                     "date": 1753346708935,
@@ -104,6 +104,14 @@
                 {
                     "date": 1753349505743,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   style=\"\n     background-color: {{ section.settings.background_color }};\n     {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url: width: 2000 }}); background-size: cover; background-position: center;{% endif %}\n     padding: {{ section.settings.padding_top }}px !important; {{ section.settings.padding_right }}px !important; {{ section.settings.padding_bottom }}px !important; {{ section.settings.padding_left }}px !important;\n-    margin: {{ section.settings.margin_top }}px !important; {{ section.settings.margin_bottom }}px !important;\n+    margin-top: {{ section.settings.margin_top }}px !important; margin-bottom: {{ section.settings.margin_bottom }}px !important;\n   \">\n   <div class=\"filter-collection__wrapper\">\n     <div class=\"filter-collection__overlay\" onclick=\"document.querySelector('.filter-collection__drawer').classList.remove('is-open');document.querySelector('.filter-collection__overlay').classList.remove('is-active')\"></div>\n     <div class=\"filter-collection__drawer\">\n"
+                },
+                {
+                    "date": 1754406418568,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -708,8 +708,13 @@\n {\n   \"type\": \"image_picker\",\n   \"id\": \"compare_button_icon\",\n   \"label\": \"Compare Button Icon\"\n+},\n+{\n+  \"type\": \"url\",\n+  \"id\": \"compare_button_link\",\n+  \"label\": \"Compare Button Link\"\n }\n   ],\n   \"presets\": [\n     {\n"
+                },
+                {
+                    "date": 1754406435633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,18 +106,19 @@\n \n \n           <div class=\"filter-collection__compare-wrapper\">\n             <div class=\"filter-collection__compare-button\">\n-<button class=\"filter-collection__button\" style=\"background-color: {{ section.settings.compare_button_bg_color }};\">\n+<a href=\"{{ section.settings.compare_button_link | default: '#' }}\" class=\"filter-collection__button\" style=\"background-color: {{ section.settings.compare_button_bg_color }};\">\n   <span class=\"compare-button__content\">\n     {% if section.settings.compare_button_icon %}\n       <img src=\"{{ section.settings.compare_button_icon | image_url: width: 16 }}\" alt=\"Icon\" class=\"compare-button__icon\" />\n     {% endif %}\n     <span>Compare</span>\n   </span>\n-</button>\n+</a>\n \n \n+\n             </div>\n           </div>\n           <div class=\"filter-collection__apply-wrapper\">\n             <button class=\"filter-collection__apply-button\">APPLY FILTERS</button>\n"
                 }
             ],
             "date": 1753346708935,
