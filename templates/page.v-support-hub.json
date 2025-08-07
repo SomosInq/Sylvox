@@ -146,6 +146,28 @@
         "margin_right_mobile": 0
       }
     },
+    "rich_text_WHw9eJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_efdeJC": {
+          "type": "heading",
+          "settings": {
+            "title": "User Manual & FAQs",
+            "heading_size": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "heading_efdeJC"
+      ],
+      "name": "t:labels.rich_text",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    },
     "tabbed_slider_jTgzKG": {
       "type": "tabbed-slider",
       "blocks": {
@@ -504,6 +526,7 @@
     "main",
     "sidebar-page",
     "image_banner_reqyCY",
+    "rich_text_WHw9eJ",
     "tabbed_slider_jTgzKG",
     "video_grid_Pn8mHz",
     "usp_grid_6xpF7D",
