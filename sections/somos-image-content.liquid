@@ -194,6 +194,16 @@
   flex-direction: row;
 }
 @media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  #shopify-section-{{ section.id }} .icon-grid-row:last-child {
+    margin-bottom: 0!important;
+  }
+  section#shopify-section-{{ section.id }} {
+    padding-bottom: 0;
+  }
   .icon-grid-row {
     flex-direction: column !important;
     gap: 20px;

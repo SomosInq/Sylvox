@@ -271,11 +271,26 @@
   }
 }
 @media (max-width: 767px) {
+  .in-the-box-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   .in-the-box-grid,
   .in-the-box-left h2,
   .in-the-box-grid div {
     text-align: center !important;
-}
+  }
+  .in-the-box-left {
+    width: 100%;
+    text-align: center;
+  }
+  .in-the-box-left > img {
+    margin: auto;
+  }
+  .in-the-box-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
 }
 {% endstyle %}
 

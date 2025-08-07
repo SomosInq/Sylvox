@@ -126,7 +126,7 @@
         </aside>
       </div>
     </div>
-    <button class="filter-collection__filter-toggle" onclick="document.querySelector('.filter-collection__drawer').classList.toggle('is-open');document.querySelector('.filter-collection__overlay').classList.toggle('is-active')">
+    <button class="filter-collection__filter-toggle btn btn--secondary" onclick="document.querySelector('.filter-collection__drawer').classList.toggle('is-open');document.querySelector('.filter-collection__overlay').classList.toggle('is-active')">
       Filter
     </button>
 
@@ -507,9 +507,9 @@ details[open] .filter-collection__chevron-text {
   }
 
   .filter-collection__grid {
-    grid-template-columns: repeat(2, 164px);
+    grid-template-columns: repeat(2, 164px)!important;
     column-gap: 16px;
-    row-gap: 34px;
+    row-gap: 16px;
     padding: 0 23px;
     justify-content: flex-start;
     align-items: flex-start;
@@ -517,14 +517,14 @@ details[open] .filter-collection__chevron-text {
 
   .filter-collection__item {
     width: 164px;
-    height: 307px;
+    height: auto;
     padding-top: 5px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 34px;
+    gap: 5px;
   }
 
   .filter-collection__image-wrapper {
@@ -533,12 +533,13 @@ details[open] .filter-collection__chevron-text {
   }
 
   .filter-collection__meta {
-    width: 117px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 12px;
+    padding: 0;
   }
 
   .filter-collection__tag {
@@ -549,9 +550,9 @@ details[open] .filter-collection__chevron-text {
   }
 
   .filter-collection__title {
-    font-size: 18px;
+    font-size: 15px;
     font-family: Questrial;
-    font-weight: 400;
+    font-weight: 600;
     color: rgba(0, 0, 0, 0.85);
   }
 

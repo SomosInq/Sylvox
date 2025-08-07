@@ -260,7 +260,7 @@
     </div>
 
     <aside class="custom-blog__sidebar">
-  <details class="custom-blog__dropdown" open>
+  <details class="custom-blog__dropdown">
     <summary class="custom-blog__dropdown-title">Sort By</summary>
     <ul class="custom-blog__dropdown-list">
       <li><label><input type="radio" name="sort" checked> Latest</label></li>
@@ -268,7 +268,7 @@
     </ul>
   </details>
 
-  <details class="custom-blog__dropdown" open>
+  <details class="custom-blog__dropdown">
     <summary class="custom-blog__dropdown-title">Filter</summary>
     <ul class="custom-blog__dropdown-list">
   {% assign tag_options = blog.all_tags %}
@@ -615,7 +615,8 @@
   padding: 12px 24px;
   border-radius: 9999px;
   font-weight: 500;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
   text-decoration: none;
 }
@@ -1074,10 +1075,11 @@ background: #fff;
     background-position: center;
   }
   .custom-blog__banner-inner {
-    top: 354px;
-    left: 24px;
-    gap: 22px;
-    max-width: 282px;
+    top: auto;
+    left: 0;
+    gap: 10px;
+    max-width: 100%;
+    margin: 0 !important;
   }
   .custom-blog__label {
     font-size: 14px;
@@ -1086,7 +1088,7 @@ background: #fff;
     font-size: 14px;
   }
   .custom-blog__heading {
-    /* font-size: 24px; */
+    font-size: 28px;
     max-width: 100%;
     line-height: 1.3;
   }

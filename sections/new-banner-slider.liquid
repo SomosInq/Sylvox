@@ -99,6 +99,16 @@
     cursor: pointer;
     font-size: 1.5rem;
   }
+  @media only screen and (max-width: 768px) {
+    .slider-carousel .slider-slide {
+      height: auto!important;
+      width: 80% !important;
+    }
+    .slider-carousel .slider-slide > img {
+      object-fit: contain!important;
+    }
+  }
+  
 </style>
 
 <script>
