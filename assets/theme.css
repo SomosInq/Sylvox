@@ -167,8 +167,52 @@ a.button {
     margin: unset !important;
     max-width: unset !important;
     padding: 0 !important;
-}
+  }
+
+  .custom-blog__main-layout {
+    padding: 0 25px;
+  }
+
+  .custom-blog__main-layout .custom-blog__sidebar {
+    width: 280px;
+    }
   
+  @media (max-width: 768px) {
+    .blog-slider .slider-controls.section_content_width_standard {
+      padding-left: 10px!important
+    }
+    .blog-slider .slider-slide {
+      width: 100%;
+    }
+    .blog-slider .slider-dots {
+      gap: 6px;
+    }
+    .blog-slider .slider-dot {
+      width: 18px;
+    }
+    .blog-slider .slider-arrows {
+      padding-left: 10px;
+    }
+    .blog-slider .custom-blog__card-excerpt-arrow {
+      margin-top: 10px;
+    }
+    .custom-blog__main-layout {
+      padding: 0 16px;
+      flex-flow: column-reverse;
+    }
+    .custom-blog__main-layout .custom-blog__sidebar {
+      width: 100%;
+      max-width: 100%;
+    }
+    .custom-blog__main-layout .custom-blog__grid {
+      margin: 0;
+    }
+    .custom-blog__main-layout .custom-blog__grid .custom-blog__card {
+      flex-flow: column!important;
+    }
+
+
+  }
   @media (max-width: 768px) {
   #shopify-section-{{ section.id }} .section_content_width_standard {
     width: 100% !important;
@@ -934,6 +978,12 @@ a.button {
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
+@media only screen and (max-width: 768px) {
+  .usp-box {
+    width: 100%;
+    overflow: visible;
+  }
+}
 .usp-inner {
   display: flex;
   flex-direction: column;
@@ -1334,7 +1384,7 @@ a.button {
 .comparison-values .head {
   text-align: left;
   padding: 5% 0 5% 20%;
-  width: 210px;
+  width: 120px;
 }
 @media screen and (min-width: 700px){
 .comparison-values .head {
@@ -1353,6 +1403,12 @@ display: flex;
     margin: 20px auto 0 auto;
     padding: 12px 35px;
     font-size: 15px;
+}
+
+@media screen and (max-width: 768px){
+  .comparison-section .btn {
+    padding: 10px 25px;
+  }
 }
 
 .comparison-section .btn img {
@@ -1572,14 +1628,40 @@ display: flex;
   }
 
   .somos-slide .content_section_width_standard {
-max-width: 1608px;
+    max-width: 1608px;
     margin: 0 auto !important;
-}
+  }
 
   .somos-slide .description {
     width: 50%;
   }
    @media screen and (max-width: 699px){
+    .somos-slider {
+      --slide-height: 100% !important;
+    }
+
+    .somos-slider .somos-slide__content > p {
+      margin-bottom: 10px;
+    }
+
+    .somos-slider .somos-slide__content .description {
+      font-size: 14px !important;
+    }
+
+    .somos-slide__content.content_section_width_standard {
+      padding: 20px 25px 40px 25px;
+    }
+
+    .somos-slide__content.content_section_width_standard > .buttons {
+      margin-top: auto;
+    }
+
+    .somos-slide__content.content_section_width_standard > .buttons > .button {
+      margin-top: 15px;
+    }
+    .somos-slider .somos-slider__arrows {
+      top: 54%;
+    }
     .somos-slide .description {
     width: 90%;
   }
@@ -1681,7 +1763,6 @@ max-width: 1608px;
     .somos-slide .button {
     width: 100%;
   }
-  .header-blank {display: none;}
   }
 
 
@@ -1707,7 +1788,18 @@ max-width: 1608px;
   /* width: 100%; */
 }
 
+ @media (max-width: 600px) {
+    .shopify-section--image-with-text-overlay .btn {
+      padding: 8px 27px;
+    }
+    .image-text-blocks-section .section_content_width_standard:first-child > img:first-child {
+      width: 18%!important;
+    }
+    .comparison .comparison__image-wrapper img {
+      width: 100%!important;
+    }
 
+  }
 
 /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
 /* *, :before, :after {
@@ -8945,6 +9037,30 @@ width: 100%; height: 200px; background: #ddd;
   }
 }
 
+@media screen and (max-width: 768px) {
+  #BackToTop {
+    right: 16px;
+    bottom: 102px;
+  }
+  .needsclick.kl-teaser-XGhNUH,
+  .needsclick.kl-teaser-Y7pYf4 {
+    top: auto!important;
+    bottom: 0!important;
+    transform: none!important;
+  }
+  .icon-grid__container.icon-grid--minwidth.section_content_width_standard {
+    padding: 0!important;
+  }
+  .image-text-blocks-section {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+  }
+}
+
+.filter-collection__filter-toggle {
+  justify-content: center;
+  background-color: transparent;
+}
 /* .newsletter-content {
   gap: var(--spacing-6);
   max-width: 780px;

@@ -92,12 +92,22 @@
     }
 
     .media-left {
-      display: none !important; /* hides the image column */
+      display: block
     }
 
     .media-right {
       display: block;
-      width: 100% !important;
+      margin: auto;
+      margin-top: 20px;
+      padding: 0!important;
+    }
+
+    .media-right .media-content-inner > * {
+      text-align: center!important;
+    }
+    
+    .media-right img {
+      margin: auto;
     }
   }
 </style>
