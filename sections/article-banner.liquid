@@ -47,25 +47,25 @@
       <div class="custom-blog__social-icons">
         {{ section.settings.banner_share_text }}
       {% if section.settings.show_share_tiktok %}
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'icon-tiktok' %}</a>
+        <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'tiktok' %}</a>
       {% endif %}
       {% if section.settings.show_share_linkedin %}
-        <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'icon-linkedin' %}</a>
+        <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'linkedin' %}</a>
       {% endif %}
       {% if section.settings.show_share_youtube %}
-        <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'icon-youtube' %}</a>
+        <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'youtube' %}</a>
       {% endif %}
       {% if section.settings.show_share_facebook %}
-        <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'icon-facebook' %}</a>
+        <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'facebook' %}</a>
       {% endif %}
       {% if section.settings.show_share_x %}
-        <a href="https://x.com" target="_blank" class="social-icon">{% render 'icon-x' %}</a>
+        <a href="https://x.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'x' %}</a>
       {% endif %}
       {% if section.settings.show_share_pinterest %}
-        <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'icon-pinterest' %}</a>
+        <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'pinterest' %}</a>
       {% endif %}
       {% if section.settings.show_share_instagram %}
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'icon-instagram' %}</a>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'default.icons' name: 'instagram' %}</a>
       {% endif %}
     </div>
     </div>
@@ -860,10 +860,11 @@ background: #fff;
     background-position: center;
   }
   .custom-blog__banner-inner {
-    top: 354px;
-    left: 24px;
-    gap: 22px;
-    max-width: 282px;
+     top: auto;
+    left: 0;
+    gap: 10px;
+    max-width: 100%;
+    margin: 0 !important;
   }
   .custom-blog__label {
     font-size: 14px;
@@ -872,7 +873,7 @@ background: #fff;
     font-size: 14px;
   }
   .custom-blog__heading {
-    /* font-size: 24px; */
+    font-size: 28px;
     max-width: 100%;
     line-height: 1.3;
   }

@@ -30,11 +30,11 @@ Somos Slider: Individual Button Style Controls
 
           <div class="somos-slide__content content_section_width_{{ section.settings.content_section_width }} {{ block.settings.vertical_align }} {{ block.settings.horizontal_align }}" style="color: {{ block.settings.text_color }};">
             
-            {% if section.settings.collection_subheading %}
+            {% if section.settings.collection_subheading != blank %}
               <p class="collection-subheading">{{ section.settings.collection_subheading }}</p>
             {% endif %}
 
-            {% if section.settings.category_title %}
+            {% if section.settings.category_title != blank %}
               <h2 class="collection-category">{{ section.settings.category_title }}</h2>
             {% endif %}
 

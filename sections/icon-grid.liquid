@@ -267,6 +267,17 @@
 .grid-item-subtitle {
   font-style: italic;
 }
+
+@media (max-width: 768px) {
+  .icon-grid.section_width_{{ section.settings.section_width }} {
+    padding-top: 30px;
+  }
+  .icon-grid.section_width_{{ section.settings.section_width }} .icon-grid__item {
+    flex: auto;
+    max-width: 100%;
+  }
+}
+
 </style>
 
 <!-- Flickity -->

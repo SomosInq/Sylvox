@@ -91,23 +91,10 @@
     "image_banner_reqyCY": {
       "type": "image-banner",
       "blocks": {
-        "subheading_pGyxkn": {
-          "type": "subheading",
-          "settings": {
-            "text": "<p>Support</p>",
-            "text_color": "#ffffff",
-            "subheading_width_desktop": 600,
-            "subheading_width_mobile": 340,
-            "subheading_font_size_desktop": 18,
-            "subheading_font_size_mobile": 14,
-            "subheading_font_weight_desktop": "400",
-            "subheading_font_weight_mobile": "400"
-          }
-        },
         "heading_aHBmHB": {
           "type": "heading",
           "settings": {
-            "text": "<p>Welcome to</p><p>Vantrue Support</p>",
+            "text": "<p>Support Center</p>",
             "text_color": "#ffffff",
             "heading_width_desktop": 600,
             "heading_width_mobile": 340,
@@ -116,11 +103,24 @@
             "heading_font_weight_desktop": "400",
             "heading_font_weight_mobile": "400"
           }
+        },
+        "subheading_pGyxkn": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Access user manuals, troubleshooting guides, and customer service resources in one place.</p>",
+            "text_color": "#ffffff",
+            "subheading_width_desktop": 600,
+            "subheading_width_mobile": 340,
+            "subheading_font_size_desktop": 18,
+            "subheading_font_size_mobile": 14,
+            "subheading_font_weight_desktop": "400",
+            "subheading_font_weight_mobile": "400"
+          }
         }
       },
       "block_order": [
-        "subheading_pGyxkn",
-        "heading_aHBmHB"
+        "heading_aHBmHB",
+        "subheading_pGyxkn"
       ],
       "custom_css": [
         "@media screen and (max-width: 768px) {.image-banner__content {justify-content: center; text-align: center; }}"
@@ -144,6 +144,28 @@
         "margin_right_desktop": 0,
         "margin_left_mobile": 0,
         "margin_right_mobile": 0
+      }
+    },
+    "rich_text_WHw9eJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_efdeJC": {
+          "type": "heading",
+          "settings": {
+            "title": "User Manual & FAQs",
+            "heading_size": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "heading_efdeJC"
+      ],
+      "name": "t:labels.rich_text",
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
       }
     },
     "tabbed_slider_jTgzKG": {
@@ -504,6 +526,7 @@
     "main",
     "sidebar-page",
     "image_banner_reqyCY",
+    "rich_text_WHw9eJ",
     "tabbed_slider_jTgzKG",
     "video_grid_Pn8mHz",
     "usp_grid_6xpF7D",
@@ -511,4 +534,3 @@
     "text_section_gNxHjB"
   ]
 }
-

@@ -9415,6 +9415,7 @@ we can create larger tap areas with smaller visuals*/
 
     .product__main-photos .flickity-page-dots {
       display: block;
+      bottom: -35px;
     }
   }
 
@@ -12065,13 +12066,13 @@ header-section {
     }
 
 .header-item--icons .site-nav {
-    margin-right: calc(var(--site-nav-icon-padding) * -1);
+    margin-right: 0
   }
 
 @media only screen and (max-width: 768px) {
 
 .header-item--icons .site-nav {
-      margin-right: calc(var(--site-nav-item-padding) / -2);
+      margin-right: 0
   }
     }
 
@@ -12183,6 +12184,9 @@ header-section {
 }
 
 @media only screen and (max-width: 768px) {
+.site-header__element .page-width {
+  padding-right: 0;
+}
 
 .site-header__element--top {
     padding: 0;
@@ -12425,7 +12429,11 @@ header-section[data-section-index='2'] .header-wrapper--overlay {
 .site-nav__link--icon {
     padding-left: calc(var(--site-nav-item-padding) / 2);
     padding-right: calc(var(--site-nav-item-padding) / 2);
-}
+
+  }
+  .site-nav__link--icon.mobile-nav-trigger {
+    padding-right: var(--page-width-padding);
+  }
 
     .site-nav__link--icon + .site-nav__link--icon {
       margin-left: -4px; /*~amount of inline-block space*/
@@ -15476,6 +15484,10 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
   }
 
 @media only screen and (max-width: 768px) {
+
+.testimonials-section .flickity-page-dots {
+  width: 100%!important;
+}
 
 .feature-row {
     flex-direction: column;
