@@ -28,9 +28,9 @@
         "heading_hwFRkh": {
           "type": "heading",
           "settings": {
-            "text": "Sign up",
+            "text": "Join the SylvoxCredits <br>Rewards Program",
             "heading_tag": "h2",
-            "color": "#000000",
+            "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
             "alignment": "left"
@@ -214,7 +214,7 @@
         "desc_text": "",
         "top_title_padding_bottom": 50,
         "header_color": "#000000",
-        "header_alignment": "center",
+        "header_alignment": "left",
         "header_tag": "h2",
         "header_weight": "600",
         "background_color": "#ffffff",
@@ -232,39 +232,31 @@
         "slider_mode": "grid"
       }
     },
-    "image_text_E6a8bT": {
-      "type": "image-text",
-      "blocks": {
-        "title_hwcypC": {
-          "type": "title",
-          "settings": {
-            "title": "Ways to earn points"
-          }
-        }
-      },
-      "block_order": [
-        "title_hwcypC"
-      ],
-      "name": "Somos Image/Text Flex Blocks",
+    "somos_grid_9Cp6GG": {
+      "type": "somos-grid",
+      "name": "Somos Grid",
       "settings": {
+        "sub_text": "",
+        "header_text": "Ways to earn points",
+        "desc_text": "",
+        "top_title_padding_bottom": 0,
+        "header_color": "#000000",
+        "header_alignment": "left",
+        "header_tag": "h2",
+        "header_weight": "400",
         "background_color": "#ffffff",
-        "background_gradient": "",
+        "section_id": "",
+        "custom_class": "",
         "section_width": "standard",
         "section_content_width": "standard",
-        "alignment": "left",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
         "padding_top": 0,
-        "padding_bottom": 60,
+        "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "button_background_color": "#000000",
-        "button_outline_color": "#ffffff",
-        "button_icon": "none",
-        "button_icon_position": "left",
-        "button_size": "medium"
+        "slider_mode": "grid"
       }
     },
     "mid_banner_feNdyQ": {
@@ -341,9 +333,9 @@
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
             "content_width": 20,
+            "image": "shopify://shop_images/shopping-bag-2-line.png",
             "top_padding_bottom": 0,
             "image_width": 20,
-            "image": "shopify://shop_images/shopping-bag-2-line.png",
             "background_color": "#ffffff",
             "text_at_bottom": false,
             "padding_top": 32,
@@ -372,9 +364,9 @@
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
             "content_width": 20,
+            "image": "shopify://shop_images/mail-send-line.png",
             "top_padding_bottom": 0,
             "image_width": 20,
-            "image": "shopify://shop_images/mail-send-line.png",
             "background_color": "#ffffff",
             "text_at_bottom": false,
             "padding_top": 32,
@@ -465,9 +457,9 @@
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
             "content_width": 20,
+            "image": "shopify://shop_images/instagram-line.png",
             "top_padding_bottom": 0,
             "image_width": 20,
-            "image": "shopify://shop_images/instagram-line.png",
             "background_color": "#ffffff",
             "text_at_bottom": false,
             "padding_top": 32,
@@ -496,6 +488,7 @@
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
             "content_width": 20,
+            "image": "shopify://shop_images/twitter-x-fill.png",
             "top_padding_bottom": 0,
             "image_width": 20,
             "background_color": "#ffffff",
@@ -526,9 +519,9 @@
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
             "content_width": 100,
-            "top_padding_bottom": 0,
-            "image_width": 100,
             "image": "shopify://shop_images/facebook-circle-fill.png",
+            "top_padding_bottom": 0,
+            "image_width": 10,
             "background_color": "#ffffff",
             "text_at_bottom": false,
             "padding_top": 32,
@@ -595,10 +588,10 @@
             "text": "$1000 Points",
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
-            "content_width": 100,
-            "top_padding_bottom": 0,
-            "image_width": 45,
+            "content_width": 50,
             "image": "shopify://shop_images/4314fe75509b65a2b001e3bb1f7578df606257fa.png",
+            "top_padding_bottom": 0,
+            "image_width": 20,
             "background_color": "#ffffff",
             "text_at_bottom": false,
             "padding_top": 0,
@@ -626,10 +619,10 @@
             "text": "$3000 Points",
             "horizontal_alignment": "center",
             "vertical_alignment": "middle",
-            "content_width": 100,
-            "top_padding_bottom": 0,
-            "content_width": 45,
+            "content_width": 50,
             "image": "shopify://shop_images/d2ecc24bbbcb7ee7e2a042cb3ce17e1e0b3cc993.png",
+            "top_padding_bottom": 0,
+            "image_width": 20,
             "background_color": "#ffffff",
             "text_at_bottom": false,
             "padding_top": 0,
@@ -673,48 +666,6 @@
         "padding_left": 0,
         "padding_right": 0,
         "slider_mode": "grid"
-      }
-    },
-    "image_text_q8rWx6": {
-      "type": "image-text",
-      "blocks": {
-        "title_wKWYfe": {
-          "type": "title",
-          "settings": {
-            "title": "VIP"
-          }
-        },
-        "text_qU9mA3": {
-          "type": "text",
-          "settings": {
-            "text": "Your all access pass to exclusive rewards. Reach higher tiers for more exclusive perks."
-          }
-        }
-      },
-      "block_order": [
-        "title_wKWYfe",
-        "text_qU9mA3"
-      ],
-      "name": "Somos Image/Text Flex Blocks",
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "section_width": "standard",
-        "section_content_width": "standard",
-        "alignment": "left",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "button_background_color": "#000000",
-        "button_outline_color": "#ffffff",
-        "button_icon": "none",
-        "button_icon_position": "left",
-        "button_size": "medium"
       }
     },
     "somos_grid_xbEeHR": {
@@ -848,11 +799,10 @@
     "main",
     "somos_banner_BNREKU",
     "somos_grid_9tcN66",
-    "image_text_E6a8bT",
+    "somos_grid_9Cp6GG",
     "mid_banner_feNdyQ",
     "somos_grid_hBPcK6",
     "somos_grid_QarJdc",
-    "image_text_q8rWx6",
     "somos_grid_xbEeHR",
     "faq_rewards_kdL4Rr"
   ]
