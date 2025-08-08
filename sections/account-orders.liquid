@@ -1,0 +1,258 @@
+<div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
+  <aside class="account-sidebar">
+    {% render 'account-sidebar' %}
+  </aside>
+
+  <main class="account-content section_width_{{ section.settings.section_width }}">
+
+<div class="account-wrappers">
+
+  <div>
+    <h2 class="account-title">My Orders</h2>
+  </div>
+
+  <div class="order-tabs">
+    <div class="order-tab active" data-status="all">All</div>
+    <div class="order-tab" data-status="unfulfilled">Processing</div>
+    <div class="order-tab" data-status="fulfilled">Shipped</div>
+    <div class="order-tab" data-status="cancelled">Cancelled</div>
+  </div>
+
+  <div class="order-list" id="order-list">
+    {% assign has_orders = false %}
+    {% for order in customer.orders %}
+      {% assign has_orders = true %}
+      <div class="order-card"
+           data-fulfillment="{{ order.fulfillment_status | default: 'unfulfilled' }}"
+           data-cancelled="{{ order.cancelled }}">
+        <div class="order-info">
+          <div>ORDER: {{ order.name }}</div>
+          {% assign item = order.line_items[0] %}
+          <strong>{{ item.title }} &nbsp;&nbsp; x{{ item.quantity }} &nbsp;&nbsp; {{ item.line_price | money }}</strong>
+          {% if order.shipping_address %}
+            <div>{{ order.shipping_address.address1 }}, {{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} - {{ order.shipping_address.zip }} - {{ order.shipping_address.country_code }}</div>
+          {% endif %}
+        </div>
+
+        <div class="order-meta">
+          <div>Date: {{ order.created_at | date: "%B %d, %Y" }}</div>
+          {% if order.cancelled %}
+            <div class="status">Status: Cancelled</div>
+          {% elsif order.fulfillment_status == 'fulfilled' %}
+            <div class="status">Status: Shipped</div>
+          {% else %}
+            <div class="status">Status: Processing</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+
+    {% unless has_orders %}
+      <div class="no-orders">You have no orders yet.</div>
+    {% endunless %}
+  </div>
+
+  <div class="account-orders__benefits">
+    ① By <a href="#">Making Orders</a> on Sylvox official website, you’ll enjoy automatic extended warranty (up to 5 years) and get Sylvox Points (1 dollar spent = 1 point earned).<br>
+    ② By <a href="#">Registering Products</a> you have purchased from unofficial channels, you will extend your warranty (up to 5 years).
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.order-tab');
+    const orders = document.querySelectorAll('.order-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const selected = tab.dataset.status;
+
+        orders.forEach(order => {
+          const fulfilled = order.dataset.fulfillment;
+          const cancelled = order.dataset.cancelled === 'true';
+
+          let show = false;
+
+          if (selected === 'all') show = true;
+          else if (selected === 'fulfilled' && fulfilled === 'fulfilled') show = true;
+          else if (selected === 'unfulfilled' && fulfilled !== 'fulfilled' && !cancelled) show = true;
+          else if (selected === 'cancelled' && cancelled) show = true;
+
+          order.style.display = show ? 'flex' : 'none';
+        });
+      });
+    });
+  });
+</script>
+
+
+{% comment %} <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/Sylvox-Website-_-Figma-08-08-2025_02_50_PM_3.png?v=1754661119" alt="Your Image"> {% endcomment %}
+
+
+
+
+
+  </main>
+</div>
+
+<style>
+  .account-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+  }
+  .account-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .account-content {
+    flex: 1;
+  }
+
+  .account-wrappers {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .account-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .order-tabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .order-tab {
+    position: relative;
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+  }
+
+  .order-tab.active {
+    color: #000;
+    font-weight: 500;
+  }
+
+  .order-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+  }
+
+  .order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .order-card {
+    border-top: 1px solid #ddd;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .order-info {
+    flex: 1 1 60%;
+    font-size: 14px;
+  }
+
+  .order-info strong {
+    font-size: 16px;
+    display: block;
+  }
+
+  .order-meta {
+    flex: 1 1 30%;
+    text-align: right;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .order-meta .status {
+    color: #888;
+  }
+
+  .account-orders__benefits {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #444;
+    max-width: 100%;
+  }
+
+  .account-orders__benefits a {
+    color: #db4b97;
+    text-decoration: underline;
+  }
+
+  .no-orders {
+    font-size: 16px;
+    color: #777;
+    margin-top: 32px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Account Orders",
+  "settings": [
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "My Orders"
+    },
+    {
+      "type": "textarea",
+      "id": "benefits_text",
+      "label": "Member Benefits Text (HTML allowed)",
+      "default": "① By <a href='#'>Making Orders</a> on Sylvox official website, you'll enjoy automatic extended warranty (up to 5 years) and get Sylvox Points (1 dollar spent = 1 point earned).<br>② By <a href='#'>Registering Products</a> you have purchased from unofficial channels, you will extend your warranty (up to 5 years)."
+    }
+  ]
+}
+{% endschema %}

@@ -1,12 +1,11 @@
-<div class="account-sidebar">
-  <ul>
-    <li><a href="/account" class="{% if request.path == '/account' %}active{% endif %}">My Profile</a></li>
+
+  <ul class="account-sidebar">
+    <li><a href="/pages/account-profile" class="{% if request.path contains 'account-profile' %}active{% endif %}">My Profile</a></li>
     <li><a href="/pages/account-address" class="{% if request.path contains 'account-address' %}active{% endif %}">Address</a></li>
     <li><a href="/pages/account-orders" class="{% if request.path contains 'account-orders' %}active{% endif %}">My Orders</a></li>
     <li><a href="/pages/account-membership" class="{% if request.path contains 'account-membership' %}active{% endif %}">Membership</a></li>
     <li><a href="/pages/account-returns" class="{% if request.path contains 'account-returns' %}active{% endif %}">Warranty & Return</a></li>
   </ul>
-</div>
 
 
 <style>

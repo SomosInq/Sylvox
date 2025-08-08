@@ -2,7 +2,7 @@
   "name": "Customer Membership",
   "sections": {
     "main": {
-      "type": "account-layout"
+      "type": "account-membership"
     }
   },
   "order": ["main"]

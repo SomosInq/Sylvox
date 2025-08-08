@@ -1,8 +1,8 @@
 {
-  "name": "Customer Returns",
+  "name": "Customer Profile",
   "sections": {
     "main": {
-      "type": "account-returns"
+      "type": "account-profile"
     }
   },
   "order": ["main"]

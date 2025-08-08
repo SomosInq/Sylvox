@@ -1,8 +1,12 @@
+<div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
+  <aside class="account-sidebar">
+    {% render 'account-sidebar' %}
+  </aside>
 
-<div class="account-wrapper">
-  {% render 'account-sidebar' %}
-  <div class="account-content">
+  <main class="account-content section_width_{{ section.settings.section_width }}">
     {% case template.name %}
+      {% when 'page.account-profile' %}
+        {% render 'account-page-profile' %}
       {% when 'page.account-orders' %}
         {% render 'account-page-orders' %}
       {% when 'page.account-address' %}
@@ -14,18 +18,54 @@
       {% else %}
         {% render 'account-page-content' %}
     {% endcase %}
-  </div>
+  </main>
 </div>
 
 <style>
   .account-wrapper {
     display: flex;
     gap: 40px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
     padding: 40px;
-    font-family: sans-serif;
+  }
+
+  .account-sidebar {
+    width: 220px;
+    flex-shrink: 0;
   }
 
   .account-content {
     flex: 1;
   }
 </style>
+
+{% schema %}
+{
+  "name": "Account Layout",
+  "tag": "section",
+  "class": "account-layout",
+  "settings": [
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ]
+}
+{% endschema %}

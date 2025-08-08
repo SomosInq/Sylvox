@@ -1,9 +1,8 @@
-// {"sections":{"main":{"type":"main-order","settings":{}}},"order":["main"]}
 {
-  "name": "Customer Orders",
+  "name": "Account Orders Page",
   "sections": {
     "main": {
-      "type": "account-layout"
+      "type": "account-orders"
     }
   },
   "order": ["main"]

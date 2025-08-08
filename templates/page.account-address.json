@@ -3,7 +3,7 @@
   "name": "Customer Address",
   "sections": {
     "main": {
-      "type": "account-layout"
+      "type": "account-address"
     }
   },
   "order": ["main"]

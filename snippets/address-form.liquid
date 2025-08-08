@@ -15,9 +15,9 @@ Supported parameters
 
 <x-drawer id="customer-address-{{ address.id | default: 'new' }}" class="drawer drawer--lg">
   {%- if address.id != blank -%}
-    <h2 class="h5" slot="header">{{ 'customer.addresses.edit_address' | t }}</h2>
+    <h2 class="h5" slot="header">Edit Address</h2>
   {%- else -%}
-    <h2 class="h5" slot="header">{{ 'customer.addresses.add_address' | t }}</h2>
+    <h2 class="h5" slot="header">Add Address</h2>
   {%- endif -%}
 
   {%- form 'customer_address', address -%}

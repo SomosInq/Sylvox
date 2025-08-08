@@ -1,0 +1,264 @@
+<div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
+  <aside class="account-sidebar">
+    {% render 'account-sidebar' %}
+  </aside>
+
+  <main class="account-content section_width_{{ section.settings.section_width }}">
+
+<div class="account-profile-wrapper">
+  <div class="account-profile__left">
+    <h2>User Name</h2>
+    <p>Email: {{ customer.email }}</p>
+    <p>Location: United States</p>
+
+    <div class="points-banner">
+      <div class="points-banner__info">
+        <p class="subheading">Sylvox Membership</p>
+        <p class="title">Join the club, get rewarded.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+      <div class="points-banner__balance">
+        <p class="balance">00</p>
+        <p class="label">Points Balance</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="account-profile__right">
+    <div class="form-header">
+      <h3>My Profile</h3>
+      <div class="form-links">
+        <a href="#" class="edit">✎ Edit</a>
+        <a href="#" class="password">Create Password</a>
+      </div>
+    </div>
+
+    <form class="account-profile-form">
+      <label>
+        Register Email
+        <input type="email" value="{{ customer.email }}" placeholder="you@example.com" />
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" />
+        Get 200 Points for my first email subscription and receive Jackery's latest news and offers. Agree to Sylvox's Terms of Service and Privacy Policy.
+      </label>
+
+      <div class="row">
+        <label>
+          First Name
+          <input type="text" placeholder="First Name" />
+        </label>
+        <label>
+          Last Name
+          <input type="text" placeholder="Last Name" />
+        </label>
+      </div>
+
+      <label>
+        Date of Birth <span class="required">*</span>
+        <input type="date" />
+      </label>
+
+      <fieldset>
+        <legend>Gender</legend>
+        <label><input type="radio" name="gender" value="secrecy" checked /> Secrecy</label>
+        <label><input type="radio" name="gender" value="female" /> Female</label>
+        <label><input type="radio" name="gender" value="male" /> Male</label>
+      </fieldset>
+
+      <label>
+        Phone
+        <div class="phone-row">
+          <input type="text" class="country-code" value="+1" />
+          <input type="text" placeholder="Phone Number" />
+        </div>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" />
+        Get 200 Points for my first email subscription and receive Jackery's latest news and offers. Agree to Sylvox's Terms of Service and Privacy Policy.
+      </label>
+    </form>
+  </div>
+</div>
+
+
+{% comment %} <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/Sylvox-Website-_-Figma-08-08-2025_02_50_PM.png?v=1754661119" alt="Your Image"> {% endcomment %}
+
+
+
+  </main>
+</div>
+
+<style>
+  .account-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+  }
+  .account-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .account-content {
+    flex: 1;
+  }
+  .account-profile-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.account-profile-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.account-profile__left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.account-profile__right {
+  flex: 2;
+  min-width: 400px;
+}
+
+.points-banner {
+  background: #163c34;
+  color: #fff;
+  padding: 1.2rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.points-banner__info .subheading {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.points-banner__info .title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+
+.points-banner__balance .balance {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.points-banner__balance .label {
+  font-size: 0.8rem;
+}
+
+.learn-more {
+  font-size: 0.85rem;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-links a {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: #db4b97;
+}
+
+.account-profile-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.account-profile-form input[type="text"],
+.account-profile-form input[type="email"],
+.account-profile-form input[type="date"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.row label {
+  flex: 1;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+fieldset legend {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+fieldset label {
+  margin-right: 1.5rem;
+}
+
+.checkbox {
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.phone-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.phone-row .country-code {
+  width: 60px;
+}
+
+.required {
+  color: #db4b97;
+}
+
+
+</style>
+
+{% schema %}
+{
+  "name": "Account Profile",
+  "settings": [
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ]
+}
+{% endschema %}

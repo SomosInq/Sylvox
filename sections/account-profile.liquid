@@ -1,0 +1,264 @@
+<div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
+  <aside class="account-sidebar">
+    {% render 'account-sidebar' %}
+  </aside>
+
+  <main class="account-content section_width_{{ section.settings.section_width }}">
+
+<div class="rewards-dashboard-wrapper">
+  <!-- Top user info and banner -->
+  <div class="rewards-header">
+    <div class="user-info">
+      <h2>User Name</h2>
+      <p>Email: {{ customer.email }}</p>
+      <p>Location: United States</p>
+    </div>
+    <div class="points-banner">
+      <div class="left">
+        <p class="subheading">Sylvox Membership</p>
+        <p class="title">Join the club, get rewarded.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+      </div>
+      <div class="right">
+        <p class="balance">00</p>
+        <p class="label">Points Balance</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earn Points to Win -->
+  <div class="rewards-section">
+    <h3>Earn Points to Win</h3>
+    <div class="rewards-grid">
+      <div class="reward-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3094/3094840.png" alt="Icon" />
+        <p class="title">Free 12V Soundbar</p>
+        <p class="points">$1000 Points</p>
+      </div>
+      <div class="reward-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3094/3094834.png" alt="Icon" />
+        <p class="title">Free Outdoor Soundbar</p>
+        <p class="points">$3000 Points</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How to Earn Points -->
+  <div class="rewards-section earn-methods">
+    <div class="section-header">
+      <h3>How to Earn Points</h3>
+      <a href="#" class="learn-more">Learn more →</a>
+    </div>
+    <div class="earn-grid">
+      <div class="earn-item">
+        <p class="title">Create account</p>
+        <p class="desc">5% Off discount</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Leave a product review</p>
+        <p class="desc">10 - 15 points</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Place an order</p>
+        <p class="desc">1 point for every $1.00</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Sign up for SMS</p>
+        <p class="desc">100 points</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Make your 2nd purchase</p>
+        <p class="desc">1.5 point for every $1.00</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Celebrate a birthday</p>
+        <p class="desc">100 points</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Follow on Instagram</p>
+        <p class="desc">20 points</p>
+      </div>
+      <div class="earn-item">
+        <p class="title">Follow on X</p>
+        <p class="desc">20 points</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% comment %} <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/Sylvox-Website-_-Figma-08-08-2025_02_50_PM.png?v=1754661119" alt="Your Image"> {% endcomment %}
+
+
+
+  </main>
+</div>
+
+<style>
+  .account-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+  }
+  .account-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .account-content {
+    flex: 1;
+  }
+  .account-profile-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.rewards-dashboard-wrapper {
+  padding: 40px;
+  font-family: sans-serif;
+}
+
+.rewards-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.points-banner {
+  background: #163c34;
+  color: white;
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
+}
+
+.points-banner .subheading {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.points-banner .title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.points-banner .learn-more {
+  font-size: 0.8rem;
+  color: white;
+  text-decoration: underline;
+}
+
+.points-banner .balance {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.points-banner .label {
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.rewards-section {
+  margin-bottom: 40px;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.reward-item {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+}
+
+.reward-item img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.reward-item .title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.reward-item .points {
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.earn-methods .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.earn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.earn-item {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.earn-item .title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.earn-item .desc {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Account Profile",
+  "settings": [
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    }
+  ]
+}
+{% endschema %}

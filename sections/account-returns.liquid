@@ -1,0 +1,268 @@
+<div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
+  <aside class="account-sidebar">
+    {% render 'account-sidebar' %}
+  </aside>
+
+  <main class="account-content section_width_{{ section.settings.section_width }}">
+
+    <div class="warranty-return-tabs">
+  <h2>{{ section.settings.title }}</h2>
+
+  <div class="tabs-nav">
+    <button type="button" class="tab-button active" data-tab="warranty">Warranty</button>
+    <button type="button" class="tab-button" data-tab="return">Return</button>
+  </div>
+
+  <div id="warranty" class="tab-content active">
+    {% for block in section.blocks %}
+      {% if block.type == 'warranty' %}
+        <div class="warranty-item">
+          <div class="info-group"><strong>Order:</strong> {{ block.settings.order_number }}</div>
+          <div class="info-group"><strong>Date:</strong> {{ block.settings.order_date }}</div>
+          <div class="info-group"><strong>Warranty:</strong> {{ block.settings.warranty_length }}</div>
+          <div class="info-group"><strong>Status:</strong> {{ block.settings.status }}</div>
+          <div class="info-group"><strong>{{ block.settings.product_name }}</strong> x{{ block.settings.quantity }}<br>USD {{ block.settings.price }}</div>
+          <div class="info-group">
+            <a href="{{ block.settings.learn_more_link }}" class="learn-more">Learn more</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div id="return" class="tab-content">
+    {% for block in section.blocks %}
+      {% if block.type == 'return' %}
+        <div class="return-info">
+          <h4>{{ block.settings.title }}</h4>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function () {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+
+      this.classList.add('active');
+      document.getElementById(this.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+        {% comment %} <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/Sylvox-Website-_-Figma-08-08-2025_02_50_PM_5.png?v=1754661119" alt="Your Image"> {% endcomment %}
+
+
+  </main>
+</div>
+
+<style>
+  .account-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+  }
+  .account-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .account-content {
+    flex: 1;
+  }
+
+
+  .warranty-return-tabs {
+    padding: 40px 0;
+  }
+
+  .warranty-return-tabs h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .tabs-nav {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+
+  .tabs-nav button {
+    background: none;
+    border: none;
+    font-weight: 600;
+    padding: 10px 0;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .tabs-nav button.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: black;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .warranty-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .warranty-item .info-group {
+    flex: 1 1 200px;
+  }
+
+  .learn-more {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #333;
+  }
+
+  .return-info {
+    padding: 16px 0;
+    border-bottom: 1px solid #ddd;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Account Orders",
+  "settings": [
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Warranty & Return"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "warranty",
+      "name": "Warranty Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "order_number",
+          "label": "Order Number",
+          "default": "XXXXXXX"
+        },
+        {
+          "type": "text",
+          "id": "order_date",
+          "label": "Order Date",
+          "default": "2025/05/26"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "43” Deck Pro 2.0"
+        },
+        {
+          "type": "number",
+          "id": "quantity",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "1,149.00"
+        },
+        {
+          "type": "text",
+          "id": "warranty_length",
+          "label": "Warranty Length",
+          "default": "1 YEAR"
+        },
+        {
+          "type": "text",
+          "id": "status",
+          "label": "Status",
+          "default": "ACTIVE (EXPIRES AT 2026/05/26)"
+        },
+        {
+          "type": "url",
+          "id": "learn_more_link",
+          "label": "Learn More Link"
+        }
+      ]
+    },
+    {
+      "type": "return",
+      "name": "Return Info Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Return Policy"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "You can return items within 30 days of delivery. Products must be unused and in original packaging."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Warranty & Return Tabs",
+      "blocks": [
+        {
+          "type": "warranty"
+        },
+        {
+          "type": "return"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,313 @@
+<div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
+  <aside class="account-sidebar">
+    {% render 'account-sidebar' %}
+  </aside>
+
+  <main class="account-content section_width_{{ section.settings.section_width }}">
+
+    <div class="membership-section">
+  <div class="membership-header">
+    <div class="membership-header__text">
+      <strong>{{ section.settings.membership_title }}</strong><br>
+      {{ section.settings.membership_subtitle }}
+    </div>
+    <div class="membership-header__points">
+      {{ section.settings.points_balance }}<br><small>{{ section.settings.points_label }}</small>
+    </div>
+  </div>
+
+  <div class="membership-tabs" role="tablist">
+    <div class="membership-tab active" data-tab="earn">{{ section.settings.tab_earn_label }}</div>
+    <div class="membership-tab" data-tab="claim">{{ section.settings.tab_claim_label }}</div>
+    <div class="membership-tab" data-tab="activity">{{ section.settings.tab_activity_label }}</div>
+  </div>
+
+  <div class="membership-tab-content active" data-content="earn">
+    <div class="membership-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'earn' %}
+        <div class="membership-item">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | image_url: width: 100 }}" alt="">
+          {% endif %}
+          <div><strong>{{ block.settings.title }}</strong></div>
+          <div>{{ block.settings.subtitle }}</div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="membership-tab-content" data-content="claim">
+    <div class="membership-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'claim' %}
+        <div class="membership-item">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | image_url: width: 100 }}" alt="">
+          {% endif %}
+          <div><strong>{{ block.settings.title }}</strong></div>
+          <div>{{ block.settings.subtitle }}</div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="membership-tab-content" data-content="activity">
+    <div class="membership-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'activity' %}
+        <div class="membership-item">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | image_url: width: 100 }}" alt="">
+          {% endif %}
+          <div><strong>{{ block.settings.title }}</strong></div>
+          <div>{{ block.settings.subtitle }}</div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.membership-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.membership-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.membership-tab-content').forEach(c => c.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.querySelector(`.membership-tab-content[data-content="${tab.dataset.tab}"]`).classList.add('active');
+  });
+});
+</script>
+
+    {% comment %} <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/Sylvox-Website-_-Figma-08-08-2025_02_50_PM_4.png?v=1754661119" alt="Your Image"> {% endcomment %}
+
+
+  </main>
+</div>
+
+<style>
+  .account-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+  }
+  .account-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+  }
+  .account-content {
+    flex: 1;
+  }
+
+  .membership-section {
+  padding: 40px 20px;
+}
+
+.membership-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1f3e36;
+  color: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.membership-header__text {
+  flex: 1;
+}
+
+.membership-header__points {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.membership-tabs {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #eee;
+}
+
+.membership-tab {
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+}
+
+.membership-tab.active {
+  border-color: #1f3e36;
+  color: #1f3e36;
+}
+
+.membership-tab-content {
+  display: none;
+}
+
+.membership-tab-content.active {
+  display: block;
+}
+
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.membership-item {
+  background: #f9f9f9;
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.membership-item img {
+  max-width: 48px;
+  margin-bottom: 16px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Membership",
+  "tag": "section",
+  "class": "membership",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "membership_title",
+      "label": "Membership Title",
+      "default": "Sylvox Membership"
+    },
+    {
+      "type": "text",
+      "id": "membership_subtitle",
+      "label": "Membership Subtitle",
+      "default": "Join the club, get rewarded."
+    },
+    {
+      "type": "text",
+      "id": "points_balance",
+      "label": "Points Balance",
+      "default": "500"
+    },
+    {
+      "type": "text",
+      "id": "points_label",
+      "label": "Points Label",
+      "default": "Points Balance"
+    },
+    {
+      "type": "text",
+      "id": "tab_earn_label",
+      "label": "Earn Points Tab Label",
+      "default": "Earn Points"
+    },
+    {
+      "type": "text",
+      "id": "tab_claim_label",
+      "label": "Claim Rewards Tab Label",
+      "default": "Claim Rewards"
+    },
+    {
+      "type": "text",
+      "id": "tab_activity_label",
+      "label": "My Activity Tab Label",
+      "default": "My Activity"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "earn",
+      "name": "Earn Block",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" }
+      ]
+    },
+    {
+      "type": "claim",
+      "name": "Claim Block",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" }
+      ]
+    },
+    {
+      "type": "activity",
+      "name": "Activity Block",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Membership Tabs",
+      "blocks": [
+        {
+          "type": "earn",
+          "settings": {
+            "title": "Create Account",
+            "subtitle": "5% Off discount"
+          }
+        },
+        {
+          "type": "earn",
+          "settings": {
+            "title": "Leave a product review",
+            "subtitle": "10 - 15 points"
+          }
+        },
+        {
+          "type": "claim",
+          "settings": {
+            "title": "Free Shipping",
+            "subtitle": "500 points"
+          }
+        },
+        {
+          "type": "activity",
+          "settings": {
+            "title": "Order #1234",
+            "subtitle": "Earned 20 points"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
