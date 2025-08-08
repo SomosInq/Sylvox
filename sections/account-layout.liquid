@@ -1,0 +1,31 @@
+
+<div class="account-wrapper">
+  {% render 'account-sidebar' %}
+  <div class="account-content">
+    {% case template.name %}
+      {% when 'page.account-orders' %}
+        {% render 'account-page-orders' %}
+      {% when 'page.account-address' %}
+        {% render 'account-page-address' %}
+      {% when 'page.account-membership' %}
+        {% render 'account-page-membership' %}
+      {% when 'page.account-returns' %}
+        {% render 'account-page-returns' %}
+      {% else %}
+        {% render 'account-page-content' %}
+    {% endcase %}
+  </div>
+</div>
+
+<style>
+  .account-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    font-family: sans-serif;
+  }
+
+  .account-content {
+    flex: 1;
+  }
+</style>

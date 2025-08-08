@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 34,
+            "activePatchIndex": 35,
             "patches": [
                 {
                     "date": 1748444519032,
@@ -144,6 +144,10 @@
                 {
                     "date": 1754405001379,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -258,9 +258,9 @@\n           </div>\n         {% endif %}\n \n       {% when 'title' %}\n-        <h2 class=\"text-2xl md:text-4xl font-bold mb-2\">{{ block.settings.title }}</h2>\n+        <h2 class=\" mb-2\">{{ block.settings.title }}</h2>\n \n       {% when 'text' %}\n         <p class=\"desc\">{{ block.settings.text }}</p>\n \n"
+                },
+                {
+                    "date": 1754490949626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -264,9 +264,9 @@\n       {% when 'text' %}\n         <p class=\"desc\">{{ block.settings.text }}</p>\n \n         {% when 'button' %}\n-          <div style=\"text-align: {{ block.settings.alignment | default: section.settings.text_alignment }}; margin-top: 14px;\">\n+          <div style=\"text-align: {{ block.settings.alignment | default: section.settings.text_alignment }} !important; margin-top: 14px;\">\n             <a\n               href=\"{{ block.settings.url }}\"\n               class=\"btn btn--{{ block.settings.size }}\"\n               style=\"\n"
                 }
             ],
             "date": 1748444519032,

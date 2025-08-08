@@ -2,12 +2,14 @@
   Custom section: Feature Grid | feature-grid.liquid
 {% endcomment %}
 
-<div class="feature-grid" id="{{ section.id }}">
+<div class="feature-grid section_width_{{ section.settings.section_width }}" id="{{ section.id }}">
+
+  <div class="feature-grid__wrapper feature-grid__desktop section_content_width_{{ section.settings.section_content_width }}">
+
   {% if section.settings.title != blank %}
     <h2 class="feature-grid__title">{{ section.settings.title }}</h2>
   {% endif %}
-
-  <div class="feature-grid__wrapper feature-grid__desktop">
+  
     <div class="feature-grid__row">
       {% for block in section.blocks %}
         {% if forloop.index != 1 %}
@@ -19,12 +21,12 @@
               <img src="{{ block.settings.top_image | image_url: width: block.settings.top_image_width }}" alt="">
             </div>
           {% endif %}
+          <div class="feature-grid__line"></div>
           {% if block.settings.big_word %}
             <div class="feature-grid__big-word" style="font-size: {{ block.settings.big_word_size }}px;">
               {{ block.settings.big_word }}
             </div>
           {% endif %}
-          <div class="feature-grid__line"></div>
           <div class="feature-grid__cell">
             {% if block.settings.symbol %}
               <div class="feature-grid__symbol">
@@ -75,9 +77,7 @@
   }
 
   .feature-grid__title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 600;
+    text-align: left;
     margin-bottom: 24px;
   }
 
@@ -260,6 +260,26 @@
   "tag": "section",
   "class": "feature-grid",
   "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
     {
       "type": "text",
       "id": "title",

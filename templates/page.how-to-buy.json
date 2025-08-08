@@ -77,10 +77,70 @@
         "button_icon_position": "left",
         "button_size": "medium"
       }
+    },
+    "somos_banner_npicmP": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_L8YVLT": {
+          "type": "heading",
+          "settings": {
+            "text": "How to Buy",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "left"
+          }
+        },
+        "richtext_6QM3xD": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Access user manuals, troubleshooting guides, and customer service resources in one place.</p>",
+            "color": "#ffffff",
+            "alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "heading_L8YVLT",
+        "richtext_6QM3xD"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": true,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/26d1519a43baaaaba9acc55815097f82b37d566f.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
     }
   },
   "order": [
     "main",
+    "somos_banner_npicmP",
     "image_text_yiPb3X"
   ]
 }

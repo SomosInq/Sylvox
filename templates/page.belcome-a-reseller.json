@@ -1014,47 +1014,126 @@
         "color_scheme": "none"
       }
     },
-    "text_with_icons_FbiDLh": {
-      "type": "text-with-icons",
+    "somos_grid_Re9ypw": {
+      "type": "somos-grid",
       "blocks": {
-        "text_block_UTPhC7": {
-          "type": "text_block",
+        "content_block_4jedLk": {
+          "type": "content_block",
           "settings": {
-            "icon": "bills",
+            "sub_title": "",
             "title": "Financial support",
-            "text": "<p>Flexible partner funding support program.</p>"
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 30,
+            "image": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb_e81d8df1-9ecb-4b58-8e57-fed73e18fd83.png",
+            "top_padding_bottom": 0,
+            "image_width": 10,
+            "text": "Flexible partner funding support program.",
+            "background_color": "#ffffff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
           }
         },
-        "text_block_UCtYET": {
-          "type": "text_block",
+        "content_block_nmgLnh": {
+          "type": "content_block",
           "settings": {
-            "icon": "chat",
+            "sub_title": "",
             "title": "Training Support",
-            "text": "<p>- Video conference training<br/>- In-person training session.</p>"
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 30,
+            "image": "shopify://shop_images/ca314dad77247b21eb7f517308b7087576d1f2ac_6d308323-d1e2-449f-9aef-44b1cdadf5d9.png",
+            "top_padding_bottom": 0,
+            "image_width": 10,
+            "text": "- Video conference training<br> - In-person training session.",
+            "background_color": "#ffffff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
           }
         },
-        "text_block_kghjtm": {
-          "type": "text_block",
+        "content_block_aUi9jk": {
+          "type": "content_block",
           "settings": {
-            "icon": "store",
+            "sub_title": "",
             "title": "Marketing Support",
-            "text": "<p>- Big events support<br/>- Digital marketing support<br/>- marketing support</p>"
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 30,
+            "image": "shopify://shop_images/f59bbc268948c9e1d1174fb09be93e8ea4e2dc3b_b42039ff-6453-40cd-908a-cc0212c46bb8.png",
+            "top_padding_bottom": 0,
+            "image_width": 10,
+            "text": "- Big events support<br>- Digital marketing support<br>- marketing support",
+            "background_color": "#ffffff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
           }
         }
       },
       "block_order": [
-        "text_block_UTPhC7",
-        "text_block_UCtYET",
-        "text_block_kghjtm"
+        "content_block_4jedLk",
+        "content_block_nmgLnh",
+        "content_block_aUi9jk"
       ],
+      "name": "Somos Grid",
       "settings": {
-        "title": "Partner Support",
-        "align_text": "center",
-        "desktop_columns_per_row": 3,
-        "icon_color": "#000000",
-        "button_label": "",
-        "button_link": "",
-        "divider": false
+        "header_text": "",
+        "header_tag": "h2",
+        "sub_text": "",
+        "header_alignment": "center",
+        "header_color": "#000000",
+        "header_weight": "600",
+        "background_color": "#ffffff",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid",
+        "custom_class": "",
+        "section_id": "",
+        "section_width": "standard",
+        "section_content_width": "standard"
       }
     },
     "contact_form_PBYtPE": {
@@ -1306,80 +1385,29 @@
         "divider": false
       }
     },
-    "feac7051-c804-448f-8b4c-ffb41b4cf0fa": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15090295898173__feac7051-c804-448f-8b4c-ffb41b4cf0fa-1668497932d96f0f7f-0": {
-          "type": "heading",
-          "settings": {
-            "title": "WHY SYLVOX?",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "template--15090295898173__feac7051-c804-448f-8b4c-ffb41b4cf0fa-1668497932d96f0f7f-0"
-      ],
+    "article_postslider_AnWdzc": {
+      "type": "article-postslider",
+      "name": "Article Blog Slider",
       "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "color_scheme": "none",
-        "divider": false
-      }
-    },
-    "9a16b00c-dc71-4947-86be-0eed51a258d3": {
-      "type": "text-columns",
-      "blocks": {
-        "template--15090295898173__9a16b00c-dc71-4947-86be-0eed51a258d3-1668497933726e0b2b-0": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/Picture6.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "More than 13 years of specialty in the TV industry",
-            "text": "<p>Sylvox is created for TV. Over a period of 13 years, our capabilities for innovation, through independent research and development, make products that complete and fulfifill all living areas.<br/></p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15090295898173__9a16b00c-dc71-4947-86be-0eed51a258d3-1668497933726e0b2b-1": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/Picture7_2dea5d36-fde4-4ea6-b032-41d76766289e.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Global industrial layout, devoted to global leadership",
-            "text": "<p>Headquartered in the United States, Sylvox currently has 4 major branches and multiple offifices around the world, covering many countries and regions like Canada, Japan, Hong Kong, Germany, etc.<br/></p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "template--15090295898173__9a16b00c-dc71-4947-86be-0eed51a258d3-1668497933726e0b2b-2": {
-          "type": "text_block",
-          "settings": {
-            "enable_image": true,
-            "image": "shopify://shop_images/Picture8.jpg",
-            "image_mask": "none",
-            "image_width": 650,
-            "title": "Excellent R&D team with many years of industry experience",
-            "text": "<p>Sylvox not only has its own top R&D team, but also has long-term cooperation with several research and development institutions and laboratories.<br/></p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15090295898173__9a16b00c-dc71-4947-86be-0eed51a258d3-1668497933726e0b2b-0",
-        "template--15090295898173__9a16b00c-dc71-4947-86be-0eed51a258d3-1668497933726e0b2b-1",
-        "template--15090295898173__9a16b00c-dc71-4947-86be-0eed51a258d3-1668497933726e0b2b-2"
-      ],
-      "settings": {
-        "title": "",
-        "align_text": "left",
-        "divider": false,
-        "color_scheme": "none"
+        "heading": "Why Sylvox?",
+        "heading_tag": "h2",
+        "subheading": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "background_color": "#ffffff",
+        "bg_color": "#ffffff",
+        "blog": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "slide_width": 360,
+        "show_dots": false,
+        "show_arrows": false
       }
     },
     "f577a8c5-8b72-4d02-b808-6f0a2ab64c5d": {
@@ -1455,13 +1483,12 @@
     "text_with_icons_AyVLrz",
     "09c66b9e-c271-4cbf-ab97-680780fd368f",
     "text_columns_PgXAic",
-    "text_with_icons_FbiDLh",
+    "somos_grid_Re9ypw",
     "contact_form_PBYtPE",
     "advanced_accordion_UyzAGn",
     "text_columns_RYNmCq",
     "logo_list_ttrpey",
-    "feac7051-c804-448f-8b4c-ffb41b4cf0fa",
-    "9a16b00c-dc71-4947-86be-0eed51a258d3",
+    "article_postslider_AnWdzc",
     "f577a8c5-8b72-4d02-b808-6f0a2ab64c5d"
   ]
 }

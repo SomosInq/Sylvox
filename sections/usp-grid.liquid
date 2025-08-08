@@ -2,15 +2,8 @@
 {{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
 
 <style>
-  .usp-box {
-    padding: 20px;
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+
+
 
   .usp-icon.small { width: 32px; }
   .usp-icon.medium { width: 48px; }
@@ -80,6 +73,40 @@ display: inline-flex;
     flex: none;
     margin-right: 20px;
   }
+/* Flex container — left by default */
+.usp-box {
+display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.usp-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  width: 100%; /* ✅ THIS IS THE FIX */
+}
+
+.usp-align-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.usp-align-center {
+  align-items: center;
+  text-align: center;
+}
+
+.usp-align-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+
+
 </style>
 
 <section class="usp-grid-section section_width_{{ section.settings.section_width }}"
@@ -111,10 +138,10 @@ display: inline-flex;
                  color: {{ block.settings.text_color }};
                  height: {{ section.settings.box_height }}px;"
           {{ block.shopify_attributes }}>
-          <div class="usp-inner">
+          <div class="usp-inner usp-align-{{ block.settings.content_alignment }}">
             {% if block.settings.icon %}
               <img src="{{ block.settings.icon | img_url: '150x150' }}" alt="{{ block.settings.title }}"
-                class="usp-icon {{ block.settings.image_size }}">
+                class="usp-icon {{ block.settings.image_size }}" >
             {% endif %}
             <h3 class="usp-title" style="font-size: {{ block.settings.title_font_size }}px;">
               {{ block.settings.title }}
@@ -151,7 +178,7 @@ display: inline-flex;
                  color: {{ block.settings.text_color }};
                  height: {{ section.settings.box_height }}px;"
           {{ block.shopify_attributes }}>
-          <div class="usp-inner">
+          <div class="usp-inner usp-align-{{ block.settings.content_alignment }}">
             {% if block.settings.icon %}
               <img src="{{ block.settings.icon | img_url: '150x150' }}" alt="{{ block.settings.title }}"
                 class="usp-icon {{ block.settings.image_size }}">
@@ -227,6 +254,17 @@ display: inline-flex;
       "type": "usp_item",
       "name": "USP Item",
       "settings": [
+        {
+  "type": "select",
+  "id": "content_alignment",
+  "label": "Content Alignment",
+  "default": "left",
+  "options": [
+    { "label": "Left", "value": "left" },
+    { "label": "Center", "value": "center" },
+    { "label": "Right", "value": "right" }
+  ]
+},
         { "type": "image_picker", "id": "icon", "label": "Icon Image" },
         { "type": "select", "id": "image_size", "label": "Icon Size", "default": "medium", "options": [ { "label": "Small", "value": "small" }, { "label": "Medium", "value": "medium" }, { "label": "Large", "value": "large" } ] },
         { "type": "text", "id": "title", "label": "Title", "default": "Authenticity Guarantee" },

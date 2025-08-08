@@ -1,0 +1,306 @@
+<style>
+  .section_width_standard,
+  .section_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_width_full {
+    width: 100%;
+  }
+
+  .section_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .section_content_width_standard,
+  .section_content_width_full {
+    transition: all 0.3s ease;
+  }
+
+  .section_content_width_full {
+    width: 100%;
+  }
+
+  .section_content_width_standard {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
+
+  .mid-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 0;
+    padding: var(--padding-top, 0px) var(--padding-right, 0px) var(--padding-bottom, 0px) var(--padding-left, 0px);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .mid-banner .content {
+    color: var(--text-color, #fff);
+    text-align: var(--text-align, left);
+    width: 100%;
+  }
+
+  .mid-banner h1,
+  .mid-banner h2,
+  .mid-banner h3,
+  .mid-banner h4,
+  .mid-banner h5,
+  .mid-banner h6 {
+    margin: 0 0 8px 0;
+  }
+
+  .mid-banner .subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+  }
+
+  .mid-banner .icon {
+    font-size: 3rem;
+  }
+
+  .mid-banner .media {
+    display: flex;
+    align-items: center;
+  }
+
+  .hidden-desktop { display: none !important; }
+  .hidden-tablet { display: none !important; }
+  .hidden-mobile { display: none !important; }
+
+  @media (min-width: 750px) and (max-width: 1024px) {
+    .hidden-tablet { display: none !important; }
+  }
+
+  @media (max-width: 749px) {
+    .hidden-mobile { display: none !important; }
+  }
+</style>
+{% assign wrapper_id = section.settings.custom_id | default: 'mid-banner-' | append: section.id %}
+
+<div
+  id="{{ wrapper_id }}"
+  class="mid-banner section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}
+    {% unless section.settings.show_on_desktop %} hidden-desktop{% endunless %}
+    {% unless section.settings.show_on_tablet %} hidden-tablet{% endunless %}
+    {% unless section.settings.show_on_mobile %} hidden-mobile{% endunless %}"
+  style="
+    background-color: {{ section.settings.background_color }};
+    {% if section.settings.background_image %}
+      background-image: url({{ section.settings.background_image | image_url: width: 2000 }});
+    {% endif %}
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+    min-height: {{ section.settings.desktop_height }}px;
+  "
+>
+  <div class="section_content_width_{{ section.settings.section_content_width }}">
+    <div class="media">
+      <div class="icon" style="padding-right: 20px;">
+        {% if section.settings.icon != blank %}
+          <img src="{{ section.settings.icon | image_url }}" alt="icon" loading="lazy" style="width: 48px;" />
+        {% else %}
+          <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48" fill="#fff"><path d="M480 576q33 0 56.5-23.5T560 496q0-33-23.5-56.5T480 416q-33 0-56.5 23.5T400 496q0 33 23.5 56.5T480 576Zm0 320q116 0 198-82t82-198q0-116-82-198T480 336q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-40q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70ZM480 96q-66 0-125 25T247 191l-41-42q52-52 120.5-82.5T480 36q84 0 152.5 30.5T753 149l-42 42q-42-42-101-66.5T480 96ZM104 273q-14-14-14-34t14-34l86-86 68 67-85 86q-14 14-34 14t-34-13Zm752 0L770 187l67-67 86 86q14 14 14 34t-14 34q-14 14-34 14t-33-14ZM479 936Z"/></svg>
+        {% endif %}
+      </div>
+      <div class="content" style="text-align: {{ section.settings.text_align }};">
+        <{{ section.settings.title_tag }} style="color: {{ section.settings.title_color }}; font-weight: {{ section.settings.title_weight }};">
+          {{ section.settings.title }}
+        </{{ section.settings.title_tag }}>
+        <p class="subtitle">{{ section.settings.subtitle }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Mid Banner",
+  "tag": "section",
+  "class": "mid-banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Create account"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "5% Off discount"
+    },
+    {
+      "type": "select",
+      "id": "title_tag",
+      "label": "Title Tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" },
+        { "value": "p", "label": "Body" },
+        { "value": "em", "label": "Italic" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title Weight",
+      "default": "700",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#1E3D39"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon Upload"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "50% Width" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+  "type": "range",
+  "id": "padding_top",
+  "label": "Padding Top (px)",
+  "default": 0,
+  "min": 0,
+  "max": 200,
+  "step": 5
+},
+{
+  "type": "range",
+  "id": "padding_bottom",
+  "label": "Padding Bottom (px)",
+  "default": 0,
+  "min": 0,
+  "max": 200,
+  "step": 5
+},
+{
+  "type": "range",
+  "id": "padding_left",
+  "label": "Padding Left (px)",
+  "default": 0,
+  "min": 0,
+  "max": 200,
+  "step": 5
+},
+{
+  "type": "range",
+  "id": "padding_right",
+  "label": "Padding Right (px)",
+  "default": 0,
+  "min": 0,
+  "max": 200,
+  "step": 5
+},
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "Show on Desktop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_tablet",
+      "label": "Show on Tablet",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on Mobile",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "desktop_height",
+      "label": "Section Height (Desktop px)",
+      "default": 120
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+    {
+      "type": "textarea",
+      "id": "json_blocks",
+      "label": "JSON Blocks",
+      "info": "Add structured data for dynamic use (e.g., card content)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mid Banner",
+      "category": "Somos Custom"
+    }
+  ]
+}
+{% endschema %}

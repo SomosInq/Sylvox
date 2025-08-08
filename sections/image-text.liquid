@@ -265,7 +265,7 @@
         <p class="desc">{{ block.settings.text }}</p>
 
         {% when 'button' %}
-          <div style="text-align: {{ block.settings.alignment | default: section.settings.text_alignment }}; margin-top: 14px;">
+          <div style="text-align: {{ block.settings.alignment | default: section.settings.text_alignment }} !important; margin-top: 14px;">
             <a
               href="{{ block.settings.url }}"
               class="btn btn--{{ block.settings.size }}"

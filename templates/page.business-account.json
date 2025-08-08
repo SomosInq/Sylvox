@@ -29,10 +29,10 @@
           "type": "heading",
           "settings": {
             "text": "Your Global Display Partner.",
-            "heading_tag": "h2",
+            "heading_tag": "h1",
             "color": "#ffffff",
             "italic": false,
-            "font_weight": "400",
+            "font_weight": "700",
             "alignment": "center"
           }
         }
@@ -48,7 +48,7 @@
         "custom_content_width_enabled": true,
         "custom_content_width": 90,
         "mobile_content_width": 90,
-        "section_height": 500,
+        "section_height": 760,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/331944528804660a086ce53a4446d524a0f0f0de.jpg",
@@ -177,8 +177,8 @@
         "margin_left": 0,
         "margin_right": 0,
         "text_alignment": "left",
-        "heading": "Your Outdoor Oasis, Upgraded.",
-        "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
+        "heading": "",
+        "subheading": "",
         "description": "",
         "show_arrows": true,
         "show_dots": true,
@@ -186,12 +186,139 @@
         "slide_height": 1000,
         "slide_width": 1600
       }
+    },
+    "multi_unit_enquiry_yLeUAk": {
+      "type": "multi-unit-enquiry",
+      "name": "Multi-Unit Enquiry Form",
+      "settings": {
+        "title": "",
+        "description": "",
+        "form_action": "/contact#contact_form",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "usp_grid_DyM6GR": {
+      "type": "usp-grid",
+      "blocks": {
+        "usp_item_A84Y6f": {
+          "type": "usp_item",
+          "settings": {
+            "content_alignment": "center",
+            "icon": "shopify://shop_images/Icons_0b931d3e-8585-449c-b622-a1dbd7f0ebd7.png",
+            "image_size": "medium",
+            "title": "Guarantee",
+            "title_font_size": 20,
+            "text": "100% Genuine, Quality Assured",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_9gWdEX": {
+          "type": "usp_item",
+          "settings": {
+            "content_alignment": "center",
+            "icon": "shopify://shop_images/Icons-1_3938cc07-9f61-44ca-af4c-416bce1f45db.png",
+            "image_size": "medium",
+            "title": "Secure Payment",
+            "title_font_size": 20,
+            "text": "Supports Multiple Payment Methods",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_gqCTzh": {
+          "type": "usp_item",
+          "settings": {
+            "content_alignment": "center",
+            "icon": "shopify://shop_images/Icons-2_6168c7cd-0036-4ff4-95ee-60a196c1175c.png",
+            "image_size": "medium",
+            "title": "Buy Now Pay Later",
+            "title_font_size": 20,
+            "text": "Flexible Installment Plans Available",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_Txt9RU": {
+          "type": "usp_item",
+          "settings": {
+            "content_alignment": "center",
+            "icon": "shopify://shop_images/Icons-3_72184126-c5bc-4924-bdd8-0607ce91821a.png",
+            "image_size": "medium",
+            "title": "Fast & Free Shipping",
+            "title_font_size": 20,
+            "text": "3-12 Business Days Shipping",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_A84Y6f",
+        "usp_item_9gWdEX",
+        "usp_item_gqCTzh",
+        "usp_item_Txt9RU"
+      ],
+      "name": "USP Grid",
+      "settings": {
+        "enable_slider": false,
+        "section_width": "standard",
+        "heading": "",
+        "heading_font_size": 32,
+        "subtext": "",
+        "heading_alignment": "center",
+        "box_height": 300,
+        "show_arrows": true,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
     }
   },
   "order": [
     "main",
     "somos_banner_wjg6PF",
     "image_text_eL4MaV",
-    "new_banner_slider_RXFgEB"
+    "new_banner_slider_RXFgEB",
+    "multi_unit_enquiry_yLeUAk",
+    "usp_grid_DyM6GR"
   ]
 }

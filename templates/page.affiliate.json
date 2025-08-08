@@ -88,10 +88,310 @@
         "text_alignment": "left",
         "vertical_alignment": "center"
       }
+    },
+    "image_text_HicWYG": {
+      "type": "image-text",
+      "blocks": {
+        "title_kBkGzx": {
+          "type": "title",
+          "settings": {
+            "title": "Earn a minimum of 5% commission on every sale you refer to Sylvox.com"
+          }
+        }
+      },
+      "block_order": [
+        "title_kBkGzx"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "somos_grid_RLc8ma": {
+      "type": "somos-grid",
+      "blocks": {
+        "content_block_agUrpi": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "How it works",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "600",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 45,
+            "top_padding_bottom": 0,
+            "image_width": 100,
+            "text": "",
+            "background_color": "#ffffff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_K7gVpa": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "600",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 45,
+            "top_padding_bottom": 0,
+            "image_width": 100,
+            "text": "We're inviting influencers and website owners to join our Vantrue Affiliate Program!\n\nSign up for the Vantrue Affiliate Program for free—it only takes a few minutes. Once registered, you'll receive a unique referral link. Share this link on your website, blog, or social media to drive traffic to Vantrue.com. For every order placed through your link, you'll earn a 5% to 8% commission on each sale. The more you share, the more you earn!",
+            "background_color": "#ffffff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_block_agUrpi",
+        "content_block_K7gVpa"
+      ],
+      "name": "Somos Grid",
+      "settings": {
+        "header_text": "",
+        "header_tag": "h2",
+        "sub_text": "",
+        "header_alignment": "center",
+        "header_color": "#000000",
+        "header_weight": "600",
+        "background_color": "#ffffff",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid",
+        "custom_class": "",
+        "section_id": "",
+        "section_width": "standard",
+        "section_content_width": "standard"
+      }
+    },
+    "somos_grid_gwU4wN": {
+      "type": "somos-grid",
+      "blocks": {
+        "content_block_4pFxCa": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "1",
+            "title": "Become an affiliate",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "600",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 30,
+            "image": "shopify://shop_images/Vector_f035f8e6-07bb-43e5-97b2-48ff687f4a4f.svg",
+            "top_padding_bottom": 60,
+            "image_width": 35,
+            "text": "The first step is to create a free account and join the Sylvox Affiliate Program, it only takes a few minutes.\n<br><br>\nJoin Affiliate Shareasale &gt;",
+            "background_color": "#a7dcb7",
+            "padding_top": 132,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_LhmJP4": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "2",
+            "title": "Share your affiliate link",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#ffffff",
+            "title_weight": "600",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 30,
+            "image": "shopify://shop_images/Vector_1_96937eaf-4b21-4263-82b5-fcefaa373abe.svg",
+            "top_padding_bottom": 60,
+            "image_width": 45,
+            "text": "Get your unique link to share anywhere.",
+            "background_color": "#336256",
+            "padding_top": 132,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_dn96Gm": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "3",
+            "title": "Get Paid",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#ffffff",
+            "title_weight": "600",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 30,
+            "image": "shopify://shop_images/Vector_2.svg",
+            "top_padding_bottom": 60,
+            "image_width": 45,
+            "text": "Earn a minimum of 5% commission each month!",
+            "background_color": "#20413b",
+            "padding_top": 132,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_block_4pFxCa",
+        "content_block_LhmJP4",
+        "content_block_dn96Gm"
+      ],
+      "name": "Somos Grid",
+      "settings": {
+        "header_text": "",
+        "header_tag": "h2",
+        "sub_text": "",
+        "header_alignment": "center",
+        "header_color": "#000000",
+        "header_weight": "600",
+        "background_color": "#ffffff",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid",
+        "custom_class": "",
+        "section_id": "",
+        "section_width": "standard",
+        "section_content_width": "standard"
+      }
+    },
+    "feature_grid_yKbfjR": {
+      "type": "feature-grid",
+      "blocks": {
+        "feature_RTmUNz": {
+          "type": "feature",
+          "settings": {
+            "top_image_width": 300,
+            "big_word": "#1",
+            "big_word_size": 36,
+            "text": "Sylvox is consistently the top selling outdoor tv on Amazon."
+          }
+        },
+        "feature_x48Vxb": {
+          "type": "feature",
+          "settings": {
+            "top_image_width": 300,
+            "big_word": "$1200",
+            "big_word_size": 36,
+            "text": "Our average order value, guaranteeing high commissions"
+          }
+        },
+        "feature_JrBmRf": {
+          "type": "feature",
+          "settings": {
+            "top_image_width": 300,
+            "big_word": "5%",
+            "big_word_size": 36,
+            "text": "Your commission rate on qualifying sales."
+          }
+        }
+      },
+      "block_order": [
+        "feature_RTmUNz",
+        "feature_x48Vxb",
+        "feature_JrBmRf"
+      ],
+      "name": "Feature Grid",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "title": "Why Choose Sylvox",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_mobile": 20,
+        "symbol_width_desktop": 60,
+        "symbol_width_mobile": 50,
+        "divider_color": "#e0e0e0",
+        "text_color": "#1d1d1b"
+      }
     }
   },
   "order": [
     "main",
-    "somos_banner_VJbWmR"
+    "somos_banner_VJbWmR",
+    "image_text_HicWYG",
+    "somos_grid_RLc8ma",
+    "somos_grid_gwU4wN",
+    "feature_grid_yKbfjR"
   ]
 }
