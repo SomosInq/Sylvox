@@ -1,0 +1,10 @@
+// {"sections":{"main":{"type":"main-addresses","settings":{}}},"order":["main"]}
+{
+  "name": "Customer Address",
+  "sections": {
+    "main": {
+      "type": "account-layout"
+    }
+  },
+  "order": ["main"]
+}

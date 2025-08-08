@@ -1,0 +1,9 @@
+{
+  "name": "Customer Returns",
+  "sections": {
+    "main": {
+      "type": "account-layout"
+    }
+  },
+  "order": ["main"]
+}
