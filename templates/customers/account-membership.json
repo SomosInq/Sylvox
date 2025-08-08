@@ -1,0 +1,9 @@
+{
+  "name": "Customer Membership",
+  "sections": {
+    "main": {
+      "type": "account-layout"
+    }
+  },
+  "order": ["main"]
+}

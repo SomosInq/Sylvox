@@ -1,0 +1,298 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "somos_banner_P4nXAA": {
+      "type": "somos-banner",
+      "blocks": {
+        "subheading_VfqUpX": {
+          "type": "subheading",
+          "settings": {
+            "text": "Outdoor TV Finder tool",
+            "color": "#ffffff",
+            "alignment": "center"
+          }
+        },
+        "heading_mVVMwi": {
+          "type": "heading",
+          "settings": {
+            "text": "Reimagine your outdoor",
+            "heading_tag": "h1",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        },
+        "button_WfKwre": {
+          "type": "button",
+          "settings": {
+            "text": "Start Now",
+            "url": "",
+            "style": "fill",
+            "size": "base",
+            "text_color": "#ffffff",
+            "background": "#20413b",
+            "outline_color": "#000000",
+            "icon_image": "shopify://shop_images/SVG_12ed0f33-98a6-4f3a-ba17-041bcfafd74e.svg",
+            "icon_position": "right",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_VfqUpX",
+        "heading_mVVMwi",
+        "button_WfKwre"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": false,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/c5c76a8635e58584c09272aca99f825dcfa8ddf2.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "left_right_t9aHeW": {
+      "type": "left-right",
+      "name": "Left + Right Media",
+      "settings": {
+        "image": "shopify://shop_images/6f53e40c49f3cc2ca66459ce6c1c63b7198a3fc5.png",
+        "media_position": "right",
+        "image_width": 80,
+        "image_ratio": "landscape",
+        "lazy_load": true,
+        "image_hover_effect": "zoom",
+        "top_title": "Visualize your options",
+        "top_title_tag": "h2",
+        "top_title_color": "",
+        "top_title_weight": "700",
+        "top_title_align": "left",
+        "top_title_italic": false,
+        "top_text": "<p>Experience Sylvox TV in realistic environments, even in your own home. Explore, search, and uncover products. Visualize how they appear and complement each other. Combine different items to discover the ideal arrangement.</p>",
+        "top_text_color": "",
+        "top_text_align": "left",
+        "top_text_italic": false,
+        "top_button_text": "",
+        "top_button_link": "",
+        "button_style": "primary",
+        "icon_position": "right",
+        "background_color": "",
+        "overlay_color": "",
+        "overlay_opacity": 0,
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "left_right_mcJC43": {
+      "type": "left-right",
+      "name": "Left + Right Media",
+      "settings": {
+        "image": "shopify://shop_images/6920ad8604462afa7fcdd70d619d5b9b87befe83.png",
+        "media_position": "left",
+        "image_width": 80,
+        "image_ratio": "landscape",
+        "lazy_load": true,
+        "image_hover_effect": "zoom",
+        "top_title": "Choose your products",
+        "top_title_tag": "h2",
+        "top_title_color": "",
+        "top_title_weight": "700",
+        "top_title_align": "left",
+        "top_title_italic": false,
+        "top_text": "<p>Visually compare items to see what best suits your space,style, and budget. Share and remix designs to find what worksfor everyone at home. You’ll have peace of mind that you’remaking the right choice.</p>",
+        "top_text_color": "",
+        "top_text_align": "left",
+        "top_text_italic": false,
+        "top_button_text": "",
+        "top_button_link": "",
+        "button_style": "primary",
+        "icon_position": "right",
+        "background_color": "",
+        "overlay_color": "",
+        "overlay_opacity": 0,
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_id": "",
+        "custom_class": ""
+      }
+    },
+    "image_text_Ypz3jf": {
+      "type": "image-text",
+      "blocks": {
+        "title_FVPCC4": {
+          "type": "title",
+          "settings": {
+            "title": "Make your space shine"
+          }
+        },
+        "text_BhjDpJ": {
+          "type": "text",
+          "settings": {
+            "text": "Try out our models and find the best fit for your outdoor space. Choose the model, size, and configuration that suits your needs perfectly"
+          }
+        }
+      },
+      "block_order": [
+        "title_FVPCC4",
+        "text_BhjDpJ"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "somos_banner_dBPTzh": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_LJTqJa": {
+          "type": "heading",
+          "settings": {
+            "text": "Try it out in your own outdoor space.",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "left"
+          }
+        },
+        "richtext_J9JKcA": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Capture a high-fidelity scan of a whole room (iPhone/iPad Pro) or a photorealistic image of a specific area (iOS & Android), and see items in your own space.</p>",
+            "color": "#ffffff",
+            "alignment": "left"
+          }
+        },
+        "button_faGbP8": {
+          "type": "button",
+          "settings": {
+            "text": "Start Now",
+            "url": "",
+            "style": "fill",
+            "size": "base",
+            "text_color": "#ffffff",
+            "background": "#20413b",
+            "outline_color": "rgba(0,0,0,0)",
+            "icon_image": "shopify://shop_images/SVG_12ed0f33-98a6-4f3a-ba17-041bcfafd74e.svg",
+            "icon_position": "right",
+            "alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LJTqJa",
+        "richtext_J9JKcA",
+        "button_faGbP8"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": true,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/c1bd112c9886b41200f3ad1d55623cef7c718ee9_4cd1f6df-a55d-463d-97c7-03b5e89bf3e1.png",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 60,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "left",
+        "vertical_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somos_banner_P4nXAA",
+    "left_right_t9aHeW",
+    "left_right_mcJC43",
+    "image_text_Ypz3jf",
+    "somos_banner_dBPTzh"
+  ]
+}

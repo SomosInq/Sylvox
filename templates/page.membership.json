@@ -1,0 +1,859 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "somos_banner_BNREKU": {
+      "type": "somos-banner",
+      "blocks": {
+        "subheading_PM4RWz": {
+          "type": "subheading",
+          "settings": {
+            "text": "Reward program",
+            "color": "#ffffff",
+            "alignment": "left"
+          }
+        },
+        "heading_hwFRkh": {
+          "type": "heading",
+          "settings": {
+            "text": "Sign up",
+            "heading_tag": "h2",
+            "color": "#000000",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "left"
+          }
+        },
+        "button_XRRbkj": {
+          "type": "button",
+          "settings": {
+            "text": "Sign up",
+            "url": "",
+            "style": "fill",
+            "size": "base",
+            "text_color": "#ffffff",
+            "background": "#20413b",
+            "outline_color": "#000000",
+            "icon_image": "shopify://shop_images/SVG_12ed0f33-98a6-4f3a-ba17-041bcfafd74e.svg",
+            "icon_position": "right",
+            "alignment": "left"
+          }
+        },
+        "button_KiRNmL": {
+          "type": "button",
+          "settings": {
+            "text": "Log in",
+            "url": "",
+            "style": "outline",
+            "size": "base",
+            "text_color": "#20413b",
+            "background": "#20413b",
+            "outline_color": "#20413b",
+            "icon_image": "shopify://shop_images/SVG_1_0c4b6d38-881c-41e8-8025-b03f24cf27d4.svg",
+            "icon_position": "right",
+            "alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_PM4RWz",
+        "heading_hwFRkh",
+        "button_XRRbkj",
+        "button_KiRNmL"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": true,
+        "custom_content_width": 100,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/7cac0a1597c10b0d1cd7e3ffb78ca6d9c1c296be_9c2e08fd-2e5e-4525-8e63-1f90926627d2.jpg",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "left",
+        "vertical_alignment": "center"
+      }
+    },
+    "somos_grid_9tcN66": {
+      "type": "somos-grid",
+      "blocks": {
+        "content_block_gxLmLr": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "Step 1",
+            "title": "Join Us",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#ffffff",
+            "title_weight": "600",
+            "text": "Get XXXX points when you register",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 100,
+            "top_padding_bottom": 0,
+            "image_width": 100,
+            "background_image": "shopify://shop_images/f74e339c76c6a81c601504e65d6850e9a4310123.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 52,
+            "padding_bottom": 52,
+            "padding_left": 52,
+            "padding_right": 60,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_UaDnkM": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "Step 2",
+            "title": "Earn SylvoxCredits",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#ffffff",
+            "title_weight": "600",
+            "text": "Collect points with each purchase to access special discounts and complimentary products.",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 100,
+            "top_padding_bottom": 0,
+            "image_width": 100,
+            "background_image": "shopify://shop_images/4d42bcd1b7e71d6856da97d6612e123402a61273.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 52,
+            "padding_bottom": 52,
+            "padding_left": 52,
+            "padding_right": 60,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_J7GhHR": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "Step 3",
+            "title": "Redeem Rewards",
+            "title_tag": "h3",
+            "title_italic": false,
+            "title_color": "#ffffff",
+            "title_weight": "600",
+            "text": "Use Sylvoxcredits to Redeem special discounts and free products",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "middle",
+            "content_width": 100,
+            "top_padding_bottom": 0,
+            "image_width": 100,
+            "background_image": "shopify://shop_images/b2913ff37683af7502ed4f89efe483c924849f73.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 52,
+            "padding_bottom": 52,
+            "padding_left": 52,
+            "padding_right": 60,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_block_gxLmLr",
+        "content_block_UaDnkM",
+        "content_block_J7GhHR"
+      ],
+      "name": "Somos Grid",
+      "settings": {
+        "sub_text": "",
+        "header_text": "How it works",
+        "desc_text": "",
+        "top_title_padding_bottom": 50,
+        "header_color": "#000000",
+        "header_alignment": "center",
+        "header_tag": "h2",
+        "header_weight": "600",
+        "background_color": "#ffffff",
+        "section_id": "",
+        "custom_class": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid"
+      }
+    },
+    "image_text_E6a8bT": {
+      "type": "image-text",
+      "blocks": {
+        "title_hwcypC": {
+          "type": "title",
+          "settings": {
+            "title": "Ways to earn points"
+          }
+        }
+      },
+      "block_order": [
+        "title_hwcypC"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "mid_banner_feNdyQ": {
+      "type": "mid-banner",
+      "name": "Mid Banner",
+      "settings": {
+        "title": "Create account",
+        "subtitle": "5% Off discount",
+        "title_tag": "h2",
+        "title_color": "#ffffff",
+        "title_weight": "700",
+        "text_align": "left",
+        "background_color": "#1e3d39",
+        "icon": "shopify://shop_images/user-3-fill.svg",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "desktop_height": 120,
+        "custom_class": "",
+        "custom_id": "",
+        "json_blocks": ""
+      }
+    },
+    "somos_grid_hBPcK6": {
+      "type": "somos-grid",
+      "blocks": {
+        "content_block_HVayKM": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Leave a product review",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "10 - 15 points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "image": "shopify://shop_images/chat-check-line.png",
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_ehptkU": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Place an order",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "1 point for every $1.00",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "image": "shopify://shop_images/shopping-bag-2-line.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_t6eCtU": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Sign up for SMS",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "100 points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "image": "shopify://shop_images/mail-send-line.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_Gr6QMT": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Make your 2nd purchase",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "1.5 point for every $1.00",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "image": "shopify://shop_images/coins-line.png",
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_AMDdMR": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Celebrate a birthday",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "100 points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "image": "shopify://shop_images/cake-2-line.png",
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_VA6Cx8": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Follow on Instagram",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "20 points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "image": "shopify://shop_images/instagram-line.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_LYxtMe": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Follow on X",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "20 points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 20,
+            "top_padding_bottom": 0,
+            "image_width": 20,
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_dMNxQw": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Like page on Facebook",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "20 points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 100,
+            "top_padding_bottom": 0,
+            "image_width": 100,
+            "image": "shopify://shop_images/facebook-circle-fill.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 32,
+            "padding_bottom": 32,
+            "padding_left": 32,
+            "padding_right": 32,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_block_HVayKM",
+        "content_block_ehptkU",
+        "content_block_t6eCtU",
+        "content_block_Gr6QMT",
+        "content_block_AMDdMR",
+        "content_block_VA6Cx8",
+        "content_block_LYxtMe",
+        "content_block_dMNxQw"
+      ],
+      "name": "Somos Grid",
+      "settings": {
+        "sub_text": "",
+        "header_text": "",
+        "desc_text": "",
+        "top_title_padding_bottom": 0,
+        "header_color": "#000000",
+        "header_alignment": "center",
+        "header_tag": "h2",
+        "header_weight": "600",
+        "background_color": "#fbfbfb",
+        "section_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid"
+      }
+    },
+    "somos_grid_QarJdc": {
+      "type": "somos-grid",
+      "blocks": {
+        "content_block_C6Nan7": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Free 12V Soundbar",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "$1000 Points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 100,
+            "top_padding_bottom": 0,
+            "image_width": 45,
+            "image": "shopify://shop_images/4314fe75509b65a2b001e3bb1f7578df606257fa.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        },
+        "content_block_8tYmmJ": {
+          "type": "content_block",
+          "settings": {
+            "sub_title": "",
+            "title": "Free Outdoor Soundbar",
+            "title_tag": "h5",
+            "title_italic": false,
+            "title_color": "#000000",
+            "title_weight": "400",
+            "text": "$3000 Points",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle",
+            "content_width": 100,
+            "top_padding_bottom": 0,
+            "content_width": 45,
+            "image": "shopify://shop_images/d2ecc24bbbcb7ee7e2a042cb3ce17e1e0b3cc993.png",
+            "background_color": "#ffffff",
+            "text_at_bottom": false,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "button_text": "",
+            "button_link": "",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "custom_class": "",
+            "custom_id": "",
+            "json_block": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_block_C6Nan7",
+        "content_block_8tYmmJ"
+      ],
+      "name": "Somos Grid",
+      "settings": {
+        "sub_text": "",
+        "header_text": "Ways to spend points",
+        "desc_text": "",
+        "top_title_padding_bottom": 0,
+        "header_color": "#000000",
+        "header_alignment": "left",
+        "header_tag": "h2",
+        "header_weight": "600",
+        "background_color": "#ffffff",
+        "section_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 90,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid"
+      }
+    },
+    "image_text_q8rWx6": {
+      "type": "image-text",
+      "blocks": {
+        "title_wKWYfe": {
+          "type": "title",
+          "settings": {
+            "title": "VIP"
+          }
+        },
+        "text_qU9mA3": {
+          "type": "text",
+          "settings": {
+            "text": "Your all access pass to exclusive rewards. Reach higher tiers for more exclusive perks."
+          }
+        }
+      },
+      "block_order": [
+        "title_wKWYfe",
+        "text_qU9mA3"
+      ],
+      "name": "Somos Image/Text Flex Blocks",
+      "settings": {
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "button_background_color": "#000000",
+        "button_outline_color": "#ffffff",
+        "button_icon": "none",
+        "button_icon_position": "left",
+        "button_size": "medium"
+      }
+    },
+    "somos_grid_xbEeHR": {
+      "type": "somos-grid",
+      "blocks": {
+        "vip_column_block_aGC7ky": {
+          "type": "vip_column_block",
+          "settings": {
+            "image_1_width": 100,
+            "title_1": "Explorer",
+            "title_1_span": "(Basic Member)",
+            "description_1": "Free to join",
+            "bg_color_1": "#a7dcb7",
+            "image_2": "shopify://shop_images/confetti.svg",
+            "image_2_width": 40,
+            "title_2": "Point Multiplier",
+            "description_2": "1x",
+            "bg_color_2": "#f7f7f7",
+            "font_color_2": "#000000",
+            "html_3": "Welcome Bonus<br>\nFree to join\n<br><br>\nExclusive Perks<br>\n- Access to new product updates<br>\n- Participate in basic point campaigns",
+            "bg_color_3": "#f7f7f7"
+          }
+        },
+        "vip_column_block_Xb3zCc": {
+          "type": "vip_column_block",
+          "settings": {
+            "image_1_width": 100,
+            "title_1": "Adventurer",
+            "title_1_span": "",
+            "description_1": "Spend $1000+ total",
+            "bg_color_1": "#336256",
+            "image_2": "shopify://shop_images/confetti.svg",
+            "image_2_width": 40,
+            "title_2": "Point Multiplier",
+            "description_2": "1x",
+            "bg_color_2": "#f7f7f7",
+            "font_color_2": "#000000",
+            "html_3": "Welcome Bonus<br>\nFree to join\n<br><br>\nExclusive Perks<br>\n- Access to new product updates<br>\n- Participate in basic point campaigns",
+            "bg_color_3": "#f7f7f7"
+          }
+        },
+        "vip_column_block_dVCdAH": {
+          "type": "vip_column_block",
+          "settings": {
+            "image_1_width": 100,
+            "title_1": "Trailblazer",
+            "title_1_span": "",
+            "description_1": "Spend $4,500+ total",
+            "bg_color_1": "#20413b",
+            "image_2": "shopify://shop_images/confetti.svg",
+            "image_2_width": 40,
+            "title_2": "Point Multiplier",
+            "description_2": "1x",
+            "bg_color_2": "#f7f7f7",
+            "font_color_2": "#000000",
+            "html_3": "Welcome Bonus<br>\nFree to join\n<br><br>\nExclusive Perks<br>\n- Access to new product updates<br>\n- Participate in basic point campaigns",
+            "bg_color_3": "#f7f7f7"
+          }
+        },
+        "vip_column_block_fpYipc": {
+          "type": "vip_column_block",
+          "settings": {
+            "image_1_width": 100,
+            "title_1": "Pioneer",
+            "title_1_span": "(Elite Member)",
+            "description_1": "Spend $10,000+ total",
+            "bg_color_1": "#db4b97",
+            "image_2": "shopify://shop_images/confetti.svg",
+            "image_2_width": 40,
+            "title_2": "Point Multiplier",
+            "description_2": "1x",
+            "bg_color_2": "#f7f7f7",
+            "font_color_2": "#000000",
+            "html_3": "Welcome Bonus<br>\nFree to join\n<br><br>\nExclusive Perks<br>\n- Access to new product updates<br>\n- Participate in basic point campaigns",
+            "bg_color_3": "#f7f7f7"
+          }
+        }
+      },
+      "block_order": [
+        "vip_column_block_aGC7ky",
+        "vip_column_block_Xb3zCc",
+        "vip_column_block_dVCdAH",
+        "vip_column_block_fpYipc"
+      ],
+      "name": "Somos Grid",
+      "settings": {
+        "sub_text": "",
+        "header_text": "VIP",
+        "desc_text": "Your all access pass to exclusive rewards. Reach higher tiers for more exclusive perks.",
+        "top_title_padding_bottom": 0,
+        "header_color": "#000000",
+        "header_alignment": "left",
+        "header_tag": "h2",
+        "header_weight": "600",
+        "background_color": "#ffffff",
+        "section_id": "",
+        "custom_class": "",
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "show_on_desktop": true,
+        "show_on_tablet": true,
+        "show_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "slider_mode": "grid"
+      }
+    },
+    "faq_rewards_kdL4Rr": {
+      "type": "faq-rewards",
+      "name": "FAQ Rewards",
+      "settings": {
+        "title": "Frequently asked questions",
+        "q1_question": "What is this?",
+        "q1_answer": "We’re excited to show our appreciation through our exclusive rewards program! By creating an account, you’ll earn points for various activities on our site, such as referrals and purchases. These points can be redeemed for discounts on future purchases—the more points you collect, the more you save!",
+        "q2_question": "Who can join?",
+        "q2_answer": "",
+        "q3_question": "How do I earn points?",
+        "q3_answer": "",
+        "q4_question": "How do I redeem my points?",
+        "q4_answer": "",
+        "q5_question": "Is there a limit to the number of points I can earn?",
+        "q5_answer": "",
+        "q6_question": "What do the 'approved,' 'pending' and 'cancelled' statuses mean?",
+        "q6_answer": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somos_banner_BNREKU",
+    "somos_grid_9tcN66",
+    "image_text_E6a8bT",
+    "mid_banner_feNdyQ",
+    "somos_grid_hBPcK6",
+    "somos_grid_QarJdc",
+    "image_text_q8rWx6",
+    "somos_grid_xbEeHR",
+    "faq_rewards_kdL4Rr"
+  ]
+}
