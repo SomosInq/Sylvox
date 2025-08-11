@@ -40,7 +40,7 @@
           "type": "button",
           "settings": {
             "text": "Start Now",
-            "url": "",
+            "url": "shopify://pages/how-to-buy",
             "style": "fill",
             "size": "base",
             "text_color": "#ffffff",
@@ -237,7 +237,7 @@
           "type": "button",
           "settings": {
             "text": "Start Now",
-            "url": "",
+            "url": "shopify://pages/how-to-buy",
             "style": "fill",
             "size": "base",
             "text_color": "#ffffff",
