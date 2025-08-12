@@ -104,7 +104,18 @@ display: flex;
   text-align: right;
 }
 
-
+@media only screen and (max-width: 768px) { 
+  .usp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .usp-grid .usp-box {
+    height: 100%!important;
+    aspect-ratio: unset;
+    min-width: unset;
+  }
+}
 
 
 </style>

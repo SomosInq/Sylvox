@@ -136,7 +136,7 @@ window.ChatraSetup = {
 
   {% render 'back-to-the-top' %}
   <body
-    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} .sticky-anchor.fixed{{ template | replace: '.', '-' }}"
+    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} {{ template | replace: '.', '-' }}"
     data-button_style="{{ settings.button_style }}"
     data-edges="{{ settings.roundness }}"
     data-cart-type="{{ settings.cart_type }}"

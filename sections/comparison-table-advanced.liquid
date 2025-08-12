@@ -58,6 +58,36 @@
     height: 2px;
     background: #000;
   }
+
+  @media (max-width: 768px) {
+    .comparison-section {
+      overflow: hidden;
+    }
+    .comparison-section .parent-categories {
+      width: fit-content;
+      overflow: auto;
+      justify-content: flex-start;
+      padding-inline: 10px;
+      margin-left: -25px;
+      border-radius: 0;
+    }
+    .comparison-section .parent-categories .category-tab {
+      flex-shrink: 0;
+    }
+    
+    .comparison-section .subcategory-tabs {
+      width: 100%;
+    }
+    .comparison-section .subcategory-tabs .subcategory-tab {
+      width: 33%;
+    }
+    .comparison-section .comparison-table {
+      min-width: 578px!important;
+      transform: scale(0.8);
+      transform-origin: top left;
+    }
+
+  }
 </style>
 
 <div class="comparison-section section_width_{{ section.settings.section_width }}" style="
@@ -108,7 +138,7 @@
 
     <!-- Unified Scroll Container -->
     <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
-      <div style="min-width: 768px;">
+      <div class="comparison-table" style="min-width: 768px;">
 
         <!-- Header Section -->
         <div class="comparison-header" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">

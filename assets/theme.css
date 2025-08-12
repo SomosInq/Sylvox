@@ -1792,9 +1792,6 @@ display: flex;
     .shopify-section--image-with-text-overlay .btn {
       padding: 8px 27px;
     }
-    .image-text-blocks-section .section_content_width_standard:first-child > img:first-child {
-      width: 18%!important;
-    }
     .comparison .comparison__image-wrapper img {
       width: 100%!important;
     }
@@ -9111,6 +9108,33 @@ width: 100%; height: 200px; background: #ddd;
   .image-text-blocks-section {
     padding-top: 30px !important;
     padding-bottom: 30px !important;
+    padding-inline: 20px !important;
+  }
+  .account-wrapper {
+    flex-flow: column;
+    gap: 20px!important;
+  }
+  .account-wrapper .account-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    padding: 0;
+  }
+  .account-wrapper .account-profile__right {
+    min-width: unset;
+  }
+  .account-wrapper .account-profile__right .form-header {
+    flex-flow: column;
+  }
+  .account-wrapper .account-content,
+  .account-wrapper .account-addresses {
+    padding-inline: 0!important;
+  }
+  .account-wrapper .account-addresses .address-card {
+    max-width: 90%;
   }
 }
 
