@@ -292,3 +292,14 @@
     {% endcase %}
   {% endfor %}
 </div>
+
+{% style %}
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .image-text-blocks-section {
+      overflow: hidden;
+    }
+    #shopify-section-{{ section.id }} .image-text-blocks-section .section_content_width_standard {
+      padding-inline: 0!important;
+    }
+  }
+{% endstyle %}

@@ -341,6 +341,42 @@ padding: 30px;
  .support-hidden {
   display: none !important;
 }
+@media only screen and (max-width: 768px) { 
+  .support-section {
+    padding: 60px 0 !important;
+    width: 100% !important
+  }
+  .support-section > .section_content_width_standard {
+    padding: 0!important;
+  }
+  .support-section .support-inner {
+    flex-flow: column;
+  }
+  .support-section .support-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  .support-section .support-nav .left-menu-link {
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+  }
+  .support-section .support-nav .left-menu-link.active {
+    border-color: black;
+    border-radius: 5px;
+  }
+  .support-section .support-content table {
+    margin-left: -20px;
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 375px) { 
+   .support-section .support-content table {
+    margin-left: -20px;
+    font-size: 0.82rem;
+  }
+}
 </style>
 
 
