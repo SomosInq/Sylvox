@@ -84,7 +84,11 @@
 
   <div class="cart__item-remove">
     <a href="{{ routes.cart_change_url }}?id={{ item.key }}&amp;quantity=0" class="text-link">
-      {% render 't_with_fallback', key: 'actions.remove', fallback: 'Remove' %}
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+        <path d="M3.28125 4.06055L3.86719 13.4355C3.89502 13.9772 4.28906 14.3731 4.80469 14.3731H10.1953C10.713 14.3731 11.0997 13.9772 11.1328 13.4355L11.7188 4.06055" stroke="#8F8F8F" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2.34375 4.06055H12.6562" stroke="#8F8F8F" stroke-width="0.9375" stroke-miterlimit="10" stroke-linecap="round"/>
+        <path d="M9.60938 5.93555L9.375 12.4981M7.5 5.93555V12.4981M5.39062 5.93555L5.625 12.4981M5.625 4.06055V2.88868C5.62473 2.79627 5.64273 2.70471 5.67797 2.61928C5.71321 2.53385 5.76499 2.45623 5.83034 2.39089C5.89568 2.32554 5.9733 2.27376 6.05873 2.23852C6.14416 2.20328 6.23572 2.18528 6.32812 2.18555H8.67188C8.76429 2.18528 8.85584 2.20328 8.94127 2.23852C9.0267 2.27376 9.10432 2.32554 9.16966 2.39089C9.23501 2.45623 9.28679 2.53385 9.32203 2.61928C9.35727 2.70471 9.37527 2.79627 9.375 2.88868V4.06055H5.625Z" stroke="#8F8F8F" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </a>
   </div>
 

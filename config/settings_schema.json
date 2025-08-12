@@ -1028,6 +1028,66 @@
         "type": "page",
         "id": "cart_terms_conditions_page",
         "label": "t:labels.terms_and_conditions"
+      },
+      {
+        "type": "header",
+        "content": "USP 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image_1",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text_1",
+        "label": "Heading",
+        "default": "Fast and Free Shipping"
+      },
+      {
+        "type": "header",
+        "content": "USP 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image_2",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text_2",
+        "label": "Heading",
+        "default": "30-Day Money-Back Guarantee"
+      },
+      {
+        "type": "header",
+        "content": "USP 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image_3",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text_3",
+        "label": "Heading",
+        "default": "Hassle-Free Warranty"
+      },
+      {
+        "type": "header",
+        "content": "USP 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image_4",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text_4",
+        "label": "Heading",
+        "default": "Lifetime Customer Support"
       }
     ]
   },

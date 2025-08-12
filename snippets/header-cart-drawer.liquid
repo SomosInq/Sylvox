@@ -25,10 +25,10 @@
 
 <header-cart-drawer class="cart-drawer" defer-hydration>
   <div class="cart-drawer-header">
-    <h2>Cart</h2>
+    <h2>Cart <span data-cart-count>{{ cart.item_count }}</span></h2>
     <button class="cart_drawer_close js-close-header-cart" type="button" aria-label="Close cart">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 6L6 18M6 6L18 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+        <path d="M5.69479 5.77482L8.80688 2.66274C8.85411 2.61712 8.89179 2.56255 8.9177 2.50222C8.94362 2.44188 8.95726 2.37699 8.95784 2.31133C8.95841 2.24566 8.94589 2.18055 8.92103 2.11977C8.89616 2.05899 8.85944 2.00378 8.81301 1.95734C8.76658 1.91091 8.71136 1.87419 8.65058 1.84933C8.58981 1.82446 8.52469 1.81195 8.45902 1.81252C8.39336 1.81309 8.32847 1.82673 8.26813 1.85265C8.2078 1.87857 8.15323 1.91624 8.10761 1.96347L4.99553 5.07556L1.88344 1.96347C1.79017 1.87339 1.66526 1.82355 1.53559 1.82467C1.40593 1.8258 1.28189 1.87781 1.1902 1.9695C1.09851 2.06119 1.0465 2.18522 1.04538 2.31489C1.04425 2.44455 1.09409 2.56947 1.18418 2.66274L4.29626 5.77482L1.18418 8.88691C1.13694 8.93253 1.09927 8.9871 1.07335 9.04743C1.04743 9.10777 1.03379 9.17266 1.03322 9.23832C1.03265 9.30399 1.04516 9.3691 1.07003 9.42988C1.09489 9.49066 1.13162 9.54587 1.17805 9.5923C1.22448 9.63874 1.2797 9.67546 1.34047 9.70032C1.40125 9.72519 1.46637 9.7377 1.53203 9.73713C1.59769 9.73656 1.66259 9.72292 1.72292 9.697C1.78326 9.67108 1.83783 9.63341 1.88344 9.58618L4.99553 6.47409L8.10761 9.58618C8.17659 9.6558 8.26473 9.70332 8.36081 9.72267C8.45688 9.74201 8.55655 9.73232 8.6471 9.69482C8.73764 9.65731 8.81498 9.5937 8.86924 9.51209C8.9235 9.43047 8.95223 9.33455 8.95178 9.23654C8.95179 9.1716 8.939 9.10729 8.91413 9.0473C8.88927 8.98731 8.85283 8.9328 8.80688 8.88691L5.69479 5.77482Z" fill="#C6C6C6"/>
       </svg>
     </button>
   </div>
@@ -53,11 +53,56 @@
     </div>
 
     <div class="cart__footer">
+      <div class="cart-usp-section">
+        <div class="cart-usp-header">Reasons to Choose Sylvox!</div>
+        <div class="cart-usp-grid">
+          {% if settings.usp_text_1 != blank %}
+          <div class="cart-usp-item">
+            <div class="cart-usp-icon">
+              <img src="{{ settings.usp_image_1 | image_url  }}" alt="" width="30" height="30">
+            </div>
+            <div class="cart-usp-text">
+              {{ settings.usp_text_1 }}
+            </div>
+          </div>
+          {% endif %}
+          {% if settings.usp_text_2 != blank %}
+          <div class="cart-usp-item">
+            <div class="cart-usp-icon">
+              <img src="{{ settings.usp_image_2 | image_url  }}" alt="" width="30" height="30">
+            </div>
+            <div class="cart-usp-text">
+              {{ settings.usp_text_2 }}
+            </div>
+          </div>
+          {% endif %}
+          {% if settings.usp_text_3 != blank %}
+          <div class="cart-usp-item">
+            <div class="cart-usp-icon">
+              <img src="{{ settings.usp_image_3 | image_url  }}" alt="" width="30" height="30">
+            </div>
+            <div class="cart-usp-text">
+              {{ settings.usp_text_3 }}
+            </div>
+          </div>
+          {% endif %}
+          {% if settings.usp_text_4 != blank %}
+          <div class="cart-usp-item">
+            <div class="cart-usp-icon">
+              <img src="{{ settings.usp_image_4 | image_url  }}" alt="" width="30" height="30">
+            </div>
+            <div class="cart-usp-text">
+              {{ settings.usp_text_4 }}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
       <div class="cart__item-sub cart__item-row cart__item--subtotal">
         <div>
-          {% render 't_with_fallback', key: 'labels.subtotal', fallback: 'Subtotal' %}
+          Total
         </div>
-        <div data-subtotal>{{ cart.total_price | money }}</div>
+        <div data-carttotal>{{ cart.total_price | money }}</div>
       </div>
 
       <div data-discounts></div>
@@ -98,6 +143,9 @@
           class="btn cart__checkout"
         >
           {% render 't_with_fallback', key: 'actions.checkout', fallback: 'Check out' %}
+          <span data-subtotal>
+            {%- render 'price', price: cart.total_price -%}
+          </span>
         </button>
 
         {% if cart_type == 'dropdown' and additional_checkout_buttons and cart_additional_buttons %}
@@ -105,7 +153,7 @@
         {% endif %}
       </div>
 
-      <div class="cart__item-row--footer text-center">
+      {% comment %} <div class="cart__item-row--footer text-center">
         <small>
           {%- if cart.taxes_included -%}
             {% assign info_shipping_at_checkout_taxes_included = 'info.shipping_at_checkout_taxes_included' | t %}
@@ -121,7 +169,7 @@
             %}
           {%- endif -%}
         </small>
-      </div>
+      </div> {% endcomment %}
     </div>
     <script type="application/json" data-locales>
       {
