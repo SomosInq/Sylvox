@@ -1,247 +1,290 @@
+<style>
+  .account-wrapper{display:flex;gap:40px;padding:40px;align-items:flex-start}
+  .account-sidebar{width:220px;flex-shrink:0}
+  .account-content{flex:1}
+
+  .account-profile-wrapper{display:flex;gap:40px;flex-direction:column}
+  .account-profile-top{border-bottom:1px solid rgba(0,0,0,.08);width:100%;display:flex;padding-bottom:20px}
+  .account-profile-top__info{flex:1}
+
+  .points-banner{background:#163c34;color:#fff;padding:1.2rem;border-radius:8px;display:flex;justify-content:space-between;margin-top:1rem}
+  .points-banner__info .subheading{font-size:.75rem;opacity:.8}
+  .points-banner__info .title{font-size:1rem;font-weight:600;margin:.2rem 0}
+  .points-banner__balance .balance{font-size:2rem;font-weight:700}
+  .points-banner__balance .label{font-size:.8rem}
+  .learn-more{font-size:.85rem;color:#fff;text-decoration:underline}
+
+  .form-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+  .form-links a{margin-left:1rem;font-size:.9rem;color:#db4b97}
+
+  .account-profile-form label{display:block;margin-bottom:1rem}
+  .account-profile-form input[type="text"],
+  .account-profile-form input[type="email"],
+  .account-profile-form input[type="date"]{width:100%;padding:.6rem;border:1px solid #ccc;border-radius:4px}
+  .row{display:flex;gap:1rem}
+  .row label{flex:1}
+  fieldset{border:none;padding:0;margin-bottom:1rem}
+  fieldset legend{margin-bottom:.5rem;font-weight:600}
+  fieldset label{margin-right:1.5rem}
+  .checkbox{font-size:.85rem;margin-bottom:1.5rem}
+  .phone-row{display:flex;gap:.5rem}
+  .phone-row .country-code{width:60px}
+  .required{color:#db4b97}
+
+  /* Readonly state */
+  .is-readonly .account-profile-form input,
+  .is-readonly .account-profile-form select,
+  .is-readonly .account-profile-form textarea{pointer-events:none;background:#f7f7f7}
+  .is-readonly .account-profile-form input[type="checkbox"],
+  .is-readonly .account-profile-form input[type="radio"]{opacity:.6}
+
+  /* Password panel */
+  .password-panel{border:1px solid #eee;border-radius:8px;padding:16px;margin:12px 0;display:none}
+  .password-panel.is-open{display:block}
+  .password-preview{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#faf6ff;border:1px dashed #e3d0f0;border-radius:6px;padding:8px 10px;margin-bottom:10px;min-height:20px;display:flex;align-items:center;justify-content:space-between}
+  .password-preview__value{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80%}
+  .password-preview[data-empty="true"] .password-preview__value{opacity:.5}
+  .password-preview__toggle{font-size:.85rem;color:#7a21a8;text-decoration:underline;cursor:pointer}
+  .password-actions{display:flex;gap:8px;margin-top:10px}
+  .btn{appearance:none;border:1px solid #db4b97;padding:8px 14px;border-radius:6px;cursor:pointer}
+  .btn--primary{background:#db4b97;color:#fff;border-color:#db4b97}
+  .btn--ghost{background:#fff;color:#db4b97}
+  .form-hint{font-size:.85rem;color:#666;margin-top:6px}
+  .form-error{color:#b00020;margin-top:6px;font-size:.9rem}
+  .form-success{color:#0a7a34;margin-top:6px;font-size:.9rem}
+</style>
+
 <div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
   <aside class="account-sidebar">
     {% render 'account-sidebar' %}
   </aside>
 
   <main class="account-content section_width_{{ section.settings.section_width }}">
-
-<div class="account-profile-wrapper">
-  <div class="account-profile__left">
-    <h2>User Name</h2>
-    <p>Email: {{ customer.email }}</p>
-    <p>Location: United States</p>
-
-    <div class="points-banner">
-      <div class="points-banner__info">
-        <p class="subheading">Sylvox Membership</p>
-        <p class="title">Join the club, get rewarded.</p>
-        <a href="#" class="learn-more">Learn more →</a>
-      </div>
-      <div class="points-banner__balance">
-        <p class="balance">00</p>
-        <p class="label">Points Balance</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="account-profile__right">
-    <div class="form-header">
-      <h3>My Profile</h3>
-      <div class="form-links">
-        <a href="#" class="edit">✎ Edit</a>
-        <a href="#" class="password">Create Password</a>
-      </div>
-    </div>
-
-    <form class="account-profile-form">
-      <label>
-        Register Email
-        <input type="email" value="{{ customer.email }}" placeholder="you@example.com" />
-      </label>
-
-      <label class="checkbox">
-        <input type="checkbox" />
-        Get 200 Points for my first email subscription and receive Jackery's latest news and offers. Agree to Sylvox's Terms of Service and Privacy Policy.
-      </label>
-
-      <div class="row">
-        <label>
-          First Name
-          <input type="text" placeholder="First Name" />
-        </label>
-        <label>
-          Last Name
-          <input type="text" placeholder="Last Name" />
-        </label>
-      </div>
-
-      <label>
-        Date of Birth <span class="required">*</span>
-        <input type="date" />
-      </label>
-
-      <fieldset>
-        <legend>Gender</legend>
-        <label><input type="radio" name="gender" value="secrecy" checked /> Secrecy</label>
-        <label><input type="radio" name="gender" value="female" /> Female</label>
-        <label><input type="radio" name="gender" value="male" /> Male</label>
-      </fieldset>
-
-      <label>
-        Phone
-        <div class="phone-row">
-          <input type="text" class="country-code" value="+1" />
-          <input type="text" placeholder="Phone Number" />
+    <div class="account-profile-wrapper">
+      <div class="account-profile-top">
+        <div class="account-profile-top__info">
+          <h2>{{ customer.first_name | default: 'User' }} {{ customer.last_name }}</h2>
+          <p>Email: {{ customer.email }}</p>
+          <p>{{ customer.default_address.country }}</p>
         </div>
-      </label>
 
-      <label class="checkbox">
-        <input type="checkbox" />
-        Get 200 Points for my first email subscription and receive Jackery's latest news and offers. Agree to Sylvox's Terms of Service and Privacy Policy.
-      </label>
-    </form>
-  </div>
-</div>
+        <div class="points-banner">
+          <div class="points-banner__info">
+            <p class="subheading">Sylvox Membership</p>
+            <p class="title">Join the club, get rewarded.</p>
+            <a href="#" class="learn-more">Learn more →</a>
+          </div>
+          <div class="points-banner__balance">
+            <p class="balance">00</p>
+            <p class="label">Points Balance</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="account-profile is-readonly" id="accountProfile">
+        <div class="form-header">
+          <h3>My Profile</h3>
+          <div class="form-links">
+            <a href="#" class="edit js-edit">✎ Edit</a>
+            <a href="#" class="password js-password">{% if customer %}Change Password{% else %}Create Password{% endif %}</a>
+          </div>
+        </div>
 
-{% comment %} <img src="https://cdn.shopify.com/s/files/1/0584/6256/8509/files/Sylvox-Website-_-Figma-08-08-2025_02_50_PM.png?v=1754661119" alt="Your Image"> {% endcomment %}
+        <!-- Inline password panel -->
+        <div class="password-panel" id="passwordPanel" aria-hidden="true">
+          <div class="password-preview" id="passwordPreview" data-empty="true">
+            <span class="password-preview__value" id="passwordPreviewValue">••••••</span>
+            <button type="button" class="password-preview__toggle" id="passwordPreviewToggle" aria-pressed="false">Show</button>
+          </div>
 
+          <form id="inlinePasswordForm" novalidate>
+            <label>
+              New Password
+              <input type="password" id="newPassword" autocomplete="new-password" minlength="6" required />
+            </label>
+            <label>
+              Confirm Password
+              <input type="password" id="confirmPassword" autocomplete="new-password" minlength="6" required />
+            </label>
+            <div class="password-actions">
+              <button type="submit" class="btn btn--primary">Submit</button>
+              <button type="button" class="btn btn--ghost js-cancel-password">Cancel</button>
+            </div>
+            <p class="form-hint">For your security, you’ll receive an email to confirm and set this password.</p>
+            <p class="form-error" id="pwError" hidden></p>
+            <p class="form-success" id="pwSuccess" hidden>Check your email for a secure link to finish changing your password.</p>
+          </form>
 
+          <!-- Hidden official Shopify recover form (sends reset email to logged-in customer) -->
+          {% form 'recover_customer_password' %}
+            <input type="email" name="email" value="{{ customer.email }}" hidden>
+            <button type="submit" id="recoverSubmit" hidden>Send</button>
+          {% endform %}
+        </div>
 
+        <form class="account-profile-form" id="accountProfileForm">
+          <label>
+            Register Email
+            <input type="email" value="{{ customer.email }}" placeholder="you@example.com" />
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" />
+            Get 200 Points for my first email subscription and receive Jackery's latest news and offers. Agree to Sylvox's Terms of Service and Privacy Policy.
+          </label>
+
+          <div class="row">
+            <label>
+              First Name
+              <input type="text" value="{{ customer.first_name }}" placeholder="First Name" />
+            </label>
+            <label>
+              Last Name
+              <input type="text" value="{{ customer.last_name }}" placeholder="Last Name" />
+            </label>
+          </div>
+
+          <label>
+            Date of Birth <span class="required">*</span>
+            <input type="date" />
+          </label>
+
+          <fieldset>
+            <legend>Gender</legend>
+            <label><input type="radio" name="gender" value="secrecy" checked /> Secrecy</label>
+            <label><input type="radio" name="gender" value="female" /> Female</label>
+            <label><input type="radio" name="gender" value="male" /> Male</label>
+          </fieldset>
+
+          <label>
+            Phone
+            <div class="phone-row">
+              <input type="text" class="country-code" value="+1" />
+              <input type="text" placeholder="Phone Number" />
+            </div>
+          </label>
+
+          <label class="checkbox">
+            <input type="checkbox" />
+            Get 200 Points for my first email subscription and receive Jackery's latest news and offers. Agree to Sylvox's Terms of Service and Privacy Policy.
+          </label>
+        </form>
+      </div>
+    </div>
   </main>
 </div>
 
-<style>
-  .account-wrapper {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-    align-items: flex-start;
-  }
-  .account-sidebar {
-    width: 220px;
-    flex-shrink: 0;
-  }
-  .account-content {
-    flex: 1;
-  }
-  .account-profile-wrapper {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
+<script>
+(function() {
+  const root = document.getElementById('accountProfile');
+  const form = document.getElementById('accountProfileForm');
+  const editBtn = root.querySelector('.js-edit');
 
-.account-profile-wrapper {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
+  // Make fields readonly until Edit clicked
+  const setReadonly = (readonly) => {
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        el.disabled = readonly;
+      } else {
+        el.readOnly = readonly;
+      }
+    });
+    root.classList.toggle('is-readonly', readonly);
+  };
+  setReadonly(true);
 
-.account-profile__left {
-  flex: 1;
-  min-width: 280px;
-}
+  editBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const nowReadonly = root.classList.contains('is-readonly');
+    setReadonly(!nowReadonly);
+    editBtn.textContent = nowReadonly ? 'Save' : '✎ Edit';
+    // Optional: handle save state here (AJAX to your app, etc.)
+  });
 
-.account-profile__right {
-  flex: 2;
-  min-width: 400px;
-}
+  // Password panel logic
+  const panel = document.getElementById('passwordPanel');
+  const openPw = root.querySelector('.js-password');
+  const cancelPw = root.querySelector('.js-cancel-password');
+  const pwForm = document.getElementById('inlinePasswordForm');
+  const pwError = document.getElementById('pwError');
+  const pwSuccess = document.getElementById('pwSuccess');
+  const preview = document.getElementById('passwordPreview');
+  const previewValue = document.getElementById('passwordPreviewValue');
+  const previewToggle = document.getElementById('passwordPreviewToggle');
+  const newPw = document.getElementById('newPassword');
+  const confirmPw = document.getElementById('confirmPassword');
+  const recoverSubmit = document.getElementById('recoverSubmit');
 
-.points-banner {
-  background: #163c34;
-  color: #fff;
-  padding: 1.2rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-}
+  const showPanel = (show) => {
+    panel.classList.toggle('is-open', show);
+    panel.setAttribute('aria-hidden', show ? 'false' : 'true');
+    if (show) newPw.focus();
+  };
 
-.points-banner__info .subheading {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
+  const setPreview = () => {
+    const val = newPw.value;
+    if (!val) {
+      preview.dataset.empty = 'true';
+      previewValue.textContent = '••••••';
+    } else {
+      preview.dataset.empty = 'false';
+      const isVisible = previewToggle.getAttribute('aria-pressed') === 'true';
+      previewValue.textContent = isVisible ? val : '•'.repeat(Math.min(val.length, 32));
+    }
+  };
 
-.points-banner__info .title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0.2rem 0;
-}
+  openPw.addEventListener('click', (e) => {
+    e.preventDefault();
+    pwError.hidden = true; pwSuccess.hidden = true;
+    newPw.value = ''; confirmPw.value = '';
+    previewToggle.setAttribute('aria-pressed', 'false');
+    setPreview();
+    showPanel(true);
+  });
 
-.points-banner__balance .balance {
-  font-size: 2rem;
-  font-weight: bold;
-}
+  cancelPw.addEventListener('click', () => showPanel(false));
+  newPw.addEventListener('input', setPreview);
+  previewToggle.addEventListener('click', () => {
+    const current = previewToggle.getAttribute('aria-pressed') === 'true';
+    previewToggle.setAttribute('aria-pressed', String(!current));
+    previewToggle.textContent = current ? 'Show' : 'Hide';
+    setPreview();
+  });
 
-.points-banner__balance .label {
-  font-size: 0.8rem;
-}
+  pwForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    pwError.hidden = true; pwSuccess.hidden = true;
 
-.learn-more {
-  font-size: 0.85rem;
-  color: #fff;
-  text-decoration: underline;
-}
+    const a = newPw.value.trim();
+    const b = confirmPw.value.trim();
 
-.form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
+    if (a.length < 6) {
+      pwError.textContent = 'Password must be at least 6 characters.'; pwError.hidden = false; return;
+    }
+    if (a !== b) {
+      pwError.textContent = 'Passwords do not match.'; pwError.hidden = false; return;
+    }
 
-.form-links a {
-  margin-left: 1rem;
-  font-size: 0.9rem;
-  color: #db4b97;
-}
+    // Trigger Shopify recover flow (sends email to {{ customer.email }})
+    // Note: We never store or transmit the raw password; this is just UI sugar.
+    recoverSubmit.click();
 
-.account-profile-form label {
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.account-profile-form input[type="text"],
-.account-profile-form input[type="email"],
-.account-profile-form input[type="date"] {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-
-
-.row {
-  display: flex;
-  gap: 1rem;
-}
-
-.row label {
-  flex: 1;
-}
-
-fieldset {
-  border: none;
-  padding: 0;
-  margin-bottom: 1rem;
-}
-
-fieldset legend {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-fieldset label {
-  margin-right: 1.5rem;
-}
-
-.checkbox {
-  font-size: 0.85rem;
-  margin-bottom: 1.5rem;
-}
-
-.phone-row {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.phone-row .country-code {
-  width: 60px;
-}
-
-.required {
-  color: #db4b97;
-}
-
-
-</style>
+    pwSuccess.hidden = false;
+    // Clear and hide the panel + preview after a short delay
+    setTimeout(() => {
+      newPw.value = ''; confirmPw.value = '';
+      setPreview();
+      showPanel(false);
+    }, 800);
+  });
+})();
+</script>
 
 {% schema %}
 {
   "name": "Account Profile",
   "settings": [
-      {
+    {
       "type": "select",
       "id": "section_width",
       "label": "Section Width",

@@ -3,24 +3,27 @@
     {% render 'account-sidebar' %}
   </aside>
 
-  <main class="account-content section_width_{{ section.settings.section_width }}">
-    {% case template.name %}
-      {% when 'page.account-profile' %}
-        {% render 'account-page-profile' %}
-      {% when 'page.account-profile-form' %}
-        {% render 'account-page-profile-form' %}
-      {% when 'page.account-orders' %}
-        {% render 'account-page-orders' %}
-      {% when 'page.account-address' %}
-        {% render 'account-page-address' %}
-      {% when 'page.account-membership' %}
-        {% render 'account-page-membership' %}
-      {% when 'page.account-returns' %}
-        {% render 'account-page-returns' %}
-      {% else %}
-        {% render 'account-page-content' %}
-    {% endcase %}
-  </main>
+<main class="account-content section_width_{{ section.settings.section_width }}">
+  {% case template.name %}
+    {% when 'customers/account' %}
+      {% render 'account-page-profile' %}
+
+    {% when 'page.account-profile' %}
+      {% render 'account-page-profile' %}
+    {% when 'page.account-profile-form' %}
+      {% render 'account-page-profile-form' %}
+    {% when 'page.account-orders' %}
+      {% render 'account-page-orders' %}
+    {% when 'page.account-address' %}
+      {% render 'account-page-address' %}
+    {% when 'page.account-membership' %}
+      {% render 'account-page-membership' %}
+    {% when 'page.account-returns' %}
+      {% render 'account-page-returns' %}
+    {% else %}
+      {% render 'account-page-profile' %}
+  {% endcase %}
+</main>
 </div>
 
 

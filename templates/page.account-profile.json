@@ -1,9 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Customer Profile",
   "sections": {
     "main": {
-      "type": "account-profile"
+      "type": "account-profile",
+      "blocks": {
+        "reward_item_U8pgLr": {
+          "type": "reward_item",
+          "settings": {
+            "icon": "shopify://shop_images/4314fe75509b65a2b001e3bb1f7578df606257fa.png",
+            "icon_size": 40,
+            "title": "Free 12V Soundbar",
+            "points_text": "$1000 Points"
+          }
+        },
+        "reward_item_3TXrXc": {
+          "type": "reward_item",
+          "settings": {
+            "icon": "shopify://shop_images/d2ecc24bbbcb7ee7e2a042cb3ce17e1e0b3cc993.png",
+            "icon_size": 40,
+            "title": "Free Outdoor Soundbar",
+            "points_text": "$3000 Points"
+          }
+        },
+        "earn_item_DFV6eK": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Create account",
+            "desc": "5% Off discount"
+          }
+        },
+        "earn_item_FdEDVr": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Leave a product review",
+            "desc": "10 - 15 points"
+          }
+        },
+        "earn_item_c6A4jC": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Place an order",
+            "desc": "1 point for every $1.00"
+          }
+        },
+        "earn_item_FA3zWa": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Sign up for SMS",
+            "desc": "100 points"
+          }
+        },
+        "earn_item_XaGRt7": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Make your 2nd purchase",
+            "desc": "1.5 point for every $1.00"
+          }
+        },
+        "earn_item_4iiWrV": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Celebrate a birthday",
+            "desc": "100 points"
+          }
+        },
+        "earn_item_eURkG6": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Follow on Instagram",
+            "desc": "20 points"
+          }
+        },
+        "earn_item_yRkJbQ": {
+          "type": "earn_item",
+          "settings": {
+            "title": "Follow on X",
+            "desc": "20 points"
+          }
+        }
+      },
+      "block_order": [
+        "reward_item_U8pgLr",
+        "reward_item_3TXrXc",
+        "earn_item_DFV6eK",
+        "earn_item_FdEDVr",
+        "earn_item_c6A4jC",
+        "earn_item_FA3zWa",
+        "earn_item_XaGRt7",
+        "earn_item_4iiWrV",
+        "earn_item_eURkG6",
+        "earn_item_yRkJbQ"
+      ],
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "learn_more_text": "Learn more →",
+        "learn_more_link": "",
+        "earn_more_text": "Learn more →",
+        "earn_more_link": "shopify://pages/about"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
