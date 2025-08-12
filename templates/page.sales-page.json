@@ -178,6 +178,170 @@
         "vertical_alignment": "center"
       }
     },
+    "featured_product_grid_jxbnr3": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "icon_bWLapJ": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "icon_text": "Engineered for Outdoor Life"
+          }
+        },
+        "icon_iDd8qm": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "icon_text": "Bright & Beautiful 4K UHD"
+          }
+        },
+        "icon_XAahra": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+            "icon_text": "Smart & Simple Entertainment"
+          }
+        },
+        "icon_mwqtc3": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+            "icon_text": "Built to Last"
+          }
+        }
+      },
+      "block_order": [
+        "icon_bWLapJ",
+        "icon_iDd8qm",
+        "icon_XAahra",
+        "icon_mwqtc3"
+      ],
+      "name": "Featured Product Grid",
+      "settings": {
+        "big_title": "Meet Full Sun TV Series",
+        "big_title_color": "#000000",
+        "big_title_size": 36,
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "price": "$1,699.00",
+        "image_position": "right",
+        "bg_color": "#f7f7f7",
+        "custom_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "heading": "Pool",
+        "heading_small": "Pro 2.0",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "left",
+        "heading_weight": "normal",
+        "text": "<p>Starting at</p>",
+        "text_color": "",
+        "text_align": "left",
+        "text_weight": "normal",
+        "image_width": 100,
+        "image_ratio": "1 / 1",
+        "lazyload": true,
+        "image_hover": "none",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "left"
+      }
+    },
+    "featured_product_grid_Ar4y3b": {
+      "type": "featured-product-grid",
+      "blocks": {
+        "icon_kDrGbT": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+            "icon_text": "Engineered for Outdoor Life"
+          }
+        },
+        "icon_rrPBja": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+            "icon_text": "Bright & Beautiful 4K UHD"
+          }
+        },
+        "icon_gmchwR": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+            "icon_text": "Smart & Simple Entertainment"
+          }
+        },
+        "icon_CQkVgQ": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+            "icon_text": "Built to Last"
+          }
+        }
+      },
+      "block_order": [
+        "icon_kDrGbT",
+        "icon_rrPBja",
+        "icon_gmchwR",
+        "icon_CQkVgQ"
+      ],
+      "name": "Featured Product Grid",
+      "settings": {
+        "big_title": "",
+        "big_title_color": "#000000",
+        "big_title_size": 36,
+        "subtitle": "Outdoor Entertainment, Perfected",
+        "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "price": "$1,599.00",
+        "image_position": "left",
+        "bg_color": "#f7f7f7",
+        "custom_id": "",
+        "custom_class": "",
+        "section_width": "full",
+        "section_content_width": "standard",
+        "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_left": 0,
+        "padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "heading": "Pool",
+        "heading_small": "Pro QLED 2.0",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "heading_align": "left",
+        "heading_weight": "normal",
+        "text": "<p>Starting at</p>",
+        "text_color": "",
+        "text_align": "left",
+        "text_weight": "normal",
+        "image_width": 100,
+        "image_ratio": "1 / 1",
+        "lazyload": true,
+        "image_hover": "none",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon": "",
+        "button_icon_position": "left"
+      }
+    },
     "image_text_8V9rke": {
       "type": "image-text",
       "blocks": {
@@ -828,122 +992,6 @@
         "mobile_content_width": 100
       }
     },
-    "somos_featured_collection_MhtyAP": {
-      "type": "somos-featured-collection",
-      "blocks": {
-        "product_yAGNBq": {
-          "type": "product",
-          "settings": {
-            "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
-            "custom_title": "",
-            "learn_more_link": "",
-            "custom_image": "shopify://shop_images/Group_1321320004.png",
-            "image_size": 100,
-            "image_ratio": "square",
-            "lazyload": true,
-            "overlay_badge_text": "",
-            "discount_badge_text": "15% OFF",
-            "show_outdoor_tv": true,
-            "show_partial_sun": true,
-            "show_vendor": true,
-            "show_title": true,
-            "show_now_price": true,
-            "show_before_price": true,
-            "show_discount_badge": true,
-            "now_label": "Now at",
-            "before_label": "Before at"
-          }
-        },
-        "product_AhBPt9": {
-          "type": "product",
-          "settings": {
-            "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
-            "custom_title": "",
-            "learn_more_link": "",
-            "custom_image": "shopify://shop_images/Group_1321320004.png",
-            "image_size": 100,
-            "image_ratio": "square",
-            "lazyload": true,
-            "overlay_badge_text": "",
-            "discount_badge_text": "15% OFF",
-            "show_outdoor_tv": true,
-            "show_partial_sun": true,
-            "show_vendor": true,
-            "show_title": true,
-            "show_now_price": true,
-            "show_before_price": true,
-            "show_discount_badge": true,
-            "now_label": "Now at",
-            "before_label": "Before at"
-          }
-        },
-        "product_BpmHNj": {
-          "type": "product",
-          "settings": {
-            "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
-            "custom_title": "",
-            "learn_more_link": "",
-            "custom_image": "shopify://shop_images/Group_1321320004.png",
-            "image_size": 100,
-            "image_ratio": "square",
-            "lazyload": true,
-            "overlay_badge_text": "",
-            "discount_badge_text": "15% OFF",
-            "show_outdoor_tv": true,
-            "show_partial_sun": true,
-            "show_vendor": true,
-            "show_title": true,
-            "show_now_price": true,
-            "show_before_price": true,
-            "show_discount_badge": true,
-            "now_label": "Now at",
-            "before_label": "Before at"
-          }
-        },
-        "product_rBheVD": {
-          "type": "product",
-          "settings": {
-            "product": "sylvox-official-extended-warranty-for-deck-pro-43-2-years-total-3-years",
-            "custom_title": "",
-            "learn_more_link": "",
-            "custom_image": "shopify://shop_images/Group_1321320004.png",
-            "image_size": 100,
-            "image_ratio": "square",
-            "lazyload": true,
-            "overlay_badge_text": "",
-            "discount_badge_text": "15% OFF",
-            "show_outdoor_tv": true,
-            "show_partial_sun": true,
-            "show_vendor": true,
-            "show_title": true,
-            "show_now_price": true,
-            "show_before_price": true,
-            "show_discount_badge": true,
-            "now_label": "Now at",
-            "before_label": "Before at"
-          }
-        }
-      },
-      "block_order": [
-        "product_yAGNBq",
-        "product_AhBPt9",
-        "product_BpmHNj",
-        "product_rBheVD"
-      ],
-      "name": "Somos Featured Coll",
-      "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "title": "",
-        "heading_size": "h2",
-        "heading_alignment": "left",
-        "intro_text": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0
-      }
-    },
     "somos_banner_PNpJtb": {
       "type": "somos-banner",
       "blocks": {
@@ -1442,6 +1490,191 @@
         "divider": false
       }
     },
+    "featured_product_slider_Abc123": {
+  "type": "featured-product-grid-slider",
+  "blocks": {
+    "product_slide_1": {
+      "type": "product_slide",
+      "settings": {
+        "subtitle": "Engineered for Outdoor Life",
+        "heading": "Full Sun TV Series",
+        "heading_small": "Pro 2.0",
+        "heading_tag": "h2",
+        "heading_color": "#000000",
+        "heading_align": "left",
+        "heading_weight": "700",
+        "feature_icon_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+        "feature_icon_text": "Full Sun Google TV",
+        "icon_1_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+        "icon_1_text": "Engineered for Outdoor Life",
+        "icon_2_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+        "icon_2_text": "Bright & Beautiful 4K UHD",
+        "icon_3_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+        "icon_3_text": "Smart & Simple Entertainment",
+        "icon_4_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+        "icon_4_text": "Built to Last",
+        "text": "Experience unparalleled quality and design with our flagship outdoor TV.",
+        "text_align": "left",
+        "text_color": "#000000",
+        "text_weight": "400",
+        "price": "$1,699.00",
+        "button_text": "Learn More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon_position": "none",
+        "button_icon": "",
+        "image_position": "right",
+        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "image_width": 50,
+        "image_ratio": "16/9",
+        "lazyload": true,
+        "image_hover": "none"
+      }
+    },
+    "product_slide_2": {
+      "type": "product_slide",
+      "settings": {
+        "subtitle": "Bright & Beautiful",
+        "heading": "Crystal Clear Display",
+        "heading_small": "Ultra HD",
+        "heading_tag": "h2",
+        "heading_color": "#000000",
+        "heading_align": "left",
+        "heading_weight": "700",
+        "feature_icon_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+        "feature_icon_text": "4K UHD Display",
+        "icon_1_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+        "icon_1_text": "Bright & Beautiful 4K UHD",
+        "icon_2_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+        "icon_2_text": "Smart & Simple Entertainment",
+        "icon_3_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+        "icon_3_text": "Built to Last",
+        "icon_4_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+        "icon_4_text": "Engineered for Outdoor Life",
+        "text": "Unmatched brightness and color accuracy for outdoor viewing.",
+        "text_align": "left",
+        "text_color": "#000000",
+        "text_weight": "400",
+        "price": "$1,499.00",
+        "button_text": "Shop Now",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon_position": "none",
+        "button_icon": "",
+        "image_position": "right",
+        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "image_width": 50,
+        "image_ratio": "16/9",
+        "lazyload": true,
+        "image_hover": "none"
+      }
+    },
+    "product_slide_3": {
+      "type": "product_slide",
+      "settings": {
+        "subtitle": "Smart & Simple",
+        "heading": "Entertainment Hub",
+        "heading_small": "Easy to Use",
+        "heading_tag": "h2",
+        "heading_color": "#000000",
+        "heading_align": "left",
+        "heading_weight": "700",
+        "feature_icon_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+        "feature_icon_text": "Smart Entertainment",
+        "icon_1_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+        "icon_1_text": "Smart & Simple Entertainment",
+        "icon_2_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+        "icon_2_text": "Built to Last",
+        "icon_3_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+        "icon_3_text": "Engineered for Outdoor Life",
+        "icon_4_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+        "icon_4_text": "Bright & Beautiful 4K UHD",
+        "text": "All your favorite apps and streaming services in one place.",
+        "text_align": "left",
+        "text_color": "#000000",
+        "text_weight": "400",
+        "price": "$1,299.00",
+        "button_text": "Discover More",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon_position": "none",
+        "button_icon": "",
+        "image_position": "right",
+        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "image_width": 50,
+        "image_ratio": "16/9",
+        "lazyload": true,
+        "image_hover": "none"
+      }
+    },
+    "product_slide_4": {
+      "type": "product_slide",
+      "settings": {
+        "subtitle": "Durability",
+        "heading": "Built to Last",
+        "heading_small": "Reliable & Tough",
+        "heading_tag": "h2",
+        "heading_color": "#000000",
+        "heading_align": "left",
+        "heading_weight": "700",
+        "feature_icon_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+        "feature_icon_text": "Durability Guaranteed",
+        "icon_1_image": "shopify://shop_images/Icons-3_e36a61d8-17b7-407c-9ed7-d86d23fddb13.png",
+        "icon_1_text": "Built to Last",
+        "icon_2_image": "shopify://shop_images/Icons-2_7623c61e-803c-4583-b4a8-26813f2d0270.png",
+        "icon_2_text": "Engineered for Outdoor Life",
+        "icon_3_image": "shopify://shop_images/Icons-2_a8e08640-c291-4cb6-adf5-8913eee96c2d.png",
+        "icon_3_text": "Bright & Beautiful 4K UHD",
+        "icon_4_image": "shopify://shop_images/Icons-2_8e63609a-7917-471d-b56f-0db2db4deb83.png",
+        "icon_4_text": "Smart & Simple Entertainment",
+        "text": "Rugged design ensures your TV withstands any weather.",
+        "text_align": "left",
+        "text_color": "#000000",
+        "text_weight": "400",
+        "price": "$1,199.00",
+        "button_text": "Shop Durability",
+        "button_link": "#",
+        "button_style": "primary",
+        "button_icon_position": "none",
+        "button_icon": "",
+        "image_position": "right",
+        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "image_width": 50,
+        "image_ratio": "16/9",
+        "lazyload": true,
+        "image_hover": "none"
+      }
+    }
+  },
+  "block_order": [
+    "product_slide_1",
+    "product_slide_2",
+    "product_slide_3",
+    "product_slide_4"
+  ],
+  "settings": {
+    "section_width": "standard",
+    "section_content_width": "standard",
+    "background_color": "#ffffff",
+    "padding_top": 0,
+    "padding_bottom": 0,
+    "padding_left": 0,
+    "padding_right": 0,
+    "margin_top": 0,
+    "margin_bottom": 0,
+    "margin_left": 0,
+    "margin_right": 0,
+    "text_alignment": "left",
+    "button_text": "left",
+    "button_link": "shopify://pages/2024-autumn-sale",
+    "heading": "Kitchen TV",
+    "subheading": "",
+    "description": "",
+    "show_arrows": true,
+    "show_dots": true,
+    "slide_size": "large"
+  }
+},
     "signup_newsletter_LXxPJ6": {
       "type": "signup-newsletter",
       "name": "Newsletter",
@@ -1452,6 +1685,221 @@
         "email_placeholder": "Email address",
         "button_label": "Sign Up"
       }
+    },
+    "accordian_6Ea77l": {
+      "type": "accordian",
+      "blocks": {
+        "question_WybaW9": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_XpiPtM": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to setup an account to place an order?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_wpgzGK": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer gift wrapping",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_mfBW9c": {
+          "type": "question",
+          "settings": {
+            "question": "How long will it take to get my orders?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_akNVjL": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        },
+        "question_afydKc": {
+          "type": "question",
+          "settings": {
+            "question": "Any question?",
+            "answer": "Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout."
+          }
+        }
+      },
+      "block_order": [
+        "question_WybaW9",
+        "question_XpiPtM",
+        "question_wpgzGK",
+        "question_mfBW9c",
+        "question_akNVjL",
+        "question_afydKc"
+      ],
+      "name": "Accordian",
+      "settings": {
+        "heading": "Have a question ? We are here to help.",
+        "subheading": "Check out the most common questions our customers asked. Still have questions? Contact our customer support.",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "heading_size": 36,
+        "subheading_size": 16,
+        "bg_color": "#ffffff",
+        "arrow_image": "shopify://shop_images/Overlay.png",
+        "arrow_image_width": 10,
+        "section_width": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
+    },
+    "usp_grid_mBqiLr": {
+      "type": "usp-grid",
+      "blocks": {
+        "usp_item_dd8zNx": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
+            "image_size": "medium",
+            "title": "Authenticity Guarantee",
+            "title_font_size": 20,
+            "text": "100% Genuine, Quality Assured",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_e3nJLx": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-1.png",
+            "image_size": "medium",
+            "title": "Secure Payment",
+            "title_font_size": 20,
+            "text": "Supports Multiple Payment Methods",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_WExUKh": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-2.png",
+            "image_size": "medium",
+            "title": "Buy Now Pay Later",
+            "title_font_size": 20,
+            "text": "Flexible Installment Plans Available",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_9KGR88": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/png__1_2_1_3.png",
+            "image_size": "medium",
+            "title": "Fast & Free Shipping",
+            "title_font_size": 20,
+            "text": "2-5 Business Days Fedex Shipping",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_9cqzbe": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/877fd4961b457516e0b7165db6e3731a5b4764d2.png",
+            "image_size": "medium",
+            "title": "Sylvox Membership",
+            "title_font_size": 20,
+            "text": "Earn Sylvox Points, Redeem Benefits",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        },
+        "usp_item_LaJ4nV": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/Icons-5.png",
+            "image_size": "medium",
+            "title": "Free Warranty",
+            "title_font_size": 20,
+            "text": "Up to 1 Year Warranty",
+            "base_text": "",
+            "base_text_color": "",
+            "text_color": "",
+            "background_color": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_dd8zNx",
+        "usp_item_e3nJLx",
+        "usp_item_WExUKh",
+        "usp_item_9KGR88",
+        "usp_item_9cqzbe",
+        "usp_item_LaJ4nV"
+      ],
+      "settings": {
+        "enable_slider": true,
+        "section_width": "standard",
+        "heading": "Sylvox’s exclusive advantages",
+        "heading_font_size": 32,
+        "subtext": "",
+        "heading_alignment": "left",
+        "box_height": 300,
+        "show_arrows": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 20,
+        "padding_right": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0
+      }
     }
   },
   "order": [
@@ -1459,6 +1907,8 @@
     "primeday_banner_mw8Fjb",
     "anchor_navigation_bLp4aJ",
     "somos_banner_bfCNex",
+    "featured_product_grid_jxbnr3",
+    "featured_product_grid_Ar4y3b",
     "image_text_8V9rke",
     "rich_text_KwBmtg",
     "deck_slider_9ewjBM",
@@ -1466,15 +1916,16 @@
     "primeday_products_TiRNYz",
     "primeday_flashsale_pkDMLY",
     "left_right_media_iD8T8p",
-    "somos_featured_collection_4RkFCn",
-    "left_right_media_WB8GXG",
-    "somos_featured_collection_MhtyAP",
+    "somos_featured_collection_4RkFCn",    "left_right_media_WB8GXG",
+    "usp_grid_mBqiLr",
+    "featured_product_slider_Abc123",
     "somos_banner_PNpJtb",
     "left_right_media_jELU6d",
     "video_grid_pC839w",
     "somos_grid_3F9bdC",
     "image_text_zytR3h",
     "logo_list_M8cfP8",
-    "signup_newsletter_LXxPJ6"
+    "signup_newsletter_LXxPJ6",
+    "accordian_6Ea77l"
   ]
 }
