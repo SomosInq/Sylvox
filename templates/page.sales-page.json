@@ -635,7 +635,7 @@
         "section_width": "full",
         "section_content_width": "full",
         "custom_content_width_enabled": true,
-        "custom_content_width": 55,
+        "custom_content_width": 45,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -658,7 +658,7 @@
         "hide_mobile": false,
         "custom_class": "",
         "custom_id": "",
-        "text_alignment": "center",
+        "text_alignment": "left",
         "vertical_alignment": "center"
       }
     },
