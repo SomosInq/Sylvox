@@ -114,28 +114,36 @@
           "type": "text",
           "settings": {
             "anchor_title": "Overview",
-            "target_id": ""
+            "target_id": "shopify-section-template--24974233829739__somos_banner_bfCNex"
           }
         },
         "text_Yt6AH3": {
           "type": "text",
           "settings": {
-            "anchor_title": "Overview",
-            "target_id": ""
+            "anchor_title": "Outdoor TV",
+            "target_id": "shopify-section-template--24974233829739__featured_product_grid_jxbnr3"
           }
         },
         "text_8G6Efq": {
           "type": "text",
           "settings": {
-            "anchor_title": "Overview",
-            "target_id": ""
+            "anchor_title": "Kitchen TV",
+            "target_id": "shopify-section-template--24974233829739__somos_banner_PNpJtb"
+          }
+        },
+        "text_xgjBcQ": {
+          "type": "text",
+          "settings": {
+            "anchor_title": "Bathroom TV",
+            "target_id": "shopify-section-template--24974233829739__somos_banner_kwV3PT"
           }
         }
       },
       "block_order": [
         "text_cg4yjz",
         "text_Yt6AH3",
-        "text_8G6Efq"
+        "text_8G6Efq",
+        "text_xgjBcQ"
       ],
       "name": "Sticky Anchor",
       "settings": {}
