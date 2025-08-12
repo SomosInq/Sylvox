@@ -230,7 +230,7 @@
       ],
       "name": "Featured Product Grid",
       "settings": {
-        "big_title": "Meet Full Sun TV Series",
+        "big_title": "",
         "big_title_color": "#000000",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
@@ -490,7 +490,7 @@
         "box_height": 300,
         "show_arrows": true,
         "padding_top": 20,
-        "padding_bottom": 20,
+        "padding_bottom": 50,
         "padding_left": 20,
         "padding_right": 20,
         "margin_top": 0,
