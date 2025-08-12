@@ -1,0 +1,459 @@
+<section id="new-banner-slider-{{ section.id }}"
+  class="feature-product-slider-section section_width_{{ section.settings.section_width }}"
+  style="
+  background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  "
+>
+  <div class="slider-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}">
+    <h2 class="slider-heading-main">{{ section.settings.heading }}</h2>
+    {%- if section.settings.button_link -%}
+            <a href="{{ section.settings.button_link }}" class="section-header__link">
+              {% render 't_with_fallback', key: 'actions.view_all', fallback: 'View all' %}
+            </a>
+          {%- endif -%}
+  </div>
+
+  <div class="slider-carousel featured-product-slider">
+    <div class="slider-track" style="scroll-snap-type: x mandatory; display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 24px;">
+      {% for block in section.blocks %}
+        <div class="slider-slide size-{{ section.settings.slide_size }}" style="scroll-snap-align: center; flex: 0 0 auto; position: relative;">
+
+          <div class="product-layout column" style="height: 100%;">
+            <div class="product-content" style="padding: 2rem;">
+              {%- if block.settings.subtitle != blank -%}
+                <p style="margin-bottom: 0.25em;">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.heading != blank -%}
+                <{{ block.settings.heading_tag }} style="color: {{ block.settings.heading_color }}; text-align: {{ block.settings.heading_align }}; font-weight: {{ block.settings.heading_weight }}">
+                  {{ block.settings.heading }}
+                  {% if block.settings.heading_small != blank %}<span>{{ block.settings.heading_small }}</span>{% endif %}
+                </{{ block.settings.heading_tag }}>
+              {%- endif -%}
+
+              {% if block.settings.feature_icon_image != blank or block.settings.feature_icon_text != blank %}
+                <div class="feature_icon_image" style="display: flex; align-items: center; justify-content: left; gap: 0.5rem; margin: 1rem auto;">
+                  {% if block.settings.feature_icon_image != blank %}
+                    <img src="{{ block.settings.feature_icon_image | image_url }}" alt="" style="max-width: 40px;" />
+                  {% endif %}
+                  {% if block.settings.feature_icon_text != blank %}
+                    <span>{{ block.settings.feature_icon_text }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              <div class="icon-list">
+               {% assign icons = (1..4) %}
+                {% for i in icons %}
+                  {% assign img_key = 'icon_' | append: i | append: '_image' %}
+                  {% assign text_key = 'icon_' | append: i | append: '_text' %}
+                  {% assign img = block.settings[img_key] %}
+                  {% assign text = block.settings[text_key] %}
+                  {% if img != blank or text != blank %}
+                    <div class="icon-item">
+                      {% if img %}<img src="{{ img | image_url }}" alt="" />{% endif %}
+                      {% if text %}<div>{{ text }}</div>{% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              {%- if block.settings.text != blank -%}
+                <div style="text-align: {{ block.settings.text_align }}; color: {{ block.settings.text_color }}; font-weight: {{ block.settings.text_weight }}">
+                  {{ block.settings.text }}
+                </div>
+              {%- endif -%}
+
+              <p style="font-size: 1.25em; font-weight: bold;">{{ block.settings.price }}</p>
+
+              {%- if block.settings.button_text != blank -%}
+                <a href="{{ block.settings.button_link }}" class="button {% if block.settings.button_style == 'primary' %}btn-primary{% else %}btn-secondary{% endif %}">
+                  {% if block.settings.button_icon_position == 'left' and block.settings.button_icon != blank %}<i class="{{ block.settings.button_icon }}"></i>{% endif %}
+                  {{ block.settings.button_text }}
+                  {% if block.settings.button_icon_position == 'right' and block.settings.button_icon != blank %}<i class="{{ block.settings.button_icon }}"></i>{% endif %}
+                </a>
+              {%- endif -%}
+            </div>
+
+            <div class="product-image" style="width: 100%; height: auto;">
+              {% assign product = all_products[block.settings.product] %}
+              {% if product != blank %}
+                <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" 
+                  style=""
+                  loading="{% if block.settings.lazyload %}lazy{% else %}eager{% endif %}" 
+                  class="{% if block.settings.image_hover == 'zoom' %}hover-zoom{% elsif block.settings.image_hover == 'grayscale' %}hover-grayscale{% elsif block.settings.image_hover == 'fade' %}hover-fade{% endif %}" />
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;">
+      {% if section.settings.show_dots %}
+      <div class="slider-dots">
+        {% for block in section.blocks %}
+          <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if section.settings.show_arrows %}
+        <div class="slider-arrows">
+          <button class="slider-arrow prev">‹</button>
+          <button class="slider-arrow next">›</button>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Slider text alignment */
+  .slider-text.left { text-align: left; }
+  .slider-text.center { text-align: center; }
+  .slider-text.right { text-align: right; }
+
+  /* Slider headings */
+  .slider-heading-small { font-size: 0.875rem; color: #888; margin-bottom: 0.25rem; }
+  .slider-heading-main { font-size: 2rem; font-weight: 500; display: inline-block; padding-bottom: 4px; margin: 0; }
+  .slider-description { color: #555; margin-bottom: 1.5rem; }
+
+  /* Slide opacity */
+  .slider-slide { opacity: 0.4; transition: opacity 0.3s ease; }
+  .slider-slide.active { opacity: 1; }
+
+  /* Controls margin */
+  .slider-controls { margin-top: 30px !important; }
+
+  /* Slider content inside product layout */
+  .slider-content {
+    position: absolute;
+    bottom: 40px;
+    left: 2rem;
+    color: white;
+  }
+
+  /* Slider dots */
+  .slider-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .slider-dot {
+    width: 24px;
+    height: 25px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+  }
+  .slider-dot.active {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
+  }
+
+  /* Arrows */
+  .slider-arrows {
+    display: flex;
+    gap: 10px;
+  }
+  .slider-arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  /* --- Product Layout styles adapted for slider --- */
+  .product-layout {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .product-layout.column {
+    flex-direction: column-reverse;
+  }
+  .featured-product-slider .slider-slide {
+    width: 50%;
+    border-radius: 12px;
+    background: var(--Off-White, #FAFAFA);
+    opacity: 1;
+  }
+  .featured-product-slider .slider-slide .product-layout {
+      align-items: flex-start;
+  }
+  .feature-product-slider-section .section_content_width_standard {
+    width: 100% !important;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px!important;
+  }
+  #new-banner-slider-{{ section.id }} {
+    margin-bottom: 60px!important;
+  }
+  #new-banner-slider-{{ section.id }} .slider-text {
+    padding: 0!important;
+    margin-inline: 0!important;
+    max-width: none;
+  }
+  .feature-product-slider-section .section_content_width_standard .section-header__link {
+    padding: 12px 47px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 30px;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0;
+  }
+  .featured-product-slider .product-content,
+  .featured-product-slider .product-image {
+    width: 100%;
+    height: auto;
+  }
+  .product-content {
+    padding: 5em 2em;
+    box-sizing: border-box;
+    color: #000;
+  }
+  .product-content h2 span {
+    font-size: calc(var(--type-header-size, 24px) * 0.50);
+    font-weight: 400;
+  }
+  .featured-product-slider .product-image img {
+    margin: 5%;
+    max-width: 90%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .icon-item {
+    flex: 1 1 22%;
+    text-align: center;
+  }
+  .icon-item img {
+    max-width: 40px;
+    margin-bottom: 0.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (max-width: 749px) {
+    .featured-product-slider .product-layout {
+      flex-direction: column-reverse!important;
+      height: auto !important;
+    }
+    .feature-product-slider-section.section_width_standard {
+      padding: 0!important;
+    }
+    .featured-product-slider .slider-slide {
+      width: 100%;
+      padding: 25px;
+    }
+    .product-content,
+    .product-image {
+      width: 100%;
+      height: auto !important;
+    }
+    .product-content {
+      padding: 30px 0px !important;
+    }
+    .feature-product-slider-section .product-content h2 {
+      display: flex;
+      flex-flow: column;
+    }
+    .icon-item {
+      flex: 1 1 46%;
+      text-align: center;
+    }
+    .feature-product-slider-section .section_content_width_standard { 
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .feature-product-slider-section .section_content_width_standard .section-header__link {
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+    .feature-product-slider-section .slider-controls {
+      margin-top: 2rem!important;
+      margin-bottom: 2rem;
+      gap: 10px;
+    }
+    #new-banner-slider-{{ section.id }} .slider-text {
+      gap: 25px;
+      margin-bottom: 5px!important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('new-banner-slider-{{ section.id }}');
+    const track = section.querySelector('.slider-track');
+    const slides = section.querySelectorAll('.slider-slide');
+    const dots = section.querySelectorAll('.slider-dot');
+
+    let current = 0;
+
+    function goTo(index) {
+      const slide = slides[index];
+      if (!slide) return;
+      track.scrollTo({ left: slide.offsetLeft - (track.offsetWidth - slide.offsetWidth) / 2, behavior: 'smooth' });
+      slides.forEach((el, i) => el.classList.toggle('active', i === index));
+      dots.forEach((el, i) => el.classList.toggle('active', i === index));
+      current = index;
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goTo(i));
+    });
+
+    section.querySelector('.slider-arrow.prev')?.addEventListener('click', () => {
+      goTo((current - 1 + slides.length) % slides.length);
+    });
+    section.querySelector('.slider-arrow.next')?.addEventListener('click', () => {
+      goTo((current + 1) % slides.length);
+    });
+
+    goTo(0);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Featured Product Slider",
+  "settings": [
+    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
+    { "type": "select", "id": "text_alignment", "label": "Text Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
+    { "type": "text", "id": "button_text", "label": "Button Text" },
+    { "type": "url", "id": "button_link", "label": "Button Link" },
+    { "type": "text", "id": "heading", "label": "Small Heading"},
+    { "type": "text", "id": "subheading", "label": "Main Heading"},
+    { "type": "textarea", "id": "description", "label": "Section Description"},
+    { "type": "checkbox", "id": "show_arrows", "label": "Show Arrows", "default": true },
+    { "type": "checkbox", "id": "show_dots", "label": "Show Pagination Dots", "default": true },
+    { "type": "select", "id": "slide_size", "label": "Slide Image Size", "options": [ { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" }, { "value": "large", "label": "Large" } ], "default": "large" }
+  ],
+  "blocks": [
+    {
+      "type": "product_slide",
+      "name": "Product Slide",
+      "settings": [
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "text", "id": "heading", "label": "Heading Text" },
+        { "type": "text", "id": "heading_small", "label": "Heading Small Text" },
+        { "type": "select", "id": "heading_tag", "label": "Heading Tag", "default": "h2", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }, { "value": "h5", "label": "H5" }, { "value": "h6", "label": "H6" } ] },
+        { "type": "color", "id": "heading_color", "label": "Heading Color" },
+        { "type": "select", "id": "heading_align", "label": "Heading Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
+        { "type": "select", "id": "heading_weight", "label": "Heading Weight", "options": [ { "value": "400", "label": "Normal" }, { "value": "700", "label": "Bold" } ] },
+        { "type": "image_picker", "id": "feature_icon_image", "label": "Feature Icon Image" },
+        { "type": "text", "id": "feature_icon_text", "label": "Feature Icon Text" },
+
+        { "type": "image_picker", "id": "icon_1_image", "label": "Icon 1 Image" },
+        { "type": "text", "id": "icon_1_text", "label": "Icon 1 Text" },
+        { "type": "image_picker", "id": "icon_2_image", "label": "Icon 2 Image" },
+        { "type": "text", "id": "icon_2_text", "label": "Icon 2 Text" },
+        { "type": "image_picker", "id": "icon_3_image", "label": "Icon 3 Image" },
+        { "type": "text", "id": "icon_3_text", "label": "Icon 3 Text" },
+        { "type": "image_picker", "id": "icon_4_image", "label": "Icon 4 Image" },
+        { "type": "text", "id": "icon_4_text", "label": "Icon 4 Text" },
+
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "select", "id": "text_align", "label": "Text Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
+        { "type": "color", "id": "text_color", "label": "Text Color" },
+        { "type": "select", "id": "text_weight", "label": "Text Weight", "options": [ { "value": "400", "label": "Normal" }, { "value": "700", "label": "Bold" } ] },
+
+        { "type": "text", "id": "price", "label": "Price Text" },
+
+        { "type": "text", "id": "button_text", "label": "Button Text" },
+        { "type": "url", "id": "button_link", "label": "Button Link" },
+        { "type": "select", "id": "button_style", "label": "Button Style", "options": [ { "value": "primary", "label": "Primary" }, { "value": "secondary", "label": "Secondary" } ], "default": "primary" },
+        { "type": "select", "id": "button_icon_position", "label": "Button Icon Position", "options": [ { "value": "none", "label": "None" }, { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ], "default": "none" },
+        { "type": "text", "id": "button_icon", "label": "Button Icon Class" },
+
+        { "type": "select", "id": "image_position", "label": "Image Position", "options": [ { "value": "right", "label": "Right" }, { "value": "left", "label": "Left" } ], "default": "right" },
+        { "type": "product", "id": "product", "label": "Select Product" },
+        { "type": "range", "id": "image_width", "label": "Image Width %", "min": 10, "max": 100, "step": 5, "default": 50 },
+        { "type": "text", "id": "image_ratio", "label": "Image Aspect Ratio (e.g. 16/9)", "default": "16/9" },
+        { "type": "checkbox", "id": "lazyload", "label": "Lazy Load Image", "default": true },
+        { "type": "select", "id": "image_hover", "label": "Image Hover Effect", "options": [ { "value": "none", "label": "None" }, { "value": "zoom", "label": "Zoom" }, { "value": "grayscale", "label": "Grayscale" }, { "value": "fade", "label": "Fade" } ], "default": "none" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Banner Slider with Product Layout Blocks",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "product_slide",
+          "name": "Sample Slide",
+          "settings": {
+            "subtitle": "Sample subtitle",
+            "heading": "Sample Heading",
+            "heading_small": "Small Text",
+            "heading_tag": "h2",
+            "heading_color": "#000000",
+            "heading_align": "left",
+            "heading_weight": "700",
+            "feature_icon_image": "",
+            "feature_icon_text": "",
+            "icon_1_image": "",
+            "icon_1_text": "",
+            "icon_2_image": "",
+            "icon_2_text": "",
+            "icon_3_image": "",
+            "icon_3_text": "",
+            "icon_4_image": "",
+            "icon_4_text": "",
+            "text": "Some descriptive text here.",
+            "text_align": "left",
+            "text_color": "#000000",
+            "text_weight": "400",
+            "price": "$199",
+            "button_text": "Buy Now",
+            "button_link": "#",
+            "button_style": "primary",
+            "button_icon_position": "none",
+            "button_icon": "",
+            "image_position": "right",
+            "product": "",
+            "image_width": 50,
+            "image_ratio": "16/9",
+            "lazyload": true,
+            "image_hover": "none"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

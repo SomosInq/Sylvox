@@ -12,6 +12,8 @@
     background: transparent !important;
     overflow: visible;
     max-width: 100%;
+    gap: 10px;
+    flex-flow: column;
     border: 0 !important;
     width: 290px !important;
 }
@@ -74,7 +76,7 @@ background: #FFF;
     padding: 10px 24px;
     border-radius: 99999px;
     color: white;
-    background: #20413B;
+    background: #DB4B97;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -99,7 +101,8 @@ padding: 10px 42px 9px 40px;
 justify-content: center;
 align-items: center;
 border-radius: 9999px;
-background: var(--Dark-Green, #20413B);
+background: #DB4B97;
+color: white;
 }
 
   .btn--sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
@@ -506,6 +509,7 @@ padding: 10px 0;}
 @media (max-width: 768px) {
   .text-block{
     margin-left:0 !important;
+    padding: 25px 0;
   }
 }
 
@@ -546,7 +550,6 @@ style="
               font-style: {% if block.settings.italic %}italic{% else %}normal{% endif %};
               text-align: {{ block.settings.alignment }};
               {% comment %} TODO {% endcomment %}
-              text-shadow: -1px -1px 1px #fff,1px 1px 1px #297F67;
             "
             {{ block.shopify_attributes }}>
             {{ block.settings.text }}
