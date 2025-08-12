@@ -22,7 +22,7 @@
           "settings": {
             "text": "How to Choose",
             "heading_tag": "h2",
-            "color": "#000000",
+            "color": "#ffffff",
             "italic": false,
             "font_weight": "300",
             "alignment": "left"
@@ -141,10 +141,11 @@
             "cta_text2": "",
             "cta_link2": "",
             "image": "shopify://shop_images/Frame_1272638891.png",
+            "video_url": "",
             "width": "50",
             "height": 800,
             "text_align": "vertical-center horizontal-center",
-            "color_accent": "#fff"
+            "color_accent": "#ffffff"
           }
         },
         "advanced_Y8bf9Y": {
@@ -158,10 +159,11 @@
             "cta_text2": "",
             "cta_link2": "",
             "image": "shopify://shop_images/Frame_1272638893.png",
+            "video_url": "",
             "width": "50",
             "height": 800,
             "text_align": "vertical-center horizontal-center",
-            "color_accent": "#fff"
+            "color_accent": "#ffffff"
           }
         }
       },
