@@ -951,7 +951,7 @@
           "settings": {
             "title": "Tables and seating",
             "home_featured_products": "furniture",
-            "count": 5,
+            "count": 4,
             "mobile_scrollable": true,
             "view_all": true,
             "divider": false
@@ -1059,7 +1059,7 @@
           "settings": {
             "title": "Spring arrivals",
             "home_featured_products": "coffee-accessories",
-            "count": 5,
+            "count": 4,
             "mobile_scrollable": false,
             "view_all": true,
             "divider": false
@@ -1834,7 +1834,7 @@
           "settings": {
             "title": "Popular picks",
             "home_featured_products": "all",
-            "count": 5,
+            "count": 4,
             "mobile_scrollable": true,
             "view_all": true,
             "divider": false
@@ -1926,7 +1926,7 @@
           "settings": {
             "title": "Non-alcoholic Wine",
             "home_featured_products": "non-alcoholic-wine",
-            "count": 5,
+            "count": 4,
             "mobile_scrollable": true,
             "view_all": true,
             "divider": false
@@ -2299,7 +2299,7 @@
           "settings": {
             "title": "New Arrivals",
             "home_featured_products": "ish-spirits",
-            "count": 5,
+            "count": 4,
             "mobile_scrollable": true,
             "view_all": true,
             "divider": false
