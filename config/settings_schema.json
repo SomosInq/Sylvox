@@ -996,6 +996,10 @@
           {
             "value": "dropdown",
             "label": "t:labels.dropdown"
+          },
+          {
+            "value": "drawer",
+            "label": "Drawer"
           }
         ]
       },

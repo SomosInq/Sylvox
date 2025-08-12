@@ -18,9 +18,24 @@ class HeaderCart extends HTMLElement {
     this.cartForm = new CartForm(this.form)
     this.cartForm.buildCart()
 
+    // Handle cart drawer close button
+    const closeButton = this.querySelector('.cart_drawer_close')
+    if (closeButton) {
+      closeButton.addEventListener('click', this.close.bind(this), {
+        signal: this.abortController.signal
+      })
+    }
+
     document.addEventListener(EVENTS.ajaxProductAdded, this.handleCartChange.bind(this), {
       signal: this.abortController.signal
     })
+  }
+
+  close(evt) {
+    if (evt) {
+      evt.preventDefault()
+    }
+    document.dispatchEvent(new CustomEvent(EVENTS.cartClose, { bubbles: true }))
   }
 
   async handleCartChange(evt) {

@@ -108,7 +108,7 @@ export default class HeaderCart {
   open(evt) {
     this.activeElement = evt.target
 
-    if (this.cartType !== 'dropdown') {
+    if (this.cartType !== 'dropdown' && this.cartType !== 'drawer') {
       return
     }
 
@@ -150,7 +150,7 @@ export default class HeaderCart {
   }
 
   close(evt) {
-    if (this.cartType !== 'dropdown') {
+    if (this.cartType !== 'dropdown' && this.cartType !== 'drawer') {
       return
     }
 

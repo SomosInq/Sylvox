@@ -14,7 +14,7 @@
   assign cart_type = cart_type | default: settings.cart_type | default: 'page'
 -%}
 
-{%- if cart_type == 'dropdown' -%}
+{%- if cart_type == 'dropdown' or cart_type == 'drawer' -%}
   <toggle-cart>
     {{- cart_link -}}
   </toggle-cart>
