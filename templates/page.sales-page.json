@@ -369,6 +369,121 @@
         "divider": false
       }
     },
+    "somos_banner_PNpJtb": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_8L6j67": {
+          "type": "heading",
+          "settings": {
+            "text": "More than cooking — a kitchen TV for her perfect Mother’s Day moment.",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8L6j67"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "standard",
+        "custom_content_width_enabled": false,
+        "custom_content_width": 90,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Rectangle_530_1.png",
+        "background_zoom": 100,
+        "background_position": "center",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "somos_banner_kwV3PT": {
+      "type": "somos-banner",
+      "blocks": {
+        "heading_8Kh8Y8": {
+          "type": "heading",
+          "settings": {
+            "text": "Make bath time a retreat with our bathroom TV, perfect for Mother’s Day.",
+            "heading_tag": "h2",
+            "color": "#000000",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8Kh8Y8"
+      ],
+      "name": "Somos Banner",
+      "settings": {
+        "section_width": "full",
+        "section_content_width": "full",
+        "custom_content_width_enabled": true,
+        "custom_content_width": 55,
+        "mobile_content_width": 90,
+        "section_height": 500,
+        "mobile_section_height": 500,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Rectangle_530.png",
+        "background_zoom": 100,
+        "background_position": "left",
+        "banner_overlay_color": "#000000",
+        "banner_overlay_opacity": 0.4,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "hide_desktop": false,
+        "hide_tablet": false,
+        "hide_mobile": false,
+        "custom_class": "",
+        "custom_id": "",
+        "text_alignment": "center",
+        "vertical_alignment": "center"
+      }
+    },
+    "featured_collection_Rg9enE": {
+      "type": "featured-collection",
+      "name": "t:labels.featured_collection",
+      "settings": {
+        "title": "Bathroom TV",
+        "heading_size": "h2",
+        "heading_position": "left",
+        "home_featured_products": "kitchen-tv-mothers-day",
+        "count": 6,
+        "products_per_row": 3,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
     "usp_grid_mBqiLr": {
       "type": "usp-grid",
       "blocks": {
@@ -514,80 +629,6 @@
         "margin_right": 0
       }
     },
-    "somos_banner_PNpJtb": {
-      "type": "somos-banner",
-      "blocks": {
-        "heading_8L6j67": {
-          "type": "heading",
-          "settings": {
-            "text": "Refer and Earn",
-            "heading_tag": "h2",
-            "color": "#ffffff",
-            "italic": false,
-            "font_weight": "400",
-            "alignment": "center"
-          }
-        },
-        "richtext_MRBhUq": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Refer a friend and earn points and rewards!</p>",
-            "color": "#ffffff",
-            "alignment": "center"
-          }
-        },
-        "button_hiFqJ9": {
-          "type": "button",
-          "settings": {
-            "text": "Learn More",
-            "url": "",
-            "style": "fill",
-            "size": "lg",
-            "text_color": "#ffffff",
-            "background": "#20413b",
-            "outline_color": "#000000",
-            "icon_position": "left",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "heading_8L6j67",
-        "richtext_MRBhUq",
-        "button_hiFqJ9"
-      ],
-      "name": "Somos Banner",
-      "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "custom_content_width_enabled": false,
-        "custom_content_width": 90,
-        "mobile_content_width": 90,
-        "section_height": 500,
-        "mobile_section_height": 500,
-        "background_color": "#ffffff",
-        "background_image": "shopify://shop_images/cb3e0ffc00ad38a6b567d41d08f1425a9696f26c_1.jpg",
-        "background_zoom": 100,
-        "background_position": "center",
-        "banner_overlay_color": "#000000",
-        "banner_overlay_opacity": 0.4,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
-        "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0,
-        "mobile_padding_left": 0,
-        "mobile_padding_right": 0,
-        "hide_desktop": false,
-        "hide_tablet": false,
-        "hide_mobile": false,
-        "custom_class": "",
-        "custom_id": "",
-        "text_alignment": "center",
-        "vertical_alignment": "center"
-      }
-    },
     "accordian_6Ea77l": {
       "type": "accordian",
       "blocks": {
@@ -673,8 +714,10 @@
     "featured_product_grid_jxbnr3",
     "featured_product_grid_Ar4y3b",
     "featured_collection_RM6dz8",
-    "usp_grid_mBqiLr",
     "somos_banner_PNpJtb",
+    "somos_banner_kwV3PT",
+    "featured_collection_Rg9enE",
+    "usp_grid_mBqiLr",
     "accordian_6Ea77l"
   ]
 }
