@@ -354,6 +354,21 @@
         "button_icon_position": "left"
       }
     },
+    "featured_collection_RM6dz8": {
+      "type": "featured-collection",
+      "name": "t:labels.featured_collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "heading_position": "left",
+        "home_featured_products": "",
+        "count": 5,
+        "products_per_row": 4,
+        "mobile_scrollable": true,
+        "view_all": false,
+        "divider": false
+      }
+    },
     "usp_grid_mBqiLr": {
       "type": "usp-grid",
       "blocks": {
@@ -657,6 +672,7 @@
     "somos_banner_bfCNex",
     "featured_product_grid_jxbnr3",
     "featured_product_grid_Ar4y3b",
+    "featured_collection_RM6dz8",
     "usp_grid_mBqiLr",
     "somos_banner_PNpJtb",
     "accordian_6Ea77l"
