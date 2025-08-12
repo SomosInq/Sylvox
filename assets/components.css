@@ -12132,7 +12132,7 @@ header-section {
 .header-section {
   position: sticky;
   top: 0;
-  z-index: var(--z-index-header);
+  z-index: 9999999991;
   padding-bottom: var(--header-padding-bottom);
   pointer-events: none;
 }

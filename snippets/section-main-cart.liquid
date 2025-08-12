@@ -77,9 +77,9 @@
 
             <div class="cart__item-sub cart__item-row cart__item--subtotal">
               <div>
-                {% render 't_with_fallback', key: 'labels.subtotal', fallback: 'Subtotal' %}
+                Total
               </div>
-              <div data-subtotal>
+              <div data-carttotal>
                 {%- render 'price', price: cart.total_price -%}
               </div>
             </div>
@@ -140,6 +140,9 @@
                 class="btn cart__checkout"
               >
                 {% render 't_with_fallback', key: 'actions.checkout', fallback: 'Check out' %}
+                <div data-subtotal>
+                  {%- render 'price', price: cart.total_price -%}
+                </div>
               </button>
 
               {% if additional_checkout_buttons and cart_additional_buttons %}
