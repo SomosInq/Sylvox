@@ -1,0 +1,9 @@
+{
+  "name": "Customer Profile Form",
+  "sections": {
+    "main": {
+      "type": "account-profile-form"
+    }
+  },
+  "order": ["main"]
+}
