@@ -1,0 +1,575 @@
+{% comment %}
+  HOW TO CHOOSE – Step Wizard (Shopify-compatible)
+  - No `| where:` filters (uses if checks on block.type)
+  - Series: environments map via CSV text (env block IDs)
+  - Rule → product uses product object directly
+  - Fixes:
+    • Quick Guide starts from Step 2 (Step 1 quick guide removed)
+    • Series filtering: case-insensitive CSV match + "all" support
+    • Next buttons start disabled and enable after a valid selection
+{% endcomment %}
+
+{%- stylesheet -%}
+/* ============== Base ============== */
+.h2c { --h2c-accent: {{ section.settings.accent_color }}; }
+.h2c * { box-sizing: border-box; }
+.h2c .container { max-width: {{ section.settings.max_width }}px; margin: 0 auto; padding-inline: 20px; }
+.h2c .center { text-align: center; }
+
+.h2c .progress {
+  display: flex; gap: 8px; align-items: center; justify-content: center;
+  padding: 12px 0 24px; flex-wrap: wrap;
+}
+.h2c .progress__pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 999px; font-size: 13px; line-height: 1;
+  background: #eef2ef; color: #2b3b34; opacity: .85;
+}
+.h2c .progress__pill.is-active { background: var(--h2c-accent); color: #fff; opacity: 1; }
+.h2c .progress__num {
+  width: 18px; height: 18px; border-radius: 999px; display: inline-grid; place-items: center;
+  font-size: 11px; background: rgba(0,0,0,.15); color: #fff;
+}
+.h2c .progress__pill.is-active .progress__num { background: rgba(255,255,255,.25); }
+
+/* ============== Step Panels ============== */
+.h2c .step { display: none; }
+.h2c .step.is-active { display: block; animation: fadeIn .18s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============== Headings ============== */
+.h2c .step__head { margin: 10px 0 22px; }
+.h2c .step__title { font-size: clamp(22px, 2.4vw, 32px); font-weight: 600; color: #2b3b34; margin: 0 0 8px; text-align: center; }
+.h2c .step__sub { font-size: 12px; color: #6b7c74; text-align: center; }
+
+/* ============== Card Grid ============== */
+.h2c .grid { display: grid; gap: 18px; }
+.h2c .grid--1 { grid-template-columns: 1fr; }
+.h2c .grid--2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.h2c .grid--3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.h2c .grid--4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+@media (max-width: 980px) {
+  .h2c .grid--4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .h2c .grid--3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .h2c .grid--2, .h2c .grid--3, .h2c .grid--4 { grid-template-columns: 1fr; }
+}
+
+/* ============== Selectable Card ============== */
+.h2c .card {
+  position: relative; background: #fff; border-radius: 12px; border: 1px solid #e6ece8;
+  padding: 16px; box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+.h2c .card:hover { border-color: var(--h2c-accent); }
+.h2c .card__img { aspect-ratio: 4/3; width: 100%; object-fit: cover; border-radius: 8px; background: #f6f8f7; }
+.h2c .card__title { font-size: 14px; font-weight: 600; color: #2b3b34; margin: 10px 0 4px; }
+.h2c .card__desc { font-size: 12px; color: #6b7c74; min-height: 32px; }
+.h2c .card__radio {
+  position: absolute; right: 12px; bottom: 12px; width: 18px; height: 18px; border-radius: 999px;
+  border: 2px solid #c7d3cc; background: #fff;
+}
+.h2c .card.is-selected { border-color: var(--h2c-accent); box-shadow: 0 0 0 3px rgba( {{ section.settings.accent_color | color_to_rgb | replace: 'rgb(', '' | replace: ')', '' }} , .15); }
+.h2c .card.is-selected .card__radio { border-color: var(--h2c-accent); box-shadow: inset 0 0 0 5px var(--h2c-accent); }
+
+/* ============== Tables & Helpers ============== */
+.h2c .table {
+  width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e6ece8; border-radius: 10px; overflow: hidden;
+}
+.h2c .table th, .h2c .table td { font-size: 13px; padding: 12px 14px; border-bottom: 1px solid #eef2ef; color: #2b3b34; text-align: left; }
+.h2c .table th { font-weight: 600; background: #f8faf9; }
+.h2c .muted { color: #6b7c74; font-size: 12px; }
+
+/* ============== Footer Controls ============== */
+.h2c .nav { display: flex; justify-content: center; gap: 12px; margin: 22px 0 10px; }
+.h2c .btn {
+  appearance: none; border: 1px solid #d7e2dc; background: #fff; color: #2b3b34;
+  padding: 10px 16px; border-radius: 999px; cursor: pointer; font-size: 14px;
+}
+.h2c .btn--primary { background: var(--h2c-accent); border-color: var(--h2c-accent); color: #fff; }
+.h2c .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ============== Result Card ============== */
+.h2c .result-card { max-width: 420px; margin: 0 auto; }
+.h2c .result-card .card__img { aspect-ratio: 16/10; }
+.h2c .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: var(--h2c-accent); color: #fff; text-decoration: none; }
+
+/* Quick Guide accordion (simple) */
+.h2c details { background: #fff; border: 1px solid #e6ece8; border-radius: 10px; padding: 10px 14px; }
+.h2c details + details { margin-top: 10px; }
+.h2c summary { cursor: pointer; font-weight: 600; color: #2b3b34; }
+{%- endstylesheet -%}
+
+<div class="h2c" data-section-id="{{ section.id }}">
+  <div class="container">
+
+    {%- assign steps = "Environment|Series|Screen Size|Mounting|Result" | split: "|" -%}
+    <div class="progress" aria-label="Wizard progress">
+      {%- for label in steps -%}
+        <div class="progress__pill{% if forloop.index == 1 %} is-active{% endif %}" data-step-pill="{{ forloop.index }}">
+          <span class="progress__num">{{ forloop.index }}</span>
+          <span>{{ label }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} STEP 1: ENVIRONMENT {%- endcomment -%}
+    <section class="step is-active" data-step="1">
+      <div class="step__head">
+        <h2 class="step__title">{{ section.settings.step1_title }}</h2>
+        <p class="step__sub">{{ section.settings.step1_sub }}</p>
+      </div>
+
+      <div class="grid grid--2" data-group="environment">
+        {% for block in section.blocks %}
+          {% if block.type == 'environment' %}
+            <article class="card" data-value="{{ block.id }}" data-label="{{ block.settings.title | escape }}" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <img class="card__img" src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.title | escape }}">
+              {% endif %}
+              <h3 class="card__title">{{ block.settings.title }}</h3>
+              <p class="card__desc">{{ block.settings.desc }}</p>
+              <span class="card__radio" aria-hidden="true"></span>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+
+      <div class="nav">
+        <button class="btn" data-prev disabled>{{ section.settings.prev_text }}</button>
+        <button class="btn btn--primary" data-next disabled>{{ section.settings.next_text }}</button>
+      </div>
+    </section>
+
+    {%- comment -%} STEP 2: SERIES (filtered by chosen environment) {%- endcomment -%}
+    <section class="step" data-step="2">
+      <div class="step__head">
+        <h2 class="step__title">{{ section.settings.step2_title }}</h2>
+        <p class="step__sub">{{ section.settings.step2_sub }}</p>
+      </div>
+
+      <div class="grid grid--4" data-group="series">
+        {% for block in section.blocks %}
+          {% if block.type == 'series' %}
+            <article
+              class="card"
+              data-value="{{ block.id }}"
+              data-envs="{% if block.settings.env_all %}all{% else %}{{ block.settings.environments_csv | escape }}{% endif %}"
+              data-label="{{ block.settings.title | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.image != blank %}
+                <img class="card__img" src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.title | escape }}">
+              {% endif %}
+              <h3 class="card__title">{{ block.settings.title }}</h3>
+              <div class="card__desc">
+                <div><strong>{{ block.settings.smart_system_label }}</strong> {{ block.settings.smart_system_value }}</div>
+                <div><strong>{{ block.settings.best_for_label }}</strong> {{ block.settings.best_for_value }}</div>
+              </div>
+              <span class="card__radio" aria-hidden="true"></span>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% if section.settings.step2_quick_title != blank %}
+      <div style="margin-top:16px">
+        <details>
+          <summary>{{ section.settings.step2_quick_title }}</summary>
+          <div class="muted" style="padding-top:8px">{{ section.settings.step2_quick_body }}</div>
+        </details>
+      </div>
+      {% endif %}
+
+      <div class="nav">
+        <button class="btn" data-prev>{{ section.settings.prev_text }}</button>
+        <button class="btn btn--primary" data-next disabled>{{ section.settings.next_text }}</button>
+      </div>
+    </section>
+
+    {%- comment -%} STEP 3: SCREEN SIZE {%- endcomment -%}
+    <section class="step" data-step="3">
+      <div class="step__head">
+        <h2 class="step__title">{{ section.settings.step3_title }}</h2>
+        <p class="step__sub">{{ section.settings.step3_sub }}</p>
+      </div>
+
+      <div class="grid grid--1" data-group="size">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{ section.settings.distance_col }}</th>
+              <th>{{ section.settings.recommended_size_col }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for block in section.blocks %}
+              {% if block.type == 'size_option' %}
+                <tr class="size-row" data-value="{{ block.id }}" data-label="{{ block.settings.title | escape }}">
+                  <td>{{ block.settings.title }}</td>
+                  <td>{{ block.settings.recommended }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        {% if section.settings.size_rule != blank %}
+          <p class="muted" style="margin-top:8px">{{ section.settings.size_rule }}</p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.step3_quick_title != blank %}
+      <div style="margin-top:16px">
+        <details>
+          <summary>{{ section.settings.step3_quick_title }}</summary>
+          <div class="muted" style="padding-top:8px">{{ section.settings.step3_quick_body }}</div>
+        </details>
+      </div>
+      {% endif %}
+
+      <div class="nav">
+        <button class="btn" data-prev>{{ section.settings.prev_text }}</button>
+        <button class="btn btn--primary" data-next disabled>{{ section.settings.next_text }}</button>
+      </div>
+    </section>
+
+    {%- comment -%} STEP 4: MOUNT OPTION {%- endcomment -%}
+    <section class="step" data-step="4">
+      <div class="step__head">
+        <h2 class="step__title">{{ section.settings.step4_title }}</h2>
+        <p class="step__sub">{{ section.settings.step4_sub }}</p>
+      </div>
+
+      <div class="grid grid--3" data-group="mount">
+        {% for block in section.blocks %}
+          {% if block.type == 'mount_option' %}
+            <article class="card" data-value="{{ block.id }}" data-label="{{ block.settings.title | escape }}" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <img class="card__img" src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.title | escape }}">
+              {% endif %}
+              <h3 class="card__title">{{ block.settings.title }}</h3>
+              <p class="card__desc">{{ block.settings.desc }}</p>
+              <span class="card__radio" aria-hidden="true"></span>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      {% if section.settings.step4_quick_title != blank %}
+      <div style="margin-top:16px">
+        <details>
+          <summary>{{ section.settings.step4_quick_title }}</summary>
+          <div class="muted" style="padding-top:8px">{{ section.settings.step4_quick_body }}</div>
+        </details>
+      </div>
+      {% endif %}
+
+      <div class="nav">
+        <button class="btn" data-prev>{{ section.settings.prev_text }}</button>
+        <button class="btn btn--primary" data-next disabled>{{ section.settings.next_text }}</button>
+      </div>
+    </section>
+
+    {%- comment -%} STEP 5: RESULT {%- endcomment -%}
+    <section class="step" data-step="5">
+      <div class="step__head">
+        <h2 class="step__title">{{ section.settings.step5_title }}</h2>
+        <p class="step__sub">{{ section.settings.step5_sub }}</p>
+      </div>
+
+      <div class="result-card card" id="h2c-result">
+        <img class="card__img" id="h2c-result-image" src="{{ section.settings.fallback_image | img_url: '800x' }}" alt="" loading="lazy">
+        <h3 class="card__title" id="h2c-result-title">{{ section.settings.fallback_title }}</h3>
+        <p class="card__desc" id="h2c-result-desc"></p>
+        <div id="h2c-result-cta" style="margin-top:12px;"></div>
+      </div>
+
+      <div class="nav">
+        <button class="btn" data-prev>{{ section.settings.prev_text }}</button>
+        <button class="btn btn--primary" data-restart style="display:none">{{ section.settings.restart_text }}</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(() => {
+  const root = document.querySelector('.h2c[data-section-id="{{ section.id }}"]');
+  if (!root) return;
+
+  const state = { env:null, series:null, size:null, mount:null };
+
+  const steps = [...root.querySelectorAll('.step')];
+  const pills = [...root.querySelectorAll('[data-step-pill]')];
+
+  function goto(stepIdx) {
+    steps.forEach(s => s.classList.remove('is-active'));
+    pills.forEach(p => p.classList.remove('is-active'));
+    const panel = root.querySelector(`.step[data-step="${stepIdx}"]`);
+    const pill = root.querySelector(`[data-step-pill="${stepIdx}"]`);
+    if (panel) panel.classList.add('is-active');
+    if (pill) pill.classList.add('is-active');
+  }
+
+  function selectCard(containerSel, el) {
+    root.querySelectorAll(`${containerSel} .card, ${containerSel} .size-row`).forEach(c => c.classList.remove('is-selected'));
+    el.classList.add('is-selected');
+  }
+
+  function toggleNextButton(step, enable) {
+    const btn = root.querySelector(`.step[data-step="${step}"] [data-next]`);
+    if (btn) btn.disabled = !enable;
+  }
+
+  // Step 1: Environment cards
+  root.querySelectorAll('[data-group="environment"] .card').forEach(card => {
+    card.addEventListener('click', () => {
+      selectCard('[data-group="environment"]', card);
+      state.env = { id: card.dataset.value, label: card.dataset.label };
+
+      // Filter series by environment-id CSV
+      const selectedEnvId = (state.env.id || '').toLowerCase();
+      root.querySelectorAll('[data-group="series"] .card').forEach(s => {
+        const raw = (s.dataset.envs || '').toLowerCase();
+        const arr = raw.split(',').map(v => v.trim()).filter(Boolean);
+        const show = arr.includes('all') || arr.includes(selectedEnvId);
+        s.style.display = show ? '' : 'none';
+        if (!show) s.classList.remove('is-selected');
+      });
+
+      toggleNextButton(1, true);
+    });
+  });
+
+  // Step 2: Series cards
+  root.querySelectorAll('[data-group="series"] .card').forEach(card => {
+    card.addEventListener('click', () => {
+      if (!state.env) { alert('{{ section.settings.alert_pick_env | escape }}'); return; }
+      selectCard('[data-group="series"]', card);
+      state.series = { id: card.dataset.value, label: card.dataset.label };
+      toggleNextButton(2, true);
+    });
+  });
+
+  // Step 3: Size rows act like radios
+  root.querySelectorAll('.size-row').forEach(row => {
+    row.style.cursor = 'pointer';
+    row.addEventListener('click', () => {
+      selectCard('table', row);
+      state.size = { id: row.dataset.value, label: row.dataset.label };
+      toggleNextButton(3, true);
+    });
+  });
+
+  // Step 4: Mount cards
+  root.querySelectorAll('[data-group="mount"] .card').forEach(card => {
+    card.addEventListener('click', () => {
+      selectCard('[data-group="mount"]', card);
+      state.mount = { id: card.dataset.value, label: card.dataset.label };
+      toggleNextButton(4, true);
+    });
+  });
+
+  // Navigation buttons
+  root.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = +btn.closest('.step').dataset.step;
+      if (step === 1 && !state.env) return alert('{{ section.settings.alert_pick_env | escape }}');
+      if (step === 2 && !state.series) return alert('{{ section.settings.alert_pick_series | escape }}');
+      if (step === 3 && !state.size) return alert('{{ section.settings.alert_pick_size | escape }}');
+      if (step === 4 && !state.mount) return alert('{{ section.settings.alert_pick_mount | escape }}');
+
+      if (step === 4) buildResult();
+      goto(step + 1);
+      root.querySelector('[data-restart]')?.style.setProperty('display', step + 1 === 5 ? 'inline-flex' : 'none');
+    })
+  });
+
+  root.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = +btn.closest('.step').dataset.step;
+      goto(Math.max(1, step - 1));
+    })
+  });
+
+  root.querySelector('[data-restart]')?.addEventListener('click', () => {
+    Object.keys(state).forEach(k => state[k] = null);
+    root.querySelectorAll('.is-selected').forEach(el => el.classList.remove('is-selected'));
+    // Reset disabled state on step Next buttons
+    [1,2,3,4].forEach(s => toggleNextButton(s, false));
+    goto(1);
+  });
+
+  // Build Result (rule-based, else fallback summary)
+  function buildResult() {
+    const titleEl = root.querySelector('#h2c-result-title');
+    const descEl  = root.querySelector('#h2c-result-desc');
+    const imgEl   = root.querySelector('#h2c-result-image');
+    const ctaWrap = root.querySelector('#h2c-result-cta');
+
+    const rules = [...root.querySelectorAll('[data-rule]')].map(r => ({
+      env: r.dataset.env, series: r.dataset.series, size: r.dataset.size, mount: r.dataset.mount,
+      title: r.dataset.title, url: r.dataset.url, image: r.dataset.image, cta: r.dataset.cta
+    }));
+
+    const match = rules.find(r =>
+      r.env === state.env?.id && r.series === state.series?.id && r.size === state.size?.id && r.mount === state.mount?.id
+    );
+
+    if (match) {
+      titleEl.textContent = match.title || `${state.series.label} + ${state.mount.label}`;
+      descEl.textContent  = `${state.series.label} • ${state.size.label} • ${state.mount.label}`;
+      if (match.image) imgEl.src = match.image;
+      ctaWrap.innerHTML = match.url ? `<a class="cta" href="${match.url}">${match.cta || '{{ section.settings.default_cta | escape }}'}</a>` : '';
+    } else {
+      titleEl.textContent = `${state.series?.label || ''} + ${state.mount?.label || ''}`.trim();
+      descEl.textContent  = `${state.env?.label || ''} • ${state.size?.label || ''}`.trim();
+      imgEl.src = '{{ section.settings.fallback_image | img_url: '800x' }}';
+      ctaWrap.innerHTML = '';
+    }
+  }
+
+  // Start on step 1; Next buttons disabled until selection
+  [1,2,3,4].forEach(s => toggleNextButton(s, false));
+  goto(1);
+})();
+</script>
+
+{%- comment -%} Hidden rule dataset elements rendered for JS lookup {%- endcomment -%}
+<div style="display:none">
+  {% for rule in section.blocks %}
+    {% if rule.type == 'rule' %}
+      {% assign product_obj = rule.settings.product %}
+      <div
+        data-rule
+        data-env="{{ rule.settings.env_ref }}"
+        data-series="{{ rule.settings.series_ref }}"
+        data-size="{{ rule.settings.size_ref }}"
+        data-mount="{{ rule.settings.mount_ref }}"
+        data-title="{{ rule.settings.override_title | escape }}"
+        data-cta="{{ rule.settings.override_cta | escape }}"
+        data-url="{% if product_obj %}{{ product_obj.url }}{% else %}{{ rule.settings.custom_url }}{% endif %}"
+        data-image="{% if product_obj and product_obj.featured_image %}{{ product_obj.featured_image | img_url: '800x' }}{% endif %}"
+      ></div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "How to Choose – Wizard",
+  "tag": "section",
+  "class": "h2c-wrapper",
+  "settings": [
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#234f3f" },
+    { "type": "range", "id": "max_width", "label": "Max width (px)", "min": 900, "max": 1600, "step": 50, "default": 1150 },
+
+    { "type": "text", "id": "prev_text", "label": "Previous button text", "default": "Previous" },
+    { "type": "text", "id": "next_text", "label": "Next button text", "default": "Next" },
+    { "type": "text", "id": "restart_text", "label": "Restart button text", "default": "Start again" },
+
+    { "type": "text", "id": "alert_pick_env", "label": "Alert: pick environment", "default": "Please choose your installation environment." },
+    { "type": "text", "id": "alert_pick_series", "label": "Alert: pick series", "default": "Please choose the right series." },
+    { "type": "text", "id": "alert_pick_size", "label": "Alert: pick size", "default": "Please choose a viewing distance." },
+    { "type": "text", "id": "alert_pick_mount", "label": "Alert: pick mount", "default": "Please choose your mounting option." },
+
+    { "type": "text", "id": "step1_title", "label": "Step 1 title", "default": "Choose Your Installation Environment" },
+    { "type": "textarea", "id": "step1_sub", "label": "Step 1 subtitle", "default": "Where do you plan to place the TV? Select the scene that best fits your space." },
+
+    { "type": "text", "id": "step2_title", "label": "Step 2 title", "default": "Choose the Right Series for Your Needs" },
+    { "type": "textarea", "id": "step2_sub", "label": "Step 2 subtitle", "default": "Select what fits you best." },
+    { "type": "text", "id": "step2_quick_title", "label": "Step 2 quick guide title", "default": "Quick Guide" },
+    { "type": "textarea", "id": "step2_quick_body", "label": "Step 2 quick guide body", "default": "-" },
+
+    { "type": "text", "id": "step3_title", "label": "Step 3 title", "default": "Choose the Right Screen Size" },
+    { "type": "textarea", "id": "step3_sub", "label": "Step 3 subtitle", "default": "How to choose:" },
+    { "type": "text", "id": "distance_col", "label": "Distance column header", "default": "Viewing Distance" },
+    { "type": "text", "id": "recommended_size_col", "label": "Recommended size column header", "default": "Recommended Screen Size" },
+    { "type": "text", "id": "size_rule", "label": "Rule of thumb text", "default": "Rule of Thumb: Viewing distance (in inches) ÷ 1.5 ≈ optimal screen size." },
+    { "type": "text", "id": "step3_quick_title", "label": "Step 3 quick guide title", "default": "Quick Guide" },
+    { "type": "textarea", "id": "step3_quick_body", "label": "Step 3 quick guide body", "default": "-" },
+
+    { "type": "text", "id": "step4_title", "label": "Step 4 title", "default": "Choose Your Mounting Option" },
+    { "type": "textarea", "id": "step4_sub", "label": "Step 4 subtitle", "default": "Pick the setup style that fits your space." },
+    { "type": "text", "id": "step4_quick_title", "label": "Step 4 quick guide title", "default": "Quick Guide" },
+    { "type": "textarea", "id": "step4_quick_body", "label": "Step 4 quick guide body", "default": "-" },
+
+    { "type": "text", "id": "step5_title", "label": "Step 5 title", "default": "Your Result" },
+    { "type": "textarea", "id": "step5_sub", "label": "Step 5 subtitle", "default": "Here’s the best match for your setup." },
+    { "type": "text", "id": "default_cta", "label": "Default CTA label", "default": "Buy it now" },
+    { "type": "image_picker", "id": "fallback_image", "label": "Fallback result image" },
+    { "type": "text", "id": "fallback_title", "label": "Fallback result title", "default": "Recommended setup" }
+  ],
+  "blocks": [
+    {
+      "type": "environment",
+      "name": "Environment card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Full Sun (Direct Sunlight)" },
+        { "type": "textarea", "id": "desc", "label": "Description", "default": "For areas completely exposed to sunlight." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "series",
+      "name": "Series card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Series name", "default": "Deck Pro QLED 2.0" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+
+        { "type": "paragraph", "content": "Visibility by environment" },
+        { "type": "checkbox", "id": "env_all", "label": "Show for ALL environments", "default": false },
+        { "type": "text", "id": "environments_csv", "label": "Environment BLOCK IDs (comma-separated)", "default": "-" },
+
+        { "type": "text", "id": "smart_system_label", "label": "Row 1 label", "default": "Smart System:" },
+        { "type": "text", "id": "smart_system_value", "label": "Row 1 value", "default": "Google TV" },
+        { "type": "text", "id": "best_for_label", "label": "Row 2 label", "default": "Best For:" },
+        { "type": "text", "id": "best_for_value", "label": "Row 2 value", "default": "Premium picture" }
+      ]
+    },
+    {
+      "type": "size_option",
+      "name": "Screen size",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Viewing distance label", "default": "6–8 ft (1.8–2.4 m)" },
+        { "type": "text", "id": "recommended", "label": "Recommended size", "default": "55\"" }
+      ]
+    },
+    {
+      "type": "mount_option",
+      "name": "Mount option",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Wall Mount" },
+        { "type": "textarea", "id": "desc", "label": "Description", "default": "Best for solid walls, patios, or decks." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "rule",
+      "name": "Result rule",
+      "settings": [
+        { "type": "header", "content": "Match criteria" },
+        { "type": "text", "id": "env_ref", "label": "Environment BLOCK ID", "default": "-" },
+        { "type": "text", "id": "series_ref", "label": "Series BLOCK ID", "default": "-" },
+        { "type": "text", "id": "size_ref", "label": "Size option BLOCK ID", "default": "-" },
+        { "type": "text", "id": "mount_ref", "label": "Mount option BLOCK ID", "default": "-" },
+
+        { "type": "header", "content": "Result" },
+        { "type": "product", "id": "product", "label": "Recommended product" },
+        { "type": "url", "id": "custom_url", "label": "Custom link (overrides product url)" },
+        { "type": "text", "id": "override_title", "label": "Override result title", "default": "-" },
+        { "type": "text", "id": "override_cta", "label": "Override CTA label", "default": "-" }
+      ]
+    }
+  ],
+  "max_blocks": 200,
+  "presets": [
+    {
+      "name": "How to Choose – Wizard",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

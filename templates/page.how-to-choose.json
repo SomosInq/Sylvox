@@ -64,172 +64,83 @@
         "vertical_alignment": "center"
       }
     },
-    "anchor_navigation_6dbKkJ": {
-      "type": "anchor-navigation",
+    "how_to_choose_wizard_WnxUkH": {
+      "type": "how-to-choose-wizard",
       "blocks": {
-        "nav_item_MtUmEE": {
-          "type": "nav_item",
+        "environment_ePD4Rz": {
+          "type": "environment",
           "settings": {
-            "title": "Choose Your Installation Environment",
-            "anchor_id": "section-1"
-          }
-        }
-      },
-      "block_order": [
-        "nav_item_MtUmEE"
-      ],
-      "name": "Anchor Navigation",
-      "settings": {
-        "title": "Navigate to Sections",
-        "background_color": "#336256",
-        "text_color": "#c6c6c6"
-      }
-    },
-    "image_text_gE43et": {
-      "type": "image-text",
-      "blocks": {
-        "title_34CQBn": {
-          "type": "title",
-          "settings": {
-            "title": "Choose Your Installation Environment"
+            "title": "Full Sun (Direct Sunlight)",
+            "desc": "For areas completely exposed to sunlight.",
+            "image": "shopify://shop_images/7d1b765c5b16cf44dab3a3aca24ef18c5d53b25e.jpg"
           }
         },
-        "text_6HNyWW": {
-          "type": "text",
+        "environment_wb3FbE": {
+          "type": "environment",
           "settings": {
-            "text": "Where do you plan to place the TV?\nSelect the scene that best fits your space."
-          }
-        }
-      },
-      "block_order": [
-        "title_34CQBn",
-        "text_6HNyWW"
-      ],
-      "name": "Somos Image/Text Flex Blocks",
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "section_width": "standard",
-        "section_content_width": "standard",
-        "alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "button_background_color": "#000000",
-        "button_outline_color": "#ffffff",
-        "button_icon": "",
-        "button_icon_position": "left",
-        "button_size": "medium"
-      }
-    },
-    "promo_grid_yyAFdn": {
-      "type": "promo-grid",
-      "blocks": {
-        "advanced_AD8YKA": {
-          "type": "advanced",
-          "settings": {
-            "subheading": "",
-            "heading": "",
-            "textarea": "",
-            "cta_text1": "",
-            "cta_link1": "",
-            "cta_text2": "",
-            "cta_link2": "",
-            "image": "shopify://shop_images/Frame_1272638891.png",
-            "video_url": "",
-            "width": "50",
-            "height": 800,
-            "text_align": "vertical-center horizontal-center",
-            "color_accent": "#ffffff"
+            "title": "Partial Sun (Some Shade)",
+            "desc": "For partially covered spaces\npatios with pergolas, decks, outdoor kitchens.",
+            "image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9_e0dd84d3-292d-40b4-a859-04f1f09b7bc8.jpg"
           }
         },
-        "advanced_Y8bf9Y": {
-          "type": "advanced",
+        "series_bjQYpr": {
+          "type": "series",
           "settings": {
-            "subheading": "",
-            "heading": "",
-            "textarea": "",
-            "cta_text1": "",
-            "cta_link1": "",
-            "cta_text2": "",
-            "cta_link2": "",
-            "image": "shopify://shop_images/Frame_1272638893.png",
-            "video_url": "",
-            "width": "50",
-            "height": 800,
-            "text_align": "vertical-center horizontal-center",
-            "color_accent": "#ffffff"
+            "title": "Deck Pro QLED 2.0",
+            "env_all": false,
+            "environments_csv": "-",
+            "smart_system_label": "Smart System:",
+            "smart_system_value": "Google TV",
+            "best_for_label": "Best For:",
+            "best_for_value": "Premium picture"
           }
         }
       },
       "block_order": [
-        "advanced_AD8YKA",
-        "advanced_Y8bf9Y"
+        "environment_ePD4Rz",
+        "environment_wb3FbE",
+        "series_bjQYpr"
       ],
-      "name": "t:labels.promotional_grid",
+      "name": "How to Choose – Wizard",
       "settings": {
-        "full_width": false,
-        "gutter_size": 20,
-        "space_above": true,
-        "space_below": true
-      }
-    },
-    "image_text_HeN8df": {
-      "type": "image-text",
-      "blocks": {
-        "button_hynTxW": {
-          "type": "button",
-          "settings": {
-            "text": "Next",
-            "url": "",
-            "style": "fill",
-            "size": "base",
-            "text_color": "#ffffff",
-            "background": "#56654e",
-            "outline_color": "#000000",
-            "icon": "",
-            "icon_position": "left",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "button_hynTxW"
-      ],
-      "name": "Somos Image/Text Flex Blocks",
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "section_width": "standard",
-        "section_content_width": "standard",
-        "alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "button_background_color": "#000000",
-        "button_outline_color": "#ffffff",
-        "button_icon": "",
-        "button_icon_position": "left",
-        "button_size": "medium"
+        "accent_color": "#234f3f",
+        "max_width": 1150,
+        "prev_text": "Previous",
+        "next_text": "Next",
+        "restart_text": "Start again",
+        "alert_pick_env": "Please choose your installation environment.",
+        "alert_pick_series": "Please choose the right series.",
+        "alert_pick_size": "Please choose a viewing distance.",
+        "alert_pick_mount": "Please choose your mounting option.",
+        "step1_title": "Choose Your Installation Environment",
+        "step1_sub": "Where do you plan to place the TV? Select the scene that best fits your space.",
+        "step1_quick_title": "Quick Guide",
+        "step1_quick_body": "-",
+        "step2_title": "Choose the Right Series for Your Needs",
+        "step2_sub": "Select what fits you best.",
+        "step2_quick_title": "Quick Guide",
+        "step2_quick_body": "-",
+        "step3_title": "Choose the Right Screen Size",
+        "step3_sub": "How to choose:",
+        "distance_col": "Viewing Distance",
+        "recommended_size_col": "Recommended Screen Size",
+        "size_rule": "Rule of Thumb: Viewing distance (in inches) ÷ 1.5 ≈ optimal screen size.",
+        "step3_quick_title": "Quick Guide",
+        "step3_quick_body": "-",
+        "step4_title": "Choose Your Mounting Option",
+        "step4_sub": "Pick the setup style that fits your space.",
+        "step4_quick_title": "Quick Guide",
+        "step4_quick_body": "-",
+        "step5_title": "Your Result",
+        "step5_sub": "Here’s the best match for your setup.",
+        "default_cta": "Buy it now",
+        "fallback_title": "Recommended setup"
       }
     }
   },
   "order": [
     "main",
     "somos_banner_8pxCzf",
-    "anchor_navigation_6dbKkJ",
-    "image_text_gE43et",
-    "promo_grid_yyAFdn",
-    "image_text_HeN8df"
+    "how_to_choose_wizard_WnxUkH"
   ]
 }
