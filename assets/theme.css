@@ -1783,6 +1783,13 @@ display: flex;
   margin: 0 auto;
   /* width: 100%; */
 }
+.page-how-to-buy .image-text-blocks-section .section_content_width_standard {
+  max-width: unset;
+}
+.page-how-to-buy .image-text-blocks-section img {
+  max-width: 1050px;
+  margin: 0;
+}
 
 .itfb_image {
   /* width: 100%; */
