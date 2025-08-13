@@ -1,14 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "login-split",
+      "blocks": {
+        "social_login_zjHXbh": {
+          "type": "social_login",
+          "settings": {
+            "enabled": true,
+            "icon": "shopify://shop_images/google-17710f7a_svg.svg",
+            "image_height": 22,
+            "label": "",
+            "show_label": true,
+            "url": "shopify://collections/all",
+            "alt": "Social login"
+          }
+        },
+        "social_login_4erEHw": {
+          "type": "social_login",
+          "settings": {
+            "enabled": true,
+            "icon": "shopify://shop_images/facebook-7e8742ac_svg.svg",
+            "image_height": 22,
+            "label": "",
+            "show_label": true,
+            "url": "shopify://collections/all",
+            "alt": "Social login"
+          }
+        },
+        "social_login_hFzzVj": {
+          "type": "social_login",
+          "settings": {
+            "enabled": true,
+            "icon": "shopify://shop_images/twitter-de3f53ab_svg.svg",
+            "image_height": 24,
+            "label": "",
+            "show_label": false,
+            "url": "",
+            "alt": "Social login"
+          }
+        },
+        "social_login_KmCBVF": {
+          "type": "social_login",
+          "settings": {
+            "enabled": true,
+            "icon": "shopify://shop_images/amazon-c478d346_svg.svg",
+            "image_height": 24,
+            "label": "",
+            "show_label": false,
+            "url": "",
+            "alt": "Social login"
+          }
+        }
+      },
+      "block_order": [
+        "social_login_zjHXbh",
+        "social_login_4erEHw",
+        "social_login_hFzzVj",
+        "social_login_KmCBVF"
+      ],
       "settings": {
-        "login_image": "",
+        "login_image": "shopify://shop_images/Rectangle_534.png",
         "show_logo": false,
-        "logo": "",
-        "autofocus": true
+        "logo": "shopify://shop_images/c860f0f53469cfa2542e86ff1aab3e6c3543021f.png",
+        "autofocus": true,
+        "login_button_text": "LOG IN",
+        "or_login_with_label": "Or log in with",
+        "social_widget_html": "",
+        "password_free_url": "",
+        "password_free_label": "Password-free log in",
+        "show_third_party_notice": true,
+        "third_party_prefix": "By logging in with a third party, it means you have read and agreed with our",
+        "privacy_text": "Privacy Policy",
+        "privacy_link": "",
+        "third_party_middle": ",",
+        "terms_text": "Terms of Service",
+        "terms_link": ""
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
