@@ -3240,6 +3240,38 @@ label[for] {
     background-color: #336256;
   }
 
+.login-wrapper .login-form-wrapper input {
+    border-width: 0px;
+    border-bottom-width: 1px;
+    padding-inline: 0;
+}
+.login-wrapper .login-form-wrapper input:focus-visible {
+    outline-color: transparent;
+}
+
+.login-wrapper .login-form-wrapper label {
+    display: none;
+}
+.login-wrapper .login-form-wrapper .bottom-checkboxes label {
+    display: block;
+    font-size: 14px;
+    letter-spacing: normal;
+    margin-bottom: 0;
+}
+.login-wrapper .login-form-wrapper .bottom-checkboxes input {
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+.login-wrapper .login-form-wrapper .bottom-checkboxes a {
+    color: #DB4B97;
+}
+
+.login-wrapper .login-header-logo {
+  width: 140px;
+  margin-bottom: 58px;
+}
+
 small {
   display: block;
 }

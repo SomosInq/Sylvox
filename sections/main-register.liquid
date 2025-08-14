@@ -1,1 +1,439 @@
-{%- render 'section-main-register' -%}
+<style>
+  .login-wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+  .login-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .login-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+  }
+  .login-form-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    background: #fff;
+  }
+  .login-form-wrapper .page-width {
+    width: 100%;
+    max-width: 460px;
+  }
+  .login-form-wrapper .section-header__title {
+    margin-bottom: 18px;
+  }
+  .login-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .login-actions a {
+    font-size: 0.9rem;
+  }
+  .btn--primary {
+    width: 100%;
+  }
+  @media (max-width: 990px) {
+    .login-wrapper {
+      flex-direction: column;
+    }
+    .login-image {
+      min-height: 260px;
+    }
+  }
+
+  /* Social area */
+  .social-inline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .social-inline__label {
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-text-body);
+    letter-spacing: unset;
+  }
+  .social-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .social-circle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    text-decoration: none;
+  }
+  .social-circle:hover {
+    border-color: #d1d5db;
+  }
+  .social-circle img {
+    max-width: 24px;
+    max-height: 24px;
+    display: block;
+    height: auto;
+  }
+  .social-pill {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 8px 12px;
+    height: 44px;
+    text-decoration: none;
+    background: #fff;
+  }
+  .social-pill:hover {
+    border-color: #d1d5db;
+  }
+  .social-pill img {
+    max-width: 20px;
+    max-height: 20px;
+    display: block;
+    height: auto;
+  }
+  .social-pill .social-label {
+    font-size: 0.95rem;
+  }
+  .social-divider-line {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 14px 0;
+    border: 0;
+  }
+  .third-party-notice {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .third-party-notice a {
+    text-decoration: underline;
+  }
+  #ConfirmPassword:focus {
+    border-bottom-color: rgb(233, 0, 0);
+  }
+  #ConfirmPassword.match:focus {
+    border-bottom-color: rgb(18, 164, 4);
+  }
+  @media (max-width: 600px) {
+    .social-inline {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+</style>
+
+<div class="login-wrapper">
+  <div
+    class="login-image"
+    style="
+      {% if section.settings.login_image != blank %}
+        background-image: url({{ section.settings.login_image | image_url: width: 2000 }});
+      {% else %}
+        background-image: url({{ 'placeholder-image.jpg' | asset_url }});
+      {% endif %}
+    "
+    aria-hidden="true"
+  >
+    {% if section.settings.show_logo and section.settings.logo != blank %}
+      <img
+        src="{{ section.settings.logo | image_url: width: 300 }}"
+        alt="{{ shop.name }}"
+        style="position:absolute;left:24px;bottom:24px;max-width:160px;height:auto"
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+
+  <div class="login-form-wrapper">
+    <div class="page-width page-width--tiny page-content">
+      <header class="section-header">
+        {% if section.settings.logo_header != blank %}
+          <img
+            src="{{ section.settings.logo_header | image_url: width: 300 }}"
+            alt="{{ shop.name }}"
+            class="login-header-logo"
+            loading="lazy"
+          >
+        {% endif %}
+        <h1 class="section-header__title">
+          {% render 't_with_fallback', key: 'actions.register', fallback: 'Register' %}
+        </h1>
+      </header>
+
+      <div class="form-vertical">
+        {%- form 'create_customer' -%}
+          {{ form.errors | default_errors }}
+
+          <label for="FirstName">
+            {% render 't_with_fallback', key: 'labels.first_name', fallback: 'First name' -%}
+          </label>
+          <input
+            type="text"
+            placeholder="{% render 't_with_fallback', key: 'labels.first_name', fallback: 'First name' -%}"
+            name="customer[first_name]"
+            id="FirstName"
+            class="input-full"
+            {% if form.first_name %}
+              value="{{ form.first_name }}"
+            {% endif %}
+            autocapitalize="words"
+            autofocus
+          >
+
+          <label for="LastName">
+            {% render 't_with_fallback', key: 'labels.last_name', fallback: 'Last name' -%}
+          </label>
+          <input
+            type="text"
+            placeholder="{% render 't_with_fallback', key: 'labels.last_name', fallback: 'Last name' -%}"
+            name="customer[last_name]"
+            id="LastName"
+            class="input-full"
+            {% if form.last_name %}
+              value="{{ form.last_name }}"
+            {% endif %}
+            autocapitalize="words"
+          >
+
+          <label for="Email">
+            {% render 't_with_fallback', key: 'labels.email', fallback: 'Email' -%}
+          </label>
+          <input
+            type="email"
+            placeholder="{% render 't_with_fallback', key: 'labels.email', fallback: 'Email' -%}"
+            name="customer[email]"
+            id="Email"
+            class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+            {% if form.email %}
+              value="{{ form.email }}"
+            {% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+          >
+
+          <label for="CreatePassword">
+            {% render 't_with_fallback', key: 'labels.password', fallback: 'Password' -%}
+          </label>
+          <input
+            type="password"
+            placeholder="{% render 't_with_fallback', key: 'labels.password', fallback: 'Password' -%}"
+            name="customer[password]"
+            id="CreatePassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
+          <input
+            type="password"
+            placeholder="{% render 't_with_fallback', key: 'actions.confirm_password', fallback: 'Confirm wew password' -%}"
+            id="ConfirmPassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
+
+          <p>
+            <label for="register-submit" class="visually-hidden">
+              {{ section.settings.login_button_text | default: 'Submit' }}
+            </label>
+            <input
+              type="submit"
+              id="register-submit"
+              value="            {% render 't_with_fallback', key: 'actions.create', fallback: 'Create' %}"
+              class="btn btn--full btn--primary"
+              style="background:#184E41;"
+              disabled
+            >
+          </p>
+          <div class="bottom-checkboxes">
+            <!-- Required Privacy & Terms -->
+            <p>
+              <label>
+                <input type="checkbox" name="agree_terms" required>
+                {{
+                  section.settings.third_party_prefix
+                  | default: 'By logging in with a third party, it means you have read and agreed with our'
+                }}
+                <a href="{{ section.settings.privacy_link }}" target="_blank">Privacy Policy</a> and
+                <a href="{{ section.settings.terms_link }}" target="_blank">Terms of Service</a>.
+              </label>
+            </p>
+
+            <!-- Optional Marketing -->
+            <p>
+              <input type="hidden" name="customer[accepts_marketing]" value="false">
+              <label>
+                <input type="checkbox" name="customer[accepts_marketing]" value="true">
+                I agree to receive Sylvox’s latest news and promotions.
+              </label>
+            </p>
+          </div>
+        {%- endform -%}
+
+         {%- assign enabled_social_blocks = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'social_login' and block.settings.enabled -%}
+              {%- assign enabled_social_blocks = enabled_social_blocks | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign has_widget = false -%}
+          {%- if section.settings.social_widget_html != blank -%}
+            {%- assign has_widget = true -%}
+          {%- endif -%}
+          {%- assign show_social = false -%}
+          {%- if has_widget -%}{%- assign show_social = true -%}{%- endif -%}
+          {%- if enabled_social_blocks > 0 -%}{%- assign show_social = true -%}{%- endif -%}
+
+        {% if show_social %}
+          <div class="social-inline">
+            <span class="social-inline__label">
+              {{ section.settings.or_login_with_label | default: 'Or log in with' }}
+            </span>
+
+            {% if has_widget %}
+              <div class="social-row">
+                {{ section.settings.social_widget_html }}
+              </div>
+            {% else %}
+              <div class="social-row">
+                {% for block in section.blocks %}
+                  {% if block.type == 'social_login' and block.settings.enabled %}
+                    {% if block.settings.show_label %}
+                      <a
+                        class="social-pill"
+                        href="{{ block.settings.url | default: '#' }}"
+                        {{ block.shopify_attributes }}
+                      >
+                        {% if block.settings.icon != blank %}
+                          <img
+                            src="{{ block.settings.icon | image_url: width: 200 }}"
+                            alt="{{ block.settings.alt | escape }}"
+                            style="max-height: {{ block.settings.image_height }}px; width: auto"
+                            loading="lazy"
+                          >
+                        {% endif %}
+                        <span class="social-label">{{ block.settings.label }}</span>
+                      </a>
+                    {% else %}
+                      <a
+                        class="social-circle"
+                        href="{{ block.settings.url | default: '#' }}"
+                        {{ block.shopify_attributes }}
+                      >
+                        {% if block.settings.icon != blank %}
+                          <img
+                            src="{{ block.settings.icon | image_url: width: 200 }}"
+                            alt="{{ block.settings.alt | escape }}"
+                            loading="lazy"
+                          >
+                        {% endif %}
+                      </a>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const passwordInput = document.getElementById('CreatePassword');
+  const confirmInput = document.getElementById('ConfirmPassword');
+  const submitBtn = document.getElementById('register-submit');
+
+  function checkPasswords() {
+    const password = passwordInput.value;
+    const confirm = confirmInput.value;
+
+    if (confirm && confirm === password) {
+      confirmInput.classList.add('match');
+      submitBtn.removeAttribute('disabled');
+    } else {
+      confirmInput.classList.remove('match');
+      submitBtn.setAttribute('disabled', 'true');
+    }
+  }
+
+  confirmInput.addEventListener('input', checkPasswords);
+</script>
+
+{% schema %}
+{
+  "name": "Login — Split Layout",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "image_picker", "id": "login_image", "label": "Left side image" },
+    { "type": "checkbox", "id": "show_logo", "label": "Show logo on image", "default": false },
+    { "type": "image_picker", "id": "logo", "label": "Logo (optional)" },
+    { "type": "image_picker", "id": "logo_header", "label": "Header Logo" },
+
+    { "type": "text", "id": "register_button_text", "label": "Register button text", "default": "Submit" },
+
+    { "type": "header", "content": "Social login" },
+    { "type": "text", "id": "or_login_with_label", "label": "Inline label", "default": "Or log in with" },
+    {
+      "type": "textarea",
+      "id": "social_widget_html",
+      "label": "Social login widget (optional)",
+      "info": "If your app gives you a widget/code snippet, paste it here. If present, it will replace the buttons below."
+    },
+
+    { "type": "header", "content": "Third-party notice" },
+    {
+      "type": "text",
+      "id": "third_party_prefix",
+      "label": "Notice prefix",
+      "default": "I agree to Sylvox’s"
+    },
+    { "type": "text", "id": "privacy_text", "label": "Privacy Policy text", "default": "Privacy Policy" },
+    { "type": "url", "id": "privacy_link", "label": "Privacy Policy link" },
+    { "type": "text", "id": "third_party_middle", "label": "Text between Privacy and Terms", "default": " and " },
+    { "type": "text", "id": "terms_text", "label": "Terms text", "default": "Terms of Service" },
+    { "type": "url", "id": "terms_link", "label": "Terms link" }
+  ],
+  "blocks": [
+    {
+      "type": "social_login",
+      "name": "Social login",
+      "settings": [
+        { "type": "checkbox", "id": "enabled", "label": "Enable this social login", "default": true },
+        { "type": "image_picker", "id": "icon", "label": "Icon image" },
+        {
+          "type": "range",
+          "id": "image_height",
+          "label": "Icon max height (px)",
+          "min": 12,
+          "max": 48,
+          "step": 2,
+          "default": 24
+        },
+        { "type": "text", "id": "label", "label": "Label (e.g., Google)" },
+        { "type": "checkbox", "id": "show_label", "label": "Show label next to icon", "default": false },
+        { "type": "url", "id": "url", "label": "Login URL (from your app/IdP)" },
+        { "type": "text", "id": "alt", "label": "Icon alt text", "default": "Social login" }
+      ]
+    }
+  ]
+}
+{% endschema %}
