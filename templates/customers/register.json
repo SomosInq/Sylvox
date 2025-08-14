@@ -1,1 +1,32 @@
-{"sections":{"main":{"type":"main-register","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-register",
+      "settings": {
+        "login_image": "shopify://shop_images/BG_register.jpg",
+        "show_logo": false,
+        "register_button_text": "Submit",
+        "or_login_with_label": "Or log in with",
+        "social_widget_html": "",
+        "third_party_prefix": "I agree to Sylvox’s",
+        "privacy_text": "Privacy Policy",
+        "privacy_link": "",
+        "third_party_middle": "and",
+        "terms_text": "Terms of Service",
+        "terms_link": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
