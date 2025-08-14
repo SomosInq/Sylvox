@@ -11,6 +11,36 @@
   "sections": {
     "main": {
       "type": "main-register",
+      "blocks": {
+        "social_login_KGan8B": {
+          "type": "social_login",
+          "settings": {
+            "enabled": true,
+            "icon": "shopify://shop_images/google-17710f7a_svg.svg",
+            "image_height": 24,
+            "label": "",
+            "show_label": false,
+            "url": "",
+            "alt": "Social login"
+          }
+        },
+        "social_login_tUtMXN": {
+          "type": "social_login",
+          "settings": {
+            "enabled": true,
+            "icon": "shopify://shop_images/facebook-7e8742ac_svg.svg",
+            "image_height": 24,
+            "label": "",
+            "show_label": false,
+            "url": "",
+            "alt": "Social login"
+          }
+        }
+      },
+      "block_order": [
+        "social_login_KGan8B",
+        "social_login_tUtMXN"
+      ],
       "settings": {
         "login_image": "shopify://shop_images/BG_register.jpg",
         "show_logo": false,
