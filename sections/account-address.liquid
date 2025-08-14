@@ -1,3 +1,5 @@
+{{ 'accounts.css' | asset_url | stylesheet_tag }}
+
 <div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
   <aside class="account-sidebar">
     {% render 'account-sidebar' %}
@@ -74,87 +76,6 @@
   });
 </script>
 
-<style>
-  .account-wrapper {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-    align-items: flex-start;
-  }
-  .account-sidebar {
-    width: 220px;
-    flex-shrink: 0;
-  }
-  .account-content {
-    flex: 1;
-  }
-
-  .account-addresses {
-  margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.account-addresses__title {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-
-.address-form .input-row {
-    display: flex;
-    gap: 20px;
-}
-.address-form .form-control {
-    flex: 1 1 100px;
-    margin-bottom: 20px;
-}
-.address-form .input {
-    width: 100%;
-}
-
-.add-address-button {
-  border: 1px solid #20413B;
-  border-radius: 999px;
-  padding: 10px 20px;
-  background: transparent;
-  cursor: pointer;
-  margin-bottom: 24px;
-  font-size: 14px;
-}
-
-.address-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-.address-card {
-  background-color: #fafafa;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  position: relative;
-}
-
-.address-card__top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.address-card__default {
-  color: #20413B;
-  font-weight: bold;
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-
-.address-card__actions a {
-  font-size: 14px;
-  text-decoration: underline;
-}
-
-</style>
 
 {% schema %}
 {

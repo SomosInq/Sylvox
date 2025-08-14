@@ -1,19 +1,26 @@
+{{ 'accounts.css' | asset_url | stylesheet_tag }}
+
 <div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
   <aside class="account-sidebar">
     {% render 'account-sidebar' %}
   </aside>
 
   <main class="account-content section_width_{{ section.settings.section_width }}">
-
-    <div class="rewards-dashboard-wrapper">
+    <div class="account-profile-wrapper">
       <!-- Top user info and banner -->
-      <div class="rewards-header">
+      <div class="account-profile-header">
         <div class="user-info">
           <h2>{{ customer.first_name | default: 'User' }} {{ customer.last_name }}</h2>
           <p>Email: {{ customer.email }}</p>
           <p>{{ customer.default_address.country }}</p>
         </div>
         <div class="points-banner">
+          <img
+            src="{{ section.settings.points_icon | image_url }}"
+            alt=""
+            width="45"
+            height="45"
+          >
           <div class="left">
             <p class="subheading">Sylvox Membership</p>
             <p class="title">Join the club, get rewarded.</p>
@@ -25,7 +32,8 @@
           </div>
           <div class="right">
             <p class="balance">00</p>
-            <p class="label">Points Balance</p>
+            <p class="points">points</p>
+            <p class="label">Points Balance ></p>
           </div>
         </div>
       </div>
@@ -36,7 +44,11 @@
         <div class="rewards-grid">
           {% for block in section.blocks %}
             {% if block.type == 'reward_item' %}
-              <div class="reward-item" {{ block.shopify_attributes }} style="--reward-icon-size: {{ block.settings.icon_size }}px;">
+              <div
+                class="reward-item"
+                {{ block.shopify_attributes }}
+                style="--reward-icon-size: {{ block.settings.icon_size }}px;"
+              >
                 {% if block.settings.icon != blank %}
                   <img
                     src="{{ block.settings.icon | img_url: '200x' }}"
@@ -74,10 +86,10 @@
             {% if block.type == 'earn_item' %}
               <div class="earn-item" {{ block.shopify_attributes }}>
                 {% if block.settings.title != blank %}
-                  <p class="title">{{ block.settings.title }}</p>
+                  <span class="title">{{ block.settings.title }}</span>
                 {% endif %}
                 {% if block.settings.desc != blank %}
-                  <p class="desc">{{ block.settings.desc }}</p>
+                  <span class="desc">{{ block.settings.desc }}</span>
                 {% endif %}
               </div>
             {% endif %}
@@ -85,94 +97,8 @@
         </div>
       </div>
     </div>
-
   </main>
 </div>
-
-<style>
-  .account-wrapper {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-    align-items: flex-start;
-  }
-  .account-sidebar { width: 220px; flex-shrink: 0; }
-  .account-content { flex: 1; }
-
-  .account-profile-wrapper { display: flex; gap: 40px; flex-wrap: wrap; }
-
-  .rewards-dashboard-wrapper { padding: 40px; font-family: sans-serif; }
-
-  .rewards-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-  }
-  .user-info { flex: 1; min-width: 250px; }
-
-  .points-banner {
-    background: #163c34;
-    color: white;
-    border-radius: 8px;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 300px;
-  }
-  .points-banner .subheading { font-size: 0.75rem; opacity: 0.85; }
-  .points-banner .title { font-size: 1rem; font-weight: bold; }
-  .points-banner .learn-more { font-size: 0.8rem; color: white; text-decoration: underline; }
-  .points-banner .balance { font-size: 2rem; font-weight: bold; }
-  .points-banner .label { font-size: 0.85rem; text-align: right; }
-
-  .rewards-section { margin-bottom: 40px; }
-
-  .rewards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .reward-item {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 24px;
-    text-align: center;
-  }
-
-  .reward-item img {
-    width: var(--reward-icon-size, 40px);
-    height: var(--reward-icon-size, 40px);
-    margin: 0 auto 12px auto;
-    object-fit: contain;
-  }
-
-  .reward-item .title { font-weight: bold; margin-bottom: 4px; }
-  .reward-item .points { color: #333; font-size: 0.9rem; }
-
-  .earn-methods .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .earn-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
-  .earn-item {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-  }
-  .earn-item .title { font-weight: bold; margin-bottom: 6px; }
-  .earn-item .desc { font-size: 0.9rem; color: #333; }
-</style>
 
 {% schema %}
 {
@@ -197,6 +123,11 @@
         { "value": "standard", "label": "50% Width" },
         { "value": "full", "label": "Full Width" }
       ]
+    },
+    {
+      "type": "image_picker",
+      "id": "points_icon",
+      "label": "Icon"
     },
     {
       "type": "text",
@@ -227,7 +158,15 @@
       "name": "Reward item",
       "settings": [
         { "type": "image_picker", "id": "icon", "label": "Icon" },
-        { "type": "range", "id": "icon_size", "label": "Icon size (px)", "min": 16, "max": 160, "step": 2, "default": 40 },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon size (px)",
+          "min": 16,
+          "max": 160,
+          "step": 2,
+          "default": 40
+        },
         { "type": "text", "id": "title", "label": "Title", "default": "Free 12V Soundbar" },
         { "type": "text", "id": "points_text", "label": "Points text", "default": "$1000 Points" }
       ]

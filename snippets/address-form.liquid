@@ -1,16 +1,16 @@
 {%- comment -%}
-----------------------------------------------------------------------------------------------------------------------
-CUSTOMER ADDRESS
-----------------------------------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------------------------------
+  CUSTOMER ADDRESS
+  ----------------------------------------------------------------------------------------------------------------------
 
-Generate the drawer and all the associated fields for a customer address. This handles both the new address and
-existing address.
+  Generate the drawer and all the associated fields for a customer address. This handles both the new address and
+  existing address.
 
-********************************************
-Supported parameters
-********************************************
+  ********************************************
+  Supported parameters
+  ********************************************
 
-* address: the address to edit, or "customer.new_address" to create a new one
+  * address: the address to edit, or "customer.new_address" to create a new one
 {%- endcomment -%}
 
 <x-drawer id="customer-address-{{ address.id | default: 'new' }}" class="drawer drawer--lg">
@@ -40,40 +40,142 @@ Supported parameters
 
           {%- if request.locale.iso_code == 'ja' -%}
             <div class="input-row">
-              {%- render 'input', name: 'address[last_name]', label: last_name_label, value: form.last_name, autocomplete: 'family-name' -%}
-              {%- render 'input', name: 'address[first_name]', label: first_name_label, value: form.first_name, autocomplete: 'given-name' -%}
+              {%- render 'input',
+                name: 'address[last_name]',
+                label: last_name_label,
+                value: form.last_name,
+                autocomplete: 'family-name'
+              -%}
+              {%- render 'input',
+                name: 'address[first_name]',
+                label: first_name_label,
+                value: form.first_name,
+                autocomplete: 'given-name'
+              -%}
             </div>
 
-            {%- render 'input', name: 'address[zip]', label: zip_label, value: form.zip, autocomplete: 'postal-code', autocapitalize: 'characters' -%}
+            {%- render 'input',
+              name: 'address[zip]',
+              label: zip_label,
+              value: form.zip,
+              autocomplete: 'postal-code',
+              autocapitalize: 'characters'
+            -%}
 
-            <country-selector class="contents" country="{{ form.country | escape }}" province="{{ form.province | escape }}">
-              {%- render 'select', name: 'address[country]', label: country_label, options: all_country_option_tags, autocomplete: 'country' -%}
+            <country-selector
+              class="contents"
+              country="{{ form.country | escape }}"
+              province="{{ form.province | escape }}"
+            >
+              {%- render 'select',
+                name: 'address[country]',
+                label: country_label,
+                options: all_country_option_tags,
+                autocomplete: 'country'
+              -%}
               {%- render 'select', name: 'address[province]', label: province_label, autocomplete: 'address-level1' -%}
             </country-selector>
 
-            {%- render 'input', name: 'address[city]', label: city_label, value: form.city, autocomplete: 'address-level2' -%}
-            {%- render 'input', name: 'address[address1]', label: address1_label, value: form.address1, autocomplete: 'address-line1' -%}
-            {%- render 'input', name: 'address[address2]', label: address2_label, value: form.address2, autocomplete: 'address-line2' -%}
-            {%- render 'input', name: 'address[company]', label: company_label, value: form.company, autocomplete: 'organization' -%}
-            {%- render 'input', type: 'tel', name: 'address[phone]', label: phone_label, value: form.phone, autocomplete: 'tel' -%}
+            {%- render 'input',
+              name: 'address[city]',
+              label: city_label,
+              value: form.city,
+              autocomplete: 'address-level2'
+            -%}
+            {%- render 'input',
+              name: 'address[address1]',
+              label: address1_label,
+              value: form.address1,
+              autocomplete: 'address-line1'
+            -%}
+            {%- render 'input',
+              name: 'address[address2]',
+              label: address2_label,
+              value: form.address2,
+              autocomplete: 'address-line2'
+            -%}
+            {%- render 'input',
+              name: 'address[company]',
+              label: company_label,
+              value: form.company,
+              autocomplete: 'organization'
+            -%}
+            {%- render 'input',
+              type: 'tel',
+              name: 'address[phone]',
+              label: phone_label,
+              value: form.phone,
+              autocomplete: 'tel'
+            -%}
           {%- else -%}
             <div class="input-row">
-              {%- render 'input', name: 'address[first_name]', label: first_name_label, value: form.first_name, autocomplete: 'given-name' -%}
-              {%- render 'input', name: 'address[last_name]', label: last_name_label, value: form.last_name, autocomplete: 'family-name' -%}
+              {%- render 'input',
+                name: 'address[first_name]',
+                label: first_name_label,
+                value: form.first_name,
+                autocomplete: 'given-name'
+              -%}
+              {%- render 'input',
+                name: 'address[last_name]',
+                label: last_name_label,
+                value: form.last_name,
+                autocomplete: 'family-name'
+              -%}
             </div>
 
-            {%- render 'input', name: 'address[company]', label: company_label, value: form.company, autocomplete: 'organization' -%}
-            {%- render 'input', type: 'tel', name: 'address[phone]', label: phone_label, value: form.phone, autocomplete: 'tel' -%}
-            {%- render 'input', name: 'address[address1]', label: address1_label, value: form.address1, autocomplete: 'address-line1' -%}
-            {%- render 'input', name: 'address[address2]', label: address2_label, value: form.address2, autocomplete: 'address-line2' -%}
+            {%- render 'input',
+              name: 'address[company]',
+              label: company_label,
+              value: form.company,
+              autocomplete: 'organization'
+            -%}
+            {%- render 'input',
+              type: 'tel',
+              name: 'address[phone]',
+              label: phone_label,
+              value: form.phone,
+              autocomplete: 'tel'
+            -%}
+            {%- render 'input',
+              name: 'address[address1]',
+              label: address1_label,
+              value: form.address1,
+              autocomplete: 'address-line1'
+            -%}
+            {%- render 'input',
+              name: 'address[address2]',
+              label: address2_label,
+              value: form.address2,
+              autocomplete: 'address-line2'
+            -%}
 
             <div class="input-row">
-              {%- render 'input', name: 'address[city]', label: city_label, value: form.city, autocomplete: 'address-level2' -%}
-              {%- render 'input', name: 'address[zip]', label: zip_label, value: form.zip, autocomplete: 'postal-code', autocapitalize: 'characters' -%}
+              {%- render 'input',
+                name: 'address[city]',
+                label: city_label,
+                value: form.city,
+                autocomplete: 'address-level2'
+              -%}
+              {%- render 'input',
+                name: 'address[zip]',
+                label: zip_label,
+                value: form.zip,
+                autocomplete: 'postal-code',
+                autocapitalize: 'characters'
+              -%}
             </div>
 
-            <country-selector class="contents" country="{{ form.country | escape }}" province="{{ form.province | escape }}">
-              {%- render 'select', name: 'address[country]', label: country_label, options: all_country_option_tags, autocomplete: 'country' -%}
+            <country-selector
+              class="contents"
+              country="{{ form.country | escape }}"
+              province="{{ form.province | escape }}"
+            >
+              {%- render 'select',
+                name: 'address[country]',
+                label: country_label,
+                options: all_country_option_tags,
+                autocomplete: 'country'
+              -%}
               {%- render 'select', name: 'address[province]', label: province_label, autocomplete: 'address-level1' -%}
             </country-selector>
           {%- endif -%}
@@ -85,12 +187,26 @@ Supported parameters
               {%- assign is_default_address = false -%}
             {%- endif -%}
 
-            {%- render 'checkbox', name: 'address[default]', label: set_default_label, value: 1, checked: is_default_address -%}
+            {%- render 'checkbox',
+              name: 'address[default]',
+              label: set_default_label,
+              value: 1,
+              checked: is_default_address
+            -%}
           </div>
         </div>
+        <div class="actions">
+          <button class="btn btn--full btn--primary cancel" type="button" onclick="location.reload()">Cancel</button>
 
-        {%- assign save_button = 'customer.addresses.save_address' | t -%}
-        {%- render 'button', type: 'submit', content: save_button, size: 'xl', stretch: true -%}
+          {%- assign save_button = 'customer.addresses.save_address' | t -%}
+          {%- render 'button',
+            type: 'submit',
+            content: save_button,
+            size: 'xl',
+            stretch: true,
+            class: 'btn btn--full btn--primary my_account'
+          -%}
+        </div>
       </div>
     </div>
   {%- endform -%}

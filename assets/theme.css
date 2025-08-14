@@ -12128,3 +12128,105 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
     height: 40px;
     object-fit: contain;
 }
+.account-popup {
+    position: absolute;
+    background: white;
+    top: 60px;
+    right: 10px;
+    display: flex;
+    flex-flow: column;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s;
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px 0px #0000001f;
+}
+.account-popup:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: -25px;
+}
+@media screen and (min-width: 750px) {
+  .account-popup:hover,
+  .nav_accounts_link:hover + .account-popup {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.account-popup .promo {
+  display: flex;
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  gap: 24px;
+  padding: 24px 12px;
+  align-items: center;
+}
+.account-popup .promo img,
+.account-popup .promo svg {
+  height: 26px;
+  width: 26px;
+}
+.account-popup .promo .promo-content {
+  display: flex;
+  flex-flow: column;
+  gap: 6px;
+}
+.account-popup .promo .promo-content span:first-child {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  color: #1D1D1B;
+}
+.account-popup .promo .promo-content span {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #20413B;
+}
+.account-popup .buttons {
+  display: flex;
+  flex-flow: column;
+  gap: 12px;
+  margin-top: 12px;
+  align-items: center;
+}
+.account-popup .buttons .login{
+  text-transform: uppercase;
+  background-color: #20413B;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.account-popup .buttons .create-account {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.account-popup .buttons .create-account a {
+  color: #336256;
+}
+.account-popup .buttons .my_account {
+  background-color: white;
+  color: #20413B;
+  border-color: black;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.account-popup .buttons .logout {
+  color: #336256;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}

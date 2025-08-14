@@ -78,12 +78,13 @@
 {%- capture header_icons_slot_default -%}
   {%- render 'toggle-search', search_link: search_link -%}
   {%- if shop.customer_accounts_enabled -%}
-    <a class="site-nav__link site-nav__link--icon small--hide" href="{{ routes.account_url }}">
+    <a class="site-nav__link site-nav__link--icon small--hide nav_accounts_link" href="{{ routes.account_url }}">
       {% render 'icon', name: 'user' %}
       <span class="site-nav__icon-label small--hide{% if hide_icon_labels %} icon__fallback-text visually-hidden{% endif %}">
         {% render 't_with_fallback', key: 'labels.account', fallback: 'Account' %}
       </span>
     </a>
+    {%- render 'login-popup' -%}
   {%- endif -%}
 
   {%- render 'toggle-cart', cart_link: cart_link -%}

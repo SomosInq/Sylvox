@@ -1,47 +1,9 @@
 
   <ul class="account-sidebar">
-    <li><a href="/pages/account-profile" class="{% if request.path contains 'account-profile' %}active{% endif %}">Overview</a></li>
+    <li><a href="/pages/account-profile" class="{% if request.path == '/pages/account-profile' %}active{% endif %}">Overview</a></li>
     <li><a href="/pages/account-profile-form" class="{% if request.path contains 'account-profile-form' %}active{% endif %}">My Profile</a></li>
     <li><a href="/pages/account-address" class="{% if request.path contains 'account-address' %}active{% endif %}">Address</a></li>
     <li><a href="/pages/account-orders" class="{% if request.path contains 'account-orders' %}active{% endif %}">My Orders</a></li>
     <li><a href="/pages/account-membership" class="{% if request.path contains 'account-membership' %}active{% endif %}">Membership</a></li>
     <li><a href="/pages/account-returns" class="{% if request.path contains 'account-returns' %}active{% endif %}">Warranty & Return</a></li>
   </ul>
-
-
-<style>
-  .account-sidebar {
-    width: 220px;
-    border-right: 1px solid #eee;
-    padding-right: 20px;
-  }
-
-  .account-sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .account-sidebar li {
-    margin-bottom: 12px;
-  }
-
-  .account-sidebar a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    padding: 8px 12px;
-    display: block;
-    border-radius: 6px;
-    transition: background 0.2s ease;
-  }
-
-  .account-sidebar a:hover {
-    background: #f4f4f4;
-  }
-
-  .account-sidebar a.active {
-    background-color: #eaeaea;
-    font-weight: 600;
-  }
-</style>
