@@ -11,6 +11,91 @@
   "sections": {
     "main": {
       "type": "account-membership",
+      "blocks": {
+        "earn_HjNpKe": {
+          "type": "earn",
+          "settings": {
+            "title": "Create account",
+            "subtitle": "5% Off discount",
+            "icon": "shopify://shop_images/user-3-fill.png"
+          }
+        },
+        "earn_QMT3Ew": {
+          "type": "earn",
+          "settings": {
+            "title": "Leave a product review",
+            "subtitle": "10 - 15 points",
+            "icon": "shopify://shop_images/chat-check-line_333b2144-0551-4247-9806-23ff77645305.png"
+          }
+        },
+        "earn_Eytg3G": {
+          "type": "earn",
+          "settings": {
+            "title": "Place an order",
+            "subtitle": "1 point for every $1.00",
+            "icon": "shopify://shop_images/shopping-bag-2-line_4c4a6674-2416-4207-b1fc-354f048313ac.png"
+          }
+        },
+        "earn_mAcfzc": {
+          "type": "earn",
+          "settings": {
+            "title": "Sign up for SMS",
+            "subtitle": "100 points",
+            "icon": "shopify://shop_images/mail-send-line_22bbb912-dde9-4f66-948e-b495207ab2da.png"
+          }
+        },
+        "earn_BRwNXF": {
+          "type": "earn",
+          "settings": {
+            "title": "Make your 2nd purchase",
+            "subtitle": "1.5 point for every $1.00",
+            "icon": "shopify://shop_images/coins-line_7ab69bef-dc02-4a09-83dc-c41c3a8f8bee.png"
+          }
+        },
+        "earn_ERdtqM": {
+          "type": "earn",
+          "settings": {
+            "title": "Celebrate a birthday",
+            "subtitle": "100 points",
+            "icon": "shopify://shop_images/cake-2-line_aa9cca06-a215-4c32-b3a4-9f8cb25cecf0.png"
+          }
+        },
+        "earn_CaTK8w": {
+          "type": "earn",
+          "settings": {
+            "title": "Follow on Instagram",
+            "subtitle": "20 points",
+            "icon": "shopify://shop_images/instagram-line_4876f91f-0cfb-45bc-bd2c-a46feb091234.png"
+          }
+        },
+        "earn_TdYxPW": {
+          "type": "earn",
+          "settings": {
+            "title": "Follow on X",
+            "subtitle": "20 points",
+            "icon": "shopify://shop_images/twitter-x-fill_5efa01e3-83ab-4f7e-9fb5-2a6e25c18679.png"
+          }
+        },
+        "earn_RjCUec": {
+          "type": "earn",
+          "settings": {
+            "title": "Like page on Facebook",
+            "subtitle": "20 points",
+            "icon": "shopify://shop_images/facebook-circle-fill_c30a09e5-0567-4215-b99c-9eb11f83f60f.png"
+          }
+        }
+      },
+      "block_order": [
+        "earn_HjNpKe",
+        "earn_QMT3Ew",
+        "earn_Eytg3G",
+        "earn_mAcfzc",
+        "earn_BRwNXF",
+        "earn_ERdtqM",
+        "earn_CaTK8w",
+        "earn_TdYxPW",
+        "earn_RjCUec"
+      ],
       "settings": {
         "section_width": "standard",
         "section_content_width": "standard",
