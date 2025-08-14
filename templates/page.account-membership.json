@@ -1,9 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Customer Membership",
   "sections": {
     "main": {
-      "type": "account-membership"
+      "type": "account-membership",
+      "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
+        "points_icon": "shopify://shop_images/gift_601ceeae-1938-49b4-97ad-0a934feb0da3.png",
+        "membership_title": "Sylvox Membership",
+        "membership_subtitle": "Join the club, get rewarded.",
+        "points_balance": "500",
+        "points_label": "Points Balance",
+        "tab_earn_label": "Earn Points",
+        "tab_claim_label": "Claim Rewards",
+        "tab_activity_label": "My Activity"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
