@@ -1,0 +1,36 @@
+<div class="account-popup">
+  <div class="promo-wrapper">
+    <a href="{{ settings.popup_promo_url }}" class="promo">
+      <img
+        src="{{ settings.promo_icon | image_url }}"
+        alt=""
+        width="26"
+        height="26"
+      >
+      <div class="promo-content">
+        <span>
+          {{ settings.popup_promo_1 }}
+        </span>
+        <span>
+          {{ settings.popup_promo_2 }}
+        </span>
+      </div>
+    </a>
+  </div>
+  <div class="buttons">
+    {% if customer %}
+      <a class="btn btn--full btn--primary my_account" href="{{ routes.account_url }}">My Account</a>
+      <a class="logout" href="{{ routes.account_logout_url }}">Log out</a>
+    {% else %}
+      <a class="btn btn--full btn--primary login" href="{{ routes.account_url }}">
+        {%- render 't_with_fallback', key: 'actions.log_in', fallback: 'Log in' -%}
+      </a>
+      <p class="create-account">
+        {% render 't_with_fallback', key: 'info.no_account_question', fallback: "Don't have an account?" %}
+        <a href="{{ routes.account_register_url }}">
+          {% render 't_with_fallback', key: 'actions.create_account', fallback: 'Create an account' -%}
+        </a>
+      </p>
+    {% endif %}
+  </div>
+</div>

@@ -1,3 +1,5 @@
+{{ 'accounts.css' | asset_url | stylesheet_tag }}
+
 <div class="account-wrapper section_content_width_{{ section.settings.section_content_width }}">
   <aside class="account-sidebar">
     {% render 'account-sidebar' %}
@@ -99,122 +101,6 @@
   </main>
 </div>
 
-<style>
-  .account-wrapper {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-    align-items: flex-start;
-  }
-  .account-sidebar {
-    width: 220px;
-    flex-shrink: 0;
-  }
-  .account-content {
-    flex: 1;
-  }
-
-  .account-wrappers {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    font-family: inherit;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .account-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .order-tabs {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 32px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .order-tab {
-    position: relative;
-    padding-bottom: 10px;
-    cursor: pointer;
-    color: #888;
-    font-size: 16px;
-  }
-
-  .order-tab.active {
-    color: #000;
-    font-weight: 500;
-  }
-
-  .order-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #000;
-  }
-
-  .order-list {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .order-card {
-    border-top: 1px solid #ddd;
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .order-info {
-    flex: 1 1 60%;
-    font-size: 14px;
-  }
-
-  .order-info strong {
-    font-size: 16px;
-    display: block;
-  }
-
-  .order-meta {
-    flex: 1 1 30%;
-    text-align: right;
-    font-size: 14px;
-    color: #555;
-  }
-
-  .order-meta .status {
-    color: #888;
-  }
-
-  .account-orders__benefits {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid #ddd;
-    font-size: 14px;
-    color: #444;
-    max-width: 100%;
-  }
-
-  .account-orders__benefits a {
-    color: #db4b97;
-    text-decoration: underline;
-  }
-
-  .no-orders {
-    font-size: 16px;
-    color: #777;
-    margin-top: 32px;
-  }
-</style>
 
 {% schema %}
 {

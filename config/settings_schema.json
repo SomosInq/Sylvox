@@ -1209,6 +1209,33 @@
     ]
   },
   {
+    "name": "Account Popup",
+    "settings": [
+      {
+        "type": "text",
+        "id": "popup_promo_1",
+        "label": "Popup promo first line",
+        "default": "Sylvox Membership"
+      },
+      {
+        "type": "text",
+        "id": "popup_promo_2",
+        "label": "Popup promo second line",
+        "default": "Get 5% off for first registration"
+      },
+     {
+        "type": "image_picker",
+        "id": "promo_icon",
+        "label": "Popup icon",
+      },
+      {
+        "type": "url",
+        "id": "popup_promo_url",
+        "label": "Promo link"
+		  },
+    ]
+  },
+  {
     "name": "t:labels.extras",
     "settings": [
       {
