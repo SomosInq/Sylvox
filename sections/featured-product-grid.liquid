@@ -46,6 +46,28 @@
   .product-content {
 padding: 5em;
 }
+  .product-content span.feature_description {
+    color: var(--Dark-Grey, #636363);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .product-content .icon-item div {
+    color: var(--Dark-Grey, #636363);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .product-content .price {
+    color: var(--Black, #1D1D1B);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
   .product-content h2 span {
     font-size: calc(var(--type-header-size) * 0.50);
@@ -149,7 +171,7 @@ padding: 5em;
       <img src="{{ section.settings.feature_icon_image | image_url }}" alt="" style="max-width: 40px;" />
     {% endif %}
     {% if section.settings.feature_icon_text != blank %}
-      <span>{{ section.settings.feature_icon_text }}</span>
+      <span class="feature_description">{{ section.settings.feature_icon_text }}</span>
     {% endif %}
   </div>
 {% endif %}
@@ -169,7 +191,7 @@ padding: 5em;
           </div>
         {%- endif -%}
 
-        <p style="font-size: 1.25em; font-weight: bold;">{{ section.settings.price }}</p>
+        <p class="price">{{ section.settings.price }}</p>
 
         {%- if section.settings.button_text != blank -%}
           <a href="{{ section.settings.button_link }}" class="button {% if section.settings.button_style == 'primary' %}btn-primary{% else %}btn-secondary{% endif %}">
