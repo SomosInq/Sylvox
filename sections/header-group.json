@@ -1,1 +1,306 @@
-{"type":"header","name":"t:sections.header-group.name","sections":{"toolbar":{"type":"toolbar","blocks":{"toolbar-0":{"type":"announcement","disabled":true,"settings":{"richtext":"<p>Holiday Sale: Unlock the magic with up to $400 off 🎄🎁🎁<a href=\"\/pages\/sylvox-2023-christmas-sale\" title=\"Sylvox 2023 Christmas Sale\"><strong>🎁SHOP NOW<\/strong><\/a><\/p>","richtext_mobile":""}},"toolbar-1":{"type":"announcement","settings":{"richtext":"<p>Hassle-free returns. 30-day postage paid returns<\/p>","richtext_mobile":""}},"a20146b5-90e7-4454-9485-11d2cc3ea04c":{"type":"announcement","settings":{"richtext":"<p> Free Shipping, all items are available<\/p>","richtext_mobile":""}}},"block_order":["toolbar-0","toolbar-1","a20146b5-90e7-4454-9485-11d2cc3ea04c"],"disabled":true,"settings":{"announcement_center":true,"toolbar_social":true,"show_locale_selector":true,"show_currency_selector":true,"show_currency_flags":true}},"header":{"type":"header","blocks":{"c7948dac-b12a-43b3-b41c-1b80e7bbad18":{"type":"logo","settings":{"logo":"shopify:\/\/shop_images\/Logo-White.png","logo-inverted":"shopify:\/\/shop_images\/Logo-White.png","desktop_logo_width":130,"mobile_logo_width":120}}},"block_order":["c7948dac-b12a-43b3-b41c-1b80e7bbad18"],"settings":{"main_menu_link_list":"header-menu-new","hover_menu":true,"main_menu_alignment":"left-center","mega_products":true,"header_sticky":true,"header_footer_menu":true,"sticky_index":false,"sticky_collection":false}}},"order":["toolbar","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header-group.name",
+  "sections": {
+    "toolbar": {
+      "type": "toolbar",
+      "blocks": {
+        "toolbar-0": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "richtext": "<p>Holiday Sale: Unlock the magic with up to $400 off 🎄🎁🎁<a href=\"/pages/sylvox-2023-christmas-sale\" title=\"Sylvox 2023 Christmas Sale\"><strong>🎁SHOP NOW</strong></a></p>",
+            "richtext_mobile": ""
+          }
+        },
+        "toolbar-1": {
+          "type": "announcement",
+          "settings": {
+            "richtext": "<p>Hassle-free returns. 30-day postage paid returns</p>",
+            "richtext_mobile": ""
+          }
+        },
+        "a20146b5-90e7-4454-9485-11d2cc3ea04c": {
+          "type": "announcement",
+          "settings": {
+            "richtext": "<p> Free Shipping, all items are available</p>",
+            "richtext_mobile": ""
+          }
+        }
+      },
+      "block_order": [
+        "toolbar-0",
+        "toolbar-1",
+        "a20146b5-90e7-4454-9485-11d2cc3ea04c"
+      ],
+      "disabled": true,
+      "settings": {
+        "announcement_center": true,
+        "toolbar_social": true,
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "show_currency_flags": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "c7948dac-b12a-43b3-b41c-1b80e7bbad18": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Logo-White.png",
+            "logo-inverted": "shopify://shop_images/Logo-White.png",
+            "desktop_logo_width": 130,
+            "mobile_logo_width": 120
+          }
+        }
+      },
+      "block_order": [
+        "c7948dac-b12a-43b3-b41c-1b80e7bbad18"
+      ],
+      "settings": {
+        "main_menu_link_list": "header-menu-new",
+        "hover_menu": true,
+        "main_menu_alignment": "left-center",
+        "mega_products": true,
+        "header_sticky": true,
+        "header_footer_menu": true,
+        "sticky_index": false,
+        "sticky_collection": false
+      }
+    },
+    "mega_menu_1_W4VR3P": {
+      "type": "mega-menu-1",
+      "blocks": {
+        "collection_menu_Aq9Dfj": {
+          "type": "collection_menu",
+          "settings": {
+            "menu_name": "Outdoor TV - Full Sun",
+            "collection_link": "shopify://collections/full-sun-outdoor-tv",
+            "title": "Outdoor TV",
+            "subtitle": "Full Sun",
+            "icon": "shopify://shop_images/56a9a5df9e1a24238fd7886624ca3c65203cd164_edf67cc5-fdd7-4f44-92e2-f8cdbc4fb71f.png",
+            "description": "Best for Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants",
+            "badge_p1": "New",
+            "image_p1": "shopify://shop_images/Rectangle_553.png",
+            "heading_p1": "Pool Pro 2.0",
+            "sizes_linkes_p1": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p1": "",
+            "badge_p2": "New",
+            "image_p2": "shopify://shop_images/Rectangle_553_1.png",
+            "heading_p2": "Pool pro QLED 2.0",
+            "sizes_linkes_p2": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p2": "",
+            "badge_p3": "",
+            "image_p3": "shopify://shop_images/Rectangle_553_2.png",
+            "heading_p3": "Cinema",
+            "sizes_linkes_p3": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p3": "",
+            "badge_p4": "",
+            "image_p4": "shopify://shop_images/Rectangle_553_3.png",
+            "heading_p4": "Cinema Pro",
+            "sizes_linkes_p4": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p4": ""
+          }
+        },
+        "collection_menu_fhxUhr": {
+          "type": "collection_menu",
+          "settings": {
+            "menu_name": "Outdoor TV - Partial Sun",
+            "collection_link": "shopify://collections/partial-sun-outdoor-tv",
+            "title": "Outdoor TV",
+            "subtitle": "Partial Sun",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755_f3a30675-de48-4d13-a2a5-648ffce26bd4.png",
+            "description": "Best for partially sunny outdoor spaces or areas with high ambient light, such as pergolas or covered decks.",
+            "badge_p1": "New",
+            "image_p1": "shopify://shop_images/Rectangle_553.png",
+            "heading_p1": "Pool Pro 2.0",
+            "sizes_linkes_p1": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p1": "",
+            "badge_p2": "New",
+            "image_p2": "shopify://shop_images/Rectangle_553_1.png",
+            "heading_p2": "Pool pro QLED 2.0",
+            "sizes_linkes_p2": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p2": "",
+            "badge_p3": "",
+            "image_p3": "shopify://shop_images/Rectangle_553_2.png",
+            "heading_p3": "Cinema",
+            "sizes_linkes_p3": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p3": "",
+            "badge_p4": "",
+            "image_p4": "shopify://shop_images/Rectangle_553_3.png",
+            "heading_p4": "Cinema Pro",
+            "sizes_linkes_p4": "<p><a href=\"/products/43-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"43&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">43”</a> | <a href=\"/products/55-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"55&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">55”</a> | <a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p4": ""
+          }
+        },
+        "collection_menu_VqMwHh": {
+          "type": "collection_menu",
+          "settings": {
+            "menu_name": "Kitchen TV",
+            "collection_link": "shopify://collections/kitchen-tvs",
+            "title": "Kitchen TV",
+            "subtitle": "",
+            "icon": "shopify://shop_images/2dc1ca6ce05f3b8c56593edc335c1343fd880634.png",
+            "description": "Streamline your kitchen with this sleek under-cabinet TV. Its flip-down design saves space, while the waterproof screen ensures durability.",
+            "badge_p1": "",
+            "image_p1": "shopify://shop_images/Rectangle_553_4.png",
+            "heading_p1": "15.6\" Smart Under Cabinet TV",
+            "sizes_linkes_p1": "",
+            "product_link_p1": "shopify://products/sylvox-15-6-smart-under-cabinet-tv-for-kitchen",
+            "badge_p2": "New",
+            "image_p2": "shopify://shop_images/Rectangle_553_5.png",
+            "heading_p2": "15.6\" Under Cabinet TV (2024 New Mode)",
+            "sizes_linkes_p2": "",
+            "product_link_p2": "shopify://products/sylvox-15-6-under-cabinet-tv-2024-new-model",
+            "badge_p3": "",
+            "image_p3": "shopify://shop_images/Rectangle_553_6.png",
+            "heading_p3": "15.6\" Waterproof Portable Battery Powered TV",
+            "sizes_linkes_p3": "",
+            "product_link_p3": "shopify://products/sylvox-15-6-waterproof-portable-tv",
+            "badge_p4": "",
+            "heading_p4": "",
+            "sizes_linkes_p4": "",
+            "product_link_p4": ""
+          }
+        },
+        "collection_menu_XxKWLF": {
+          "type": "collection_menu",
+          "settings": {
+            "menu_name": "RV TV",
+            "collection_link": "shopify://collections/rv-tvs",
+            "title": "RV TV",
+            "subtitle": "",
+            "icon": "shopify://shop_images/e14aea4fb6e9c2d6407767f7d8db821f73c5326a.png",
+            "description": "A versatile Smart TV with built-in DVD, wide DC input (9–36V), and AC adapter — perfect for home, car, or travel.",
+            "badge_p1": "",
+            "image_p1": "shopify://shop_images/Rectangle_553_7.png",
+            "heading_p1": "Limo Series",
+            "sizes_linkes_p1": "<p><a href=\"/products/22-smart-12-volt-tv\" title=\"22'' Smart 12V RV TV-DVD Combo for Home and On-The-Go(Limo series)\">22”</a> | <a href=\"/products/24-smart-12-volt-tv\" title=\"24'' Smart 12V RV TV-DVD Combo for Home and On-The-Go(Limo series)\">24”</a> | <a href=\"/products/32-smart-12-volt-tv\" title=\"32'' Smart 12V RV TV-DVD Combo for Home and On-The-Go(Limo series)\">32”</a> </p>",
+            "product_link_p1": "",
+            "badge_p2": "",
+            "image_p2": "shopify://shop_images/Rectangle_553_8.png",
+            "heading_p2": "Trailer Series",
+            "sizes_linkes_p2": "<p><a href=\"/products/19-google-12v-rv-tv-dvd-combo-for-home-and-on-the-go-2025-trailer-series\" title=\"19'' Google 12V RV TV-DVD Combo for Home and On-The-Go (2025 Trailer series)\">22”</a> | <a href=\"/products/27-smart-12-volt-tv-dvd-combo\" title=\"27'' Smart 12V RV TV-DVD Combo for Home and On-The-Go(Trailer series)\">27”</a></p>",
+            "product_link_p2": "",
+            "badge_p3": "",
+            "image_p3": "shopify://shop_images/Rectangle_553_9.png",
+            "heading_p3": "Marine Series",
+            "sizes_linkes_p3": "<p><a href=\"/products/22-12v-tv-ideal-for-home-rv-and-marine-usemarina-series\" title=\"<b>NEW</b> 22&quot; 12V TV/DVD Combo for Home and Marine Use(Marine series)\">22”</a> | <a href=\"/products/40-12v-tv-dvd-combo-for-home-and-marine-usemarine-series\" title=\"40&quot; 12V RV TV -No DVD Combo for Home and Marine Use(Marine series)\">40”</a></p>",
+            "product_link_p3": "",
+            "badge_p4": "",
+            "image_p4": "shopify://shop_images/Rectangle_553_10.png",
+            "heading_p4": "Vehicle Series",
+            "sizes_linkes_p4": "",
+            "product_link_p4": ""
+          }
+        },
+        "collection_menu_yHyNQj": {
+          "type": "collection_menu",
+          "settings": {
+            "menu_name": "Bathroom TV",
+            "collection_link": "",
+            "title": "Bathroom TV",
+            "subtitle": "",
+            "icon": "shopify://shop_images/0b267184d85c9a5467128cda0bd7e31e5f132134.png",
+            "description": "Featuring an IP66 fully waterproof rating, a high-brightness display screen, and the ability to function as both a mirror and a television.",
+            "badge_p1": "",
+            "image_p1": "shopify://shop_images/Rectangle_553_11.png",
+            "heading_p1": "Waterproof Smart Magic Mirror TV",
+            "sizes_linkes_p1": "<p><a href=\"/products/19-waterproof-smart-magic-mirror-tv-for-bathroomon-wall-model\" title=\"19&quot; Waterproof  Smart Magic Mirror TV for Bathroom(On Wall Model)\">19”</a> | <a href=\"/products/24inch-waterproof-mirror-tv-for-bathroom-1\" title=\"24&quot; Waterproof  Smart Magic Mirror TV for Bathroom(On Wall Model）\">24”</a> | <a href=\"/products/32-smart-waterproof-mirror-tv-for-bathroom\" title=\"32&quot; Smart Waterproof Magic Mirror TV  for Bathroom(On Wall Model)\">32”</a> </p>",
+            "product_link_p1": "",
+            "badge_p2": "",
+            "image_p2": "shopify://shop_images/Rectangle_553_12.png",
+            "heading_p2": "15.6\" Waterproof Portable Battery Powered TV",
+            "sizes_linkes_p2": "",
+            "product_link_p2": "shopify://products/sylvox-15-6-waterproof-portable-tv",
+            "badge_p3": "",
+            "heading_p3": "",
+            "sizes_linkes_p3": "",
+            "product_link_p3": "",
+            "badge_p4": "",
+            "heading_p4": "",
+            "sizes_linkes_p4": "",
+            "product_link_p4": ""
+          }
+        },
+        "link_WaHi4G": {
+          "type": "link",
+          "settings": {
+            "link_title": "Outdoor TV Accessories",
+            "nav_link": "shopify://collections/outdoor-tv-accessories"
+          }
+        },
+        "link_z84iDQ": {
+          "type": "link",
+          "settings": {
+            "link_title": "Outdoor TV Cabinet",
+            "nav_link": "shopify://collections/outdoor-tv-lift-cabinet"
+          }
+        }
+      },
+      "block_order": [
+        "collection_menu_Aq9Dfj",
+        "collection_menu_fhxUhr",
+        "collection_menu_VqMwHh",
+        "collection_menu_XxKWLF",
+        "collection_menu_yHyNQj",
+        "link_WaHi4G",
+        "link_z84iDQ"
+      ],
+      "name": "Mega Menu 1",
+      "settings": {
+        "megamenu_for": "Products"
+      }
+    },
+    "mega_menu_2_6mxjNY": {
+      "type": "mega-menu-2",
+      "blocks": {
+        "link_dn7FiD": {
+          "type": "link",
+          "settings": {
+            "link_title": "Partial Sun TVs",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755_f3a30675-de48-4d13-a2a5-648ffce26bd4.png",
+            "nav_link": "shopify://collections/partial-sun-outdoor-tv"
+          }
+        },
+        "link_dVAATP": {
+          "type": "link",
+          "settings": {
+            "link_title": "Full Sun TVs",
+            "icon": "shopify://shop_images/56a9a5df9e1a24238fd7886624ca3c65203cd164_edf67cc5-fdd7-4f44-92e2-f8cdbc4fb71f.png",
+            "nav_link": "shopify://collections/full-sun-outdoor-tv"
+          }
+        }
+      },
+      "block_order": [
+        "link_dn7FiD",
+        "link_dVAATP"
+      ],
+      "name": "Mega Menu 2",
+      "settings": {
+        "megamenu_for": "Outdoor TVs",
+        "cta_icon": "shopify://shop_images/Icons_235ec5f8-c992-4099-ab65-fc98f48635c5.png",
+        "cta_title": "Not Sure What Outdoor TV<br>Fits you Best?",
+        "cta_subtitle": "Outdoor TV Finder tool",
+        "cta_link_text": "Find Your Perfect Fit",
+        "cta_link": "shopify://collections/all"
+      }
+    }
+  },
+  "order": [
+    "toolbar",
+    "header",
+    "mega_menu_1_W4VR3P",
+    "mega_menu_2_6mxjNY"
+  ]
+}

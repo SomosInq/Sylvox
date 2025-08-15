@@ -1,0 +1,64 @@
+<div class="megamnu-main-wrapper" data-megamenu-for="{{ section.settings.megamenu_for | handle }}">
+  <div class="page-width">
+    <h2 class="mm-section-title">Outdoor TVs</h2>
+    <div class="grid-links-2">
+       {% for block in section.blocks %}
+        <a href="{{ block.settings.nav_link }}">
+          <div>
+            <img src="{{ block.settings.icon | image_url  }}" alt="">
+            <span>{{ block.settings.link_title }}</span>
+          </div>
+        </a>
+       {% endfor %}
+    </div>
+    <div class="mm-cta-strip">
+      <div class="mm-cta-text">
+        <div>
+          <img src="{{ section.settings.cta_icon | image_url  }}" alt="">
+          <h3>{{ section.settings.cta_title }}</h3>
+        </div>
+        <span>{{ section.settings.cta_subtitle }}</span>
+      </div>
+      <a href="{{ section.settings.cta_link }}" class="mm-cta-button">{{ section.settings.cta_link_text }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+  <path d="M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z" fill="#C6C6C6"/>
+</svg></a>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Mega Menu 2",
+  "settings": [
+    { "type": "text", "id": "megamenu_for", "label": "Megamenu for" },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    { "type": "image_picker", "id": "cta_icon", "label": "Icon" },
+    { "type": "textarea", "id": "cta_title", "label": "Title" },
+    { "type": "textarea", "id": "cta_subtitle", "label": "Sub-title" },
+    { "type": "text", "id": "cta_link_text", "label": "CTA Text", "default": "Find Your Perfect Fit" },
+    { "type": "url", "id": "cta_link", "label": "Link"}
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        { "type": "text", "id": "link_title", "label": "Title" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        {
+          "type": "url",
+          "id": "nav_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mega Menu 2"
+    }
+  ]
+}
+{% endschema %}

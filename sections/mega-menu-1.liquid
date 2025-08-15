@@ -1,0 +1,267 @@
+<div class="megamnu-main-wrapper" data-megamenu-for="{{ section.settings.megamenu_for | handle }}">
+  <div class="page-width">
+    <div class="mega-menu-flex-box">
+      <div class="mege-menu-nav-panel">
+        <div class="parent-nav">
+          <div class="par-link">
+            <a href="#">Products</a>
+            <div class="mega-menu-collections">
+              {% for block in section.blocks %}
+                {% if block.type == 'collection_menu' %}
+                  <a href="#" class="{% if forloop.index == 1 %}active{% endif %}" data-loop-index="{{ forloop.index }}"><img src="{{ block.settings.icon | image_url }}" width="34" height="34" alt="">{{ block.settings.menu_name }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% for block in section.blocks %}
+            {% if block.type == 'link' %}
+              <div class="par-link"><a href="{{ block.settings.nav_link }}">{{ block.settings.link_title }}</a></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="mege-menu-content">
+        {% for block in section.blocks %}
+          {% if block.type == 'collection_menu' %}
+          <div class="mega-menu-products {% if forloop.index == 1 %}active{% endif %}" data-loop-index="{{ forloop.index }}">
+            <div class="mm-heading-area">
+            <div class="mm-content-heading">
+              <div class="mm-main-title">{{ block.settings.title }}</div>
+              <div class="mm-subtitle">
+                {% if block.settings.subtitle != blank %}
+                  {% if block.settings.icon != blank %}
+                    <img src="{{ block.settings.icon | image_url }}" width="34" height="34" alt="">
+                  {% endif %}
+                  {{ block.settings.subtitle }}
+                {% endif %}
+              </div>
+            </div>
+            <a href="{{ block.settings.collection_link }}" class="mm-view-more-btn">See All</a>
+            </div>
+            <p>{{ block.settings.description }}</p>
+            <div class="mega-menu-product-grid">
+             {% for i in (1..4) %}
+                  {% assign badge_key = 'badge_p' | append: i %}
+                  {% assign image_key = 'image_p' | append: i %}
+                  {% assign heading_key = 'heading_p' | append: i %}
+                  {% assign sizes_key = 'sizes_linkes_p' | append: i %}
+                  {% assign product_link = 'product_link_p' | append: i %}
+                 {% if block.settings[heading_key] != blank %}
+                  <div class="mega-menu-product-card">
+                    {% if block.settings[badge_key] != blank %}<span class="mm-badge">{{ block.settings[badge_key] }}</span>{% endif %}
+                    {% if block.settings[product_link] != blank %}
+                      <a href="{{ block.settings[product_link] }}">
+                        <img src="{{ block.settings[image_key] | image_url }}" alt="">
+                      </a>
+                      {% else %}
+                        <img src="{{ block.settings[image_key] | image_url }}" alt="">
+                    {% endif %}
+                    <div class="mm-product-title">{{ block.settings[heading_key] }}</div>
+                    <div class="mm-product-sizes">{{ block.settings[sizes_key] | remove: '|' }}</div>
+                  </div>
+                {% endif %}
+             {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const megaMenuCollections = document.querySelectorAll('.mega-menu-collections a');
+  const megaMenuProducts = document.querySelectorAll('.mega-menu-products');
+
+  function switchMegaMenu(targetIndex) {
+    megaMenuCollections.forEach(link => link.classList.remove('active'));
+    megaMenuProducts.forEach(product => product.classList.remove('active'));
+    
+    const targetCollection = document.querySelector(`.mega-menu-collections a[data-loop-index="${targetIndex}"]`);
+    const targetProduct = document.querySelector(`.mega-menu-products[data-loop-index="${targetIndex}"]`);
+    
+    if (targetCollection) targetCollection.classList.add('active');
+    if (targetProduct) targetProduct.classList.add('active');
+  }
+
+  megaMenuCollections.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const loopIndex = this.getAttribute('data-loop-index');
+      switchMegaMenu(loopIndex);
+    });
+
+    link.addEventListener('mouseenter', function() {
+      const loopIndex = this.getAttribute('data-loop-index');
+      switchMegaMenu(loopIndex);
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Mega Menu 1",
+  "settings": [
+    { "type": "text", "id": "megamenu_for", "label": "Megamenu for" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        { "type": "text", "id": "link_title", "label": "Title" },
+        {
+          "type": "url",
+          "id": "nav_link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "collection_menu",
+      "name": "Collection Menu",
+      "settings": [
+        { "type": "text", "id": "menu_name", "label": "Menu Name" },
+        {
+          "type": "url",
+          "id": "collection_link",
+          "label": "Collection link"
+        },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Best for Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants"
+        },
+        {
+          "type": "header",
+          "content": "Product 1"
+        },
+        {
+          "type": "text",
+          "id": "badge_p1",
+          "label": "Badge"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_p1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_p1",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "sizes_linkes_p1",
+          "label": "Sizes Link"
+        },
+        {
+          "type": "url",
+          "id": "product_link_p1",
+          "label": "Product Link"
+        },
+        {
+          "type": "header",
+          "content": "Product 2"
+        },
+        {
+          "type": "text",
+          "id": "badge_p2",
+          "label": "Badge"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_p2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_p2",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "sizes_linkes_p2",
+          "label": "Sizes Link"
+        },
+        {
+          "type": "url",
+          "id": "product_link_p2",
+          "label": "Product Link"
+        },
+        {
+          "type": "header",
+          "content": "Product 3"
+        },
+        {
+          "type": "text",
+          "id": "badge_p3",
+          "label": "Badge"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_p3",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_p3",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "sizes_linkes_p3",
+          "label": "Sizes Link"
+        },
+        {
+          "type": "url",
+          "id": "product_link_p3",
+          "label": "Product Link"
+        },
+        {
+          "type": "header",
+          "content": "Product 4"
+        },
+        {
+          "type": "text",
+          "id": "badge_p4",
+          "label": "Badge"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_p4",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_p4",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "sizes_linkes_p4",
+          "label": "Sizes Link"
+        },
+        {
+          "type": "url",
+          "id": "product_link_p4",
+          "label": "Product Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mega Menu 1"
+    }
+  ]
+}
+{% endschema %}

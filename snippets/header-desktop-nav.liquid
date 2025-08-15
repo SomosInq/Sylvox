@@ -58,7 +58,11 @@
       endif
     -%}
 
-    <li class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}">
+    <li class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}"
+      {% if link.title == 'Products' or link.title == 'Outdoor TVs' %}
+        data-trigger-megamenu="{{ link.title | handle }}"
+      {% endif %}
+    >
       {% if is_megamenu or has_dropdown %}
         <nav-dropdown>
           <details
@@ -84,6 +88,9 @@
           class="site-nav__link site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}"
         >
           {{ link.title }}
+          {% if link.title == 'Products' or link.title == 'Outdoor TVs' %}
+            {% render 'icon', name: 'chevron-down' %}
+          {% endif %}
         </a>
       {% endunless %}
 
