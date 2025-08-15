@@ -43,8 +43,9 @@
   >
     <div class="cart__scrollable">
       <div data-products></div>
+      <div class="cart-upsell">
       {%- render 'cart-recommendations', context: 'drawer' -%}
-
+      </div>
       {% if cart_notes_enable %}
         <div class="cart__item-row">
           {%- render 'cart-note' -%}

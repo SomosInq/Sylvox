@@ -1,0 +1,14 @@
+<div class="product-strip">
+  <div class="product-strip-image">
+    <img src="{{ product.featured_image | image_url: width: 100  }}" alt="">
+  </div>
+  <div class="product-strip-content">
+    <div class="product-strip-title">{{ product.title }}</div>
+    <div class="product-strip-price">{{ product.price | money }}</div>
+    {%- capture content -%}
+      <button type="button" class="quick-add-btn" title="Add to cart" data-id="{{ product.first_available_variant.id }}" data-single-variant-quick-add="">
+        <span class="btn btn--circle btn--icon">Add</span></button>
+    {%- endcapture -%}
+    {% render 'quick-add', content: content %}
+  </div>
+</div>

@@ -22,19 +22,78 @@
 -%}
 
 {%- if collection != blank -%}
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <div class="cart__item-row cart-recommendations" data-location="{{ context }}">
     <div class="h3 h3--mobile cart__recommended-title">
-      {% render 't_with_fallback', key: 'labels.goes_great_with', fallback: 'Goes great with' %}
+      Don't Miss Top Accessories
     </div>
-    <div
-      class="new-grid product-grid{% if mobile_scroll_only %} scrollable-grid--small{% else %} scrollable-grid{% endif %}"
-      data-view="small"
-    >
-      {%- liquid
-        for product in collection.products limit: 4
-          render 'product-grid-item', product: product, collection: collection, sizes: '150px'
-        endfor
-      -%}
+    <div class="upsell-swiper-container">
+      <div class="upsell-swiper-button-prev">
+        {{ 'chevron-left.svg' | inline_asset_content }}
+      </div>
+      <div class="upsell-swuper swiper">
+        <div class="swiper-wrapper">
+          {% for product in collection.products limit: 4 %}
+            <div class="swiper-slide">{% render 'product-strip', product: product %}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="upsell-swiper-button-next">
+        {{ 'chevron-right.svg' | inline_asset_content }}
+      </div>
     </div>
   </div>
+  <script>
+    const swiper = new Swiper('.upsell-swuper', {
+      slidesPerView: 1,
+      navigation: {
+        nextEl: '.upsell-swiper-button-next',
+        prevEl: '.upsell-swiper-button-prev',
+      },
+    });
+  </script>
+  <style>
+    .product-strip-image img {
+    display: block;
+    object-fit: cover;
+    }
+
+    .product-strip {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: #FAFAFA;
+        padding: 15px;
+    }
+
+    .product-strip-title {
+        color: #000;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.176px;
+    }
+
+    .product-strip-content quick-add span.btn.btn--circle.btn--icon {
+        background: #20413B;
+        display: block;
+        padding: 12px;
+    }
+    .product-strip-content quick-add button.quick-add-btn {
+        width: 100%;
+    }
+    .upsell-swiper-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .upsell-swiper-container .upsell-swiper-button-prev svg,
+    .upsell-swiper-container .upsell-swiper-button-next svg {
+      width: 10px;
+    }
+  </style>
 {%- endif -%}

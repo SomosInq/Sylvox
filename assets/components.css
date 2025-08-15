@@ -5442,6 +5442,12 @@ Only medium-up because iOS jumps to top otherwise*/
 .cart__item-quantity {
   grid-area: cartQuantity;
 }
+.cart__item-quantity .js-qty__num{
+  padding: 0px 20px;
+}
+.cart__item-quantity .js-qty__adjust {
+    border: 1px solid #DDD;
+}
 
 .cart__item-remove {
   grid-area: cartRemove;
@@ -5464,12 +5470,23 @@ Only medium-up because iOS jumps to top otherwise*/
 
 .cart__item-name {
   display: block;
-  font-size: calc(var(--type-base-size) + 1px);
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.176px;
   margin-bottom: 8px;
 }
 
 .cart__item--variants {
-  font-size: calc(var(--type-base-size) - 2px);
+  display: flex;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  opacity: 0.5;
+  gap: 5px;
   margin-bottom: 10px;
 }
 
@@ -5531,6 +5548,7 @@ Only medium-up because iOS jumps to top otherwise*/
 
 .cart__recommended-title {
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .collapsible-trigger {
@@ -9291,10 +9309,10 @@ product-recommendations[data-intent='complementary'] .grid-item {
 /*Quick view and quick add elements*/
 
 .grid-product__actions {
-  position: absolute;
+  /* position: absolute;
   top: calc(var(--product-grid-margin) * -1);
   right: calc(var(--product-grid-margin) * -1);
-  z-index: 1;
+  z-index: 1; */
 }
 
 .grid-product__actions > button,
@@ -9337,10 +9355,10 @@ we can create larger tap areas with smaller visuals*/
 
 @media only screen and (min-width: 769px) {
   .grid-product__actions {
-    opacity: 0;
+    /* opacity: 0;
     transform: translateY(5px);
     transition:
-      opacity 0.25s ease, transform 0.25s ease-out;
+      opacity 0.25s ease, transform 0.25s ease-out; */
   }
 
     .grid-product:hover .grid-product__actions {
@@ -13108,6 +13126,7 @@ header-section[data-section-index='2'] .header-wrapper--overlay {
 
   .cart__page-col:first-child {
     flex: 1 1 65%;
+    max-width: 65%;
     padding-right: 100px;
   }
 
@@ -16307,4 +16326,59 @@ block-price.block-price.product-block span.label.variant__label{
   .section-featured-collection .new-grid.product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Upsell Slider */
+.upsell-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.upsell-slider .upsell-slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.upsell-slider .flickity-prev-next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.upsell-slider .flickity-prev-next-button:hover {
+  background: white;
+}
+
+.upsell-slider .flickity-prev-next-button.previous {
+  left: 10px;
+}
+
+.upsell-slider .flickity-prev-next-button.next {
+  right: 10px;
+}
+
+.upsell-slider .flickity-page-dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.upsell-slider .flickity-page-dots .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.upsell-slider .flickity-page-dots .dot.is-selected {
+  background: #333;
 }

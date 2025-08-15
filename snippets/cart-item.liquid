@@ -35,9 +35,13 @@
 
     {%- unless item.product.has_only_default_variant -%}
       <div class="cart__item--variants">
+        Select options: 
         {%- for option in item.options_with_values -%}
           <div>
-            <span>{{ option.name }}:</span> {{ option.value }}
+            {% comment %} <span>{{ option.name }}:</span>{% endcomment %}
+             {% unless option.value == 'No' %}
+              {{ option.value }}
+             {% endunless %}
           </div>
         {%- endfor -%}
       </div>
