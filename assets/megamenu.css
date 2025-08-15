@@ -144,6 +144,8 @@ span.mm-badge {
   display: block;
   padding: 4px 12px;
   border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .mm-product-sizes p a:hover {
