@@ -947,6 +947,7 @@ a.button {
 /* USP Grid */
 .usp-grid-section {
   padding: 2rem;
+  position: relative;
 }
 .usp-heading-wrapper {
   margin-bottom: 1rem;
@@ -1017,8 +1018,8 @@ a.button {
 }
 .usp-arrows {
   position: absolute;
-  top: -50px;
-  right: 0;
+  top: 12px;
+  right: 22px;
   display: flex;
   gap: 8px;
 }
