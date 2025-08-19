@@ -12238,3 +12238,8 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   font-weight: 300;
   line-height: normal;
 }
+@media (min-width: 769px) {
+  .page-sales-page #MainContent > * {
+    scroll-margin-top: 134px;
+  }
+}

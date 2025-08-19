@@ -57,6 +57,14 @@
     border: none;
   }
 
+  .video-swiper-contair .usp-arrow {
+    padding-bottom: 6px;
+  }
+
+  .video-swiper-contair .usp-arrow.next {
+    padding-left: 4px;
+  }
+
   .video-blocks {
     display: flex;
     gap: 15px;
@@ -83,13 +91,19 @@
     transform: translateY(30px);
     will-change: transform, box-shadow;
     cursor: pointer;
+    border-radius: 10px;
   }
 
-  .video-wrapper video,
   .video-wrapper iframe {
     width: 100%;
     border-radius: 10px;
     height: 490px;
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
   }
 
   .video-wrapper.animate {
@@ -112,14 +126,17 @@
       flex: 0 0 calc(35% - 10px);
     }
 
-    .video-wrapper video,
-    .video-wrapper iframe {
-      height: 350px;
+    .video-wrapper video {
+      height: auto;
     }
   }
 </style>
 
-<div class="section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+<div
+  id="{{ section.id }}"
+  class="section_width_{{ section.settings.section_width }}"
+  style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px"
+>
   <div class="video-swiper-contair section_content_width_{{ section.settings.section_content_width }}">
     <div class="video-swiper-content">
       <div class="content-left">
@@ -140,56 +157,89 @@
     {%- if section.blocks.size > 0 -%}
       <div class="video-blocks">
         {%- for block in section.blocks -%}
-  <div class="video-wrapper animate">
+          <div class="video-wrapper animate">
+            {% if block.settings.video != blank %}
+              {{
+                block.settings.video
+                | video_tag:
+                  autoplay: block.settings.autoplay,
+                  loop: block.settings.loop,
+                  muted: block.settings.muted,
+                  controls: false
+              }}
 
-    {% if block.settings.video != blank %}
-      <video
-        controls
-        {% if block.settings.autoplay %} autoplay {% endif %}
-        {% if block.settings.loop %} loop {% endif %}
-        {% if block.settings.muted %} muted {% endif %}
-        poster="{{ block.settings.thumbnail | img_url: '800x' }}"
-      >
-        <source src="{{ block.settings.video | file_url }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+            {% elsif block.settings.video_url != blank %}
+              {% assign embed_url = block.settings.video_url | replace: 'watch?v=', 'embed/' %}
+              <iframe
+                src="{{ embed_url | escape }}"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                width="100%"
+                height="490"
+              ></iframe>
 
-    {% elsif block.settings.video_url != blank %}
-      {% assign embed_url = block.settings.video_url | replace: 'watch?v=', 'embed/' %}
-      <iframe
-        src="{{ embed_url | escape }}"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        width="100%"
-        height="490"
-      ></iframe>
+            {% elsif block.settings.thumbnail != blank %}
+              <!-- Fallback to image if no video -->
+              <img
+                src="{{ block.settings.thumbnail | img_url: '800x' }}"
+                alt="Video thumbnail"
+                style="width: 100%; border-radius: 10px; height: 490px; object-fit: cover;"
+              >
 
-    {% elsif block.settings.thumbnail != blank %}
-      <!-- Fallback to image if no video -->
-      <img
-        src="{{ block.settings.thumbnail | img_url: '800x' }}"
-        alt="Video thumbnail"
-        style="width: 100%; border-radius: 10px; height: 490px; object-fit: cover;"
-      />
-
-    {% else %}
-      <!-- Optional: Fallback if nothing is set -->
-      <div style="width: 100%; height: 490px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
-        <p>No video or thumbnail provided</p>
-      </div>
-
-    {% endif %}
-
-  </div>
-{%- endfor -%}
-
+            {% else %}
+              <!-- Optional: Fallback if nothing is set -->
+              <div style="width: 100%; height: 490px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
+                <p>No video or thumbnail provided</p>
+              </div>
+            {% endif %}
+          </div>
+        {%- endfor -%}
       </div>
     {%- endif -%}
   </div>
 </div>
+<script>
+  document.querySelectorAll('video').forEach((video) => {
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  });
+</script>
 
-<script src="{{ 'video-swiper.js' | asset_url }}" defer="defer"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('{{ section.id }}');
+    const track = section.querySelector('.video-blocks');
+    const slides = section.querySelectorAll('.video-wrapper');
+
+    let current = 0;
+
+    function goTo(index) {
+      const slide = slides[index];
+      if (!slide) return;
+      track.scrollTo({ left: slide.offsetLeft - (track.offsetWidth - slide.offsetWidth) / 2, behavior: 'smooth' });
+      slides.forEach((el, i) => el.classList.toggle('active', i === index));
+      current = index;
+    }
+
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slides[0]).marginRight);
+
+    section.querySelector('.usp-arrow.prev')?.addEventListener('click', () => {
+      track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+    });
+
+    section.querySelector('.usp-arrow.next')?.addEventListener('click', () => {
+      track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+    });
+
+    goTo(0);
+  });
+</script>
 
 {% schema %}
 {
@@ -215,14 +265,86 @@
         { "value": "full", "label": "Full Width" }
       ]
     },
-    {"type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_left", "label": "Padding left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "padding_right", "label": "Padding right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "label": "Margin left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "label": "Margin right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
     {
       "id": "swiper_title",
       "type": "text",
@@ -277,9 +399,7 @@
   "presets": [
     {
       "name": "Video Swiper",
-      "blocks": [
-        { "type": "video_block" }
-      ]
+      "blocks": [{ "type": "video_block" }]
     }
   ]
 }

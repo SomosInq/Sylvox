@@ -115,16 +115,32 @@
             { "value": "right", "label": "Right" }
           ]
         },
-{
-  "type": "range",
-  "id": "image_width",
-  "label": "Image Width (%)",
-  "min": 1,
-  "max": 100,
-  "step": 1,
-  "default": 100,
-  "unit": "%"
-}
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (%)",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "default": 100,
+          "unit": "%"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_mobile_width",
+          "label": "Use Different Size on Mobile",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "mobile_image_width",
+          "label": "Image Mobile Width (%)",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "default": 100,
+          "unit": "%"
+        }
 
       ]
     },
@@ -240,20 +256,33 @@
 
       {% when 'image' %}
         {% if block.settings.image %}
+          <style>
+              .image-text-blocks-section .image-block > img {
+              --block-image-width: {{ block.settings.image_width | default: 100 }}%
+              }
+
+              {% if block.settings.use_mobile_width %}
+                @media screen and (max-width: 749px) {   
+                  .image-text-blocks-section .image-block > img {
+                  --block-image-width: {{ block.settings.mobile_image_width | default: 100 }}%
+                  }
+                }
+              {% endif %}
+          </style>
           {% assign image_align = block.settings.image_alignment | default: 'center' %}
-          <div class="section_content_width_{{ section.settings.section_content_width }} 
+          <div class="image-block section_content_width_{{ section.settings.section_content_width }} 
             {% if image_align == 'left' %} justify-start
             {% elsif image_align == 'right' %} justify-end
             {% else %} justify-center
             {% endif %}
             flex mb-4">
             <img
-  src="{{ block.settings.image | image_url: width: 1200 }}"
-  alt="Section image"
-  class="mb-4 inline-block itfb_image"
-  style="width: {{ block.settings.image_width | default: 100 }}%; height: auto;"
-  loading="lazy"
-/>
+              src="{{ block.settings.image | image_url: width: 1200 }}"
+              alt="Section image"
+              class="mb-4 inline-block itfb_image"
+              style="width: var(--block-image-width); height: auto;"
+              loading="lazy"
+            />
 
           </div>
         {% endif %}
