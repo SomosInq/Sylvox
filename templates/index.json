@@ -1172,56 +1172,11 @@
     "video_swiper_xUg7Rz": {
       "type": "video-swiper",
       "blocks": {
-        "video_block_GrJEBt": {
+        "video_block_FgRRQ7": {
           "type": "video_block",
           "settings": {
-            "video": "shopify://files/videos/8_11_25 Live Audio Video.MP4",
+            "video": "shopify://files/videos/ee5ace03-9c07-4694-b07c-22f351dedc43_3a17afb6-ff03-45d2-bf7c-2f7185075a1d.mp4",
             "video_url": "",
-            "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74_2a7c8b25-0528-4b13-9e21-929dc5d072af.jpg",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_mF7Gxx": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/Captions_F7CDC0_55e933bb-c1d8-4b6e-9025-c92f5c6cacbd.mp4",
-            "video_url": "",
-            "thumbnail": "shopify://shop_images/e4ac83204ea4c739da8f47c9dbae0abf13311e24.jpg",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_LhWJgN": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/ee5ace03-9c07-4694-b07c-22f351dedc43.mp4",
-            "video_url": "",
-            "thumbnail": "shopify://shop_images/964ee67aac68daf4ba6acace829858ca0d8ee0b2.jpg",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_Catw9n": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/STYLE5May.mp4",
-            "video_url": "",
-            "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png",
-            "autoplay": false,
-            "loop": false,
-            "muted": false
-          }
-        },
-        "video_block_RzQCii": {
-          "type": "video_block",
-          "settings": {
-            "video": "shopify://files/videos/In Home Cinemas-20250722-DeckPro2.0-EN-授权.mp4",
-            "video_url": "",
-            "thumbnail": "shopify://shop_images/a81645ffc5728db649c68b84a9615ca90534f80c.jpg",
             "autoplay": false,
             "loop": false,
             "muted": false
@@ -1229,11 +1184,7 @@
         }
       },
       "block_order": [
-        "video_block_GrJEBt",
-        "video_block_mF7Gxx",
-        "video_block_LhWJgN",
-        "video_block_Catw9n",
-        "video_block_RzQCii"
+        "video_block_FgRRQ7"
       ],
       "name": "Video Swiper",
       "settings": {
