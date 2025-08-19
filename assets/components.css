@@ -1,4 +1,8 @@
 /* components v3.0.1 | Copyright © 2024 Archetype Themes Limited Partnership  | "Shopify Theme Store (https://www.shopify.com/legal/terms#9-additional-services)" License */
+html *{
+  -webkit-font-smoothing: auto !important;
+}
+
 .at-add-to-cart {
   display: block;
   position: relative;
@@ -1047,7 +1051,6 @@ select,
   font-size: var(--type-base-size);
   letter-spacing: var(--type-base-spacing);
   line-height: var(--type-base-line-height);
-  -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeSpeed;
 }
@@ -12920,7 +12923,7 @@ header-section[data-section-index='2'] .header-wrapper--overlay {
   width: 100%;
   height: 100%;
   max-width: none;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
   -webkit-user-select: none;
           user-select: none;

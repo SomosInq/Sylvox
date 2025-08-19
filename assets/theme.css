@@ -157,8 +157,6 @@ a.button {
     .section_content_width_standard {
       max-width: 1218px;
       margin: 0 auto !important;
-      padding-left: 60px !important;
-    padding-right: 60px !important;
     }
   }
 
@@ -1777,6 +1775,20 @@ display: flex;
  
 
 /* Image text Flex Blocks */
+.comparision-slider-section h2 {
+    margin-bottom: 6px;
+    font-size: 32px;
+    color: #1D1D1B;
+    font-weight: 400;
+    line-height: normal;
+}
+.comparision-slider-section p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #20413B;
+}
 .image-text-blocks-section .desc {
   margin-bottom: 40px;
 }
@@ -1790,6 +1802,10 @@ display: flex;
 .page-how-to-buy .image-text-blocks-section img {
   max-width: 1050px;
   margin: 0;
+}
+
+.image-text-blocks-section .index-section {
+    margin: 48px 0 0;
 }
 
 .itfb_image {

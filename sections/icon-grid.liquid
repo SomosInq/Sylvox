@@ -168,9 +168,9 @@
               <img src="{{ block.settings.icon | img_url: '150x' }}" style="width: {{ block.settings.icon_size }}%;" alt="{{ block.settings.title }}">
             </div>
           {% endif %}
-          <h3 style="color: {{ block.settings.text_color }};">{{ block.settings.title }}</h3>
+          <h3>{{ block.settings.title }}</h3>
           {% if block.settings.subtitle != blank %}
-            <p class="grid-item-subtitle" style="color: {{ block.settings.text_color }};">{{ block.settings.subtitle }}</p>
+            <p class="grid-item-subtitle">{{ block.settings.subtitle }}</p>
           {% endif %}
           {% if block.settings.description != blank %}
             <p class="grid-item-description">{{ block.settings.description }}</p>
@@ -223,6 +223,7 @@
   font-size: 18px;
   color: #1D1D1B;
   margin-bottom: 10px;
+  line-height: normal;
 }
 .icon-grid__item .grid-item-description {
     color: #636363;
@@ -242,12 +243,20 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  height: 100px;
 }
 
 .icon-grid__header {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.icon-grid__header h2 {
+  color: #1D1D1B;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  -webkit-font-smoothing: auto;
 }
 
 .icon-grid__button {

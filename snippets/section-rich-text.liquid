@@ -35,16 +35,30 @@
           {%- when 'heading' -%}
             {% if block.settings.text_highlight %}
               <h2
+                data-test="test"
                 class="
                   {{ block.settings.heading_size }}
                   text-highlight
                   text-highlight--{{ block.settings.text_highlight }}
                 "
+                style="
+                  font-size: {{ block.settings.font_size }}px;
+                  color: {{ block.settings.text_color }};
+                  line-height: normal;
+                  -webkit-font-smoothing: auto;
+                "
               >
                 {{ block.settings.title }}
               </h2>
             {% else %}
-              <h2 class="{{ block.settings.heading_size }}">{{ block.settings.title | escape }}</h2>
+              <h2 class="{{ block.settings.heading_size }}"
+              style="
+                  font-size: {{ block.settings.font_size }}px;
+                  color: {{ block.settings.text_color }};
+                  line-height: normal;
+                  -webkit-font-smoothing: auto;
+                "
+              >{{ block.settings.title | escape }}</h2>
             {% endif %}
           {%- when 'page' -%}
             {%- liquid

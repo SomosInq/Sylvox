@@ -36,14 +36,14 @@
 
 {% style %}
   .comparison-{{ section.id }} {
-    height: {{ height }}px;
+    aspect-ratio: 1200 / 700;
   }
 
-  @media only screen and (max-width: 768px) {
+  /* @media only screen and (max-width: 768px) {
     .comparison-{{ section.id }} {
       height: {{ height | divided_by: 2 }}px;
     }
-  }
+  } */
 
   {% if slider_style == 'classic' %}
     .comparison-{{ section.id }} .comparison__button {

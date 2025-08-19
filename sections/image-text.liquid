@@ -137,6 +137,16 @@
           "id": "title",
           "label": "Title Text",
           "default": "Your Section Title"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 12,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 48
         }
       ]
     },
@@ -259,7 +269,7 @@
         {% endif %}
 
       {% when 'title' %}
-        <h2 class=" mb-2">{{ block.settings.title }}</h2>
+        <h2 style="font-size:{{ block.settings.font_size }}px;">{{ block.settings.title }}</h2>
 
       {% when 'text' %}
         <p class="desc">{{ block.settings.text }}</p>
