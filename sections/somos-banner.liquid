@@ -8,6 +8,7 @@
   {% if section.settings.custom_content_width_enabled %}
     #{{ wrapper_id }} .custom-content-wrapper {
       width: {{ section.settings.custom_content_width }}%;
+      max-width: {{ section.settings.content_max_width }}px;
     }
   {% endif %}
 
@@ -84,6 +85,8 @@
               {% else %}
                 text-align: {{ section.settings.text_alignment }};
               {% endif %}
+              -webkit-font-smoothing: auto;
+              font-size: {{ block.settings.font_size }}px;
             "
             {{ block.shopify_attributes }}>
             {{ block.settings.text }}
@@ -212,6 +215,12 @@
     ]},
     { "type": "checkbox", "id": "custom_content_width_enabled", "label": "Enable Custom Content Width", "default": false },
     { "type": "range", "id": "custom_content_width", "label": "Custom Content Width (%)", "min": 40, "max": 100, "step": 5, "default": 90, "unit": "%" },
+    {
+      "type": "number",
+      "id": "content_max_width",
+      "label": "Max Width (px)",
+      "default": 880
+    },
     { "type": "range", "id": "mobile_content_width", "label": "Mobile Content Width (%)", "min": 40, "max": 100, "step": 5, "default": 90, "unit": "%" },
     { "type": "range", "id": "section_height", "label": "Section Height", "min": 200, "max": 1200, "step": 10, "default": 500, "unit": "px" },
     { "type": "range", "id": "mobile_section_height", "label": "Mobile Section Height", "min": 100, "max": 1000, "step": 10, "default": 500, "unit": "px" },
@@ -275,7 +284,17 @@
           { "value": "left", "label": "Left" },
           { "value": "center", "label": "Center" },
           { "value": "right", "label": "Right" }
-        ]}
+        ]},
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 12,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 48
+        }
       ]
     },
     {

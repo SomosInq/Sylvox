@@ -3001,16 +3001,8 @@ html input[disabled] {
 }
   }
 
-.collapsible-content__inner {
-  padding: 0 0 15px;
-}
 
-@media only screen and (max-width: 768px) {
 
-.collapsible-content__inner {
-    padding: 0 17px 12px;
-}
-  }
 
 .collapsible-trigger-btn--borders {
   border-bottom: 1px solid;
@@ -5679,11 +5671,6 @@ Only medium-up because iOS jumps to top otherwise*/
     }
 }
 
-@media only screen and (min-width: 769px) {
-  .collapsible-content__inner {
-    padding: 0 0 35px;
-  }
-}
 
 .collapsible-trigger[aria-expanded='true'] .collapsible-label__closed {
     display: none;
@@ -11501,11 +11488,6 @@ html[dir='rtl'] .background-media-text__text {
     }
 }
 
-@media only screen and (min-width: 769px) {
-  .collapsible-content__inner {
-    padding: 0 0 35px;
-  }
-}
 
 .collapsible-trigger[aria-expanded='true'] .collapsible-label__closed {
     display: none;

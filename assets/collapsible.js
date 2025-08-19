@@ -36,6 +36,39 @@ class AtCollapsible extends HTMLElement {
     })
   }
 
+  // Close all open accordion items except the current one
+  closeOtherAccordions(currentTrigger) {
+    document.querySelectorAll(selectors.trigger).forEach((trigger) => {
+      if (trigger !== currentTrigger && trigger.classList.contains(classes.open)) {
+        let moduleId = trigger.getAttribute('aria-controls')
+        if (!moduleId) {
+          moduleId = trigger.dataset.controls
+        }
+        
+        if (moduleId) {
+          let container = document.getElementById(moduleId)
+          
+          // Check for data-id based containers if no ID match
+          if (!container) {
+            let multipleMatches = document.querySelectorAll('[data-id="' + moduleId + '"]')
+            if (multipleMatches.length > 0) {
+              container = trigger.parentNode.querySelector('[data-id="' + moduleId + '"]')
+            }
+          }
+          
+          if (container) {
+            trigger.classList.remove(classes.open)
+            trigger.setAttribute('aria-expanded', false)
+            container.classList.remove(classes.open)
+            
+            this.setTransitionHeight(container, 0, true, container.classList.contains(classes.autoHeight))
+            this.dispatchEvent(new CustomEvent('collapsible:close', { detail: { id: moduleId }, bubbles: true }))
+          }
+        }
+      }
+    })
+  }
+
   toggle(evt) {
     if (isTransitioning) {
       return
@@ -72,6 +105,11 @@ class AtCollapsible extends HTMLElement {
     if (!container) {
       isTransitioning = false
       return
+    }
+
+    // Close other accordions before opening this one (unless it's already open)
+    if (!isOpen && !isTab) {
+      this.closeOtherAccordions(el)
     }
 
     let height = container.querySelector(selectors.moduleInner).offsetHeight
