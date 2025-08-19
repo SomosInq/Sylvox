@@ -66,7 +66,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "surface_pickup_enable": true,
             "show_gift_card_recipient": false
           }
@@ -139,6 +139,7 @@
         "image_container_size": "large",
         "product_image_size": "square",
         "product_zoom_enable": true,
+        "show_thumbnail": false,
         "thumbnail_position": "beside",
         "thumbnail_height": "flexible",
         "thumbnail_arrows": true,
@@ -1423,7 +1424,10 @@
       "blocks": {
         "judgeme_review_widget_5fe97322": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
         }
       },
       "block_order": [
