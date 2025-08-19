@@ -1172,11 +1172,12 @@
     "video_swiper_xUg7Rz": {
       "type": "video-swiper",
       "blocks": {
-        "video_block_FgRRQ7": {
+        "video_block_4FKjtJ": {
           "type": "video_block",
           "settings": {
-            "video": "shopify://files/videos/8_11_25 Live Audio Video.MP4",
+            "video": "shopify://files/videos/In Home Cinemas-20250722-DeckPro2.0-EN-授权.mp4",
             "video_url": "",
+            "thumbnail": "shopify://shop_images/8_8b9d2bb0-61fc-4486-a4a5-ef182fafab29.jpg",
             "autoplay": false,
             "loop": false,
             "muted": false
@@ -1184,7 +1185,7 @@
         }
       },
       "block_order": [
-        "video_block_FgRRQ7"
+        "video_block_4FKjtJ"
       ],
       "name": "Video Swiper",
       "settings": {
