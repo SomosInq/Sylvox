@@ -242,8 +242,8 @@
       "settings": {
         "big_title": "Outdoor TV",
         "big_title_color": "#000000",
-        "header_button_text": "",
-        "header_button_link": "",
+        "header_button_text": "See All",
+        "header_button_link": "shopify://collections/outdoor-tvs",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
