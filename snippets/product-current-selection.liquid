@@ -6,10 +6,12 @@
           <img src="{{ product.featured_image |  image_url: width: 110  }}" alt="">
         </div>
         <div class="included-product-content">
-          <div class="included-product-title">{{ product.title }}</div>
-          <div class="included-product-price">{{ product.price | money }}</div>
+          <div>
+            <div class="included-product-title">{{ product.title }}</div>
+            <div class="included-product-price">{{ product.price | money }}</div>
+          </div>
+          <div class="included-product-qty">x1</div>
         </div>
-        <div class="included-product-qty">x1</div>
       </div>
       {% for variant in product.variants %}
         <div class="display-selected-variant" data-variant-id="{{ variant.id }}"  style="display: none;">
@@ -41,6 +43,7 @@
       }
       .included-product-row {
         display: flex;
+        align-items: center;
         gap: 24px;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -53,7 +56,10 @@
       }
 
       .included-product-content {
-        width: calc(100% - 200px);
+        width: calc(100% - 115px);
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
       }
 
       .included-product-qty{
@@ -62,9 +68,19 @@
         font-weight: 300;
         color: #1D1D1B;
       }
-      .included-product-title {
-        font-size: 16px;
-        color: #1D1D1B;
-      }
+
+    .included-product-title {
+      font-size: 18px;
+      color: #1D1D1B;
+      line-height: normal;
+      margin-bottom: 6px;
+    }
+    .included-product-price {
+      color: #636363;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: normal;
+      letter-spacing: 0.176px;
+    }
     </style>
 {% endif %}

@@ -12157,6 +12157,7 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   height: 30px;
   position: absolute;
   top: -25px;
+  left: 0;
 }
 @media screen and (min-width: 750px) {
   .account-popup:hover,

@@ -105,6 +105,7 @@
       </div>
 
       {% if media_gallery_layout != 'stacked' %}
+        {% if section.settings.show_thumbnail %}
         <div
           data-product-thumbs
           class="product__thumbs product__thumbs--{{ thumbnail_position }} product__thumbs-placement--{{ image_position }}{% if product.media.size == 1 %} medium-up--hide{% endif %} small--hide"
@@ -191,6 +192,7 @@
             </button>
           {%- endif -%}
         </div>
+        {% endif %}
       {% endif %}
     </div>
     <script type="application/json" data-current-variant-json>

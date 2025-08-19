@@ -1,8 +1,5 @@
-  <legend class="label variant__label ">
-  
-   Key features
-  
-</legend>
+<div class="product-info-section-conainer">
+<legend class="label variant__label ">Key features</legend>
 <div class="usp-container">
 
 
@@ -26,15 +23,15 @@
     {% endif %}
   {% endfor %}
 </div>
+</div>
 
 
 <style>
   .usp-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: 40px 0;
+    justify-content: space-between;
+    gap: 6px;
+    margin: 12px 0;
   }
   .usp-block {
     text-align: center;
@@ -42,13 +39,14 @@
     flex: 1 1 100px;
   }
   .usp-image img {
-    max-width: 50%;
+    max-width: 40px;
     height: auto;
-    margin: 0 auto 12px auto;
+    margin: 0 auto 6px auto;
   }
   .usp-title {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 300;
     color: #636363;
+    line-height: normal;
   }
 </style>

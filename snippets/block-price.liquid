@@ -63,27 +63,26 @@
     </div>
 
     <div class="block-price__sale product__price">
-      {%- unless product.price_varies == false and product.compare_at_price_varies %}
-        <span class="visually-hidden">
-          {% render 't_with_fallback', key: 'labels.regular_price', fallback: 'Regular price' %}
-        </span>
-        <span>
-          <s>
-            {%- render 'price', price: compare_at_price -%}
-          </s>
-        </span>
-      {%- endunless -%}
-
       <span class="visually-hidden">
         {% render 't_with_fallback', key: 'labels.sale_price', fallback: 'Sale price' %}
       </span>
 
       <span class="product__price">
-        {%- render 'price', price: price -%}
+        {{ cart.currency.iso_code }} {%- render 'price', price: price -%}
       </span>
+            {%- unless product.price_varies == false and product.compare_at_price_varies %}
+        <span class="visually-hidden">
+          {% render 't_with_fallback', key: 'labels.regular_price', fallback: 'Regular price' %}
+        </span>
+        <span class="compare_at_price">
+          <s>
+            {%- render 'price', price: compare_at_price -%}
+          </s>
+        </span>
+      {%- endunless -%}
     </div>
 
-    {%- if product_save_amount -%}
+    {% comment %} {%- if product_save_amount -%}
       <span class="block-price__save product__price-savings on-sale">
         {% assign info_save_amount = 'info.save_amount' | t: saved_amount: saved_amount %}
         {%- capture fallback_info_save_amount -%}
@@ -91,7 +90,7 @@
         {%- endcapture -%}
         {% render 't_with_fallback', t: info_save_amount, fallback: fallback_info_save_amount %}
       </span>
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
 
     <div class="block-price__unit-price product__unit-price">
       <span>
