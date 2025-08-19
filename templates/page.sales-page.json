@@ -128,7 +128,7 @@
           "type": "text",
           "settings": {
             "anchor_title": "Kitchen TV",
-            "target_id": "shopify-section-template--24974233829739__somos_banner_PNpJtb"
+            "target_id": "shopify-section-template--24974233829739__featured_product_slider_Abc123"
           }
         },
         "text_xgjBcQ": {
@@ -159,7 +159,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         }
       },
@@ -172,6 +173,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -240,6 +242,8 @@
       "settings": {
         "big_title": "Outdoor TV",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -322,6 +326,8 @@
       "settings": {
         "big_title": "",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -388,7 +394,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         }
       },
@@ -401,6 +408,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -623,7 +631,8 @@
             "color": "#000000",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         }
       },
@@ -636,6 +645,7 @@
         "section_content_width": "full",
         "custom_content_width_enabled": true,
         "custom_content_width": 45,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
