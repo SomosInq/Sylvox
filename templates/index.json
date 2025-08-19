@@ -1169,15 +1169,14 @@
         "show_dots": true
       }
     },
-    "video_swiper_xUg7Rz": {
+    "video_swiper_KfRVhA": {
       "type": "video-swiper",
       "blocks": {
-        "video_block_4FKjtJ": {
+        "video_block_acRKFF": {
           "type": "video_block",
           "settings": {
             "video": "shopify://files/videos/In Home Cinemas-20250722-DeckPro2.0-EN-授权.mp4",
             "video_url": "",
-            "thumbnail": "shopify://shop_images/8_8b9d2bb0-61fc-4486-a4a5-ef182fafab29.jpg",
             "autoplay": false,
             "loop": false,
             "muted": false
@@ -1185,22 +1184,22 @@
         }
       },
       "block_order": [
-        "video_block_4FKjtJ"
+        "video_block_acRKFF"
       ],
       "name": "Video Swiper",
       "settings": {
-        "section_width": "full",
+        "section_width": "standard",
         "section_content_width": "standard",
-        "padding_top": 60,
-        "padding_bottom": 60,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
         "margin_right": 0,
-        "swiper_title": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology.",
-        "swiper_sub_title": "sylvox Community"
+        "swiper_title": "Sylvox Community",
+        "swiper_sub_title": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology."
       }
     },
     "support_7VNrrL": {
@@ -1303,7 +1302,7 @@
     "rich_text_cbmRYc",
     "usp_grid_mBqiLF",
     "media_logo_carousel_w9Bt3h",
-    "video_swiper_xUg7Rz",
+    "video_swiper_KfRVhA",
     "support_7VNrrL",
     "signup_newsletter_GHDLgb"
   ]
