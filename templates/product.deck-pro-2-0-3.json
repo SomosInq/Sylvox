@@ -167,10 +167,19 @@
             "font_weight": "400",
             "alignment": "center"
           }
+        },
+        "subheading_EXzTAf": {
+          "type": "subheading",
+          "settings": {
+            "text": "No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.",
+            "color": "#ffffff",
+            "alignment": "center"
+          }
         }
       },
       "block_order": [
-        "heading_8HaYdw"
+        "heading_8HaYdw",
+        "subheading_EXzTAf"
       ],
       "name": "Somos Banner",
       "settings": {
