@@ -1,0 +1,100 @@
+#feature-slider-section {
+    overflow: hidden;
+}
+#feature-slider-section .heading-area{
+  padding: 24px 0;
+  margin-bottom: 24px;
+}
+#feature-slider-section .heading-area h2{
+  color: #1D1D1B;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 20px 0;
+}
+#feature-slider-section .heading-area p{
+  color: #1D1D1B;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.198px;
+}
+
+#feature-slider-section .features-slider {
+    overflow: visible;
+}
+#feature-slider-section .features-slider .swiper-slide.swiper-slide-next,
+#feature-slider-section .features-slider .swiper-slide.swiper-slide-prev {
+  opacity: 0.3;
+}
+#feature-slider-section .feature-slide-item{
+  position: relative;
+}
+
+#feature-slider-section .feature-slide-content{
+  position: absolute;
+  padding: 24px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+#feature-slider-section .feature-slide-content h3{
+  color: #C6C6C6;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+#feature-slider-section .feature-slide-content p{
+  color: #C6C6C6;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.176px;
+}
+
+#feature-slider-section .feature-slide-image{
+  display: block;
+  aspect-ratio: 2/1;
+  width: 100%;
+  object-fit: cover;
+}
+
+.feat-swiper-navigation{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.feat-swiper-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.feat-slideshow-arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #636363;
+  border-radius: 100%;
+}
+
+.feat-swiper-pagination .swiper-pagination-bullet {
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+}
+.feat-swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #000;
+}
+
+@media screen and (max-width: 768px) {
+  #feature-slider-section .feature-slide-image {
+    aspect-ratio: 1 / 1.1;
+  }
+}

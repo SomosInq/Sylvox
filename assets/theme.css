@@ -91,10 +91,31 @@
 
 }
 
-h1, h2, h3, p, a, button {
-  font-family: 'neurial_grotesklight', Arial, Helvetica, sans-serif !important;
-font-weight: 400;
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url('neurialgrotesk-light-webfont.woff2') format('woff2'),
+        url('neurialgrotesk-light-webfont.woff') format('woff');
+  font-weight: 300;
 }
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url('neurialgrotesk-regular-webfont.woff2') format('woff2'),
+       url('neurialgrotesk-regular-webfont.woff') format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url('neurialgrotesk-medium-webfont.woff2') format('woff2'),
+       url('neurialgrotesk-medium-webfont.woff') format('woff');
+  font-weight: 500;
+}
+
+h1, h2, h3, p, a, button {
+  font-family: 'neurial_groteskregular', Arial, Helvetica, sans-serif;
+}
+
 
 .header-title {
 display: flex;
@@ -1804,8 +1825,8 @@ display: flex;
   margin: 0;
 }
 
-.image-text-blocks-section .index-section {
-    margin: 48px 0 0;
+.comparision-slider-section .index-section {
+    margin: 48px 0;
 }
 
 .itfb_image {

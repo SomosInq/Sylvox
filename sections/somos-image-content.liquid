@@ -21,6 +21,12 @@
       "default": "Experience unmatched performance and innovation with every feature."
     },
     {
+      "type": "checkbox",
+      "id": "indent_text",
+      "label": "Indent Text",
+      "default": false
+    },
+    {
       "type": "select",
       "id": "parent_alignment",
       "label": "Parent Content Alignment",
@@ -51,6 +57,12 @@
         { "value": "standard", "label": "50% Width" },
         { "value": "full", "label": "Full Width" }
       ]
+    },
+    {
+      "type": "checkbox",
+      "id": "narrow_container",
+      "label": "Narrow Container",
+      "default": false
     },
     {
       "type": "select",
@@ -229,32 +241,33 @@
   line-height: normal;
 }
 .text-col p {
-  
   color: #636363;
   font-size: 16px;
   font-weight: 300;
   line-height: normal;
   letter-spacing: 0.176px;
 }
-@media screen and (min-width: 1199px) {
-  .text-col p {
-    max-width: 320px;
-  }
-}
+
 {% endstyle %}
 
-<section class="section_width_{{ section.settings.section_width }}" id="shopify-section-{{ section.id }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }}">
-    <div class="icon-grid-heading" style="text-align: {{ section.settings.parent_alignment }}; margin-bottom: 40px;">
+<section>
+  <div class="{% if section.settings.narrow_container %}page-width-container{% else %}section_content_width_{{ section.settings.section_content_width }}{% endif %}">
+    {% if section.settings.parent_subtitle != blank and section.settings.heading != blank and section.settings.description != blank %}
+    <div class="icon-grid-heading {% if section.settings.indent_text %}indent-text{% endif %}" style="text-align: {{ section.settings.parent_alignment }}; margin-bottom: 40px;">
       {% if section.settings.parent_subtitle != blank %}
         <p class="parent-subtitle" style="margin: 0 0 10px;">{{ section.settings.parent_subtitle }}</p>
       {% endif %}
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.description }}</p>
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <p>{{ section.settings.description }}</p>
+      {% endif %}
       {% if section.settings.button_label != blank %}
         <a href="{{ section.settings.button_link }}" class="button" style="display: inline-block; margin-top: 20px;">{{ section.settings.button_label }}</a>
       {% endif %}
     </div>
+    {% endif %}
 
     {% for block in section.blocks %}
       {% assign layout = block.settings.layout %}
@@ -272,7 +285,6 @@
              margin-bottom: {{ block.settings.margin_bottom }}px;
              padding-top: {{ block.settings.padding_top }}px;
              padding-bottom: {{ block.settings.padding_bottom }}px;
-             gap: 20px;
            "
            {{ block.shopify_attributes }}
       >

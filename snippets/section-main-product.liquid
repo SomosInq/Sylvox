@@ -48,7 +48,7 @@
   data-section-id="{{ section.id }}"
   data-product-id="{{ product.id }}"
 >
-  <div class="page-width">
+  <div class="page-width-container">
     <div class="product-grid__container product--images float-grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}{% if mobile_layout == 'partial' %} grid--product-images--partial{% endif %} clearfix">
       {%- if image_position == 'left' -%}
         <div class="grid__item {{ product_image_width }} product-single__sticky">

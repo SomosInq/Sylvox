@@ -5,24 +5,10 @@
   "class": "usp-accordion-section",
   "settings": [
     {
-      "type": "select",
-      "id": "section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "Content Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
+      "type": "checkbox",
+      "id": "narrow_container",
+      "label": "Narrow Container",
+      "default": false
     },
     {
       "type": "color",
@@ -36,22 +22,22 @@
       "label": "Background Image"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "section_heading",
       "label": "Section Heading",
       "default": "Set Up in Minutes, Enjoy for Years."
-    },
-    {
-      "type": "textarea",
-      "id": "section_description",
-      "label": "Section Description",
-      "default": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching."
     },
     {
       "type": "color",
       "id": "section_title_color",
       "label": "Section Heading Color",
       "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching."
     },
     {
       "type": "color",
@@ -69,6 +55,18 @@
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_max_width",
+      "label": "Enable Heading Max-width",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "heading_max_width",
+      "label": "Heading Max Width",
+      "default": 600
     },
     {
       "type": "text",
@@ -178,6 +176,10 @@
 {% endschema %}
 
 {% style %}
+#shopify-section-{{ section.id }} .section-custom-page-width{
+  max-width: 1451px;
+  margin: 0 auto;
+}
 .usp-accordion-section {
   background-color: {{ section.settings.background_color }};
   {% if section.settings.background_image != blank %}
@@ -190,21 +192,17 @@
   margin-top: {{ section.settings.margin_top }}px;
   margin-bottom: {{ section.settings.margin_bottom }}px;
 }
-
-@media screen and (max-width: 767px) {
-  .usp-accordion-section {
-    padding-top: 30px;
-    padding-bottom: 30px;
+{% if section.settings.add_max_width %}
+  #shopify-section-{{ section.id }} .section-heading-area{
+    margin: 0 auto;
+    max-width: {{ section.settings.heading_max_width }}px;
   }
-  section.usp-accordion-section {
-    padding-top: 0px;
-  }
-}
+{% endif %}
 
 .accordion-wrapper {
   display: flex;
   align-items: stretch;
-  gap: 2rem;
+  gap: 12px;
 }
 
 .accordion-left {
@@ -232,12 +230,16 @@
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  padding: 2rem;
+  padding: 60px 80px;
 }
 
 .accordion-item {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+}
+.accordion-item:last-of-type{
+  margin-bottom: 0;
 }
 
 .accordion-header {
@@ -245,12 +247,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 12px 0;
   transition: font-size 0.3s ease;
 }
-
+.accordion-item .accordion-header span{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
 .accordion-item.active .accordion-header span {
-  font-size: 1.5em;
+  color: #A7DCB7;
 }
 
 .accordion-icon {
@@ -263,7 +269,13 @@
 
 .accordion-content {
   display: none;
-  padding: 0 0 1rem;
+}
+.accordion-content *{
+  color: #C6C6C6;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.176px;
 }
 
 .accordion-content.active {
@@ -276,17 +288,37 @@
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
-
-@media (max-width: 768px) {
-  .accordion-left {
-    display: none;
+.accordion h2.accordion-title {
+  color: #C6C6C6;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 60%;
+  margin-bottom: 0;
+}
+@media screen and (max-width: 767px) {
+  .accordion h2.accordion-title {
+    max-width: 100%;
+  }
+  .usp-accordion-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  section.usp-accordion-section {
+    padding-top: 0px;
+  }
+  .accordion{
+    padding: 24px;
+  }
+  .accordion-wrapper {
+    display: block;
   }
 }
 {% endstyle %}
 
-<div class="section_width_{{ section.settings.section_width }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }} usp-accordion-section">
-    <div style="text-align: center; margin-bottom: 2rem;">
+<div>
+  <div class="section-custom-page-width">
+    <div class="section-heading-area" style="text-align: center; margin-bottom: 2rem;">
       {% if section.settings.section_heading %}
         <h2 style="color: {{ section.settings.section_title_color }}">{{ section.settings.section_heading }}</h2>
       {% endif %}
@@ -304,8 +336,7 @@
       </div>
       <div class="accordion-right">
         <div class="accordion">
-          <h2>{{ section.settings.title }}</h2>
-          <p>{{ section.settings.text }}</p>
+          <h2 class="accordion-title">{{ section.settings.title }}</h2>
           {% for block in section.blocks %}
             <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}">
               <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
@@ -317,7 +348,7 @@
                 {% endif %}
               </div>
               <div class="accordion-content" id="content-{{ forloop.index }}">
-                {% if block.settings.subtitle %}
+                {% if block.settings.subtitle != blank %}
                   <div class="accordion-subtitle">{{ block.settings.subtitle }}</div>
                 {% endif %}
                 <div>{{ block.settings.answer }}</div>

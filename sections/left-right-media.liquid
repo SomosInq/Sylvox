@@ -166,16 +166,16 @@
             <img src="{{ section.settings.heading_icon | img_url: 'medium' }}" alt="Heading Icon" style="height: 40px;" />
           </div>
         {% endif %}
-
+        <div class="section-heading-area">
         {% if section.settings.heading %}
-          <{{ section.settings.heading_tag }}
-            class="spanheader"
-            style="color: {{ section.settings.heading_color }};
-                   font-weight: {{ section.settings.heading_weight }};
-                   text-align: {{ section.settings.heading_align }};">
+          <h2>
             {{ section.settings.heading }} <span class="small-span">{{ section.settings.spanheader }}</span>
-          </{{ section.settings.heading_tag }}>
+          </h2>
+          {% if section.settings.description %}
+            {{ section.settings.description }}
+          {% endif %}
         {% endif %}
+        </div>
 
         {% if section.settings.label_text_1 or section.settings.icon_text or section.settings.label_text_2 or section.settings.icon_image %}
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: {{ section.settings.heading_align }};">
@@ -186,11 +186,7 @@
           </div>
         {% endif %}
 
-        {% if section.settings.description %}
-          <div class="lrm-textarea" style="padding-top: 50px !important; text-align: {{ section.settings.heading_align }}; margin-top: 10px;word-wrap:break-word;">
-            {{ section.settings.description }}
-          </div>
-        {% endif %}
+        
 
         {% if section.settings.button_text and section.settings.button_url %}
           <div style="margin-top: 20px; text-align: {{ section.settings.heading_align }};">

@@ -81,7 +81,7 @@
           "type": "tab",
           "settings": {
             "title": "Fast and Free Shipping",
-            "content": "<p>We offer free shipping straight to your door throughout the contiguous US*. It usually takes 3-7 business days* for your package to be delivered, so you can sit back and relax, worry-free. *Please see our shipping policy for more details.</p>",
+            "content": "<p>We offer free shipping straight to your door throughout the contiguous US*.It usually takes 3-7 business days* for your package to be delivered, so you can sit back and relax, worry-free.*Please see our shipping policy for more details.</p>",
             "page": "",
             "icon": "shopify://shop_images/Icons_ef46d830-91ab-468c-924a-eb9f8cc63999.png",
             "background_color": "rgba(0,0,0,0)"
@@ -140,7 +140,7 @@
         "product_image_size": "square",
         "product_zoom_enable": true,
         "show_thumbnail": false,
-        "thumbnail_position": "beside",
+        "thumbnail_position": "below",
         "thumbnail_height": "flexible",
         "thumbnail_arrows": true,
         "mobile_layout": "partial",
@@ -165,10 +165,11 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         },
-        "subheading_EXzTAf": {
+        "subheading_wRGFdN": {
           "type": "subheading",
           "settings": {
             "text": "No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.",
@@ -179,7 +180,7 @@
       },
       "block_order": [
         "heading_8HaYdw",
-        "subheading_EXzTAf"
+        "subheading_wRGFdN"
       ],
       "name": "Somos Banner",
       "settings": {
@@ -187,6 +188,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 60,
         "section_height": 1200,
         "mobile_section_height": 710,
@@ -220,7 +222,9 @@
           "type": "heading",
           "settings": {
             "title": "A weatherproof, ultra-bright 4K TV designed for the outdoors. Whether you’re hosting game night, watching a movie under the stars, or just unwinding after a long day, the Deck Pro 2.0 delivers a viewing experience that feels as good as it looks.",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "font_size": 32,
+            "text_color": "#636363"
           }
         }
       },
@@ -391,7 +395,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         },
         "richtext_PFJ7Nt": {
@@ -411,8 +416,9 @@
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
-        "custom_content_width_enabled": false,
+        "custom_content_width_enabled": true,
         "custom_content_width": 90,
+        "content_max_width": 600,
         "mobile_content_width": 90,
         "section_height": 1200,
         "mobile_section_height": 500,
@@ -448,10 +454,10 @@
             "layout": "horizontal",
             "image_position": "left",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_3.png",
-            "image_width": 40,
-            "content_width": 40,
+            "image_width": 50,
+            "content_width": 50,
             "margin_top": 0,
-            "margin_bottom": 60,
+            "margin_bottom": 95,
             "padding_top": 0,
             "padding_bottom": 0,
             "subtitle": "Google TV Built-In",
@@ -466,10 +472,10 @@
             "layout": "horizontal",
             "image_position": "right",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4.png",
-            "image_width": 40,
-            "content_width": 40,
+            "image_width": 50,
+            "content_width": 50,
             "margin_top": 0,
-            "margin_bottom": 60,
+            "margin_bottom": 95,
             "padding_top": 0,
             "padding_bottom": 0,
             "subtitle": "Works with Apple AirPlay & Chromecast",
@@ -481,11 +487,11 @@
         "grid_box_7tKYVJ": {
           "type": "grid_box",
           "settings": {
-            "layout": "vertical",
-            "image_position": "bottom",
+            "layout": "horizontal",
+            "image_position": "left",
             "image": "shopify://shop_images/Voice_Control_86832f27-95d7-4d9f-b583-239cd558cfbd.png",
-            "image_width": 65,
-            "content_width": 60,
+            "image_width": 50,
+            "content_width": 50,
             "margin_top": 0,
             "margin_bottom": 0,
             "padding_top": 0,
@@ -507,14 +513,16 @@
         "parent_subtitle": "",
         "heading": "",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "center",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": true,
         "section_content_width": "standard",
         "background_color": "#f5f5f5",
-        "padding_top": 40,
-        "padding_bottom": 40,
+        "padding_top": 95,
+        "padding_bottom": 95,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -523,54 +531,45 @@
         "margin_right": 0
       }
     },
-    "new_banner_slider_NmBRen": {
-      "type": "new-banner-slider",
+    "featured_slider_kKn6hM": {
+      "type": "featured-slider",
       "blocks": {
-        "slide_QqP7Lp": {
+        "slide_byBD7d": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c_1.png",
-            "caption": "Works Even After Heavy Rain",
-            "caption_small": "Outdoor Dining Area",
-            "description_block": "Outdoor Dining Area"
+            "heading": "Works Even After Heavy Rain",
+            "paragraph": "Never worry about rain ruining your entertainment. The Deck Pro 2.0 is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands.",
+            "image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c_1.png"
           }
         },
-        "slide_bmLipF": {
+        "slide_3PWYrD": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
-            "caption": "Works Even After Heavy Rain",
-            "caption_small": "Outdoor Dining Area",
-            "description_block": "Outdoor Dining Area"
+            "heading": "Handles Extreme Temperatures",
+            "paragraph": "From freezing winters to blazing summers, the Pool Pro 2.0 is designed to withstand it all. Tested to perform in temperatures from -22°F to 122°F, it’s built to keep running in both icy conditions and scorching heat.",
+            "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg"
+          }
+        },
+        "slide_nmx44P": {
+          "type": "slide",
+          "settings": {
+            "heading": "Works Even After Heavy Rain",
+            "paragraph": "Never worry about rain ruining your entertainment. The Deck Pro 2.0 is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands.",
+            "image": "shopify://shop_images/343d31c3a9f8bccd09af55ca57895bf8a78b0980.png"
           }
         }
       },
       "block_order": [
-        "slide_QqP7Lp",
-        "slide_bmLipF"
+        "slide_byBD7d",
+        "slide_3PWYrD",
+        "slide_nmx44P"
       ],
-      "name": "New Banner Slider",
+      "name": "Featured Slider",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "text_alignment": "center",
-        "heading": "",
-        "subheading": "Rain, Snow, or Heat - It Just Works.",
-        "description": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
-        "show_arrows": true,
-        "show_dots": true,
-        "slide_size": "large",
-        "slide_height": 900,
-        "slide_width": 1400
+        "title": "Rain, Snow, or Heat - It Just Works.",
+        "sub_title": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast.",
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "image_text_UQFVkh": {
@@ -579,7 +578,8 @@
         "title_GFaQcd": {
           "type": "title",
           "settings": {
-            "title": "Every Word, Every Note, Every Detail."
+            "title": "Every Word, Every Note, Every Detail.",
+            "font_size": 48
           }
         },
         "text_qkpUEk": {
@@ -593,7 +593,9 @@
           "settings": {
             "image": "shopify://shop_images/797b8f0df03fdcd3f6294c17b924114874f7d62e.png",
             "image_alignment": "center",
-            "image_width": 100
+            "image_width": 100,
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         }
       },
@@ -608,8 +610,9 @@
         "background_gradient": "",
         "section_width": "full",
         "section_content_width": "standard",
+        "narrow_container": true,
         "alignment": "center",
-        "padding_top": 50,
+        "padding_top": 95,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
@@ -627,6 +630,23 @@
     "somos_image_content_b794Jg": {
       "type": "somos-image-content",
       "blocks": {
+        "grid_box_VYeBQX": {
+          "type": "grid_box",
+          "settings": {
+            "layout": "horizontal",
+            "image_position": "top",
+            "image_width": 10,
+            "content_width": 100,
+            "margin_top": 0,
+            "margin_bottom": 95,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "subtitle": "Immersive, Three-Dimensional Sound",
+            "title": "Dolby Atmos Support",
+            "text": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
+            "text_color": "#000000"
+          }
+        },
         "grid_box_3tryC3": {
           "type": "grid_box",
           "settings": {
@@ -634,9 +654,9 @@
             "image_position": "left",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_1.png",
             "image_width": 50,
-            "content_width": 45,
+            "content_width": 50,
             "margin_top": 0,
-            "margin_bottom": 50,
+            "margin_bottom": 95,
             "padding_top": 0,
             "padding_bottom": 0,
             "subtitle": "Full-Range Audio Without Extra Equipment",
@@ -652,9 +672,9 @@
             "image_position": "right",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_2.png",
             "image_width": 50,
-            "content_width": 40,
+            "content_width": 50,
             "margin_top": 0,
-            "margin_bottom": 50,
+            "margin_bottom": 0,
             "padding_top": 0,
             "padding_bottom": 0,
             "subtitle": "Engineered for Open Spaces",
@@ -665,22 +685,25 @@
         }
       },
       "block_order": [
+        "grid_box_VYeBQX",
         "grid_box_3tryC3",
         "grid_box_JxaDph"
       ],
       "name": "Somos Content/Image",
       "settings": {
-        "parent_subtitle": "Immersive, Three-Dimensional Sound",
-        "heading": "Dolby Atmos Support",
-        "description": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
+        "parent_subtitle": "",
+        "heading": "",
+        "description": "",
+        "indent_text": true,
         "parent_alignment": "left",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": true,
         "section_content_width": "standard",
         "background_color": "#ffffff",
-        "padding_top": 30,
-        "padding_bottom": 60,
+        "padding_top": 45,
+        "padding_bottom": 95,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -695,8 +718,8 @@
         "accordion_kmbKj4": {
           "type": "accordion",
           "settings": {
-            "question": "Quick & Simple Installation",
-            "subtitle": "No Professionals Required",
+            "question": "No Professionals Required",
+            "subtitle": "",
             "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
             "icon": "shopify://shop_images/expand_more.png",
             "associated_image": "shopify://shop_images/bento-slideshow_List_Group_-_1_of_5.png"
@@ -730,20 +753,21 @@
       ],
       "name": "USP Accordion",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
+        "narrow_container": false,
         "background_color": "#ffffff",
-        "section_heading": "Set Up in Minutes, Enjoy for Years.",
+        "section_heading": "Set Up in Minutes,<br>Enjoy for Years.",
+        "section_title_color": "#1d1d1b",
         "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
-        "section_title_color": "#000000",
-        "section_description_color": "#000000",
+        "section_description_color": "#1d1d1b",
         "button_text": "Learn More",
         "button_link": "",
-        "title": "",
+        "add_max_width": true,
+        "heading_max_width": 600,
+        "title": "Quick & Simple Installation",
         "text": "",
         "text_color": "#ffffff",
         "font_size": 16,
-        "padding_top": 60,
+        "padding_top": 48,
         "padding_bottom": 60,
         "margin_top": 0,
         "margin_bottom": 0
@@ -786,7 +810,7 @@
         "button_radius": 0,
         "content_padding": 0,
         "image_lazyload": true,
-        "padding_top": 0,
+        "padding_top": 100,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
@@ -1541,28 +1565,6 @@
         "fallback_collection": "",
         "max_products": 10
       }
-    },
-    "more-products-collection": {
-      "type": "more-products-collection",
-      "disabled": true,
-      "settings": {
-        "products_per_row": 3,
-        "max_products": 5
-      }
-    },
-    "recently-viewed": {
-      "type": "recently-viewed",
-      "disabled": true,
-      "settings": {}
-    },
-    "recommendations": {
-      "type": "product-recommendations",
-      "disabled": true,
-      "settings": {
-        "product_recommendations_heading": "You may also like",
-        "related_count": 5,
-        "products_per_row": 3
-      }
     }
   },
   "order": [
@@ -1574,7 +1576,7 @@
     "somos_image_text_comparison_6YJJAb",
     "somos_banner_6wHtpL",
     "somos_image_content_BqTAzw",
-    "new_banner_slider_NmBRen",
+    "featured_slider_kKn6hM",
     "image_text_UQFVkh",
     "somos_image_content_b794Jg",
     "usp_accordion_pPbMYA",
@@ -1587,9 +1589,6 @@
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
     "accordian_7XgC4J",
-    "more-products-vendor",
-    "more-products-collection",
-    "recently-viewed",
-    "recommendations"
+    "more-products-vendor"
   ]
 }

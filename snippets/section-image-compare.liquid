@@ -100,9 +100,7 @@
 <div class="index-section">
 
   <div
-    {% unless full_width %}
-      class="page-width"
-    {% endunless %}
+    class="page-width-container"
   >
     <is-land {{ hydration }}>
       <image-compare
@@ -162,5 +160,8 @@
         </script>
       </template>
     </is-land>
+    {% if section.settings.heading_description != blank %}
+      <p style="text-align: {{ heading_align }}; margin-bottom: 1rem;">{{ section.settings.base_description }}</p>
+    {% endif %}
   </div>
 </div>

@@ -1,0 +1,124 @@
+{{ 'component-feature-slider.css' | asset_url | stylesheet_tag }}
+<style>
+  #shopify-section-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }}{
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+</style>
+<div id="feature-slider-section">
+  <div class="page-width-container">
+    <div class="section-heading-area">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.sub_title }}</p>
+    </div>
+    <div class="slider-area">
+      <div class="swiper features-slider">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="feature-slide-item">
+                <div class="feature-slide-content">
+                  <h3>{{ block.settings.heading }}</h3>
+                  <p>{{ block.settings.paragraph }}</p>
+                </div>
+                <img src="{{ block.settings.image | image_url  }}" alt="" class="feature-slide-image">
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="feat-swiper-navigation">
+          <div class="feat-swiper-pagination"></div>
+          <div class="feat-swiper-buttons">
+            <div class="feat-swiper-button-prev feat-slideshow-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M0.557259 5.44125H0.556009L5.11351 10C5.34785 9.76559 5.47949 9.44771 5.47949 9.11625C5.47949 8.78479 5.34785 8.46691 5.11351 8.2325L1.88226 5L5.11226 1.7675C5.3466 1.53309 5.47824 1.2152 5.47824 0.88375C5.47824 0.552294 5.3466 0.23441 5.11226 0L0.554759 4.5575C0.437589 4.6747 0.371768 4.83365 0.371768 4.99937C0.371768 5.1651 0.437589 5.32404 0.554759 5.44125H0.557259Z" fill="#636363"/>
+              </svg>
+            </div>
+            <div class="feat-swiper-button-next feat-slideshow-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M5.44274 4.55875H5.44399L0.886491 0C0.652152 0.234409 0.520508 0.552295 0.520508 0.88375C0.520508 1.21521 0.652152 1.53309 0.886491 1.7675L4.11774 5L0.887741 8.2325C0.653402 8.46691 0.521758 8.7848 0.521758 9.11625C0.521758 9.44771 0.653402 9.76559 0.887741 10L5.44524 5.4425C5.56241 5.3253 5.62823 5.16635 5.62823 5.00063C5.62823 4.8349 5.56241 4.67596 5.44524 4.55875H5.44274Z" fill="#636363"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const feat_swiper = new Swiper('.features-slider', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      navigation: {
+        nextEl: '.feat-swiper-button-next',
+        prevEl: '.feat-swiper-button-prev',
+      },
+      pagination: {
+        el: '.feat-swiper-pagination',
+        clickable: true
+      },
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "Featured Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Rain, Snow, or Heat - It Just Works."
+    },
+    {
+      "type": "textarea",
+      "id": "sub_title",
+      "label": "Sub-title",
+      "default": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 96, "step": 2, "default": 96, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 96, "step": 2, "default": 96, "unit": "px" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Works Even After Heavy Rain"
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default": "Never worry about rain ruining your entertainment. The Deck Pro 2.0 is fully waterproof, meaning even after a downpour, it turns on and works flawlessly. Pair it with the included waterproof remote, and you can control your viewing experience—even with wet hands."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Slider"
+    }
+  ]
+}
+{% endschema %}
