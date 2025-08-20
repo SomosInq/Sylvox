@@ -647,7 +647,7 @@
         "custom_content_width": 45,
         "content_max_width": 880,
         "mobile_content_width": 90,
-        "section_height": 500,
+        "section_height": 400,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/Rectangle_530.png",
