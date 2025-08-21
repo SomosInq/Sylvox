@@ -131,7 +131,7 @@
               <img
                 src="{{ block.settings.image | image_url }}"
                 loading="{% if block.settings.lazy_load %}lazy{% else %}eager{% endif %}"
-                style="width: {{ block.settings.image_width }}%; aspect-ratio: {{ block.settings.image_ratio }};"
+                style="width: {{ block.settings.image_width }}%; aspect-ratio: {{ block.settings.image_ratio }}; object-fit: cover; border-radius: 10px;"
                 class="{% if block.settings.image_hover == 'zoom' %}hover-zoom{% elsif block.settings.image_hover == 'fade' %}hover-fade{% elsif block.settings.image_hover == 'grayscale' %}hover-grayscale{% endif %}"
               >
             {% elsif block.settings.media_type == 'video' %}

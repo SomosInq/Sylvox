@@ -169,6 +169,12 @@
           "unit": "px",
           "label": "Font size",
           "default": 48
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color",
+          "default": "#000000"
         }
       ]
     },
@@ -181,6 +187,12 @@
           "id": "text",
           "label": "Paragraph Text",
           "default": "Some supporting content that explains your product or story."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color",
+          "default": "#000000"
         }
       ]
     },
@@ -203,6 +215,12 @@
       "step": 1,
       "default": 16,
       "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color",
+      "default": "#000000"
     }
   ]
 },
@@ -254,7 +272,7 @@
 
 {% assign text_align = settings.alignment | default: 'center' %}
 
-<div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }}"
+<div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }} content_{{ section.settings.section_content_width }}"
      style="
     {% if section.settings.background_gradient != blank %}background: {{ section.settings.background_gradient }};{% endif %} 
     background-color: {{ section.settings.background_color }}; 
@@ -266,7 +284,7 @@
     {% case block.type %}
 
       {% when 'paragraph' %}
-      <p class="itfb-paragraph mb-4" style="font-size: {{ block.settings.font_size }}px;">
+      <p class="itfb-paragraph mb-4" style="font-size: {{ block.settings.font_size }}px; color:{{ block.settings.text_color }}">
         {{ block.settings.text }}
       </p>
 
@@ -304,10 +322,10 @@
         {% endif %}
 
       {% when 'title' %}
-        <h2 style="font-size:{{ block.settings.font_size }}px;">{{ block.settings.title }}</h2>
+        <h2 style="font-size:{{ block.settings.font_size }}px; color:{{ block.settings.text_color }}">{{ block.settings.title }}</h2>
 
       {% when 'text' %}
-        <p class="desc">{{ block.settings.text }}</p>
+        <p class="desc" style="color:{{ block.settings.text_color }}">{{ block.settings.text }}</p>
 
         {% when 'button' %}
           <div style="text-align: {{ block.settings.alignment | default: section.settings.text_alignment }} !important; margin-top: 14px;">
