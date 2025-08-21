@@ -82,10 +82,12 @@
         "parent_subtitle": "",
         "heading": "",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "center",
         "button_label": "",
         "button_link": "",
         "section_width": "standard",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 0,
@@ -126,15 +128,14 @@
       ],
       "name": "USP Accordion",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
+        "narrow_container": false,
         "background_color": "#ffffff",
         "section_heading": "",
         "section_description": "",
-        "section_title_color": "#000000",
-        "section_description_color": "#333333",
         "button_text": "",
         "button_link": "",
+        "add_max_width": false,
+        "heading_max_width": 600,
         "title": "",
         "text": "",
         "text_color": "#ffffff",
@@ -151,7 +152,8 @@
         "title_C6qKye": {
           "type": "title",
           "settings": {
-            "title": "\"At Sylvox, we believe outdoor living should be as seamless and high-quality as indoor experiences,\" said Tracy Lee, Co-Founder & CMO at Sylvox. \"After our impactful debut at CES, HPBExpo 2025 is a key milestone in our journey to bring Sylvox innovations into the heart of outdoor living culture.\""
+            "title": "\"At Sylvox, we believe outdoor living should be as seamless and high-quality as indoor experiences,\" said Tracy Lee, Co-Founder & CMO at Sylvox. \"After our impactful debut at CES, HPBExpo 2025 is a key milestone in our journey to bring Sylvox innovations into the heart of outdoor living culture.\"",
+            "font_size": 27
           }
         },
         "text_4MQEH8": {
@@ -171,6 +173,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 0,
         "padding_bottom": 60,
@@ -217,10 +220,12 @@
         "parent_subtitle": "",
         "heading": "About Sylvox",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "left",
         "button_label": "",
         "button_link": "",
         "section_width": "standard",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 60,
