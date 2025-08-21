@@ -1,291 +1,308 @@
 {{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.min.css' | stylesheet_tag }}
 {{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
 
-
 {% comment %}
   Custom section: Custom Blog | custom-blog.liquid
 {% endcomment %}
 <section class="custom-blog" style="background: {{ section.settings.bg_color }};">
-
   {%- assign featured_article = blog.articles.first -%}
   {%- assign override_img = section.settings.custom_banner_override_image -%}
 
   <!-- Banner -->
   {% if section.settings.banner_overlay_opacity > 0 %}
-<div class="custom-blog__banner banner_section_width_{{ section.settings.banner_section_width }}"
-     style="background-image: url('{{ override_img | default: featured_article.image | image_url: width: 2000 }}');">
+    <div
+      class="custom-blog__banner banner_section_width_{{ section.settings.banner_section_width }}"
+      style="background-image: url('{{ override_img | default: featured_article.image | image_url: width: 2000 }}');"
+    >
+      <div
+        class="custom-blog__banner-overlay"
+        style="
+          background-color: {{ section.settings.banner_overlay_color }};
+          opacity: {{ section.settings.banner_overlay_opacity }};
+        "
+      ></div>
 
-  <div class="custom-blog__banner-overlay"
-       style="background-color: {{ section.settings.banner_overlay_color }};
-              opacity: {{ section.settings.banner_overlay_opacity }};"></div>
+      <div class="custom-blog__banner-inner banner_section_content_width_{{ section.settings.banner_section_content_width }} banner-align-{{ section.settings.banner_content_position }}">
+        <!-- Fallback Image Rendering (Visible only if image missing) -->
+        {% unless featured_article.image %}
+          <img
+            src="{{ section.settings.banner_fallback_image | image_url: width: 1600 }}"
+            alt="Fallback image"
+            style="position:absolute; inset:0; object-fit:cover; z-index:0;"
+          >
+        {% endunless %}
 
-  <div class="custom-blog__banner-inner banner_section_content_width_{{ section.settings.banner_section_content_width }} banner-align-{{ section.settings.banner_content_position }}">
-    
-    <!-- Fallback Image Rendering (Visible only if image missing) -->
-    {% unless featured_article.image %}
-      <img src="{{ section.settings.banner_fallback_image | image_url: width: 1600 }}" alt="Fallback image" style="position:absolute; inset:0; object-fit:cover; z-index:0;">
-    {% endunless %}
+        <!-- Category -->
+        {% if featured_article.tags.size > 0 %}
+          <div class="custom-blog__label">
+            {{ featured_article.tags.first }}
+          </div>
+        {% endif %}
 
-    <!-- Category -->
-    {% if featured_article.tags.size > 0 %}
-      <div class="custom-blog__label">
-        {{ featured_article.tags.first }}
+        <!-- Title -->
+        <h1 class="custom-blog__heading">
+          {{ section.settings.custom_banner_title | default: featured_article.title }}
+        </h1>
+
+        <!-- Author & Date -->
+        <div class="custom-blog__meta">
+          <span class="custom-blog__author">{{ featured_article.author }}</span>
+          <span class="custom-blog__date">{{ featured_article.published_at | date: '%B %d, %Y' }}</span>
+
+          <!-- Social Icons -->
+          <div class="custom-blog__social-icons">
+            {{ section.settings.banner_share_text }}
+            {% if section.settings.show_share_tiktok %}
+              <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'icon-tiktok' %}</a>
+            {% endif %}
+            {% if section.settings.show_share_linkedin %}
+              <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'icon-linkedin' %}</a>
+            {% endif %}
+            {% if section.settings.show_share_youtube %}
+              <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'icon-youtube' %}</a>
+            {% endif %}
+            {% if section.settings.show_share_facebook %}
+              <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'icon-facebook' %}</a>
+            {% endif %}
+            {% if section.settings.show_share_x %}
+              <a href="https://x.com" target="_blank" class="social-icon">{% render 'icon-x' %}</a>
+            {% endif %}
+            {% if section.settings.show_share_pinterest %}
+              <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'icon-pinterest' %}</a>
+            {% endif %}
+            {% if section.settings.show_share_instagram %}
+              <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'icon-instagram' %}</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Optional CTA Button -->
+        {% if section.settings.banner_cta_text != blank and section.settings.banner_cta_link != blank %}
+          <a href="{{ section.settings.banner_cta_link }}" class="custom-blog__banner-cta">
+            {{ section.settings.banner_cta_text }}
+            {% if section.settings.banner_cta_icon != blank %}
+              <span class="custom-blog__cta-icon">{% render section.settings.banner_cta_icon %}</span>
+            {% endif %}
+          </a>
+        {% endif %}
       </div>
-    {% endif %}
-
-    <!-- Title -->
-    <h1 class="custom-blog__heading">
-      {{ section.settings.custom_banner_title | default: featured_article.title }}
-    </h1>
-
-    <!-- Author & Date -->
-    <div class="custom-blog__meta">
-      <span class="custom-blog__author">{{ featured_article.author }}</span>
-      <span class="custom-blog__date">{{ featured_article.published_at | date: "%B %d, %Y" }}</span>
-
-      <!-- Social Icons -->
-      <div class="custom-blog__social-icons">
-        {{ section.settings.banner_share_text }}
-      {% if section.settings.show_share_tiktok %}
-        <a href="https://www.tiktok.com" target="_blank" class="social-icon">{% render 'icon-tiktok' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_linkedin %}
-        <a href="https://www.linkedin.com" target="_blank" class="social-icon">{% render 'icon-linkedin' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_youtube %}
-        <a href="https://www.youtube.com" target="_blank" class="social-icon">{% render 'icon-youtube' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_facebook %}
-        <a href="https://www.facebook.com" target="_blank" class="social-icon">{% render 'icon-facebook' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_x %}
-        <a href="https://x.com" target="_blank" class="social-icon">{% render 'icon-x' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_pinterest %}
-        <a href="https://www.pinterest.com" target="_blank" class="social-icon">{% render 'icon-pinterest' %}</a>
-      {% endif %}
-      {% if section.settings.show_share_instagram %}
-        <a href="https://www.instagram.com" target="_blank" class="social-icon">{% render 'icon-instagram' %}</a>
-      {% endif %}
     </div>
-    </div>
-
-    <!-- Optional CTA Button -->
-    {% if section.settings.banner_cta_text != blank and section.settings.banner_cta_link != blank %}
-      <a href="{{ section.settings.banner_cta_link }}" class="custom-blog__banner-cta">
-  {{ section.settings.banner_cta_text }}
-  {% if section.settings.banner_cta_icon != blank %}
-    <span class="custom-blog__cta-icon">{% render section.settings.banner_cta_icon %}</span>
-  {% endif %}
-</a>
-
-    {% endif %}
-  </div>
-</div>
-
-
   {% endif %}
 
   <!-- Slider -->
-{% comment %} Blog Slider with scroll snapping, dots + arrows (no blocks) {% endcomment %}
-<section id="blog-slider-{{ section.id }}"
-  class="blog-slider section_width_{{ section.settings.section_width }}"
-  style="
-    background-color: {{ section.settings.background_color }};
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-  "
->
-  {% assign blog_handle = section.settings.blog | default: 'news' %}
-  {% assign blog_posts = blogs[blog_handle].articles | slice: 0, 10 %}
-  {% if blog_posts.size > 0 %}
-
-    <div class="slider-carousel">
-      <div class="slider-track">
-        {% for article in blog_posts %}
-          <div class="slider-slide" data-index="{{ forloop.index0 }}">
-            <div class="blog-post-card">
-              {% if article.image %}
-                <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}">
-              {% endif %}
-              <div class="blog-post-content">
-                {% comment %} <div class="blog-post-tags">
-                  {% for tag in article.tags limit: 2 %}
-                    <span class="tag">{{ tag }}</span>
-                  {% endfor %}
-                </div> {% endcomment %}
-                <div class="blog-post-date">{{ article.published_at | date: "%B %d, %Y" }}</div>
-                <div class="blog-post-title">{{ article.title }}</div>
-                <div class="custom-blog__card-excerpt-arrow">
-              {% comment %} <p class="custom-blog__card-excerpt">
-                {{ article.excerpt_or_content | strip_html | truncate: 140 }}
-              </p> {% endcomment %}
-              <a class="custom-blog__card-arrow" href="{{ article.url }}">
-                {% render 'diagonal-bottom-left-arrow.svg' %}
-              </a>
-            </div>
+  {% comment %} Blog Slider with scroll snapping, dots + arrows (no blocks) {% endcomment %}
+  <section
+    id="blog-slider-{{ section.id }}"
+    class="blog-slider section_width_{{ section.settings.section_width }}"
+    style="
+      background-color: {{ section.settings.background_color }};
+      padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+      margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    "
+  >
+    {% assign blog_handle = section.settings.blog | default: 'news' %}
+    {% assign blog_posts = blogs[blog_handle].articles | slice: 0, 10 %}
+    {% if blog_posts.size > 0 %}
+      <div class="slider-carousel">
+        <div class="slider-track">
+          {% for article in blog_posts %}
+            <a href="{{ article.url }}">
+              <div class="slider-slide" data-index="{{ forloop.index0 }}">
+                <div class="blog-post-card">
+                  {% if article.image %}
+                    <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}">
+                  {% endif %}
+                  <div class="blog-post-content">
+                    {% comment %}
+                      <div class="blog-post-tags">
+                        {% for tag in article.tags limit: 2 %}
+                          <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endcomment %}
+                    <div class="blog-post-date">{{ article.published_at | date: '%B %d, %Y' }}</div>
+                    <div class="blog-post-title">{{ article.title }}</div>
+                    <div class="custom-blog__card-excerpt-arrow">
+                      {% comment %}
+                        <p class="custom-blog__card-excerpt">
+                          {{ article.excerpt_or_content | strip_html | truncate: 140 }}
+                        </p>
+                      {% endcomment %}
+                      <span class="custom-blog__card-arrow">
+                        {% render 'diagonal-bottom-left-arrow.svg' %}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}">
-      <div class="slider-dots">
-        {% for article in blog_posts %}
-          <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
-        {% endfor %}
-      </div>
-      {% if section.settings.show_arrows %}
-        <div class="slider-arrows">
-          <button class="slider-arrow prev">‹</button>
-          <button class="slider-arrow next">›</button>
+            </a>
+          {% endfor %}
         </div>
-      {% endif %}
-    </div>
+      </div>
 
-    
-  {% endif %}
-</section>
+      <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}">
+        <div class="slider-dots">
+          {% for article in blog_posts %}
+            <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+          {% endfor %}
+        </div>
+        {% if section.settings.show_arrows %}
+          <div class="slider-arrows">
+            <button class="slider-arrow prev">‹</button>
+            <button class="slider-arrow next">›</button>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </section>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.getElementById('blog-slider-{{ section.id }}');
+      if (!section) return;
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const section = document.getElementById('blog-slider-{{ section.id }}');
-    if (!section) return;
+      const track = section.querySelector('.slider-track');
+      const slides = section.querySelectorAll('.slider-slide');
+      const dots = section.querySelectorAll('.slider-dot');
+      const prevArrow = section.querySelector('.slider-arrow.prev');
+      const nextArrow = section.querySelector('.slider-arrow.next');
 
-    const track = section.querySelector('.slider-track');
-    const slides = section.querySelectorAll('.slider-slide');
-    const dots = section.querySelectorAll('.slider-dot');
-    const prevArrow = section.querySelector('.slider-arrow.prev');
-    const nextArrow = section.querySelector('.slider-arrow.next');
+      let current = 0;
 
-    let current = 0;
+      function goTo(index) {
+        if (index < 0 || index >= slides.length) return;
+        current = index;
+        const slide = slides[index];
+        track.scrollTo({ left: slide.offsetLeft - 12, behavior: 'smooth' });
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }
 
-    function goTo(index) {
-      if (index < 0 || index >= slides.length) return;
-      current = index;
-      const slide = slides[index];
-      track.scrollTo({ left: slide.offsetLeft - 12, behavior: 'smooth' });
-      slides.forEach((s, i) => s.classList.toggle('active', i === index));
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    }
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => goTo(i));
+      });
 
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goTo(i));
+      prevArrow?.addEventListener('click', () => goTo(current - 1));
+      nextArrow?.addEventListener('click', () => goTo(current + 1));
+
+      goTo(0);
     });
-
-    prevArrow?.addEventListener('click', () => goTo(current - 1));
-    nextArrow?.addEventListener('click', () => goTo(current + 1));
-
-    goTo(0);
-  });
-</script>
-
+  </script>
 
   <!-- Blog List Title -->
 
-   <!-- Blog List Title -->
-<div class="slider-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 40px; margin-top: 20px !important; padding-bottom: 40px;">
-  <div class="slider-heading-small">{{ section.settings.heading }}</div>
-  <h2 class="custom-blog__list-title">{{ section.settings.subheading }}</h2>
-  <div class="slider-description">{{ section.settings.description }}</div>
-</div>
-
+  <!-- Blog List Title -->
+  <div
+    class="slider-text {{ section.settings.text_alignment }}"
+    style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 48px; margin-top: 20px !important; padding-bottom: 40px;"
+  >
+    <div class="slider-heading-small">{{ section.settings.heading }}</div>
+    <h2 class="custom-blog__list-title">{{ section.settings.subheading }}</h2>
+    <div class="slider-description">{{ section.settings.description }}</div>
+  </div>
 
   <!-- Filter/Sort Row -->
 
   {% unless section.settings.hide_filter_sort %}
-  <div class="custom-blog__filter-sort">
-    <button class="custom-blog__filter-btn">
-      <span class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-          <path d="M0 5H16" stroke="#6C707A"/>
-          <path d="M0 11H16" stroke="#6C707A"/>
-          <path d="M14 3H12V7H14V3Z" fill="#6C707A"/>
-          <path d="M5 9H3V13H5V9Z" fill="#6C707A"/>
-        </svg>
-      </span>
-      Filter
-    </button>
-    <button class="custom-blog__sort-btn">
-      <span class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-          <path d="M3 6L8 11L13 6" stroke="#6C707A"/>
-        </svg>
-      </span>
-      Sort
-    </button>
-  </div>
-{% endunless %}
+    <div class="custom-blog__filter-sort">
+      <button class="custom-blog__filter-btn">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+            <path d="M0 5H16" stroke="#6C707A"/>
+            <path d="M0 11H16" stroke="#6C707A"/>
+            <path d="M14 3H12V7H14V3Z" fill="#6C707A"/>
+            <path d="M5 9H3V13H5V9Z" fill="#6C707A"/>
+          </svg>
+        </span>
+        Filter
+      </button>
+      <button class="custom-blog__sort-btn">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+            <path d="M3 6L8 11L13 6" stroke="#6C707A"/>
+          </svg>
+        </span>
+        Sort
+      </button>
+    </div>
+  {% endunless %}
 
   {% paginate blog.articles by 9 %}
     <!-- Blog Grid -->
     <div class="custom-blog__main-layout" style="display: flex; gap: 40px; max-width: 1608px; margin: 0 auto 60px;">
-    <div class="custom-blog__grid" style="flex: 3;">
-      {% for article in blog.articles %}
-        <div class="custom-blog__card" data-category="{{ article.tags | join: ' ' }}">
-          <div class="custom-blog__card-image">
-            {% if article.image %}
-              <a href="{{ article.url }}">
-                <img
-                  src="{{ article.image | image_url: width: 600 }}"
-                  alt="{{ article.title }}"
-                  style="aspect-ratio: 520 / 288; max-width: 519.98px; max-height: 287.98px; width: 100%; height: auto; object-fit: cover;">
-              </a>
-            {% else %}
-              <div class="custom-blog__image-placeholder"></div>
-            {% endif %}
-            {% if article.tags.size > 0 %}
-              <div class="custom-blog__card-label">{{ article.tags.first }}</div>
-            {% endif %}
-          </div>
+      <div class="custom-blog__grid" style="flex: 3;">
+        {% for article in blog.articles %}
+          <a href="{{ article.url }}">
+            <div class="custom-blog__card" data-category="{{ article.tags | join: ' ' }}">
+              <div class="custom-blog__card-image">
+                {% if article.image %}
+                  <img
+                    src="{{ article.image | image_url: width: 600 }}"
+                    alt="{{ article.title }}"
+                  >
+                {% else %}
+                  <div class="custom-blog__image-placeholder"></div>
+                {% endif %}
+                {% if article.tags.size > 0 %}
+                  <div class="custom-blog__card-label">{{ article.tags.first }}</div>
+                {% endif %}
+              </div>
 
-          <div class="custom-blog__card-content">
-            <h3 class="custom-blog__card-title">
-              <a href="{{ article.url }}">{{ article.title }}</a>
-            </h3>
-            <div class="custom-blog__card-excerpt-arrow">
-              <p class="custom-blog__card-excerpt">
-                {{ article.excerpt_or_content | strip_html | truncate: 140 }}
-              </p>
-              <a class="custom-blog__card-arrow" href="{{ article.url }}">
-                {% render 'diagonal-bottom-left-arrow.svg' %}
-              </a>
+              <div class="custom-blog__card-content">
+                <span class="custom-blog__card-date">{{ article.published_at | date: '%B %d, %Y' }}</span>
+                <h3 class="custom-blog__card-title">
+                  {{ article.title }}
+                </h3>
+                <div class="custom-blog__card-excerpt-arrow">
+                  <p class="custom-blog__card-excerpt">
+                    {{ article.excerpt_or_content | strip_html | truncate: 140 }}
+                  </p>
+                  <span class="custom-blog__card-arrow">
+                    {% render 'diagonal-bottom-left-arrow.svg' %}
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      {% endfor %}
+          </a>
+        {% endfor %}
+      </div>
+
+      <aside class="custom-blog__sidebar">
+        <details class="custom-blog__dropdown">
+          <summary class="custom-blog__dropdown-title">Sort By</summary>
+          <ul class="custom-blog__dropdown-list">
+            <li>
+              <label><input type="radio" name="sort" checked> Latest</label>
+            </li>
+            <li>
+              <label><input type="radio" name="sort"> Sylvox Top Picks</label>
+            </li>
+          </ul>
+        </details>
+
+        <details class="custom-blog__dropdown">
+          <summary class="custom-blog__dropdown-title">Filter</summary>
+          <ul class="custom-blog__dropdown-list">
+            {% assign tag_options = blog.all_tags %}
+            {% for tag in tag_options %}
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="filter"
+                    value="{{ tag }}"
+                    {% if current_tags contains tag %}
+                      checked
+                    {% endif %}
+                  >
+                  {{ tag }}
+                </label>
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+      </aside>
     </div>
-
-    <aside class="custom-blog__sidebar">
-  <details class="custom-blog__dropdown">
-    <summary class="custom-blog__dropdown-title">Sort By</summary>
-    <ul class="custom-blog__dropdown-list">
-      <li><label><input type="radio" name="sort" checked> Latest</label></li>
-      <li><label><input type="radio" name="sort"> Sylvox Top Picks</label></li>
-    </ul>
-  </details>
-
-  <details class="custom-blog__dropdown">
-    <summary class="custom-blog__dropdown-title">Filter</summary>
-    <ul class="custom-blog__dropdown-list">
-  {% assign tag_options = blog.all_tags %}
-  {% for tag in tag_options %}
-    <li>
-      <label>
-        <input type="radio" name="filter" value="{{ tag }}" {% if current_tags contains tag %}checked{% endif %}>
-        {{ tag }}
-      </label>
-    </li>
-  {% endfor %}
-</ul>
-
-  </details>
-</aside>
-
-</div>
 
     <!-- Pagination -->
     <div class="custom-blog__pagination">
@@ -303,11 +320,8 @@
         <a href="{{ paginate.next.url }}">&gt;</a>
       {% endif %}
     </div>
-    
   {% endpaginate %}
 </section>
-
-
 
 {% schema %}
 {
@@ -316,9 +330,9 @@
   "class": "custom-blog",
   "settings": [
     {
-  "type": "header",
-  "content": "Banner Settings"
-},
+      "type": "header",
+      "content": "Banner Settings"
+    },
     {
       "type": "select",
       "id": "banner_section_width",
@@ -345,83 +359,92 @@
       "label": "Override Banner Image (optional)"
     },
     { "type": "color", "id": "banner_overlay_color", "label": "Banner Overlay Color", "default": "#000000" },
-    { "type": "range", "id": "banner_overlay_opacity", "label": "Banner Overlay Opacity", "min": 0, "max": 1, "step": 0.1, "default": 0.4 },
     {
-  "type": "select",
-  "id": "banner_content_position",
-  "label": "Banner Content Vertical Alignment",
-  "options": [
-    { "value": "top", "label": "Top" },
-    { "value": "center", "label": "Center" },
-    { "value": "bottom", "label": "Bottom" }
-  ],
-  "default": "center"
-},
-{
-  "type": "text",
-  "id": "banner_cta_text",
-  "label": "CTA Button Text"
-},
-{
-  "type": "url",
-  "id": "banner_cta_link",
-  "label": "CTA Button Link"
-},
-{
-  "type": "text",
-  "id": "banner_cta_icon",
-  "label": "CTA Icon Snippet (e.g. 'icon-arrow-right')"
-},
-{
-  "type": "header",
-  "content": "Social Share Options"
-},{
-  "type": "text",
-  "id": "banner_share_text",
-  "label": "Social Share Text"
-},
-{
-  "type": "checkbox",
-  "id": "show_share_tiktok",
-  "label": "Show TikTok Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_linkedin",
-  "label": "Show LinkedIn Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_youtube",
-  "label": "Show YouTube Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_facebook",
-  "label": "Show Facebook Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_x",
-  "label": "Show X (Twitter) Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_pinterest",
-  "label": "Show Pinterest Share",
-  "default": false
-},
-{
-  "type": "checkbox",
-  "id": "show_share_instagram",
-  "label": "Show Instagram Share",
-  "default": false
-},
+      "type": "range",
+      "id": "banner_overlay_opacity",
+      "label": "Banner Overlay Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.4
+    },
+    {
+      "type": "select",
+      "id": "banner_content_position",
+      "label": "Banner Content Vertical Alignment",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "banner_cta_text",
+      "label": "CTA Button Text"
+    },
+    {
+      "type": "url",
+      "id": "banner_cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "text",
+      "id": "banner_cta_icon",
+      "label": "CTA Icon Snippet (e.g. 'icon-arrow-right')"
+    },
+    {
+      "type": "header",
+      "content": "Social Share Options"
+    },
+    {
+      "type": "text",
+      "id": "banner_share_text",
+      "label": "Social Share Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_tiktok",
+      "label": "Show TikTok Share",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_linkedin",
+      "label": "Show LinkedIn Share",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_youtube",
+      "label": "Show YouTube Share",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_facebook",
+      "label": "Show Facebook Share",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_x",
+      "label": "Show X (Twitter) Share",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_pinterest",
+      "label": "Show Pinterest Share",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_instagram",
+      "label": "Show Instagram Share",
+      "default": false
+    },
 
     {
       "type": "text",
@@ -439,10 +462,11 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "#ffffff"
-    },{
-  "type": "header",
-  "content": "Slider Settings"
-},
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
     {
       "type": "select",
       "id": "section_width",
@@ -470,9 +494,25 @@
       "default": "#ffffff"
     },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 40 },
-    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 40 },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40
+    },
     { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 5, "default": 20 },
-    { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 5, "default": 20 },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    },
     { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 5, "default": 0 },
     { "type": "range", "id": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 100, "step": 5, "default": 0 },
     { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 5, "default": 0 },
@@ -522,11 +562,11 @@
       "default": true
     },
     {
-  "type": "checkbox",
-  "id": "hide_filter_sort",
-  "label": "Hide Filter and Sort",
-  "default": false
-}
+      "type": "checkbox",
+      "id": "hide_filter_sort",
+      "label": "Hide Filter and Sort",
+      "default": false
+    }
   ],
   "presets": [
     {
@@ -538,564 +578,628 @@
 {% endschema %}
 
 {% style %}
-/* Banner */
+  /* Banner */
 
-.custom-blog__banner {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  height: 600px;
-  background-size: cover;
-  background-position: center;
-  color: #ffffff;
-  overflow: hidden;
-}
+  .custom-blog__banner {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    overflow: hidden;
+  }
 
-.custom-blog__banner-cta {
-    background: #20413B !important;
-  color: #ffffff !important;
+  .custom-blog__banner-cta {
+      background: #20413B !important;
+    color: #ffffff !important;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: 300!important;
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      width: 150px !important;
+  }
+
+  .custom-blog__banner-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .custom-blog__banner-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .custom-blog__cta-icon {
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+
+  .custom-blog__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    color: #fff;
+    font-size: 14px;
+  }
+  .custom-blog__social-icons {
+    display: flex;
+    gap: 12px;
+  }
+  .social-icon {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  .social-icon:hover {
+    opacity: 1;
+  }
+  .custom-blog__banner-cta {
+    background: #ffffff;
+    color: #1a1a1a;
     padding: 12px 24px;
     border-radius: 9999px;
     font-weight: 500;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
     text-decoration: none;
-    width: 150px !important;
-}
-
-.custom-blog__banner-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.custom-blog__banner-inner {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 40px;
-  height: 100%;
-  width: 100%;
-}
-
-.custom-blog__cta-icon {
-  margin-left: 10px;
-  display: inline-flex;
-  align-items: center;
-}
-
-
-.custom-blog__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  color: #fff;
-  font-size: 14px;
-}
-.custom-blog__social-icons {
-  display: flex;
-  gap: 12px;
-}
-.social-icon {
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-  opacity: 0.7;
-}
-.social-icon:hover {
-  opacity: 1;
-}
-.custom-blog__banner-cta {
-  background: #ffffff;
-  color: #1a1a1a;
-  padding: 12px 24px;
-  border-radius: 9999px;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  text-decoration: none;
-}
-
-
-/* Alignment variations */
-.banner-align-top {
-  justify-content: flex-start;
-}
-.banner-align-center {
-  justify-content: center;
-}
-.banner-align-bottom {
-  justify-content: flex-end;
-}
-
-
-.custom-blog__card-excerpt-arrow {
-  position: relative;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.custom-blog__card-arrow {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-.blog-post-content {
-  background: #FAFAFA;
-  padding: 1.5em;
-  position: relative;
-}
-
-
-/* Sidebar */
-
-.custom-blog__sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 280px;
-}
-
-.custom-blog__dropdown {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 24px;
-}
-
-.custom-blog__dropdown-title {
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  list-style: none;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.custom-blog__dropdown-title::after {
-  content: '⌄';
-  transform: rotate(0deg);
-  transition: transform 0.3s ease;
-}
-
-.custom-blog__dropdown[open] .custom-blog__dropdown-title::after {
-  transform: rotate(180deg);
-}
-
-.custom-blog__dropdown-list {
-  margin-top: 16px;
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.custom-blog__dropdown-list li label {
-  font-size: 15px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.custom-blog__dropdown-list input[type="radio"] {
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border: 1px solid #1a1a1a;
-  border-radius: 50%;
-  position: relative;
-}
-
-.custom-blog__dropdown-list input[type="radio"]:checked::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 6px;
-  height: 6px;
-  background: #1a1a1a;
-  border-radius: 50%;
-}
-
-
-/* Slider */
-.slider-track {
-    display: flex;
-    overflow-x: auto;
-    gap: 24px;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding-bottom: 1rem;
   }
 
-.slider-slide {
-  flex: 0 0 auto;
-  width: {{ section.settings.slide_width }}px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 
-.blog-post-card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: white;
-  height: 100%;
-}
-
-.slider-carousel .slider-track {
-  align-items: stretch;
-}
+  /* Alignment variations */
+  .banner-align-top {
+    justify-content: flex-start;
+  }
+  .banner-align-center {
+    justify-content: center;
+  }
+  .banner-align-bottom {
+    justify-content: flex-end;
+  }
 
 
+  .custom-blog__card-excerpt-arrow {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-  .slider-controls {
+  .custom-blog__card-arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  .blog-post-content {
+    background: #FAFAFA;
+    padding: 1.5em;
+    position: relative;
+  }
+
+
+  /* Sidebar */
+
+  .custom-blog__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 280px;
+  }
+
+  .custom-blog__dropdown {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 24px;
+  }
+
+  .custom-blog__dropdown-title {
+    color: #2C2C2C;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 3rem;
   }
 
-  .slider-dots {
+  .custom-blog__dropdown-title::after {
+    content: '⌄';
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+
+  .custom-blog__dropdown[open] .custom-blog__dropdown-title::after {
+    transform: rotate(180deg);
+  }
+
+  .custom-blog__dropdown-list {
+    margin-top: 16px;
+    list-style: none;
+    padding-left: 0;
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .custom-blog__dropdown-list li label {
+    color: var(--Dark-Grey, #636363);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.176px;
+    display: flex;
+    align-items: center;
     gap: 8px;
-  }
-
-  .slider-dot {
-    width: 24px;
-    height: 25px;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
-    background-size: contain;
     cursor: pointer;
   }
 
-  .slider-dot.active {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
-  }
-
-  .slider-arrows {
-    display: flex;
-    gap: 10px;
-  }
-
-  .slider-arrow {
-    width: 40px;
-    height: 40px;
+  .custom-blog__dropdown-list input[type="radio"] {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #636363;
     border-radius: 50%;
-    border: 1px solid #000;
-    background: white;
-    cursor: pointer;
-    font-size: 1.5rem;
+    position: relative;
   }
 
-.slider-track {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
-
-.slider-track::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-
-  .blog-post-card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-}
-
-.blog-post-content {
-    background: #FAFAFA;
-    padding: 1.5em;
-}
+  .custom-blog__dropdown-list input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    background: #636363;
+    border-radius: 50%;
+  }
 
 
-.custom-blog__slider {
-  max-width: 1600px;
-  margin: 40px auto;
-}
-.custom-blog__slider-item {
-  width: 300px;
-  margin-right: 20px;
-}
-.custom-blog__slider-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  object-fit: cover;
-}
-.custom-blog__slider-caption {
-  padding-top: 10px;
-}
-.custom-blog__slider-date {
-  font-size: 12px;
-  color: #777;
-}
-.custom-blog__slider-title {
-  font-size: 16px;
-  font-weight: 500;
-  color: #1D1D1B;
-}
-/* New CSS */
-.custom-blog__banner {
-  height: 600px;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  color: #ffffff;
-}
-.custom-blog__banner-inner {
-  /* position: absolute;
-  left: 157px;
-  top: 154.5px; */
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-}
-.custom-blog__label {
-  /* padding: 6px 10px; */
-  /* background: #1D1D1B; */
-  font-size: 16px;
-  font-weight: 400;
-  font-family: Roboto, sans-serif;
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  width: max-content;
-}
-.custom-blog__subtitle {
-  font-size: 18px;
-  font-family: Questrial, sans-serif;
-  font-weight: 400;
-  color: white;
-}
-.custom-blog__heading {
-  /* font-size: 56px;
-  font-family: Questrial, sans-serif;
-  font-weight: 400;
-  color: white;
-  /* max-width: 657px; */
-  /* line-height: 1.2;  */
-}
-.custom-blog__arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: left;
-  border-radius: 4px;
-  width: auto;
-  height: auto;
-}
- .custom-blog__arrow rect {
-  stroke: #ffffff;
- }
-  .custom-blog__arrow path { 
-  fill: #ffffff;
-}
-.custom-blog__nav {
-  background-color: #1a1a1a;
-  margin-bottom: 40px;
-}
-.custom-blog__nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-  height: 60px;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-.custom-blog__nav a {
-  font-size: 14px;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 400;
-  position: relative;
-  padding-bottom: 12px;
-}
-.custom-blog__nav a.active {
-  font-weight: 600;
-}
-.custom-blog__nav a.active::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -1px;
-  transform: translateX(-50%);
-  height: 2px;
-  width: 24px;
-  background: #ffffff;
-}
-.custom-blog__filter-sort {
-  display: flex;
-  justify-content: left;
-  gap: 16px;
-  margin: 40px auto;
-  max-width: 1608px;
-}
-.custom-blog__filter-btn,
-.custom-blog__sort-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  background: #ffffff;
-  color: #1a1a1a;
-  border: 1px solid #bdbdbd;
-  border-radius: 9999px;
-  cursor: pointer;
-}
-.custom-blog__grid {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr) !important;
-  gap: 48px 24px;
-  max-width: 1608px;
-  margin: 0 auto 60px;
-  padding: 0;
-}
-.custom-blog__card {
-background: #fff;
+  /* Slider */
+  .slider-track {
+      display: flex;
+      overflow-x: auto;
+      gap: 24px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 1rem;
+    }
+
+  .slider-slide {
+    flex: 0 0 auto;
+    width: {{ section.settings.slide_width }}px;
     display: flex;
-    flex-direction: row !important;
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-    /* max-width: 519.98px; */
-    width: 100%;
-    display: flex
-;
-}
-.custom-blog__card-image {
-  position: relative;
-}
-.custom-blog__card-image img {
-  width: 100%;
-  height: auto;
-  max-width: 519.98px;
-  max-height: 287.98px;
-  aspect-ratio: 520 / 288;
-  object-fit: cover;
-  display: block;
-}
-.custom-blog__card-content {
-  background: #FAFAFA;
-  padding: 20px;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  height: 100%;
-}
-.custom-blog__card-image .custom-blog__card-label {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #ffffff;
-  /* background: #1a1a1a; */
-  /* padding: 6px 12px; */
-  text-transform: capitalize;
-  letter-spacing: 0.2px;
-  border-radius: 0;
-  z-index: 2;
-}
-.custom-blog__card-title {
-  font-size: 24px;
-  font-family: 'Questrial', sans-serif;
-  font-weight: 400;
-  line-height: 1.4;
-  color: #1D1D1B;
-}
-.custom-blog__card-title a {
-  text-decoration: none;
-  color: #1a1a1a;
-}
-.custom-blog__card-excerpt-arrow {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 12px;
-}
-.custom-blog__card-excerpt {
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #636363;
-  max-height: none;
-  overflow: visible;
-  margin: 0;
-}
-.custom-blog__card-arrow {
-  position: static;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  border-radius: 2px;
-}
-.custom-blog__pagination {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.custom-blog__pagination a,
-.custom-blog__pagination span {
-  margin: 0 4px;
-  padding: 8px 12px;
-  font-size: 14px;
-  text-decoration: none;
-  color: #1a1a1a;
-  border-radius: 4px;
-}
-.custom-blog__pagination .current {
-  font-weight: bold;
-}
+    flex-direction: column;
+    height: 100%;
+  }
 
-@media screen and (max-width: 767px) {
+  .blog-post-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    height: 100%;
+  }
+
+  .blog-post-card,
+  .blog-post-content {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .slider-carousel .slider-track {
+    align-items: stretch;
+  }
+
+
+
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .slider-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .slider-dot {
+      width: 24px;
+      height: 25px;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
+      background-size: contain;
+      cursor: pointer;
+    }
+
+    .slider-dot.active {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
+    }
+
+    .slider-arrows {
+      display: flex;
+      gap: 10px;
+    }
+
+    .slider-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      background: white;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+  .slider-track {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+
+  .slider-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+
+    .blog-post-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .blog-post-content {
+      background: #FAFAFA;
+      padding: 1.5em;
+  }
+
+  .custom-blog .blog-post-date {
+    color: var(--Dark-Grey, #636363);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 12px;
+  }
+
+  .custom-blog .blog-post-title {
+    color: var(--Black, #1D1D1B);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .custom-blog .slider-text {
+    max-width: 1608px;
+    padding: 0 25px;
+    margin: 0 auto;
+  }
+  .custom-blog .slider-text .custom-blog__list-title {
+    color: var(--Black, #1D1D1B);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 8px;
+  }
+
+
+  .custom-blog__slider {
+    max-width: 1600px;
+    margin: 40px auto;
+  }
+  .custom-blog__slider-item {
+    width: 300px;
+    margin-right: 20px;
+  }
+  .custom-blog__slider-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  .custom-blog__slider-caption {
+    padding-top: 10px;
+  }
+  .custom-blog__slider-date {
+    font-size: 12px;
+    color: #777;
+  }
+  .custom-blog__slider-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1D1D1B;
+  }
+  /* New CSS */
   .custom-blog__banner {
     height: 600px;
+    overflow: hidden;
+    background-size: cover;
     background-position: center;
+    color: #ffffff;
   }
   .custom-blog__banner-inner {
-    top: auto;
-    left: 0;
-    gap: 10px;
-    max-width: 100%;
-    margin: 0 !important;
+    /* position: absolute;
+    left: 157px;
+    top: 154.5px; */
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
   }
   .custom-blog__label {
-    font-size: 14px;
+    /* padding: 6px 10px; */
+    /* background: #1D1D1B; */
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Roboto, sans-serif;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
   }
   .custom-blog__subtitle {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
   }
   .custom-blog__heading {
-    font-size: 28px;
-    max-width: 100%;
-    line-height: 1.3;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  @media screen and (min-width: 1200px) {
+    .custom-blog__heading {
+      max-width: 50%;
+    }
+  }
+
+  .custom-blog__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    border-radius: 4px;
+    width: auto;
+    height: auto;
+  }
+   .custom-blog__arrow rect {
+    stroke: #ffffff;
+   }
+    .custom-blog__arrow path {
+    fill: #ffffff;
+  }
+  .custom-blog__nav {
+    background-color: #1a1a1a;
+    margin-bottom: 40px;
+  }
+  .custom-blog__nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    height: 60px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .custom-blog__nav a {
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  .custom-blog__nav a.active {
+    font-weight: 600;
+  }
+  .custom-blog__nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 24px;
+    background: #ffffff;
+  }
+  .custom-blog__filter-sort {
+    display: flex;
+    justify-content: left;
+    gap: 16px;
+    margin: 40px auto;
+    max-width: 1608px;
+  }
+  .custom-blog__filter-btn,
+  .custom-blog__sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #bdbdbd;
+    border-radius: 9999px;
+    cursor: pointer;
   }
   .custom-blog__grid {
-    grid-template-columns: repeat(1, 1fr);
-    margin: 40px 24px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr) !important;
+    gap: 48px 24px;
+    max-width: 1608px;
+    margin: 0 auto 60px;
+    padding: 0;
   }
-}
-{% endstyle %}
+  .custom-blog__card {
+  background: #fff;
+      display: flex;
+      flex-direction: row !important;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      /* max-width: 519.98px; */
+      width: 100%;
+      display: flex;
+  }
+  .slider-slide:hover,
+  .custom-blog__card:hover {
+    box-shadow: 2px 2px 7px 0px #0000001f;
+  }
+  .slider-slide:hover .blog-post-title,
+  .custom-blog__card:hover .custom-blog__card-title {
+    text-decoration: underline;
+  }
+  .custom-blog__card-image {
+    position: relative;
+  }
+  .custom-blog__card-image img {
+      width: auto;
+      height: 100%;
+      min-height: 288px;
+      min-width: 520px;
+      object-fit: cover;
+  }
+  .custom-blog__card-content {
+    background: #FAFAFA;
+    padding: 40px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    height: 100%;
+  }
+  .custom-blog__card-image .custom-blog__card-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffffff;
+    /* background: #1a1a1a; */
+    /* padding: 6px 12px; */
+    text-transform: capitalize;
+    letter-spacing: 0.2px;
+    border-radius: 0;
+    z-index: 2;
+  }
+  .custom-blog__card-date {
+  color: var(--Dark-Grey, #636363);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  }
+  .custom-blog__card-title {
+  color: var(--Black, #1D1D1B);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  }
+  .custom-blog__card-title a {
+    text-decoration: none;
+  }
+  .custom-blog__card-excerpt-arrow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .custom-blog__card-excerpt {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #636363;
+    max-height: none;
+    overflow: visible;
+    margin: 0;
+  }
+  .custom-blog__card-arrow {
+    position: static;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border-radius: 2px;
+    width: 36px;
+    height: 31px;
+  }
+  .custom-blog__pagination {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .custom-blog__pagination a,
+  .custom-blog__pagination span {
+    margin: 0 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #1a1a1a;
+    border-radius: 4px;
+  }
+  .custom-blog__pagination .current {
+    font-weight: bold;
+  }
 
+  @media screen and (max-width: 767px) {
+    .custom-blog__banner {
+      height: 600px;
+      background-position: center;
+    }
+    .custom-blog__banner-inner {
+      top: auto;
+      left: 0;
+      gap: 10px;
+      max-width: 100%;
+      margin: 0 !important;
+    }
+    .custom-blog__label {
+      font-size: 14px;
+    }
+    .custom-blog__subtitle {
+      font-size: 14px;
+    }
+    .custom-blog__heading {
+      font-size: 28px;
+      max-width: 100%;
+      line-height: 1.3;
+    }
+    .blog-slider .slider-track > a,
+    .custom-blog__grid > a {
+      min-width: 100%;
+    }
+    .custom-blog__grid {
+      grid-template-columns: repeat(1, 1fr);
+      margin: 40px 24px;
+      gap: 24px;
+    }
+  }
+{% endstyle %}

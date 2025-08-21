@@ -12276,6 +12276,19 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   font-weight: 300;
   line-height: normal;
 }
+body.template-article .icon-grid-row.layout-horizontal {
+  align-items: unset!important;
+}
+body.template-article .icon-grid-row.layout-horizontal .image-col {
+  display: flex;
+}
+body.template-article .icon-grid-row.layout-horizontal .image-col img {
+  object-fit: cover;
+  height: 100%;
+}
+body.template-article .icon-grid-row.layout-horizontal .text-col p {
+  max-width: 100%!important;
+}
 @media (min-width: 769px) {
   .page-sales-page #MainContent > * {
     scroll-margin-top: 134px;
