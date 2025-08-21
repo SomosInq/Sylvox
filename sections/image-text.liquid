@@ -304,9 +304,7 @@
         {% endif %}
 
       {% when 'title' %}
-        <div class="section-heading-area">
-          <h2 class="section-heading-title">{{ block.settings.title }}</h2>
-        </div>
+        <h2 style="font-size:{{ block.settings.font_size }}px;">{{ block.settings.title }}</h2>
 
       {% when 'text' %}
         <p class="desc">{{ block.settings.text }}</p>
