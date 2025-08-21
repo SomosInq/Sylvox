@@ -1,0 +1,158 @@
+<style>
+  #shopify-section-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .section-heading-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  #shopify-section-{{ section.id }} .section-heading-area h2.section-heading-title {
+    margin-bottom: 0;
+  }
+  #shopify-section-{{ section.id }} .img-swiper-buttons {
+    display: flex;
+    gap: 4px;
+  }
+  #shopify-section-{{ section.id }} #image-slider-section{
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .swiper.images-slider{
+    overflow: visible;
+  }
+
+  #shopify-section-{{ section.id }} .img-slideshow-arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #636363;
+    border-radius: 100%;
+  }
+  #shopify-section-{{ section.id }} .image-slider-page-width{
+    max-width: 1656px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  #shopify-section-{{ section.id }} .img-swiper-pagination .swiper-pagination-bullet {
+    width: 24px;
+    height: 4px;
+    border-radius: 2px;
+  }
+  #shopify-section-{{ section.id }} .img-swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #DB4B97;
+  }
+  .image-slide-item img{
+    aspect-ratio: 384/476;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }}{
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+</style>
+<div id="image-slider-section">
+  <div class="image-slider-page-width">
+    <div class="section-heading-area">
+      <h2 class="section-heading-title">{{ section.settings.title }}</h2>
+      <div class="img-swiper-buttons">
+        <div class="img-swiper-button-prev img-slideshow-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+            <path d="M0.557259 5.44125H0.556009L5.11351 10C5.34785 9.76559 5.47949 9.44771 5.47949 9.11625C5.47949 8.78479 5.34785 8.46691 5.11351 8.2325L1.88226 5L5.11226 1.7675C5.3466 1.53309 5.47824 1.2152 5.47824 0.88375C5.47824 0.552294 5.3466 0.23441 5.11226 0L0.554759 4.5575C0.437589 4.6747 0.371768 4.83365 0.371768 4.99937C0.371768 5.1651 0.437589 5.32404 0.554759 5.44125H0.557259Z" fill="#636363"/>
+          </svg>
+        </div>
+        <div class="img-swiper-button-next img-slideshow-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+            <path d="M5.44274 4.55875H5.44399L0.886491 0C0.652152 0.234409 0.520508 0.552295 0.520508 0.88375C0.520508 1.21521 0.652152 1.53309 0.886491 1.7675L4.11774 5L0.887741 8.2325C0.653402 8.46691 0.521758 8.7848 0.521758 9.11625C0.521758 9.44771 0.653402 9.76559 0.887741 10L5.44524 5.4425C5.56241 5.3253 5.62823 5.16635 5.62823 5.00063C5.62823 4.8349 5.56241 4.67596 5.44524 4.55875H5.44274Z" fill="#636363"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="slider-area">
+      <div class="swiper images-slider">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="image-slide-item">
+                <img src="{{ block.settings.image | image_url: width: 500   }}" alt="" class="image-slide-image">
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="img-swiper-navigation">
+          <div class="img-swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const feat_swiper = new Swiper('.images-slider', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      navigation: {
+        nextEl: '.img-swiper-button-next',
+        prevEl: '.img-swiper-button-prev',
+      },
+      pagination: {
+        el: '.img-swiper-pagination',
+        clickable: true
+      },
+      breakpoints: {
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 35,
+				},
+        1199: {
+					slidesPerView: 4,
+					spaceBetween: 35,
+				}
+			}
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "Image Slider",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Feel Good, Live Outdoors."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 96, "step": 2, "default": 96, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 96, "step": 2, "default": 96, "unit": "px" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider"
+    }
+  ]
+}
+{% endschema %}

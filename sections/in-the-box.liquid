@@ -28,31 +28,6 @@
       "label": "Button Link"
     },
     {
-      "type": "select",
-      "id": "section_width",
-      "label": "Section Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "section_content_width",
-      "label": "Content Width",
-      "default": "standard",
-      "options": [
-        { "value": "standard", "label": "50% Width" },
-        { "value": "full", "label": "Full Width" }
-      ]
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
-    },
-    {
       "type": "color",
       "id": "background_color",
       "label": "Background Color",
@@ -71,24 +46,6 @@
       "type": "range",
       "id": "padding_bottom",
       "label": "Padding Bottom",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_left",
-      "label": "Padding Left",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_right",
-      "label": "Padding Right",
       "min": 0,
       "max": 100,
       "step": 5,
@@ -190,7 +147,7 @@
 
 {% style %}
 
-.in-the-box-section {
+#shopify-section-{{ section.id }} {
   background-color: {{ section.settings.background_color }};
   {% if section.settings.background_image != blank %}
     background-image: url({{ section.settings.background_image | image_url }});
@@ -199,15 +156,16 @@
   {% endif %}
   padding-top: {{ section.settings.padding_top }}px;
   padding-bottom: {{ section.settings.padding_bottom }}px;
-  padding-left: {{ section.settings.padding_left }}px;
-  padding-right: {{ section.settings.padding_right }}px;
 }
 
 .in-the-box-heading {
-  font-size: 28px;
+  color: #3B3E40;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 24px;
   text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .in-the-box-description {
@@ -232,14 +190,14 @@
 }
 
 .in-the-box-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  display: block;
 }
 
 @media (min-width: 768px) {
   .in-the-box-wrapper {
+    display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -248,9 +206,10 @@
   width: 100%;
 }
 
+
 @media (min-width: 768px) {
   .in-the-box-left {
-    width: 33.33%;
+    width: 23.42%;
   }
 
   .in-the-box-right {
@@ -262,15 +221,18 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  text-align: right;
 }
 
 @media (min-width: 768px) {
   .in-the-box-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 @media (max-width: 767px) {
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+  }
   .in-the-box-section {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -292,10 +254,32 @@
     gap: 10px;
   }
 }
+
+.in-the-box-item img {
+  aspect-ratio: 180 / 187;
+  object-fit: contain;
+  object-position: center;
+  margin-bottom: 6px;
+}
+.in-the-box-item h3,
+.in-the-box-left h2 {
+  color: #3B3E40;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  margin: 0 0 6px;
+}
+.in-the-box-item p,
+.in-the-box-left p {
+  color: #3B3E40;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+}
 {% endstyle %}
 
-<div class="in-the-box-section section_width_{{ section.settings.section_width }}">
-  <div class="section_content_width_{{ section.settings.section_content_width }}">
+<div class="in-the-box-section">
+  <div class="page-width-container">
 
     {% if section.settings.section_title != blank %}
       <h2 class="in-the-box-heading">{{ section.settings.section_title }}</h2>
@@ -315,12 +299,12 @@
       <!-- Left Column -->
       <div class="in-the-box-left">
         {% if section.settings.left_image %}
-          <img src="{{ section.settings.left_image | image_url }}" style="width: {{ section.settings.left_image_width }}%;" alt="Main Item">
+          <img src="{{ section.settings.left_image | image_url }}" alt="Main Item">
         {% endif %}
-        <h2 style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size }}px;">
+        <h2>
           {{ section.settings.left_title }}
         </h2>
-        <p style="color: {{ section.settings.left_text_color }}; font-size: {{ section.settings.left_text_size | minus: 2 }}px;">
+        <p>
           {{ section.settings.left_quantity }}
         </p>
       </div>
@@ -329,14 +313,14 @@
       <div class="in-the-box-right">
         <div class="in-the-box-grid">
           {% for block in section.blocks %}
-            <div>
+            <div class="in-the-box-item">
               {% if block.settings.item_image %}
                 <img src="{{ block.settings.item_image | image_url }}" style="width: {{ block.settings.item_image_width }}%;" alt="{{ block.settings.item_title }}">
               {% endif %}
-              <h3 style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size }}px;">
+              <h3>
                 {{ block.settings.item_title }}
               </h3>
-              <p style="color: {{ block.settings.item_text_color }}; font-size: {{ block.settings.item_text_size | minus: 2 }}px;">
+              <p>
                 {{ block.settings.item_quantity }}
               </p>
             </div>

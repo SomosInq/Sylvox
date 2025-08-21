@@ -4,22 +4,26 @@
     justify-content: center;
     gap: 16px;
     background: #FAFAFA;
-    padding: 12px 20px;
     margin: 0 auto 24px auto;
     border-radius: 9999px;
     width: fit-content;
   }
 
   .outdoor-tabs-section .tab {
-    padding: 8px 16px;
+    padding: 15px 25px;
     border-radius: 9999px;
     cursor: pointer;
     transition: background 0.3s;
+    color: #336256;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 
   .outdoor-tabs-section .tab.active {
     background: #20413B;
-    color: white;
+    color: #fff;
   }
 
   .outdoor-tabs-section .video-grid {
@@ -54,27 +58,49 @@
     margin-bottom: 2rem;
     text-align: var(--header-align, center);
   }
+  #shopify-section-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px ;
+  }
   
   @media screen and (max-width: 769px) {  
+    #shopify-section-{{ section.id }}{
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px ;
+    }
     .outdoor-tabs-section .tabs {
       justify-content: center;
       gap: 8px;
-      font-size: 14px;
       align-items: center;
       text-align: center;
+    }
+    .outdoor-tabs-section .tab{
+        padding: 5px 15px;
+      font-size: 12px;
     }
     .outdoor-tabs-section .video-title {
       text-align: center;
     }
   }
+
+  .video-thumbnail-wrapper {
+    position: relative;
+  }
+
+  .vide-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>
 
 <div class="outdoor-tabs-section section section_width_{{ section.settings.section_width }}"
-     style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');">
+     style="{{ section.settings.padding_right }}px  {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; background-image: url('{{ section.settings.bg_image | image_url }}');">
   
   <div class="section_content_width_{{ section.settings.section_content_width }}">
     <div class="header" style="--header-align: {{ section.settings.header_alignment }};">
-      {% if section.settings.heading %}<h2>{{ section.settings.heading }}</h2>{% endif %}
+      {% if section.settings.heading %}<h2 class="section-heading-title">{{ section.settings.heading }}</h2>{% endif %}
     </div>
 
     {% unless section.settings.hide_tabs %}
@@ -94,9 +120,17 @@
           <div class="video-card"
                data-modal-video="{{ block.settings.video_url }}"
                style="--video-card-radius: {{ section.settings.video_border_radius }}px; --video-card-bg: {{ section.settings.video_background_color }};">
-            {% if block.settings.video_thumbnail %}
-              <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
-            {% endif %}
+            <div class="video-thumbnail-wrapper">
+              <div class="vide-play-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                  <path d="M37.5 20C37.5 10.335 29.665 2.5 20 2.5C10.335 2.49999 2.5 10.335 2.5 20C2.49999 29.665 10.335 37.5 20 37.5C29.665 37.5 37.5 29.665 37.5 20Z" fill="black" fill-opacity="0.65"/>
+                  <path d="M27.462 20.5693L16.277 27.027C15.8383 27.2802 15.29 26.9637 15.29 26.4572V13.5418C15.29 13.0353 15.8383 12.7187 16.277 12.972L27.462 19.4297C27.9007 19.6829 27.9007 20.316 27.462 20.5693Z" fill="white"/>
+                </svg>
+              </div>
+              {% if block.settings.video_thumbnail %}
+                <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
+              {% endif %}
+            </div>
             <div class="video-title">{{ block.settings.title }}</div>
           </div>
         {% endfor %}
@@ -109,9 +143,17 @@
                   <div class="video-card"
                        data-modal-video="{{ block.settings.video_url }}"
                        style="--video-card-radius: {{ section.settings.video_border_radius }}px; --video-card-bg: {{ section.settings.video_background_color }};">
+                    <div class="video-thumbnail-wrapper">
+                    <div class="vide-play-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path d="M37.5 20C37.5 10.335 29.665 2.5 20 2.5C10.335 2.49999 2.5 10.335 2.5 20C2.49999 29.665 10.335 37.5 20 37.5C29.665 37.5 37.5 29.665 37.5 20Z" fill="black" fill-opacity="0.65"/>
+                        <path d="M27.462 20.5693L16.277 27.027C15.8383 27.2802 15.29 26.9637 15.29 26.4572V13.5418C15.29 13.0353 15.8383 12.7187 16.277 12.972L27.462 19.4297C27.9007 19.6829 27.9007 20.316 27.462 20.5693Z" fill="white"/>
+                      </svg>
+                    </div>
                     {% if block.settings.video_thumbnail %}
                       <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
                     {% endif %}
+                    </div>
                     <div class="video-title">{{ block.settings.title }}</div>
                   </div>
                 {% endif %}
@@ -124,8 +166,8 @@
   </div>
 </div>
 
-<div id="video-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center;">
-  <div style="max-width:90%; max-height:90%; position:relative;">
+<div id="video-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:99999999999; align-items:center; justify-content:center;">
+  <div style="width:90%; height:90%; position:relative;">
     <iframe id="video-frame" src="" frameborder="0" allowfullscreen style="width:100%; height:100%;"></iframe>
     <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; font-size:24px; color:#fff; background:none; border:none; cursor:pointer;">&times;</button>
   </div>
@@ -156,7 +198,12 @@
 
     document.querySelectorAll('[data-modal-video]').forEach(el => {
       el.addEventListener('click', () => {
+      if(el.dataset.modalVideo.includes('youtube')){
+        let yt_id = el.dataset.modalVideo.split("v=")[1];
+        document.getElementById('video-frame').src = 'https://www.youtube.com/embed/' + yt_id + '?autoplay=1';
+      }else{
         document.getElementById('video-frame').src = el.dataset.modalVideo;
+      }
         document.getElementById('video-modal').style.display = 'flex';
       });
     });

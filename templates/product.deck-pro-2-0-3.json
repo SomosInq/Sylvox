@@ -756,9 +756,7 @@
         "narrow_container": false,
         "background_color": "#ffffff",
         "section_heading": "Set Up in Minutes,<br>Enjoy for Years.",
-        "section_title_color": "#1d1d1b",
         "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
-        "section_description_color": "#1d1d1b",
         "button_text": "Learn More",
         "button_link": "",
         "add_max_width": true,
@@ -773,121 +771,51 @@
         "margin_bottom": 0
       }
     },
-    "left_right_media_Q6Xzji": {
-      "type": "left-right-media",
-      "name": "Left Right Media",
-      "settings": {
-        "section_width": "full",
-        "section_content_width": "full",
-        "content_width": 50,
-        "content_padding_left": 30,
-        "heading_icon": "shopify://shop_images/b57de234d7223ab88e90f104710b49d570ab2242.png",
-        "left_image": "shopify://shop_images/921ddd20a38bd4525f9273abd71a41e3b42ceda6.jpg",
-        "image_radius": 0,
-        "image_width_percent": 100,
-        "bg_color": "#fafafa",
-        "content_bg_color": "#fafafa",
-        "content_bg_position": "top right",
-        "media_position": "left",
-        "subheading": "",
-        "heading": "Stay Connected, Indoors or Out.",
-        "spanheader": "",
-        "heading_tag": "h2",
-        "heading_color": "#000000",
-        "heading_weight": "bold",
-        "heading_align": "left",
-        "text_color": "#000000",
-        "content_vertical_align": "center",
-        "label_text_1": "",
-        "icon_text": "",
-        "label_text_2": "",
-        "description": "<p>No matter how you watch, listen, or play, your TV should keep up. With multiple wireless and wired connection options, the Pool Pro 2.0 integrates seamlessly with your favorite devices.</p>",
-        "button_text": "",
-        "button_url": "",
-        "button_text_color": "#ffffff",
-        "button_bg_color": "#000000",
-        "button_border": "none",
-        "button_radius": 0,
-        "content_padding": 0,
-        "image_lazyload": true,
-        "padding_top": 100,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 60,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "mobile_content_width": 100
-      }
-    },
-    "icon_grid_wmpKyN": {
-      "type": "icon-grid",
+    "features_info_block_EHrFVc": {
+      "type": "features-info-block",
       "blocks": {
-        "grid_item_FNagWD": {
-          "type": "grid_item",
+        "column_kWTyPD": {
+          "type": "column",
           "settings": {
             "icon": "shopify://shop_images/Icons_2.png",
-            "icon_size": 100,
             "title": "Wireless Freedom",
             "subtitle": "WiFi, Bluetooth & Streaming Support",
-            "description": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required.",
-            "text_align": "center",
-            "text_color": "#000000",
-            "link": ""
+            "paragraph": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required."
           }
         },
-        "grid_item_XXLbyq": {
-          "type": "grid_item",
+        "column_3xcfJe": {
+          "type": "column",
           "settings": {
             "icon": "shopify://shop_images/Icons_3.png",
-            "icon_size": 100,
             "title": "HDMI, USB & AV Inputs",
             "subtitle": "The Ultimate Plug-and-Play Experience",
-            "description": "Bring your entertainment outdoors. With multiple HDMI and USB ports, TV Tuner, RJ45, AV IN, and Earphone jacks, the Pool Pro 2.0 connects to gaming consoles, sound systems, streaming sticks, and more.",
-            "text_align": "center",
-            "text_color": "#000000",
-            "link": ""
+            "paragraph": "Bring your entertainment outdoors. With multiple HDMI and USB ports, TV Tuner, RJ45, AV IN, and Earphone jacks, the Pool Pro 2.0 connects to gaming consoles, sound systems, streaming sticks, and more."
           }
         },
-        "grid_item_JYzLQq": {
-          "type": "grid_item",
+        "column_btzX93": {
+          "type": "column",
           "settings": {
             "icon": "shopify://shop_images/Icons_4.png",
-            "icon_size": 100,
             "title": "Expand Your Sound",
-            "subtitle": "Immersive sound",
-            "description": "Take your audio to the next level. Whether you prefer Bluetooth speakers or a wired home theater system, Pool Pro 2.0 supports both—so you can customize your sound setup for any occasion.",
-            "text_align": "center",
-            "text_color": "#000000",
-            "link": ""
+            "subtitle": "Easily Connect External Speakers & Soundbars",
+            "paragraph": "Take your audio to the next level. Whether you prefer Bluetooth speakers or a wired home theater system, Pool Pro 2.0 supports both—so you can customize your sound setup for any occasion."
           }
         }
       },
       "block_order": [
-        "grid_item_FNagWD",
-        "grid_item_XXLbyq",
-        "grid_item_JYzLQq"
+        "column_kWTyPD",
+        "column_3xcfJe",
+        "column_btzX93"
       ],
-      "name": "Icon Grid",
+      "name": "Feature Info Blocks",
       "settings": {
-        "layout": "grid",
-        "item_min_width": 220,
-        "section_width": "full",
-        "section_content_width": "standard",
+        "image": "shopify://shop_images/921ddd20a38bd4525f9273abd71a41e3b42ceda6.jpg",
+        "icon": "shopify://shop_images/b57de234d7223ab88e90f104710b49d570ab2242.png",
+        "title": "Stay Connected, Indoors or Out.",
+        "paragraph": "No matter how you watch, listen, or play, your TV should keep up. With multiple wireless and wired connection options, the Pool Pro 2.0 integrates seamlessly with your favorite devices.",
         "background_color": "#fafafa",
-        "parent_title": "",
-        "parent_description": "",
-        "parent_button_link": "",
-        "parent_button_text": "Learn More",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "in_the_box_CcWA6g": {
@@ -971,16 +899,12 @@
       "name": "In The Box",
       "settings": {
         "section_title": "What's In The Box",
-        "section_description": "<p>Here's everything you’ll receive with your order.</p>",
+        "section_description": "",
         "button_label": "Learn More",
         "button_link": "",
-        "section_width": "full",
-        "section_content_width": "standard",
         "background_color": "#ffffff",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "padding_left": 0,
-        "padding_right": 0,
+        "padding_top": 95,
+        "padding_bottom": 95,
         "left_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small_webp.png",
         "left_title": "Deck Pro 2.0",
         "left_quantity": "× 1",
@@ -996,7 +920,7 @@
           "type": "video",
           "settings": {
             "title": "Video Title",
-            "video_url": "",
+            "video_url": "https://www.youtube.com/watch?v=sQ_i4je_KiE",
             "video_thumbnail": "shopify://shop_images/Rectangle_124_0744c4a2-3e97-4016-8787-37cfe8929780.png",
             "video_type": "Expert Reviews",
             "link_url": ""
@@ -1109,6 +1033,7 @@
         "video_block_J4eE66": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/ee5ace03-9c07-4694-b07c-22f351dedc43_3a17afb6-ff03-45d2-bf7c-2f7185075a1d.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74_2a7c8b25-0528-4b13-9e21-929dc5d072af.jpg",
             "autoplay": false,
@@ -1178,6 +1103,61 @@
         "margin_right": 0,
         "swiper_title": "A home for all Sylvox fans to experience content, inspiration, and our beautiful technology.",
         "swiper_sub_title": "sylvox Community"
+      }
+    },
+    "image_slider_gxM3Bz": {
+      "type": "image-slider",
+      "blocks": {
+        "slide_c44e6i": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/40b511df9cef3984c778e9e575269f3233796b3a.jpg"
+          }
+        },
+        "slide_iBp64q": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/83bf6fee04e4fbad21c9886ff0ed92dea5119638.jpg"
+          }
+        },
+        "slide_66APVb": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/4ebf5e72b7a3157280bccf77c7f41464d5a19632.jpg"
+          }
+        },
+        "slide_7Q9PLp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/0169b205371d156c034af90dedc4a896ee1781be.jpg"
+          }
+        },
+        "slide_FAyjzE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/9b5ad75e6a80f7a4eff16a106ae24bc7a289a440.jpg"
+          }
+        },
+        "slide_TFVKCF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9_e0dd84d3-292d-40b4-a859-04f1f09b7bc8.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slide_c44e6i",
+        "slide_iBp64q",
+        "slide_66APVb",
+        "slide_7Q9PLp",
+        "slide_FAyjzE",
+        "slide_TFVKCF"
+      ],
+      "name": "Image Slider",
+      "settings": {
+        "title": "Feel Good,<br>Live Outdoors.",
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "comparison_table_QTgTwz": {
@@ -1549,6 +1529,7 @@
     },
     "more-products-vendor": {
       "type": "more-products-vendor",
+      "disabled": true,
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
@@ -1565,6 +1546,16 @@
         "fallback_collection": "",
         "max_products": 10
       }
+    },
+    "ymal_section_RBLLHQ": {
+      "type": "ymal-section",
+      "name": "YMAL Section",
+      "settings": {
+        "title": "You May Also Like",
+        "collection": "partial-sun-outdoor-tv",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
     }
   },
   "order": [
@@ -1580,15 +1571,16 @@
     "image_text_UQFVkh",
     "somos_image_content_b794Jg",
     "usp_accordion_pPbMYA",
-    "left_right_media_Q6Xzji",
-    "icon_grid_wmpKyN",
+    "features_info_block_EHrFVc",
     "in_the_box_CcWA6g",
     "video_grid_qCpbih",
     "video_swiper_EiE3a7",
+    "image_slider_gxM3Bz",
     "comparison_table_QTgTwz",
     "comparison_table_eXcqh7",
     "judgeme_section_review_widget_5de7",
     "accordian_7XgC4J",
-    "more-products-vendor"
+    "more-products-vendor",
+    "ymal_section_RBLLHQ"
   ]
 }

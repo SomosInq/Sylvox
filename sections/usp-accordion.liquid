@@ -28,22 +28,10 @@
       "default": "Set Up in Minutes, Enjoy for Years."
     },
     {
-      "type": "color",
-      "id": "section_title_color",
-      "label": "Section Heading Color",
-      "default": "#000000"
-    },
-    {
       "type": "textarea",
       "id": "section_description",
       "label": "Section Description",
       "default": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching."
-    },
-    {
-      "type": "color",
-      "id": "section_description_color",
-      "label": "Section Description Color",
-      "default": "#333333"
     },
     {
       "type": "text",
@@ -331,12 +319,12 @@
 
 <div>
   <div class="section-custom-page-width">
-    <div class="section-heading-area usp-accordion-header" style="text-align: center; margin-bottom: 2rem;">
+    <div class="section-heading-area text-align-center mobile-padding usp-accordion-header" style="margin-bottom: 2rem;">
       {% if section.settings.section_heading %}
-        <h2 style="color: {{ section.settings.section_title_color }}">{{ section.settings.section_heading }}</h2>
+        <h2 class="section-heading-title">{{ section.settings.section_heading }}</h2>
       {% endif %}
       {% if section.settings.section_description %}
-        <p style="color: {{ section.settings.section_description_color }}">{{ section.settings.section_description }}</p>
+        <p class="section-heading-desc">{{ section.settings.section_description }}</p>
       {% endif %}
       {% if section.settings.button_text and section.settings.button_link %}
         <a href="{{ section.settings.button_link }}" style="display:inline-block; margin-top:1rem; padding:0.5rem 1.5rem; background:#20413B; color:white; text-decoration:none; border-radius:4px;">{{ section.settings.button_text }}</a>
