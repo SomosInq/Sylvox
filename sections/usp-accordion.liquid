@@ -250,7 +250,10 @@
 }
 
 .accordion-item.active .accordion-header span {
-  font-size: 1.5em;
+  color: var(--Light-Grey, #C6C6C6);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .accordion-icon {
@@ -271,10 +274,29 @@
 }
 
 .accordion-subtitle {
-  font-size: 0.875rem;
-  color: #A7DCB7;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  color: var(--Light-Green, #A7DCB7);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+.usp-accordion-header h2 {
+  color: var(--Black, #1D1D1B);
+  text-align: center;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 538px;
+  margin: auto;
+}
+
+.usp-accordion-section .accordion {
+  padding: 2rem 78px;
+}
+.usp-accordion-section .accordion > *:empty {
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -286,7 +308,7 @@
 
 <div class="section_width_{{ section.settings.section_width }}">
   <div class="section_content_width_{{ section.settings.section_content_width }} usp-accordion-section">
-    <div style="text-align: center; margin-bottom: 2rem;">
+    <div class="usp-accordion-header" style="text-align: center; margin-bottom: 2rem;">
       {% if section.settings.section_heading %}
         <h2 style="color: {{ section.settings.section_title_color }}">{{ section.settings.section_heading }}</h2>
       {% endif %}
@@ -313,7 +335,7 @@
                 {% if block.settings.icon %}
                   <img src="{{ block.settings.icon | image_url }}" class="accordion-icon" id="icon-{{ forloop.index }}" width="20" />
                 {% else %}
-                  <span class="accordion-icon" id="icon-{{ forloop.index }}">▼</span>
+                  <span class="accordion-icon" id="icon-{{ forloop.index }}">{% render 'default.icons' name: 'arrow-down' %}</span>
                 {% endif %}
               </div>
               <div class="accordion-content" id="content-{{ forloop.index }}">
