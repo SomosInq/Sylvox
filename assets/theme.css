@@ -1799,7 +1799,7 @@ display: flex;
 .comparision-slider-section h2 {
     margin-bottom: 6px;
     font-size: 32px;
-    color: #1D1D1B;
+    color: #ffffff;
     font-weight: 400;
     line-height: normal;
 }
@@ -1816,6 +1816,12 @@ display: flex;
 .image-text-blocks-section img {
   margin: 0 auto;
   /* width: 100%; */
+}
+@media screen and (min-width: 768px) {
+  .image-text-blocks-section.content_standard > * {
+    width: 50%;
+    margin-inline: auto;
+  } 
 }
 .page-how-to-buy .image-text-blocks-section .section_content_width_standard {
   max-width: unset;
