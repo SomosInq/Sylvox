@@ -21,7 +21,9 @@
           "type": "heading",
           "settings": {
             "title": "Contact Us",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "font_size": 32,
+            "text_color": "#636363"
           }
         },
         "text": {
@@ -54,7 +56,7 @@
             "image_size": "medium",
             "title": "After service",
             "title_font_size": 20,
-            "text": "Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us:\n<br>\nservice@sylvoxtv.com",
+            "text": "Should you need assistance with product logistics, exchanges, or any other post-purchase inquiries, please don't hesitate to reach out to us:\n<br>\n<br>\n<strong>\nservice@sylvoxtv.com</strong>",
             "link_text": "Write us a message",
             "link_color": "",
             "link_url": "",
