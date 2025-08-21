@@ -1,0 +1,153 @@
+<style>
+  #shopify-section-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .section-heading-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  #shopify-section-{{ section.id }} .section-heading-area h2.section-heading-title {
+    margin-bottom: 0;
+    font-size: 32px;
+  }
+  #shopify-section-{{ section.id }} .ymal-swiper-buttons {
+    display: flex;
+    gap: 4px;
+  }
+  #shopify-section-{{ section.id }} #ymal-section{
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .swiper.ymal-slider {
+    overflow: visible;
+  }
+
+  #shopify-section-{{ section.id }} .ymal-slideshow-arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #636363;
+    border-radius: 100%;
+  }
+  #shopify-section-{{ section.id }} .ymal-page-width{
+    max-width: 1656px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  #shopify-section-{{ section.id }} .ymal-swiper-pagination .swiper-pagination-bullet {
+    width: 24px;
+    height: 4px;
+    border-radius: 2px;
+  }
+  #shopify-section-{{ section.id }} .ymal-swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #DB4B97;
+  }
+  #shopify-section-{{ section.id }} .swiper.ymal-slider:not(.swiper-initialized) .swiper-wrapper {
+    gap: 24px;
+  }
+  #shopify-section-{{ section.id }} .swiper.ymal-slider:not(.swiper-initialized) .swiper-slide{
+    width: 24%;
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }}{
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+</style>
+<div id="ymal-section">
+  <div class="ymal-page-width">
+    <div class="section-heading-area">
+      <h2 class="section-heading-title">{{ section.settings.title }}</h2>
+      <div class="ymal-swiper-buttons">
+        <div class="ymal-swiper-button-prev ymal-slideshow-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+            <path d="M0.557259 5.44125H0.556009L5.11351 10C5.34785 9.76559 5.47949 9.44771 5.47949 9.11625C5.47949 8.78479 5.34785 8.46691 5.11351 8.2325L1.88226 5L5.11226 1.7675C5.3466 1.53309 5.47824 1.2152 5.47824 0.88375C5.47824 0.552294 5.3466 0.23441 5.11226 0L0.554759 4.5575C0.437589 4.6747 0.371768 4.83365 0.371768 4.99937C0.371768 5.1651 0.437589 5.32404 0.554759 5.44125H0.557259Z" fill="#636363"/>
+          </svg>
+        </div>
+        <div class="ymal-swiper-button-next ymal-slideshow-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+            <path d="M5.44274 4.55875H5.44399L0.886491 0C0.652152 0.234409 0.520508 0.552295 0.520508 0.88375C0.520508 1.21521 0.652152 1.53309 0.886491 1.7675L4.11774 5L0.887741 8.2325C0.653402 8.46691 0.521758 8.7848 0.521758 9.11625C0.521758 9.44771 0.653402 9.76559 0.887741 10L5.44524 5.4425C5.56241 5.3253 5.62823 5.16635 5.62823 5.00063C5.62823 4.8349 5.56241 4.67596 5.44524 4.55875H5.44274Z" fill="#636363"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="slider-area">
+      <div class="swiper ymal-slider">
+        <div class="swiper-wrapper">
+          {% if recommendations.products_count > 0 %}
+            {%- for product in recommendations.products -%}
+              <div class="swiper-slide">
+                <div>
+                  {{ product.title }}
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            {%- for product in section.settings.collection.products -%}
+              <div class="swiper-slide">
+                {% render 'product-card-with-size', product: product %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const feat_swiper = new Swiper('.ymal-slider', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      navigation: {
+        nextEl: '.ymal-swiper-button-next',
+        prevEl: '.ymal-swiper-button-prev',
+      },
+      breakpoints: {
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 35,
+				},
+        1199: {
+					slidesPerView: 4,
+					spaceBetween: 35,
+				}
+			}
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "YMAL Section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section Title",
+      "default": "You May Also Like"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 96, "step": 2, "default": 96, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 96, "step": 2, "default": 96, "unit": "px" }
+  ],
+  "presets": [
+    {
+      "name": "YMAL Section"
+    }
+  ]
+}
+{% endschema %}

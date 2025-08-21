@@ -1,0 +1,223 @@
+<div class="image-and-text-row">
+  <div class="image-column">
+    <img src="{{ section.settings.image | image_url  }}" class="feat-main-image" alt="{{ section.settings.title }}">
+  </div>
+  <div class="text-content-column">
+    <div class="text-content-container">
+      <img src="{{ section.settings.icon |  image_url  }}" class="text-content-icon" alt="">
+      <h2 class="section-heading-title">{{ section.settings.title }}</h2>
+      <p class="section-heading-desc">{{ section.settings.paragraph }}</p>
+    </div>
+  </div>
+</div>
+<div class="info-block-columns">
+  <div class="info-block-columns-container">
+    <div class="info-block-columns-row">
+      {% for block in section.blocks %}
+        <div class="info-block-item">
+          <img src="{{ block.settings.icon | image_url  }}" class="info-block-icon" alt="">
+          <h3 class="info-block-title">{{ block.settings.title }}</h3>
+          <h4 class="info-block-subtitle">{{ block.settings.subtitle }}</h4>
+          <p class="info-block-desc">{{ block.settings.paragraph }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{%- capture s_id -%}
+  #shopify-section-{{ section.id }}
+{%- endcapture -%}
+{% style %}
+  {{s_id}} {
+    background: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  {{s_id}} .image-and-text-row{
+    display: flex;
+    align-items: center;
+  }
+  {{s_id}} .image-and-text-row > div{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+  {{s_id}} .feat-main-image{
+    display: block;
+    width: 100%;
+    aspect-ratio: 948/600;
+  }
+  {{s_id}} .text-content-icon{
+    max-width: 60px;
+  }
+  {{s_id}} .text-content-container {
+    padding: 0 156px;
+  }
+  {{s_id}} .info-block-columns-container{
+    max-width: 1608px;
+    margin: 96px auto 0;
+  }
+  {{s_id}} .info-block-columns-row{
+    display: flex;
+  }
+  {{s_id}} .info-block-columns-row > div{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 30%;
+  }
+  {{s_id}} .info-block-item{
+    padding: 33px 24px;
+    text-align: center;
+  }
+  {{s_id}} .info-block-icon{
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    object-position: center;
+  }
+  {{s_id}} .info-block-title{
+    color: #1D1D1B;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 12px 0 10px;
+  }
+  {{s_id}} .info-block-subtitle{
+    color: #1D1D1B;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.198px;
+    margin: 0 0 10px;
+  }
+  {{s_id}} .info-block-desc{
+    color: #636363;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.176px;
+    margin: 0;
+  }
+  @media only screen and (max-width: 768px) {
+    {{s_id}} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+    {{s_id}} .image-and-text-row{
+      display: block;
+    }
+    {{s_id}} .text-content-container {
+      padding: 24px;
+    }
+    {{s_id}} .info-block-columns-row{
+      display: block;
+    }
+    {{s_id}} .info-block-columns-container{
+      margin-top: 0;
+    }
+    {{s_id}} .info-block-title{
+      font-size: 24px;
+    }
+  }
+{% endstyle %}
+{% schema %}
+{
+  "name": "Feature Info Blocks",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Stay Connected, Indoors or Out."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph",
+      "default": "No matter how you watch, listen, or play, your TV should keep up. With multiple wireless and wired connection options, the Pool Pro 2.0 integrates seamlessly with your favorite devices."
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Title",
+          "default": "Wireless Freedom"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Sub-title",
+          "default": "WiFi, Bluetooth & Streaming Support"
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default": "Ditch the cables and enjoy true wireless convenience. Built-in WiFi and Bluetooth let you stream, sync speakers, or mirror your phone instantly—no extra adapters required."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Info Blocks"
+    }
+  ]
+}
+{% endschema %}

@@ -103,7 +103,8 @@
   .video-wrapper video {
     width: 100%;
     border-radius: 10px;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
   }
 
   .video-wrapper.animate {
@@ -162,10 +163,11 @@
               {{
                 block.settings.video
                 | video_tag:
+                  image_size: '500x',
                   autoplay: block.settings.autoplay,
                   loop: block.settings.loop,
                   muted: block.settings.muted,
-                  controls: false
+                  controls: true
               }}
 
             {% elsif block.settings.video_url != blank %}

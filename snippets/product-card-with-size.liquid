@@ -1,0 +1,22 @@
+<div class="product-card-with-size-wrap">
+  <div class="pdc-image-and-sizes">
+    <div class="pdc-feat-image">
+      <img src="{{ product.featured_image | image_url: width: 500 }}" alt="">
+    </div>
+    <div class="pdc-sizes">
+      {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', product.template_suffix %}
+      {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
+      {% for get_product in collections_by_suffix %}
+          <a href="{{ get_product.url }}" class="pdc-size {% if get_product.url == product.url %}active{% endif %}">
+            <span class="product__title">
+            {{ get_product.title | split : '"' | first}}"
+            </span>
+          </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="pdc-details">
+    <div class="pdc-title">{{ product.title }}</div>
+    <div class="pdc-price-min">From {{ product.price_min | money_with_currency }}</div>
+  </div>
+</div>

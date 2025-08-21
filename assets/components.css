@@ -16510,25 +16510,92 @@ block-price.block-price.product-block span.label.variant__label{
   }
 }
 
-.section-heading-area h2{
+h2.section-heading-title{
   color: #1D1D1B;
-  text-align: center;
   font-size: 32px;
   font-weight: 400;
   line-height: normal;
   margin: 20px 0;
 }
-.section-heading-area p{
+p.section-heading-desc{
   color: #1D1D1B;
-  text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   line-height: normal;
   letter-spacing: 0.198px;
   margin-bottom: 24px;
 }
+.text-align-center{
+  text-align: center;
+}
 @media only screen and (min-width: 768px) {
-  .section-heading-area h2{
+  h2.section-heading-title{
     font-size: 48px;
   }
+  p.section-heading-desc{
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .mobile-padding{
+    padding: 0 24px;
+  }
+}
+.pdc-image-and-sizes img {
+    mix-blend-mode: darken;
+    width: 100%;
+}
+.pdc-image-and-sizes {
+  background: #fafafa;
+  position: relative;
+}
+
+.pdc-sizes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.pdc-sizes a.pdc-size {
+  padding: 4px 12px;
+  color: #636363;
+  font-family: "Neurial Grotesk";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.pdc-sizes a.pdc-size.active {
+  border-color: #20413B;
+  color: #20413B;
+}
+
+.pdc-details {
+  padding: 23px 13px;
+}
+.pdc-title {
+  color: rgba(0, 0, 0, 0.85);
+  font-family: "Neurial Grotesk";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 24px;
+}
+
+.pdc-price-min {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.198px;
+  margin-top: 24px;
 }
