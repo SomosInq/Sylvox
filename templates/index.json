@@ -110,7 +110,8 @@
         "margin_top": 0,
         "margin_bottom": 40,
         "margin_left": 0,
-        "margin_right": 0
+        "margin_right": 0,
+        "content_margin": 100
       }
     },
     "rich_text_Qq7xiy": {
@@ -799,7 +800,7 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 1000,
+        "slide_height": 550,
         "slide_width": 1600
       }
     },
@@ -1031,7 +1032,6 @@
         "heading_font_size": 32,
         "subtext": "",
         "heading_alignment": "left",
-        "box_height": 300,
         "show_arrows": true,
         "padding_top": 20,
         "padding_bottom": 20,
