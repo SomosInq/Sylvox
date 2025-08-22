@@ -28,10 +28,19 @@
             "alignment": "left",
             "font_size": 48
           }
+        },
+        "subheading_wqW3rQ": {
+          "type": "subheading",
+          "settings": {
+            "text": "Access user manuals, troubleshooting guides, and customer service resources in one place.",
+            "color": "#ffffff",
+            "alignment": "left"
+          }
         }
       },
       "block_order": [
-        "heading_nNLbPR"
+        "heading_nNLbPR",
+        "subheading_wqW3rQ"
       ],
       "name": "Somos Banner",
       "settings": {
@@ -63,7 +72,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "left",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "how_to_choose_wizard_WnxUkH": {
@@ -95,50 +105,12 @@
             "manual_id": "deck-pro",
             "title": "Deck Pro QLED 2.0",
             "show_full_sun": true,
-            "show_partial_sun": true,
+            "show_partial_sun": false,
             "smart_value": "Google TV",
-            "smart_icon": "shopify://shop_images/33a58059b7fc2a88563b344e2c7101cbf0f7d075.png",
             "display_value": "LED",
-            "display_icon": "shopify://shop_images/png__1_2_1_17d126c6-729f-4668-81ba-f6e63b0db4dc.png",
             "refresh_value": "60HZ",
             "color_value": "Good",
             "best_value": "Smart & Value",
-            "product": "",
-            "size_option_index": "1"
-          }
-        },
-        "series_JdBHPP": {
-          "type": "series",
-          "settings": {
-            "manual_id": "pool-pro",
-            "title": "Pool Pro QLED 2.0",
-            "show_full_sun": true,
-            "show_partial_sun": true,
-            "smart_value": "Google TV",
-            "smart_icon": "shopify://shop_images/33a58059b7fc2a88563b344e2c7101cbf0f7d075.png",
-            "display_value": "LED",
-            "display_icon": "shopify://shop_images/png__1_2_1_17d126c6-729f-4668-81ba-f6e63b0db4dc.png",
-            "refresh_value": "60HZ",
-            "color_value": "Excellent",
-            "best_value": "Premium picture",
-            "product": "",
-            "size_option_index": "1"
-          }
-        },
-        "series_Wh3HXR": {
-          "type": "series",
-          "settings": {
-            "manual_id": "cinema-pro",
-            "title": "Cinema Pro",
-            "show_full_sun": true,
-            "show_partial_sun": false,
-            "smart_value": "Google TV",
-            "smart_icon": "shopify://shop_images/33a58059b7fc2a88563b344e2c7101cbf0f7d075.png",
-            "display_value": "LED",
-            "display_icon": "shopify://shop_images/png__1_2_1_17d126c6-729f-4668-81ba-f6e63b0db4dc.png",
-            "refresh_value": "120HZ",
-            "color_value": "Good",
-            "best_value": "Sports/Gaming",
             "product": "",
             "size_option_index": "1"
           }
@@ -165,158 +137,8 @@
           "settings": {
             "manual_id": "wall",
             "title": "Wall Mount",
-            "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
-            "image": "shopify://shop_images/3c66db452c679bab788ab7d86030886fa918dd8d.png",
-            "product": "rv-tv-wall-bracket"
-          }
-        },
-        "mount_option_cBwJPX": {
-          "type": "mount_option",
-          "settings": {
-            "manual_id": "wall",
-            "title": "Ceiling Mount",
-            "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
-            "image": "shopify://shop_images/dfb3250b8500b817e1254b6ccae13849f7ca308a_1.png",
-            "product": "rv-tv-wall-bracket"
-          }
-        },
-        "mount_option_hBj78g": {
-          "type": "mount_option",
-          "settings": {
-            "manual_id": "wall",
-            "title": "Motorized Ceiling Mount (Electric)",
-            "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
-            "image": "shopify://shop_images/0171e28975dc722a2b659ec3a855637a0c5d1863.png",
-            "product": "rv-tv-wall-bracket"
-          }
-        },
-        "mount_option_6idDQg": {
-          "type": "mount_option",
-          "settings": {
-            "manual_id": "wall",
-            "title": "RollingTV Cart",
-            "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
-            "image": "shopify://shop_images/a4ac6a0e46daed676f2251c639b2c64d8d3b7962.png",
-            "product": "rv-tv-wall-bracket"
-          }
-        },
-        "mount_option_NNExpy": {
-          "type": "mount_option",
-          "settings": {
-            "manual_id": "wall",
-            "title": "Outdoor Lift Cabinet",
-            "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
-            "image": "shopify://shop_images/b1ac225c16fcbe41385f1a981c98db0581a38cb7.png",
-            "product": "rv-tv-wall-bracket"
-          }
-        },
-        "summary_row_WMrAtX": {
-          "type": "summary_row",
-          "settings": {
-            "mount_type": "Wall Mount",
-            "mobile": false,
-            "retractable": false,
-            "best_for": "Everyday setups, patios"
-          }
-        },
-        "summary_row_DtYhmH": {
-          "type": "summary_row",
-          "settings": {
-            "mount_type": "Celling Mount",
-            "mobile": false,
-            "retractable": false,
-            "best_for": "Covered outdoor kitchens"
-          }
-        },
-        "summary_row_RQe4bx": {
-          "type": "summary_row",
-          "settings": {
-            "mount_type": "Motorized Ceiling Mount",
-            "mobile": false,
-            "retractable": true,
-            "best_for": "Smart homes, hidden elegance"
-          }
-        },
-        "summary_row_JWjjVB": {
-          "type": "summary_row",
-          "settings": {
-            "mount_type": "Rolling TV Cart",
-            "mobile": true,
-            "retractable": false,
-            "best_for": "Events, multipurpose areas"
-          }
-        },
-        "summary_row_G6TzR3": {
-          "type": "summary_row",
-          "settings": {
-            "mount_type": "Lift  Cabinet",
-            "mobile": false,
-            "retractable": true,
-            "best_for": "Luxury, poolside, protection"
-          }
-        },
-        "installation_tip_9LBFeL": {
-          "type": "installation_tip",
-          "settings": {
-            "text": "All Sylvox TVs follow VESA standard mounting"
-          }
-        },
-        "installation_tip_GHeyXG": {
-          "type": "installation_tip",
-          "settings": {
-            "text": "Compatible with most third-party mounts"
-          }
-        },
-        "installation_tip_PGc3U4": {
-          "type": "installation_tip",
-          "settings": {
-            "text": "Easy installation with pre-drilled brackets"
-          }
-        },
-        "installation_tip_F7cVXB": {
-          "type": "installation_tip",
-          "settings": {
-            "text": "Professional installation recommended for ceiling/lift mounts"
-          }
-        },
-        "example_card_nbr4DP": {
-          "type": "example_card",
-          "settings": {
-            "image": "shopify://shop_images/a404bb5a3b7c63fe55de1acb792fda91319f097a.jpg",
-            "title": "Lounge-style Deck?",
-            "text": "Wall Mount or Lift Cabinet",
-            "link": "",
-            "new_tab": false
-          }
-        },
-        "example_card_7nQmXE": {
-          "type": "example_card",
-          "settings": {
-            "image": "shopify://shop_images/412a3b60cd6326c4e736d37806d0b00e3e23c711_eaaa2bdd-7838-4b39-b20a-8054e8f1dad0.jpg",
-            "title": "Under a bar canopy?",
-            "text": "Ceiling Mount or Motorized Drop-Down",
-            "link": "",
-            "new_tab": false
-          }
-        },
-        "example_card_Dm8RMh": {
-          "type": "example_card",
-          "settings": {
-            "image": "shopify://shop_images/ac68488a7efd215a3f498382f4b4ef53090eae51.jpg",
-            "title": "Hosting outdoor movie nights?",
-            "text": "Rolling TV Cart",
-            "link": "",
-            "new_tab": false
-          }
-        },
-        "example_card_7f7dQk": {
-          "type": "example_card",
-          "settings": {
-            "image": "shopify://shop_images/725190ae308e776f840cae0622bb6f707794f816.jpg",
-            "title": "Want clean look & hidden setup?",
-            "text": "Lift Cabinet",
-            "link": "",
-            "new_tab": false
+            "desc": "Best for solid walls, patios, or decks.",
+            "product": ""
           }
         },
         "rule_ijr8qL": {
@@ -326,20 +148,7 @@
             "series_ref": "deck-pro",
             "size_ref": "55",
             "mount_ref": "wall",
-            "product": "2024-75-deck-pro-2-0-with-rolling-tv-cart-and-soundbar",
-            "custom_url": "",
-            "override_title": "title",
-            "override_cta": "cta"
-          }
-        },
-        "rule_UYajP9": {
-          "type": "rule",
-          "settings": {
-            "env_ref": "full-sun",
-            "series_ref": "deck-pro",
-            "size_ref": "55",
-            "mount_ref": "wall",
-            "product": "sylvox-outdoor-tv-ceiling-mount",
+            "product": "waterproof-outdoor-sound-bar",
             "custom_url": "",
             "override_title": "title",
             "override_cta": "cta"
@@ -350,30 +159,10 @@
         "environment_ePD4Rz",
         "environment_wb3FbE",
         "series_bjQYpr",
-        "series_JdBHPP",
-        "series_Wh3HXR",
         "size_option_Gt4NwJ",
         "setup_option_DD7hxh",
         "mount_option_kDxLTC",
-        "mount_option_cBwJPX",
-        "mount_option_hBj78g",
-        "mount_option_6idDQg",
-        "mount_option_NNExpy",
-        "summary_row_WMrAtX",
-        "summary_row_DtYhmH",
-        "summary_row_RQe4bx",
-        "summary_row_JWjjVB",
-        "summary_row_G6TzR3",
-        "installation_tip_9LBFeL",
-        "installation_tip_GHeyXG",
-        "installation_tip_PGc3U4",
-        "installation_tip_F7cVXB",
-        "example_card_nbr4DP",
-        "example_card_7nQmXE",
-        "example_card_Dm8RMh",
-        "example_card_7f7dQk",
-        "rule_ijr8qL",
-        "rule_UYajP9"
+        "rule_ijr8qL"
       ],
       "name": "How to Choose – Wizard",
       "settings": {
@@ -381,9 +170,6 @@
         "max_width": 1150,
         "section_width": "full",
         "section_content_width": "standard",
-        "prev_icon_image": "shopify://shop_images/SVG_a58a7abe-6960-4ae3-867e-21e8836e41c3.svg",
-        "next_icon_image": "shopify://shop_images/SVG_1_5045509f-2d9f-4c0b-baae-74ae245aaf00.svg",
-        "nav_icon_size": 18,
         "prev_text": "Previous",
         "next_text": "Next",
         "restart_text": "Start again",
@@ -410,51 +196,18 @@
         "setup_col_space": "Outdoor Space Type",
         "setup_col_sizes": "Suggest Size(s)",
         "setup_col_why": "Why?",
-        "summary_title": "Quick Summary Table",
-        "summary_col_mount": "Mount Type",
-        "summary_col_mobile": "Mobile?",
-        "summary_col_retract": "Retractable?",
-        "summary_col_best": "Best For",
-        "install_title": "Installation Tip",
-        "examples_title": "Real Life Example",
         "step4_title": "Choose Your Mounting Option",
         "step4_sub": "Pick the setup style that fits your space.",
         "step5_title": "Your Result",
         "step5_sub": "Here’s the best match for your setup.",
         "default_cta": "Buy it now",
-        "fallback_title": "Recommended setup",
-        "candidate_collection": ""
-      }
-    },
-    "rich_text_ci7BdX": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_qhAhHe": {
-          "type": "heading",
-          "settings": {
-            "title": "",
-            "heading_size": "h2",
-            "font_size": 32,
-            "text_color": "#636363"
-          }
-        }
-      },
-      "block_order": [
-        "heading_qhAhHe"
-      ],
-      "name": "t:labels.rich_text",
-      "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "color_scheme": "1",
-        "divider": false
+        "fallback_title": "Recommended setup"
       }
     }
   },
   "order": [
     "main",
     "somos_banner_8pxCzf",
-    "how_to_choose_wizard_WnxUkH",
-    "rich_text_ci7BdX"
+    "how_to_choose_wizard_WnxUkH"
   ]
 }
