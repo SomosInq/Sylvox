@@ -108,6 +108,11 @@ display: flex;
   text-align: right;
 }
 
+.{{ section.id }} .usp-box {
+  aspect-ratio: unset;
+  height: auto;
+}
+
 @media only screen and (max-width: 768px) { 
   .usp-grid {
     display: grid;
@@ -124,7 +129,7 @@ display: flex;
 
 </style>
 
-<section class="usp-grid-section section_width_{{ section.settings.section_width }}"
+<section class="usp-grid-section {{ section.id }} section_width_{{ section.settings.section_width }}"
   style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
 
   {% if section.settings.heading != blank %}
@@ -151,7 +156,6 @@ display: flex;
         <div class="usp-box carousel-cell"
           style="background-color: {{ block.settings.background_color }};
                  color: {{ block.settings.text_color }};
-                 height: {{ section.settings.box_height }}px;"
           {{ block.shopify_attributes }}>
           <div class="usp-inner usp-align-{{ block.settings.content_alignment }}">
             {% if block.settings.icon %}
@@ -253,7 +257,6 @@ display: flex;
     { "type": "range", "id": "heading_font_size", "label": "Heading Font Size (px)", "min": 12, "max": 80, "step": 1, "default": 32 },
     { "type": "textarea", "id": "subtext", "label": "Subtext Below Heading", "default": "Explore our core benefits below" },
     { "type": "select", "id": "heading_alignment", "label": "Heading Alignment", "default": "center", "options": [ { "label": "Left", "value": "left" }, { "label": "Center", "value": "center" }, { "label": "Right", "value": "right" } ] },
-    { "type": "range", "id": "box_height", "label": "Box Height (px)", "min": 100, "max": 1000, "step": 10, "default": 300 },
     { "type": "checkbox", "id": "show_arrows", "label": "Show Navigation Arrows", "default": true },
     { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },

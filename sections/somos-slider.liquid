@@ -2,6 +2,14 @@
 Somos Slider: Supports mobile-only slide image, image overlay, mobile height, and per-button uploaded video or link.
 {%- endcomment -%}
 
+{% style %}
+  @media screen and (min-width: 1024px){
+    .somos-slide .content_section_width_standard {
+      padding-inline: {{ section.settings.content_margin }}px;
+    }
+  }
+{% endstyle %}
+
 <div class="somos-slider"
   style="
     --slide-height: {{ section.settings.slide_height }}px;
@@ -82,6 +90,9 @@ Somos Slider: Supports mobile-only slide image, image overlay, mobile height, an
                      class="button"
                      style="background: {{ block.settings.button_2_bg }}; color: {{ block.settings.button_2_text }}; border-color: {{ block.settings.button_2_border }}">
                     {{ block.settings.button_text_2 }}
+                    {% if block.settings.button_2_icon %}
+                      {{ block.settings.button_2_icon | image_url: width: 10 | image_tag }}
+                    {% endif %}
                   </a>
                 {% endif %}
               {% endif %}
@@ -194,7 +205,8 @@ Somos Slider: Supports mobile-only slide image, image overlay, mobile height, an
     {"type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
     {"type": "range", "id": "margin_left", "label": "Margin left", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
-    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"}
+    {"type": "range", "id": "margin_right", "label": "Margin right", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px"},
+    {"type": "range", "id": "content_margin", "label": "Inner Contet horizontal Margin", "min": 60, "max": 180, "step": 20, "default": 100, "unit": "px"}
   ],
   "blocks": [
     {
@@ -216,6 +228,7 @@ Somos Slider: Supports mobile-only slide image, image overlay, mobile height, an
         {"type": "color", "id": "button_2_bg", "label": "Button 2 background", "default": "#ffffff"},
         {"type": "color", "id": "button_2_text", "label": "Button 2 text color", "default": "#000000"},
         {"type": "color", "id": "button_2_border", "label": "Button 2 border color", "default": "#000000"},
+        {"type": "image_picker", "id": "button_2_icon", "label": "Button 2 Icon"},
         {"type": "select", "id": "horizontal_align", "label": "Horizontal alignment", "options": [
           {"value": "left", "label": "Left"},
           {"value": "center", "label": "Center"},
@@ -232,7 +245,7 @@ Somos Slider: Supports mobile-only slide image, image overlay, mobile height, an
         {"type": "image_picker", "id": "mobile_image", "label": "Mobile Slide Image"},
         {"type": "color", "id": "image_overlay_color", "label": "Image overlay color", "default": "#000000"},
         {"type": "range", "id": "image_overlay_opacity", "label": "Image overlay opacity", "min": 0, "max": 1, "step": 0.1, "default": 0},
-        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"}
+        {"type": "range", "id": "image_size", "label": "Image size (%)", "min": 10, "max": 100, "step": 5, "default": 100, "unit": "%"},
       ]
     }
   ]

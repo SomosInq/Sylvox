@@ -13,6 +13,13 @@
   {% render 'section-rich-text' %}
 {%- endcomment -%}
 
+{% style %}
+  @media screen and (max-width: 768px) {
+    .rich-text-section-{{ section.id }} .page-width--narrow {
+      max-width: 100%;
+    }
+  }
+{% endstyle %}
 {%- liquid
   assign divider = divider | default: section.settings.divider, allow_false: true | default: false, allow_false: true
   assign color_scheme = color_scheme | default: section.settings.color_scheme | default: 'none'
@@ -23,7 +30,7 @@
 
 {%- if divider -%}<div class="section--divider">{%- endif -%}
 
-<div class="index-section color-scheme-{{ color_scheme }} text-{{ align_text }} {% if show_wave %}background-svg--wave{% endif %}">
+<div class="rich-text-section-{{ section.id }} index-section color-scheme-{{ color_scheme }} text-{{ align_text }} {% if show_wave %}background-svg--wave{% endif %}">
   {%- if color_scheme != 'none' -%}
     {%- render 'color-scheme-texture', color_scheme: color_scheme -%}
   {%- endif -%}
@@ -33,6 +40,16 @@
       <div class="theme-block" {{ block.shopify_attributes }}>
         {%- case block.type -%}
           {%- when 'heading' -%}
+            {% style %}
+              .rich-text-section-{{ section.id }} .theme-block h2 {
+                font-size: {{ block.settings.font_size | times: 0.9 }}px;
+              }
+              @media screen and (min-width: 768px) {
+                .rich-text-section-{{ section.id }} .theme-block h2 {
+                  font-size: {{ block.settings.font_size }}px;
+                }
+              }
+            {% endstyle %}
             {% if block.settings.text_highlight %}
               <h2
                 data-test="test"
@@ -42,7 +59,6 @@
                   text-highlight--{{ block.settings.text_highlight }}
                 "
                 style="
-                  font-size: {{ block.settings.font_size }}px;
                   color: {{ block.settings.text_color }};
                   line-height: normal;
                 "
@@ -52,7 +68,6 @@
             {% else %}
               <h2 class="{{ block.settings.heading_size }}"
               style="
-                  font-size: {{ block.settings.font_size }}px;
                   color: {{ block.settings.text_color }};
                   line-height: normal;
                 "
