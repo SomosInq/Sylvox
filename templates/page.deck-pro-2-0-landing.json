@@ -99,74 +99,20 @@
         "text_color": "#c6c6c6"
       }
     },
-    "image_with_text_overlay_JByhYn": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_km7QkW": {
-          "type": "subheading",
-          "settings": {
-            "text": "Outdoor Entertainment, Perfected"
-          }
-        },
-        "heading_kMBJ7r": {
-          "type": "heading",
-          "settings": {
-            "text": "Sylvox Deck Pro 2.0",
-            "heading_tag": "h1"
-          }
-        },
-        "richtext_teP6Gd": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>A next-level outdoor TV designed to perform in sunlight, rain, or snow.</p>"
-          }
-        },
-        "button_JWPH8x": {
-          "type": "button",
-          "settings": {
-            "style": "outline",
-            "size": "lg",
-            "text": "Watch Video",
-            "url": "shopify://pages/about-us-1",
-            "background": "",
-            "text_color": "#ffffff",
-            "outline_color": "#ffffff"
-          }
-        },
-        "button_a8e7pT": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "Learn More",
-            "url": "shopify://pages/about-us-1",
-            "background": "#ffffff",
-            "text_color": "#000000",
-            "outline_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_km7QkW",
-        "heading_kMBJ7r",
-        "richtext_teP6Gd",
-        "button_JWPH8x",
-        "button_a8e7pT"
-      ],
+    "animating_hero_3BMdbR": {
+      "type": "animating-hero",
+      "name": "Animating Banner",
       "settings": {
-        "section_width": "standard",
-        "section_content_width": "standard",
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
-        "image_size": "auto",
-        "desktop_text_position": "sm:pos-middle-center",
-        "mobile_text_position": "pos-middle-center",
-        "mobile_slide_height": 400,
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 60,
-        "custom_id": ""
+        "first_image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
+        "second_image": "shopify://shop_images/hero-banner-2.png",
+        "zooming_text": "Outdoor Entertainment, Perfected",
+        "font_size": 18,
+        "ttle": "Sylvox Deck <span>Pro 2.0</span>",
+        "paragraph": "A next-level outdoor TV designed to perform in sunlight, rain, or snow.",
+        "button_text_1": "Buy It Now",
+        "button_link_1": "",
+        "button_text_2": "Watch Video",
+        "video": "shopify://files/videos/6月10日(1).mp4"
       }
     },
     "rich_text_FhLDYX": {
@@ -214,7 +160,8 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "standard",
-        "section_content_width": "standard",
+        "section_content_width": "full",
+        "narrow_container": true,
         "alignment": "center",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -335,7 +282,8 @@
           "type": "paragraph",
           "settings": {
             "text": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
-            "font_size": 30
+            "font_size": 32,
+            "text_color": "#636363"
           }
         }
       },
@@ -348,6 +296,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
@@ -422,7 +371,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "flex-start"
+        "vertical_alignment": "flex-start",
+        "add_zoom_animation": false
       }
     },
     "somos_image_text_comparison_4wc93V": {
@@ -432,6 +382,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Property_1_Variant2.png",
+            "video": "shopify://files/videos/deck pro 2 1.000 (1).mp4",
             "image_alignment": "center"
           }
         },
@@ -439,6 +390,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Property_1_Variant3.png",
+            "video": "shopify://files/videos/deck pro 2 300.mp4",
             "image_alignment": "center"
           }
         }
@@ -589,7 +541,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "left",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "somos_image_content_HHm83y": {
@@ -660,10 +613,12 @@
         "parent_subtitle": "",
         "heading": "",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "center",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#f5f5f5",
         "padding_top": 40,
@@ -734,7 +689,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": true
       }
     },
     "image_text_hz8E4C": {
@@ -744,7 +700,8 @@
           "type": "title",
           "settings": {
             "title": "Designed to handle extreme temperatures and harsh conditions, Deck Pro 2.0 is built for year-round outdoor enjoyment.",
-            "font_size": 48
+            "font_size": 48,
+            "text_color": "#000000"
           }
         }
       },
@@ -757,6 +714,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
@@ -840,21 +798,23 @@
             "image": "shopify://shop_images/Icons_4.png",
             "image_alignment": "center",
             "image_width": 4,
-            "use_mobile_width": true,
-            "mobile_image_width": 24
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         },
         "title_UccEdf": {
           "type": "title",
           "settings": {
             "title": "Hear Every Detail, Even Outdoors.",
-            "font_size": 48
+            "font_size": 48,
+            "text_color": "#000000"
           }
         },
         "text_gpAU3F": {
           "type": "text",
           "settings": {
-            "text": "Experience every sound with depth and clarity. Deck Pro 2.0 features powerful built-in audio that makes every moment feel larger than life."
+            "text": "Experience every sound with depth and clarity. Deck Pro 2.0 features powerful built-in audio that makes every moment feel larger than life.",
+            "text_color": "#000000"
           }
         }
       },
@@ -869,6 +829,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
@@ -1162,15 +1123,14 @@
       ],
       "name": "USP Accordion",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
+        "narrow_container": false,
         "background_color": "#ffffff",
         "section_heading": "Set Up in Minutes, Enjoy for Years.",
         "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
-        "section_title_color": "#000000",
-        "section_description_color": "#000000",
         "button_text": "Learn More",
         "button_link": "",
+        "add_max_width": false,
+        "heading_max_width": 600,
         "title": "",
         "text": "",
         "text_color": "#ffffff",
@@ -1604,7 +1564,7 @@
   "order": [
     "main",
     "anchor_navigation_LyYXbm",
-    "image_with_text_overlay_JByhYn",
+    "animating_hero_3BMdbR",
     "rich_text_FhLDYX",
     "image_text_PDRFtF",
     "icon_grid_f4ecNH",

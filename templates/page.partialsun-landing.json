@@ -14,34 +14,19 @@
       "disabled": true,
       "settings": {}
     },
-    "image_with_text_overlay_LJ3RDU": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_pbbU9n": {
-          "type": "heading",
-          "settings": {
-            "text": "Designed for the Outdoors,Engineered for the Sun.",
-            "heading_tag": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_pbbU9n"
-      ],
+    "animating_hero_ra9jKc": {
+      "type": "animating-hero",
+      "name": "Animating Banner",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image": "shopify://shop_images/71a40b5bab367f324e8bd128e28fa8b5a3dc10d5.png",
-        "image_size": "auto",
-        "desktop_text_position": "sm:pos-middle-center",
-        "mobile_text_position": "pos-middle-center",
-        "mobile_slide_height": 700,
-        "text_color": "#ffffff",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 30,
-        "custom_id": ""
+        "first_image": "shopify://shop_images/71a40b5bab367f324e8bd128e28fa8b5a3dc10d5.png",
+        "second_image": "shopify://shop_images/Rectangle_524_1.png",
+        "zooming_text": "Outdoor Entertainment,<br>Perfected",
+        "font_size": 48,
+        "ttle": "",
+        "paragraph": "",
+        "button_text_1": "",
+        "button_link_1": "",
+        "button_text_2": ""
       }
     },
     "image_text_Ypk69E": {
@@ -52,19 +37,24 @@
           "settings": {
             "image": "shopify://shop_images/png__1_2_1_2.png",
             "image_alignment": "center",
-            "image_width": 4
+            "image_width": 4,
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         },
         "title_nGUygQ": {
           "type": "title",
           "settings": {
-            "title": "A next-level outdoor TV designed to perform in partially sunny outdoor spaces"
+            "title": "A next-level outdoor TV designed to perform in partially sunny outdoor spaces",
+            "font_size": 48,
+            "text_color": "#000000"
           }
         },
         "text_gmNwRF": {
           "type": "text",
           "settings": {
-            "text": "Deck, Deck Pro, and Deck Pro QLED Series, with 1000 nits of brightness, are perfect for partially sunny outdoor spaces or areas with high ambient light, such as pergolas or covered decks. They offer 4K UHD quality with anti-glare screens and are up to 3 times brighter than most indoor TVs."
+            "text": "Deck, Deck Pro, and Deck Pro QLED Series, with 1000 nits of brightness, are perfect for partially sunny outdoor spaces or areas with high ambient light, such as pergolas or covered decks. They offer 4K UHD quality with anti-glare screens and are up to 3 times brighter than most indoor TVs.",
+            "text_color": "#000000"
           }
         },
         "button_JVpLha": {
@@ -95,6 +85,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
@@ -119,6 +110,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -142,7 +134,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "new_banner_slider_TttF6a": {
@@ -346,7 +339,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         }
       },
@@ -359,6 +353,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -382,7 +377,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "somos_image_text_comparison_ixXbm8": {
@@ -431,7 +427,7 @@
         "fullwidth": true,
         "slider_style": "classic",
         "height": 600,
-        "color": "#ffffff"
+        "color": "#c6c6c6"
       }
     },
     "somos_image_content_G9VF8j": {
@@ -502,10 +498,12 @@
         "parent_subtitle": "",
         "heading": "",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "left",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 30,
@@ -526,13 +524,17 @@
           "settings": {
             "image": "shopify://shop_images/81ec3d2ae09f558dc985c2ca9d0fb0f932379347.png",
             "image_alignment": "center",
-            "image_width": 3
+            "image_width": 3,
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         },
         "title_Q3EnVG": {
           "type": "title",
           "settings": {
-            "title": "Installation Positioning"
+            "title": "Installation Positioning",
+            "font_size": 48,
+            "text_color": "#000000"
           }
         },
         "image_8pfdfc": {
@@ -540,7 +542,9 @@
           "settings": {
             "image": "shopify://shop_images/c465e52bd7c3eb31c788abce261d9bcd0e0b10b3.png",
             "image_alignment": "center",
-            "image_width": 100
+            "image_width": 100,
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         }
       },
@@ -555,6 +559,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 0,
         "padding_bottom": 60,
@@ -649,7 +654,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "left"
+            "alignment": "left",
+            "font_size": 48
           }
         },
         "richtext_7eECUn": {
@@ -672,6 +678,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 70,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 800,
         "mobile_section_height": 500,
@@ -695,7 +702,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "featured_product_grid_4Jj7jP": {
@@ -740,6 +748,8 @@
       "settings": {
         "big_title": "Meet Partial Sun TV Series",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -822,6 +832,8 @@
       "settings": {
         "big_title": "",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -904,6 +916,8 @@
       "settings": {
         "big_title": "",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -1250,7 +1264,7 @@
   },
   "order": [
     "main",
-    "image_with_text_overlay_LJ3RDU",
+    "animating_hero_ra9jKc",
     "image_text_Ypk69E",
     "somos_banner_H37yfk",
     "new_banner_slider_TttF6a",

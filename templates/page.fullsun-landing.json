@@ -14,34 +14,19 @@
       "disabled": true,
       "settings": {}
     },
-    "image_with_text_overlay_JByhYn": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_kMBJ7r": {
-          "type": "heading",
-          "settings": {
-            "text": "Designed for the Outdoors,Engineered for the Sun.",
-            "heading_tag": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_kMBJ7r"
-      ],
+    "animating_hero_36HahB": {
+      "type": "animating-hero",
+      "name": "Animating Banner",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
-        "image_size": "auto",
-        "desktop_text_position": "sm:pos-middle-center",
-        "mobile_text_position": "pos-middle-center",
-        "mobile_slide_height": 700,
-        "text_color": "#ffffff",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 30,
-        "custom_id": ""
+        "first_image": "shopify://shop_images/27679cd4720e5c5a0b21227ffbf7ded5b5ac41a0.png",
+        "second_image": "shopify://shop_images/Rectangle_524.png",
+        "zooming_text": "Designed for the Outdoors,<br>Engineered for the Sun.",
+        "font_size": 48,
+        "ttle": "",
+        "paragraph": "",
+        "button_text_1": "",
+        "button_link_1": "",
+        "button_text_2": ""
       }
     },
     "image_text_CzqGyp": {
@@ -52,19 +37,24 @@
           "settings": {
             "image": "shopify://shop_images/png__1_2_1_1.png",
             "image_alignment": "center",
-            "image_width": 6
+            "image_width": 6,
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         },
         "title_p3eFxr": {
           "type": "title",
           "settings": {
-            "title": "A next-level outdoor TV designed to perform in fully sunny outdoor spaces"
+            "title": "A next-level outdoor TV designed to perform in fully sunny outdoor spaces",
+            "font_size": 48,
+            "text_color": "#000000"
           }
         },
         "text_8ptKcd": {
           "type": "text",
           "settings": {
-            "text": "Pool/Pool Pro/Pool Pro QLED Series, with 2000 nits of brightness, is ideal for fully sunny outdoor spaces and active areas like poolside and outdoor seating. It features heat-resistant screens and is a commercial-grade display, 5-7 times brighter than indoor TVs."
+            "text": "Pool/Pool Pro/Pool Pro QLED Series, with 2000 nits of brightness, is ideal for fully sunny outdoor spaces and active areas like poolside and outdoor seating. It features heat-resistant screens and is a commercial-grade display, 5-7 times brighter than indoor TVs.",
+            "text_color": "#000000"
           }
         },
         "button_NCPxif": {
@@ -95,6 +85,7 @@
         "background_gradient": "",
         "section_width": "standard",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
@@ -119,6 +110,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -142,57 +134,82 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
-    "new_banner_slider_7HWBfh": {
-      "type": "new-banner-slider",
+    "featured_slider_483pfz": {
+      "type": "featured-slider",
       "blocks": {
-        "slide_EPKTFq": {
+        "slide_h8mNbc": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/4f60864db00489467f11e2a08d76ba49a0404e0e_c2a82125-e857-41f1-b7ce-e3a83f5c3b5d.jpg",
-            "caption": "",
-            "caption_small": "Poolside Entertainment",
-            "description_block": "Watch your favorite shows, sports, or music videos while relaxing in or by the pool."
+            "heading": "Poolside Entertainment",
+            "paragraph": "Watch your favorite shows, sports, or music videos while relaxing in or by the pool.",
+            "image": "shopify://shop_images/4f60864db00489467f11e2a08d76ba49a0404e0e_34af8ab2-02dc-40f1-aa53-aba4cd625ce7.jpg"
           }
         },
-        "slide_GiRCFb": {
+        "slide_HkgjWg": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
-            "caption": "",
-            "caption_small": "Works Even After Heavy Rain",
-            "description_block": "Outdoor Dining Area"
+            "heading": "Home Gym or Yoga Space",
+            "paragraph": "Follow workout videos or yoga sessions in an outdoor workout area.",
+            "image": "shopify://shop_images/e594a6fe1b92b70db53a65f82caec795db3aa748_1.jpg"
+          }
+        },
+        "slide_Hwi9pM": {
+          "type": "slide",
+          "settings": {
+            "heading": "BBQ & Gatherings",
+            "paragraph": "Enjoy Netflix, YouTube, or live sports while grilling or lounging outside.",
+            "image": "shopify://shop_images/2c715944ef7d2afa4920c52df8104e8f9adbd43f.jpg"
+          }
+        },
+        "slide_W7y3ah": {
+          "type": "slide",
+          "settings": {
+            "heading": "Backyard Theaters",
+            "paragraph": "Host outdoor movie nights with family and friends, even before the sun sets.",
+            "image": "shopify://shop_images/b406c7dae4bfdd760b066f1351dd579e8cc88018.jpg"
+          }
+        },
+        "slide_ibXUFN": {
+          "type": "slide",
+          "settings": {
+            "heading": "Kids’ Play Area",
+            "paragraph": "Set up a shaded TV zone for cartoons, educational content, or family-friendly movies.",
+            "image": "shopify://shop_images/03d3733eb3a71434dc13c99268942bf48c9a9aca.jpg"
+          }
+        },
+        "slide_g8gRBK": {
+          "type": "slide",
+          "settings": {
+            "heading": "Outdoor Bars & Restaurants",
+            "paragraph": "Providing customers with live sports or entertainment in an open-air setting.",
+            "image": "shopify://shop_images/1706dd6846b7224305a4827c2ec9cc3861f3ca66.png"
           }
         }
       },
       "block_order": [
-        "slide_EPKTFq",
-        "slide_GiRCFb"
+        "slide_h8mNbc",
+        "slide_HkgjWg",
+        "slide_Hwi9pM",
+        "slide_W7y3ah",
+        "slide_ibXUFN",
+        "slide_g8gRBK"
       ],
-      "name": "New Banner Slider",
+      "name": "Featured Slider",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
-        "background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "text_alignment": "center",
-        "heading": "Perfect for outdoor use in sunny conditions",
-        "subheading": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
-        "description": "",
-        "show_arrows": true,
-        "show_dots": true,
-        "slide_size": "large",
-        "slide_height": 900,
-        "slide_width": 1800
+        "title": "Perfect for outdoor use in sunny conditions",
+        "custom_style_title": true,
+        "title_font_size": 24,
+        "title_color": "#636363",
+        "sub_title": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
+        "custom_style_subtitle": true,
+        "subtitle_font_size": 32,
+        "subtitle_color": "#1d1d1b",
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "comparison_table_qDatme": {
@@ -444,7 +461,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         }
       },
@@ -457,6 +475,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -480,7 +499,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "somos_image_text_comparison_iUkNc6": {
@@ -600,10 +620,12 @@
         "parent_subtitle": "",
         "heading": "",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "left",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 30,
@@ -693,7 +715,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "left"
+            "alignment": "left",
+            "font_size": 48
           }
         },
         "richtext_YbeHfE": {
@@ -716,6 +739,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 75,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 800,
         "mobile_section_height": 500,
@@ -739,7 +763,8 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "left",
-        "vertical_alignment": "center"
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "featured_product_grid_jxbnr3": {
@@ -784,6 +809,8 @@
       "settings": {
         "big_title": "Meet Full Sun TV Series",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -866,6 +893,8 @@
       "settings": {
         "big_title": "",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -948,6 +977,8 @@
       "settings": {
         "big_title": "",
         "big_title_color": "#000000",
+        "header_button_text": "",
+        "header_button_link": "",
         "big_title_size": 36,
         "subtitle": "Outdoor Entertainment, Perfected",
         "feature_icon_image": "shopify://shop_images/Icons_3e28592c-fbaa-40b7-b1bf-11ef836dc809.png",
@@ -1207,6 +1238,8 @@
       ],
       "name": "t:labels.testimonials",
       "settings": {
+        "section_width": "standard",
+        "section_content_width": "standard",
         "title": "From our customers",
         "align_text": "center",
         "round_images": true,
@@ -1292,10 +1325,10 @@
   },
   "order": [
     "main",
-    "image_with_text_overlay_JByhYn",
+    "animating_hero_36HahB",
     "image_text_CzqGyp",
     "somos_banner_aBpThe",
-    "new_banner_slider_7HWBfh",
+    "featured_slider_483pfz",
     "comparison_table_qDatme",
     "icon_grid_YhAEUc",
     "somos_banner_gLazR9",

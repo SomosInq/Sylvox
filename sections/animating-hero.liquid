@@ -1,0 +1,447 @@
+<div class="animating-hero-section">
+  <div class="hero-banner-holder">
+    <div class="hero-image hero-image-1"></div>
+    <div class="hero-image hero-image-2"></div>
+    <div class="hero-content">
+        <div class="hero-subtitle" style="--font-size:{{- section.settings.font_size -}}px;">{{ section.settings.zooming_text }}</div>
+        <div class="hero-fade-content">
+          {% if section.settings.ttle != blank %}
+            <h2 class="hero-title">{{ section.settings.ttle }}</h2>
+          {% endif %}
+          {% if section.settings.paragraph != blank %}
+            <div class="hero-paragraph">{{ section.settings.paragraph }}</div>
+          {% endif %}
+          <div class="hero-cta-area">
+            {% if section.settings.button_text_1 != blank %}
+              <a href="#" class="hero-button btn-cta-1">{{ section.settings.button_text_1 }}</a>
+            {% endif %}
+            {% if section.settings.video != blank %}
+              {% assign video_sources = section.settings.video.sources %}
+              {% assign mp4_source = video_sources | where: 'format', 'mp4' | first %}
+              <a href="#" class="hero-button btn-cta-2" onclick="openVideoModal('{{ mp4_source.url }}', '{{ section.settings.video.preview_image | image_url }}')">{{ section.settings.button_text_2 }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+                  <path d="M9.46709 6.37883L2.37395 10.3861C1.89296 10.6578 1.28282 10.4881 1.01115 10.007C0.926381 9.85689 0.881836 9.6874 0.881836 9.51499V1.50045C0.881836 0.947919 1.32965 0.5 1.88205 0.5C2.05442 0.5 2.22386 0.544556 2.37395 0.629346L9.46709 4.63662C9.94808 4.90835 10.1178 5.51864 9.8461 5.99974C9.75659 6.15824 9.62555 6.28931 9.46709 6.37883Z" fill="white"/>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% if section.settings.video != blank %}
+<!-- Video Modal -->
+<div id="videoModal" class="video-modal" style="display: none;">
+  <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
+  <div class="video-modal-content">
+    <button class="video-modal-close" onclick="closeVideoModal()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div id="videoContainer"></div>
+  </div>
+</div>
+{% endif %}
+{%- capture s_id -%}#shopify-section-{{- section.id -}}{%- endcapture -%}
+<style>
+  {{ s_id }}{
+    overflow: hidden;
+  }
+  {{ s_id }} .hero-banner-holder{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  {{ s_id }} .hero-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+  {{ s_id }} .hero-image.hero-image-1 {
+    background-image: url({{ section.settings.first_image | image_url  }});
+  }
+
+  {{ s_id }} .hero-image.hero-image-2 {
+    background-image: url({{ section.settings.second_image | image_url  }});
+    opacity: 0;
+  }
+  {{ s_id }} .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 24px;
+  }
+  {{ s_id }} .hero-subtitle{
+    color: #FFF;
+    text-shadow: 0 4px 6.4px rgba(0, 0, 0, 0.67);
+    font-size: var(--font-size);
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    
+  }
+  {{ s_id }} .hero-subtitle.no-wrap{
+    white-space: nowrap;
+  }
+  {{ s_id }} .hero-subtitle.clip-background{
+    background-image: url({{ section.settings.second_image | image_url  }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 500;
+    text-shadow: none;
+  }
+  {{ s_id }} .hero-title{
+    color: #FFF;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  {{ s_id }} .hero-title span{
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  {{ s_id }} .hero-paragraph{
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  {{ s_id }} .hero-cta-area{
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  {{ s_id }} .hero-button{
+    border-radius: 60px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: normal;
+    padding: 12px 38.18px 11px 38.82px;
+    border: 1px solid #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:7.5px;
+  }
+  {{ s_id }} .hero-button.btn-cta-1{
+    color: rgba(0, 0, 0, 0.85);
+    background: #FFF;
+  }
+  {{ s_id }} .hero-button.btn-cta-2{
+    color: #fff;
+    background: rgba(0, 0, 0, 0.37);
+  }
+  @media (max-width: 768px) {
+    {{ s_id }} .hero-title span{
+      display: block;
+    }
+  }
+{% if section.settings.video != blank %}
+  /* Video Modal Styles */
+  .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .video-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .video-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 75vw;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 8px;
+  }
+  
+  .video-modal-close {
+    position: absolute;
+    top: -13px;
+    right: -13px;
+    background: #666;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10001;
+    padding: 8px;
+    transition: opacity 0.3s ease;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .video-modal-close:hover {
+    opacity: 0.7;
+  }
+  
+  #videoContainer {
+    width: 100%;
+    height: 100%;
+  }
+  
+  #videoContainer iframe,
+  #videoContainer video {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  @media (max-width: 768px) {
+    .video-modal-content {
+      width: 95vw;
+      height: auto;
+    }
+    
+    .video-modal-close {
+      width: 30px;
+      height: 30px;
+      top: -35px;
+      right: 0;
+    }
+  }
+{% endif %}
+</style>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".animating-hero-section",
+            start: "top 69px",
+            end: "bottom 69px",
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1
+        }
+    });
+
+    // Text zoom in and fade out animation
+    heroTl.to("{{ s_id }} .hero-subtitle", {
+        fontSize: 1200,
+        duration: 0.8,
+        ease: "power2.inOut",
+        onUpdate: function() {
+            // Add class halfway through the animation
+            const progress = this.progress();
+            if (progress >= 0.4) {
+              document.querySelector("{{ s_id }} .hero-subtitle").classList.add("clip-background");
+            }else{
+              document.querySelector("{{ s_id }} .hero-subtitle").classList.remove("clip-background");
+            }
+
+            if (progress >= 0.1) {
+              document.querySelector("{{ s_id }} .hero-subtitle").classList.add("no-wrap");
+            }else{
+              document.querySelector("{{ s_id }} .hero-subtitle").classList.remove("no-wrap");
+            }
+        }
+    }, 0.1)
+    .to("{{ s_id }} .hero-fade-content", {
+        opacity: 0,
+        duration: 0.1,
+        ease: "power2.inOut",
+    }, 0);
+
+    heroTl.to("{{ s_id }} .hero-image.hero-image-1", {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut"
+    }, 0);
+    heroTl.to("{{ s_id }} .hero-subtitle", {
+        opacity: 0,
+        duration: 0.1,
+        delay: 0.7,
+        ease: "power1.out"
+    }, 0);
+
+    heroTl.to("{{ s_id }} .hero-image.hero-image-2", {
+        opacity: 1,
+        duration: 0.05,
+        delay: 0.8,
+        ease: "power2.inOut"
+    }, 0);
+
+    function openVideoModal(videoUrl, previewImage) {
+    const modal = document.getElementById('videoModal');
+    const videoContainer = document.getElementById('videoContainer');
+    
+    if (!videoUrl || !modal || !videoContainer) return;
+    
+    // Clear previous video content
+    videoContainer.innerHTML = '';
+    
+    let videoElement = '';
+    
+    // For Shopify-hosted videos and direct video files
+    if (videoUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i) || videoUrl.includes('cdn.shopify.com')) {
+      videoElement = `<video controls autoplay${previewImage ? ` poster="${previewImage}"` : ''}>
+        <source src="${videoUrl}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>`;
+    }
+    // Check if it's a YouTube URL
+    else if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+      let videoId = '';
+      
+      if (videoUrl.includes('youtube.com/watch?v=')) {
+        videoId = videoUrl.split('v=')[1].split('&')[0];
+      } else if (videoUrl.includes('youtu.be/')) {
+        videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+      }
+      
+      if (videoId) {
+        videoElement = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      }
+    }
+    // Check if it's a Vimeo URL
+    else if (videoUrl.includes('vimeo.com')) {
+      const videoId = videoUrl.split('/').pop().split('?')[0];
+      if (videoId) {
+        videoElement = `<iframe src="https://player.vimeo.com/video/${videoId}?autoplay=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+      }
+    }
+    // Fallback for other video URLs
+    else {
+      videoElement = `<iframe src="${videoUrl}" frameborder="0" allow="autoplay" allowfullscreen></iframe>`;
+    }
+    
+    videoContainer.innerHTML = videoElement;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const videoContainer = document.getElementById('videoContainer');
+    
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    
+    if (videoContainer) {
+      videoContainer.innerHTML = '';
+    }
+  }
+  
+  // Close modal on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeVideoModal();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Animating Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "first_image",
+      "label": "First Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_image",
+      "label": "Second Image"
+    },
+    {
+      "type": "textarea",
+      "id": "zooming_text",
+      "label": "Zooming Text",
+      "default": "Outdoor Entertainment, Perfected"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 18
+    },
+    {
+      "type": "textarea",
+      "id": "ttle",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragrap"
+    },
+    {
+      "type": "header",
+      "content": "CTA 1"
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "CTA 2"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "A Shopify-hosted video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animating Banner"
+    }
+  ]
+}
+{% endschema %}
