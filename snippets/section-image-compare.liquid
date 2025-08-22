@@ -46,7 +46,7 @@
   } */
 
   {% if slider_style == 'classic' %}
-    .comparison-{{ section.id }} .comparison__button {
+    .comparison-{{ section.id }} .comparison__button span.button-comparison-slider {
       background-color: {{ color }};
     }
 
@@ -61,23 +61,13 @@
     {% endif %}
 
     .comparison-{{ section.id }} .comparison__button::before {
-      height: {{ height | divided_by: 2 }}px;
-      bottom: 60px;
+      height: {{ height | divided_by: 1.3 }}px;
+      bottom: 0;
     }
 
     .comparison-{{ section.id }} .comparison__button::after {
-      height: {{ height | divided_by: 2 }}px;
-      top: 60px;
-    }
-
-    @media only screen and (max-width: 768px) {
-      .comparison-{{ section.id }} .comparison__button::before {
-        bottom: 42px;
-      }
-
-      .comparison-{{ section.id }} .comparison__button::after {
-        top: 42px;
-      }
+      height: {{ height | divided_by: 1.3 }}px;
+      top: 0;
     }
   {% else %}
     .comparison-{{ section.id }} .comparison__button svg {
@@ -135,6 +125,19 @@
                   assign loading = true
                 endif
               -%}
+              {% if block.settings.video != blank %}
+                {{
+                  block.settings.video
+                  | video_tag:
+                    autoplay: true,
+                    loop: true,
+                    controls: false,
+                    muted: true,
+                    poster: cover_image,
+                    class: 'video-compare video-play-in-view'
+                }}
+              {% endif %}
+              
               {%- render 'image-element',
                 img: block.settings.image,
                 img_width: 2000,
@@ -149,8 +152,11 @@
           {% if forloop.index == 1 %}</div>{% endif %}
         {% endfor %}
         <button class="comparison__button" data-button>
-          {% render 'icon', name: 'chevron-left' %}
-          {% render 'icon', name: 'chevron-right' %}
+          <span class="button-comparison-slider">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+              <path d="M1.49994 12.2778C1.49994 12.6766 1.16415 13 0.749972 13C0.335791 13 0 12.6776 0 12.2787C0 9.04081 0 3.95919 0 0.721327C0 0.3224 0.335791 0 0.749972 0C1.16415 0 1.49994 0.323353 1.49994 0.722193L1.49994 12.2778ZM6.75002 12.2778C6.75002 12.6766 6.41423 13 5.99995 13C5.58577 13 5.24998 12.6766 5.24998 12.2778L5.24998 0.722193C5.24998 0.323353 5.58577 0 5.99995 0C6.41423 0 6.75002 0.323353 6.75002 0.722193L6.75002 12.2778ZM12 12.2778C12 12.6766 11.6642 13 11.25 13C10.8358 13 10.5 12.6766 10.5 12.2778L10.5 0.722193C10.5 0.323353 10.8358 0 11.25 0C11.6642 0 12 0.323353 12 0.722193L12 12.2778Z" fill="#FAFAFA"/>
+            </svg>
+          </span>
         </button>
       </image-compare>
 

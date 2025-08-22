@@ -1,4 +1,4 @@
-{% assign wrapper_id = section.settings.custom_id | default: 'shopify-section-' | append: section.id %}
+{% assign wrapper_id = section.settings.custom_id | default: 'shop-section-' | append: section.id %}
 
 <style>
   #{{ wrapper_id }} {
@@ -31,7 +31,11 @@
   class="section_width_{{ section.settings.section_width }} section-content {{ section.settings.custom_class }}
     {% if section.settings.hide_desktop %}hide-desktop{% endif %}
     {% if section.settings.hide_tablet %}hide-tablet{% endif %}
-    {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
+    {% if section.settings.hide_mobile %}hide-mobile{% endif %}
+    {% if section.settings.add_zoom_animation %}
+      zoom-image-onscroll
+    {% endif %}
+    "
   style="
     position: relative;
     background-color: {{ section.settings.background_color }};
@@ -44,7 +48,9 @@
   "
 >
   {% if section.settings.background_image %}
-    <div style="
+    
+    <div 
+    style="
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background-image: url({{ section.settings.background_image | img_url: 'master' }});
@@ -207,7 +213,26 @@
   </div>
 </div>
 
+{% if section.settings.add_zoom_animation %}
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  const zoomTL = gsap.timeline({
+      scrollTrigger: {
+          trigger: "#{{ wrapper_id }}",
+          start: "top bottom",
+          end: "top 30%",
+          scrub: 1,
+      }
+  });
 
+  zoomTL.from(".zoom-image-onscroll", {
+      scale: 0.5,
+  }).to(".zoom-image-onscroll", {
+      scale: 1,
+      ease: "power2.inOut"
+  });
+</script>
+{% endif %}
 
 {% schema %}
 {
@@ -264,7 +289,13 @@
       { "value": "flex-start", "label": "Top" },
       { "value": "center", "label": "Center" },
       { "value": "flex-end", "label": "Bottom" }
-    ]}
+    ]},
+    {
+      "type": "checkbox",
+      "id": "add_zoom_animation",
+      "label": "Enable Zoom Animation",
+      "default": false
+    }
   ],
 
   "blocks": [

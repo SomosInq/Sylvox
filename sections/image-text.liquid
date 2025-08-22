@@ -271,7 +271,7 @@
 {% endschema %}
 
 {% assign text_align = settings.alignment | default: 'center' %}
-
+{% assign wrapper_id = section.settings.custom_id | default: 'shopify-section-' | append: section.id %}
 <div class="image-text-blocks-section px-4 md:px-8 py-6 section_width_{{ section.settings.section_width }} content_{{ section.settings.section_content_width }}"
      style="
     {% if section.settings.background_gradient != blank %}background: {{ section.settings.background_gradient }};{% endif %} 
@@ -291,13 +291,13 @@
       {% when 'image' %}
         {% if block.settings.image %}
           <style>
-              .image-text-blocks-section .image-block > img {
+              #{{ wrapper_id }} .image-text-blocks-section .image-block > img {
               --block-image-width: {{ block.settings.image_width | default: 100 }}%
               }
 
               {% if block.settings.use_mobile_width %}
                 @media screen and (max-width: 749px) {   
-                  .image-text-blocks-section .image-block > img {
+                  #{{ wrapper_id }} .image-text-blocks-section .image-block > img {
                   --block-image-width: {{ block.settings.mobile_image_width | default: 100 }}%
                   }
                 }

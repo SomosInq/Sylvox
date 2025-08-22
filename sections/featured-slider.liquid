@@ -1,9 +1,23 @@
 {{ 'component-feature-slider.css' | asset_url | stylesheet_tag }}
+
 <style>
   #shopify-section-{{ section.id }}{
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
+  {% if section.settings.custom_style_title %}
+    #shopify-section-{{ section.id }} .section-heading-title{
+      font-size: var(--font-size);
+      color: var(--color);
+    }
+  {% endif %}
+  {% if section.settings.custom_style_subtitle %}
+    #shopify-section-{{ section.id }} .section-heading-desc{
+      font-size: var(--font-size);
+      color: var(--color);
+    }
+  {% endif %}
+  
   @media screen and (max-width: 768px) {
     #shopify-section-{{ section.id }}{
       padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
@@ -14,8 +28,8 @@
 <div id="feature-slider-section">
   <div class="page-width-container">
     <div class="section-heading-area text-align-center">
-      <h2 class="section-heading-title">{{ section.settings.title }}</h2>
-      <p class="section-heading-desc">{{ section.settings.sub_title }}</p>
+      <h2 class="section-heading-title" {% if section.settings.custom_style_title %}style="--font-size: {{ section.settings.title_font_size }}px;--color:{{ section.settings.title_color }};"{% endif %}>{{ section.settings.title }}</h2>
+      <p class="section-heading-desc" {% if section.settings.custom_style_subtitle %}style="--font-size: {{ section.settings.subtitle_font_size }}px;--color:{{ section.settings.subtitle_color }};"{% endif %}>{{ section.settings.sub_title }}</p>
     </div>
     <div class="slider-area">
       <div class="swiper features-slider">
@@ -78,10 +92,54 @@
       "default": "Rain, Snow, or Heat - It Just Works."
     },
     {
+      "type": "checkbox",
+      "id": "custom_style_title",
+      "label": "Custom Style Title",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Text Color",
+      "default": "#1d1d1b"
+    },
+    {
       "type": "textarea",
       "id": "sub_title",
       "label": "Sub-title",
       "default": "From midday sun to late-night movies, enjoy uninterrupted outdoor entertainment with stunning clarity and vivid contrast."
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_style_subtitle",
+      "label": "Custom Style Sub-title",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Text Color",
+      "default": "#1d1d1b"
     },
     {
       "type": "header",

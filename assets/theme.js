@@ -62,3 +62,29 @@ if (console && console.log) {
     document.dispatchEvent(new CustomEvent("page:loaded"));
   });
 })();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const video_play_in_view = document.querySelectorAll('.video-play-in-view');
+  if (video_play_in_view.length) {
+    video_play_in_view.forEach(video => {
+      if (video) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.muted = true;
+              video.play().catch(error => {
+                console.log('Autoplay failed:', error);
+              });
+            } else {
+              video.pause();
+            }
+          });
+        }, {
+          threshold: 0.5
+        });
+        
+        observer.observe(video);
+      }
+    })
+  }
+});
