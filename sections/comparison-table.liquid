@@ -1,3 +1,18 @@
+{% style %}
+  .top-title {
+    font-size: 24px;
+  }
+  .comparison-values {
+    color: #636363;
+  }
+  .comparison-values .head{
+    font-size: 18px
+  }
+  .comparison-values .table-values p{
+    font-size: 16px
+  }
+{% endstyle %}
+
 {%- render 'section-spacing-collapsing' -%}
 
 <div class="comparison-section section_width_{{ section.settings.section_width }}" style="
@@ -32,7 +47,7 @@
     {% endif %}
 
 <!-- Unified Scroll Container -->
-<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; margin-top: 90px;">
   <div style="min-width: 768px;">
 
     <!-- Header Section -->
@@ -41,7 +56,7 @@
       {% for block in section.blocks %}
         <div class="text-center header" style="display: flex; flex-direction: column; align-items: center;">
           {% if block.settings.main_image %}
-            <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 100%; height: auto; margin-bottom: 1rem;" />
+            <img src="{{ block.settings.main_image | image_url: width: 300 }}" alt="Main image" style="max-width: 40%; height: auto; margin-bottom: 0;" />
           {% endif %}
           <div class="top-title">{{ block.settings.header_title }}</div>
           <div class="icon-title-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">

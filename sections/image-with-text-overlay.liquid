@@ -89,6 +89,11 @@
       object-fit: cover;
     }
   }
+  @media screen and (max-width: 768px) {
+      #shopify-section-{{ section.id }} .prose .heading {
+      font-size: 32px!important;
+    }
+  }
 </style>
 
 
@@ -139,7 +144,7 @@
 
                   {%- when 'heading' -%}
                     {%- if block.settings.text != blank -%}
-                      <p class="{{ block.settings.heading_tag }}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                      <p class="heading {{ block.settings.heading_tag }}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                         {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
                       </p>
                     {%- endif -%}

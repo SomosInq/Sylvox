@@ -69,17 +69,19 @@
     margin: 0;
     padding-right: 20px;
     border-right: 1px solid #C6C6C6;
+    color: rgb(89 89 89);
   }
 
   .product-filter-buttons {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     align-items: center;
     font-size: 18px;
   }
 
   .product-filter-buttons p {
     margin: 0;
+    color: rgb(89 89 89);
   }
 
   .product-meta-info {
@@ -104,12 +106,17 @@ color: #000;
 
   .filter-btn div span {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     color: #C6C6C6;
   }
 
   .filter-btn.active div span {
-    color: #000;
+    color: #20413B;
+  }
+
+  .filter-btn img.all {
+    width: 16px !important;
+    margin-right: 5px;
   }
 
   .product-filter-buttons select {
@@ -136,6 +143,10 @@ color: #000;
     z-index: 2;
   }
 
+  .tab-product-content__info h2 {
+    font-weight: 600;
+  }
+
   .justify-left { justify-content: flex-start; text-align: left; }
   .justify-center { justify-content: center; text-align: center; }
   .justify-right { justify-content: flex-end; text-align: right; }
@@ -159,6 +170,16 @@ color: #000;
       grid-template-columns: repeat(auto-fit, minmax(47%, 1fr));
     }
   }
+  @media (max-width: 1654px) {
+    .tabs {
+      top: 430px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .tabs {
+      top: calc(64vw * 0.5);
+    }
+  }
   @media (max-width: 600px) {
         .title-filters {
         width: 100% !important;
@@ -169,6 +190,7 @@ color: #000;
       transform: none;
       width: 100%;
       left: 0;
+      top: 0;
       padding: 0 25px !important;
     }
     .tabs select {
@@ -312,9 +334,7 @@ color: #000;
                 {% assign handle = res | handleize %}
                 <button class="filter-btn{% if forloop.first %} active{% endif %}" data-filter="{{ handle }}">
                   <div style="display:flex; align-items:center;">
-                    {% if res != "All" %}
-                      <img src="{{ 'filter-' | append: handle | append: '.jpg' | asset_url }}" alt="{{ res }}" style="width:30px; height:auto; margin-bottom:4px;" />
-                    {% endif %}
+                      <img class="{{ handle }}" src="{{ 'filter-' | append: handle | append: '.jpg' | asset_url }}" alt="{{ res }}" style="width:30px; height:auto; margin-bottom:4px;" />
                     <span>{{ res }}</span>
                   </div>
                 </button>
