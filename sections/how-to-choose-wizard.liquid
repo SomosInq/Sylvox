@@ -1,5 +1,5 @@
 {%- stylesheet -%}
-/* Base */
+/* ============== Base ============== */
 .h2c{ --h2c-accent: {{ section.settings.accent_color }}; }
 .h2c *{ box-sizing:border-box; }
 .h2c .container{ max-width:{{ section.settings.max_width }}px; margin:0 auto; padding-inline:20px; }
@@ -10,22 +10,30 @@
 .h2c.section_content_width_standard .container{ max-width:50% !important; }
 .h2c.section_content_width_full .container{ max-width:100% !important; }
 
-/* Progress */
+/* ============== Progress ============== */
 .h2c .progress{ display:flex; gap:8px; align-items:center; justify-content:center; padding:12px 0 24px; flex-wrap:wrap; }
 .h2c .progress__pill{ display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; font-size:13px; background:#eef2ef; color:#2b3b34; opacity:.85; }
 .h2c .progress__pill.is-active{ background:var(--h2c-accent); color:#fff; opacity:1; }
 .h2c .progress__num{ width:18px; height:18px; border-radius:999px; display:inline-grid; place-items:center; font-size:11px; background:rgba(0,0,0,.15); color:#fff; }
 .h2c .progress__pill.is-active .progress__num{ background:rgba(255,255,255,.25); }
 
-/* Steps */
+/* ============== Steps ============== */
 .h2c .step{ display:none; }
 .h2c .step.is-active{ display:block; animation:fadeIn .18s ease-in; }
 @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
 .h2c .step__head{ margin:10px 0 22px; }
 .h2c .step__title{ font-size:clamp(22px,2.4vw,32px); font-weight:600; color:#2b3b34; margin:0 0 8px; text-align:center; }
 .h2c .step__sub{ font-size:12px; color:#6b7c74; text-align:center; }
+.h2c .card:focus{ outline: 2px solid var(--h2c-accent); outline-offset: 2px; }
 
-/* Grid */
+/* Theme Editor click-through (cards must receive clicks) */
+html.shopify-design-mode .h2c .h2c-block-handle{ pointer-events:none !important; position:static !important; }
+html.shopify-design-mode .h2c [data-group="environment"] .card *{ pointer-events:none !important; }
+html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none !important; }
+.h2c [data-group="environment"] .card,
+.h2c [data-group="mount"] .card{ pointer-events:auto !important; position:relative; z-index:1; }
+
+/* ============== Grid ============== */
 .h2c .grid{ display:grid; gap:18px; }
 .h2c .grid--1{ grid-template-columns:1fr; }
 .h2c .grid--2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -34,19 +42,20 @@
 @media (max-width:980px){ .h2c .grid--3,.h2c .grid--4{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:600px){ .h2c .grid--2,.h2c .grid--3,.h2c .grid--4{ grid-template-columns:1fr; } }
 
-/* Cards */
+/* ============== Cards ============== */
 .h2c .card{ position:relative; background:#fff; border-radius:12px; border:1px solid #e6ece8; padding:16px; box-shadow:0 1px 0 rgba(0,0,0,.02); cursor:pointer; }
 .h2c .card__img{ aspect-ratio:4/3; width:100%; object-fit:cover; border-radius:8px; background:#f6f8f7; }
 .h2c .card__title{ font-size:14px; font-weight:600; color:#2b3b34; margin:10px 0 4px; text-align:center; }
 .h2c .card__desc{ font-size:12px; color:#6b7c74; text-align:center; }
-.h2c .card__radio{ position:absolute; right:12px; bottom:12px; width:18px; height:18px; border-radius:999px; border:2px solid #c7d3cc; background:#fff; }
+.h2c .card__radio{ position:absolute; right:12px; bottom:12px; width:18px; height:18px; border-radius:999px; border:2px solid #c7d3cc; background:#fff; transition:all .15s ease; }
+.h2c .card.is-selected .card__radio{ border-color:var(--h2c-accent); background:var(--h2c-accent); box-shadow:0 0 0 3px rgba(35,79,63,.15); }
 
-/* Step 1 design: softer, centered */
+/* Step 1 look */
 .h2c [data-group="environment"] .card{ border:none; box-shadow:0 8px 22px rgba(0,0,0,.06); }
 .h2c [data-group="environment"] .card.is-selected{ box-shadow:0 12px 28px rgba(0,0,0,.12); }
 .h2c [data-group="environment"] .card .card__radio{ position:static; display:block; margin:12px auto 0; }
 
-/* Tables */
+/* ============== Tables ============== */
 .h2c .table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid #e6ece8; border-radius:10px; overflow:hidden; }
 .h2c .table th,.h2c .table td{ font-size:13px; padding:14px; border-bottom:1px solid #eef2ef; color:#2b3b34; text-align:left; vertical-align:top; }
 .h2c .table th{ font-weight:600; background:#f8faf9; }
@@ -59,13 +68,35 @@
 .series-cell{ display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; }
 .series-cell img{ width:24px; height:24px; object-fit:contain; }
 
-/* Footer buttons */
-.h2c .nav{ display:flex; justify-content:center; gap:12px; margin:22px 0 10px; }
-.h2c .btn{ appearance:none; border:1px solid #d7e2dc; background:#fff; color:#2b3b34; padding:10px 16px; border-radius:999px; cursor:pointer; font-size:14px; display:inline-flex; align-items:center; justify-content:center; }
-.h2c .btn--primary{ background:var(--h2c-accent); border-color:var(--h2c-accent); color:#fff; }
-.h2c .btn--primary[disabled]{ opacity:.5; pointer-events:none; }
+/* ============== Nav (Prev/Next) ============== */
+.h2c .nav{
+  position:sticky;
+  bottom:0;
+  z-index:5;
+  background:linear-gradient(to bottom, rgba(255,255,255,0), #fff 40%);
+  padding-top:16px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  place-content: center;
+}
+.h2c .btn{ appearance:none; border:1px solid #d7e2dc; background:#fff; color:#2b3b34; padding:12px 22px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600; display:inline-flex; align-items:center; justify-content:center; box-shadow:none; }
+.h2c .btn--primary{ border-radius: 9999px; background: var(--Dark-Green, #20413B); border-color:var(--h2c-accent); color:#fff; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+.h2c .nav [data-prev]{ order:1; }
+.h2c .nav [data-next], .h2c .nav [data-restart]{ order:2; }
+.h2c .nav [data-next]{ display:inline-flex !important; } /* always take space/visibility */
+.h2c .btn--primary.is-disabled,
+.h2c .btn--primary[aria-disabled="true"],
+.h2c .btn--primary[disabled]{
+  opacity:.35;
+  pointer-events:none;
+  background:#fff;
+  color:#8aa099;
+  box-shadow:none;
+  border-color:var(--h2c-accent);
+}
 
-/* Result */
+/* ============== Result ============== */
 .h2c .result-card{ max-width:420px; margin:0 auto; }
 .h2c .result-card .card__img{ aspect-ratio:16/10; }
 .h2c .cta{ display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:var(--h2c-accent); color:#fff; text-decoration:none; }
@@ -84,9 +115,6 @@
       {% endfor %}
     </div>
 
-    {#---------------------------#
-     # STEP 1: ENVIRONMENT      #
-     #---------------------------#}
     <section class="step is-active" data-step="1">
       <div class="step__head">
         <h2 class="step__title">{{ section.settings.step1_title }}</h2>
@@ -98,10 +126,10 @@
           {% if block.type == 'environment' %}
             {% assign env_id_for_match = block.settings.manual_id | default: block.id %}
             <article class="card"
-                     data-value="{{ env_id_for_match }}"
-                     data-label="{{ block.settings.title | escape }}"
-                     data-env-key="{{ block.settings.env_key | default: '' | downcase | strip }}"
-                     {{ block.shopify_attributes }}>
+              data-value="{{ env_id_for_match }}"
+              data-label="{{ block.settings.title | escape }}"
+              data-env-key="{{ block.settings.env_key | default: '' | downcase | strip }}">
+              <span class="h2c-block-handle" {{ block.shopify_attributes }} aria-hidden="true"></span>
               {% if block.settings.image %}<img class="card__img" src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.title | escape }}">{% endif %}
               <h3 class="card__title">{{ block.settings.title }}</h3>
               <p class="card__desc">{{ block.settings.desc }}</p>
@@ -117,9 +145,6 @@
       </div>
     </section>
 
-    {#---------------------------#
-     # STEP 2: SERIES TABLE     #
-     #---------------------------#}
     <section class="step" data-step="2">
       <div class="step__head">
         <h2 class="step__title">{{ section.settings.step2_title }}</h2>
@@ -230,9 +255,6 @@
       </div>
     </section>
 
-    {#---------------------------#
-     # STEP 3: SIZE + SETUP     #
-     #---------------------------#}
     <section class="step" data-step="3">
       <div class="step__head">
         <h2 class="step__title">{{ section.settings.step3_title }}</h2>
@@ -285,9 +307,6 @@
       </div>
     </section>
 
-    {#---------------------------#
-     # STEP 4: MOUNT            #
-     #---------------------------#}
     <section class="step" data-step="4">
       <div class="step__head">
         <h2 class="step__title">{{ section.settings.step4_title }}</h2>
@@ -298,7 +317,10 @@
         {% for m in section.blocks %}
           {% if m.type == 'mount_option' %}
           {% assign mount_id_for_match = m.settings.manual_id | default: m.id %}
-          <article class="card" data-value="{{ mount_id_for_match }}" data-label="{{ m.settings.title | escape }}" {{ m.shopify_attributes }}>
+          <article class="card"
+            data-value="{{ mount_id_for_match }}"
+            data-label="{{ m.settings.title | escape }}">
+            <span class="h2c-block-handle" {{ m.shopify_attributes }} aria-hidden="true"></span>
             {% if m.settings.image %}<img class="card__img" src="{{ m.settings.image | img_url: '600x' }}" alt="{{ m.settings.title | escape }}">{% endif %}
             <h3 class="card__title">{{ m.settings.title }}</h3>
             <p class="card__desc">{{ m.settings.desc }}</p>
@@ -314,9 +336,6 @@
       </div>
     </section>
 
-    {#---------------------------#
-     # STEP 5: RESULT           #
-     #---------------------------#}
     <section class="step" data-step="5">
       <div class="step__head">
         <h2 class="step__title">{{ section.settings.step5_title }}</h2>
@@ -340,195 +359,297 @@
 </div>
 
 <script>
-(() => {
-  const root = document.querySelector('.h2c[data-section-id="{{ section.id }}"]');
-  if (!root) return;
+(function(){
+  try {
+    const SECTION_ID = "{{ section.id }}";
+    const ROOT_SEL   = `.h2c[data-section-id="${SECTION_ID}"]`;
 
-  const state = { env:null, envKey:'all', series:null, size:null, mount:null };
+    // Materialize settings safely
+    const FALLBACK_TITLE = {{ section.settings.fallback_title | json }};
+    const DEFAULT_CTA    = {{ section.settings.default_cta    | json }};
+    const ALERT_ENV      = {{ section.settings.alert_pick_env    | json }};
+    const ALERT_SERIES   = {{ section.settings.alert_pick_series | json }};
+    const ALERT_SIZE     = {{ section.settings.alert_pick_size   | json }};
+    const ALERT_MOUNT    = {{ section.settings.alert_pick_mount  | json }};
 
-  const steps = [...root.querySelectorAll('.step')];
-  const pills = [...root.querySelectorAll('[data-step-pill]')];
-  const q = (s)=>root.querySelector(s), qa = (s)=>[...root.querySelectorAll(s)];
+    let bound = false;
 
-  function goto(i){
-    steps.forEach(s=>s.classList.remove('is-active'));
-    pills.forEach(p=>p.classList.remove('is-active'));
-    q(`.step[data-step="${i}"]`)?.classList.add('is-active');
-    q(`[data-step-pill="${i}"]`)?.classList.add('is-active');
-  }
-  function selectCard(scope, el){
-    qa(`${scope} .card, ${scope} .size-row, ${scope} .setup-row`).forEach(x=>x.classList.remove('is-selected'));
-    el.classList.add('is-selected');
-  }
-  function toggleNext(step, on){
-    const b=q(`.step[data-step="${step}"] [data-next]`);
-    if(!b) return;
-    b.disabled=!on;
-    b.style.display='inline-flex'; // ensure visible
-  }
+    function init(){
+      if (bound) return;
+      const root = document.querySelector(ROOT_SEL);
+      if (!root) { console.warn('[H2C] root not found', ROOT_SEL); return; }
 
-  /* Step 2 helpers (filter columns by env; select column) */
-  function clearSeriesSel(){
-    qa('[data-series-col],[data-series-cell]').forEach(el=>el.classList.remove('is-selected'));
-    state.series=null;
-  }
-  function selectSeries(seriesId,label){
-    clearSeriesSel();
-    qa(`[data-series-col="${seriesId}"],[data-series-cell="${seriesId}"]`).forEach(el=>el.classList.add('is-selected'));
-    state.series={id:seriesId,label};
-    toggleNext(2,true);
-  }
-  function filterSeriesByEnv(){
-    const key = state.envKey || 'all';
-    qa('th[data-series-col]').forEach(h=>{
-      const raw=(h.dataset.envs||'all').toLowerCase();
-      const arr=raw.split(',').map(v=>v.trim()).filter(Boolean);
-      const show = arr.includes('all') || arr.includes(key);
-      h.classList.toggle('is-hidden', !show);
-    });
-    qa('td[data-series-cell]').forEach(td=>{
-      const sid=td.dataset.series; const head=q(`th[data-series-col="${sid}"]`);
-      const show=head && !head.classList.contains('is-hidden');
-      td.classList.toggle('is-hidden', !show);
-      if(!show) td.classList.remove('is-selected');
-    });
-    if(state.series){
-      const head=q(`th[data-series-col="${state.series.id}"]`);
-      if(!head || head.classList.contains('is-hidden')){ clearSeriesSel(); toggleNext(2,false); }
-    }
-  }
+      const q  = (s)=>root.querySelector(s);
+      const qa = (s)=>Array.from(root.querySelectorAll(s));
 
-  /* Step 1 */
-  qa('[data-group="environment"] .card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      selectCard('[data-group="environment"]', card);
-      state.env = { id:card.dataset.value, label:card.dataset.label };
-      // Prefer explicit env_key (full-sun / partial-sun); else infer from label
-      const explicit = (card.dataset.envKey||'').trim();
-      if(explicit){ state.envKey = explicit; }
-      else{
-        const l=(state.env.label||'').toLowerCase();
-        state.envKey = l.includes('full') ? 'full-sun' : (l.includes('partial') ? 'partial-sun' : 'all');
+      // Wizard state
+      const state = { env:null, envKey:'all', series:null, size:null, mount:null };
+
+      // ---------- Helpers
+      function toId(v){ return (v||'').toString().trim().toLowerCase(); }
+      function key(s){ return (s||'').toString().toLowerCase().replace(/["'\\s]/g,'').trim(); }
+
+      function setNext(step, enabled){
+        const stepEl = q(`.step[data-step="${step}"]`);
+        if (!stepEl) return;
+        const btn = stepEl.querySelector('[data-next]');
+        if (!btn) return;
+        if (enabled){
+          btn.disabled = false;
+          btn.removeAttribute('disabled');
+          btn.setAttribute('aria-disabled', 'false');
+          btn.classList.remove('is-disabled');
+        } else {
+          btn.disabled = true;
+          btn.setAttribute('disabled', '');
+          btn.setAttribute('aria-disabled', 'true');
+          btn.classList.add('is-disabled');
+        }
       }
-      toggleNext(1,true);
-      filterSeriesByEnv();
+
+      function markOnlySelected(items, selectedEl, selectedClass='is-selected'){
+        items.forEach(el=>el.classList.remove(selectedClass));
+        if (selectedEl) selectedEl.classList.add(selectedClass);
+      }
+
+      function syncProgress(step){
+        qa('[data-step-pill]').forEach(p=>{
+          const n = +p.dataset.stepPill;
+          p.classList.toggle('is-active', n===step);
+        });
+      }
+
+      function goto(step){
+        qa('.step').forEach(s=>s.classList.remove('is-active'));
+        const target = q(`.step[data-step="${step}"]`);
+        if (target) target.classList.add('is-active');
+        syncProgress(step);
+
+        // enable/disable "Next" for current step based on state
+        if (step===1) setNext(1, !!state.env);
+        if (step===2) setNext(2, !!state.series);
+        if (step===3) setNext(3, !!state.size);
+        if (step===4) setNext(4, !!state.mount);
+      }
+
+      // Show/hide series columns by environment
+      function syncSeriesByEnv(){
+        const keyEnv = state.envKey || 'all';
+        const cols = qa('[data-series-col]');
+        cols.forEach(th=>{
+          const envs = (th.dataset.envs || 'all').toLowerCase();
+          const sid  = th.dataset.seriesCol;
+          const matches = envs==='all' || envs.split(',').map(s=>s.trim()).includes(keyEnv);
+          th.classList.toggle('is-hidden', !matches);
+          qa(`[data-series-cell="${sid}"]`).forEach(td=>{
+            td.classList.toggle('is-hidden', !matches);
+          });
+        });
+
+        // If currently selected series is no longer visible, clear it
+        if (state.series){
+          const activeTh = q(`[data-series-col="${state.series.id}"]`);
+          if (!activeTh || activeTh.classList.contains('is-hidden')){
+            clearSeriesSelection();
+          }
+        }
+      }
+
+      function clearSeriesSelection(){
+        qa('[data-series-col]').forEach(el=>el.classList.remove('is-selected'));
+        qa('[data-series-cell]').forEach(el=>el.classList.remove('is-selected'));
+        state.series = null;
+        setNext(2, false);
+      }
+
+      // ---------- Bindings
+
+      // Step 1: Environment cards
+      qa('[data-group="environment"] .card').forEach(card=>{
+        card.addEventListener('click', ()=>{
+          const all = qa('[data-group="environment"] .card');
+          markOnlySelected(all, card);
+
+          const value = toId(card.dataset.value);
+          const label = card.dataset.label || '';
+          const explicit = toId(card.dataset.envKey);
+          const envKey = explicit && explicit !== 'auto' ? explicit : value;
+
+          state.env = { id:value, label };
+          state.envKey = envKey || 'all';
+
+          setNext(1, true);
+          syncSeriesByEnv();
+        }, { passive:true });
+      });
+
+      // Step 2: Series table (headers and cells clickable)
+      q('[data-series-table]')?.addEventListener('click', (e)=>{
+        const th = e.target.closest('[data-series-col]');
+        const td = e.target.closest('[data-series-cell]');
+
+        let sid = null;
+        if (th && !th.classList.contains('is-hidden')) sid = th.dataset.seriesCol;
+        if (!sid && td && !td.classList.contains('is-hidden')) sid = td.dataset.seriesCell;
+        if (!sid) return;
+
+        const allHeaders = qa('[data-series-col]');
+        const allCells   = qa('[data-series-cell]');
+        allHeaders.forEach(h=>h.classList.toggle('is-selected', h.dataset.seriesCol===sid));
+        allCells.forEach(c=>c.classList.toggle('is-selected', c.dataset.seriesCell===sid));
+
+        const header = q(`[data-series-col="${sid}"]`);
+        state.series = { id: sid, label: header ? (header.dataset.label || '') : '' };
+
+        setNext(2, true);
+      });
+
+      // Step 3A: size rows
+      qa('.size-row').forEach(row=>{
+        row.addEventListener('click', ()=>{
+          const all = qa('.size-row');
+          markOnlySelected(all, row);
+          state.size = { id: toId(row.dataset.value), label: row.dataset.label || '' };
+          setNext(3, true);
+        }, { passive:true });
+      });
+
+      // Step 3B: setup rows (non-gating)
+      qa('.setup-row').forEach(row=>{
+        row.addEventListener('click', ()=>{
+          const all = qa('.setup-row');
+          markOnlySelected(all, row);
+        }, { passive:true });
+      });
+
+      // Step 4: Mount cards (delegated + robust enabling)
+      const mountWrap = q('[data-group="mount"]');
+      if (mountWrap){
+        mountWrap.addEventListener('click', (e)=>{
+          const card = e.target.closest('.card');
+          if (!card || !mountWrap.contains(card)) return;
+
+          const all = qa('[data-group="mount"] .card');
+          markOnlySelected(all, card);
+
+          state.mount = { id: toId(card.dataset.value), label: card.dataset.label || '' };
+
+          setNext(4, true);
+          const next4 = q('.step[data-step="4"] [data-next]');
+          if (next4){
+            next4.disabled = false;
+            next4.removeAttribute('disabled');
+            next4.setAttribute('aria-disabled', 'false');
+          }
+        }, { passive:true });
+      }
+
+      // Nav: Next
+      qa('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{
+        const step=+btn.closest('.step').dataset.step;
+        if(step===1 && !state.env)   return alert(ALERT_ENV);
+        if(step===2 && !state.series) return alert(ALERT_SERIES);
+        if(step===3 && !state.size)   return alert(ALERT_SIZE);
+        if(step===4 && !state.mount)  return alert(ALERT_MOUNT);
+        if(step===4) buildResult();
+        goto(step+1);
+        const restart = q('[data-restart]');
+        if (restart) restart.style.display = (step+1===5 ? 'inline-flex' : 'none');
+      }));
+
+      // Nav: Prev
+      qa('[data-prev]').forEach(btn=>btn.addEventListener('click',()=>{
+        const step=+btn.closest('.step').dataset.step;
+        goto(Math.max(1, step-1));
+      }));
+
+      // Restart
+      q('[data-restart]')?.addEventListener('click', ()=>{
+        qa('.is-selected').forEach(el=>el.classList.remove('is-selected'));
+        state.env = null; state.envKey='all'; state.series=null; state.size=null; state.mount=null;
+        [1,2,3,4].forEach(s=>setNext(s,false));
+        qa('[data-series-col]').forEach(el=>el.classList.remove('is-hidden'));
+        qa('[data-series-cell]').forEach(el=>el.classList.remove('is-hidden'));
+        goto(1);
+        q('[data-restart]').style.display = 'none';
+      });
+
+      // ---------- Build Result (safe selectors)
+      function buildResult(){
+        const root = document.querySelector(ROOT_SEL);
+        const q  = (s)=>root.querySelector(s);
+        const qa = (s)=>Array.from(root.querySelectorAll(s));
+        const titleEl=q('#h2c-result-title'), descEl=q('#h2c-result-desc'), imgEl=q('#h2c-result-image'), ctaWrap=q('#h2c-result-cta');
+
+        // Exact rule override
+        const rules = qa('[data-rule]');
+        const rule = rules.find(r=>{
+          const e = toId(r.dataset.env||'');     const s = toId(r.dataset.series||'');
+          const z = toId(r.dataset.size||'');    const m = toId(r.dataset.mount||'');
+          return e===state.env?.id && s===state.series?.id && z===state.size?.id && (!m || m===state.mount?.id);
+        });
+
+        if(rule){
+          titleEl.textContent = rule.dataset.title || state.series?.label || FALLBACK_TITLE;
+          descEl.textContent  = [state.env?.label,state.series?.label,state.size?.label,state.mount?.label].filter(Boolean).join(' • ');
+          if(rule.dataset.image) imgEl.src = rule.dataset.image;
+          const url = rule.dataset.url || '#';
+          ctaWrap.innerHTML = url && url!=='#' ? `<a class="cta" href="${url}">${rule.dataset.cta || DEFAULT_CTA}</a>` : '';
+          return;
+        }
+
+        // Fallback mapping: series product base + variant map by size
+        const seriesId = state.series?.id || '';
+        const sizeKey  = key(state.size?.id || state.size?.label); // prefer ID
+
+        const sp = q(`[data-series-product][data-series="${seriesId}"]`);
+        const maps = qa(`[data-variant-map][data-series="${seriesId}"]`);
+        const primaryMap = maps.find(el => key(el.dataset.size) === sizeKey);
+
+        const primaryUrl = primaryMap?.dataset.url || sp?.dataset.baseUrl || '#';
+        const primaryImg = primaryMap?.dataset.img || sp?.dataset.img || {{ section.settings.fallback_image | img_url: '800x' | json }};
+
+        const mountEl = q(`[data-mount-product][data-mount="${state.mount?.id||''}"]`);
+
+        const baseTitle = sp?.dataset.title || state.series?.label || FALLBACK_TITLE;
+
+        titleEl.textContent = baseTitle;
+        descEl.textContent  = [state.env?.label,state.series?.label,state.size?.label,state.mount?.label].filter(Boolean).join(' • ');
+        imgEl.src = primaryImg;
+
+        const ctas=[];
+        if(primaryUrl && primaryUrl!=='#'){
+          ctas.push(`<a class="cta" href="${primaryUrl}">${DEFAULT_CTA}</a>`);
+        }
+        if(mountEl && mountEl.dataset.url){
+          ctas.push(`<a class="cta" href="${mountEl.dataset.url}">View Mount</a>`);
+        }
+        ctaWrap.innerHTML = ctas.join(' ');
+      }
+
+      // ---------- Boot
+      [1,2,3,4].forEach(s=>setNext(s,false));
+      goto(1);
+      bound = true;
+      console.log('[H2C] Init complete', { SECTION_ID, inEditor: (typeof Shopify!=='undefined' && Shopify.designMode) });
+    }
+
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init, { once:true }); } else { init(); }
+    document.addEventListener('shopify:section:load', (evt) => {
+      const el = evt.target;
+      if (el && el.querySelector && el.querySelector(`.h2c[data-section-id="{{ section.id }}"]`)) {
+        bound = false; init();
+      }
     });
-  });
-
-  /* Step 2 */
-  qa('th[data-series-col]').forEach(h=>h.addEventListener('click',()=>selectSeries(h.dataset.seriesCol,h.dataset.label)));
-  qa('td[data-series-cell]').forEach(c=>c.addEventListener('click',()=>{
-    const sid=c.dataset.series; const h=q(`th[data-series-col="${sid}"]`);
-    selectSeries(sid, h?.dataset.label||'');
-  }));
-
-  /* Step 3A */
-  qa('.size-row').forEach(r=>r.addEventListener('click',()=>{
-    qa('.size-row,.setup-row').forEach(x=>x.classList.remove('is-selected'));
-    r.classList.add('is-selected');
-    state.size={id:r.dataset.value,label:r.dataset.label};
-    toggleNext(3,true);
-  }));
-  /* Step 3B */
-  qa('.setup-row').forEach(r=>r.addEventListener('click',()=>{
-    qa('.size-row,.setup-row').forEach(x=>x.classList.remove('is-selected'));
-    r.classList.add('is-selected');
-    state.size={id:r.dataset.value,label:r.dataset.label};
-    toggleNext(3,true);
-  }));
-
-  /* Step 4 */
-  qa('[data-group="mount"] .card').forEach(card=>card.addEventListener('click',()=>{
-    selectCard('[data-group="mount"]', card);
-    state.mount={id:card.dataset.value,label:card.dataset.label};
-    toggleNext(4,true);
-  }));
-
-  /* Nav */
-  qa('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{
-    const step=+btn.closest('.step').dataset.step;
-    if(step===1 && !state.env)   return alert('{{ section.settings.alert_pick_env | escape }}');
-    if(step===2 && !state.series) return alert('{{ section.settings.alert_pick_series | escape }}');
-    if(step===3 && !state.size)   return alert('{{ section.settings.alert_pick_size | escape }}');
-    if(step===4 && !state.mount)  return alert('{{ section.settings.alert_pick_mount | escape }}');
-
-    if(step===4) buildResult();
-    goto(step+1);
-    q('[data-restart]')?.style.setProperty('display', step+1===5 ? 'inline-flex' : 'none');
-  }));
-  qa('[data-prev]').forEach(btn=>btn.addEventListener('click',()=>{
-    const step=+btn.closest('.step').dataset.step;
-    goto(Math.max(1, step-1));
-  }));
-  q('[data-restart]')?.addEventListener('click',()=>{
-    Object.keys(state).forEach(k=>state[k]=null);
-    qa('.is-selected').forEach(x=>x.classList.remove('is-selected'));
-    [1,2,3,4].forEach(s=>toggleNext(s,false));
-    goto(1);
-  }));
-
-  /* Build result: Rule override → Product/variant fallback */
-  function buildResult(){
-    const titleEl=q('#h2c-result-title'), descEl=q('#h2c-result-desc'), imgEl=q('#h2c-result-image'), ctaWrap=q('#h2c-result-cta');
-
-    // 1) RULE OVERRIDE (manual IDs expected in data attributes)
-    const rules=qa('[data-rule]').map(r=>({
-      env:r.dataset.env, series:r.dataset.series, size:r.dataset.size, mount:r.dataset.mount,
-      title:r.dataset.title, url:r.dataset.url, image:r.dataset.image, cta:r.dataset.cta
-    }));
-    const rule = rules.find(r =>
-      r.env===state.env?.id && r.series===state.series?.id && r.size===state.size?.id && (r.mount==='' || r.mount===state.mount?.id)
-    );
-    if(rule){
-      titleEl.textContent = rule.title || state.series?.label || '{{ section.settings.fallback_title | escape }}';
-      descEl.textContent  = [state.env?.label,state.series?.label,state.size?.label,state.mount?.label].filter(Boolean).join(' • ');
-      if(rule.image) imgEl.src = rule.image;
-      ctaWrap.innerHTML = rule.url ? `<a class="cta" href="${rule.url}">${rule.cta || '{{ section.settings.default_cta | escape }}'}</a>` : '';
-      return;
-    }
-
-    // 2) PRODUCT / VARIANT FALLBACK
-    const norm = s => (s||'').toString().toLowerCase().replace(/["]/g,'').trim();
-    const numberish = s => { const m=(s||'').match(/\d{2,3}/); return m?m[0]:null; };
-    const wantA = norm(state.size?.label||''); const wantN = numberish(state.size?.label||'');
-
-    const seriesId = state.series?.id;
-    const maps = qa(`[data-variant-map][data-series="${seriesId}"]`);
-    let best=null;
-    for(const el of maps){
-      const sz = norm(el.dataset.size), szN = numberish(sz);
-      if(sz && wantA && sz===wantA){ best=el; break; }
-      if(!best && wantN && szN===wantN){ best=el; }
-    }
-    const sp = q(`[data-series-product][data-series="${seriesId}"]`);
-    const baseTitle= sp?.dataset.title || state.series?.label || '{{ section.settings.fallback_title | escape }}';
-    const baseImg  = sp?.dataset.img || '{{ section.settings.fallback_image | img_url: '800x' }}';
-    const baseUrl  = sp?.dataset.baseUrl || '#';
-
-    const primaryUrl = best?.dataset.url || baseUrl;
-    const primaryImg = best?.dataset.img || baseImg;
-
-    // Optional mount product CTA
-    const mountEl = state.mount?.id ? q(`[data-mount-product][data-mount="${state.mount.id}"]`) : null;
-
-    titleEl.textContent = baseTitle;
-    descEl.textContent  = [state.env?.label,state.series?.label,state.size?.label,state.mount?.label].filter(Boolean).join(' • ');
-    imgEl.src = primaryImg;
-
-    const ctas=[];
-    if(primaryUrl && primaryUrl!=='#'){ ctas.push(`<a class="cta" href="${primaryUrl}">{{ section.settings.default_cta | escape }}</a>`); }
-    if(mountEl && mountEl.dataset.url){ ctas.push(`<a class="cta" href="${mountEl.dataset.url}">View Mount</a>`); }
-    ctaWrap.innerHTML = ctas.join(' ');
+  } catch (err) {
+    console.error('[H2C] Fatal error booting wizard:', err);
   }
-
-  [1,2,3,4].forEach(s=>toggleNext(s,false));
-  goto(1);
 })();
 </script>
 
 {%- comment -%}
   Hidden datasets for:
-  • Result rules (exact match override) — uses manual IDs if provided
+  • Result rules (exact match override)
   • Series → variant maps (size → variant)
   • Mount products (optional)
 {%- endcomment -%}
@@ -563,7 +684,7 @@
         {% else %}{% assign size_val = v.option3 %}{% endif %}
         <div data-variant-map
              data-series="{{ sid }}"
-             data-size="{{ size_val | downcase | strip }}"
+             data-size="{{ size_val | downcase | strip | replace: '"', '' | replace: "'", '' }}"
              data-vid="{{ v.id }}"
              data-url="{{ p.url }}?variant={{ v.id }}"
              data-img="{% if v.featured_media %}{{ v.featured_media | img_url: '800x' }}{% else %}{{ p.featured_image | img_url: '800x' }}{% endif %}">
@@ -592,8 +713,6 @@
     {% endif %}
   {% endfor %}
 </div>
-
-
 
 {% schema %}
 {
@@ -657,7 +776,7 @@
       "name": "Environment",
       "settings": [
         { "type": "text", "id": "manual_id", "label": "Manual ID (e.g. full-sun / partial-sun)", "default": "manual-id" },
-        { "type": "text", "id": "env_key", "label": "Sun key for filtering (full-sun / partial-sun)", "default": "env-key" },
+        { "type": "text", "id": "env_key", "label": "Sun key for filtering (full-sun / partial-sun)", "default": "auto" },
         { "type": "text", "id": "title", "label": "Title", "default": "Full Sun (Direct Sunlight)" },
         { "type": "textarea", "id": "desc", "label": "Description", "default": "For areas completely exposed to sunlight." },
         { "type": "image_picker", "id": "image", "label": "Image" }
@@ -736,7 +855,7 @@
       "name": "Result rule",
       "settings": [
         { "type": "header", "content": "Match criteria (enter manual or block IDs)" },
-        { "type": "text", "id": "env_ref", "label": "Environment ID", "default": "env-key" },
+        { "type": "text", "id": "env_ref", "label": "Environment ID", "default": "auto" },
         { "type": "text", "id": "series_ref", "label": "Series ID", "default": "series-ref" },
         { "type": "text", "id": "size_ref", "label": "Size ID", "default": "size-ref" },
         { "type": "text", "id": "mount_ref", "label": "Mount ID (optional)", "default": "mount-ref" },
@@ -753,4 +872,3 @@
   "presets": [{ "name": "How to Choose – Wizard", "category": "Custom" }]
 }
 {% endschema %}
-

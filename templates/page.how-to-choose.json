@@ -25,7 +25,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "300",
-            "alignment": "left"
+            "alignment": "left",
+            "font_size": 48
           }
         }
       },
@@ -38,6 +39,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 500,
         "mobile_section_height": 500,
@@ -70,6 +72,8 @@
         "environment_ePD4Rz": {
           "type": "environment",
           "settings": {
+            "manual_id": "full-sun",
+            "env_key": "auto",
             "title": "Full Sun (Direct Sunlight)",
             "desc": "For areas completely exposed to sunlight.",
             "image": "shopify://shop_images/7d1b765c5b16cf44dab3a3aca24ef18c5d53b25e.jpg"
@@ -78,6 +82,8 @@
         "environment_wb3FbE": {
           "type": "environment",
           "settings": {
+            "manual_id": "partial-sun",
+            "env_key": "auto",
             "title": "Partial Sun (Some Shade)",
             "desc": "For partially covered spaces\npatios with pergolas, decks, outdoor kitchens.",
             "image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9_e0dd84d3-292d-40b4-a859-04f1f09b7bc8.jpg"
@@ -86,25 +92,74 @@
         "series_bjQYpr": {
           "type": "series",
           "settings": {
+            "manual_id": "deck-pro",
             "title": "Deck Pro QLED 2.0",
-            "env_all": false,
-            "environments_csv": "-",
-            "smart_system_label": "Smart System:",
-            "smart_system_value": "Google TV",
-            "best_for_label": "Best For:",
-            "best_for_value": "Premium picture"
+            "show_full_sun": true,
+            "show_partial_sun": false,
+            "smart_value": "Google TV",
+            "display_value": "LED",
+            "refresh_value": "60HZ",
+            "color_value": "Good",
+            "best_value": "Smart & Value",
+            "product": "",
+            "size_option_index": "1"
+          }
+        },
+        "size_option_Gt4NwJ": {
+          "type": "size_option",
+          "settings": {
+            "manual_id": "55",
+            "title": "6–8 ft (1.8–2.4 m)",
+            "recommended": "55\""
+          }
+        },
+        "setup_option_DD7hxh": {
+          "type": "setup_option",
+          "settings": {
+            "manual_id": "",
+            "space_label": "Medium deck or pergola",
+            "suggested_sizes": "55\"/65\"",
+            "reason": "Balanced size for multi-person viewing"
+          }
+        },
+        "mount_option_kDxLTC": {
+          "type": "mount_option",
+          "settings": {
+            "manual_id": "wall",
+            "title": "Wall Mount",
+            "desc": "Best for solid walls, patios, or decks.",
+            "product": ""
+          }
+        },
+        "rule_ijr8qL": {
+          "type": "rule",
+          "settings": {
+            "env_ref": "full-sun",
+            "series_ref": "deck-pro",
+            "size_ref": "55",
+            "mount_ref": "wall",
+            "product": "waterproof-outdoor-sound-bar",
+            "custom_url": "",
+            "override_title": "title",
+            "override_cta": "cta"
           }
         }
       },
       "block_order": [
         "environment_ePD4Rz",
         "environment_wb3FbE",
-        "series_bjQYpr"
+        "series_bjQYpr",
+        "size_option_Gt4NwJ",
+        "setup_option_DD7hxh",
+        "mount_option_kDxLTC",
+        "rule_ijr8qL"
       ],
       "name": "How to Choose – Wizard",
       "settings": {
         "accent_color": "#234f3f",
         "max_width": 1150,
+        "section_width": "full",
+        "section_content_width": "standard",
         "prev_text": "Previous",
         "next_text": "Next",
         "restart_text": "Start again",
@@ -114,23 +169,25 @@
         "alert_pick_mount": "Please choose your mounting option.",
         "step1_title": "Choose Your Installation Environment",
         "step1_sub": "Where do you plan to place the TV? Select the scene that best fits your space.",
-        "step1_quick_title": "Quick Guide",
-        "step1_quick_body": "-",
         "step2_title": "Choose the Right Series for Your Needs",
         "step2_sub": "Select what fits you best.",
-        "step2_quick_title": "Quick Guide",
-        "step2_quick_body": "-",
+        "step2_left_header": "Specifications",
+        "row_label_smart": "Smart System",
+        "row_label_display": "Display Type",
+        "row_label_refresh": "Refresh Rate",
+        "row_label_color": "Color Accuracy",
+        "row_label_best": "Best For",
         "step3_title": "Choose the Right Screen Size",
         "step3_sub": "How to choose:",
         "distance_col": "Viewing Distance",
         "recommended_size_col": "Recommended Screen Size",
         "size_rule": "Rule of Thumb: Viewing distance (in inches) ÷ 1.5 ≈ optimal screen size.",
-        "step3_quick_title": "Quick Guide",
-        "step3_quick_body": "-",
+        "setup_title": "Choose Based on Your Outdoor Setup:",
+        "setup_col_space": "Outdoor Space Type",
+        "setup_col_sizes": "Suggest Size(s)",
+        "setup_col_why": "Why?",
         "step4_title": "Choose Your Mounting Option",
         "step4_sub": "Pick the setup style that fits your space.",
-        "step4_quick_title": "Quick Guide",
-        "step4_quick_body": "-",
         "step5_title": "Your Result",
         "step5_sub": "Here’s the best match for your setup.",
         "default_cta": "Buy it now",
