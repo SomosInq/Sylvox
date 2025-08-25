@@ -800,8 +800,8 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 550,
-        "slide_width": 1600
+        "slide_height": 400,
+        "slide_width": 800
       }
     },
     "large_product_BDXMM6": {
@@ -1181,10 +1181,50 @@
             "loop": false,
             "muted": false
           }
+        },
+        "video_block_rT3aac": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
+        "video_block_gBtEXW": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
+        "video_block_dwwYkD": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
+        "video_block_rAcBqz": {
+          "type": "video_block",
+          "settings": {
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
         }
       },
       "block_order": [
-        "video_block_acRKFF"
+        "video_block_acRKFF",
+        "video_block_rT3aac",
+        "video_block_gBtEXW",
+        "video_block_dwwYkD",
+        "video_block_rAcBqz"
       ],
       "name": "Video Swiper",
       "settings": {
