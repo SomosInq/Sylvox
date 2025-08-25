@@ -1175,6 +1175,7 @@
         "video_block_GrJEBt": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/ee5ace03-9c07-4694-b07c-22f351dedc43_3a17afb6-ff03-45d2-bf7c-2f7185075a1d.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74_2a7c8b25-0528-4b13-9e21-929dc5d072af.jpg",
             "autoplay": false,
