@@ -6,7 +6,7 @@
   style="
     background-color: {{ section.settings.background_color }};
     {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url: width: 2000 }}); background-size: cover; background-position: center;{% endif %}
-    padding: {{ section.settings.padding_top }}px !important; {{ section.settings.padding_right }}px !important; {{ section.settings.padding_bottom }}px !important; {{ section.settings.padding_left }}px !important;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px !important;
     margin-top: {{ section.settings.margin_top }}px !important; margin-bottom: {{ section.settings.margin_bottom }}px !important;
   ">
   <div class="filter-collection__wrapper">
@@ -241,6 +241,14 @@
             <div class="filter-collection__meta">
               <span class="filter-collection__tag">Lift Cabinet</span>
               <h3 class="filter-collection__title">{{ product.title }}</h3>
+              <span class="smart-tv-type">
+                {% if product.metafields.shopify.smart-tv-platform %}
+                  {% for platform in product.metafields.shopify.smart-tv-platform.value %}
+                    {{ platform.label }}
+                    {% break %}
+                  {% endfor %}
+                {% endif %}
+              </span>
               <p class="filter-collection__price">
                 From {{ product.price | money }}
                 {% if product.compare_at_price > product.price %}
@@ -331,7 +339,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__drawer { display: flex; flex-direction: column; gap: 22px; background-color: #ffffff; width: 312px; padding: 0; align-items: flex-start; justify-content: flex-start; }
 .filter-collection__drawer-inner { display: flex; flex-direction: column; gap: 22px; width: 100%; }
 .filter-collection__sidebar { flex-shrink: 0; width: 312px; display: flex; flex-direction: column; gap: 22px; padding-right: 40px; }
-.filter-collection__group-heading-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.filter-collection__group-heading-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; cursor: pointer;}
 .filter-collection__group-heading { font-family: 'Questrial', sans-serif; font-size: 18px; color: #2C2C2C; }
 .filter-collection__chevron { width: 13px; height: 8px; object-fit: contain; }
 .filter-collection__products { flex: 1; max-width: 1608px; }
@@ -346,13 +354,14 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__compare-button { margin-top: auto; }
 .filter-collection__button { padding: 12px 24px; background: #101820; color: #ffffff; border: none; font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 400; cursor: pointer; border-radius: 40px; }
 .filter-collection__grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 25px; }
-.filter-collection__item { width: 100%; height: 472px; border-radius: 6px; background: #ffffff; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; }
+.filter-collection__item { width: 100%; border-radius: 6px; background: #ffffff; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; }
 .filter-collection__image-wrapper { width: 100%; max-height: 322px; aspect-ratio: 283 / 322; background-size: cover; background-position: top; background-repeat: no-repeat; }
 .filter-collection__image { max-width: 100%; max-height: 100%; object-fit: contain; }
-.filter-collection__meta { padding: 16px 13px 0; display: flex; flex-direction: column; gap: 12px; }
-.filter-collection__tag { background: linear-gradient(90deg, #57a653, #1ba613); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; }
-.filter-collection__title { font-family: Questrial; font-size: 24px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; }
-.filter-collection__price { font-family: Roboto; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; }
+.filter-collection__meta { padding: 16px 13px 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+.filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; }
+.filter-collection__title { font-family: Questrial; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
+.smart-tv-type { margin-top: -12px; font-size: 15px; color: #636363; }
+.filter-collection__price { font-family: Roboto; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; margin-top: auto; }
 .filter-collection__compare-price { text-decoration: line-through; color: rgba(0, 0, 0, 0.5); margin-left: 4px; font-size: 16px; font-family: Roboto; }
 .filter-collection__pagination { display: flex; align-items: center; justify-content: center; gap: 30px; font-size: 16px; font-family: 'Basic Sans', sans-serif; font-weight: 400; text-transform: capitalize; color: black; margin-top: 48px; }
 .filter-collection__pagination a { text-decoration: none; color: black; font-family: inherit; font-size: inherit; font-weight: inherit; text-transform: inherit; }
@@ -365,12 +374,14 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
   .filter-collection__wrapper { flex-direction: column; align-items: center; gap: 20px; }
 
   .filter-collection__grid { grid-template-columns: repeat(2, 164px)!important; column-gap: 16px; row-gap: 16px; padding: 0 23px; justify-content: flex-start; align-items: flex-start; }
-  .filter-collection__item { width: 164px; height: auto; padding-top: 5px; padding-bottom: 5px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; }
+  .filter-collection__item { width: 164px; height: 100%; padding-top: 5px; padding-bottom: 5px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; }
   .filter-collection__image-wrapper { width: 164px; height: 181px; }
   .filter-collection__meta { width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; padding: 0; }
   .filter-collection__tag { font-size: 14px; font-family: Roboto; font-weight: 400; color: #57A653; }
   .filter-collection__title { font-size: 15px; font-family: Questrial; font-weight: 600; color: rgba(0, 0, 0, 0.85); }
+  .smart-tv-type { font-size: 13px; }
   .filter-collection__price { font-size: 14px; font-family: Roboto; font-weight: 400; color: rgba(0, 0, 0, 0.85); }
+  .filter-collection__compare-wrapper { padding: 0; margin-top: 12px; }
 
   .filter-collection__pagination { justify-content: center; align-items: center; gap: 24px; font-size: 16px; font-family: 'Basic Sans', sans-serif; font-weight: 400; text-transform: capitalize; color: black; }
 
