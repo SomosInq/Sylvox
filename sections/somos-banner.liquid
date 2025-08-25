@@ -10,7 +10,19 @@
       width: {{ section.settings.custom_content_width }}%;
       max-width: {{ section.settings.content_max_width }}px;
     }
-    {% endif %}
+  {% endif %}
+
+   #{{ wrapper_id }} .custom-content-wrapper {
+     margin: 0 auto;
+    }
+  @media screen and (min-width: 750px) {
+    #{{ wrapper_id }} .custom-content-wrapper {
+      {% if section.settings.content_alignment != 'center' %}
+        margin-{{ section.settings.content_alignment }}: 80px;
+      {% endif %}
+    } 
+  }
+
   @media screen and (max-width: 749px) {
     #{{ wrapper_id }} {
       padding-top: {{ section.settings.mobile_padding_top }}px !important;
@@ -74,7 +86,7 @@
   {% endif %}
 
   <div class="custom-content-wrapper section_content_width_{{ section.settings.section_content_width }}"
-       style="margin: 0 auto; position: relative; z-index: 2; text-align: {{ section.settings.text_alignment }};">
+       style="position: relative; z-index: 2; text-align: {{ section.settings.text_alignment }};">
     
     {% for block in section.blocks %}
       {% case block.type %}
@@ -281,6 +293,11 @@
     { "type": "text", "id": "custom_class", "label": "Custom CSS Class" },
     { "type": "text", "id": "custom_id", "label": "Unique ID" },
     { "type": "select", "id": "text_alignment", "label": "Text Alignment", "default": "center", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" },
+      { "value": "right", "label": "Right" }
+    ]},
+    { "type": "select", "id": "content_alignment", "label": "Content Box Alignment", "default": "center", "options": [
       { "value": "left", "label": "Left" },
       { "value": "center", "label": "Center" },
       { "value": "right", "label": "Right" }
