@@ -1186,6 +1186,7 @@
         "video_block_mF7Gxx": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/In Home Cinemas-20250722-DeckPro2.0-EN-授权.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/e4ac83204ea4c739da8f47c9dbae0abf13311e24.jpg",
             "autoplay": false,
