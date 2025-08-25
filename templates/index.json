@@ -1175,6 +1175,7 @@
         "video_block_GrJEBt": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/ee5ace03-9c07-4694-b07c-22f351dedc43_3a17afb6-ff03-45d2-bf7c-2f7185075a1d.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/1bf21401516a94a00c6ee2a997fbd71785decf74_2a7c8b25-0528-4b13-9e21-929dc5d072af.jpg",
             "autoplay": false,
@@ -1185,6 +1186,7 @@
         "video_block_mF7Gxx": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/In Home Cinemas-20250722-DeckPro2.0-EN-授权.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/e4ac83204ea4c739da8f47c9dbae0abf13311e24.jpg",
             "autoplay": false,
@@ -1195,6 +1197,7 @@
         "video_block_LhWJgN": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/8_11_25 Live Audio Video.MP4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/964ee67aac68daf4ba6acace829858ca0d8ee0b2.jpg",
             "autoplay": false,
@@ -1205,6 +1208,7 @@
         "video_block_Catw9n": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/20250628_170940_828_7223ebd6-f79f-4ad6-a176-45d3173dd30f.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png",
             "autoplay": false,
