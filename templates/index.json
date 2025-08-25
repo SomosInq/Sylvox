@@ -1197,6 +1197,7 @@
         "video_block_LhWJgN": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/8_11_25 Live Audio Video.MP4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/964ee67aac68daf4ba6acace829858ca0d8ee0b2.jpg",
             "autoplay": false,
