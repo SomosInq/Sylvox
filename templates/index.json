@@ -1208,6 +1208,7 @@
         "video_block_Catw9n": {
           "type": "video_block",
           "settings": {
+            "video": "shopify://files/videos/20250628_170940_828_7223ebd6-f79f-4ad6-a176-45d3173dd30f.mp4",
             "video_url": "",
             "thumbnail": "shopify://shop_images/floor-tv-stands-eiffel-kol-video-SaveInsta-poster.png-3.png",
             "autoplay": false,
