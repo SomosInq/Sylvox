@@ -437,6 +437,21 @@
             "override_desc": "",
             "override_cta": "Buy it now"
           }
+        },
+        "rule_CPUwB4": {
+          "type": "rule",
+          "settings": {
+            "env_ref": "partial-sun",
+            "series_ref": "deck-pro",
+            "size_ref": "55",
+            "mount_ref": "wall",
+            "product": "outdoor-tv-mount",
+            "override_image": "shopify://shop_images/412a3b60cd6326c4e736d37806d0b00e3e23c711_eaaa2bdd-7838-4b39-b20a-8054e8f1dad0.jpg",
+            "custom_url": "",
+            "override_title": "Test Result",
+            "override_desc": "Override Desc",
+            "override_cta": "Buy it now"
+          }
         }
       },
       "block_order": [
@@ -474,7 +489,8 @@
         "rule_ijr8qL",
         "rule_kJR36h",
         "rule_jqPjeq",
-        "rule_VD43kf"
+        "rule_VD43kf",
+        "rule_CPUwB4"
       ],
       "name": "How to Choose – Wizard",
       "settings": {
