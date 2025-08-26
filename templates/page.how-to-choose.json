@@ -72,6 +72,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "left",
+        "content_alignment": "center",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
@@ -156,9 +157,33 @@
         "size_option_Gt4NwJ": {
           "type": "size_option",
           "settings": {
+            "manual_id": "43",
+            "title": "4-6 ft (1.2-1.8 m)",
+            "recommended": "43”"
+          }
+        },
+        "size_option_ncGLXc": {
+          "type": "size_option",
+          "settings": {
             "manual_id": "55",
             "title": "6–8 ft (1.8–2.4 m)",
             "recommended": "55\""
+          }
+        },
+        "size_option_rzKrfT": {
+          "type": "size_option",
+          "settings": {
+            "manual_id": "65",
+            "title": "8-10 ft (2.4-3.0 m)",
+            "recommended": "65”"
+          }
+        },
+        "size_option_V6kncA": {
+          "type": "size_option",
+          "settings": {
+            "manual_id": "75",
+            "title": "10+ ft (3.0+ m)",
+            "recommended": "75”"
           }
         },
         "setup_option_DD7hxh": {
@@ -168,6 +193,33 @@
             "space_label": "Medium deck or pergola",
             "suggested_sizes": "55\"/65\"",
             "reason": "Balanced size for multi-person viewing"
+          }
+        },
+        "setup_option_bNyLgk": {
+          "type": "setup_option",
+          "settings": {
+            "manual_id": "",
+            "space_label": "Small patio or balcony",
+            "suggested_sizes": "43”/55”",
+            "reason": "Compact and efficient for close viewing"
+          }
+        },
+        "setup_option_JVfEdd": {
+          "type": "setup_option",
+          "settings": {
+            "manual_id": "",
+            "space_label": "Large open backyard",
+            "suggested_sizes": "65”/75”",
+            "reason": "Delivers cinematic impact at a distance"
+          }
+        },
+        "setup_option_czXa67": {
+          "type": "setup_option",
+          "settings": {
+            "manual_id": "",
+            "space_label": "Rooftop or outdoor bar",
+            "suggested_sizes": "65”/75”",
+            "reason": "High visibility  for groups"
           }
         },
         "mount_option_kDxLTC": {
@@ -183,7 +235,7 @@
         "mount_option_cBwJPX": {
           "type": "mount_option",
           "settings": {
-            "manual_id": "wall",
+            "manual_id": "ceiling",
             "title": "Ceiling Mount",
             "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
             "image": "shopify://shop_images/dfb3250b8500b817e1254b6ccae13849f7ca308a_1.png",
@@ -193,7 +245,7 @@
         "mount_option_hBj78g": {
           "type": "mount_option",
           "settings": {
-            "manual_id": "wall",
+            "manual_id": "motorized-ceiling",
             "title": "Motorized Ceiling Mount (Electric)",
             "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
             "image": "shopify://shop_images/0171e28975dc722a2b659ec3a855637a0c5d1863.png",
@@ -203,7 +255,7 @@
         "mount_option_6idDQg": {
           "type": "mount_option",
           "settings": {
-            "manual_id": "wall",
+            "manual_id": "rollingtv",
             "title": "RollingTV Cart",
             "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
             "image": "shopify://shop_images/a4ac6a0e46daed676f2251c639b2c64d8d3b7962.png",
@@ -213,7 +265,7 @@
         "mount_option_NNExpy": {
           "type": "mount_option",
           "settings": {
-            "manual_id": "wall",
+            "manual_id": "outdoor-lift",
             "title": "Outdoor Lift Cabinet",
             "desc": "Best for: Solid walls, patios, decks, gazebos\n<ul>\n<li>Fixed and secure installation</li>\n<li>Ideal forsemi-permanent setups</li>\n<li>Clean look, space-saving</li>\n<li>Compatible with all Sylvox TVs</li>\n</ul>",
             "image": "shopify://shop_images/b1ac225c16fcbe41385f1a981c98db0581a38cb7.png",
@@ -295,7 +347,7 @@
             "image": "shopify://shop_images/a404bb5a3b7c63fe55de1acb792fda91319f097a.jpg",
             "title": "Lounge-style Deck?",
             "text": "Wall Mount or Lift Cabinet",
-            "link": "",
+            "link": "shopify://blogs/main-blog",
             "new_tab": false
           }
         },
@@ -336,13 +388,29 @@
             "series_ref": "deck-pro",
             "size_ref": "55",
             "mount_ref": "wall",
-            "product": "2024-75-deck-pro-2-0-with-rolling-tv-cart-and-soundbar",
+            "product": "2-year-extended-warranty-for-sylvox-pool-pro-75-2-0-total-3-years",
+            "override_image": "shopify://shop_images/bc205b0afded1229c365f7a94f3aead96a8a263c_1.jpg",
             "custom_url": "",
-            "override_title": "title",
-            "override_cta": "cta"
+            "override_title": "Deck Pro 2.0 + Wall Mount",
+            "override_desc": "Fits for TV Size from 40\" to 75\", Flexible 6 Articulating Dual Arms, Wall Mount Bracket",
+            "override_cta": "Buy it now"
           }
         },
-        "rule_UYajP9": {
+        "rule_kJR36h": {
+          "type": "rule",
+          "settings": {
+            "env_ref": "full-sun",
+            "series_ref": "deck-pro",
+            "size_ref": "55",
+            "mount_ref": "wall",
+            "product": "sylvox-55-4k-700nits-digital-menu-board",
+            "custom_url": "",
+            "override_title": "",
+            "override_desc": "",
+            "override_cta": "Buy it now"
+          }
+        },
+        "rule_jqPjeq": {
           "type": "rule",
           "settings": {
             "env_ref": "full-sun",
@@ -351,8 +419,23 @@
             "mount_ref": "wall",
             "product": "sylvox-outdoor-tv-ceiling-mount",
             "custom_url": "",
-            "override_title": "title",
-            "override_cta": "cta"
+            "override_title": "",
+            "override_desc": "",
+            "override_cta": "Buy it now"
+          }
+        },
+        "rule_VD43kf": {
+          "type": "rule",
+          "settings": {
+            "env_ref": "partial-sun",
+            "series_ref": "deck-pro",
+            "size_ref": "55",
+            "mount_ref": "wall",
+            "product": "outdoor-tv-mount",
+            "custom_url": "",
+            "override_title": "",
+            "override_desc": "",
+            "override_cta": "Buy it now"
           }
         }
       },
@@ -363,7 +446,13 @@
         "series_JdBHPP",
         "series_Wh3HXR",
         "size_option_Gt4NwJ",
+        "size_option_ncGLXc",
+        "size_option_rzKrfT",
+        "size_option_V6kncA",
         "setup_option_DD7hxh",
+        "setup_option_bNyLgk",
+        "setup_option_JVfEdd",
+        "setup_option_czXa67",
         "mount_option_kDxLTC",
         "mount_option_cBwJPX",
         "mount_option_hBj78g",
@@ -383,7 +472,9 @@
         "example_card_Dm8RMh",
         "example_card_7f7dQk",
         "rule_ijr8qL",
-        "rule_UYajP9"
+        "rule_kJR36h",
+        "rule_jqPjeq",
+        "rule_VD43kf"
       ],
       "name": "How to Choose – Wizard",
       "settings": {
@@ -391,12 +482,20 @@
         "max_width": 1150,
         "section_width": "full",
         "section_content_width": "standard",
+        "step1_label": "Choose Your Installation Environment",
+        "step2_label": "Choose the Right Series for Your Needs",
+        "step3_label": "Choose theRight Screen Size",
+        "step4_label": "Choose Your Mounting Option",
+        "step5_label": "Result",
         "prev_icon_image": "shopify://shop_images/SVG_a58a7abe-6960-4ae3-867e-21e8836e41c3.svg",
         "next_icon_image": "shopify://shop_images/SVG_1_5045509f-2d9f-4c0b-baae-74ae245aaf00.svg",
         "nav_icon_size": 18,
         "prev_text": "Previous",
         "next_text": "Next",
         "restart_text": "Start again",
+        "strict_results_only": true,
+        "fallback_mode": "none",
+        "no_match_message": "No configured result for this selection.",
         "alert_pick_env": "Please choose your installation environment.",
         "alert_pick_series": "Please choose the right series.",
         "alert_pick_size": "Please choose a viewing distance.",

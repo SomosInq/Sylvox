@@ -21,8 +21,8 @@
 .h2c .progress__pill.is-active{ background:var(--h2c-accent); color:#fff; opacity:1; }
 .h2c .progress__pill.is-complete{ opacity:1; }
 .h2c .progress__num{ width:28px; height:28px; border-radius:999px; display:inline-grid; place-items:center; font-size:15px; background:#C6C6C6; color:#fff; }
-.h2c .progress__pill.is-active .progress__num{ background:rgba(255,255,255,.25); }
-.h2c .progress__pill.is-complete .progress__num{ background:#6ea394; }
+.h2c .progress__pill.is-active .progress__num{ background: var(--Pink, #DB4B97); }
+.h2c .progress__pill.is-complete .progress__num{ background: var(--Mid-Green, #336256); }
 
 /* ============== Steps ============== */
 .h2c .step{ display:none; }
@@ -30,11 +30,8 @@
 @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
 .h2c .step__head{ margin:10px 0 22px; }
 .h2c .step__title{ font-size:clamp(22px,2.4vw,32px); color:#2b3b34; margin:0 0 8px; text-align:center; }
-.h2c .step__sub{ font-size:12px; color:#6b7c74; text-align:center; }
-.h2c .subhead{     font-size: 23px;
-    text-align: center;
-    color: #2b3b34;
-    margin: 66px 0 14px 0; }
+.h2c .step__sub{ font-size:17px; color:#6b7c74; text-align:center; }
+.h2c .subhead{ font-size:23px; text-align:center; color:#2b3b34; margin:66px 0 14px 0; }
 .h2c .card:focus{ outline:2px solid var(--h2c-accent); outline-offset:2px; }
 
 /* Theme Editor click-through */
@@ -85,9 +82,7 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 .h2c .series-card__env{ font-size:12px; color:#6b7c74; text-align:center; margin-bottom:6px; }
 .h2c .series-items{ list-style:none; margin:10px 0 30px 0; padding:0; display:flex; flex-direction:column; gap:22px; }
 .h2c .series-item { text-align: center; }
-.h2c .series-item img {
-    margin: 0 auto;
-}
+.h2c .series-item img { margin: 0 auto; }
 .h2c .series-item .series-cell{ gap:8px; }
 .h2c [data-series-col].is-selected .card__radio{ border-color:#fff; background:#DB4B97; box-shadow:0 0 0 3px #DB4B97; }
 
@@ -129,8 +124,6 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
   .h2c .setup-row{ grid-auto-rows:minmax(0,auto); grid-template-rows:auto auto; }
 }
 
-
-
 .h2c .step[data-step="4"] .card ul li{ font-size:12px; color:#6b7c74; text-align:left; list-style:disc; }
 .h2c .step[data-step="4"] ul, .h2c .step[data-step="4"] ul li{ font-size:12px; color:#fff; text-align:left; list-style:disc; }
 .h2c .step[data-step="4"] .table {max-width: unset;}
@@ -141,17 +134,42 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 .h2c .step[data-step="4"] .card__title{ font-size:14px; font-weight:600; color:#2b3b34; margin:60px 0 4px 0; text-align:left; }
 .h2c .step[data-step="4"] .card__desc { font-size:12px; color:#6b7c74; text-align:left; list-style:disc; }
 
-.step[data-step="4"] .summary-table thead th {
-  background: #fff;
-}
+.step[data-step="4"] .summary-table thead th { background: #fff; }
 
 .step[data-step="4"] .summary-table tr {
   background: #fff;
-    border: 1px solid #e6ece8;
-    border-radius: 12px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
-    padding: 18px;
-    cursor: pointer;
+  border: 1px solid #e6ece8;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
+  padding: 18px !important;
+  cursor: pointer;
+}
+
+
+.h2c .step[data-step="5"] .card__title{ font-size:18px; color:#2b3b34; margin:10px 0 4px; text-align:left; }
+.h2c .step[data-step="5"] .card__desc {
+    font-size: 12px;
+    color: #6b7c74;
+    text-align: left;
+    margin: 0 0 20px 0 !important;
+}
+.h2c .step[data-step="5"] .cta {
+    display: inline-flex;
+    align-items: center;
+    /* gap: 8px; */
+    padding: 10px 16px;
+    border-radius: 9999px;
+    background: var(--Dark-Green, #20413B) !important;
+    margin: 20px auto 0 auto !important;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    max-width: 118px;
+}
+
+.h2c .step[data-step="5"] .grid--3 {
+  display: flex;
 }
 
 /* ============== Tables ============== */
@@ -178,7 +196,6 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 @media (max-width:720px){
   .h2c .summary__head, .h2c .summary__row{ grid-template-columns:1.2fr .6fr .6fr 1.4fr; }
 }
-
 
 /* Tips pills */
 .h2c .tips{ display:flex; flex-direction:column; gap:8px; margin:8px auto 0; }
@@ -227,6 +244,19 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 .h2c .result-card .card__img{ aspect-ratio:16/10; }
 .h2c .cta{ display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:var(--h2c-accent); color:#fff; text-decoration:none; font-weight:600; }
 .h2c .cta + .cta{ margin-left:8px; }
+
+.h2c .is-hidden{ display:none !important; }
+
+/* nicer cards in the multi grid */
+#h2c-results .result-card{
+  background:#F2F2F2;
+  border:1px solid #e6ece8;
+  border-radius:12px;
+  padding:40px 20px !important;
+}
+#h2c-results .result-card .card__img{
+  aspect-ratio:4/3; width:100%; object-fit:cover; border-radius:8px; margin-bottom:10px;
+}
 {%- endstylesheet -%}
 
 <div class="h2c" data-section-id="{{ section.id }}">
@@ -239,9 +269,9 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       <path d="M15 18l-6-6 6-6" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
   {% endif %}
-{% endcapture %}
+  {% endcapture %}
 
-{% capture h2c_next_icon %}
+  {% capture h2c_next_icon %}
   {% if section.settings.next_icon_image != blank %}
     <img class="btn__icon btn__icon--right" src="{{ section.settings.next_icon_image | img_url: '40x' }}" alt="">
   {% else %}
@@ -249,9 +279,17 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       <path d="M9 6l6 6-6 6" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
   {% endif %}
-{% endcapture %}
+  {% endcapture %}
 
-  {%- assign steps = "Environment|Series|Screen Size|Mounting|Result" | split: "|" -%}
+  {% capture h2c_step_labels %}
+  {{ section.settings.step1_label | default: 'Environment' }}|
+  {{ section.settings.step2_label | default: 'Series' }}|
+  {{ section.settings.step3_label | default: 'Screen Size' }}|
+  {{ section.settings.step4_label | default: 'Mounting' }}|
+  {{ section.settings.step5_label | default: 'Result' }}
+  {% endcapture %}
+  {%- assign steps = h2c_step_labels | strip | split: "|" -%}
+
   <div class="progress" aria-label="Wizard progress">
     {% for label in steps %}
       <div class="progress__pill{% if forloop.index == 1 %} is-active{% endif %}" data-step-pill="{{ forloop.index }}">
@@ -289,14 +327,10 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       </div>
 
       <div class="nav">
-  <button class="btn" data-prev>
-    {{ h2c_prev_icon }}{{ section.settings.prev_text }}
-  </button>
-
-  <button class="btn btn--primary" data-next disabled>
-    {{ section.settings.next_text }}{{ h2c_next_icon }}
-  </button>
-</div>
+        <button class="btn btn--primary" data-next disabled>
+          {{ section.settings.next_text }}{{ h2c_next_icon }}
+        </button>
+      </div>
     </section>
 
     <!-- ===== Step 2 ===== -->
@@ -308,7 +342,7 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 
       <div class="series-compare" data-series-table>
         <div class="series-compare__left">
-          <div class="left-header"></div>
+          <div class="left-header">{{ section.settings.step2_left_header }}</div>
           <ul class="spec-list">
             <li>{{ section.settings.row_label_smart }}</li>
             <li>{{ section.settings.row_label_display }}</li>
@@ -323,14 +357,14 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
             {% if s.type == 'series' %}
               {% assign sid = s.settings.manual_id | default: s.id %}
               {% assign envs = '' %}
-{% if s.settings.show_full_sun %}{% assign envs = envs | append: 'full-sun,' %}{% endif %}
-{% if s.settings.show_partial_sun %}{% assign envs = envs | append: 'partial-sun,' %}{% endif %}
+              {% if s.settings.show_full_sun %}{% assign envs = envs | append: 'full-sun,' %}{% endif %}
+              {% if s.settings.show_partial_sun %}{% assign envs = envs | append: 'partial-sun,' %}{% endif %}
 
-<article class="series-card"
-  data-series-col="{{ sid }}"
-  data-envs="{{ envs | strip | remove_last: ',' }}"
-  data-label="{{ s.settings.title | escape }}"
-  {{ s.shopify_attributes }}>
+              <article class="series-card"
+                data-series-col="{{ sid }}"
+                data-envs="{{ envs | strip }}"
+                data-label="{{ s.settings.title | escape }}"
+                {{ s.shopify_attributes }}>
 
                 <div class="series-card__head">
                   {% if s.settings.series_icon %}
@@ -386,14 +420,13 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       </div>
 
       <div class="nav">
-  <button class="btn" data-prev>
-    {{ h2c_prev_icon }}{{ section.settings.prev_text }}
-  </button>
-
-  <button class="btn btn--primary" data-next disabled>
-    {{ section.settings.next_text }}{{ h2c_next_icon }}
-  </button>
-</div>
+        <button class="btn" data-prev>
+          {{ h2c_prev_icon }}{{ section.settings.prev_text }}
+        </button>
+        <button class="btn btn--primary" data-next disabled>
+          {{ section.settings.next_text }}{{ h2c_next_icon }}
+        </button>
+      </div>
     </section>
 
     <!-- ===== Step 3 ===== -->
@@ -459,17 +492,14 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         {% endfor %}
       </div>
 
-      
-
       <div class="nav">
-  <button class="btn" data-prev>
-    {{ h2c_prev_icon }}{{ section.settings.prev_text }}
-  </button>
-
-  <button class="btn btn--primary" data-next disabled>
-    {{ section.settings.next_text }}{{ h2c_next_icon }}
-  </button>
-</div>
+        <button class="btn" data-prev>
+          {{ h2c_prev_icon }}{{ section.settings.prev_text }}
+        </button>
+        <button class="btn btn--primary" data-next disabled>
+          {{ section.settings.next_text }}{{ h2c_next_icon }}
+        </button>
+      </div>
     </section>
 
     <!-- ===== Step 4 ===== -->
@@ -494,35 +524,32 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         {% endfor %}
       </div>
 
-      <!-- C: Quick Summary Table -->
       {% if section.settings.summary_title != blank %}
-  <h3 class="subhead">{{ section.settings.summary_title }}</h3>
-{% endif %}
-
-<div class="summary" role="table" aria-label="Quick summary table">
-  <div class="summary__head" role="row">
-    <div role="columnheader">{{ section.settings.summary_col_mount }}</div>
-    <div role="columnheader">{{ section.settings.summary_col_mobile }}</div>
-    <div role="columnheader">{{ section.settings.summary_col_retract }}</div>
-    <div role="columnheader">{{ section.settings.summary_col_best }}</div>
-  </div>
-
-  <div class="summary__rows">
-    {% for r in section.blocks %}
-      {% if r.type == 'summary_row' %}
-        <div class="summary__row" role="row">
-          <div class="summary__cell" role="cell">{{ r.settings.mount_type }}</div>
-          <div class="summary__cell summary__cell--center summary__yes" role="cell" data-yes="{{ r.settings.mobile | default: false }}"></div>
-          <div class="summary__cell summary__cell--center summary__yes" role="cell" data-yes="{{ r.settings.retractable | default: false }}"></div>
-          <div class="summary__cell" role="cell">{{ r.settings.best_for }}</div>
-        </div>
+        <h3 class="subhead">{{ section.settings.summary_title }}</h3>
       {% endif %}
-    {% endfor %}
-  </div>
-</div>
 
+      <div class="summary" role="table" aria-label="Quick summary table">
+        <div class="summary__head" role="row">
+          <div role="columnheader">{{ section.settings.summary_col_mount }}</div>
+          <div role="columnheader">{{ section.settings.summary_col_mobile }}</div>
+          <div role="columnheader">{{ section.settings.summary_col_retract }}</div>
+          <div role="columnheader">{{ section.settings.summary_col_best }}</div>
+        </div>
 
-      <!-- D: Installation Tips -->
+        <div class="summary__rows">
+          {% for r in section.blocks %}
+            {% if r.type == 'summary_row' %}
+              <div class="summary__row" role="row">
+                <div class="summary__cell" role="cell">{{ r.settings.mount_type }}</div>
+                <div class="summary__cell summary__cell--center summary__yes" role="cell" data-yes="{{ r.settings.mobile | default: false }}"></div>
+                <div class="summary__cell summary__cell--center summary__yes" role="cell" data-yes="{{ r.settings.retractable | default: false }}"></div>
+                <div class="summary__cell" role="cell">{{ r.settings.best_for }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
       {% if section.settings.install_title != blank %}
         <h3 class="subhead">{{ section.settings.install_title }}</h3>
       {% endif %}
@@ -534,18 +561,23 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         {% endfor %}
       </ul>
 
-      <!-- E: Real Life Example cards -->
       {% if section.settings.examples_title != blank %}
         <h3 class="subhead">{{ section.settings.examples_title }}</h3>
       {% endif %}
       <div class="grid grid--4 examples">
         {% for ex in section.blocks %}
           {% if ex.type == 'example_card' %}
-            <a class="example-card" href="{{ ex.settings.link | default: '#' }}" {{ ex.settings.new_tab | default: false | ternary: 'target="_blank" rel="noopener"', '' }}>
-              {% if ex.settings.image %}<img class="example__img" src="{{ ex.settings.image | img_url: '900x' }}" alt="{{ ex.settings.title | escape }}">{% endif %}
+            <a class="example-card"
+               href="{{ ex.settings.link | default: '#' }}"
+               {% if ex.settings.new_tab %}target="_blank" rel="noopener"{% endif %}>
+              {% if ex.settings.image %}
+                <img class="example__img" src="{{ ex.settings.image | img_url: '900x' }}" alt="{{ ex.settings.title | escape }}">
+              {% endif %}
               <div class="example__body">
                 <div class="example__title">{{ ex.settings.title }}</div>
-                {% if ex.settings.text != blank %}<div class="example__text">{{ ex.settings.text }}</div>{% endif %}
+                {% if ex.settings.text != blank %}
+                  <div class="example__text">{{ ex.settings.text }}</div>
+                {% endif %}
               </div>
             </a>
           {% endif %}
@@ -553,14 +585,13 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       </div>
 
       <div class="nav">
-  <button class="btn" data-prev>
-    {{ h2c_prev_icon }}{{ section.settings.prev_text }}
-  </button>
-
-  <button class="btn btn--primary" data-next disabled>
-    {{ section.settings.next_text }}{{ h2c_next_icon }}
-  </button>
-</div>
+        <button class="btn" data-prev>
+          {{ h2c_prev_icon }}{{ section.settings.prev_text }}
+        </button>
+        <button class="btn btn--primary" data-next disabled>
+          {{ section.settings.next_text }}{{ h2c_next_icon }}
+        </button>
+      </div>
     </section>
 
     <!-- ===== Step 5 (Result) ===== -->
@@ -570,22 +601,110 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         <p class="step__sub">{{ section.settings.step5_sub }}</p>
       </div>
 
+      <div id="h2c-results" class="grid grid--3" aria-live="polite"></div>
+
       <div class="result-card card" id="h2c-result">
         <h3 class="card__title" id="h2c-result-title">{{ section.settings.fallback_title }}</h3>
         <p class="card__desc" id="h2c-result-desc"></p>
-        <img class="card__img" id="h2c-result-image" src="{{ section.settings.fallback_image | img_url: '800x' }}" alt="" loading="lazy">
         <div id="h2c-result-cta" style="margin-top:12px;"></div>
+        <img class="card__img" id="h2c-result-image" src="{{ section.settings.fallback_image | img_url: '800x' }}" alt="" loading="lazy">
       </div>
 
       <div class="nav">
-  <button class="btn" data-prev>
-    {{ h2c_prev_icon }}{{ section.settings.prev_text }}
-  </button>
-</div>
+        <button class="btn" data-prev>
+          {{ h2c_prev_icon }}{{ section.settings.prev_text }}
+        </button>
+      </div>
     </section>
 
+  </div> <!-- /.container -->
+
+  <div style="display:none">
+  {% for rule in section.blocks %}
+    {% if rule.type == 'rule' %}
+      {% assign product_obj = rule.settings.product %}
+      <div
+        data-rule
+        data-env="{{ rule.settings.env_ref   | escape }}"
+        data-series="{{ rule.settings.series_ref | escape }}"
+        data-size="{{ rule.settings.size_ref | escape }}"
+        data-mount="{{ rule.settings.mount_ref | escape }}"
+
+        data-title="{{ rule.settings.override_title | escape }}"
+        data-desc-json='{{ rule.settings.override_desc | json }}'
+        data-cta="{{ rule.settings.override_cta   | escape }}"
+
+        {% if product_obj %}
+          data-ptitle="{{ product_obj.title | escape }}"
+        {% endif %}
+
+        data-url="{% if product_obj %}{{ product_obj.url }}?variant={{ product_obj.selected_or_first_available_variant.id }}{% else %}{{ rule.settings.custom_url }}{% endif %}"
+
+        data-image="{% if rule.settings.override_image %}{{ rule.settings.override_image | img_url: '800x' }}{% elsif product_obj and product_obj.featured_image %}{{ product_obj.featured_image | img_url: '800x' }}{% endif %}"
+data-vid="{% if product_obj %}{{ product_obj.selected_or_first_available_variant.id }}{% endif %}">
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% for s in section.blocks %}
+    {% if s.type == 'series' and s.settings.product %}
+      {% assign p = s.settings.product %}
+      {% assign sid = s.settings.manual_id | default: s.id %}
+      {% assign idx = s.settings.size_option_index | default: '1' %}
+      {% for v in p.variants %}
+        {% if idx == '1' %}{% assign size_val = v.option1 %}
+        {% elsif idx == '2' %}{% assign size_val = v.option2 %}
+        {% else %}{% assign size_val = v.option3 %}{% endif %}
+        <div data-variant-map
+          data-series="{{ sid }}"
+          data-size="{{ size_val | downcase | strip | replace: '"', '' | replace: "'", '' }}"
+          data-vid="{{ v.id }}"
+          data-url="{{ p.url }}?variant={{ v.id }}"
+          data-img="{% if v.featured_media %}{{ v.featured_media | img_url: '800x' }}{% else %}{{ p.featured_image | img_url: '800x' }}{% endif %}"
+          data-vtitle="{{ v.title | escape }}">
+        </div>
+      {% endfor %}
+      <div data-series-product
+        data-series="{{ sid }}"
+        data-base-url="{{ p.url }}"
+        data-img="{{ p.featured_image | img_url: '800x' }}"
+        data-title="{{ p.title | escape }}">
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% for m in section.blocks %}
+    {% if m.type == 'mount_option' and m.settings.product %}
+      {% assign mp = m.settings.product %}
+      {% assign mid = m.settings.manual_id | default: m.id %}
+      <div data-mount-product
+        data-mount="{{ mid }}"
+        data-url="{{ mp.url }}"
+        data-img="{{ mp.featured_image | img_url: '800x' }}"
+        data-title="{{ mp.title | escape }}"
+        data-vid="{{ mp.selected_or_first_available_variant.id }}">
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% if section.settings.candidate_collection != blank %}
+    {% for pr in section.settings.candidate_collection.products %}
+      {% for v in pr.variants %}
+        <div
+          data-candidate-variant
+          data-pid="{{ pr.id }}"
+          data-title="{{ pr.title | escape }}"
+          data-variant-title="{{ v.title | escape }}"
+          data-vid="{{ v.id }}"
+          data-url="{{ pr.url }}?variant={{ v.id }}"
+          data-img="{% if v.featured_media %}{{ v.featured_media | img_url: '800x' }}{% else %}{{ pr.featured_image | img_url: '800x' }}{% endif %}">
+        </div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
   </div>
-</div>
+
+</div> <!-- /.h2c -->
 
 <script>
 (function(){
@@ -601,6 +720,9 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
     const ALERT_SERIES   = {{ section.settings.alert_pick_series | json }};
     const ALERT_SIZE     = {{ section.settings.alert_pick_size   | json }};
     const ALERT_MOUNT    = {{ section.settings.alert_pick_mount  | json }};
+    const STRICT_ONLY    = {{ section.settings.strict_results_only | json }};
+    const FALLBACK_MODE  = {{ section.settings.fallback_mode       | json }};
+    const NO_MATCH_MSG   = {{ section.settings.no_match_message    | json }};
 
     let bound = false;
 
@@ -615,9 +737,25 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       // Wizard state
       const state = { env:null, envKey:'all', series:null, size:null, mount:null };
 
-      // Helpers
-      function toId(v){ return (v||'').toString().trim().toLowerCase(); }
-      function key(s){ return (s||'').toString().toLowerCase().replace(/["'\\s]/g,'').trim(); }
+      // Helpers (keep hyphens so 'full-sun' matches series filtering)
+      const norm = (s)=> (s||'').toString().toLowerCase().replace(/["'\s]/g,'').trim();
+      const toId = (v)=> norm(v);
+
+      // MULTI-ID + WILDCARD MATCH
+      function parseIds(str){
+        return (str||'').split(/[\s,|/]+/).map(norm).filter(Boolean);
+      }
+      function isWildcardValue(str){
+        const v = norm(str);
+        return v==='' || v==='*' || v==='any' || v==='all' || v==='auto';
+      }
+      function matches(ruleVal, currentId){
+        if (isWildcardValue(ruleVal)) return true;
+        const list = parseIds(ruleVal);
+        if (!list.length) return true;
+        if (!currentId) return false;
+        return list.includes(norm(currentId));
+      }
 
       function setNext(step, enabled){
         const stepEl = q(`.step[data-step="${step}"]`);
@@ -633,9 +771,9 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         }
       }
 
-      function markOnlySelected(items, selectedEl, selectedClass='is-selected'){
-        items.forEach(el=>el.classList.remove(selectedClass));
-        if (selectedEl) selectedEl.classList.add(selectedClass);
+      function markOnlySelected(items, selectedEl){
+        items.forEach(el=>el.classList.remove('is-selected'));
+        if (selectedEl) selectedEl.classList.add('is-selected');
       }
 
       function syncProgress(step){
@@ -659,38 +797,39 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 
       // Show/hide series by environment
       function syncSeriesByEnv(){
-  const keyEnv = state.envKey || 'all';
-  const cols = qa('[data-series-col]');
+        const keyEnv = state.envKey || 'all';
+        const cols = qa('[data-series-col]');
+        let anyMatch = false;
 
-  cols.forEach(th=>{
-    const list = (th.dataset.envs || '')
-      .toLowerCase()
-      .split(',')
-      .map(s=>s.trim())
-      .filter(Boolean); // removes blanks
+        cols.forEach(th=>{
+          const list = (th.dataset.envs || '')
+            .toLowerCase()
+            .split(',')
+            .map(s=>s.trim())
+            .filter(Boolean); // values like 'full-sun','partial-sun'
+          const sid = th.dataset.seriesCol;
+          const match = (keyEnv === 'all') ? true : list.includes(keyEnv);
+          if (match) anyMatch = true;
+          th.classList.toggle('is-hidden', !match);
+          qa(`[data-series-cell="${sid}"]`).forEach(td=>{
+            td.classList.toggle('is-hidden', !match);
+          });
+        });
 
-    const sid = th.dataset.seriesCol;
-    const matches = (keyEnv === 'all') ? true : list.includes(keyEnv);
+        if (!anyMatch) {
+          cols.forEach(th=>th.classList.remove('is-hidden'));
+          qa('[data-series-cell]').forEach(td=>td.classList.remove('is-hidden'));
+        }
 
-    th.classList.toggle('is-hidden', !matches);
-    qa(`[data-series-cell="${sid}"]`).forEach(td=>{
-      td.classList.toggle('is-hidden', !matches);
-    });
-  });
-
-  if (state.series){
-    const activeTh = q(`[data-series-col="${state.series.id}"]`);
-    if (!activeTh || activeTh.classList.contains('is-hidden')){
-      clearSeriesSelection();
-    }
-  }
-}
-
-      function clearSeriesSelection(){
-        qa('[data-series-col]').forEach(el=>el.classList.remove('is-selected'));
-        qa('[data-series-cell]').forEach(el=>el.classList.remove('is-selected'));
-        state.series = null;
-        setNext(2, false);
+        if (state.series){
+          const activeTh = document.querySelector(`${ROOT_SEL} [data-series-col="${state.series.id}"]`);
+          if (!activeTh || activeTh.classList.contains('is-hidden')){
+            qa('[data-series-col]').forEach(el=>el.classList.remove('is-selected'));
+            qa('[data-series-cell]').forEach(el=>el.classList.remove('is-selected'));
+            state.series = null;
+            setNext(2, false);
+          }
+        }
       }
 
       /* Bindings */
@@ -698,12 +837,20 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         card.addEventListener('click', ()=>{
           const all = qa('[data-group="environment"] .card');
           markOnlySelected(all, card);
-          const value = toId(card.dataset.value);
-          const label = card.dataset.label || '';
+
+          const value    = toId(card.dataset.value);
+          const label    = card.dataset.label || '';
           const explicit = toId(card.dataset.envKey);
-          const envKey = explicit && explicit !== 'auto' ? explicit : value;
-          state.env = { id:value, label }; state.envKey = envKey || 'all';
-          setNext(1, true); syncSeriesByEnv();
+
+          let envKey = 'all';
+          if (explicit && explicit !== 'auto') envKey = explicit;
+          else if (value === 'full-sun' || value === 'partial-sun') envKey = value;
+
+          state.env = { id:value, label };
+          state.envKey = envKey;
+
+          setNext(1, true);
+          syncSeriesByEnv();
         }, { passive:true });
       });
 
@@ -753,10 +900,10 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
 
       qa('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{
         const step=+btn.closest('.step').dataset.step;
-        if(step===1 && !state.env)   return alert({{ section.settings.alert_pick_env | json }});
-        if(step===2 && !state.series) return alert({{ section.settings.alert_pick_series | json }});
-        if(step===3 && !state.size)   return alert({{ section.settings.alert_pick_size | json }});
-        if(step===4 && !state.mount)  return alert({{ section.settings.alert_pick_mount | json }});
+        if(step===1 && !state.env)   return alert(ALERT_ENV);
+        if(step===2 && !state.series) return alert(ALERT_SERIES);
+        if(step===3 && !state.size)   return alert(ALERT_SIZE);
+        if(step===4 && !state.mount)  return alert(ALERT_MOUNT);
         if(step===4) buildResult();
         goto(step+1);
         const restart = q('[data-restart]'); if (restart) restart.style.display = (step+1===5 ? 'inline-flex' : 'none');
@@ -775,76 +922,118 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
         goto(1); q('[data-restart]').style.display = 'none';
       });
 
-      // --- Result builder (unchanged core with CTAs) ---
-      function buildResult(){
-        const root = document.querySelector(ROOT_SEL);
-        const q  = (s)=>root.querySelector(s);
-        const qa = (s)=>Array.from(root.querySelectorAll(s));
-        const titleEl=q('#h2c-result-title'), descEl=q('#h2c-result-desc'), imgEl=q('#h2c-result-image'), ctaWrap=q('#h2c-result-cta');
+// ======== MULTI-RESULT BUILDER (Final) ========
+function buildResult(){
+  const root = document.querySelector(ROOT_SEL);
+  const q  = (s)=>root.querySelector(s);
+  const qa = (s)=>Array.from(root.querySelectorAll(s));
 
-        const seriesId = state.series?.id || '';
-        const sizeKey  = (state.size?.id || state.size?.label || '').toString().toLowerCase().replace(/["'\\s]/g,'').trim();
+  const resultsWrap = q('#h2c-results');
+  const singleWrap  = q('#h2c-result');
+  resultsWrap.innerHTML = '';
 
-        const sp   = q(`[data-series-product][data-series="${seriesId}"]`);
-        const maps = qa(`[data-variant-map][data-series="${seriesId}"]`);
-        const vmap = maps.find(el => (el.dataset.size||'') === sizeKey);
+  // Selection summary (used as default description)
+  const labelsDesc = [state.env?.label, state.series?.label, state.size?.label, state.mount?.label]
+    .filter(Boolean).join(' • ');
 
-        const imageFromMap = vmap?.dataset.img || sp?.dataset.img || '';
-        const urlFromMap   = vmap?.dataset.url || sp?.dataset.baseUrl || '#';
-        const baseTitle    = sp?.dataset.title || state.series?.label || FALLBACK_TITLE;
+  // Series → variant mapping (fallbacks if rule has no product)
+  const seriesId   = state.series?.id || '';
+  const sizeDigits = (state.size?.id || state.size?.label || '').toString().replace(/\D+/g,'');
+  const sp         = q(`[data-series-product][data-series="${seriesId}"]`);
+  const maps       = qa(`[data-variant-map][data-series="${seriesId}"]`);
+  const vmap       = maps.find(el => (el.dataset.size || '').replace(/\D+/g,'') === sizeDigits);
 
-        const rules = qa('[data-rule]');
-        const rule = rules.find(r=>{
-          const e = (r.dataset.env||'').toLowerCase().trim();
-          const s = (r.dataset.series||'').toLowerCase().trim();
-          const z = (r.dataset.size||'').toLowerCase().trim();
-          const m = (r.dataset.mount||'').toLowerCase().trim();
-          return e===state.env?.id && s===state.series?.id && z===state.size?.id && (!m || m===state.mount?.id);
-        });
+  const baseSeriesTitle = (() => {
+    const seriesTitle = sp?.dataset.title || state.series?.label || FALLBACK_TITLE;
+    const vlabel = vmap?.dataset.vtitle ? ` – ${vmap.dataset.vtitle}` : '';
+    return `${seriesTitle}${vlabel}`;
+  })();
 
-        let finalTitle = rule?.dataset.title || baseTitle;
-        let finalUrl   = rule?.dataset.url   || urlFromMap;
-        let finalImg   = rule?.dataset.image || imageFromMap || FALLBACK_IMG;
-        let tvVid      = rule?.dataset.vid   || vmap?.dataset.vid || null;
+  const imageFromMap = vmap?.dataset.img || sp?.dataset.img || FALLBACK_IMG;
+  const urlFromMap   = vmap?.dataset.url || sp?.dataset.baseUrl || '';
+  const vidFromMap   = vmap?.dataset.vid || '';
 
-        if (!tvVid && (!sp || (!vmap && !sp.dataset.baseUrl))){
-          const cands = qa('[data-candidate-variant]');
-          let pick = null;
-          if (sizeKey){
-            pick = cands.find(v => (v.dataset.variantTitle||'').toLowerCase().replace(/\s+/g,'').includes(sizeKey));
-            if (!pick){
-              const num = (sizeKey.match(/\d+/)||[])[0];
-              if (num) pick = cands.find(v => (v.dataset.variantTitle||'').toLowerCase().includes(num));
-            }
-          }
-          if (!pick) pick = cands[0];
-          if (pick){
-            finalTitle = pick.dataset.title || finalTitle;
-            finalUrl   = pick.dataset.url   || finalUrl;
-            finalImg   = pick.dataset.img   || finalImg;
-            tvVid      = pick.dataset.vid   || tvVid;
-          }
-        }
+  // Match rules
+  const allRules = qa('[data-rule]');
+  const matchedRules = allRules.filter(r =>
+    matches(r.dataset.env,    (state.env?.id || state.envKey)) &&
+    matches(r.dataset.series, state.series?.id) &&
+    matches(r.dataset.size,   state.size?.id) &&
+    matches(r.dataset.mount,  state.mount?.id)
+  );
 
-        const mountEl  = q(`[data-mount-product][data-mount="${state.mount?.id||''}"]`);
-        const mountVid = mountEl?.dataset.vid;
+  if (matchedRules.length === 0 && (STRICT_ONLY || FALLBACK_MODE === 'none')) {
+    resultsWrap.innerHTML = `<article class="result-card card">
+      <h3 class="card__title">${escapeHtml(NO_MATCH_MSG)}</h3>
+      <div class="card__desc">Try a different combination or add a Result rule for this selection.</div>
+    </article>`;
+    singleWrap?.classList.add('is-hidden');
+    return;
+  }
 
-        titleEl.textContent = finalTitle || FALLBACK_TITLE;
-        descEl.textContent  = [state.env?.label, state.series?.label, state.size?.label, state.mount?.label].filter(Boolean).join(' • ');
-        imgEl.src = finalImg || FALLBACK_IMG;
+  const src = matchedRules.length ? matchedRules : [null];
 
-        const ctas = [];
-        if (tvVid){
-          ctas.push(`<a class="cta" href="/cart/add?id=${tvVid}&quantity=1&return_to=/checkout">Buy TV Now</a>`);
-        } else if (finalUrl && finalUrl !== '#'){
-          ctas.push(`<a class="cta" href="${finalUrl}">${DEFAULT_CTA}</a>`);
-        }
-        if (mountVid){
-          ctas.push(`<a class="cta" href="/cart/add?id=${mountVid}&quantity=1&return_to=/checkout">Buy Mount</a>`);
-        } else if (mountEl?.dataset.url){
-          ctas.push(`<a class="cta" href="${mountEl.dataset.url}">View Mount</a>`);
-        }
-        ctaWrap.innerHTML = ctas.join(' ');
+  const items = src.map(rule => {
+    const d = rule?.dataset || {};
+
+    // Title: override > product title > base
+    const title = (d.title || '').trim() || (d.ptitle || '').trim() || baseSeriesTitle;
+
+    // Description: override (HTML allowed) > labels summary
+    let descHtml = '';
+    if (d.descJson && d.descJson !== 'null' && d.descJson !== '') {
+      try { descHtml = JSON.parse(d.descJson); } catch { descHtml = d.descJson; }
+    }
+    if (!descHtml) descHtml = escapeHtml(labelsDesc);
+
+    // Image: override > variant > series > fallback
+    const img = (d.image || '').trim() || imageFromMap || FALLBACK_IMG;
+
+    // Primary CTA: rule variant → series/size variant → product URL
+    const tvVid    = (d.vid || '').trim() || vidFromMap;
+    const url      = (d.url || '').trim() || urlFromMap;
+    const ctaLabel = (d.cta || '').trim() || DEFAULT_CTA || 'Buy it now';
+
+    let primaryCta = '';
+    if (tvVid) {
+      primaryCta = `<a class="cta" href="/cart/add?id=${tvVid}&quantity=1&return_to=/checkout">${ctaLabel}</a>`;
+    } else if (url) {
+      primaryCta = `<a class="cta" href="${url}">${ctaLabel}</a>`;
+    } else {
+      primaryCta = `<a class="cta" aria-disabled="true" style="opacity:.55;pointer-events:none;">${ctaLabel}</a>`;
+    }
+
+    return { title, descHtml, img, primaryCta, alt:title };
+  });
+
+  resultsWrap.innerHTML = items.map(renderCardHTML).join('');
+  singleWrap?.classList.add('is-hidden');
+}
+
+function renderCardHTML(item){
+  // order: title → text → image → CTA
+  return `
+    <article class="result-card card">
+      <h3 class="card__title">${escapeHtml(item.title)}</h3>
+      <div class="card__desc">${item.descHtml}</div>
+      <img class="card__img" src="${item.img}" alt="${escapeHtml(item.alt)}" loading="lazy">
+      <div class="cta-wrap" style="margin-top:12px;text-align:left;">
+        ${item.primaryCta}
+      </div>
+    </article>
+  `;
+}
+// ======== /MULTI-RESULT BUILDER (Final) ========
+
+
+
+      function escapeHtml(str){
+        return (str||'').toString()
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
       }
 
       [1,2,3,4].forEach(s=>setNext(s,false));
@@ -859,94 +1048,11 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       if (el && el.querySelector && el.querySelector(`.h2c[data-section-id="{{ section.id }}"]`)) { bound = false; init(); }
     });
   } catch (err) {
-    console.error('[H2C] Fatal error booting wizard:', err);
+    console.error('[H2C] Wizard error:', err);
   }
 })();
 </script>
 
-
-{%- comment -%}
-  Hidden datasets:
-  • Result rules (exact match override)
-  • Series → variant maps (size → variant)
-  • Mount products (optional)
-  • Candidate collection (optional fallback pool)
-{%- endcomment -%}
-<div style="display:none">
-  {% for rule in section.blocks %}
-    {% if rule.type == 'rule' %}
-      {% assign product_obj = rule.settings.product %}
-      <div
-        data-rule
-        data-env="{{ rule.settings.env_ref }}"
-        data-series="{{ rule.settings.series_ref }}"
-        data-size="{{ rule.settings.size_ref }}"
-        data-mount="{{ rule.settings.mount_ref }}"
-        data-title="{{ rule.settings.override_title | escape }}"
-        data-cta="{{ rule.settings.override_cta | escape }}"
-        data-url="{% if product_obj %}{{ product_obj.url }}{% else %}{{ rule.settings.custom_url }}{% endif %}"
-        data-image="{% if rule.settings.override_image %}{{ rule.settings.override_image | img_url: '800x' }}{% elsif product_obj and product_obj.featured_image %}{{ product_obj.featured_image | img_url: '800x' }}{% endif %}"
-        data-vid="{% if product_obj %}{{ product_obj.selected_or_first_available_variant.id }}{% endif %}">
-      </div>
-    {% endif %}
-  {% endfor %}
-
-  {% for s in section.blocks %}
-    {% if s.type == 'series' and s.settings.product %}
-      {% assign p = s.settings.product %}
-      {% assign sid = s.settings.manual_id | default: s.id %}
-      {% assign idx = s.settings.size_option_index | default: '1' %}
-      {% for v in p.variants %}
-        {% if idx == '1' %}{% assign size_val = v.option1 %}
-        {% elsif idx == '2' %}{% assign size_val = v.option2 %}
-        {% else %}{% assign size_val = v.option3 %}{% endif %}
-        <div data-variant-map
-             data-series="{{ sid }}"
-             data-size="{{ size_val | downcase | strip | replace: '"', '' | replace: "'", '' }}"
-             data-vid="{{ v.id }}"
-             data-url="{{ p.url }}?variant={{ v.id }}"
-             data-img="{% if v.featured_media %}{{ v.featured_media | img_url: '800x' }}{% else %}{{ p.featured_image | img_url: '800x' }}{% endif %}">
-        </div>
-      {% endfor %}
-      <div data-series-product
-           data-series="{{ sid }}"
-           data-base-url="{{ p.url }}"
-           data-img="{{ p.featured_image | img_url: '800x' }}"
-           data-title="{{ p.title | escape }}">
-      </div>
-    {% endif %}
-  {% endfor %}
-
-  {% for m in section.blocks %}
-    {% if m.type == 'mount_option' and m.settings.product %}
-      {% assign mp = m.settings.product %}
-      {% assign mid = m.settings.manual_id | default: m.id %}
-      <div data-mount-product
-           data-mount="{{ mid }}"
-           data-url="{{ mp.url }}"
-           data-img="{{ mp.featured_image | img_url: '800x' }}"
-           data-title="{{ mp.title | escape }}"
-           data-vid="{{ mp.selected_or_first_available_variant.id }}">
-      </div>
-    {% endif %}
-  {% endfor %}
-
-  {% if section.settings.candidate_collection != blank %}
-    {% for pr in section.settings.candidate_collection.products %}
-      {% for v in pr.variants %}
-        <div
-          data-candidate-variant
-          data-pid="{{ pr.id }}"
-          data-title="{{ pr.title | escape }}"
-          data-variant-title="{{ v.title | escape }}"
-          data-vid="{{ v.id }}"
-          data-url="{{ pr.url }}?variant={{ v.id }}"
-          data-img="{% if v.featured_media %}{{ v.featured_media | img_url: '800x' }}{% else %}{{ pr.featured_image | img_url: '800x' }}{% endif %}">
-        </div>
-      {% endfor %}
-    {% endfor %}
-  {% endif %}
-</div>
 
 {% schema %}
 {
@@ -962,14 +1068,28 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
     { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [
       { "value": "standard", "label": "50% Width" }, { "value": "full", "label": "Full Width" } ] },
 
-      { "type": "image_picker", "id": "prev_icon_image", "label": "Previous button icon (optional)" },
-{ "type": "image_picker", "id": "next_icon_image", "label": "Next button icon (optional)" },
-{ "type": "range", "id": "nav_icon_size", "label": "Nav icon size (px)", "min": 12, "max": 28, "step": 1, "default": 18 },
+    { "type": "text", "id": "step1_label", "label": "Step 1 label", "default": "Environment" },
+    { "type": "text", "id": "step2_label", "label": "Step 2 label", "default": "Series" },
+    { "type": "text", "id": "step3_label", "label": "Step 3 label", "default": "Screen Size" },
+    { "type": "text", "id": "step4_label", "label": "Step 4 label", "default": "Mounting" },
+    { "type": "text", "id": "step5_label", "label": "Step 5 label", "default": "Result" },
 
+    { "type": "image_picker", "id": "prev_icon_image", "label": "Previous button icon (optional)" },
+    { "type": "image_picker", "id": "next_icon_image", "label": "Next button icon (optional)" },
+    { "type": "range", "id": "nav_icon_size", "label": "Nav icon size (px)", "min": 12, "max": 28, "step": 1, "default": 18 },
 
     { "type": "text", "id": "prev_text", "label": "Previous button text", "default": "Previous" },
     { "type": "text", "id": "next_text", "label": "Next button text", "default": "Next" },
     { "type": "text", "id": "restart_text", "label": "Restart button text", "default": "Start again" },
+
+    { "type": "checkbox", "id": "strict_results_only", "label": "Only show a result when a rule matches", "default": false },
+    { "type": "select", "id": "fallback_mode", "label": "When no rule matches", "default": "series",
+      "options": [
+        { "value": "series", "label": "Use selected series/size mapping" },
+        { "value": "none",   "label": "Show nothing (message)" }
+      ]
+    },
+    { "type": "text", "id": "no_match_message", "label": "No-match message", "default": "No configured result for this selection." },
 
     { "type": "text", "id": "alert_pick_env", "label": "Alert: pick environment", "default": "Please choose your installation environment." },
     { "type": "text", "id": "alert_pick_series", "label": "Alert: pick series", "default": "Please choose the right series." },
@@ -999,8 +1119,6 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
     { "type": "text", "id": "setup_col_space", "label": "Setup column: Outdoor Space Type", "default": "Outdoor Space Type" },
     { "type": "text", "id": "setup_col_sizes", "label": "Setup column: Suggest Size(s)", "default": "Suggest Size(s)" },
     { "type": "text", "id": "setup_col_why", "label": "Setup column: Why?", "default": "Why?" },
-
-
 
     /* New Step 3 subsections */
     { "type": "text", "id": "summary_title", "label": "Quick Summary table title", "default": "Quick Summary Table" },
@@ -1106,11 +1224,13 @@ html.shopify-design-mode .h2c [data-group="mount"] .card *{ pointer-events:none 
       { "type": "text", "id": "series_ref", "label": "Series ID", "default": "series-ref" },
       { "type": "text", "id": "size_ref", "label": "Size ID", "default": "size-ref" },
       { "type": "text", "id": "mount_ref", "label": "Mount ID (optional)", "default": "mount-ref" },
-      { "type": "image_picker", "id": "override_image", "label": "Override image (optional)" },
-      { "type": "header", "content": "Result (override output)" },
+      { "type": "header", "content": "Select Product Result" },
       { "type": "product", "id": "product", "label": "Product (optional – overrides variant mapping)" },
+      { "type": "header", "content": "Product Result (Override Settings)" },
+      { "type": "image_picker", "id": "override_image", "label": "Override image (optional)" },
       { "type": "url", "id": "custom_url", "label": "Custom link (overrides product URL)" },
       { "type": "text", "id": "override_title", "label": "Override result title", "default": "title" },
+      { "type": "textarea", "id": "override_desc", "label": "Override result text (under title)" },
       { "type": "text", "id": "override_cta", "label": "Override CTA label", "default": "cta" }
     ]}
   ],
