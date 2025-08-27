@@ -438,7 +438,7 @@
         "button_style": "primary",
         "button_icon": "",
         "button_icon_position": "right",
-        "enable_slider": false
+        "enable_slider": true
       }
     },
     "stat_cards_grid_mBy44i": {
