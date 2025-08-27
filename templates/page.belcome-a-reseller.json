@@ -439,7 +439,7 @@
         "text_4qcKtL": {
           "type": "text",
           "settings": {
-            "text": "As a market growing at CAGR exceed 11.7%,Wherever there is demand for outdoor entertainment and quality lifestyle, there is a demand for full-scene TV.\n<br><br>\nSylvox is dedicated to the success of its partners, offering comprehensive support to its collaborators."
+            "text": "<strong>As a market growing at CAGR exceed 11.7%,Wherever there is demand for outdoor entertainment and quality lifestyle, there is a demand for full-scene TV.</strong>\n<br><br>\nSylvox is dedicated to the success of its partners, offering comprehensive support to its collaborators."
           }
         }
       },
@@ -652,7 +652,7 @@
             "media_type": "image",
             "image": "shopify://shop_images/SMB-1_jpg_ed2e836c-32e0-4999-98cd-06fa03bc1683.png",
             "image_width": 100,
-            "image_ratio": "1/1",
+            "image_ratio": "3/4",
             "image_hover": "none",
             "overlay_text": "",
             "overlay_text_color": "#ffffff",
@@ -671,7 +671,7 @@
             "media_type": "image",
             "image": "shopify://shop_images/P2_007_jpg_ecb7727f-599e-4942-8fa6-dac712782072.png",
             "image_width": 100,
-            "image_ratio": "1/1",
+            "image_ratio": "3/4",
             "image_hover": "none",
             "overlay_text": "",
             "overlay_text_color": "#ffffff",
@@ -690,7 +690,7 @@
             "media_type": "image",
             "image": "shopify://shop_images/SMB_jpg_2067a197-ec8d-4420-b189-737a08e6643b.png",
             "image_width": 100,
-            "image_ratio": "1/1",
+            "image_ratio": "3/4",
             "image_hover": "none",
             "overlay_text": "",
             "overlay_text_color": "#ffffff",
@@ -709,7 +709,7 @@
             "media_type": "image",
             "image": "shopify://shop_images/S1-Brand_jpg_3d07ff8a-7301-4b22-b2be-6e643746e883.png",
             "image_width": 100,
-            "image_ratio": "1/1",
+            "image_ratio": "3/4",
             "image_hover": "none",
             "overlay_text": "",
             "overlay_text_color": "#ffffff",
@@ -728,26 +728,7 @@
             "media_type": "image",
             "image": "shopify://shop_images/Group_1321320704_jpg_a06a744f-20f0-4dcd-afc5-5e720db7aa22.png",
             "image_width": 100,
-            "image_ratio": "1/1",
-            "image_hover": "none",
-            "overlay_text": "",
-            "overlay_text_color": "#ffffff",
-            "overlay_background_color": "#00000080",
-            "overlay_position": "center",
-            "lazy_load": true,
-            "video_url": "",
-            "autoplay": false,
-            "mute": false,
-            "loop": false
-          }
-        },
-        "media_item_pAaBNc": {
-          "type": "media_item",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/e17b3b534cbb7380630d550bb321550933ccb834.png",
-            "image_width": 100,
-            "image_ratio": "1/1",
+            "image_ratio": "3/4",
             "image_hover": "none",
             "overlay_text": "",
             "overlay_text_color": "#ffffff",
@@ -766,8 +747,7 @@
         "media_item_aRWxtJ",
         "media_item_BYgm8Q",
         "media_item_BQNPYK",
-        "media_item_N3t8Vx",
-        "media_item_pAaBNc"
+        "media_item_N3t8Vx"
       ],
       "name": "Image Grid",
       "settings": {
@@ -801,7 +781,7 @@
         "button_style": "primary",
         "button_icon": "",
         "button_icon_position": "right",
-        "enable_slider": false
+        "enable_slider": true
       }
     },
     "text_and_image_F9dYDH": {
