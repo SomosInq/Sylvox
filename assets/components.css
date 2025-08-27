@@ -16338,6 +16338,41 @@ block-price.block-price.product-block span.label.variant__label{
   }
 }
 
+
+/* Size Cells */
+
+.mm-product-sizes { margin-top: 10px; }
+.mm-product-sizes p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.mm-product-sizes p a {
+  display: block;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+.mm-product-sizes p a:hover {
+  border-radius: 3px;
+  border: 1px solid #20413B;
+  color: #20413B;
+}
+.mm-product-sizes p a:first-of-type {
+  border-radius: 3px;
+  border: 1px solid #20413B;
+  color: #20413B;
+}
+.mm-product-sizes p a.is-sold-out {
+  opacity: .45;
+  pointer-events: none;
+}
+
+
 /* Upsell Slider */
 .upsell-slider {
   position: relative;

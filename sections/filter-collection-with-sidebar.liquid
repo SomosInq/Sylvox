@@ -97,35 +97,16 @@
                             >
 
                             {%- if is_sun_caps -%}
-                              {%- capture img -%}
-<<<<<<< Updated upstream
-                                {%- assign lh = val.label | downcase | strip -%}
-                                {%- if lh contains 'full' -%}
-                                  {%- if section.settings.image_Full_Sun != blank -%}
-                                    {{ section.settings.image_Full_Sun | image_url: width: 30 }}
-                                  {%- endif -%}
-                                {%- elsif lh contains 'partial' -%}
-                                  {%- if section.settings.image_Partial_Sun != blank -%}
-                                    {{ section.settings.image_Partial_Sun | image_url: width: 30 }}
-                                  {%- endif -%}
-                                {%- endif -%}
-                              {%- endcapture -%}
-=======
-  {%- assign lh = val.label | downcase | strip -%}
-  {%- if lh contains 'full' -%}
-    {%- if section.settings.image_Full_Sun != blank -%}
-      {{ section.settings.image_Full_Sun | image_url: width: 30 }}
-    {%- endif -%}
-  {%- elsif lh contains 'partial' -%}
-    {%- if section.settings.image_Partial_Sun != blank -%}
-      {{ section.settings.image_Partial_Sun | image_url: width: 30 }}
-    {%- endif -%}
+                              {%- assign lh = val.label | downcase | strip -%}
+{%- capture img_tag -%}
+  {%- if lh contains 'full' and section.settings.image_Full_Sun != blank -%}
+    {{ section.settings.image_Full_Sun | image_url: width: 30 | image_tag: alt: val.label }}
+  {%- elsif lh contains 'partial' and section.settings.image_Partial_Sun != blank -%}
+    {{ section.settings.image_Partial_Sun | image_url: width: 30 | image_tag: alt: val.label }}
   {%- endif -%}
 {%- endcapture -%}
->>>>>>> Stashed changes
-                              {%- if img != blank -%}
-                                <img src="{{ img | strip }}" width="30" height="30" alt="{{ val.label | escape }}">
-                              {%- endif -%}
+{{ img_tag }}
+
                             {%- endif -%}
 
                             <span>{{ val.label }}</span>
@@ -192,11 +173,6 @@
                     {%- if is_all and current_tags == blank %}{% assign active = true %}{% endif %}
                     {%- if current_tags contains label %}{% assign active = true %}{% endif %}
 
-                    {%- comment %}
-                      Build clean URLs without link_to_add_tag:
-                      • ALL → /collections/{collection}
-                      • Tag  → /collections/{collection}/{tag-handle}
-                    {% endcomment -%}
                     {%- if is_all -%}
                       {%- assign dest_url = collection.url -%}
                     {%- else -%}
@@ -206,14 +182,14 @@
                     <li class="filter-collection__series-item {% if active %}active{% endif %}">
                       <a href="{{ dest_url }}" style="display:flex;gap:12px;align-items:center;width:100%;">
                         {% if is_all and section.settings.image_all != blank %}
-                          <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="30" height="30" alt="All" />
-                        {% elsif tag_handle == 'full-sun' and section.settings.image_Full_Sun != blank %}
-                          <img src="{{ section.settings.image_Full_Sun | image_url: width: 30 }}" width="30" height="30" alt="Full Sun" />
-                        {% elsif tag_handle == 'partial-sun' and section.settings.image_Partial_Sun != blank %}
-                          <img src="{{ section.settings.image_Partial_Sun | image_url: width: 30 }}" width="30" height="30" alt="Partial Sun" />
-                        {% elsif tag_handle == 'lift-cabinet' and section.settings.image_Lift_Cabinet != blank %}
-                          <img src="{{ section.settings.image_Lift_Cabinet | image_url: width: 30 }}" width="30" height="30" alt="Lift Cabinet" />
-                        {% endif %}
+  <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="30" height="30" alt="All" />
+{% elsif tag_handle == 'full-sun' and section.settings.image_Full_Sun != blank %}
+  <img src="{{ section.settings.image_Full_Sun | image_url: width: 30 }}" width="30" height="30" alt="Full Sun" />
+{% elsif tag_handle == 'partial-sun' and section.settings.image_Partial_Sun != blank %}
+  <img src="{{ section.settings.image_Partial_Sun | image_url: width: 30 }}" width="30" height="30" alt="Partial Sun" />
+{% elsif tag_handle == 'lift-cabinet' and section.settings.image_Lift_Cabinet != blank %}
+  <img src="{{ section.settings.image_Lift_Cabinet | image_url: width: 30 }}" width="30" height="30" alt="Lift Cabinet" />
+{% endif %}
                         <span>{{ label }}</span>
                       </a>
                     </li>
@@ -238,10 +214,6 @@
               </div>
             </div>
 
-            {% comment %} <div class="filter-collection__apply-wrapper">
-              <button type="submit" class="filter-collection__apply-button">APPLY FILTERS</button>
-            </div> {% endcomment %}
-
           </aside>
         </form>
       </div>
@@ -252,6 +224,7 @@
     </button>
 
     <div class="filter-collection__products">
+      {%- paginate collection.products by 12 -%}
       <div class="filter-collection__grid" style="grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);">
         {% for product in collection.products %}
           <div class="filter-collection__item">
@@ -260,15 +233,57 @@
                 {{ product.featured_image | image_url: width: 500 | image_tag: class: 'filter-collection__image', loading: 'lazy' }}
               </a>
             </div>
+
+            
+
             <div class="filter-collection__meta">
-<<<<<<< Updated upstream
+
+                 {%- comment -%} SIZE PILLS (fixed quoting) {%- endcomment -%}
+{%- liquid
+  assign size_option = nil
+  assign size_labels = 'resolution size,size,sizes,screen size,tv size,inch,inches,diagonal' | split: ','
+  for opt in product.options_with_values
+    assign opt_name = opt.name | downcase | strip
+    if size_labels contains opt_name
+      assign size_option = opt
+      break
+    endif
+  endfor
+-%}
+{%- if size_option and size_option.values and size_option.values.size > 1 -%}
+  <nav class="mm-product-sizes" aria-label="Available sizes for {{ product.title | escape }}">
+    <p>
+      {%- for ov in size_option.values -%}
+        {%- assign raw_val = ov.value | default: ov -%}
+        {%- assign display_val = raw_val | strip
+          | remove: '"' | remove: '”' | remove: '″'
+          | remove: "'" | remove: '’' | remove: '‘' -%}
+
+        {%- assign matched_variant = nil -%}
+        {%- for v in product.variants -%}
+          {%- case size_option.position -%}
+            {%- when 1 -%}{% if v.option1 == raw_val %}{% assign matched_variant = v %}{% break %}{% endif %}
+            {%- when 2 -%}{% if v.option2 == raw_val %}{% assign matched_variant = v %}{% break %}{% endif %}
+            {%- when 3 -%}{% if v.option3 == raw_val %}{% assign matched_variant = v %}{% break %}{% endif %}
+          {%- endcase -%}
+        {%- endfor -%}
+
+        {%- if matched_variant -%}
+          <a href="{{ matched_variant.url }}" data-instant {% unless matched_variant.available %}class="is-sold-out"{% endunless %}>{{ display_val }}&Prime;</a>
+        {%- else -%}
+          <span class="is-disabled">{{ display_val }}&Prime;</span>
+        {%- endif -%}
+      {%- endfor -%}
+    </p>
+  </nav>
+{%- endif -%}
+
               {%- comment -%} Sun capabilities / Series tag display (metafield-first, fallback to tags) {%- endcomment -%}
               {%- assign tag_text = '' -%}
               {%- assign icon_name = '' -%}
               {%- assign sc = product.metafields.custom.sun_capabilities -%}
 
               {%- if sc != blank -%}
-                {%- comment -%} Try reading as a list of values first {%- endcomment -%}
                 {%- assign first_val = '' -%}
                 {%- for v in sc.value -%}
                   {%- if v.label != blank -%}
@@ -288,7 +303,6 @@
                   {%- assign tag_text = tmp | strip -%}
                   {%- assign icon_name = first_val | handleize -%}
                 {%- else -%}
-                  {%- comment -%} Single value field {%- endcomment -%}
                   {%- if sc.value != blank -%}
                     {%- assign tag_text = sc.value -%}
                   {%- else -%}
@@ -299,7 +313,6 @@
               {%- endif -%}
 
               {%- if tag_text == '' -%}
-                {%- comment -%} Last-resort: legacy tags {%- endcomment -%}
                 {%- assign tag_map = 'Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
                 {%- for want in tag_map -%}
                   {%- if product.tags contains want -%}
@@ -316,42 +329,10 @@
                   {{ tag_text }}
                 </span>
               {%- endif -%}
-=======
-{%- comment -%} Sun capabilities / Series tag display {%- endcomment -%}
-{%- assign tag_text = '' -%}
-{%- assign sc = product.metafields.custom.sun_capabilities -%}
-{%- if sc != blank -%}
-  {%- if sc.value != blank -%}
-    {%- assign scv_json = sc.value | json -%}
-    {%- if scv_json contains '[' -%}
-      {%- capture tmp -%}
-        {%- for v in sc.value -%}
-          {%- if v.label != blank -%}{{ v.label }}{%- else -%}{{ v }}{%- endif -%}{% unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-      {%- endcapture -%}
-      {%- assign tag_text = tmp | strip -%}
-    {%- else -%}
-      {%- assign tag_text = sc.value -%}
-    {%- endif -%}
-  {%- else -%}
-    {%- assign tag_text = sc -%}
-  {%- endif -%}
-{%- endif -%}
-{%- if tag_text == '' -%}
-  {%- assign tag_map = 'Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
-  {%- for want in tag_map -%}
-    {%- if product.tags contains want -%}
-      {%- assign tag_text = want -%}
-      {%- break -%}
-    {%- endif -%}
-  {%- endfor -%}
-{%- endif -%}
-{%- if tag_text != '' -%}
-  <span class="filter-collection__tag">{{ tag_text }}</span>
-{%- endif -%}
->>>>>>> Stashed changes
+
 
               <h3 class="filter-collection__title">{{ product.title }}</h3>
+
               <span class="smart-tv-type">
                 {% if product.metafields.shopify.smart-tv-platform %}
                   {% for platform in product.metafields.shopify.smart-tv-platform.value %}
@@ -360,6 +341,7 @@
                   {% endfor %}
                 {% endif %}
               </span>
+
               <p class="filter-collection__price">
                 From {{ product.price | money }}
                 {% if product.compare_at_price > product.price %}
@@ -370,11 +352,11 @@
           </div>
         {% endfor %}
       </div>
-      {% paginate collection.products by 12 %}
-        <div class="filter-collection__pagination">
-          {{ paginate | default_pagination }}
-        </div>
-      {% endpaginate %}
+
+      <div class="filter-collection__pagination">
+        {{ paginate | default_pagination }}
+      </div>
+      {%- endpaginate -%}
     </div>
   </div>
 </div>
@@ -444,13 +426,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 
 .filter-collection__chevron { width: 13px; height: 8px; object-fit: contain; transition: transform 0.3s ease; display: inline-block; }
 
-<<<<<<< Updated upstream
-.filter-collection__pagination span.prev,
-.filter-collection__pagination span.next { width: 19px !important; height: 19px !important; }
-=======
-$1 { width: 19px !important; height: 19px !important; }
->>>>>>> Stashed changes
-
+/* Pagination icons */
 .filter-collection__pagination .prev a,
 .filter-collection__pagination .next a {
   position: relative; color: transparent; font-size: 0; justify-content: center; text-align: center; display: flex;
@@ -468,7 +444,6 @@ $1 { width: 19px !important; height: 19px !important; }
 }
 
 /* Overlay and layout */
-
 .filter-collection__overlay { display: none; }
 .filter-collection__overlay.is-active { display: block; }
 .filter-collection { display: flex; justify-content: center; padding: 40px 20px; }
@@ -482,7 +457,7 @@ $1 { width: 19px !important; height: 19px !important; }
 .filter-collection__products { flex: 1; max-width: 1608px; }
 .filter-collection__filter-group { display: flex; flex-direction: column; }
 .filter-collection__label { font-family: 'Questrial', sans-serif; font-size: 18px; font-weight: 400; color: #2C2C2C; margin-bottom: 10px; }
-.filter-collection__select { font-size: 14px; padding: 10px; border: 1px solid #c2c4c5; background: #ffffff; color: #0a0a0a; }
+.filter-collection__select { font-size: 14px; border: 1px solid #c2c4c5; background: #ffffff; color: #0a0a0a; padding: 10px; }
 .filter-collection__series-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
 .filter-collection__series-item { font-family: 'Questrial', sans-serif; font-size: 16px; font-weight: 400; line-height: 20px; padding: 14px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 22px; color: #2e2e2e; width: 100%; background: white; }
 .filter-collection__series-item:hover { background: #fbfbfb; }
@@ -495,16 +470,22 @@ $1 { width: 19px !important; height: 19px !important; }
 .filter-collection__image-wrapper { width: 100%; max-height: 322px; aspect-ratio: 283 / 322; background-size: cover; background-position: top; background-repeat: no-repeat; }
 .filter-collection__image { max-width: 100%; max-height: 100%; object-fit: contain; }
 .filter-collection__meta { padding: 16px 13px 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
-<<<<<<< Updated upstream
+
+/* Tag + title */
 .filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; display: inline-flex; gap: 6px; align-items: center; min-height: 20px; margin-bottom: -6px; }
 .filter-collection__tag img { width: 18px; height: 18px; object-fit: contain; }
 .filter-collection__title { font-family: Questrial, sans-serif; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
-=======
-.filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; }
-.filter-collection__tag { display: inline-flex; align-items: center; gap: 8px; }
-.filter-collection__tag img { width: 18px; height: 18px; object-fit: contain; }
-.filter-collection__title { font-family: Questrial; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
->>>>>>> Stashed changes
+
+/* Size pills */
+.mm-product-sizes { margin: 0 0 20px 0; }
+.mm-product-sizes p { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
+.mm-product-sizes p a { display:block; padding:4px 12px; border:1px solid transparent; font-size:16px; font-weight:300; line-height:1.4; }
+.mm-product-sizes p a:hover { border-radius:3px; border:1px solid #20413B; color:#20413B; }
+.mm-product-sizes p a:first-of-type { border-radius:3px; border:1px solid #20413B; color:#20413B; }
+.mm-product-sizes .is-sold-out { opacity:.45; pointer-events:none; }
+.mm-product-sizes .is-disabled { opacity:.35; }
+
+/* Prices */
 .smart-tv-type { margin-top: -12px; font-size: 15px; color: #636363; }
 .filter-collection__price { font-family: Roboto, sans-serif; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; margin-top: auto; }
 .filter-collection__compare-price { text-decoration: line-through; color: rgba(0, 0, 0, 0.5); margin-left: 4px; font-size: 16px;}
@@ -524,6 +505,7 @@ $1 { width: 19px !important; height: 19px !important; }
   .filter-collection__meta { width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; padding: 0; }
   .filter-collection__tag { font-size: 10px; font-weight: 400; gap: 2px; min-height: 20px; }
   .filter-collection__title { font-size: 15px; font-weight: 600; color: rgba(0, 0, 0, 0.85); }
+  .mm-product-sizes p a { font-size: 13px; padding: 3px 10px; }
   .smart-tv-type { font-size: 13px; }
   .filter-collection__price { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.85); }
   .filter-collection__compare-wrapper { padding: 0; margin-top: 12px; }

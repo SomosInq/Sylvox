@@ -3,24 +3,7 @@
 PRODUCT CARD COMPONENT
 ----------------------------------------------------------------------------------------------------------------------
 
-This component is used in collection and featured collection to render a single product as a card
-
-********************************************
-Supported variables
-********************************************
-
-* product: the product to render
-* show_rating: show or not the rating. If nothing is set, the theme uses the default product card setting
-* show_vendor: show or not the vendor. If nothing is set, the theme uses the default product card setting
-* show_quick_buy: show or not the quick buy. If nothing is set, the theme uses the default product card setting
-* show_secondary_image: show or not the secondary image. If nothing is set, the theme uses the default product card setting
-* show_swatches: allow to force hiding swatches. If nothing is set, it will default to the default card strategy
-* stacked: indicate if the product is in stack mode
-* position: the position of the card in the list. If specified, the theme will eagerly load the first 3 cards images
-* reveal: if set to true the item will be revealed in a stacked mode
-* background: the background to use for the product card (if none is passed then the one from the global setting is used)
-* text_color: the text color to use for the product card (if none is passed then the one from the global setting is used)
-* text_alignment: can be "center". If nothing is set, the theme uses the default product card setting
+Used in collection and featured collection to render a single product as a card.
 {%- endcomment -%}
 
 {%- assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true -%}
@@ -48,22 +31,12 @@ Supported variables
 {%- endif -%}
 
 <product-card handle="{{ product.handle | escape }}" {% if reveal and settings.stagger_products_apparition %}reveal-js{% endif %} {% render 'surface', class: card_class, background: card_background, text_color: card_text_color %}>
-  {%- comment -%}
-  --------------------------------------------------------------------------------------------------------------------
-  PRODUCT BADGES
-  --------------------------------------------------------------------------------------------------------------------
-  {%- endcomment -%}
-
+  {%- comment -%} PRODUCT BADGES {%- endcomment -%}
   {%- if show_badges and product.media.size > 0 -%}
     {%- render 'product-badges', product: product, context: 'card', class: 'product-card__badge-list' -%}
   {%- endif -%}
 
-  {%- comment -%}
-  --------------------------------------------------------------------------------------------------------------------
-  PRODUCT MEDIA
-  --------------------------------------------------------------------------------------------------------------------
-  {%- endcomment -%}
-
+  {%- comment -%} PRODUCT MEDIA {%- endcomment -%}
   {%- if product.media.size > 0 -%}
     <div class="product-card__figure">
       <a href="{{ product.url }}" data-instant>
@@ -98,30 +71,25 @@ Supported variables
           {%- if product.variants.size == 1 and product.selling_plan_groups.size == 0 -%}
             {%- form 'product', product, is: 'product-form' -%}
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-
               <div class="pointer-fine:hidden">
                 <button type="submit" is="custom-button" class="product-card__mobile-quick-buy-button" aria-label="{{ quick_add_label | escape }}">
                   {%- render 'icon' with 'quick-buy-cart' -%}
                 </button>
               </div>
-
               <div class="pointer-coarse:hidden">
                 {%- render 'button', type: 'submit', content: quick_add_label -%}
               </div>
             {%- endform -%}
           {%- else -%}
             {%- capture quick_buy_id -%}quick-buy-{{ section.id }}-{{ product.id }}-{{ forloop.index0 }}{%- endcapture -%}
-
             <div class="pointer-fine:hidden">
               <button type="button" aria-controls="{{ quick_buy_id }}" aria-expanded="false" aria-label="{{ quick_add_label | escape }}" is="custom-button" class="product-card__mobile-quick-buy-button quick-buy-trigger">
                 {%- render 'icon' with 'quick-buy-cart' -%}
               </button>
             </div>
-
             <div class="pointer-coarse:hidden">
               {%- render 'button', content: quick_add_label, aria_controls: quick_buy_id, class: 'quick-buy-trigger' -%}
             </div>
-
             <quick-buy-drawer id="{{ quick_buy_id }}" header-bordered open-from="bottom" handle="{{ product.handle }}?variant={{ product.selected_or_first_available_variant.id }}" role="region" aria-live="polite" class="quick-buy-drawer drawer">
               {%- comment -%}Quick buy content is filled on demand for performance reasons{%- endcomment -%}
             </quick-buy-drawer>
@@ -131,46 +99,51 @@ Supported variables
     </div>
   {%- endif -%}
 
-  {%- comment -%} ----- SIZE PILLS UNDER IMAGE ----- {%- endcomment -%}
-  {%- liquid
-    assign size_option = nil
-    assign size_labels = 'size,sizes,screen size,tv size,inch,inches,diagonal,resolution size,resolution' | split: ','
-    for opt in product.options_with_values
-      assign label = opt.name | downcase | strip
-      if size_labels contains label
-        assign size_option = opt
-        break
-      endif
-    endfor
-  -%}
-  {%- if size_option and size_option.values.size > 1 -%}
-    <nav class="mm-product-sizes" aria-label="Available sizes for {{ product.title | escape }}">
-      <p>
-        {%- for value in size_option.values -%}
-          {%- assign matched_variant = nil -%}
-          {%- for v in product.variants -%}
-            {%- case size_option.position -%}
-              {%- when 1 -%}{% if v.option1 == value %}{% assign matched_variant = v %}{% break %}{% endif %}
-              {%- when 2 -%}{% if v.option2 == value %}{% assign matched_variant = v %}{% break %}{% endif %}
-              {%- when 3 -%}{% if v.option3 == value %}{% assign matched_variant = v %}{% break %}{% endif %}
-            {%- endcase -%}
-          {%- endfor -%}
-          {%- if matched_variant -%}
-            <a href="{{ matched_variant.url }}" data-instant {% unless matched_variant.available %}class="is-sold-out"{% endunless %}>{{ value }}</a>
-          {%- endif -%}
+{%- comment -%} ----- SIZE PILLS UNDER IMAGE (robust) ----- {%- endcomment -%}
+{%- liquid
+  assign size_option = nil
+  assign size_labels = 'size,sizes,screen size,tv size,inch,inches,diagonal,resolution size,resolution' | split: ','
+  for opt in product.options_with_values
+    assign label = opt.name | downcase | strip
+    if size_labels contains label
+      assign size_option = opt
+      break
+    endif
+  endfor
+-%}
+
+{%- if size_option and size_option.values and size_option.values.size > 1 -%}
+  <nav class="mm-product-sizes" aria-label="Available sizes for {{ product.title | escape }}">
+    <p>
+      {%- for ov in size_option.values -%}
+        {%- comment -%} ov may be an OptionValue object or a plain string {%- endcomment -%}
+        {%- assign value_str = ov.value | default: ov -%}
+
+        {%- assign matched_variant = nil -%}
+        {%- for v in product.variants -%}
+          {%- case size_option.position -%}
+            {%- when 1 -%}{% if v.option1 == value_str %}{% assign matched_variant = v %}{% break %}{% endif %}
+            {%- when 2 -%}{% if v.option2 == value_str %}{% assign matched_variant = v %}{% break %}{% endif %}
+            {%- when 3 -%}{% if v.option3 == value_str %}{% assign matched_variant = v %}{% break %}{% endif %}
+          {%- endcase -%}
         {%- endfor -%}
-      </p>
-    </nav>
-  {%- endif -%}
 
-  {%- comment -%}
-  --------------------------------------------------------------------------------------------------------------------
-  PRODUCT INFO
-  --------------------------------------------------------------------------------------------------------------------
-  {%- endcomment -%}
+        {%- if matched_variant -%}
+          <a href="{{ matched_variant.url }}" data-instant {% unless matched_variant.available %}class="is-sold-out"{% endunless %}>{{ value_str }}</a>
+        {%- else -%}
+          <span class="is-disabled">{{ value_str }}</span>
+        {%- endif -%}
+      {%- endfor -%}
+    </p>
+  </nav>
+{%- endif -%}
 
+
+  {%- comment -%} PRODUCT INFO {%- endcomment -%}
   <div class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
     {%- render 'price-list', product: product, text_alignment: text_alignment -%}
+
+                                  
 
     {%- if show_vendor and product.vendor != blank -%}
       {%- if show_rating and text_alignment != 'center' -%}
@@ -196,8 +169,6 @@ Supported variables
       {%- else -%}
         <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
       {%- endif -%}
-
-      {%- comment -%} {%- render 'price-list', product: product, text_alignment: text_alignment -%} {%- endcomment -%}
     </div>
 
     {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
