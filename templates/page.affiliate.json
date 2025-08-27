@@ -95,7 +95,8 @@
         "title_kBkGzx": {
           "type": "title",
           "settings": {
-            "title": "Earn a minimum of 5% commission on every sale you refer to Sylvox.com"
+            "title": "Earn a minimum of 5% commission on every sale you refer to Sylvox.com",
+            "text_color": "#636363"
           }
         }
       },
@@ -135,7 +136,7 @@
             "title_tag": "h3",
             "title_italic": false,
             "title_color": "#000000",
-            "title_weight": "600",
+            "title_weight": "400",
             "horizontal_alignment": "left",
             "vertical_alignment": "middle",
             "content_width": 45,
@@ -163,14 +164,14 @@
             "title": "",
             "title_tag": "h3",
             "title_italic": false,
-            "title_color": "#000000",
-            "title_weight": "600",
+            "title_color": "#636363",
+            "title_weight": "400",
             "horizontal_alignment": "left",
             "vertical_alignment": "middle",
             "content_width": 45,
             "top_padding_bottom": 0,
             "image_width": 100,
-            "text": "We're inviting influencers and website owners to join our Vantrue Affiliate Program!\n\nSign up for the Vantrue Affiliate Program for free—it only takes a few minutes. Once registered, you'll receive a unique referral link. Share this link on your website, blog, or social media to drive traffic to Vantrue.com. For every order placed through your link, you'll earn a 5% to 8% commission on each sale. The more you share, the more you earn!",
+            "text": "We're inviting influencers and website owners to join our Vantrue Affiliate Program!\n\n<br><br>Sign up for the Vantrue Affiliate Program for free—it only takes a few minutes. Once registered, you'll receive a unique referral link. Share this link on your website, blog, or social media to drive traffic to Vantrue.com. For every order placed through your link, you'll earn a 5% to 8% commission on each sale. The more you share, the more you earn!",
             "background_color": "#ffffff",
             "padding_top": 0,
             "padding_bottom": 0,
@@ -224,14 +225,14 @@
             "title_tag": "h3",
             "title_italic": false,
             "title_color": "#000000",
-            "title_weight": "600",
+            "title_weight": "400",
             "horizontal_alignment": "left",
             "vertical_alignment": "middle",
             "content_width": 30,
             "image": "shopify://shop_images/Vector_f035f8e6-07bb-43e5-97b2-48ff687f4a4f.svg",
             "top_padding_bottom": 60,
             "image_width": 35,
-            "text": "The first step is to create a free account and join the Sylvox Affiliate Program, it only takes a few minutes.\n<br><br>\nJoin Affiliate Shareasale &gt;",
+            "text": "The first step is to create a free account and join the Sylvox Affiliate Program, it only takes a few minutes.\n<br><br>\n<a href='#'>Join Affiliate Shareasale</a> &gt;",
             "background_color": "#a7dcb7",
             "padding_top": 132,
             "padding_bottom": 32,
@@ -254,7 +255,7 @@
             "title_tag": "h3",
             "title_italic": false,
             "title_color": "#ffffff",
-            "title_weight": "600",
+            "title_weight": "400",
             "horizontal_alignment": "left",
             "vertical_alignment": "middle",
             "content_width": 30,
@@ -284,7 +285,7 @@
             "title_tag": "h3",
             "title_italic": false,
             "title_color": "#ffffff",
-            "title_weight": "600",
+            "title_weight": "400",
             "horizontal_alignment": "left",
             "vertical_alignment": "middle",
             "content_width": 30,
@@ -343,7 +344,7 @@
           "settings": {
             "top_image_width": 300,
             "big_word": "#1",
-            "big_word_size": 36,
+            "big_word_size": 46,
             "text": "Sylvox is consistently the top selling outdoor tv on Amazon."
           }
         },
@@ -352,7 +353,7 @@
           "settings": {
             "top_image_width": 300,
             "big_word": "$1200",
-            "big_word_size": 36,
+            "big_word_size": 46,
             "text": "Our average order value, guaranteeing high commissions"
           }
         },
@@ -361,7 +362,7 @@
           "settings": {
             "top_image_width": 300,
             "big_word": "5%",
-            "big_word_size": 36,
+            "big_word_size": 46,
             "text": "Your commission rate on qualifying sales."
           }
         }

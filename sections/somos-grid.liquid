@@ -55,6 +55,47 @@
     margin: 0 !important;
   }
 
+  .page-affiliate .{{ section.id }} .usp-container {
+    gap: 24px;
+  }
+
+  .page-affiliate .{{ section.id }} .usp-container .content-text a {
+    text-decoration: underline;
+  }
+
+  .page-belcome-a-reseller .{{ section.id }} .usp-subtext {
+    color: #1D1D1B;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .page-belcome-a-reseller .{{ section.id }} .usp-container {
+    gap: 12px;
+  }
+
+  .page-belcome-a-reseller .{{ section.id }} .content-block {
+    border-radius: 16px;
+  }
+
+  .page-belcome-a-reseller .{{ section.id }} .content-block img {
+    aspect-ratio: 1/1;
+  }
+  .page-belcome-a-reseller .{{ section.id }} .content-block .content-text {
+    color: #636363!important;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .page-belcome-a-reseller .{{ section.id }} .usp-container {
+      gap: 24px;
+    }
+    .page-belcome-a-reseller .{{ section.id }} .content-block {
+        flex: 0 0 calc((100% - (3 * 24px)) / 4);
+        min-width: 260px;
+    }
+    .page-belcome-a-reseller .{{ section.id }} .usp-header {
+      margin-bottom: 96px;
+    }
+  }
   @media screen and (max-width: 768px) {
     .usp-item,
     .vip-column-block,
@@ -74,7 +115,7 @@
 
 
 <div id="{{ section.settings.section_id }}"
-  class="usp-section section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }}
+  class="usp-section section_width_{{ section.settings.section_width }} section_content_width_{{ section.settings.section_content_width }} {{ section.settings.custom_class }} {{ section.id }}
     {% unless section.settings.show_on_desktop %}hide-desktop{% endunless %}
     {% unless section.settings.show_on_tablet %}hide-tablet{% endunless %}
     {% unless section.settings.show_on_mobile %}hide-mobile{% endunless %}"
@@ -406,6 +447,12 @@
           ]
         },
         { "type": "html", "id": "text", "label": "Content Text (HTML Friendly)" },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "G Color",
+          "default": "#000000"
+        },
         {
           "type": "select",
           "id": "horizontal_alignment",

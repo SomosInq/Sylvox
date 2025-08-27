@@ -388,6 +388,26 @@
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "product_type",
+      "namespace": "custom",
+      "name": "Product type",
+      "description": "Kitchen, Bathroom, Outdoor, etc...",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "sun_capabilities",
+      "namespace": "custom",
+      "name": "Sun capabilities",
+      "description": "Full Sun or Partial Sun",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
     }
   ],
   "variant": [
