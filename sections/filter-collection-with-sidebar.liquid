@@ -1,5 +1,14 @@
 {% comment %}
   Custom section: Sidebar Collection Filter | filter-collection-with-sidebar.liquid
+  Update: "Series" facet now reads the metafield `custom.sun_capabilities` (via native Shopify facets),
+  showing your configured images next to each predefined metafield value. If the metafield facet
+  isn't available (not enabled in Search & Discovery), we fall back to the legacy tag-based Series.
+
+  Image mapping in this file:
+  - Full Sun   → settings.image_Full_Sun
+  - Partial Sun→ settings.image_Partial_Sun
+  - ALL        → settings.image_all (fallback block only)
+  - Lift Cabinet (legacy tag fallback only) → settings.image_Lift_Cabinet
 {% endcomment %}
 
 <div class="filter-collection section_width_{{ section.settings.section_width }}" id="{{ section.id }}" 
@@ -48,23 +57,22 @@
             <div class="filter-collection__divider"></div>
 
             {%- comment -%}
-              FACETS: render all enabled filters; decorate a "Series" facet with images when present.
+              FACETS: render all enabled filters; decorate the `custom.sun_capabilities` facet with images.
             {%- endcomment -%}
-            {%- assign has_resolution_facet = false -%}
-
+            {%- assign has_sun_caps_facet = false -%}
 
             {%- for filter in collection.filters -%}
-  {%- assign is_resolution = false -%}
-  {%- assign normalized_label = filter.label | downcase -%}
-  {%- if normalized_label contains 'outdoor tv resolution' -%}
-    {%- assign is_resolution = true -%}
-    {%- assign has_resolution_facet = true -%}
-  {%- endif -%}
-
+              {%- assign is_sun_caps = false -%}
+              {%- assign normalized_label = filter.label | downcase | strip -%}
+              {%- assign param_name_str = filter.param_name | downcase | default: '' -%}
+              {%- if normalized_label contains 'sun capabilities' or param_name_str contains 'filter.p.m.custom.sun_capabilities' -%}
+                {%- assign is_sun_caps = true -%}
+                {%- assign has_sun_caps_facet = true -%}
+              {%- endif -%}
 
               <details>
                 <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
-                  <span class="filter-collection__group-heading">{{ filter.label }}</span>
+                  <span class="filter-collection__group-heading">{%- if is_sun_caps -%}Series{%- else -%}{{ filter.label }}{%- endif -%}</span>
                   {% if section.settings.chevron_icon != blank %}
                     <img src="{{ section.settings.chevron_icon | image_url: width: 16 }}" class="filter-collection__chevron-img" alt="Chevron" />
                   {% else %}
@@ -88,17 +96,17 @@
                               style="margin:0;"
                             >
 
-                            {%- if is_series -%}
-                              {%- assign handle = val.label | handle -%}
+                            {%- if is_sun_caps -%}
                               {%- capture img -%}
-                                {%- if handle == 'all' and section.settings.image_all != blank -%}
-                                  {{ section.settings.image_all | image_url: width: 30 }}
-                                {%- elsif handle == 'full-sun' and section.settings.image_Full_Sun != blank -%}
-                                  {{ section.settings.image_Full_Sun | image_url: width: 30 }}
-                                {%- elsif handle == 'partial-sun' and section.settings.image_Partial_Sun != blank -%}
-                                  {{ section.settings.image_Partial_Sun | image_url: width: 30 }}
-                                {%- elsif handle == 'lift-cabinet' and section.settings.image_Lift_Cabinet != blank -%}
-                                  {{ section.settings.image_Lift_Cabinet | image_url: width: 30 }}
+                                {%- assign lh = val.label | downcase | strip -%}
+                                {%- if lh contains 'full' -%}
+                                  {%- if section.settings.image_Full_Sun != blank -%}
+                                    {{ section.settings.image_Full_Sun | image_url: width: 30 }}
+                                  {%- endif -%}
+                                {%- elsif lh contains 'partial' -%}
+                                  {%- if section.settings.image_Partial_Sun != blank -%}
+                                    {{ section.settings.image_Partial_Sun | image_url: width: 30 }}
+                                  {%- endif -%}
                                 {%- endif -%}
                               {%- endcapture -%}
                               {%- if img != blank -%}
@@ -149,9 +157,9 @@
             {%- endfor -%}
 
             {%- comment -%}
-              FALLBACK “Series” (tags) — only if no Series facet exists
+              FALLBACK “Series” (tags) — only if *no* Sun Capabilities metafield facet exists
             {%- endcomment -%}
-            {%- unless has_series_facet -%}
+            {%- unless has_sun_caps_facet -%}
               <details>
                 <summary class="filter-collection__group-heading-wrapper filter-collection__series-toggle">
                   <span class="filter-collection__group-heading">Series</span>
@@ -162,41 +170,41 @@
                   {% endif %}
                 </summary>
                 <ul class="filter-collection__series-list">
-  {%- assign tag_map = 'ALL|Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
-  {%- for label in tag_map -%}
-    {%- assign is_all = false -%}{% if label == 'ALL' %}{% assign is_all = true %}{% endif %}
-    {%- assign tag_handle = label | handle -%}
-    {%- assign active = false -%}
-    {%- if is_all and current_tags == blank %}{% assign active = true %}{% endif %}
-    {%- if current_tags contains label %}{% assign active = true %}{% endif %}
+                  {%- assign tag_map = 'ALL|Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
+                  {%- for label in tag_map -%}
+                    {%- assign is_all = false -%}{% if label == 'ALL' %}{% assign is_all = true %}{% endif %}
+                    {%- assign tag_handle = label | handle -%}
+                    {%- assign active = false -%}
+                    {%- if is_all and current_tags == blank %}{% assign active = true %}{% endif %}
+                    {%- if current_tags contains label %}{% assign active = true %}{% endif %}
 
-    {%- comment %}
-      Build clean URLs without link_to_add_tag:
-      • ALL → /collections/{collection}
-      • Tag  → /collections/{collection}/{tag-handle}
-    {% endcomment -%}
-    {%- if is_all -%}
-      {%- assign dest_url = collection.url -%}
-    {%- else -%}
-      {%- assign dest_url = collection.url | append: '/' | append: tag_handle -%}
-    {%- endif -%}
+                    {%- comment %}
+                      Build clean URLs without link_to_add_tag:
+                      • ALL → /collections/{collection}
+                      • Tag  → /collections/{collection}/{tag-handle}
+                    {% endcomment -%}
+                    {%- if is_all -%}
+                      {%- assign dest_url = collection.url -%}
+                    {%- else -%}
+                      {%- assign dest_url = collection.url | append: '/' | append: tag_handle -%}
+                    {%- endif -%}
 
-    <li class="filter-collection__series-item {% if active %}active{% endif %}">
-      <a href="{{ dest_url }}" style="display:flex;gap:12px;align-items:center;width:100%;">
-        {% if is_all and section.settings.image_all != blank %}
-          <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="30" height="30" alt="All" />
-        {% elsif tag_handle == 'full-sun' and section.settings.image_Full_Sun != blank %}
-          <img src="{{ section.settings.image_Full_Sun | image_url: width: 30 }}" width="30" height="30" alt="Full Sun" />
-        {% elsif tag_handle == 'partial-sun' and section.settings.image_Partial_Sun != blank %}
-          <img src="{{ section.settings.image_Partial_Sun | image_url: width: 30 }}" width="30" height="30" alt="Partial Sun" />
-        {% elsif tag_handle == 'lift-cabinet' and section.settings.image_Lift_Cabinet != blank %}
-          <img src="{{ section.settings.image_Lift_Cabinet | image_url: width: 30 }}" width="30" height="30" alt="Lift Cabinet" />
-        {% endif %}
-        <span>{{ label }}</span>
-      </a>
-    </li>
-  {%- endfor -%}
-</ul>
+                    <li class="filter-collection__series-item {% if active %}active{% endif %}">
+                      <a href="{{ dest_url }}" style="display:flex;gap:12px;align-items:center;width:100%;">
+                        {% if is_all and section.settings.image_all != blank %}
+                          <img src="{{ section.settings.image_all | image_url: width: 22 }}" width="30" height="30" alt="All" />
+                        {% elsif tag_handle == 'full-sun' and section.settings.image_Full_Sun != blank %}
+                          <img src="{{ section.settings.image_Full_Sun | image_url: width: 30 }}" width="30" height="30" alt="Full Sun" />
+                        {% elsif tag_handle == 'partial-sun' and section.settings.image_Partial_Sun != blank %}
+                          <img src="{{ section.settings.image_Partial_Sun | image_url: width: 30 }}" width="30" height="30" alt="Partial Sun" />
+                        {% elsif tag_handle == 'lift-cabinet' and section.settings.image_Lift_Cabinet != blank %}
+                          <img src="{{ section.settings.image_Lift_Cabinet | image_url: width: 30 }}" width="30" height="30" alt="Lift Cabinet" />
+                        {% endif %}
+                        <span>{{ label }}</span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
 
               </details>
 
@@ -216,9 +224,9 @@
               </div>
             </div>
 
-            <div class="filter-collection__apply-wrapper">
+            {% comment %} <div class="filter-collection__apply-wrapper">
               <button type="submit" class="filter-collection__apply-button">APPLY FILTERS</button>
-            </div>
+            </div> {% endcomment %}
 
           </aside>
         </form>
@@ -239,8 +247,61 @@
               </a>
             </div>
             <div class="filter-collection__meta">
-              {% assign icon = product.metafields.custom.sun_capabilities |  handleize %}
-              <span class="filter-collection__tag">{{ product.metafields.custom.product_type }}  {% render 'default.icons' name: icon %}  {{ product.metafields.custom.sun_capabilities }}</span>
+              {%- comment -%} Sun capabilities / Series tag display (metafield-first, fallback to tags) {%- endcomment -%}
+              {%- assign tag_text = '' -%}
+              {%- assign icon_name = '' -%}
+              {%- assign sc = product.metafields.custom.sun_capabilities -%}
+
+              {%- if sc != blank -%}
+                {%- comment -%} Try reading as a list of values first {%- endcomment -%}
+                {%- assign first_val = '' -%}
+                {%- for v in sc.value -%}
+                  {%- if v.label != blank -%}
+                    {%- assign first_val = v.label -%}
+                  {%- else -%}
+                    {%- assign first_val = v -%}
+                  {%- endif -%}
+                  {%- break -%}
+                {%- endfor -%}
+
+                {%- if first_val != '' -%}
+                  {%- capture tmp -%}
+                    {%- for v in sc.value -%}
+                      {%- if v.label != blank -%}{{ v.label }}{%- else -%}{{ v }}{%- endif -%}{% unless forloop.last %}, {% endunless %}
+                    {%- endfor -%}
+                  {%- endcapture -%}
+                  {%- assign tag_text = tmp | strip -%}
+                  {%- assign icon_name = first_val | handleize -%}
+                {%- else -%}
+                  {%- comment -%} Single value field {%- endcomment -%}
+                  {%- if sc.value != blank -%}
+                    {%- assign tag_text = sc.value -%}
+                  {%- else -%}
+                    {%- assign tag_text = sc -%}
+                  {%- endif -%}
+                  {%- assign icon_name = tag_text | split: ',' | first | strip | handleize -%}
+                {%- endif -%}
+              {%- endif -%}
+
+              {%- if tag_text == '' -%}
+                {%- comment -%} Last-resort: legacy tags {%- endcomment -%}
+                {%- assign tag_map = 'Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
+                {%- for want in tag_map -%}
+                  {%- if product.tags contains want -%}
+                    {%- assign tag_text = want -%}
+                    {%- assign icon_name = want | handleize -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if tag_text != '' -%}
+                <span class="filter-collection__tag">
+                  {% render 'default.icons', name: icon_name %}
+                  {{ tag_text }}
+                </span>
+              {%- endif -%}
+
               <h3 class="filter-collection__title">{{ product.title }}</h3>
               <span class="smart-tv-type">
                 {% if product.metafields.shopify.smart-tv-platform %}
@@ -271,7 +332,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // Chevron rotation (yours)
+  // Chevron rotation
   const toggles = document.querySelectorAll('.filter-collection__series-toggle');
   toggles.forEach(summary => {
     const details = summary.closest('details');
@@ -286,15 +347,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Auto-submit when sort_by changes (keeps Apply button for facets)
+  // One consolidated form reference
   const filterForm = document.querySelector('.filter-collection__sidebar')?.closest('form');
-  if (filterForm) {
-    filterForm.addEventListener('change', function (e) {
-      if (e.target && e.target.name === 'sort_by') {
-        filterForm.submit();
-      }
+  if (!filterForm) return;
+
+  // Auto-submit when any facet input changes (metafields, availability, etc.)
+  filterForm.addEventListener('change', function (e) {
+    const t = e.target;
+    if (!t || !t.name) return;
+
+    // Native Shopify facet params start with "filter."
+    if (t.name.indexOf('filter.') === 0) {
+      filterForm.submit();
+      return;
+    }
+
+    // Also auto-submit for sort_by
+    if (t.name === 'sort_by') {
+      filterForm.submit();
+    }
+  });
+
+  // Price fields: submit on Enter or when leaving the field
+  filterForm.querySelectorAll('input[type="number"]').forEach(inp => {
+    inp.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter') { ev.preventDefault(); filterForm.submit(); }
     });
-  }
+    inp.addEventListener('blur', () => filterForm.submit());
+  });
 });
 </script>
 
@@ -302,6 +382,8 @@ document.addEventListener('DOMContentLoaded', function () {
 @import url('https://fonts.googleapis.com/css2?family=Questrial&family=Roboto&display=swap');
 
 {{ 'filter-collection-with-sidebar.css' | asset_url | stylesheet_tag }}
+
+.filter-collection__apply-wrapper { display: none; }
 
 .filter-collection__chevron-img,
 .filter-collection__chevron-text { transition: transform 0.6s ease; }
@@ -314,7 +396,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__chevron { width: 13px; height: 8px; object-fit: contain; transition: transform 0.3s ease; display: inline-block; }
 
 .filter-collection__pagination span.prev,
-.filter-collection__pagination span.next,  { width: 19px !important; height: 19px !important; }
+.filter-collection__pagination span.next { width: 19px !important; height: 19px !important; }
 
 .filter-collection__pagination .prev a,
 .filter-collection__pagination .next a {
@@ -341,30 +423,31 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__drawer-inner { display: flex; flex-direction: column; gap: 22px; width: 100%; }
 .filter-collection__sidebar { flex-shrink: 0; width: 312px; display: flex; flex-direction: column; gap: 22px; padding-right: 40px; }
 .filter-collection__group-heading-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; cursor: pointer;}
-.filter-collection__group-heading { sans-serif; font-size: 18px; color: #2C2C2C; }
+.filter-collection__group-heading { font-family: 'Questrial', sans-serif; font-size: 18px; color: #2C2C2C; }
 .filter-collection__chevron { width: 13px; height: 8px; object-fit: contain; }
 .filter-collection__products { flex: 1; max-width: 1608px; }
 .filter-collection__filter-group { display: flex; flex-direction: column; }
-.filter-collection__label { sans-serif; font-size: 18px; font-weight: 400; color: #2C2C2C; margin-bottom: 10px; }
+.filter-collection__label { font-family: 'Questrial', sans-serif; font-size: 18px; font-weight: 400; color: #2C2C2C; margin-bottom: 10px; }
 .filter-collection__select { font-size: 14px; padding: 10px; border: 1px solid #c2c4c5; background: #ffffff; color: #0a0a0a; }
 .filter-collection__series-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
-.filter-collection__series-item { sans-serif; font-size: 16px; font-weight: 400; line-height: 20px; padding: 14px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 22px; color: #2e2e2e; width: 100%; background: white; }
+.filter-collection__series-item { font-family: 'Questrial', sans-serif; font-size: 16px; font-weight: 400; line-height: 20px; padding: 14px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 22px; color: #2e2e2e; width: 100%; background: white; }
 .filter-collection__series-item:hover { background: #fbfbfb; }
 .filter-collection__series-item.active { font-weight: 400; background: #fbfbfb; }
 .filter-collection__compare-wrapper { padding: 0 0 24px 0; }
 .filter-collection__compare-button { margin-top: auto; }
-.filter-collection__button { padding: 12px 24px; background: #101820; color: #ffffff; border: none; font-size: 14px; font-weight: 400; cursor: pointer; border-radius: 40px; }
+.filter-collection__button { padding: 12px 24px; background: #101820; color: #ffffff; border: none; font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 400; cursor: pointer; border-radius: 40px; }
 .filter-collection__grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 25px; }
 .filter-collection__item { width: 100%; border-radius: 6px; background: #ffffff; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; }
 .filter-collection__image-wrapper { width: 100%; max-height: 322px; aspect-ratio: 283 / 322; background-size: cover; background-position: top; background-repeat: no-repeat; }
 .filter-collection__image { max-width: 100%; max-height: 100%; object-fit: contain; }
 .filter-collection__meta { padding: 16px 13px 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
-.filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 14px; font-weight: 400; line-height: normal; display: inline-flex; gap: 4px; align-items: center; min-height: 20px; margin-bottom: -6px; }
-.filter-collection__title { font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
+.filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; display: inline-flex; gap: 6px; align-items: center; min-height: 20px; margin-bottom: -6px; }
+.filter-collection__tag img { width: 18px; height: 18px; object-fit: contain; }
+.filter-collection__title { font-family: Questrial, sans-serif; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
 .smart-tv-type { margin-top: -12px; font-size: 15px; color: #636363; }
-.filter-collection__price { font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; margin-top: auto; }
+.filter-collection__price { font-family: Roboto, sans-serif; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; margin-top: auto; }
 .filter-collection__compare-price { text-decoration: line-through; color: rgba(0, 0, 0, 0.5); margin-left: 4px; font-size: 16px;}
-.filter-collection__pagination { display: flex; align-items: center; justify-content: center; gap: 30px; font-size: 16px; font-weight: 400; text-transform: capitalize; color: black; margin-top: 48px; }
+.filter-collection__pagination { display: flex; align-items: center; justify-content: center; gap: 30px; font-size: 16px; font-family: 'Questrial', sans-serif; font-weight: 400; text-transform: capitalize; color: black; margin-top: 48px; }
 .filter-collection__pagination a { text-decoration: none; color: black; font-family: inherit; font-size: inherit; font-weight: inherit; text-transform: inherit; }
 .filter-collection__divider { width: 100%; height: 1px; background: rgba(0, 0, 0, 0.08); }
 .filter-collection__filter-toggle { display: none; }
@@ -384,7 +467,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
   .filter-collection__price { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.85); }
   .filter-collection__compare-wrapper { padding: 0; margin-top: 12px; }
 
-  .filter-collection__pagination { justify-content: center; align-items: center; gap: 24px; font-size: 16px; font-weight: 400; text-transform: capitalize; color: black; }
+  .filter-collection__pagination { justify-content: center; align-items: center; gap: 24px; font-size: 16px; font-family: 'Questrial', sans-serif; font-weight: 400; text-transform: capitalize; color: black; }
 
   .filter-collection__drawer {
     position: fixed; top: 0; left: 0; height: 100%; width: 312px; max-width: 90%;
@@ -398,16 +481,17 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
   .filter-collection__group-heading,
   .filter-collection__group-heading-wrapper .filter-collection__group-heading,
   .filter-collection__group-heading-wrapper p.filter-collection__group-heading {
-    font-size: 14px; font-weight: 400; color: #2C2C2C;
+    font-family: 'Questrial', sans-serif; font-size: 14px; font-weight: 400; color: #2C2C2C;
   }
-  .filter-collection__series-item { sans-serif; font-size: 14px; font-weight: 400; color: #2C3939; }
+  .filter-collection__series-item { font-family: 'Questrial', sans-serif; font-size: 14px; font-weight: 400; color: #2C3939; }
 
   .filter-collection__compare-button .filter-collection__button {
-    background: #101820; border-radius: 40px; padding: 12px 24px; color: #fff; font-size: 14px;
+    background: #101820; border-radius: 40px; padding: 12px 24px; color: #fff; font-size: 14px; font-family: Roboto, sans-serif;
   }
 
   .filter-collection__apply-button {
-    padding: 12px 24px; border: 1px solid #000; border-radius: 40px; color: #1D1D1B; font-size: 14px; font-weight: 400; background: transparent; width: 100%; margin-top: 16px; text-align: center;
+    padding: 12px 24px; border: 1px solid #000; border-radius: 40px; color: #1D1D1B; font-size: 14px; font-family: Roboto, sans-serif;
+    font-weight: 400; background: transparent; width: 100%; margin-top: 16px; text-align: center;
   }
   .filter-collection__filter-toggle { display: flex; }
 }

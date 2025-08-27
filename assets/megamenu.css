@@ -159,6 +159,7 @@ span.mm-badge {
     border: 1px solid #20413B;
     color: #20413B;
 }
+
 .grid-links-2{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

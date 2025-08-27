@@ -25,39 +25,106 @@
           {% if block.type == 'collection_menu' %}
           <div class="mega-menu-products {% if forloop.index == 1 %}active{% endif %}" data-loop-index="{{ forloop.index }}">
             <div class="mm-heading-area">
-            <div class="mm-content-heading">
-              <div class="mm-main-title">{{ block.settings.title }}</div>
-              <div class="mm-subtitle">
-                {% if block.settings.subtitle != blank %}
-                  {% if block.settings.icon != blank %}
-                    <img src="{{ block.settings.icon | image_url }}" width="34" height="34" alt="">
+              <div class="mm-content-heading">
+                <div class="mm-main-title">{{ block.settings.title }}</div>
+                <div class="mm-subtitle">
+                  {% if block.settings.subtitle != blank %}
+                    {% if block.settings.icon != blank %}
+                      <img src="{{ block.settings.icon | image_url }}" width="34" height="34" alt="">
+                    {% endif %}
+                    {{ block.settings.subtitle }}
                   {% endif %}
-                  {{ block.settings.subtitle }}
-                {% endif %}
+                </div>
               </div>
-            </div>
-            <a href="{{ block.settings.collection_link }}" class="mm-view-more-btn">See All</a>
+              <a href="{{ block.settings.collection_link }}" class="mm-view-more-btn">See All</a>
             </div>
             <p>{{ block.settings.description }}</p>
             <div class="mega-menu-product-grid">
              {% for i in (1..4) %}
-                  {% assign badge_key = 'badge_p' | append: i %}
-                  {% assign image_key = 'image_p' | append: i %}
-                  {% assign heading_key = 'heading_p' | append: i %}
-                  {% assign sizes_key = 'sizes_linkes_p' | append: i %}
-                  {% assign product_link = 'product_link_p' | append: i %}
-                 {% if block.settings[heading_key] != blank %}
+                {% assign badge_key   = 'badge_p'        | append: i %}
+                {% assign image_key   = 'image_p'        | append: i %}
+                {% assign heading_key = 'heading_p'      | append: i %}
+                {% assign sizes_key   = 'sizes_linkes_p' | append: i %}
+                {% assign product_link_key = 'product_link_p' | append: i %}
+                {% assign product_key = 'product_p'      | append: i %}
+
+                {% if block.settings[heading_key] != blank %}
+                  {% assign product_obj = block.settings[product_key] %}
                   <div class="mega-menu-product-card">
-                    {% if block.settings[badge_key] != blank %}<span class="mm-badge">{{ block.settings[badge_key] }}</span>{% endif %}
-                    {% if block.settings[product_link] != blank %}
-                      <a href="{{ block.settings[product_link] }}">
+                    {% if block.settings[badge_key] != blank %}
+                      <span class="mm-badge">{{ block.settings[badge_key] }}</span>
+                    {% endif %}
+
+                    {% if block.settings[product_link_key] != blank %}
+                      <a href="{{ block.settings[product_link_key] }}">
                         <img src="{{ block.settings[image_key] | image_url }}" alt="">
                       </a>
+                    {% else %}
+                      {% if product_obj %}
+                        <a href="{{ product_obj.url }}">
+                          {% if block.settings[image_key] != blank %}
+                            <img src="{{ block.settings[image_key] | image_url }}" alt="">
+                          {% else %}
+                            {% if product_obj.featured_image %}
+                              <img src="{{ product_obj.featured_image | image_url: width: 600 }}" alt="{{ product_obj.title | escape }}">
+                            {% endif %}
+                          {% endif %}
+                        </a>
                       {% else %}
                         <img src="{{ block.settings[image_key] | image_url }}" alt="">
+                      {% endif %}
                     {% endif %}
-                    <div class="mm-product-title">{{ block.settings[heading_key] }}</div>
-                    <div class="mm-product-sizes">{{ block.settings[sizes_key] | remove: '|' }}</div>
+
+                    <div class="mm-product-title">
+                      {{ block.settings[heading_key] }}
+                    </div>
+
+                    {%- comment -%}
+                      Variant-driven sizes:
+                      - Uses the selected product's "Resolution Size" option.
+                      - Falls back to the manual richtext sizes if no product/option found.
+                    {%- endcomment -%}
+                    {% if product_obj %}
+                      {% assign size_option_index = 0 %}
+                      {% assign size_values = blank %}
+                      {% for opt in product_obj.options_with_values %}
+                        {% assign opt_name_down = opt.name | downcase %}
+                        {% if opt_name_down == 'resolution size' or opt_name_down contains 'resolution' or opt_name_down == 'size' %}
+                          {% assign size_option_index = forloop.index %}
+                          {% assign size_values = opt.values %}
+                          {% break %}
+                        {% endif %}
+                      {% endfor %}
+
+                      {% if size_option_index > 0 and size_values %}
+                        <div class="mm-product-sizes">
+                          {% for size in size_values %}
+                            {% assign candidates = product_obj.variants %}
+                            {% if size_option_index == 1 %}
+                              {% assign candidates = candidates | where: 'option1', size %}
+                            {% elsif size_option_index == 2 %}
+                              {% assign candidates = candidates | where: 'option2', size %}
+                            {% else %}
+                              {% assign candidates = candidates | where: 'option3', size %}
+                            {% endif %}
+
+                            {% assign first_available = candidates | where: 'available', true | first %}
+                            {% assign variant_for_size = first_available | default: candidates | first %}
+
+                            {% if variant_for_size %}
+                              <a class="mm-size{% unless variant_for_size.available %} is-unavailable{% endunless %}"
+                                 href="{{ variant_for_size.url }}">{{ size }}</a>
+                            {% else %}
+                              <span class="mm-size is-missing">{{ size }}</span>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                        <div class="mm-product-sizes">{{ block.settings[sizes_key] | remove: '|' }}</div>
+                      {% endif %}
+                    {% else %}
+                      <div class="mm-product-sizes">{{ block.settings[sizes_key] | remove: '|' }}</div>
+                    {% endif %}
                   </div>
                 {% endif %}
              {% endfor %}
@@ -69,6 +136,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -113,11 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "name": "Link",
       "settings": [
         { "type": "text", "id": "link_title", "label": "Title" },
-        {
-          "type": "url",
-          "id": "nav_link",
-          "label": "Link"
-        }
+        { "type": "url", "id": "nav_link", "label": "Link" }
       ]
     },
     {
@@ -125,143 +191,48 @@ document.addEventListener('DOMContentLoaded', function() {
       "name": "Collection Menu",
       "settings": [
         { "type": "text", "id": "menu_name", "label": "Menu Name" },
-        {
-          "type": "url",
-          "id": "collection_link",
-          "label": "Collection link"
-        },
+        { "type": "url", "id": "collection_link", "label": "Collection link" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "text", "id": "subtitle", "label": "Subtitle" },
         { "type": "image_picker", "id": "icon", "label": "Icon" },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Best for Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants"
-        },
-        {
-          "type": "header",
-          "content": "Product 1"
-        },
-        {
-          "type": "text",
-          "id": "badge_p1",
-          "label": "Badge"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_p1",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "heading_p1",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "sizes_linkes_p1",
-          "label": "Sizes Link"
-        },
-        {
-          "type": "url",
-          "id": "product_link_p1",
-          "label": "Product Link"
-        },
-        {
-          "type": "header",
-          "content": "Product 2"
-        },
-        {
-          "type": "text",
-          "id": "badge_p2",
-          "label": "Badge"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_p2",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "heading_p2",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "sizes_linkes_p2",
-          "label": "Sizes Link"
-        },
-        {
-          "type": "url",
-          "id": "product_link_p2",
-          "label": "Product Link"
-        },
-        {
-          "type": "header",
-          "content": "Product 3"
-        },
-        {
-          "type": "text",
-          "id": "badge_p3",
-          "label": "Badge"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_p3",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "heading_p3",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "sizes_linkes_p3",
-          "label": "Sizes Link"
-        },
-        {
-          "type": "url",
-          "id": "product_link_p3",
-          "label": "Product Link"
-        },
-        {
-          "type": "header",
-          "content": "Product 4"
-        },
-        {
-          "type": "text",
-          "id": "badge_p4",
-          "label": "Badge"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_p4",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "heading_p4",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "sizes_linkes_p4",
-          "label": "Sizes Link"
-        },
-        {
-          "type": "url",
-          "id": "product_link_p4",
-          "label": "Product Link"
-        }
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Best for Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants" },
+
+        { "type": "header", "content": "Product 1" },
+        { "type": "text", "id": "badge_p1", "label": "Badge" },
+        { "type": "image_picker", "id": "image_p1", "label": "Image" },
+        { "type": "text", "id": "heading_p1", "label": "Heading" },
+        { "type": "product", "id": "product_p1", "label": "Product (for sizes/variants)" },
+        { "type": "richtext", "id": "sizes_linkes_p1", "label": "Sizes Link (fallback)" },
+        { "type": "url", "id": "product_link_p1", "label": "Product Link (optional, overrides)" },
+
+        { "type": "header", "content": "Product 2" },
+        { "type": "text", "id": "badge_p2", "label": "Badge" },
+        { "type": "image_picker", "id": "image_p2", "label": "Image" },
+        { "type": "text", "id": "heading_p2", "label": "Heading" },
+        { "type": "product", "id": "product_p2", "label": "Product (for sizes/variants)" },
+        { "type": "richtext", "id": "sizes_linkes_p2", "label": "Sizes Link (fallback)" },
+        { "type": "url", "id": "product_link_p2", "label": "Product Link (optional, overrides)" },
+
+        { "type": "header", "content": "Product 3" },
+        { "type": "text", "id": "badge_p3", "label": "Badge" },
+        { "type": "image_picker", "id": "image_p3", "label": "Image" },
+        { "type": "text", "id": "heading_p3", "label": "Heading" },
+        { "type": "product", "id": "product_p3", "label": "Product (for sizes/variants)" },
+        { "type": "richtext", "id": "sizes_linkes_p3", "label": "Sizes Link (fallback)" },
+        { "type": "url", "id": "product_link_p3", "label": "Product Link (optional, overrides)" },
+
+        { "type": "header", "content": "Product 4" },
+        { "type": "text", "id": "badge_p4", "label": "Badge" },
+        { "type": "image_picker", "id": "image_p4", "label": "Image" },
+        { "type": "text", "id": "heading_p4", "label": "Heading" },
+        { "type": "product", "id": "product_p4", "label": "Product (for sizes/variants)" },
+        { "type": "richtext", "id": "sizes_linkes_p4", "label": "Sizes Link (fallback)" },
+        { "type": "url", "id": "product_link_p4", "label": "Product Link (optional, overrides)" }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Mega Menu 1"
-    }
+    { "name": "Mega Menu 1" }
   ]
 }
 {% endschema %}
