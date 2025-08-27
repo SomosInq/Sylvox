@@ -98,6 +98,7 @@
 
                             {%- if is_sun_caps -%}
                               {%- capture img -%}
+<<<<<<< Updated upstream
                                 {%- assign lh = val.label | downcase | strip -%}
                                 {%- if lh contains 'full' -%}
                                   {%- if section.settings.image_Full_Sun != blank -%}
@@ -109,6 +110,19 @@
                                   {%- endif -%}
                                 {%- endif -%}
                               {%- endcapture -%}
+=======
+  {%- assign lh = val.label | downcase | strip -%}
+  {%- if lh contains 'full' -%}
+    {%- if section.settings.image_Full_Sun != blank -%}
+      {{ section.settings.image_Full_Sun | image_url: width: 30 }}
+    {%- endif -%}
+  {%- elsif lh contains 'partial' -%}
+    {%- if section.settings.image_Partial_Sun != blank -%}
+      {{ section.settings.image_Partial_Sun | image_url: width: 30 }}
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+>>>>>>> Stashed changes
                               {%- if img != blank -%}
                                 <img src="{{ img | strip }}" width="30" height="30" alt="{{ val.label | escape }}">
                               {%- endif -%}
@@ -247,6 +261,7 @@
               </a>
             </div>
             <div class="filter-collection__meta">
+<<<<<<< Updated upstream
               {%- comment -%} Sun capabilities / Series tag display (metafield-first, fallback to tags) {%- endcomment -%}
               {%- assign tag_text = '' -%}
               {%- assign icon_name = '' -%}
@@ -301,6 +316,40 @@
                   {{ tag_text }}
                 </span>
               {%- endif -%}
+=======
+{%- comment -%} Sun capabilities / Series tag display {%- endcomment -%}
+{%- assign tag_text = '' -%}
+{%- assign sc = product.metafields.custom.sun_capabilities -%}
+{%- if sc != blank -%}
+  {%- if sc.value != blank -%}
+    {%- assign scv_json = sc.value | json -%}
+    {%- if scv_json contains '[' -%}
+      {%- capture tmp -%}
+        {%- for v in sc.value -%}
+          {%- if v.label != blank -%}{{ v.label }}{%- else -%}{{ v }}{%- endif -%}{% unless forloop.last %}, {% endunless %}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- assign tag_text = tmp | strip -%}
+    {%- else -%}
+      {%- assign tag_text = sc.value -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- assign tag_text = sc -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if tag_text == '' -%}
+  {%- assign tag_map = 'Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
+  {%- for want in tag_map -%}
+    {%- if product.tags contains want -%}
+      {%- assign tag_text = want -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- if tag_text != '' -%}
+  <span class="filter-collection__tag">{{ tag_text }}</span>
+{%- endif -%}
+>>>>>>> Stashed changes
 
               <h3 class="filter-collection__title">{{ product.title }}</h3>
               <span class="smart-tv-type">
@@ -395,8 +444,12 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 
 .filter-collection__chevron { width: 13px; height: 8px; object-fit: contain; transition: transform 0.3s ease; display: inline-block; }
 
+<<<<<<< Updated upstream
 .filter-collection__pagination span.prev,
 .filter-collection__pagination span.next { width: 19px !important; height: 19px !important; }
+=======
+$1 { width: 19px !important; height: 19px !important; }
+>>>>>>> Stashed changes
 
 .filter-collection__pagination .prev a,
 .filter-collection__pagination .next a {
@@ -415,6 +468,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 }
 
 /* Overlay and layout */
+
 .filter-collection__overlay { display: none; }
 .filter-collection__overlay.is-active { display: block; }
 .filter-collection { display: flex; justify-content: center; padding: 40px 20px; }
@@ -441,9 +495,16 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__image-wrapper { width: 100%; max-height: 322px; aspect-ratio: 283 / 322; background-size: cover; background-position: top; background-repeat: no-repeat; }
 .filter-collection__image { max-width: 100%; max-height: 100%; object-fit: contain; }
 .filter-collection__meta { padding: 16px 13px 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+<<<<<<< Updated upstream
 .filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; display: inline-flex; gap: 6px; align-items: center; min-height: 20px; margin-bottom: -6px; }
 .filter-collection__tag img { width: 18px; height: 18px; object-fit: contain; }
 .filter-collection__title { font-family: Questrial, sans-serif; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
+=======
+.filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; }
+.filter-collection__tag { display: inline-flex; align-items: center; gap: 8px; }
+.filter-collection__tag img { width: 18px; height: 18px; object-fit: contain; }
+.filter-collection__title { font-family: Questrial; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
+>>>>>>> Stashed changes
 .smart-tv-type { margin-top: -12px; font-size: 15px; color: #636363; }
 .filter-collection__price { font-family: Roboto, sans-serif; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: normal; margin: 0; margin-top: auto; }
 .filter-collection__compare-price { text-decoration: line-through; color: rgba(0, 0, 0, 0.5); margin-left: 4px; font-size: 16px;}
