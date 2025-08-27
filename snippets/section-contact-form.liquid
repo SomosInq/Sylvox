@@ -43,7 +43,7 @@
   endunless
 -%}
 
-<div class="index-section contact-form-{{ section.id }}{% if content_position %} contact-form--content-position-{{ content_position }}{% endif %}{% if overlay %} contact-form--overlay{% endif %} color-scheme-{{ color_scheme }}">
+<div class="index-section contact-form-{{ section.id }}{% if content_position %} contact-form--content-position-{{ content_position }}{% endif %}{% if overlay %} contact-form--overlay{% endif %} color-scheme-{{ color_scheme }} {{ section.id }}">
   {%- if color_scheme != 'none' -%}
     {%- render 'color-scheme-texture', color_scheme: color_scheme -%}
   {%- endif -%}
@@ -100,6 +100,7 @@
               class="input-full"
               name="contact[name]"
               autocapitalize="words"
+              placeholder="{% render 't_with_fallback', key: 'labels.name', fallback: 'Name' -%}"
               value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
             >
           </div>
@@ -115,6 +116,7 @@
               name="contact[email]"
               autocorrect="off"
               autocapitalize="off"
+              placeholder="{% render 't_with_fallback', key: 'labels.email', fallback: 'Email' -%}"
               value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
             >
           </div>
@@ -130,6 +132,7 @@
             class="input-full"
             name="contact[phone]"
             pattern="[0-9\-]*"
+            placeholder="{% render 't_with_fallback', key: 'labels.email', fallback: 'Email' -%}"
             value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           >
         {%- endif -%}
@@ -142,6 +145,7 @@
           id="ContactFormMessage-{{ section.id }}"
           class="input-full"
           name="contact[body]"
+          placeholder="{% render 't_with_fallback', key: 'labels.message', fallback: 'Message' -%}"
         >{% if form.body %}{{ form.body }}{% endif %}</textarea>
 
         <label for="contact-form-submit-{{ section.id }}" class="visually-hidden">
@@ -149,6 +153,7 @@
         </label>
         <button type="submit" id="contact-form-submit-{{ section.id }}" class="btn">
           {% render 't_with_fallback', key: 'actions.send', fallback: 'Send' %}
+          {% render 'default.icons' name: 'arrow-left-short' %}
         </button>
 
         {% comment %}
@@ -162,3 +167,31 @@
     </div>
   </div>
 </div>
+
+{% style %}
+  .page-belcome-a-reseller .{{ section.id }} .section-header__title {
+    font-sizw: 32px;
+    margin-bottom: 32px;
+  }
+  .page-belcome-a-reseller .{{ section.id }} form label {
+    display: none;
+  }
+  .page-belcome-a-reseller .{{ section.id }} form input,
+  .page-belcome-a-reseller .{{ section.id }} form textarea {
+    border-radius: 10px;
+    border-color: #636363;
+  }
+  .page-belcome-a-reseller .{{ section.id }} form textarea::placeholder {
+    position: absolute;
+    top: -70px;
+  }
+  .{{ section.id }} form button {
+    background-color: #20413B!important;
+    padding: 12px 20px 12px 24px;
+    font-size: 14px;
+    font-weight: 300;
+    display: flex!important;
+    gap: 10px;
+    align-items: center;
+  }
+{% endstyle %}

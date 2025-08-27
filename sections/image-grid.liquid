@@ -48,6 +48,7 @@
   .custom-imagegrid-item {
     scroll-snap-align: start;
     text-align: center;
+    min-width: 200px;
   }
 
   .media-wrapper {
@@ -62,6 +63,11 @@
     z-index: 2;
     border-radius: 6px;
     white-space: pre-line;
+  }
+
+
+  .page-belcome-a-reseller .{{ section.id }} .section_content_width_full h2 {
+    margin-bottom: 48px;
   }
 
   .overlay-top-left    { top: 10px; left: 10px; }
@@ -81,6 +87,9 @@
       margin: auto;
     }
     .hide-mobile { display: none !important; }
+    .page-belcome-a-reseller .{{ section.id }} .section_content_width_full h2 {
+      margin-bottom: 32px;
+    }
   }
 </style>
 
@@ -90,7 +99,7 @@
   class="custom-imagegrid-section section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}
     {% if section.settings.hide_desktop %}hide-desktop{% endif %}
     {% if section.settings.hide_tablet %}hide-tablet{% endif %}
-    {% if section.settings.hide_mobile %}hide-mobile{% endif %}"
+    {% if section.settings.hide_mobile %}hide-mobile{% endif %} {{ section.id }}"
   style="
     background-color: {{ section.settings.background_color }};
     {% if section.settings.background_image != blank %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover; background-position: center;{% endif %}
