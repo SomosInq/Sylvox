@@ -5,12 +5,10 @@
     min-height: {{ section.settings.section_height }}px;
   }
 
-  {% if section.settings.custom_content_width_enabled %}
-    #{{ wrapper_id }} .custom-content-wrapper {
-      width: {{ section.settings.custom_content_width }}%;
-      max-width: {{ section.settings.content_max_width }}px;
-    }
-  {% endif %}
+  .page-affiliate #{{ wrapper_id }} .btn {
+    font-size: 18px;
+    margin-top: 50px;
+  }
 
    #{{ wrapper_id }} .custom-content-wrapper {
      margin: 0 auto;
@@ -21,6 +19,12 @@
         margin-{{ section.settings.content_alignment }}: 80px;
       {% endif %}
     } 
+    {% if section.settings.custom_content_width_enabled %}
+      #{{ wrapper_id }} .custom-content-wrapper {
+        width: {{ section.settings.custom_content_width }}%;
+        max-width: {{ section.settings.content_max_width }}px;
+      }
+    {% endif %}
   }
 
   @media screen and (max-width: 749px) {
@@ -34,6 +38,9 @@
 
     #{{ wrapper_id }} .custom-content-wrapper {
       max-width: {{ section.settings.mobile_content_width }}% !important;
+    }
+    .page-belcome-a-reseller #{{ wrapper_id }} .custom-content-wrapper h2 {
+      font-size: 32px!important;
     }
   }
 </style>
