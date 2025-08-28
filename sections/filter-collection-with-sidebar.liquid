@@ -323,12 +323,12 @@
                 {%- endfor -%}
               {%- endif -%}
 
-              {%- if tag_text != '' -%}
-                <span class="filter-collection__tag">
+              <span class="filter-collection__tag">
+                {%- if tag_text != '' -%}
                   {% render 'default.icons', name: icon_name %}
                   {{ tag_text }}
-                </span>
-              {%- endif -%}
+                {%- endif -%}
+              </span>
 
 
               <h3 class="filter-collection__title">{{ product.title }}</h3>
