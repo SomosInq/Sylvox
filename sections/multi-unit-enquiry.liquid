@@ -6,14 +6,14 @@
   <div class="section_content_width_{{ section.settings.section_content_width }}">
 
         {% if section.settings.title != blank %}
-      <h1 style="color: {{ section.settings.text_color }};">
+      <h2 style="color: {{ section.settings.text_color }};">
         {{ section.settings.title }}
-      </h1>
+      </h2>
     {% endif %}
     {% if section.settings.description != blank %}
-      <div style="color: {{ section.settings.text_color }}; margin-bottom: 2em;">
+      <p class="description" style="color: {{ section.settings.text_color }};">
         {{ section.settings.description }}
-      </div>
+      </p>
     {% endif %}
 
     <style>
@@ -21,17 +21,31 @@
         padding: 40px 0;
       }
 
+      .multi-unit-form h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+      .multi-unit-form p.description {
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+
       .multi-unit-form form {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 40px;
         max-width: 100%;
       }
 
       .multi-unit-form .form-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
-        gap: 16px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .multi-unit-form .form-grid input {
+        min-width: 386px;
+        border-radius: 10px;
       }
 
       .multi-unit-form .checkbox-group,
@@ -41,8 +55,32 @@
         gap: 12px;
       }
 
-      .multi-unit-form .submit-button {
-        margin-top: 24px;
+      .multi-unit-form input[type="radio"], 
+      .multi-unit-form input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 5px;
+        margin: 0;
+        width: 19px;
+        height: 19px;
+        border: 1px solid #20413B;
+        display: inline-grid;
+        place-content: center;
+        cursor: pointer;
+      }
+
+      input[type="checkbox"]:checked::before,
+      input[type="radio"]:checked::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: #20413B;
+        border-radius: inherit;
+      }
+
+      .multi-unit-form .checkbox-group input[type="text"] {
+        width: 100%;
       }
 
       .multi-unit-form input[type="text"],
@@ -51,7 +89,6 @@
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        width: 100%;
       }
 
       .multi-unit-form textarea {
@@ -63,20 +100,23 @@
       }
 
       .multi-unit-form label {
-        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 14px;
       }
 
       .submit-button {
-    border-radius: 9999px;
-background: var(--Dark-Green, #20413B);
-color: white;
-max-width: 140px;
-display: flex;
-padding: 12px 24px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-    }
+        border-radius: 9999px;
+        background: var(--Dark-Green, #20413B);
+        color: white;
+        max-width: 140px;
+        display: flex;
+        margin-top: 0;
+        padding: 12px 24px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
     </style>
 
 
@@ -143,7 +183,7 @@ gap: 10px;
       "label": "Title"
     },
     {
-      "type": "richtext",
+      "type": "text",
       "id": "description",
       "label": "Description"
     },
