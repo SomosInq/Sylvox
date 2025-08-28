@@ -6,6 +6,8 @@
   margin-top: {{ section.settings.margin_top }}px;
   margin-bottom: {{ section.settings.margin_bottom }}px;
   overflow: hidden;
+  width: 96%;
+  margin: auto;
 }
 
 .atmos-slider {
@@ -81,7 +83,7 @@
 /* Flickity Dots */
 .atmos-slider .flickity-page-dots .dot {
   height: 3px !important;
-  width: 60px !important;
+  width: 32% !important;
   background: #555;
   border-radius: 0;
   margin: 0 5px;
@@ -91,11 +93,11 @@
 .atmos-slider .slider-wrapper .flickity-page-dots {
   position: absolute;
   bottom: 40px;
-  width: 100%;
+  width: calc(50% - 42px);
   display: flex;
   justify-content: left;
   z-index: 10;
-  left: 20px;
+  left: 40px;
 }
 
 .atmos-slider .flickity-page-dots .dot.is-selected {

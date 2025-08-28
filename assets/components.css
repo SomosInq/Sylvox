@@ -14980,6 +14980,7 @@ section-main-search {
 }
 
 .slideshow-wrapper {
+  margin-top: 60px;
   position: relative;
 }
 
@@ -15375,10 +15376,16 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
 }
 
 .testimonial-stars {
-  display: block;
+  display: flex;
+  justify-content: center;
   font-size: 16px;
   letter-spacing: 0.2em;
   margin-bottom: 10px;
+  gap: 4px;
+}
+.testimonial-stars svg {
+  height: 24px;
+  width: 24px;
 }
 
 @media only screen and (min-width: 769px) {
@@ -15405,7 +15412,8 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
 .flickity-slider .testimonials-slide {
     display: block;
     opacity: 1;
-        background: #FAFAFA;
+    background: white;
+    padding: 0 !important;
   }
 
 .testimonials-slide .testimonials-slider__text {
@@ -15437,17 +15445,17 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
   }
 
 .testimonials-slider__text {
-  margin: 0 30px;
+  margin: 0 12px;
   padding: 30px calc(var(--gutter) / 2);
-  background: var(--color-body);
+  background: #fafafa;
   color: var(--color-text-body);
   margin-bottom: calc(var(--gutter) / 2);
+
 }
 
 @media only screen and (min-width: 769px) {
 
 .testimonials-slider__text {
-    margin: 0;
     padding: 30px;
     margin-bottom: 0;
 }
@@ -15467,6 +15475,21 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
 
 .testimonials-slider__text p {
     margin-bottom: calc(var(--gutter) / 4);
+    color: #20413B;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+.testimonials-slider__text cite, 
+.testimonials-slider__text .testimonials__info {
+    color: #636363;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
   }
 
 .testimonials-slider__text p + cite {
@@ -15524,6 +15547,7 @@ tool-tip[data-tool-tip-open='true'] .tool-tip__inner {
 
 .testimonials-section .flickity-page-dots {
   bottom: 0;
+  padding-top: 30px !important;
 }
 
 .feature-row-wrapper {
@@ -16404,6 +16428,20 @@ block-price.block-price.product-block span.label.variant__label{
   margin: 24px 0;
 }
 
+.product-single__meta .product-small-text {
+  color: #1D1D1B;
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+}
+.product-single__meta .jdgm-widget .jdgm-prev-badge__text {
+  color: #646864;
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+}
 .product-single__meta #unique-gift-banner .gift-banner{
   background: #20413B;
   border-radius: 4px;

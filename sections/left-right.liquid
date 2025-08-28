@@ -73,6 +73,9 @@
     margin: 0 auto !important;
     width: 90% !important;
   }
+  .page-outdoor-tv-finder .{{ section.id }} .media-description {
+    max-width: 400px;
+  }
 
   @media screen and (max-width: 749px) {
     .media-container {
@@ -89,7 +92,7 @@
 {% assign wrapper_id = section.settings.custom_id | default: 'shopify-section-' | append: section.id %}
 <section
   id="{{ wrapper_id }}"
-  class="left-right-media-section section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
+  class="{{ section.id }} left-right-media-section section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
   style="
     background: {{ section.settings.background_color }};
     background-image: {% if section.settings.background_image %}url({{ section.settings.background_image | image_url }}){% endif %};

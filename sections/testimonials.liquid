@@ -90,15 +90,31 @@ background: rgba(0, 0, 0, 0.10);
                 {%- if block.settings.icon == 'quote' -%}
                   <span class="quote-icon">{% render 'icon', name: 'quote' %}</span>
                 {%- elsif block.settings.icon == '5-stars' -%}
-                  <span class="testimonial-stars">★★★★★</span>
+                  <span class="testimonial-stars">
+                    {% for i in (1..5) %}
+                      {% render 'default.icons', name: 'star-4-points' %}
+                    {% endfor %}
+                  </span>
                 {%- elsif block.settings.icon == '4-stars' -%}
-                  <span class="testimonial-stars">★★★★</span>
+                  <span class="testimonial-stars">
+                    {% for i in (1..4) %}
+                      {% render 'default.icons', name: 'star-4-points' %}
+                    {% endfor %}
+                  </span>
                 {%- elsif block.settings.icon == '3-stars' -%}
-                  <span class="testimonial-stars">★★★</span>
+                  <span class="testimonial-stars">
+                    {% for i in (1..3) %}
+                      {% render 'default.icons', name: 'star-4-points' %}
+                    {% endfor %}</span>
                 {%- elsif block.settings.icon == '2-stars' -%}
-                  <span class="testimonial-stars">★★</span>
+                  <span class="testimonial-stars">
+                    {% for i in (1..2) %}
+                      {% render 'default.icons', name: 'star-4-points' %}
+                    {% endfor %}</span>
                 {%- elsif block.settings.icon == '1-star' -%}
-                  <span class="testimonial-stars">★</span>
+                  <span class="testimonial-stars">
+                    {% render 'default.icons', name: 'star-4-points' %}
+                  </span>
                 {%- endif -%}
 
                 {%- if block.settings.testimonial != blank -%}
