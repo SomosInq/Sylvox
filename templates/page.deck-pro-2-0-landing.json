@@ -703,7 +703,7 @@
           "type": "title",
           "settings": {
             "title": "Designed to handle extreme temperatures and harsh conditions, Deck Pro 2.0 is built for year-round outdoor enjoyment.",
-            "font_size": 48,
+            "font_size": 32,
             "text_color": "#000000"
           }
         }
