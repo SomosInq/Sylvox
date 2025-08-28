@@ -371,6 +371,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
+        "content_alignment": "center",
         "vertical_alignment": "flex-start",
         "add_zoom_animation": false
       }
@@ -514,9 +515,9 @@
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
-        "section_content_width": "standard",
+        "section_content_width": "full",
         "custom_content_width_enabled": true,
-        "custom_content_width": 100,
+        "custom_content_width": 50,
         "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 900,
@@ -541,6 +542,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "left",
+        "content_alignment": "left",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
@@ -689,6 +691,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
+        "content_alignment": "center",
         "vertical_alignment": "center",
         "add_zoom_animation": true
       }

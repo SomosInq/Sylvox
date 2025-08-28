@@ -301,7 +301,6 @@
         "heading_font_size": 32,
         "subtext": "",
         "heading_alignment": "center",
-        "box_height": 300,
         "show_arrows": true,
         "padding_top": 90,
         "padding_bottom": 90,

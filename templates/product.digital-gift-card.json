@@ -754,13 +754,9 @@
       "disabled": true,
       "name": "USP Accordion",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
         "background_color": "#ffffff",
         "section_heading": "Set Up in Minutes, Enjoy for Years.",
         "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
-        "section_title_color": "#000000",
-        "section_description_color": "#000000",
         "button_text": "Learn More",
         "button_link": "",
         "title": "",
@@ -977,13 +973,9 @@
         "section_description": "<p>Here's everything you’ll receive with your order.</p>",
         "button_label": "Learn More",
         "button_link": "",
-        "section_width": "full",
-        "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 40,
         "padding_bottom": 40,
-        "padding_left": 0,
-        "padding_right": 0,
         "left_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small_webp.png",
         "left_title": "Deck Pro 2.0",
         "left_quantity": "× 1",
@@ -1624,5 +1616,3 @@
     "recommendations"
   ]
 }
-
-
