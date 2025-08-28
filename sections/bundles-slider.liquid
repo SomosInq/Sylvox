@@ -36,6 +36,7 @@
     border-radius: 9999px;
     cursor: pointer;
     transition: background 0.3s;
+    color: #336256;
   }
 
   .bundles-slider .tab.active {
@@ -56,6 +57,7 @@
     flex: 0 0 25%;
     box-sizing: border-box;
     padding: 10px;
+    height: 450px;
   }
 @media screen and (max-width: 768px) {
   .bscarousel-cell {
@@ -72,15 +74,29 @@
   background: #F2F2F2;
   border-radius: 0px;
   overflow: hidden;
-  padding: 40px 16px;
+  padding: 40px 30px;
   text-align: left;
-      box-shadow: none;
+  box-shadow: none;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
 }
 
+.bundle-card h5 {
+  color: #1D1D1B;
+  font-family: "Neurial Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
-  .bundle-card h3,
   .bundle-card p {
-    margin: 0 0 12px 0;
+    color: #636363;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
   }
 
   .bundle-card img {
@@ -88,6 +104,7 @@
     height: auto;
     transition: transform 0.3s ease;
     margin: 0 auto;
+    margin-top: auto;
   }
 
   .bundle-card .savings {

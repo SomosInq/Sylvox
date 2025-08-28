@@ -100,13 +100,13 @@
         "lazy_load": true,
         "image_hover_effect": "zoom",
         "top_title": "Visualize your options",
-        "top_title_tag": "h2",
+        "top_title_tag": "h3",
         "top_title_color": "",
-        "top_title_weight": "700",
+        "top_title_weight": "400",
         "top_title_align": "left",
         "top_title_italic": false,
         "top_text": "<p>Experience Sylvox TV in realistic environments, even in your own home. Explore, search, and uncover products. Visualize how they appear and complement each other. Combine different items to discover the ideal arrangement.</p>",
-        "top_text_color": "",
+        "top_text_color": "#484848",
         "top_text_align": "left",
         "top_text_italic": false,
         "top_button_text": "",
@@ -140,13 +140,13 @@
         "lazy_load": true,
         "image_hover_effect": "zoom",
         "top_title": "Choose your products",
-        "top_title_tag": "h2",
+        "top_title_tag": "h3",
         "top_title_color": "",
-        "top_title_weight": "700",
+        "top_title_weight": "400",
         "top_title_align": "left",
         "top_title_italic": false,
         "top_text": "<p>Visually compare items to see what best suits your space,style, and budget. Share and remix designs to find what worksfor everyone at home. You’ll have peace of mind that you’remaking the right choice.</p>",
-        "top_text_color": "",
+        "top_text_color": "#484848",
         "top_text_align": "left",
         "top_text_italic": false,
         "top_button_text": "",
@@ -175,13 +175,15 @@
         "title_FVPCC4": {
           "type": "title",
           "settings": {
-            "title": "Make your space shine"
+            "title": "Make your space shine",
+            "font_size": 32
           }
         },
         "text_BhjDpJ": {
           "type": "text",
           "settings": {
-            "text": "Try out our models and find the best fit for your outdoor space. Choose the model, size, and configuration that suits your needs perfectly"
+            "text": "Try out our models and find the best fit for your outdoor space. Choose the model, size, and configuration that suits your needs perfectly",
+            "text_color": "#484848"
           }
         }
       },

@@ -1,5 +1,28 @@
 {% assign wrapper_id = section.settings.custom_id | default: 'shop-section-' | append: section.id %}
 
+{% if template == 'page.outdoor-tv-finder' %}
+  {% style %}
+    .page-outdoor-tv-finder .somos-banner:first-of-type .custom-content-wrapper {
+      display: flex;
+      flex-flow: column;
+      gap: 26px;
+    }
+    .page-outdoor-tv-finder .somos-banner:first-of-type .custom-content-wrapper > div:first-child p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 21px;
+    }
+    .page-outdoor-tv-finder .somos-banner:first-of-type .custom-content-wrapper > div:first-child p:before {
+          display: block;
+          content: '';
+          background-image: url({{ 'outdoor-tv-finder-icon.png' | asset_url }});
+          height: 47px;
+          width: 47px;
+    }
+  {% endstyle %}
+{% endif %}
+
 <style>
   #{{ wrapper_id }} {
     min-height: {{ section.settings.section_height }}px;
@@ -53,7 +76,7 @@
     {% if section.settings.hide_mobile %}hide-mobile{% endif %}
     {% if section.settings.add_zoom_animation %}
       zoom-image-onscroll
-    {% endif %}
+    {% endif %} somos-banner
     "
   style="
     position: relative;

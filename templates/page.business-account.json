@@ -79,7 +79,8 @@
         "title_FzFB46": {
           "type": "title",
           "settings": {
-            "title": "Sylvox enhances your outdoor lifestyle with innovative technology that brings relaxation and joy. We offer perfect digital signage solutions featuring vibrant 4K displays, industry-leading reliability, and the latest Android and Google operating systems, all tailored to your business needs and budget."
+            "title": "Sylvox enhances your outdoor lifestyle with innovative technology that brings relaxation and joy. We offer perfect digital signage solutions featuring vibrant 4K displays, industry-leading reliability, and the latest Android and Google operating systems, all tailored to your business needs and budget.",
+            "font_size": 32
           }
         }
       },
@@ -91,12 +92,12 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "standard",
-        "section_content_width": "standard",
+        "section_content_width": "full",
         "alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
+        "padding_left": 60,
+        "padding_right": 60,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
@@ -183,16 +184,16 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 1000,
-        "slide_width": 1600
+        "slide_height": 600,
+        "slide_width": 1200
       }
     },
     "multi_unit_enquiry_yLeUAk": {
       "type": "multi-unit-enquiry",
       "name": "Multi-Unit Enquiry Form",
       "settings": {
-        "title": "",
-        "description": "",
+        "title": "Interested in buying multiple units?",
+        "description": "If you’d like to purchase several and enjoy a special discount, please reach out through the form below. We’d be happy to provide you with a tailored offer!",
         "form_action": "/contact#contact_form",
         "section_width": "standard",
         "section_content_width": "standard",
@@ -302,8 +303,8 @@
         "heading_alignment": "center",
         "box_height": 300,
         "show_arrows": true,
-        "padding_top": 60,
-        "padding_bottom": 0,
+        "padding_top": 90,
+        "padding_bottom": 90,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
