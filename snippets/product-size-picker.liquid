@@ -3,17 +3,36 @@
     Size
   </span>
   <div class="size_picker__container">
-  {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', product.template_suffix %}
-  {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
-  {% for get_product in collections_by_suffix %}
-      <a href="{{ get_product.url }}" class="size-picker__item {% if get_product.url == product.url %}active{% endif %}">
-        <span class="product__title">
-        {{ get_product.title | split : '"' | first}}"
-        </span>
-        <span class="product_option__price">
-          {{ cart.currency.iso_code }} {{ get_product.price | money }}
-        </span>
-      </a>
-  {% endfor %}
+    {% assign size_option_name = 'Resolution Size' %}
+    {% assign size_option_index = nil %}
+
+    {%- comment -%}
+      Find the index of the "Resolution Size" option in the product's options
+    {%- endcomment -%}
+    {% for option in product.options %}
+      {% if option == size_option_name %}
+        {% assign size_option_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {%- comment -%}
+      Loop through variants using the matched option index
+    {%- endcomment -%}
+    {% if size_option_index != nil %}
+      {% for variant in product.variants %}
+        <a 
+          href="{{ variant.url }}" 
+          class="size-picker__item {% if variant.id == product.selected_or_first_available_variant.id %}active{% endif %}">
+          <span class="product__title">
+            {{ variant.options[size_option_index] }}
+          </span>
+          <span class="product_option__price">
+            {{ cart.currency.iso_code }} {{ variant.price | money }}
+          </span>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p>No "Resolution Size" option found for this product.</p>
+    {% endif %}
   </div>
 </div>

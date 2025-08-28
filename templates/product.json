@@ -23,8 +23,22 @@
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
+        "simple_usp_Wxf4YW": {
+          "type": "simple_usp",
+          "settings": {
+            "image_1": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c_33702570-adae-458d-9ca6-249e1db7709c.png",
+            "title_1": "Engineered for Outdoor Life",
+            "image_2": "shopify://shop_images/efbaae8ce897fcc8914d736aab98d0d43560d288.png",
+            "title_2": "Bright & Beautiful 4K UHD",
+            "image_3": "shopify://shop_images/ca314dad77247b21eb7f517308b7087576d1f2ac_475edb7d-7dce-45af-888f-c9ed2affc796.png",
+            "title_3": "Smart & Simple Entertainment",
+            "image_4": "shopify://shop_images/f59bbc268948c9e1d1174fb09be93e8ea4e2dc3b_3b861eb5-1780-4d7a-a2ed-13467aeaa5aa.png",
+            "title_4": "Built to Last"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "variant_labels": true,
             "picker_type": "button",
@@ -32,10 +46,14 @@
             "color_swatches": false
           }
         },
+        "size_picker_xbxNJM": {
+          "type": "size_picker",
+          "settings": {}
+        },
         "bundle_block_W9Ve8J": {
           "type": "bundle_block",
           "settings": {
-            "heading": "SAVE BIG IN BUNDLES YOU’LL LOVE",
+            "heading": "Bundles offer the best savings",
             "image_1": "shopify://shop_images/S3-55_deck_pro.jpg",
             "title_1": "E360 ACE + LTE Box + Hardwire kit",
             "sale_price_1": "$499.99",
@@ -55,6 +73,7 @@
         },
         "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "is_tab": false
           }
@@ -72,6 +91,7 @@
         },
         "sales_point_aMwrgV": {
           "type": "sales_point",
+          "disabled": true,
           "settings": {
             "icon": "globe",
             "text": "Free shipping"
@@ -90,22 +110,48 @@
           "settings": {
             "title": "Shipping information",
             "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
-            "page": ""
+            "page": "",
+            "icon": "shopify://shop_images/acc6af38b8a40cfa5898550be186280d40c2d8ca_05936b5d-ed31-4996-9715-a864120f2615.png",
+            "background_color": "#ffffff"
           }
         },
         "tab_rnPhnR": {
           "type": "tab",
           "settings": {
-            "title": "User Manual",
-            "content": "<p>Click <strong>here </strong>to download the mini kitchen manual</p>",
-            "page": ""
+            "title": "30-Day Money-Back Guarantee",
+            "content": "<p>Get a full refund when you return your undamaged products within 30 days - for any reason. Once the item arrives back at the anker warehouse for inspection, the refund process will begin. See our refund policy for more details about what is needed for a smooth refund process.</p>",
+            "page": "",
+            "icon": "shopify://shop_images/Group_1012_6c769faf-ff28-434c-a90a-bdce41a5b234.svg",
+            "background_color": "#ffffff"
+          }
+        },
+        "tab_m8VarL": {
+          "type": "tab",
+          "settings": {
+            "title": "Hassle-Free Warranty",
+            "content": "<p>Sylvox provides a straightforward, hassle-free warranty to save you some headaches. All pre-owned and refurbished products come with their own unique warranty that you can find on the product listing or contact us at support@sylvox.com with your order receipt for confirmation.</p>",
+            "page": "",
+            "icon": "shopify://shop_images/dad6ec15413940998450069409a84a580aee3e77_90792b7f-7edf-4c05-9f46-9a66ac636ce2.png",
+            "background_color": "#ffffff"
+          }
+        },
+        "tab_DcrqzJ": {
+          "type": "tab",
+          "settings": {
+            "title": "Lifetime Customer Support",
+            "content": "<p>We'll Always be There for You. If you have any questions or concerns, feel free to contact us at support@sylvox.com.</p>",
+            "page": "",
+            "icon": "shopify://shop_images/877fd4961b457516e0b7165db6e3731a5b4764d2_a2a6965b-5b6f-4368-b96b-f383a24ec488.png",
+            "background_color": "#ffffff"
           }
         }
       },
       "block_order": [
         "title_RyMHkM",
         "f30b01a8-3eae-4965-8bc3-af47ad84da34",
+        "simple_usp_Wxf4YW",
         "variant_picker",
+        "size_picker_xbxNJM",
         "bundle_block_W9Ve8J",
         "price",
         "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38",
@@ -114,13 +160,16 @@
         "sales_point_aMwrgV",
         "buy_buttons",
         "tab_VMgkry",
-        "tab_rnPhnR"
+        "tab_rnPhnR",
+        "tab_m8VarL",
+        "tab_DcrqzJ"
       ],
       "settings": {
         "image_position": "left",
         "image_container_size": "large",
         "product_image_size": "square",
         "product_zoom_enable": true,
+        "show_thumbnail": false,
         "thumbnail_position": "beside",
         "thumbnail_height": "flexible",
         "thumbnail_arrows": true,
@@ -146,17 +195,21 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         }
       },
-      "block_order": ["heading_8HaYdw"],
+      "block_order": [
+        "heading_8HaYdw"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 60,
         "section_height": 1200,
         "mobile_section_height": 710,
@@ -180,7 +233,9 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "content_alignment": "center",
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "74b3fd60-d752-4732-b2b3-12ea39fe6851": {
@@ -190,7 +245,9 @@
           "type": "heading",
           "settings": {
             "title": "A weatherproof, ultra-bright 4K TV designed for the outdoors. Whether you’re hosting game night, watching a movie under the stars, or just unwinding after a long day, the Deck Pro 2.0 delivers a viewing experience that feels as good as it looks.",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "font_size": 32,
+            "text_color": "#636363"
           }
         }
       },
@@ -319,7 +376,10 @@
           }
         }
       },
-      "block_order": ["image_PRK3G6", "image_RXhEGM"],
+      "block_order": [
+        "image_PRK3G6",
+        "image_RXhEGM"
+      ],
       "name": "Image/Text + Comparison",
       "settings": {
         "background_color": "#ffffff",
@@ -358,7 +418,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "center"
+            "alignment": "center",
+            "font_size": 48
           }
         },
         "richtext_PFJ7Nt": {
@@ -370,13 +431,17 @@
           }
         }
       },
-      "block_order": ["heading_kLc8Pa", "richtext_PFJ7Nt"],
+      "block_order": [
+        "heading_kLc8Pa",
+        "richtext_PFJ7Nt"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
         "custom_content_width_enabled": false,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 1200,
         "mobile_section_height": 500,
@@ -400,7 +465,9 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "content_alignment": "center",
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "somos_image_content_BqTAzw": {
@@ -461,16 +528,22 @@
           }
         }
       },
-      "block_order": ["grid_box_rbPzQT", "grid_box_8ApDLM", "grid_box_7tKYVJ"],
+      "block_order": [
+        "grid_box_rbPzQT",
+        "grid_box_8ApDLM",
+        "grid_box_7tKYVJ"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "",
         "heading": "",
         "description": "",
+        "indent_text": false,
         "parent_alignment": "center",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#f5f5f5",
         "padding_top": 40,
@@ -491,6 +564,7 @@
           "settings": {
             "image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c_1.png",
             "caption": "Works Even After Heavy Rain",
+            "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         },
@@ -499,15 +573,20 @@
           "settings": {
             "image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_85ba398d-200a-462f-8f6e-01ea7f7e23bf.jpg",
             "caption": "Works Even After Heavy Rain",
+            "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
           }
         }
       },
-      "block_order": ["slide_QqP7Lp", "slide_bmLipF"],
+      "block_order": [
+        "slide_QqP7Lp",
+        "slide_bmLipF"
+      ],
       "name": "New Banner Slider",
       "settings": {
         "section_width": "full",
         "section_content_width": "standard",
+        "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_left": 0,
@@ -533,30 +612,41 @@
         "title_GFaQcd": {
           "type": "title",
           "settings": {
-            "title": "Every Word, Every Note, Every Detail."
+            "title": "Every Word, Every Note, Every Detail.",
+            "font_size": 48,
+            "text_color": "#000000"
           }
         },
         "text_qkpUEk": {
           "type": "text",
           "settings": {
-            "text": "From crisp dialogue to booming bass, experience movie theater-quality sound outdoors—no extra equipment required."
+            "text": "From crisp dialogue to booming bass, experience movie theater-quality sound outdoors—no extra equipment required.",
+            "text_color": "#000000"
           }
         },
         "image_N9az4U": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/797b8f0df03fdcd3f6294c17b924114874f7d62e.png",
-            "image_alignment": "center"
+            "image_alignment": "center",
+            "image_width": 100,
+            "use_mobile_width": false,
+            "mobile_image_width": 100
           }
         }
       },
-      "block_order": ["title_GFaQcd", "text_qkpUEk", "image_N9az4U"],
+      "block_order": [
+        "title_GFaQcd",
+        "text_qkpUEk",
+        "image_N9az4U"
+      ],
       "name": "Image/Text Flex Blocks",
       "settings": {
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "full",
         "section_content_width": "standard",
+        "narrow_container": false,
         "alignment": "center",
         "padding_top": 50,
         "padding_bottom": 0,
@@ -613,16 +703,21 @@
           }
         }
       },
-      "block_order": ["grid_box_3tryC3", "grid_box_JxaDph"],
+      "block_order": [
+        "grid_box_3tryC3",
+        "grid_box_JxaDph"
+      ],
       "name": "Somos Content/Image",
       "settings": {
         "parent_subtitle": "Immersive, Three-Dimensional Sound",
         "heading": "Dolby Atmos Support",
         "description": "Don’t just hear the action—feel it. With Dolby Atmos technology, sound moves around you, creating an immersive experience where every whisper, explosion, and soundtrack feels like it’s happening in real life.",
+        "indent_text": false,
         "parent_alignment": "left",
         "button_label": "",
         "button_link": "",
         "section_width": "full",
+        "narrow_container": false,
         "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 30,
@@ -676,15 +771,14 @@
       ],
       "name": "USP Accordion",
       "settings": {
-        "section_width": "full",
-        "section_content_width": "standard",
+        "narrow_container": false,
         "background_color": "#ffffff",
         "section_heading": "Set Up in Minutes, Enjoy for Years.",
         "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
-        "section_title_color": "#000000",
-        "section_description_color": "#000000",
         "button_text": "Learn More",
         "button_link": "",
+        "add_max_width": false,
+        "heading_max_width": 600,
         "title": "",
         "text": "",
         "text_color": "#ffffff",
@@ -896,13 +990,9 @@
         "section_description": "<p>Here's everything you’ll receive with your order.</p>",
         "button_label": "Learn More",
         "button_link": "",
-        "section_width": "full",
-        "section_content_width": "standard",
         "background_color": "#ffffff",
         "padding_top": 40,
         "padding_bottom": 40,
-        "padding_left": 0,
-        "padding_right": 0,
         "left_image": "shopify://shop_images/Picture_776d14f17296093a34361b2b94de91b8_retina_small_webp.png",
         "left_title": "Deck Pro 2.0",
         "left_quantity": "× 1",
@@ -1010,6 +1100,9 @@
         "heading": "Experience the Outdoors Like Never Before.",
         "header_alignment": "center",
         "bg_color": "#ffffff",
+        "hide_tabs": false,
+        "video_background_color": "#ffffff",
+        "video_border_radius": 8,
         "section_width": "full",
         "section_content_width": "standard",
         "padding_top": 60,
@@ -1320,7 +1413,10 @@
           }
         }
       },
-      "block_order": ["values_jnCGh7", "values_tY64we"],
+      "block_order": [
+        "values_jnCGh7",
+        "values_tY64we"
+      ],
       "name": "Comparison Table",
       "settings": {
         "title": "Partial Sun Area VS. Full Sun Area",
@@ -1373,10 +1469,15 @@
       "blocks": {
         "judgeme_review_widget_5fe97322": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
         }
       },
-      "block_order": ["judgeme_review_widget_5fe97322"],
+      "block_order": [
+        "judgeme_review_widget_5fe97322"
+      ],
       "settings": {
         "full_width": false,
         "space_around": true
@@ -1473,6 +1574,7 @@
         "margin_right": 0,
         "morefrom_title": "You May Also Like",
         "morefrom_sub_title": "",
+        "fallback_collection": "",
         "max_products": 10
       }
     },

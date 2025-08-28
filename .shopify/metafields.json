@@ -340,26 +340,6 @@
       }
     },
     {
-      "key": "outdoor_tv_resolution",
-      "namespace": "custom",
-      "name": "Outdoor TV Resolution",
-      "description": "",
-      "type": {
-        "name": "list.single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "tv_size",
-      "namespace": "custom",
-      "name": "TV Size",
-      "description": "",
-      "type": {
-        "name": "list.single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
       "key": "target-gender",
       "namespace": "shopify",
       "name": "Target gender",
@@ -538,6 +518,16 @@
       "namespace": "rbrfb",
       "name": "Fast Bundle Conf",
       "description": "App's config for the widgets",
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "freegifts_custom_data",
+      "namespace": "secomapp",
+      "name": "BOGOS custom_data (Do not edit)",
+      "description": null,
       "type": {
         "name": "json",
         "category": "JSON"
