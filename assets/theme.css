@@ -1691,6 +1691,7 @@ display: flex;
 
     .somos-slide__content.content_section_width_standard > .buttons > .button {
       margin-top: 15px;
+      padding: 12px 30px;
     }
     .somos-slider .somos-slider__arrows {
       top: 54%;
