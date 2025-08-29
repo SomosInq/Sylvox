@@ -1685,6 +1685,8 @@ display: flex;
 
     .somos-slide__content.content_section_width_standard > .buttons {
       margin-top: auto;
+      display: flex;
+      gap: 10px;
     }
 
     .somos-slide__content.content_section_width_standard > .buttons > .button {
