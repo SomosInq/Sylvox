@@ -149,6 +149,38 @@
             "product_link_p4": ""
           }
         },
+        "collection_menu_c8Wme7": {
+          "type": "collection_menu",
+          "settings": {
+            "menu_name": "Outdoor TV Cabinet",
+            "collection_link": "shopify://collections/outdoor-tv-lift-cabinet",
+            "title": "",
+            "subtitle": "",
+            "icon": "shopify://shop_images/Cabinet_75_00002.webp",
+            "description": "Best for Open patios, poolside, rooftops, beachfront, stadiums, outdoor bars/restaurants",
+            "badge_p1": "",
+            "image_p1": "shopify://shop_images/Cabinet_75_00002.webp",
+            "heading_p1": "Outdoor TV Cabinet",
+            "product_p1": "",
+            "sizes_linkes_p1": "<p><a href=\"/products/65-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"65&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">65”</a> | <a href=\"/products/75-2000nit-outdoor-tv-google-tv-2024-pool-pro-2-0-series\" title=\"75&quot; 2000Nit Google Outdoor TV - 2024 Pool Pro 2.0 Series(NEW)\">75”</a></p>",
+            "product_link_p1": "shopify://products/65-weatherproof-outdoor-tv-lift-cabinet",
+            "badge_p2": "",
+            "heading_p2": "",
+            "product_p2": "",
+            "sizes_linkes_p2": "",
+            "product_link_p2": "",
+            "badge_p3": "",
+            "heading_p3": "",
+            "product_p3": "",
+            "sizes_linkes_p3": "",
+            "product_link_p3": "",
+            "badge_p4": "",
+            "heading_p4": "",
+            "product_p4": "",
+            "sizes_linkes_p4": "",
+            "product_link_p4": ""
+          }
+        },
         "collection_menu_VqMwHh": {
           "type": "collection_menu",
           "settings": {
@@ -269,6 +301,7 @@
       "block_order": [
         "collection_menu_Aq9Dfj",
         "collection_menu_fhxUhr",
+        "collection_menu_c8Wme7",
         "collection_menu_VqMwHh",
         "collection_menu_XxKWLF",
         "collection_menu_yHyNQj",
