@@ -1026,7 +1026,7 @@
         "usp_item_LaJ4nV"
       ],
       "settings": {
-        "enable_slider": false,
+        "enable_slider": true,
         "section_width": "standard",
         "heading": "Sylvox’s exclusive advantages",
         "heading_font_size": 32,
