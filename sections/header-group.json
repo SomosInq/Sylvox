@@ -289,13 +289,6 @@
             "link_title": "Outdoor TV Accessories",
             "nav_link": "shopify://collections/outdoor-tv-accessories"
           }
-        },
-        "link_z84iDQ": {
-          "type": "link",
-          "settings": {
-            "link_title": "Outdoor TV Cabinet",
-            "nav_link": "shopify://collections/outdoor-tv-lift-cabinet"
-          }
         }
       },
       "block_order": [
@@ -305,8 +298,7 @@
         "collection_menu_VqMwHh",
         "collection_menu_XxKWLF",
         "collection_menu_yHyNQj",
-        "link_WaHi4G",
-        "link_z84iDQ"
+        "link_WaHi4G"
       ],
       "name": "Mega Menu 1",
       "settings": {
