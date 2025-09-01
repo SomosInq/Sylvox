@@ -78,6 +78,40 @@
         "sticky_collection": false
       }
     },
+    "mega_menu_2_6mxjNY": {
+      "type": "mega-menu-2",
+      "blocks": {
+        "link_dn7FiD": {
+          "type": "link",
+          "settings": {
+            "link_title": "Partial Sun TVs",
+            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755_f3a30675-de48-4d13-a2a5-648ffce26bd4.png",
+            "nav_link": "shopify://collections/partial-sun-outdoor-tv"
+          }
+        },
+        "link_dVAATP": {
+          "type": "link",
+          "settings": {
+            "link_title": "Full Sun TVs",
+            "icon": "shopify://shop_images/56a9a5df9e1a24238fd7886624ca3c65203cd164_edf67cc5-fdd7-4f44-92e2-f8cdbc4fb71f.png",
+            "nav_link": "shopify://collections/full-sun-outdoor-tv"
+          }
+        }
+      },
+      "block_order": [
+        "link_dn7FiD",
+        "link_dVAATP"
+      ],
+      "name": "Mega Menu 2",
+      "settings": {
+        "megamenu_for": "Outdoor TVs",
+        "cta_icon": "shopify://shop_images/Icons_235ec5f8-c992-4099-ab65-fc98f48635c5.png",
+        "cta_title": "Not Sure What Outdoor TV<br>Fits you Best?",
+        "cta_subtitle": "Outdoor TV Finder tool",
+        "cta_link_text": "Find Your Perfect Fit",
+        "cta_link": "shopify://collections/all"
+      }
+    },
     "mega_menu_1_W4VR3P": {
       "type": "mega-menu-1",
       "blocks": {
@@ -303,40 +337,6 @@
       "name": "Mega Menu 1",
       "settings": {
         "megamenu_for": "Products"
-      }
-    },
-    "mega_menu_2_6mxjNY": {
-      "type": "mega-menu-2",
-      "blocks": {
-        "link_dn7FiD": {
-          "type": "link",
-          "settings": {
-            "link_title": "Partial Sun TVs",
-            "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755_f3a30675-de48-4d13-a2a5-648ffce26bd4.png",
-            "nav_link": "shopify://collections/partial-sun-outdoor-tv"
-          }
-        },
-        "link_dVAATP": {
-          "type": "link",
-          "settings": {
-            "link_title": "Full Sun TVs",
-            "icon": "shopify://shop_images/56a9a5df9e1a24238fd7886624ca3c65203cd164_edf67cc5-fdd7-4f44-92e2-f8cdbc4fb71f.png",
-            "nav_link": "shopify://collections/full-sun-outdoor-tv"
-          }
-        }
-      },
-      "block_order": [
-        "link_dn7FiD",
-        "link_dVAATP"
-      ],
-      "name": "Mega Menu 2",
-      "settings": {
-        "megamenu_for": "Outdoor TVs",
-        "cta_icon": "shopify://shop_images/Icons_235ec5f8-c992-4099-ab65-fc98f48635c5.png",
-        "cta_title": "Not Sure What Outdoor TV<br>Fits you Best?",
-        "cta_subtitle": "Outdoor TV Finder tool",
-        "cta_link_text": "Find Your Perfect Fit",
-        "cta_link": "shopify://collections/all"
       }
     }
   },
