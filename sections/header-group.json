@@ -313,7 +313,7 @@
           "settings": {
             "link_title": "Partial Sun TVs",
             "icon": "shopify://shop_images/a6a1a39c2dfdeabca6186092e8f01359bdd7c755_f3a30675-de48-4d13-a2a5-648ffce26bd4.png",
-            "nav_link": "shopify://collections/partial-sun-outdoor-tv"
+            "nav_link": "shopify://pages/partial-sun-landing"
           }
         },
         "link_dVAATP": {
@@ -321,7 +321,7 @@
           "settings": {
             "link_title": "Full Sun TVs",
             "icon": "shopify://shop_images/56a9a5df9e1a24238fd7886624ca3c65203cd164_edf67cc5-fdd7-4f44-92e2-f8cdbc4fb71f.png",
-            "nav_link": "shopify://collections/full-sun-outdoor-tv"
+            "nav_link": "shopify://pages/full-sun-landing"
           }
         }
       },
