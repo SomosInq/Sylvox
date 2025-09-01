@@ -254,7 +254,7 @@
           "type": "collection_menu",
           "settings": {
             "menu_name": "Bathroom TV",
-            "collection_link": "",
+            "collection_link": "shopify://collections/bathroom-tv-somos-test",
             "title": "Bathroom TV",
             "subtitle": "",
             "icon": "shopify://shop_images/0b267184d85c9a5467128cda0bd7e31e5f132134.png",
