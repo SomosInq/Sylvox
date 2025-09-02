@@ -10,6 +10,16 @@
 .megamnu-main-wrapper.active{
   display: block;
 }
+.shopify-section-group-header-group:has(.megamnu-main-wrapper.active)::after {
+    display: block;
+    content: "";
+    height: 100vh;
+    width: 100%;
+    background: #00000099;
+    position: absolute;
+    top: 0;
+    z-index: 6;
+}
 .mega-menu-flex-box {
   display: flex;
   gap: 70px;
