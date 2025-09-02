@@ -265,7 +265,7 @@
         "stack_products": true,
         "section_width": "full",
         "section_content_width": "standard",
-        "products_count": 6,
+        "products_count": 4,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "subheading": "",
@@ -429,7 +429,7 @@
           "type": "tab",
           "settings": {
             "tab_name": "Best Sellers",
-            "collection": "rv-tv"
+            "collection": "43-outdoor-tv"
           }
         },
         "tab_BhYH4G": {
@@ -813,7 +813,7 @@
         "icon1": "shopify://shop_images/gtv-dark_1.png",
         "icon2": "shopify://shop_images/Partial_Sun_147b558b-d06e-4a79-be58-4c8a0056d2b8.png",
         "icon3": "shopify://shop_images/Dolby-Atmos-Logo_1.png",
-        "product": "2-year-extended-warranty-for-sylvox-pool-pro-65-2-0-total-3-years",
+        "product": "43-2024-outdoor-tv",
         "show_title": false,
         "product_image_width": 800,
         "product_image_override": "shopify://shop_images/Deck_Pro_2.0_1.png",
