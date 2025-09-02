@@ -482,6 +482,12 @@ a.button {
   font-size: 28px;
   max-width: 1200px;
 }
+.outdoor-box {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 10px;
+}
 
 @media (max-width: 600px) {
   .outdoor-scenario-section h2 {
@@ -489,14 +495,15 @@ a.button {
   }
   .outdoor-scenario-grid,
   .box-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    width: 100%;
+    overflow: auto;
   }
-}
-.outdoor-box {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 10px;
+  .outdoor-box {
+     width: 85%;
+    height: auto;
+    flex-shrink: 0;
+  }
 }
 .outdoor-box img {
   width: 100%;
