@@ -146,6 +146,56 @@
         <p><strong>{{ section.settings.product.title }}</strong></p>
       {% endif %}
     {% endif %}
+    <div class="featured-product-sizes">
+      {%- liquid
+        assign size_option = nil
+        assign size_labels = 'resolution size,size,sizes,screen size,tv size,inch,inches,diagonal' | split: ','
+        for opt in section.settings.product.options_with_values
+          assign opt_name = opt.name | downcase | strip
+          if size_labels contains opt_name
+            assign size_option = opt
+            break
+          endif
+        endfor
+      -%}
+      {%- if size_option and size_option.values and size_option.values.size > 1 -%}
+        {%- for ov in size_option.values -%}
+          {%- assign raw_val = ov.value | default: ov -%}
+          {%- assign display_val = raw_val | strip
+            | remove: '"' | remove: '”' | remove: '″'
+            | remove: "'" | remove: '’' | remove: '‘' -%}
+
+          {%- assign matched_variant = nil -%}
+          {%- for v in section.settings.product.variants -%}
+            {%- case size_option.position -%}
+              {%- when 1 -%}{% if v.option1 == raw_val %}{% assign matched_variant = v %}{% break %}{% endif %}
+              {%- when 2 -%}{% if v.option2 == raw_val %}{% assign matched_variant = v %}{% break %}{% endif %}
+              {%- when 3 -%}{% if v.option3 == raw_val %}{% assign matched_variant = v %}{% break %}{% endif %}
+            {%- endcase -%}
+          {%- endfor -%}
+
+          {%- if matched_variant -%}
+            <a href="{{ matched_variant.url }}" data-instant class="pdc-size {% if matched_variant.url == section.settings.product.url %}active{% endif %} {% unless matched_variant.available %}is-sold-out{% endunless %}">
+              <span class="product__title">
+              {{ display_val }}
+              </span>
+            </a>
+          {%- else -%}
+            <span class="is-disabled">{{ display_val }}&Prime;</span>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', section.settings.product.template_suffix %}
+        {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
+        {% for get_product in collections_by_suffix %}
+            <a href="{{ get_product.url }}" class="pdc-size {% if get_product.url == section.settings.product.url %}active{% endif %}">
+              <span class="product__title">
+              {{ get_product.title | split : '"' | first}}"
+              </span>
+            </a>
+        {% endfor %}
+      {%- endif -%}
+    </div>
   </div>
 
   <p style="margin-top: 20px;">{{ section.settings.price_text }}</p>
