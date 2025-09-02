@@ -61,7 +61,7 @@
   }
 
   .product-carousel .product-card {
-    width: 250px;
+    width: 33%;
     margin-right: 1rem;
   }
 
@@ -155,11 +155,7 @@
         {% if block_collection != blank %}
           {% for product in block_collection.products limit: 10 %}
             <div class="product-card">
-              <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
-                <h4>{{ product.title }}</h4>
-                <p>From {{ product.price | money }}</p>
-              </a>
+              {% render 'product-card-with-size', product: product %}
             </div>
           {% endfor %}
         {% else %}

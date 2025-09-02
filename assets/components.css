@@ -16638,14 +16638,32 @@ p.section-heading-desc{
   border: 1px solid transparent;
   border-radius: 3px;
 }
+@media only screen and (max-width: 1199px) {
+  .pdc-sizes a.pdc-size {
+    padding: 4px 5px;
+    font-size: 14px;
+  }
+}
 
-.pdc-sizes a.pdc-size.active {
+.pdc-sizes a.pdc-size.active,
+.pdc-sizes a.pdc-size:hover {
   border-color: #20413B;
   color: #20413B;
 }
 
 .pdc-details {
   padding: 23px 13px;
+  text-align: left;
+}
+
+.pdc-tv-specs {
+    display: flex;
+    gap: 10px;
+    color: #20413B;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 8px;
 }
 .pdc-title {
   color: rgba(0, 0, 0, 0.85);
@@ -16653,7 +16671,12 @@ p.section-heading-desc{
   font-size: 24px;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 24px;
+}
+.pdc-tv-type {
+  color: #636363;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .pdc-price-min {
@@ -16664,4 +16687,31 @@ p.section-heading-desc{
   line-height: normal;
   letter-spacing: 0.198px;
   margin-top: 24px;
+}
+.pdc-tv-sun-capabilities {
+    display: flex;
+    gap: 6px;
+}
+
+.featured-product-sizes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+.featured-product-sizes a.pdc-size {
+  padding: 4px 12px;
+  color: #636363;
+  font-family: "Neurial Grotesk";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.featured-product-sizes a.pdc-size.active,
+.featured-product-sizes a.pdc-size:hover {
+  border-color: #20413B;
+  color: #20413B;
 }
