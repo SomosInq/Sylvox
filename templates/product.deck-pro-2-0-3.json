@@ -1027,15 +1027,6 @@
             "video_type": "Expert Reviews",
             "link_url": ""
           }
-        },
-        "video_CPhTmj": {
-          "type": "video",
-          "settings": {
-            "title": "",
-            "video_url": "",
-            "video_type": "Expert Reviews",
-            "link_url": ""
-          }
         }
       },
       "block_order": [
@@ -1048,8 +1039,7 @@
         "video_L6wxpR",
         "video_MFriQA",
         "video_t886cP",
-        "video_3NqGMF",
-        "video_CPhTmj"
+        "video_3NqGMF"
       ],
       "name": "Video Media",
       "settings": {
