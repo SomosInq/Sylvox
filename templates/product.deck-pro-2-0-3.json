@@ -38,7 +38,9 @@
         },
         "size_picker_anHCWr": {
           "type": "size_picker",
-          "settings": {}
+          "settings": {
+            "show_product_base": false
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -191,9 +193,10 @@
         "content_max_width": 880,
         "mobile_content_width": 60,
         "section_height": 600,
-        "mobile_section_height": 410,
+        "mobile_section_height": 200,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/3693b76e5a11704b80a0187cff8c22a10792dbd9.jpg",
+        "background_image_mobile": "shopify://shop_images/901_1.jpg",
         "background_zoom": 100,
         "background_position": "center",
         "banner_overlay_color": "#000000",
