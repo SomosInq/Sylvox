@@ -6364,6 +6364,7 @@ picture img {
 
 .megamenu__wrapper {
   display: flex;
+  width: 100%;
 }
 
 /*Always on right side*/
@@ -6517,7 +6518,6 @@ details[open] .site-nav__dropdown {
   opacity: 0;
   background: #fff;
   padding: 3em 3.5em 2em 3.5em !important;
-    width: 350px;
 }
 
 details[open] .site-nav__dropdown-animate {
