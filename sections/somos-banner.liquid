@@ -66,6 +66,21 @@
       font-size: 32px!important;
     }
   }
+  #{{ wrapper_id }} #banner-image-holder{
+    background-image: url({{ section.settings.background_image | image_url  }});
+    background-size: cover;
+    background-position: {{ section.settings.background_position }};
+    transform: scale({{ section.settings.background_zoom | divided_by: 100.0 }});
+    transform-origin: {{ section.settings.background_position }};
+  }
+  
+  {% if section.settings.background_image_mobile != blank %}
+    @media screen and (max-width: 749px) {
+      #{{ wrapper_id }} #banner-image-holder{
+        background-image: url({{ section.settings.background_image_mobile | image_url  }});
+      }
+    }
+  {% endif %}
 </style>
 
 <div
@@ -92,14 +107,10 @@
   {% if section.settings.background_image %}
     
     <div 
+    id="banner-image-holder"
     style="
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url({{ section.settings.background_image | img_url: 'master' }});
-      background-size: cover;
-      background-position: {{ section.settings.background_position }};
-      transform: scale({{ section.settings.background_zoom | divided_by: 100.0 }});
-      transform-origin: {{ section.settings.background_position }};
       z-index: 0;
     "></div>
   {% endif %}
@@ -301,6 +312,7 @@
     { "type": "range", "id": "mobile_section_height", "label": "Mobile Section Height", "min": 100, "max": 1000, "step": 10, "default": 500, "unit": "px" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "image_picker", "id": "background_image_mobile", "label": "Background Image(Mobile)" },
     { "type": "range", "id": "background_zoom", "label": "Background Image Zoom (%)", "min": 100, "max": 150, "step": 5, "default": 100 },
     { "type": "select", "id": "background_position", "label": "Background Image Position", "default": "center", "options": [
       { "value": "left", "label": "Left" },

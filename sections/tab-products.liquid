@@ -131,6 +131,7 @@ color: #000;
     width: 100%;
     display: block;
     height: auto;
+    aspect-ratio: 1600 / 600;
   }
 
   .tab-product-content__info {
@@ -167,7 +168,7 @@ color: #000;
   }
   @media (max-width: 768px) {
     .tab-products-grid {
-      grid-template-columns: repeat(auto-fit, minmax(47%, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     }
   }
   @media (max-width: 1654px) {
@@ -222,7 +223,7 @@ color: #000;
     }
 
     .tab-product-content__banner img {
-      height: var(--mobile-banner-height, auto);
+      aspect-ratio: 1 / 1.1;
       object-fit: cover;
     }
 
@@ -301,7 +302,10 @@ color: #000;
 
       <div class="tab-product-content__banner">
         {% if block.settings.image %}
-          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+          <picture class="collection-banner__image-wrapper">
+            {% if block.settings.image_mobile %}<source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | image_url: width: 989 }}">{% endif %}
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+          </picture>
         {% endif %}
         <div class="tab-product-content__info {{ justify_class }} {{ align_class }}"
              style="color: {{ block.settings.text_color }}; font-weight: {{ block.settings.font_weight }};">
@@ -499,6 +503,7 @@ color: #000;
         { "type": "select", "id": "horizontal_position", "label": "Horizontal Content Alignment", "default": "center", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ] },
         { "type": "range", "id": "vertical_position", "label": "Vertical Content Position (%)", "min": 0, "max": 100, "step": 1, "default": 50 },
         { "type": "image_picker", "id": "image", "label": "Banner Image" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Banner Image (Mobile)" },
         { "type": "range", "id": "mobile_banner_height", "label": "Banner Height on Mobile", "min": 100, "max": 800, "step": 10, "default": 300 },
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "color", "id": "collection_title_color", "label": "Collection Title Color", "default": "#000000" }

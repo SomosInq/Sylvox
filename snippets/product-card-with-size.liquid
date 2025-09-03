@@ -1,10 +1,11 @@
-<div class="product-card-with-size-wrap">
+<div class="product-card-with-size-wrap" data-product-category="{{ product.category }}">
   <div class="pdc-image-and-sizes">
     <div class="pdc-feat-image">
       <a href="{{ product.url }}">
       <img src="{{ product.featured_image | image_url: width: 500 }}" alt="">
       </a>
     </div>
+    {% if product.category == 'Television' or product.category == 'Televisions' %}
     <div class="pdc-sizes">
       {%- liquid
         assign size_option = nil
@@ -44,17 +45,27 @@
           {%- endif -%}
         {%- endfor -%}
       {%- else -%}
-        {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', product.template_suffix %}
-        {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
-        {% for get_product in collections_by_suffix %}
-            <a href="{{ get_product.url }}" class="pdc-size {% if get_product.url == product.url %}active{% endif %}">
-              <span class="product__title">
-              {{ get_product.title | split : '"' | first}}"
-              </span>
-            </a>
-        {% endfor %}
+        {% paginate collections.all.products by 250 %}
+          {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', product.template_suffix %}
+          {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
+          {% assign collection_product_count = collections_by_suffix | size %}
+          {% if product.template_suffix != '' %}
+          {% unless product.template_suffix == 'installation-service' %}
+            {% if collection_product_count > 1 %}
+              {% for get_product in collections_by_suffix %}
+                  <a href="{{ get_product.url }}" data-product-base="{{ product.template_suffix }}" class="pdc-size {% if get_product.url == product.url %}active{% endif %}">
+                    <span class="product__title">
+                    {{ get_product.title | split : '"' | first |  remove: 'Sylvox Cinema Pro' }}"
+                    </span>
+                  </a>
+              {% endfor %}
+            {% endif %}
+          {% endunless %}
+          {% endif %}
+        {% endpaginate %}
       {%- endif -%}
     </div>
+    {% endif %}
   </div>
   <div class="pdc-details">
     <div class="pdc-tv-specs">
