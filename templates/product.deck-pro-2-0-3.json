@@ -589,7 +589,7 @@
           "type": "title",
           "settings": {
             "title": "Every Word, Every Note, Every Detail.",
-            "font_size": 48,
+            "font_size": 44,
             "text_color": "#000000"
           }
         },
@@ -1007,6 +1007,35 @@
             "video_type": "Real User Stories",
             "link_url": ""
           }
+        },
+        "video_t886cP": {
+          "type": "video",
+          "settings": {
+            "title": "video Title",
+            "video_url": "https://www.youtube.com/watch?v=sQ_i4je_KiE",
+            "video_thumbnail": "shopify://shop_images/pc901_1.jpg",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_3NqGMF": {
+          "type": "video",
+          "settings": {
+            "title": "video Title",
+            "video_url": "https://www.youtube.com/watch?v=sQ_i4je_KiE",
+            "video_thumbnail": "shopify://shop_images/pc901_1.jpg",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
+        },
+        "video_CPhTmj": {
+          "type": "video",
+          "settings": {
+            "title": "",
+            "video_url": "",
+            "video_type": "Expert Reviews",
+            "link_url": ""
+          }
         }
       },
       "block_order": [
@@ -1017,7 +1046,10 @@
         "video_tewgFA",
         "video_6UjqH6",
         "video_L6wxpR",
-        "video_MFriQA"
+        "video_MFriQA",
+        "video_t886cP",
+        "video_3NqGMF",
+        "video_CPhTmj"
       ],
       "name": "Video Media",
       "settings": {
