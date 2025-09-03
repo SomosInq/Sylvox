@@ -16459,6 +16459,10 @@ block-price.block-price.product-block span.label.variant__label{
   display: block;
 }
 
+.size_picker__container span.label.variant__label {
+    grid-column: 1 / span 2;
+}
+
 .product-info-section-conainer{
   margin: 24px 0;
 }
