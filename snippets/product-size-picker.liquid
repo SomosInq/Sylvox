@@ -1,8 +1,5 @@
 {% if product.category == 'Television' or product.category == 'Televisions' %}
 <div class="product-info-section-conainer" data-template-suffix="{{ product.template_suffix }}">
-  <span class="label variant__label">
-    Size
-  </span>
   <div class="size_picker__container">
     {% assign size_option_name = 'Resolution Size' %}
     {% assign size_option_index = nil %}
@@ -20,6 +17,9 @@
       Loop through variants using the matched option index
     {%- endcomment -%}
     {% if size_option_index != nil %}
+      <span class="label variant__label">
+        Size
+      </span>
       {% for variant in product.variants %}
         <a 
           href="{{ variant.url }}" 
@@ -33,6 +33,10 @@
         </a>
       {% endfor %}
     {% else %}
+    {% if block.settings.show_product_base %}
+      <span class="label variant__label">
+        Size
+      </span>
       {% paginate collections.all.products by 250 %}
       {% assign product_handle_split = product.handle | split : '-'  %}
       {% assign product_current_size = product_handle_split[0] | append: '-' | append: product_handle_split[1] %}
@@ -57,6 +61,7 @@
         {% endif %}
       {% endunless %}
       {% endpaginate %}
+    {% endif %}
     {% endif %}
   </div>
 </div>
