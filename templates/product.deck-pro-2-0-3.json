@@ -733,7 +733,7 @@
         "accordion_kmbKj4": {
           "type": "accordion",
           "settings": {
-            "question": "No Professionals Required",
+            "question": "Quick & Simple Installation",
             "subtitle": "No Professionals Required",
             "answer": "Mount it. Plug it in. Enjoy. Designed for convenience, the Deck Pro 2.0 is compatible with standard VESA mounts, making it easy to install on walls, stands, or outdoor enclosures.",
             "icon": "shopify://shop_images/expand_more.png",
@@ -776,7 +776,7 @@
         "button_link": "",
         "add_max_width": true,
         "heading_max_width": 600,
-        "title": "Quick & Simple Installation",
+        "title": "",
         "text": "",
         "text_color": "#ffffff",
         "font_size": 16,
