@@ -46,6 +46,9 @@
         {%- endfor -%}
       {%- else -%}
         {% paginate collections.all.products by 250 %}
+          {% assign product_handle_split = product.handle | split : '-'  %}
+          {% assign product_current_size = product_handle_split[0] | append: '-' | append: product_handle_split[1] %}
+          {% assign common_handle = product.handle | remove : product_current_size %}
           {% assign collections_by_suffix = collections.all.products | where: 'template_suffix', product.template_suffix %}
           {% assign collections_by_suffix = collections_by_suffix | sort: 'title' %}
           {% assign collection_product_count = collections_by_suffix | size %}
@@ -53,11 +56,13 @@
           {% unless product.template_suffix == 'installation-service' %}
             {% if collection_product_count > 1 %}
               {% for get_product in collections_by_suffix %}
+                {% if get_product.handle contains common_handle %}
                   <a href="{{ get_product.url }}" data-product-base="{{ product.template_suffix }}" class="pdc-size {% if get_product.url == product.url %}active{% endif %}">
                     <span class="product__title">
-                    {{ get_product.title | split : '"' | first |  remove: 'Sylvox Cinema Pro' }}"
+                    {{ get_product.title | split : '"' | first | remove: 'Sylvox Cinema Pro' }}"
                     </span>
                   </a>
+                {% endif %}
               {% endfor %}
             {% endif %}
           {% endunless %}
