@@ -1,6 +1,27 @@
 {% style %}
+  .main-table-wrapper {
+    -ms-overflow-style: none;   /* IE & old Edge */
+    scrollbar-width: none;      /* Firefox */
+  }
+  .main-table-wrapper::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari, new Edge */
+  }
   .top-title {
     font-size: 24px;
+  }
+  .comparison-values > div {
+    display: none;
+    flex-flow: column;
+    justify-content: center;
+  }
+
+  .comparison-values > div:nth-child(-n+9) {
+    display: flex; /* or flex/table-row depending on layout */
+  }
+
+  /* When expanded, show all divs */
+  .comparison-values.expanded > div {
+    display: flex; /* or flex/table-row */
   }
   .comparison-values {
     color: #636363;
@@ -10,6 +31,30 @@
   }
   .comparison-values .table-values p{
     font-size: 16px
+  }
+  @media screen and (max-width: 1200px) {
+    .comparison-values .table-values p{
+      font-size: 14px
+    }
+    .comparison-values .head{
+      font-size: 15px
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .comparison-values .head{
+      position: sticky;
+      left: 0;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px;
+      min-width: fit-content;
+      text-wrap-mode: nowrap;
+      justify-content: flex-start;
+    }
+    .comparison-values .table-value {
+      padding-top: 40px;
+      padding-bottom: 30px;
+    }
   }
 {% endstyle %}
 
@@ -47,11 +92,11 @@
     {% endif %}
 
 <!-- Unified Scroll Container -->
-<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; margin-top: 90px;">
+<div class="main-table-wrapper" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; margin-top: 90px;">
   <div style="min-width: 768px;">
 
     <!-- Header Section -->
-    <div class="comparison-header" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
+    <div class="comparison-header" style="display: grid; grid-template-columns: 130px repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
       <div class="header-blank"></div>
       {% for block in section.blocks %}
         <div class="text-center header" style="display: flex; flex-direction: column; align-items: center;">
@@ -86,7 +131,7 @@
       {% for i in (1..max_rows) %}
         {% assign heading_key = 'heading_' | append: i %}
         {% if section.settings[heading_key] != blank %}
-          <div class="head" style="display: flex; align-items: center;">{{ section.settings[heading_key] }}</div>
+          <div class="head" style="">{{ section.settings[heading_key] }}</div>
           {% for block in section.blocks %}
             {% assign value_key = 'value_' | append: i %}
             {% assign image_key = 'value_image_' | append: i %}
@@ -139,14 +184,12 @@
     const btn = document.getElementById('specToggleBtn');
     const arrowImage = document.getElementById('arrowImage');
     const arrowSpan = document.getElementById('toggleArrow');
-    const rows = document.querySelectorAll('.comparison-values > .head, .comparison-values > .table-value');
+    const table = document.querySelector('.comparison-values');
     const isExpanded = btn.classList.toggle('expanded');
 
-    rows.forEach((row, index) => {
-      if (index >= 7 * {{ section.blocks.size | plus: 1 }}) {
-        row.style.display = isExpanded ? 'grid' : 'none';
-      }
-    });
+    if (table) {
+      table.classList.toggle('expanded', isExpanded);
+    }
 
     // Rotate the image or fallback to text
     {% if section.settings.arrow_icon_down %}
@@ -157,10 +200,6 @@
       arrowSpan.textContent = isExpanded ? '▲' : '▼';
     {% endif %}
   }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    toggleSpecs();
-  });
 </script>
 
 {% endif %}

@@ -16668,13 +16668,13 @@ p.section-heading-desc{
 .pdc-title {
   color: rgba(0, 0, 0, 0.85);
   font-family: "Neurial Grotesk";
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   line-height: normal;
 }
 .pdc-tv-type {
   color: #636363;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: normal;
 }
@@ -16686,7 +16686,7 @@ p.section-heading-desc{
   font-weight: 300;
   line-height: normal;
   letter-spacing: 0.198px;
-  margin-top: 24px;
+  margin-top: 12px;
 }
 .pdc-tv-sun-capabilities {
     display: flex;
@@ -16714,4 +16714,34 @@ p.section-heading-desc{
 .featured-product-sizes a.pdc-size:hover {
   border-color: #20413B;
   color: #20413B;
+}
+@media screen and (max-width: 1120px) {
+  .pdc-title {
+    font-size: 18px;
+  }
+  .pdc-tv-type {
+    font-size: 14px;
+  }
+  .pdc-price-min {
+    font-size: 17px;
+  }
+  .pdc-details {
+    padding-top: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pdc-title {
+    font-size: 17px;
+  }
+  .pdc-tv-type {
+    font-size: 12px;
+  }
+  .pdc-price-min {
+    font-size: 15px;
+    margin-top: 8px;
+  }
+  .pdc-tv-specs {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
 }
