@@ -517,7 +517,7 @@
         "section_width": "full",
         "section_content_width": "full",
         "custom_content_width_enabled": true,
-        "custom_content_width": 50,
+        "custom_content_width": 40,
         "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 600,
@@ -527,7 +527,7 @@
         "background_zoom": 100,
         "background_position": "center",
         "banner_overlay_color": "#000000",
-        "banner_overlay_opacity": 0.4,
+        "banner_overlay_opacity": 0.3,
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_left": 0,
@@ -541,8 +541,8 @@
         "hide_mobile": false,
         "custom_class": "",
         "custom_id": "",
-        "text_alignment": "left",
-        "content_alignment": "left",
+        "text_alignment": "center",
+        "content_alignment": "center",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
