@@ -353,6 +353,7 @@
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/0967af78f848d5df175b34a014158eaebaaa52f0_732a6102-d9e2-4e94-8082-4f81737cadea.jpg",
+        "background_image_mobile": "shopify://shop_images/829_1.jpg",
         "background_zoom": 100,
         "background_position": "center",
         "banner_overlay_color": "#000000",
