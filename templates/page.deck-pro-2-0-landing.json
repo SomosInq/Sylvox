@@ -1480,8 +1480,8 @@
         "heading": "Your Outdoor Oasis, Upgraded.",
         "subheading": "The Sylvox Deck Pro 2.0 isn’t just a TV—it’s a gateway to better outdoor moments.",
         "description": "",
-        "show_arrows": false,
-        "show_dots": false,
+        "show_arrows": true,
+        "show_dots": true,
         "slide_size": "large",
         "slide_height": 500,
         "slide_width": 800
