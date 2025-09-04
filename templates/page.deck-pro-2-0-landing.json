@@ -520,7 +520,7 @@
         "custom_content_width": 50,
         "content_max_width": 880,
         "mobile_content_width": 90,
-        "section_height": 900,
+        "section_height": 500,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5ff905f12480c328058ce3bf03bd6a00a3cd0f3b.jpg",
