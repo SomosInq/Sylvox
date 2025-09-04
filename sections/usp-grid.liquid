@@ -51,7 +51,7 @@ display: inline-flex;
     margin-top: 10px;
   }
 
-  .usp-arrow {
+  #shopify-section-{{ section.id }} .usp-arrow {
     background: none;
     border: 1px solid #ccc;
     padding: 6px 12px;
@@ -169,12 +169,11 @@ display: flex;
         <button class="usp-arrow next" aria-label="Next">›</button>
       </div>
     {% endif %}
-    <div class="usp-slider js-flickity"
-      data-flickity='{"wrapAround": true, "pageDots": false, "contain": true, "prevNextButtons": false, "cellAlign": "left"}'>
+    <div class="usp-slider usp-grid-flickity">
       {% for block in section.blocks %}
         <div class="usp-box carousel-cell"
           style="background-color: {{ block.settings.background_color }};
-                 color: {{ block.settings.text_color }};
+                 color: {{ block.settings.text_color }};"
           {{ block.shopify_attributes }}>
           <div class="usp-inner usp-align-{{ block.settings.content_alignment }}">
             {% if block.settings.icon %}
@@ -254,9 +253,21 @@ display: flex;
 {% if section.settings.enable_slider %}
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var flkty = new Flickity('.js-flickity');
-    var prevBtn = document.querySelector('.usp-arrow.prev');
-    var nextBtn = document.querySelector('.usp-arrow.next');
+    var section = document.querySelector('.{{ section.id }}');
+    if (!section) return;
+
+    var slider = section.querySelector('.usp-grid-flickity');
+    if (!slider) return;
+
+     var flkty = new Flickity(slider, {
+      wrapAround: true,
+      pageDots: false,
+      contain: true,
+      prevNextButtons: false,
+      cellAlign: 'left'
+    });
+    var prevBtn = section.querySelector('.usp-arrow.prev');
+    var nextBtn = section.querySelector('.usp-arrow.next');
 
     if (prevBtn && nextBtn && flkty) {
       prevBtn.addEventListener('click', () => flkty.previous());

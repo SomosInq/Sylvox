@@ -278,8 +278,8 @@
         "tabs_position": 570,
         "padding_top": 60,
         "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
+        "padding_left": 40,
+        "padding_right": 40,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
@@ -389,8 +389,8 @@
         "text_alignment": "center",
         "padding_top": 60,
         "padding_bottom": 60,
-        "padding_left": 0,
-        "padding_right": 0,
+        "padding_left": 40,
+        "padding_right": 40,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
@@ -869,7 +869,7 @@
             "title": "Inspiring well-being throughaffordable outdoor technologythat bring relaxation, joy, andconnection to everyday outdoor living.",
             "heading_size": "h3",
             "font_size": 32,
-            "text_color": "#636363"
+            "text_color": "#1D1D1B"
           }
         },
         "button_BEFJ9i": {
