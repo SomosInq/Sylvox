@@ -51,7 +51,7 @@
         "show_dots": false,
         "collection_subheading": "",
         "category_title": "",
-        "slide_height": 800,
+        "slide_height": 500,
         "background_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -135,7 +135,8 @@
         "image_Lift_Cabinet": "shopify://shop_images/icon__sun_-1.png",
         "chevron_icon": "shopify://shop_images/Group_859ddeeb-a9b8-4c78-9f85-cb00965511a8.svg",
         "compare_button_bg_color": "#20413b",
-        "compare_button_icon": "shopify://shop_images/Vector_1.svg"
+        "compare_button_icon": "shopify://shop_images/Vector_1.svg",
+        "compare_button_link": ""
       }
     },
     "main-collection": {
@@ -195,7 +196,8 @@
             "color": "#ffffff",
             "italic": false,
             "font_weight": "400",
-            "alignment": "left"
+            "alignment": "left",
+            "font_size": 48
           }
         },
         "richtext_t8hnjr": {
@@ -233,6 +235,7 @@
         "section_content_width": "full",
         "custom_content_width_enabled": true,
         "custom_content_width": 90,
+        "content_max_width": 880,
         "mobile_content_width": 90,
         "section_height": 330,
         "mobile_section_height": 500,
@@ -256,7 +259,9 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "left",
-        "vertical_alignment": "center"
+        "content_alignment": "center",
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "comparison_table_3NJqCG": {
