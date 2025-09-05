@@ -10,6 +10,11 @@
     padding: 4px 6px;
     border-radius: 68px;
     z-index: 1;
+    -ms-overflow-style: none;   /* IE & old Edge */
+    scrollbar-width: none;      /* Firefox */
+  }
+  .tabs::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari, new Edge */
   }
   .tab-products {
         position: relative;
@@ -27,9 +32,11 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
   }
-  .tab-product.active, .tab-product:hover {
-    color: #fff;
-    background: #179c99;
+  @media (hover: hover) {
+    .tab-product.active, .tab-product:hover {
+      color: #fff;
+      background: #179c99;
+    }
   }
   .tab-product-content {
     display: none;
@@ -132,10 +139,6 @@
   
   
   @media screen and (max-width: 699px){
-.tab-product {
-    font-size: 15px !important;
-}
-
     .tabs{
         gap: 4px;
         padding: 4px 4px;

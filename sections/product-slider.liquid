@@ -50,18 +50,25 @@
 
   .product-carousel {
     width: 100%;
+    display: none;
   }
 
-  .flickity-enabled {
+  .product-carousel .flickity-button:focus {
+    box-shadow: 0 0 9px 5px #f5f5f5;
+  }
+
+  .product-slider-section .product-carousel.flickity-enabled {
     display: block !important;
+    visibility: visible;
   }
 
-  .flickity-slider {
+  .product-slider-section .flickity-slider {
     display: flex;
   }
 
   .product-carousel .product-card {
     width: 33%;
+    min-width: 220px;
     margin-right: 1rem;
   }
 
@@ -103,14 +110,33 @@
 
   {% if section.settings.show_arrows_desktop == false %}
     @media (min-width: 769px) {
-      .flickity-prev-next-button { display: none !important; }
+      .product-slider-section .flickity-prev-next-button { display: none !important; }
     }
   {% endif %}
   {% if section.settings.show_arrows_mobile == false %}
     @media (max-width: 768px) {
-      .flickity-prev-next-button { display: none !important; }
+      .product-slider-section usp-inner.flickity-prev-next-button { display: none !important; }
     }
   {% endif %}
+  @media (max-width: 600px) {
+     .product-slider-section .flickity-prev-next-button {
+       top: 59%;
+       width: 22px;
+       height: 22px;
+      }   
+      .product-slider-section .flickity-prev-next-button.previous {
+        left: -20px;
+      }
+      .product-slider-section .flickity-prev-next-button.next {
+        right: -20px;
+      }
+     .product-slider-section .flickity-slider > .product-card {
+          width: 33% !important;
+      }
+      .product-slider-right-content > p {
+        font-size: 21px;
+      }
+  }
 </style>
 
 <section class="product-slider-section section_width_{{ section.settings.section_width }}">
@@ -144,7 +170,7 @@
       {% assign block_collection = collections[block.settings.collection] %}
       <div class="product-carousel js-flickity"
         data-tab-content="{{ block.id }}"
-        style="display: {% if first %}block{% else %}none{% endif %};"
+        style="display: {% if first %}{% else %}none{% endif %};"
         data-flickity-options='{
           "contain": true,
           "wrapAround": true,

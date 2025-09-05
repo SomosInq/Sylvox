@@ -17,6 +17,7 @@ align-items: center;
 gap: 10px;
   border-radius: 9999px;
 background: var(--Mid-Green, #336256);
+white-space: nowrap;
 }
 
 .info-section .button-icon {
@@ -92,10 +93,16 @@ background: var(--Mid-Green, #336256);
   position: absolute;
 }
 
+@media screen and (max-width: 887px) {
+  .info-section__title {
+    max-width: 47%;
+  }
+}
 @media screen and (max-width: 749px) {
   .info-section-wrapper {
     padding: 12px;
     align-items: center;
+    flex-flow: column;
   }
   .info-section__inner {
     gap: 4px;
@@ -107,6 +114,7 @@ background: var(--Mid-Green, #336256);
 
   .info-section__title {
     font-size: 12px;
+    max-width: 100%;
   }
 
   .info-section__header .info-section__title:after {
@@ -121,8 +129,9 @@ background: var(--Mid-Green, #336256);
   }
 
   .info-section .button{
-    padding-inline-start: 10px;
-    padding-inline-end: 10px;
+    padding-inline-start: 28px;
+    padding-inline-end: 20px;
+    width: fit-content;
   }
 
   .info-section button svg {

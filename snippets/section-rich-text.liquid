@@ -14,9 +14,15 @@
 {%- endcomment -%}
 
 {% style %}
+  .rich-text-section-{{ section.id }} .btn {
+    font-size: 16px;
+  }
   @media screen and (max-width: 768px) {
     .rich-text-section-{{ section.id }} .page-width--narrow {
       max-width: 100%;
+    }
+    .rich-text-section-{{ section.id }} .btn {
+    font-size: 14px;
     }
   }
 {% endstyle %}
