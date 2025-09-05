@@ -16641,6 +16641,7 @@ p.section-heading-desc{
   line-height: normal;
   border: 1px solid transparent;
   border-radius: 3px;
+  width: fit-content;
 }
 @media only screen and (max-width: 1199px) {
   .pdc-sizes a.pdc-size {
@@ -16747,5 +16748,9 @@ p.section-heading-desc{
   .pdc-tv-specs {
     font-size: 12px;
     margin-bottom: 4px;
+  }
+  .pdc-tv-sun-capabilities > svg {
+    height: 15px;
+    width: 15px;
   }
 }

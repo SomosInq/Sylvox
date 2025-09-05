@@ -1696,17 +1696,21 @@ display: flex;
 
     .somos-slide__content.content_section_width_standard {
       padding: 20px 25px 40px 25px;
+      align-items: center;
+      text-align: center;
     }
 
     .somos-slide__content.content_section_width_standard > .buttons {
       margin-top: auto;
       display: flex;
       gap: 10px;
+      justify-content: center;
     }
 
     .somos-slide__content.content_section_width_standard > .buttons > .button {
       margin-top: 15px;
-      padding: 12px 30px;
+      padding: 12px 24px;
+      width: fit-content;
     }
     .somos-slider .somos-slider__arrows {
       top: 54%;
