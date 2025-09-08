@@ -98,6 +98,11 @@
         {%- assign previous_column_type = '' -%}
         <div class="site-nav__dropdown megamenu megamenu--{{ megamenu_type }} text-left">
           <div class="page-width">
+            <div class="menu-close-container">
+              <button type="button" class="close-details">
+                {{ 'close.svg' | inline_asset_content }}
+              </button>
+            </div>
             <div class="site-nav__dropdown-animate megamenu__wrapper">
               <div class="megamenu__cols">
                 <div class="megamenu__col">

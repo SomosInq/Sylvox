@@ -1,5 +1,10 @@
 <div class="megamnu-main-wrapper" data-megamenu-for="{{ section.settings.megamenu_for | handle }}">
   <div class="page-width">
+    <div class="menu-close-container">
+      <button type="button" class="megamenu-close">
+        {{ 'close.svg' | inline_asset_content }}
+      </button>
+    </div>
     <h2 class="mm-section-title">Outdoor TVs</h2>
     <div class="grid-links-2">
        {% for block in section.blocks %}

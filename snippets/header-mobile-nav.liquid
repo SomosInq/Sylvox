@@ -13,7 +13,7 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign main_menu = main_menu | default: section.settings.main_menu_link_list
+  assign main_menu = main_menu | default: section.settings.mobile_menu
   assign text_direction = text_direction | default: settings.text_direction
   assign in_header = in_header | default: false, allow_false: true
 
@@ -26,11 +26,20 @@
 
 <mobile-nav
   class="slide-nav__wrapper overlay"
+  id="mobile-navigation-drawer"
   data-level="1"
   container="{{ container }}"
   inHeader="{{ in_header }}"
   defer-hydration
 >
+  <div class="slide-nav__header">
+    <button type="button" class="slide-nav__close-button js-close-drawer" aria-label="{% render 't_with_fallback', key: 'actions.close_menu', fallback: 'Close menu' %}">
+      {{ 'close.svg' | inline_asset_content }}
+    </button>
+    <div class="slide-nav__header-logo">
+      <img src="/cdn/shop/files/a4700e7d3c00159f84823fdb740890c3a60c3654_1.png?v=1752660442&amp;width=180" alt="Sylvox logo" srcset="/cdn/shop/files/a4700e7d3c00159f84823fdb740890c3a60c3654_1.png?v=1752660442&amp;width=180 180w" width="180" height="43">
+    </div>
+  </div>
   <ul class="slide-nav">
     {%- for link in main_menu.links -%}
       {%- liquid
@@ -72,9 +81,9 @@
             {% endif %}
           >
             <span class="slide-nav__link">
-              {%- if have_image -%}
+              {% comment %} {%- if have_image -%}
                 {{ collection_image }}
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
               <span>{{ link.title }}</span>
               {% render 'icon', name: chevron_icon %}
               <span class="icon__fallback-text visually-hidden">
@@ -82,13 +91,12 @@
               </span>
             </span>
           </button>
-
           <ul
-            class="slide-nav__dropdown"
+            class="slide-nav__dropdown {% if link.title == 'Explore' %}alternate-layout{% endif %} {% if link.title == 'Outdoor TVs' %}card-link-layout{% endif %}"
             data-parent="tier-2-{{ child_list_handle }}"
             data-level="2"
           >
-            <li class="slide-nav__item">
+            <li class="slide-nav__item previous-item-link">
               <button
                 type="button"
                 class="slide-nav__button js-toggle-submenu"
@@ -96,6 +104,9 @@
                 <span class="slide-nav__link slide-nav__link--back">
                   {% render 'icon', name: chevron_icon %}
                   <span>{{ link.title }}</span>
+                  <span class="slide-nav__close-button js-close-drawer" aria-label="{% render 't_with_fallback', key: 'actions.close_menu', fallback: 'Close menu' %}">
+                    {{ 'close.svg' | inline_asset_content }}
+                  </span>
                 </span>
               </button>
             </li>
@@ -104,6 +115,7 @@
               If a collection, automatically add 'view all' link
             {% endcomment %}
             {%- if is_collection -%}
+              {%- unless link.title == 'Outdoor TVs' %}
               <li class="slide-nav__item">
                 <a href="{{ link.url }}" class="slide-nav__link">
                   <span>
@@ -112,8 +124,9 @@
                   {% render 'icon', name: chevron_icon %}
                 </a>
               </li>
+              {%- endunless -%}
             {%- endif -%}
-
+            {%- unless link.title == 'Outdoor TVs' %}
             {%- for childlink in link.links -%}
               {%- liquid
                 assign grand_child_list_handle = childlink.title | handleize
@@ -143,7 +156,7 @@
                     data-parent="tier-3-{{ grand_child_link_id }}"
                     data-level="3"
                   >
-                    <li class="slide-nav__item">
+                    <li class="slide-nav__item previous-item-link">
                       <button
                         type="button"
                         class="slide-nav__button js-toggle-submenu"
@@ -152,6 +165,9 @@
                         <span class="slide-nav__link slide-nav__link--back">
                           {% render 'icon', name: chevron_icon %}
                           <span>{{ childlink.title }}</span>
+                          <span class="slide-nav__close-button js-close-drawer" aria-label="{% render 't_with_fallback', key: 'actions.close_menu', fallback: 'Close menu' %}">
+                            {{ 'close.svg' | inline_asset_content }}
+                          </span>
                         </span>
                       </button>
                     </li>
@@ -168,34 +184,131 @@
                           {% render 'icon', name: chevron_icon %}
                         </a>
                       </li>
+                      {%- for grandchildlink in childlink.object.products -%}
+                        <li class="slide-nav__item">
+                          <a href="{{ grandchildlink.url }}" class="slide-nav__link">
+                            <span>{{ grandchildlink.title | escape }}</span>
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    {%- else -%}
+                      {%- for grandchildlink in childlink.links -%}
+                        <li class="slide-nav__item">
+                          <a href="{{ grandchildlink.url }}" class="slide-nav__link">
+                            <span>{{ grandchildlink.title | escape }}</span>
+                            {% render 'icon', name: chevron_icon %}
+                          </a>
+                        </li>
+                      {%- endfor -%}
                     {%- endif -%}
-
-                    {%- for grandchildlink in childlink.links -%}
-                      <li class="slide-nav__item">
-                        <a href="{{ grandchildlink.url }}" class="slide-nav__link">
-                          <span>{{ grandchildlink.title | escape }}</span>
-                          {% render 'icon', name: chevron_icon %}
-                        </a>
-                      </li>
-                    {%- endfor -%}
                   </ul>
                 {%- else -%}
-                  <a href="{{ childlink.url }}" class="slide-nav__link">
-                    <span>{{ childlink.title | escape }}</span>
-                    {% render 'icon', name: chevron_icon %}
-                  </a>
+                  {%- if childlink.url contains '/collections/' -%}
+                    <button
+                      type="button"
+                      class="slide-nav__button js-toggle-submenu"
+                      data-target="tier-3-{{ grand_child_link_id }}"
+                      {% if link.active or link.child_active %}
+                        data-active="true"
+                      {% endif %}
+                    >
+                      <span class="slide-nav__link slide-nav__sublist-link">
+                        <span>{{ childlink.title }}</span>
+                        {% render 'icon', name: chevron_icon %}
+                        <span class="icon__fallback-text visually-hidden">
+                          {% render 't_with_fallback', key: 'actions.expand_submenu', fallback: 'Expand submenu' -%}
+                        </span>
+                      </span>
+                    </button>
+                    <ul
+                      class="slide-nav__dropdown"
+                      data-parent="tier-3-{{ grand_child_link_id }}"
+                      data-level="3"
+                    >
+                      <li class="slide-nav__item previous-item-link">
+                        <button
+                          type="button"
+                          class="slide-nav__button js-toggle-submenu"
+                          data-target="tier-2-{{ child_list_handle }}"
+                        >
+                          <span class="slide-nav__link slide-nav__link--back">
+                            {% render 'icon', name: chevron_icon %}
+                            <span>{{ childlink.title }}</span>
+                            <span class="slide-nav__close-button js-close-drawer" aria-label="{% render 't_with_fallback', key: 'actions.close_menu', fallback: 'Close menu' %}">
+                              {{ 'close.svg' | inline_asset_content }}
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+
+                      {% comment %}
+                        If a collection, automatically add 'view all' link
+                      {% endcomment %}
+                      {%- if childlink.url contains '/collections/' -%}
+                        <li class="slide-nav__item">
+                          <a href="{{ childlink.url }}" class="slide-nav__link">
+                            <span>
+                              {% render 't_with_fallback', key: 'actions.view_all', fallback: 'View all' -%}
+                            </span>
+                            {% render 'icon', name: chevron_icon %}
+                          </a>
+                        </li>
+                        {%- for grandchildlink in childlink.object.products limit: 5 -%}
+                          <li class="slide-nav__item product-item">
+                            <a href="{{ grandchildlink.url }}" class="slide-nav__link">
+                              <img src="{{ grandchildlink.featured_image | image_url: width: 100  }}" alt="">
+                              <span>{{ grandchildlink.title }}</span>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      {%- else -%}
+                        {%- for grandchildlink in childlink.links -%}
+                          <li class="slide-nav__item">
+                            <a href="{{ grandchildlink.url }}" class="slide-nav__link">
+                              <span>{{ grandchildlink.title }}</span>
+                              {% render 'icon', name: chevron_icon %}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      {%- endif -%}
+                    </ul>
+                  {%- else -%}
+                    <a href="{{ childlink.url }}" class="slide-nav__link" data-childlink="{{ childlink.object }}">
+                      <span>{{ childlink.title | escape }}</span>
+                      {% render 'icon', name: chevron_icon %}
+                    </a>
+                  {%- endif -%}
                 {%- endif -%}
               </li>
             {%- endfor -%}
+            {%- else -%}
+              <div class="card-link-container">
+                {%- for childlink in link.links -%}
+                  <a href="{{ childlink.url }}">
+                    <div class="mobile-card-link">
+                      {% if childlink.title contains 'Partial' %}
+                        <img src="{{ 'sun-icon-partial.png' | asset_img_url }}" alt="">
+                      {% else %}
+                        <img src="{{ 'sun-icon-full.png' | asset_img_url }}" alt="">
+                      {% endif %}
+                      
+                      <span>{{ childlink.title | escape }}</span>
+                    </div>
+                  </a>
+                {%- endfor -%}
+                <a href="/pages/outdoor-tv-finder" class="button-green-cta">Find Your Perfect Fit <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+  <path d="M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z" fill="#C6C6C6"></path>
+</svg></a>
+              </div>
+            {%- endunless -%}
           </ul>
         {%- else -%}
           <a href="{{ link.url }}" class="slide-nav__link">
-            {%- if have_image -%}
+            {% comment %} {%- if have_image -%}
               {{ collection_image }}
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
 
             <span>{{ link.title | escape }}</span>
-            {% render 'icon', name: chevron_icon %}
           </a>
         {%- endif -%}
       </li>
@@ -205,4 +318,16 @@
 
 <script type="module">
   import 'components/header-mobile-nav'
+
+   // Add event listener for the close button
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeButtons = document.querySelectorAll('.js-close-drawer');
+    
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Dispatch the close event that the header-drawer component listens for
+        document.dispatchEvent(new CustomEvent('header-drawer:close'));
+      });
+    });
+  });
 </script>
