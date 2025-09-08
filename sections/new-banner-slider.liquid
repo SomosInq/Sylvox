@@ -4,7 +4,6 @@
   class="new-banner-slider section_width_{{ section.settings.section_width }}"
   style="
   background-color: {{ section.settings.background_color }};
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
     margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
   "
 >
@@ -15,7 +14,7 @@
   </div>
 
   <div class="slider-carousel">
-    <div class="slider-track" style="scroll-snap-type: x mandatory; display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 24px;">
+    <div class="slider-track">
       {% for block in section.blocks %}
         <div class="slider-slide size-{{ section.settings.slide_size }}" style="scroll-snap-align: center; flex: 0 0 auto; height: {{ section.settings.slide_height }}px; width: {{ section.settings.slide_width }}px; position: relative;">
           {% if block.settings.image %}
@@ -40,8 +39,8 @@
       {% endif %}
       {% if section.settings.show_arrows %}
         <div class="slider-arrows">
-          <button class="slider-arrow prev">‹</button>
-          <button class="slider-arrow next">›</button>
+          <button class="slider-arrow prev"><span>‹</span></button>
+          <button class="slider-arrow next"><span>›</span></button>
         </div>
       {% endif %}
     </div>
@@ -54,10 +53,10 @@
   .slider-text.right { text-align: right; }
 
   .slider-heading-small { font-size: 0.875rem; color: #888; margin-bottom: 0.25rem; }
-  .slider-heading-main { font-size: 2rem; font-weight: 400; display: inline-block; padding-bottom: 4px; max-width: 880px;}
+  .slider-heading-main { font-size: 28px; font-weight: 400; display: inline-block; padding-bottom: 4px; max-width: 880px;}
   .slider-description { color: #555; margin-bottom: 1.5rem; }
 
-  .slider-slide { opacity: 0.4; transition: opacity 0.3s ease; }
+  .slider-slide { opacity: 0.4; transition: opacity 0.3s ease; margin-right: 20px;}
   .slider-slide.active { opacity: 1; }
 
   .slider-controls { margin-top: 30px !important; }
@@ -69,13 +68,54 @@
     color: white;
   }
 
+  #new-banner-slider-{{ section.id }} .flickity-slider {
+    display: flex;
+    align-items: center; /* vertical center */
+  }
+
   .slider-dots {
     display: flex;
     gap: 8px;
   }
 
+  .slider-track {
+    display: flex;
+    opacity: 0;
+    transition: 200ms;
+  }
+
+  .slider-track.flickity-enabled {
+    opacity: 1;
+    display: block;
+  }
+
+  .slider-arrow span {
+    margin-top: -4px;
+    display: block;
+  }
+  .slider-arrow.next span {
+    padding-left: 3px;
+  }
+
+  #new-banner-slider-{{ section.id }} {
+    padding-inline: 40px;
+  }
+
   #new-banner-slider-{{ section.id }} .slider-track::-webkit-scrollbar {
     display: none; 
+  }
+
+  #new-banner-slider-{{ section.id }} .slider-track {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+
+  #new-banner-slider-{{ section.id }} .slider-content h4 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  #new-banner-slider-{{ section.id }} .slider-content p {
+    font-size: 16px;
   }
 
   .slider-dot {
@@ -103,7 +143,35 @@
     cursor: pointer;
     font-size: 1.5rem;
   }
+  @media only screen and (max-width: 1024px) {
+    #new-banner-slider-{{ section.id }} .slider-heading-main {
+      font-size: 21px;
+    }
+    #new-banner-slider-{{ section.id }} .slider-content h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    #new-banner-slider-{{ section.id }} .slider-content p {
+      font-size: 14px;
+    }
+    #new-banner-slider-{{ section.id }} .slider-slide {
+      height: auto!important;
+      width: 80% !important;
+    }
+    #new-banner-slider-{{ section.id }} .slider-content {
+      width: calc(100% - 4rem);
+    }
+  }
   @media only screen and (max-width: 768px) {
+    #new-banner-slider-{{ section.id }} {
+      padding-inline: 15px;
+    }
+    #new-banner-slider-{{ section.id }} .section_content_width_standard {
+      padding-left: 0 !important;
+    }
+    #new-banner-slider-{{ section.id }} .slider-heading-main {
+      font-size: 18px;
+    }
     .slider-carousel .slider-slide {
       height: auto!important;
       width: 80% !important;
@@ -111,45 +179,54 @@
     .slider-carousel .slider-slide > img {
       object-fit: contain!important;
     }
-    .new-banner-slider .slider-slide .slider-content {
-      top: 0;
-    }
   }
   
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const section = document.getElementById('new-banner-slider-{{ section.id }}');
-    const track = section.querySelector('.slider-track');
-    const slides = section.querySelectorAll('.slider-slide');
-    const dots = section.querySelectorAll('.slider-dot');
+document.addEventListener('DOMContentLoaded', () => {
+  const section = document.getElementById('new-banner-slider-{{ section.id }}');
+  const track = section.querySelector('.slider-track'); 
+  const slides = section.querySelectorAll('.slider-slide');
+  const dots = section.querySelectorAll('.slider-dot');
+  const prevArrow = section.querySelector('.slider-arrow.prev');
+  const nextArrow = section.querySelector('.slider-arrow.next');
 
-    let current = 0;
-
-    function goTo(index) {
-      const slide = slides[index];
-      if (!slide) return;
-      track.scrollTo({ left: slide.offsetLeft - (track.offsetWidth - slide.offsetWidth) / 2, behavior: 'smooth' });
-      slides.forEach((el, i) => el.classList.toggle('active', i === index));
-      dots.forEach((el, i) => el.classList.toggle('active', i === index));
-      current = index;
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goTo(i));
-    });
-
-    section.querySelector('.slider-arrow.prev')?.addEventListener('click', () => {
-      goTo((current - 1 + slides.length) % slides.length);
-    });
-    section.querySelector('.slider-arrow.next')?.addEventListener('click', () => {
-      goTo((current + 1) % slides.length);
-    });
-
-    goTo(0);
+  // Initialize Flickity
+  const flkty = new Flickity(track, {
+    wrapAround: true,
+    imagesLoaded: true,
+    pageDots: false,
+    prevNextButtons: false,
+    cellAlign: 'left',
+    contain: true,
+    groupCells: 1.1
   });
+
+  // Arrow buttons
+  if (prevArrow) prevArrow.addEventListener('click', () => flkty.previous());
+  if (nextArrow) nextArrow.addEventListener('click', () => flkty.next());
+
+  // Dot click => change slide
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => flkty.select(index));
+  });
+
+  // Flickity change => update active classes
+  flkty.on('change', (index) => {
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+  });
+
+  // Initial active state
+  if (slides[0]) slides[0].classList.add('active');
+  if (dots[0]) dots[0].classList.add('active');
+});
 </script>
+
+
+
+
 
 {% schema %}
 {

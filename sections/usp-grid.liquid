@@ -19,7 +19,7 @@
   }
 
   .usp-button {
-display: inline-flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 10px 16px;
@@ -30,7 +30,27 @@ display: inline-flex;
     text-decoration: none;
     transition: background 0.3s ease;
     margin-top: 12px;
-    max-width: 220px;
+    max-width: 160px;
+  }
+
+  .{{ section.id }} .usp-title {
+    min-height: 52px;
+  }
+  .{{ section.id }} .usp-text {
+    min-height: 42px;
+  }
+
+  .{{ section.id }} .usp-slider {
+    display: flex;
+  }
+
+  .{{ section.id }} .usp-slider.flickity-enabled {
+    display: block;
+  }
+
+  .{{ section.id }} .usp-arrow:hover {
+    color: inherit;
+    display: flex;
   }
 
   .usp-grid {
@@ -43,7 +63,7 @@ display: inline-flex;
   .usp-grid .usp-box,
   .usp-slider .usp-box {
     flex: 0 1 0%;
-    min-width: 220px;
+    min-width: 250px;
   }
 
   .usp-arrows {
@@ -67,6 +87,14 @@ display: inline-flex;
     .usp-grid-section {
       padding: 30px 20px !important;
     }
+    .{{ section.id }} .usp-arrows {
+      top: 0;
+      right: 0;
+      gap: 8px;
+      position: relative;
+      justify-content: end;
+      margin-block: 20px;
+    }
   }
 
   #shopify-section-{{ section.id }} .carousel-cell {
@@ -75,7 +103,7 @@ display: inline-flex;
 
   .usp-grid-section .carousel-cell {
     flex: none;
-    margin-right: 20px;
+    margin-right: 26px;
   }
 /* Flex container — left by default */
 .usp-box {
