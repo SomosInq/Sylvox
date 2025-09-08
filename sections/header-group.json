@@ -69,6 +69,7 @@
       ],
       "settings": {
         "main_menu_link_list": "header-menu-new",
+        "mobile_menu": "mobile-menu",
         "hover_menu": true,
         "main_menu_alignment": "left-center",
         "mega_products": true,
