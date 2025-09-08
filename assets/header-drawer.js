@@ -14,6 +14,11 @@ class HeaderDrawer extends HTMLElement {
     document.addEventListener(this.getAttribute('close'), this.close.bind(this), {
       signal: this.abortController.signal
     })
+
+    // Add listener for the custom close event from mobile nav
+    document.addEventListener('header-drawer:close', this.close.bind(this), {
+      signal: this.abortController.signal
+    })
   }
 
   open(evt) {
@@ -24,7 +29,7 @@ class HeaderDrawer extends HTMLElement {
     prepareTransition(
       this,
       function () {
-        this.classList.add('is-active')
+        this.classList.add('is-active');
       }.bind(this)
     )
 

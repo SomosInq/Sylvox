@@ -23,6 +23,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 300);
   }
 
+  // Close mega menu function
+  function closeMegaMenu() {
+    const allMegaMenus = document.querySelectorAll('.megamnu-main-wrapper');
+    allMegaMenus.forEach(menu => menu.classList.remove('active'));
+  }
+
+  // Add event listeners to close buttons
+  const closeButtons = document.querySelectorAll('.megamenu-close');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeMegaMenu();
+    });
+  });
+
   triggers.forEach(trigger => {
     const triggerValue = trigger.getAttribute('data-trigger-megamenu');
     
@@ -65,5 +81,40 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!e.target.closest('[data-trigger-megamenu]') && !e.target.closest('.megamnu-main-wrapper')) {
       hideMegaMenu();
     }
+  });
+
+  // Internal mega menu functionality
+  const megaMenuCollections = document.querySelectorAll('.mega-menu-collections a');
+  const megaMenuProducts = document.querySelectorAll('.mega-menu-products');
+
+  function switchMegaMenu(targetIndex) {
+    megaMenuCollections.forEach(link => link.classList.remove('active'));
+    megaMenuProducts.forEach(product => product.classList.remove('active'));
+    
+    const targetCollection = document.querySelector(`.mega-menu-collections a[data-loop-index="${targetIndex}"]`);
+    const targetProduct = document.querySelector(`.mega-menu-products[data-loop-index="${targetIndex}"]`);
+    
+    if (targetCollection) targetCollection.classList.add('active');
+    if (targetProduct) targetProduct.classList.add('active');
+  }
+
+  megaMenuCollections.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const loopIndex = this.getAttribute('data-loop-index');
+      switchMegaMenu(loopIndex);
+    });
+
+    link.addEventListener('mouseenter', function() {
+      const loopIndex = this.getAttribute('data-loop-index');
+      switchMegaMenu(loopIndex);
+    });
+  });
+
+  document.querySelectorAll('.close-details').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.closest('details').removeAttribute('open');
+    });
   });
 });

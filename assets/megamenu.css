@@ -11,14 +11,28 @@
   display: block;
 }
 .shopify-section-group-header-group:has(.megamnu-main-wrapper.active)::after {
-    display: block;
-    content: "";
-    height: 100vh;
-    width: 100%;
-    background: #00000099;
-    position: absolute;
-    top: 0;
-    z-index: 6;
+  display: block;
+  content: "";
+  height: 100vh;
+  width: 100%;
+  background: rgb(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  z-index: 6;
+}
+.header-item details[open] .site-nav__dropdown::after {
+  display: block;
+  content: "";
+  height: 100vh;
+  width: 100%;
+  background: rgb(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 100%;
+  z-index: 6;
 }
 .mega-menu-flex-box {
   display: flex;
@@ -72,16 +86,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 30px;
 }
 
 a.mm-view-more-btn {
   display: inline-block;
   border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.30);
-  padding: 12px 47px;
+  padding: 8px 47px;
   font-size: 14px;
   font-weight: 300;
   color: #000;
+  white-space: nowrap;
 }
 
 .mm-content-heading {
@@ -98,7 +114,7 @@ a.mm-view-more-btn {
 
 .mm-main-title {
   color: rgba(0, 0, 0, 0.65);
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
   line-height: normal;
   padding-right: 24px;
@@ -116,7 +132,7 @@ a.mm-view-more-btn {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 30px;
+  margin-top: 45px;
 }
 .mega-menu-product-card {
   position: relative;
@@ -138,7 +154,7 @@ span.mm-badge {
 }
 .mm-product-title {
   color: rgba(0, 0, 0, 0.85);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: normal;
   text-align: center;
@@ -154,7 +170,7 @@ span.mm-badge {
   display: block;
   padding: 4px 12px;
   border: 1px solid transparent;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
 }
 
@@ -190,7 +206,7 @@ span.mm-badge {
 
 .mm-section-title{
   color: rgba(0, 0, 0, 0.65);
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
   line-height: normal;
   margin-bottom: 48px;
@@ -212,8 +228,8 @@ span.mm-badge {
 
 .mm-cta-text h3 {
     margin: 0;
-    font-size: 32px;
-    font-weight: 400;
+    font-size: 24px;
+    font-weight: 300;
     line-height: normal;
 }
 
@@ -240,4 +256,16 @@ a.mm-cta-button {
   background: #336256;
   padding: 15px 24px;
   color: #fff;
+  font-size: 14px;
+}
+
+.menu-close-container {
+    display: flex;
+    justify-content: flex-end;
+    color: #000;
+}
+.menu-close-container button svg {
+    display: block;
+    width: 30px;
+    height: 30px;
 }

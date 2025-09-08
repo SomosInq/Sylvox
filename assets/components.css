@@ -1695,7 +1695,7 @@ html[dir='rtl'] .text-right {
   text-align: center !important;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .small--show {
     display: block !important;
   }
@@ -1713,7 +1713,7 @@ html[dir='rtl'] .text-right {
   }
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1079px) {
   .medium-up--hide {
     display: none !important;
   }
@@ -6293,6 +6293,7 @@ picture img {
 .megamenu {
   padding: 40px 0 0;
   line-height: 1.8;
+  background: #fff;
 }
 
 .text-center .site-navigation {
@@ -6517,7 +6518,7 @@ details[open] .site-nav__dropdown {
   transform: translateY(-10px);
   opacity: 0;
   background: #fff;
-  padding: 3em 3.5em 2em 3.5em !important;
+  padding: 0;
 }
 
 details[open] .site-nav__dropdown-animate {

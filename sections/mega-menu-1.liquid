@@ -1,5 +1,10 @@
 <div class="megamnu-main-wrapper" data-megamenu-for="{{ section.settings.megamenu_for | handle }}">
   <div class="page-width">
+    <div class="menu-close-container">
+    <button type="button" class="megamenu-close">
+      {{ 'close.svg' | inline_asset_content }}
+    </button>
+    </div>
     <div class="mega-menu-flex-box">
       <div class="mege-menu-nav-panel">
         <div class="parent-nav">
@@ -25,20 +30,23 @@
           {% if block.type == 'collection_menu' %}
           <div class="mega-menu-products {% if forloop.index == 1 %}active{% endif %}" data-loop-index="{{ forloop.index }}">
             <div class="mm-heading-area">
-              <div class="mm-content-heading">
-                <div class="mm-main-title">{{ block.settings.title }}</div>
-                <div class="mm-subtitle">
-                  {% if block.settings.subtitle != blank %}
-                    {% if block.settings.icon != blank %}
-                      <img src="{{ block.settings.icon | image_url }}" width="34" height="34" alt="">
+              <div>
+                <div class="mm-content-heading">
+                  <div class="mm-main-title">{{ block.settings.title }}</div>
+                  <div class="mm-subtitle">
+                    {% if block.settings.subtitle != blank %}
+                      {% if block.settings.icon != blank %}
+                        <img src="{{ block.settings.icon | image_url }}" width="34" height="34" alt="">
+                      {% endif %}
+                      {{ block.settings.subtitle }}
                     {% endif %}
-                    {{ block.settings.subtitle }}
-                  {% endif %}
+                  </div>
                 </div>
+                <p>{{ block.settings.description }}</p>
               </div>
               <a href="{{ block.settings.collection_link }}" class="mm-view-more-btn">See All</a>
             </div>
-            <p>{{ block.settings.description }}</p>
+           
             <div class="mega-menu-product-grid">
              {% for i in (1..4) %}
                 {% assign badge_key   = 'badge_p'        | append: i %}
