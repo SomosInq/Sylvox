@@ -14,6 +14,10 @@
 {%- endcomment -%}
 
 {% style %}
+  .rich-text-section-{{ section.id }} {
+    padding-inline: 15px;
+  }
+  
   .rich-text-section-{{ section.id }} .btn {
     font-size: 16px;
   }
@@ -48,9 +52,9 @@
           {%- when 'heading' -%}
             {% style %}
               .rich-text-section-{{ section.id }} .theme-block h2 {
-                font-size: {{ block.settings.font_size | times: 0.9 }}px;
+                font-size: {{ block.settings.font_size | times: 0.75 }}px;
               }
-              @media screen and (min-width: 768px) {
+              @media screen and (min-width: 1024px) {
                 .rich-text-section-{{ section.id }} .theme-block h2 {
                   font-size: {{ block.settings.font_size }}px;
                 }

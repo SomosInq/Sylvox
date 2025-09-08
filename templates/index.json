@@ -604,8 +604,8 @@
           "settings": {
             "title": "A weatherproof, ultra-bright 4K TV designed for the outdoors. Whether you’re hosting game night, watching a movie under the stars, or just unwinding after a long day, the Deck Pro 2.0 delivers a viewing experience that feels as good as it looks.",
             "heading_size": "h3",
-            "font_size": 32,
-            "text_color": "#636363"
+            "font_size": 28,
+            "text_color": "#1D1D1B"
           }
         }
       },

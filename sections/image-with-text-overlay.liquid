@@ -15,6 +15,21 @@
     max-height: calc(100dvh - 200px);
   }
 
+  #shopify-section-{{ section.id }} .content-over-media > picture,
+  #shopify-section-{{ section.id }} .content-over-media > picture img {
+    max-height: calc(100dvh - 200px);
+  }
+  
+  #shopify-section-{{ section.id }} image-banner .grid-outer-wrapper {
+    display: flex;
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .grid .rte-block p {
+      font-size: 20px;
+    }
+  }
+
   #shopify-section-{{ section.id }} .grid {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -29,7 +44,7 @@
       "top-left top-center top-right"
       "middle-left middle-center middle-right"
       "bottom-left bottom-center bottom-right";
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 50% 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     width: 100%;
     height: 100%;
@@ -92,7 +107,7 @@
   }
   @media screen and (max-width: 768px) {
       #shopify-section-{{ section.id }} .prose .heading {
-      font-size: 32px!important;
+      font-size: 28px!important;
     }
   }
 </style>
@@ -130,7 +145,7 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-     <div class="grid w-full h-full">
+     <div class="grid grid-outer-wrapper w-full h-full">
   <div class="grid-content-wrapper section_content_width_{{ section.settings.section_width }}">
             <div class="p-4 mobile-pos {{ section.settings.mobile_text_position }} sm:{{ section.settings.desktop_text_position }}" style="color: {{ section.settings.text_color }};">
 
@@ -152,7 +167,7 @@
 
                   {%- when 'richtext' -%}
                     {%- if block.settings.content != blank -%}
-                      <div {{ block.shopify_attributes }}>
+                      <div class="rte-block" {{ block.shopify_attributes }}>
                         {{- block.settings.content -}}
                       </div>
                     {%- endif -%}
@@ -176,9 +191,9 @@
   {% if style == 'outline' %}
     {% assign button_style = 'background-color: transparent;' %}
     {% if outline_color %}
-      {% assign border_style = 'border: 2px solid ' | append: outline_color | append: ';' %}
+      {% assign border_style = 'border: 1px solid ' | append: outline_color | append: ';' %}
     {% else %}
-      {% assign border_style = 'border: 2px solid currentColor;' %}
+      {% assign border_style = 'border: 1px solid currentColor;' %}
     {% endif %}
     {% assign button_style = button_style | append: ' color: ' | append: text_color | append: '; ' | append: border_style %}
   {% else %}
