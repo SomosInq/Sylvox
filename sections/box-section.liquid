@@ -73,6 +73,16 @@
           "id": "text",
           "label": "Text",
           "default": "Box description text goes here."
+        },
+        {
+          "type": "text",
+          "id": "popup_title",
+          "label": "Popup Title"
+        },
+        {
+          "type": "text",
+          "id": "popup_text",
+          "label": "Popup Text"
         }
       ]
     }
@@ -102,7 +112,7 @@
 {% endschema %}
 
 
-<div class="box-section-wrapper section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+<div class="box-section-wrapper {{ section.id }} section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <div class="container">
     {% if section.settings.main_title != blank %}
       <h2 class="box-section-title">{{ section.settings.main_title }}</h2>
@@ -119,6 +129,14 @@
           {% endif %}
           <h3 class="box-title">{{ block.settings.title }}</h3>
           <p class="box-text">{{ block.settings.text }}</p>
+          {% if block.settings.popup_text or block.settings.popup_title != nil %}     
+            <div class="popup-explanation">
+              <span>
+                {{ block.settings.popup_title }}
+              </span>
+              {{ block.settings.popup_text }}
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -130,3 +148,55 @@
     {% endif %}
   </div>
 </div>
+
+{% style %}
+.{{ section.id }} .box-grid .box-item p > a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.{{ section.id }} .box-grid .box-item .popup-explanation {
+  opacity: 0;
+  transition: 200ms;
+  visibility: hidden;
+  position: absolute;
+  bottom: 160px;
+  z-index: 10;
+  background: white;
+  color: #1D1D1B;
+  display: block;
+  border-radius: 5px;
+  box-shadow: 2px 1px 4px #a1a1a17a;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding: 5px 10px;
+  width: 94%;
+  left: 3%;
+}
+
+.{{ section.id }} .box-grid .box-item .popup-explanation span {
+  color: #DB4B97;
+  font-weight: 400;
+}
+
+.{{ section.id }} .box-grid .box-item p:has(a:hover) + .popup-explanation {
+  visibility: visible;
+  opacity: 1
+}
+
+@media screen and (max-width: 1024px) {
+  .{{ section.id }} .box-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .{{ section.id }} .box-grid .box-item:nth-child(2):after {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .{{ section.id }} .box-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+{% endstyle %}

@@ -1274,6 +1274,12 @@ a.button {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  @media (min-width: 1024px) {
+    .support-link { 
+      width: 500px;
+    }
+  }
+
   .support-link.last {
     border-bottom: none;
   }
@@ -1366,6 +1372,15 @@ a.button {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #20413B;
+}
+
+@media screen and (max-width: 768px) {
+  .newsletter-content {
+    padding-inline: 15px;
+  }
+  .newsletter-content h2 {
+    font-size: 1.8rem;
+  }
 }
 
 .newsletter-content p {
@@ -1859,7 +1874,7 @@ display: flex;
 /* Image text Flex Blocks */
 .comparision-slider-section h2 {
     margin-bottom: 6px;
-    font-size: 32px;
+    font-size: 28px;
     color: #1D1D1B;
     font-weight: 400;
     line-height: normal;
@@ -1879,6 +1894,9 @@ display: flex;
   /* width: 100%; */
 }
 @media screen and (min-width: 768px) {
+  .comparision-slider-section h2 {
+    font-size: 32px;
+  }
   .image-text-blocks-section.content_standard > * {
     width: 50%;
     margin-inline: auto;
@@ -1906,6 +1924,7 @@ display: flex;
     }
     .comparison .comparison__image-wrapper img {
       width: 100%!important;
+      object-fit: contain;
     }
 
   }
