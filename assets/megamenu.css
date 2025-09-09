@@ -10,7 +10,7 @@
 .megamnu-main-wrapper.active{
   display: block;
 }
-.shopify-section-group-header-group:has(.megamnu-main-wrapper.active)::after {
+.shopify-section-group-header-group .megamnu-main-wrapper.active::after {
   display: block;
   content: "";
   height: 100vh;
@@ -19,7 +19,7 @@
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   position: absolute;
-  top: 0;
+  top: 100%;
   z-index: 6;
 }
 .header-item details[open] .site-nav__dropdown::after {
