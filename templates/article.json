@@ -153,13 +153,15 @@
           "type": "title",
           "settings": {
             "title": "\"At Sylvox, we believe outdoor living should be as seamless and high-quality as indoor experiences,\" said Tracy Lee, Co-Founder & CMO at Sylvox. \"After our impactful debut at CES, HPBExpo 2025 is a key milestone in our journey to bring Sylvox innovations into the heart of outdoor living culture.\"",
-            "font_size": 27
+            "font_size": 27,
+            "text_color": "#000000"
           }
         },
         "text_4MQEH8": {
           "type": "text",
           "settings": {
-            "text": "Visit Sylvox at Ernest N. Morial Convention Center, Halls D-E-F, Booth #2007 to see the latest advancements in outdoor entertainment and experience firsthand how Sylvox is shaping the future of Outdoor TV technology."
+            "text": "Visit Sylvox at Ernest N. Morial Convention Center, Halls D-E-F, Booth #2007 to see the latest advancements in outdoor entertainment and experience firsthand how Sylvox is shaping the future of Outdoor TV technology.",
+            "text_color": "#000000"
           }
         }
       },
@@ -315,8 +317,8 @@
         "margin_left": 0,
         "margin_right": 0,
         "slide_width": 360,
-        "show_dots": false,
-        "show_arrows": false
+        "show_dots": true,
+        "show_arrows": true
       }
     },
     "sidebar": {
