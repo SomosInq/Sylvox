@@ -107,7 +107,7 @@
 
 
 
-<div class="sylvox-section section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
+<div class="sylvox-section {{ section.id }} section_width_{{ section.settings.section_width }}" style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px">
   <p>{{ section.settings.subtitle }}</p>
   <h2>{{ section.settings.title | newline_to_br }}</h2>
 
@@ -203,3 +203,11 @@
     {{ section.settings.button_label }}
   </a>
 </div>
+
+{% style %}
+@media screen and (max-width: 768px) {
+  .{{ section.id }} h2 {
+    font-size: 24px;
+  }
+}
+{% endstyle %}

@@ -356,12 +356,15 @@ color: #000;
       </div>
 
       {% if block.settings.collection %}
-        {% if block.settings.collection.handle contains 'outdoor' %}
-            {%- assign all_resolutions = "All,Full Sun,Partial Sun" | split: "," -%}
+        {% if block.settings.collection.handle contains 'outdoor'  %}
+            {% unless block.settings.collection.handle contains 'accessories' %}
+              {%- assign all_resolutions = "All,Full Sun,Partial Sun" | split: "," -%}
+            {% else %}
+              {%- assign all_resolutions = "All" | split: "," -%}
+            {% endunless %}
           {% else %}
             {%- assign all_resolutions = "All" | split: "," -%}
         {% endif %}
-
         <div class="collection-title-row" style="color: {{ block.settings.collection_title_color }}">
           <div class="title-filters">
             <h3>{{ block.settings.collection.title }}</h3>

@@ -1,6 +1,7 @@
 {% comment %}
   Media Logo Carousel | Dots for groups of 4 + drag to scroll
 {% endcomment %}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
 <div class="media-logo-carousel section_width_{{ section.settings.section_width }}" id="media-logo-carousel-{{ section.id }}">
   <div class="media-logo-carousel__inner section_content_width_{{ section.settings.section_content_width }}">
@@ -11,7 +12,6 @@
     <div class="media-logo-carousel__carousel">
       {% for block in section.blocks %}
         <div class="media-logo-carousel__item" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
-          <p class="media-logo-carousel__quote">{{ block.settings.quote }}</p>
           <div class="media-logo-carousel__logo-wrapper">
             {% if block.settings.logo != blank %}
               <img 
@@ -19,7 +19,6 @@
                 loading="lazy"
                 alt="{{ block.settings.alt }}"
                 class="media-logo-carousel__logo"
-                style="width: {{ block.settings.logo_width }}%; height: auto;"
               >
             {% endif %}
           </div>
@@ -27,20 +26,20 @@
         </div>
       {% endfor %}
     </div>
-{% if section.settings.show_dots %}
-  <div class="media-logo-carousel__dots">
-    {% assign groups = section.blocks.size | divided_by: 4 %}
-    {% assign remainder = section.blocks.size | mod: 4 %}
-    {% if remainder != 0 %}
-      {% assign groups = groups | plus: 1 %}
-    {% endif %}
+  {% if section.settings.show_dots %}
+    <div class="media-logo-carousel__dots">
+      {% assign groups = section.blocks.size | divided_by: 4 %}
+      {% assign remainder = section.blocks.size | mod: 4 %}
+      {% if remainder != 0 %}
+        {% assign groups = groups | plus: 1 %}
+      {% endif %}
 
-    {% for i in (1..groups) %}
-      {% assign i0 = i | minus: 1 %}
-      <span class="dot {% if forloop.first %}active{% endif %}" data-group="{{ i0 }}"></span>
-    {% endfor %}
-  </div>
-{% endif %}
+      {% for i in (1..groups) %}
+        {% assign i0 = i | minus: 1 %}
+        <span class="dot {% if forloop.first %}active{% endif %}" data-group="{{ i0 }}"></span>
+      {% endfor %}
+    </div>
+  {% endif %}
 
 
   </div>
@@ -100,12 +99,20 @@
     }
 
     .media-logo-carousel__carousel {
-      display: flex;
-      overflow-x: auto;
-      gap: 24px;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      cursor: grab;
+       display: flex;   
+       flex-wrap: nowrap;
+       overflow: hidden;
+       opacity: 0;
+        gap: 0 !important;             
+        scroll-snap-type: none !important;
+        scroll-behavior: auto !important;
+        cursor: grab; /* optional: keep the grab cursor */
+        transition: 200ms;
+    }
+
+    .media-logo-carousel__carousel.flickity-enabled {
+      opacity: 1;
+      display: block;
     }
 
     .media-logo-carousel__item {
@@ -114,12 +121,14 @@
       color: #1D1D1B;
       border-radius: 8px;
       scroll-snap-align: start;
-      opacity: 0.5;
+      opacity: 1;
       transition: opacity 0.3s ease;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 100%;
+      align-items: center;
+      height: 60px;
+      width: 20%;
     }
 
     .media-logo-carousel__item.active {
@@ -137,20 +146,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 24px;
-      height: 100px;
+      height: 100%;
+      width: fit-content;
+      max-width: 60%;
     }
 
     .media-logo-carousel__logo {
-      display: block;
-      height: auto;
-      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 100%;
     }
     @media (max-width: 768px) {
       .media-logo-carousel__logo {
-      max-width: 80%;
-      width: 100% !important;
-    }
+        max-width: 80%;
+        width: 100% !important;
+      }
     }
 
     .media-logo-carousel__meta {
@@ -183,7 +194,7 @@
     @media screen and (max-width: 768px) {
 
      .media-logo-carousel {
-        padding: 20px 20px;
+        padding: 60px 20px;
       }
 
       .media-logo-carousel__carousel {
@@ -196,94 +207,66 @@
       }
 
       .media-logo-carousel__item {
-        flex: 1 1 auto;
-        width: 100%;
+        width: 30%;
         opacity: 1;
-        scroll-snap-align: none;
-      }
-
-      .media-logo-carousel__dots {
-        display: none;
       }
     }
   {% endstyle %}
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const carousel = document.querySelector('#media-logo-carousel-{{ section.id }} .media-logo-carousel__carousel');
-      const items = carousel.querySelectorAll('.media-logo-carousel__item');
-      const dots = document.querySelectorAll('#media-logo-carousel-{{ section.id }} .dot');
+ <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const carousels = document.querySelectorAll('.media-logo-carousel');
 
-      // Observer to highlight visible items and dots
-      if (window.innerWidth > 768) {
-        const observer = new IntersectionObserver((entries) => {
-          let minIndex = null;
-          entries.forEach(entry => {
-            const index = parseInt(entry.target.getAttribute('data-index'));
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
-              if (minIndex === null || index < minIndex) minIndex = index;
-            } else {
-              entry.target.classList.remove('active');
-            }
-          });
-          if (minIndex !== null) {
-            const group = Math.floor(minIndex / 4);
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[group].classList.add('active');
-          }
-        }, { root: carousel, threshold: 0.5 });
+  carousels.forEach(section => {
+    const carouselEl = section.querySelector('.media-logo-carousel__carousel');
+    const dots = section.querySelectorAll('.media-logo-carousel__dots .dot');
 
-        items.forEach(item => observer.observe(item));
-      } else {
-        items.forEach(item => item.classList.add('active'));
-      }
+    if (!carouselEl || dots.length === 0) return;
 
-      // Click dots to scroll to group
-      dots.forEach(dot => {
-        dot.addEventListener('click', function () {
-          const group = parseInt(this.dataset.group);
-          const index = group * 4;
-          const item = carousel.querySelector('.media-logo-carousel__item[data-index="' + index + '"]');
-          if (item) {
-            carousel.scrollTo({
-              left: item.offsetLeft,
-              behavior: 'smooth'
-            });
-          }
-        });
+    // Initialize Flickity
+    const flkty = new Flickity(carouselEl, {
+      cellAlign: 'left',
+      contain: true,
+      pageDots: false,       
+      prevNextButtons: false, 
+      groupCells: 4,
+      draggable: true,  
+      wrapAround: true
+    });
+
+    // Helper: update active dot
+    function updateActiveDot() {
+      // Get selected cell
+      const selectedCell = flkty.selectedElement;
+      // Find its index in all cells
+      const cellIndex = flkty.cells.findIndex(cell => cell.element === selectedCell);
+      // Compute group index
+      const groupIndex = Math.floor(cellIndex / flkty.options.groupCells);
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === groupIndex);
       });
+    }
 
-      // Drag to scroll
-      let isDown = false;
-      let startX, scrollLeft;
+    // Update dots on slide change
+    flkty.on('select', updateActiveDot);
 
-      carousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        carousel.classList.add('dragging');
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-      });
-
-      carousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        carousel.classList.remove('dragging');
-      });
-
-      carousel.addEventListener('mouseup', () => {
-        isDown = false;
-        carousel.classList.remove('dragging');
-      });
-
-      carousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 1.5; // Scroll speed
-        carousel.scrollLeft = scrollLeft - walk;
+    // Dot click navigation
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const groupIndex = parseInt(dot.dataset.group, 10);
+        const targetIndex = groupIndex * flkty.options.groupCells;
+        flkty.select(targetIndex);
       });
     });
-  </script>
+
+    // Mark first dot active on load
+    updateActiveDot();
+  });
+});
+</script>
+
+
 </div>
 
 {% schema %}

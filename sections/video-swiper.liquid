@@ -7,6 +7,7 @@
   .video-swiper-contair {
     width: 100%;
     margin: 0 auto;
+    padding-bottom: 76px;
   }
 
   .usp-heading {
@@ -27,6 +28,8 @@
   .content-left {
     display: flex;
     flex-direction: column;
+    max-width: 880px;
+    gap: 24px;
   }
 
   .content-right {
@@ -34,9 +37,9 @@
     gap: 10px;
   }
 
-  .usp-arrow {
-    width: 40px;
-    height: 40px;
+  .video-swiper-contair .usp-arrow {
+    width: 32px;
+    height: 32px;
     border: 1px solid #636363;
     border-radius: 50%;
     background: none;
@@ -45,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 23px;
     color: #636363;
     line-height: 1;
     padding: 0;
@@ -58,11 +61,11 @@
   }
 
   .video-swiper-contair .usp-arrow {
-    padding-bottom: 6px;
+    padding-bottom: 5px;
   }
 
   .video-swiper-contair .usp-arrow.next {
-    padding-left: 4px;
+    padding-left: 2px;
   }
 
   .video-blocks {
@@ -112,11 +115,32 @@
     opacity: 1;
   }
 
+  @media screen and (max-width: 1235px) {
+    .video-swiper-contair {
+      padding-inline: 15px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .video-swiper-content .content-left {
+      max-width: calc(100% - 100px);
+    }
+  }
   @media screen and (max-width: 768px) {
     .video-swiper-content {
       flex-direction: column;
       align-items: flex-start;
       gap: 20px;
+    }
+    .video-swiper-content .content-left {
+      max-width: 100%;
+    }
+
+    .video-swiper-contair {
+      padding-bottom: 45px;
+    }
+    .video-swiper-contair .usp-heading {
+      font-size: 24px;
+      padding-bottom: 0;
     }
 
     .content-right {
@@ -125,10 +149,7 @@
 
     .video-wrapper {
       flex: 0 0 calc(35% - 10px);
-    }
-
-    .video-wrapper video {
-      height: auto;
+      max-width: 84%;
     }
   }
 </style>

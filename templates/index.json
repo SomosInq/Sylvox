@@ -627,7 +627,9 @@
           "settings": {
             "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c.png",
             "title": "Engineered for Outdoor Life",
-            "text": "IP55 Waterproof, heatproof, and weatherproof. No worries, rain or shine."
+            "text": "<a>IP55</a> Waterproof, heatproof, and weatherproof. No worries, rain or shine.",
+            "popup_title": "Ingress Protection 55: ",
+            "popup_text": "Protected from limited dust ingress. Protected from low pressure water jets from any direction."
           }
         },
         "feature_box_EVXEkF": {
@@ -868,7 +870,7 @@
           "settings": {
             "title": "Inspiring well-being throughaffordable outdoor technologythat bring relaxation, joy, andconnection to everyday outdoor living.",
             "heading_size": "h3",
-            "font_size": 32,
+            "font_size": 24,
             "text_color": "#1d1d1b"
           }
         },

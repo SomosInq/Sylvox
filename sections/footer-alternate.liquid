@@ -90,6 +90,7 @@
   .footer-alternate {
     background-color: #fafafa;
     padding: 60px 20px;
+    padding-bottom: 20px;
     font-family: var(--font-body-family);
   }
 
@@ -193,7 +194,10 @@ border: 1px solid #000;
 
   @media (max-width: 767px) {
     .footer-alternate__newsletter-button {
-    width: 100%;
+    width: fit-content;
+    }
+    .footer-alternate__newsletter-text {
+      font-size: 18px;
     }
   }
 
