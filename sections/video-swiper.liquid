@@ -149,7 +149,8 @@
 
     .video-wrapper {
       flex: 0 0 calc(35% - 10px);
-      max-width: 84%;
+      min-width: 84%;
+      aspect-ratio: 9 / 16;
     }
   }
 </style>
@@ -207,7 +208,7 @@
               <img
                 src="{{ block.settings.thumbnail | img_url: '800x' }}"
                 alt="Video thumbnail"
-                style="width: 100%; border-radius: 10px; height: 490px; object-fit: cover;"
+                style="width: 100%; border-radius: 10px; object-fit: cover;"
               >
 
             {% else %}
