@@ -134,6 +134,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
+        "content_alignment": "center",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
@@ -377,6 +378,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
+        "content_alignment": "center",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
@@ -702,6 +704,7 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
+        "content_alignment": "center",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
@@ -761,7 +764,7 @@
         "custom_class": "",
         "section_width": "full",
         "section_content_width": "standard",
-        "product": "2-year-extended-warranty-for-sylvox-deck-pro-qled-2-0-55-total-3-years",
+        "product": "43-qled-outdoor-google-tv-2024",
         "padding_top": 60,
         "padding_bottom": 0,
         "padding_left": 0,
