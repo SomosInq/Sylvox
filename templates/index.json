@@ -628,7 +628,7 @@
             "icon": "shopify://shop_images/7dcb7c645b542947a7ba463f2c01f9d78fef419c.png",
             "title": "Engineered for Outdoor Life",
             "text": "<a>IP55</a> Waterproof, heatproof, and weatherproof. No worries, rain or shine.",
-            "popup_title": "Ingress Protection 55: ",
+            "popup_title": "Ingress Protection 55:",
             "popup_text": "Protected from limited dust ingress. Protected from low pressure water jets from any direction."
           }
         },
@@ -637,7 +637,9 @@
           "settings": {
             "icon": "shopify://shop_images/e818156368ec6bb6bfb6be21cfeb1a93cfd4f1cb.png",
             "title": "Feel-Good Audio",
-            "text": "Dolby Atmos delivers immersive, cinematic sound."
+            "text": "Dolby Atmos delivers immersive, cinematic sound.",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "feature_box_9FX97w": {
@@ -645,7 +647,9 @@
           "settings": {
             "icon": "shopify://shop_images/ca314dad77247b21eb7f517308b7087576d1f2ac.png",
             "title": "Smart & Simple Entertainment",
-            "text": "Google TV, Apple AirPlay, and Chromecast built-in for seamless streaming."
+            "text": "Google TV, Apple AirPlay, and Chromecast built-in for seamless streaming.",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "feature_box_LYgamW": {
@@ -653,7 +657,9 @@
           "settings": {
             "icon": "shopify://shop_images/f59bbc268948c9e1d1174fb09be93e8ea4e2dc3b.png",
             "title": "Built to Last",
-            "text": "Corrosion-resistant, full-metal durability for long-term outdoor use."
+            "text": "Corrosion-resistant, full-metal durability for long-term outdoor use.",
+            "popup_title": "",
+            "popup_text": ""
           }
         }
       },
@@ -734,6 +740,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/32f7c1aaf5c00419efe17291263e65378bcec8ad.jpg",
+            "mobile_image": "shopify://shop_images/15_768f0a25-6a1b-4c76-a989-1a7150341271.jpg",
             "caption": "",
             "caption_small": "Outdoor Dining Area",
             "description_block": "Outdoor Dining Area"
