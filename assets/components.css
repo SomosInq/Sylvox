@@ -16737,21 +16737,40 @@ p.section-heading-desc{
 }
 @media screen and (max-width: 768px) {
   .pdc-title {
-    font-size: 17px;
+    font-size: 16px;
   }
   .pdc-tv-type {
-    font-size: 12px;
+    font-size: 11px;
+    margin-top: 2px;
   }
   .pdc-price-min {
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 8px;
   }
   .pdc-tv-specs {
-    font-size: 12px;
+    font-size: 11px;
     margin-bottom: 4px;
+    gap: 6px;
   }
   .pdc-tv-sun-capabilities > svg {
     height: 15px;
     width: 15px;
+  }
+  .pdc-sizes {
+    padding-bottom: 12px;
+  }
+  .pdc-sizes a.pdc-size {
+    padding: 2px 3px;
+    font-size: 11px;
+  }
+  @media screen and (max-width: 378px) {
+    .pdc-sizes a.pdc-size,
+    .pdc-tv-specs,
+    .pdc-tv-type {
+      font-size: 10px;
+    }
+    .pdc-title {
+      font-size: 15px;
+    }
   }
 }

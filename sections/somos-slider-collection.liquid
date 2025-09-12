@@ -2,12 +2,58 @@
 Somos Slider: Individual Button Style Controls
 {%- endcomment -%}
 {% style %}
+  .collection-slider-{{ section.id }} .somos-slide__content p {
+    margin: 0;
+  }
+  .collection-slider-{{ section.id }} .somos-slide__content h1 {
+    margin: 20px 0;
+  }
+  .collection-slider-{{ section.id }} .slide-image-wrapper {
+    height: 100%;
+  }
+  .collection-slider-{{ section.id }} .slide-image-wrapper img {
+    object-fit: center center;
+    width: 100%;
+  }
+  .collection-slider-{{ section.id }} .slide-image-wrapper .desktop-image.has-mobile-image {
+    display: none;
+  }
+  .collection-slider-{{ section.id }} .slide-image-wrapper .mobile-image {
+    display: block;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .collection-slider-{{ section.id }} .somos-slide__content {
+      justify-content: flex-start;
+    }
+    .collection-slider-{{ section.id }} .somos-slide .description {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .collection-slider-{{ section.id }} .somos-slide {
+      height: auto;
+    }
+    .collection-slider-{{ section.id }} .slide-image-wrapper {
+      position: absolute!important;
+    }
+    .collection-slider-{{ section.id }} .somos-slide__content {
+      position: relative!important;
+    }
+  }
   @media screen and (min-width: 750px) {
     .collection-slider-{{ section.id }} .somos-slide__content {
       max-width: 1500px;
       padding-inline: 40px;
     } 
+    .collection-slider-{{ section.id }} .slide-image-wrapper .desktop-image {
+      display: block;
+    }
+    .collection-slider-{{ section.id }} .slide-image-wrapper .mobile-image {
+      display: none;
+    }
   }
+
 {% endstyle %}
 
 <div class="somos-slider collection-slider-{{ section.id }}" style="--slide-height: {{ section.settings.slide_height }}px; background-color: {{ section.settings.background_color }}; {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url }}); background-size: cover;{% endif %}  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; {{ section.settings.section_width }}">
@@ -16,13 +62,20 @@ Somos Slider: Individual Button Style Controls
     {% for block in section.blocks %}
       <div class="somos-slide" id="block-{{ block.id }}">
         <div class="somos-slide__media-wrapper">
-          {% if block.settings.image %}
+          {% if block.settings.image != nil %}
   <div class="slide-image-wrapper" style="position: relative;">
     <img 
+      class="desktop-image {% if block.settings.mobile_image != nil %} has-mobile-image {% endif %}"
       src="{{ block.settings.image | image_url }}" 
       alt="Slide Image"
-      style="width: 100%; display: block;"
     >
+    {% if block.settings.mobile_image != nil %}
+      <img 
+        class="mobile-image"
+        src="{{ block.settings.mobile_image | image_url }}" 
+        alt="Slide Image"
+      >
+    {% endif %}
     <div 
       class="slide-overlay" 
       style="
@@ -45,10 +98,6 @@ Somos Slider: Individual Button Style Controls
             {% if section.settings.category_title != blank %}
               <h2 class="collection-category">{{ section.settings.category_title }}</h2>
             {% endif %}
-
-            {% if collection.description != blank %}
-              <div class="collection-description">{{ collection.description }}</div>
-            {% endif %}
             
             {% if block.settings.subheading %}
               <p style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.subheading }}</p>
@@ -63,7 +112,7 @@ Somos Slider: Individual Button Style Controls
             {% endif %}
 
             {% if block.settings.description %}
-              <div class="description" style="font-size: {{ block.settings.font_size | minus: 2 }}px;">{{ block.settings.description }}</div>
+              <div class="description" style="font-size: {{ block.settings.font_size }}px;">{{ block.settings.description }}</div>
             {% endif %}
 
             <div class="buttons">
@@ -183,6 +232,7 @@ Somos Slider: Individual Button Style Controls
         { "type": "color", "id": "text_color", "label": "Text color", "default": "#000000" },
         { "type": "range", "id": "font_size", "label": "Font size", "min": 12, "max": 64, "step": 2, "default": 24, "unit": "px" },
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile Image" },
         {
   "type": "color",
   "id": "overlay_color",
