@@ -49,6 +49,13 @@
       }
     {% endif %}
   }
+  @media screen and (max-width: 1024px) {
+    {% if section.settings.custom_content_width_enabled %}
+      #{{ wrapper_id }} .custom-content-wrapper {
+        min-width: 40%;
+      }
+    {% endif %}
+  }
 
   @media screen and (max-width: 749px) {
     #{{ wrapper_id }} {
@@ -64,6 +71,16 @@
     }
     .page-belcome-a-reseller #{{ wrapper_id }} .custom-content-wrapper h2 {
       font-size: 32px!important;
+    }
+    .collection #{{ wrapper_id }} .custom-content-wrapper h2 {
+      font-size: 28px!important;
+    }
+    .collection #{{ wrapper_id }} .custom-content-wrapper .btn {
+      font-size: 15px;
+      padding: 6px 14px;
+    }
+    .collection #{{ wrapper_id }} {
+      padding-top: 40px!important;
     }
   }
   #{{ wrapper_id }} #banner-image-holder{
@@ -104,6 +121,8 @@
     overflow: hidden;
   "
 >
+
+
   {% if section.settings.background_image %}
     
     <div 
@@ -264,6 +283,7 @@
 
 
   </div>
+
 </div>
 
 {% if section.settings.add_zoom_animation %}
@@ -300,7 +320,7 @@
       { "value": "full", "label": "Full Width" }
     ]},
     { "type": "checkbox", "id": "custom_content_width_enabled", "label": "Enable Custom Content Width", "default": false },
-    { "type": "range", "id": "custom_content_width", "label": "Custom Content Width (%)", "min": 40, "max": 100, "step": 5, "default": 90, "unit": "%" },
+    { "type": "range", "id": "custom_content_width", "label": "Custom Content Width (%)", "min": 25, "max": 100, "step": 5, "default": 90, "unit": "%" },
     {
       "type": "number",
       "id": "content_max_width",

@@ -14,14 +14,20 @@
     flex-flow: column;
     justify-content: center;
   }
-
-  .comparison-values > div:nth-child(-n+9) {
-    display: flex; /* or flex/table-row depending on layout */
+  .specToggleBtn {
+    color: #20413B;
+  }
+  .specToggleBtn span {
+    font-size: 14px;
+    font-weight: 300;
   }
 
   /* When expanded, show all divs */
   .comparison-values.expanded > div {
-    display: flex; /* or flex/table-row */
+    display: flex!important; 
+  }
+  .{{ section.id }}:has(.comparison-values.expanded) .specToggleBtn .toggleArrow {
+    transform: rotate(180deg);
   }
   .comparison-values {
     color: #636363;
@@ -31,6 +37,26 @@
   }
   .comparison-values .table-values p{
     font-size: 16px
+  }
+  .{{ section.id }}.large-images-mode .comparison-header {
+    gap: 48px!important;
+  }
+  .{{ section.id }}.large-images-mode .comparison-values {
+    width: fit-content;
+    padding-block: 24px;
+    gap: 48px!important;
+    grid-template-columns: 170px repeat(4, 288px)!important;
+  }
+  .{{ section.id }}.large-images-mode .header img {
+    max-width: 288px!important;
+  }
+  .{{ section.id }}.large-images-mode .header .icon-title-wrapper {
+    margin-bottom: 24px;
+  }
+  .{{ section.id }}.large-images-mode .header .icon-title-wrapper .top-title {
+    font-size: 16px;
+    font-weight: 300;
+    color: #636363;
   }
   @media screen and (max-width: 1200px) {
     .comparison-values .table-values p{
@@ -60,7 +86,7 @@
 
 {%- render 'section-spacing-collapsing' -%}
 
-<div class="comparison-section section_width_{{ section.settings.section_width }}" style="
+<div class="comparison-section section_width_{{ section.settings.section_width }} {{ section.id }} {% if section.settings.use_large_images %} large-images-mode{% endif %}" style="
   {% if section.settings.background_image != blank %}
     background-image: url({{ section.settings.background_image | image_url }});
     background-size: cover;
@@ -96,7 +122,7 @@
   <div style="min-width: 768px;">
 
     <!-- Header Section -->
-    <div class="comparison-header" style="display: grid; grid-template-columns: 130px repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
+    <div class="comparison-header" style="display: grid; grid-template-columns: 170px repeat({{ section.blocks.size }}, 1fr); gap: 1rem; margin-bottom: 2rem;">
       <div class="header-blank"></div>
       {% for block in section.blocks %}
         <div class="text-center header" style="display: flex; flex-direction: column; align-items: center;">
@@ -126,7 +152,7 @@
     </div>
 
     <!-- Table Values Section -->
-    <div class="comparison-values" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
+    <div class="comparison-values" style="display: grid; grid-template-columns: 170px repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
       {% assign max_rows = 20 %}
       {% for i in (1..max_rows) %}
         {% assign heading_key = 'heading_' | append: i %}
@@ -164,44 +190,47 @@
       {% endif %}
     {% endfor %}
 
-    {% if section.settings.show_see_all_specs and row_count > 4 %}
+    {% if section.settings.show_see_all_specs and row_count > 3 %}
   <div class="see-all" style="text-align: center;">
 
-<button onclick="toggleSpecs()" id="specToggleBtn" style="background: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5em;">
+<button class="specToggleBtn" style="background: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5em;">
   <span>SEE ALL SPECS</span>
-  <span id="toggleArrow">
+  <span class="toggleArrow">
     {% if section.settings.arrow_icon_down %}
-      <img id="arrowImage" src="{{ section.settings.arrow_icon_down | image_url }}" alt="Toggle arrow" style="height: 1em; transition: transform 0.3s ease;">
+      <img class="arrowImage" src="{{ section.settings.arrow_icon_down | image_url }}" alt="Toggle arrow" style="height: 1em; transition: transform 0.3s ease;">
     {% else %}
       ▼
     {% endif %}
   </span>
 </button>
   </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sectionSelector = document.querySelector('.{{ section.id }}');
+    if (!sectionSelector) return;
+    
+    
+    const headers = sectionSelector.querySelectorAll('.comparison-header .header');
+    const itemsToShow = (headers.length + 1) * 3;
 
-  <script>
-  function toggleSpecs() {
-    const btn = document.getElementById('specToggleBtn');
-    const arrowImage = document.getElementById('arrowImage');
-    const arrowSpan = document.getElementById('toggleArrow');
-    const table = document.querySelector('.comparison-values');
-    const isExpanded = btn.classList.toggle('expanded');
+    const table = sectionSelector.querySelector('.comparison-values');
+    const items = table.querySelectorAll('.comparison-values > div');
 
-    if (table) {
-      table.classList.toggle('expanded', isExpanded);
-    }
-
-    // Rotate the image or fallback to text
-    {% if section.settings.arrow_icon_down %}
-      if (arrowImage) {
-        arrowImage.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+    items.forEach((item, index) => {
+      if (index < itemsToShow) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
       }
-    {% else %}
-      arrowSpan.textContent = isExpanded ? '▲' : '▼';
-    {% endif %}
-  }
-</script>
+    });
 
+    const btn = sectionSelector.querySelector('.specToggleBtn');
+
+    btn.addEventListener('click', () => {
+      table.classList.toggle('expanded');
+    });
+  });
+</script>
 {% endif %}
 
 
@@ -404,6 +433,11 @@
   "id": "show_see_all_specs",
   "label": "Show 'See All Specs' Toggle",
   "default": true
+},
+{
+  "type": "checkbox",
+  "id": "use_large_images",
+  "label": "Use Larger Images Mode"
 },
 {
   "type": "image_picker",

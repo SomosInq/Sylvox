@@ -15,8 +15,8 @@
   style="
     background-color: {{ section.settings.background_color }};
     {% if section.settings.background_image %}background-image: url({{ section.settings.background_image | image_url: width: 2000 }}); background-size: cover; background-position: center;{% endif %}
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px !important;
-    margin-top: {{ section.settings.margin_top }}px !important; margin-bottom: {{ section.settings.margin_bottom }}px !important;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;
   ">
   <div class="filter-collection__wrapper">
     <div class="filter-collection__overlay" onclick="document.querySelector('.filter-collection__drawer').classList.remove('is-open');document.querySelector('.filter-collection__overlay').classList.remove('is-active')"></div>
@@ -82,7 +82,7 @@
 
                 {%- case filter.type -%}
                   {%- when 'list' -%}
-                    <ul class="filter-collection__series-list" role="list">
+                    <ul class="filter-collection__series-list {%- if is_sun_caps -%} sun-caps-filter{%- endif -%}" role="list">
                       {%- for val in filter.values -%}
                         {%- assign active = val.active -%}
                         <li class="filter-collection__series-item {% if active %}active{% endif %}">
@@ -98,14 +98,14 @@
 
                             {%- if is_sun_caps -%}
                               {%- assign lh = val.label | downcase | strip -%}
-{%- capture img_tag -%}
-  {%- if lh contains 'full' and section.settings.image_Full_Sun != blank -%}
-    {{ section.settings.image_Full_Sun | image_url: width: 30 | image_tag: alt: val.label }}
-  {%- elsif lh contains 'partial' and section.settings.image_Partial_Sun != blank -%}
-    {{ section.settings.image_Partial_Sun | image_url: width: 30 | image_tag: alt: val.label }}
-  {%- endif -%}
-{%- endcapture -%}
-{{ img_tag }}
+                              {%- capture img_tag -%}
+                                {%- if lh contains 'full' and section.settings.image_Full_Sun != blank -%}
+                                  {{ section.settings.image_Full_Sun | image_url: width: 30 | image_tag: alt: val.label }}
+                                {%- elsif lh contains 'partial' and section.settings.image_Partial_Sun != blank -%}
+                                  {{ section.settings.image_Partial_Sun | image_url: width: 30 | image_tag: alt: val.label }}
+                                {%- endif -%}
+                              {%- endcapture -%}
+                              {{ img_tag }}
 
                             {%- endif -%}
 
@@ -129,7 +129,7 @@
                     </div>
 
                   {%- when 'price_range' -%}
-                    <div class="filter-collection__filter-group" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <div class="filter-collection__filter-group price">
                       <div>
                         <label class="filter-collection__label">Min</label>
                         <input class="filter-collection__select" name="{{ filter.min_value.param_name }}"
@@ -164,7 +164,7 @@
                     <span class="filter-collection__chevron-text">⌄</span>
                   {% endif %}
                 </summary>
-                <ul class="filter-collection__series-list">
+                <ul class="filter-collection__series-list sun-caps-filter">
                   {%- assign tag_map = 'ALL|Full Sun|Partial Sun|Lift Cabinet' | split: '|' -%}
                   {%- for label in tag_map -%}
                     {%- assign is_all = false -%}{% if label == 'ALL' %}{% assign is_all = true %}{% endif %}
@@ -325,25 +325,26 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__overlay { display: none; }
 .filter-collection__overlay.is-active { display: block; }
 .filter-collection { display: flex; justify-content: center; padding: 40px 20px; }
-.filter-collection__wrapper { display: flex; width: 100%; max-width: 1608px; margin-inline: auto; justify-content: center; }
-.filter-collection__drawer { display: flex; flex-direction: column; gap: 22px; background-color: #ffffff; width: 312px; padding: 0; align-items: flex-start; justify-content: flex-start; }
+.filter-collection__wrapper { display: flex; width: 100%; max-width: 1608px; margin-inline: auto; justify-content: center; gap: 6.3%; }
+.filter-collection__drawer { display: flex; flex-direction: column; gap: 22px; background-color: #ffffff; width: 20%; max-width: 280px; padding: 0; align-items: flex-start; justify-content: flex-start; }
 .filter-collection__drawer-inner { display: flex; flex-direction: column; gap: 22px; width: 100%; }
-.filter-collection__sidebar { flex-shrink: 0; width: 312px; display: flex; flex-direction: column; gap: 22px; padding-right: 40px; }
-.filter-collection__group-heading-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; cursor: pointer;}
-.filter-collection__group-heading { font-family: 'Questrial', sans-serif; font-size: 18px; color: #2C2C2C; }
+.filter-collection__sidebar { flex-shrink: 0; width: 100%; display: flex; flex-direction: column; gap: 22px; padding-right: 0px; padding-top: 22px; border-top: 1px solid rgba(0, 0, 0, 0.08);}
+.filter-collection__group-heading-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0px; cursor: pointer;}
+.filter-collection__group-heading { font-size: 18px; color: #2C2C2C; }
 .filter-collection__chevron { width: 13px; height: 8px; object-fit: contain; }
 .filter-collection__products { flex: 1; max-width: 1608px; }
 .filter-collection__filter-group { display: flex; flex-direction: column; }
 .filter-collection__label { font-family: 'Questrial', sans-serif; font-size: 18px; font-weight: 400; color: #2C2C2C; margin-bottom: 10px; }
 .filter-collection__select { font-size: 14px; border: 1px solid #c2c4c5; background: #ffffff; color: #0a0a0a; padding: 10px; }
-.filter-collection__series-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
+.filter-collection__series-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0px; padding-top: 22px; }
+.filter-collection__series-list.sun-caps-filter { gap: 22px; padding-top: 22px; }
 .filter-collection__series-item { font-family: 'Questrial', sans-serif; font-size: 16px; font-weight: 400; line-height: 20px; padding: 14px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 22px; color: #2e2e2e; width: 100%; background: white; }
 .filter-collection__series-item:hover { background: #fbfbfb; }
 .filter-collection__series-item.active { font-weight: 400; background: #fbfbfb; }
 .filter-collection__compare-wrapper { padding: 0 0 24px 0; }
-.filter-collection__compare-button { margin-top: auto; }
+.filter-collection__compare-button { margin-top: 6px; }
 .filter-collection__button { padding: 12px 24px; background: #101820; color: #ffffff; border: none; font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 400; cursor: pointer; border-radius: 40px; }
-.filter-collection__grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 25px; }
+.filter-collection__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
 .filter-collection__item { width: 100%; border-radius: 6px; background: #ffffff; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; }
 .filter-collection__image-wrapper { width: 100%; max-height: 322px; aspect-ratio: 283 / 322; background-size: cover; background-position: top; background-repeat: no-repeat; }
 .filter-collection__image { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -353,6 +354,9 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__tag { background: #20413B; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: Roboto, sans-serif; font-size: 14px; font-weight: 400; line-height: normal; display: inline-flex; gap: 6px; align-items: center; min-height: 20px; margin-bottom: -6px; }
 .filter-collection__tag img { width: 18px; height: 18px; object-fit: contain; }
 .filter-collection__title { font-family: Questrial, sans-serif; font-size: 20px; font-weight: 400; color: rgba(0, 0, 0, 0.85); line-height: 1.2; margin: 0; }
+.filter-collection__sidebar label { margin-bottom: 0; }
+.filter-collection__filter-group.price { display: flex; gap: 12px; padding: 22px 14px 8px 14px; }
+.filter-collection__filter-group.price .filter-collection__select { width: 100%; }
 
 /* Size pills */
 .mm-product-sizes { margin: 0 0 20px 0; }
@@ -372,12 +376,37 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
 .filter-collection__divider { width: 100%; height: 1px; background: rgba(0, 0, 0, 0.08); }
 .filter-collection__filter-toggle { display: none; }
 
+/* Tablet Size */
+@media screen and (max-width: 1024px) {
+  #{{ section.id }} {
+    padding-inline: 15px !important;
+  }
+  #{{ section.id }} .filter-collection__wrapper {
+    gap: 46px;
+  }
+  #{{ section.id }} .filter-collection__wrapper .filter-collection__drawer {
+    width: 25%;
+  }
+  #{{ section.id }} .filter-collection__wrapper .filter-collection__drawer .filter-collection__series-item .filter-collection__group-heading,  
+  #{{ section.id }} .filter-collection__wrapper .filter-collection__drawer .filter-collection__series-item span {
+    font-size: 16px;
+  }
+  #{{ section.id }} .filter-collection__grid {
+    grid-template-columns: repeat(2, 1fr)!important;
+  }
+}
+
+/* Mobile Size */
 @media screen and (max-width: 767px) {
-  .filter-collection__overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 9998; transition: opacity 0.3s ease-in-out; }
+  body:has(.filter-collection__drawer.is-open) {
+    overflow: hidden;
+  }
+  .filter-collection__overlay { position: fixed; inset: 0; z-index: 9999999992; transition: opacity 0.3s ease-in-out; }
+  .filter-collection__overlay:after { background: rgba(0, 0, 0, 0.4); opacity 0.3s ease-in-out; display: block; content: ''; height: 100%; margin-top: 59px; }
   .filter-collection__drawer.is-open ~ .filter-collection__overlay { display: block; }
   .filter-collection__wrapper { flex-direction: column; align-items: center; gap: 20px; }
 
-  .filter-collection__grid { grid-template-columns: repeat(2, 164px)!important; column-gap: 16px; row-gap: 16px; padding: 0 23px; justify-content: flex-start; align-items: flex-start; }
+  .filter-collection__grid { grid-template-columns: repeat(2, 164px)!important; column-gap: 16px; row-gap: 16px; justify-content: flex-start; align-items: flex-start; }
   .filter-collection__item { width: 164px; height: 100%; padding-top: 5px; padding-bottom: 5px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; }
   .filter-collection__image-wrapper { width: 164px; height: 181px; }
   .filter-collection__meta { width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; padding: 0; }
@@ -387,6 +416,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
   .smart-tv-type { font-size: 13px; }
   .filter-collection__price { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.85); }
   .filter-collection__compare-wrapper { padding: 0; margin-top: 12px; }
+  span.compare-button__content > * { padding-top: 7px; }
 
   .filter-collection__pagination { justify-content: center; align-items: center; gap: 24px; font-size: 16px; font-family: 'Questrial', sans-serif; font-weight: 400; text-transform: capitalize; color: black; }
 
@@ -394,7 +424,7 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
     position: fixed; top: 0; left: 0; height: 100%; width: 312px; max-width: 90%;
     background: white; box-shadow: 2px 0 6px rgba(0,0,0,0.1);
     transform: translateX(-100%); transition: transform 0.3s ease-in-out, opacity 0.3s, visibility 0.3s;
-    z-index: 9999; flex-direction: column; padding: 40px 24px; gap: 22px; visibility: hidden; opacity: 0; pointer-events: none;
+    z-index: 9999999993; flex-direction: column; padding: 40px 24px; gap: 22px; visibility: hidden; opacity: 0; pointer-events: none;
   }
   .filter-collection__drawer.is-open { transform: translateX(0%); visibility: visible; opacity: 1; pointer-events: auto; overflow: auto; }
   .filter-collection__sidebar { display: flex; flex-direction: column; gap: 22px; padding-right: 0; width: 100%; }
@@ -415,6 +445,11 @@ details[open] .filter-collection__chevron-text { transform: rotate(180deg); }
     font-weight: 400; background: transparent; width: 100%; margin-top: 16px; text-align: center;
   }
   .filter-collection__filter-toggle { display: flex; }
+  #{{ section.id }} .filter-collection__wrapper .filter-collection__drawer {
+    width: 84%;
+    top: 59px;
+    padding-bottom: 100px;
+  }
 }
 {% endstyle %}
 
