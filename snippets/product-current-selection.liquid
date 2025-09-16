@@ -6,12 +6,10 @@
           <img src="{{ product.featured_image |  image_url: width: 110  }}" alt="">
         </div>
         <div class="included-product-content">
-          <div>
             <div class="included-product-title">{{ product.title }}</div>
             <div class="included-product-price">{{ product.price | money }}</div>
-          </div>
-          <div class="included-product-qty">x1</div>
         </div>
+        <div class="included-product-qty">x1</div>
       </div>
       {% for variant in product.variants %}
         <div class="display-selected-variant" data-variant-id="{{ variant.id }}"  style="display: none;">
@@ -45,9 +43,9 @@
         display: flex;
         align-items: center;
         gap: 24px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: space-between;
-        padding: 12px 0;
+        padding: 20px 0;
         border-bottom: 1px solid #C6C6C6;
       }
 
@@ -58,8 +56,9 @@
       .included-product-content {
         width: calc(100% - 115px);
         display: flex;
-        justify-content: space-between;
-        gap: 40px;
+        justify-content: center;
+        gap: 0;
+        flex-flow: column;
       }
 
       .included-product-qty{
@@ -70,17 +69,34 @@
       }
 
     .included-product-title {
-      font-size: 18px;
+      font-size: 16px;
       color: #1D1D1B;
       line-height: normal;
       margin-bottom: 6px;
     }
     .included-product-price {
       color: #636363;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 300;
       line-height: normal;
       letter-spacing: 0.176px;
+    }
+    @media screen and (max-width: 1024px) {
+      .included-product-content { 
+        gap: 4px;
+      }
+      .included-product-price,
+      .included-product-title {
+        font-size: 14px;
+      }
+      .product-grid__content .block-price__container .product__price {
+        font-size: 16px;
+        margin-top: 0;
+      }
+      .product-grid__content .custom-buy-buttons-wrapper .custom-btn {
+        padding: 6px 14px;
+      }
+      
     }
     </style>
 {% endif %}
