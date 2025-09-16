@@ -1874,13 +1874,13 @@ display: flex;
 /* Image text Flex Blocks */
 .comparision-slider-section h2 {
     margin-bottom: 6px;
-    font-size: 28px;
+    font-size: 24px;
     color: #1D1D1B;
     font-weight: 400;
     line-height: normal;
 }
 .comparision-slider-section p {
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1896,6 +1896,9 @@ display: flex;
 @media screen and (min-width: 768px) {
   .comparision-slider-section h2 {
     font-size: 32px;
+  }
+  .comparision-slider-section p {
+    font-size: 18px;
   }
   .image-text-blocks-section.content_standard > * {
     width: 50%;
@@ -9261,6 +9264,13 @@ button.cart_drawer_close.js-close-header-cart svg {
     --multiple-images-with-text-image-max-width: 500px;
   }
 }
+@media screen and (max-width: 1024px) {
+  .image-text-blocks-section {
+      padding-top: 30px !important;
+      padding-bottom: 30px !important;
+      padding-inline: 20px !important;
+  }
+}
 
 @media screen and (max-width: 768px) {
   #BackToTop {
@@ -9275,11 +9285,6 @@ button.cart_drawer_close.js-close-header-cart svg {
   }
   .icon-grid__container.icon-grid--minwidth.section_content_width_standard {
     padding: 0!important;
-  }
-  .image-text-blocks-section {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
-    padding-inline: 20px !important;
   }
   .account-wrapper {
     flex-flow: column;

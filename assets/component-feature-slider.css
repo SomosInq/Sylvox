@@ -97,4 +97,10 @@
   #feature-slider-section .feature-slide-image {
     aspect-ratio: 1 / 1.1;
   }
+  #feature-slider-section .feature-slide-content h3{
+  font-size: 16px;
+  }
+  #feature-slider-section .feature-slide-content p{
+    font-size: 14px;
+  }
 }

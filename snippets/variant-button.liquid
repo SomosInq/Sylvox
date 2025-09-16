@@ -204,7 +204,7 @@
   .variant-button-wrap input[type=radio]:checked+label,
   input[type="radio"]:checked + .custom-variant-box {
     border-radius: 4px;
-border: 2px solid var(--Mid-Green, #336256);
+border: 1px solid var(--Mid-Green, #336256);
 background: #FFF;
   }
   
@@ -224,5 +224,16 @@ background: #FFF;
   .custom-variant-price {
     font-size: 16px;
     color: #636363;
+  }
+  @media screen and (max-width: 1024px) {
+    .custom-variant-box-inner .custom-variant-size {
+      font-size: 15px;
+    }
+    .custom-variant-box-inner .custom-variant-price span {
+      font-size: 14px;
+    }
+    .custom-variant-box-inner .accessories-variant-description {
+      font-size: 11px;
+    }
   }
 </style>

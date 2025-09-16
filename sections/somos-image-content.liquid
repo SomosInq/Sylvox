@@ -127,6 +127,11 @@
           "label": "Box Image"
         },
         {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
           "type": "range",
           "id": "image_width",
           "label": "Image Width (%)",
@@ -247,11 +252,35 @@
   line-height: normal;
   letter-spacing: 0.176px;
 }
+@media screen and (max-width: 1024px) {
+  .text-col h4 {
+      font-size: 16px;
+    }
+    .text-col h3 {
+      font-size: 21px;
+    }
+    .text-col p {
+      font-size: 14px;
+    }
+}
+.{{ section.id }} .mobile-image {
+  display: none;
+}
+ @media screen and (max-width: 768px) {
+    {% if block.settings.mobile_image != nil %}
+        .{{ section.id }} .mobile-image {
+          display: block;
+        }
+        .{{ section.id }} .desktop-image.has-mobile-image {
+          display: none;
+        }
+    {% endif %}
+  }
 
 {% endstyle %}
 
 <section>
-  <div class="{% if section.settings.narrow_container %}page-width-container{% else %}section_content_width_{{ section.settings.section_content_width }}{% endif %}">
+  <div class="{% if section.settings.narrow_container %}page-width-container{% else %}section_content_width_{{ section.settings.section_content_width }}{% endif %} {{ section.id }}">
     {% if section.settings.parent_subtitle != blank and section.settings.heading != blank and section.settings.description != blank %}
     <div class="icon-grid-heading {% if section.settings.indent_text %}indent-text{% endif %}" style="text-align: {{ section.settings.parent_alignment }}; margin-bottom: 40px;">
       {% if section.settings.parent_subtitle != blank %}
@@ -292,7 +321,10 @@
         {% capture image_html %}
           {% if block.settings.image %}
             <div class="image-col" style="flex: 0 0 {{ image_width }}; max-width: {{ image_width }};">
-              <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+              <img  class="desktop-image {% if block.settings.mobile_image != nil %} has-mobile-image{% endif %}" src="{{ block.settings.image | img_url: 'master' }}" style="width: 100%;" />
+              {% if block.settings.mobile_image != nil %}
+                  <img class="mobile-image" src="{{ block.settings.mobile_image | img_url: 'master' }}" style="width: 100%;" />
+                {% endif %}
             </div>
           {% endif %}
         {% endcapture %}

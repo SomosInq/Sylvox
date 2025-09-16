@@ -1,0 +1,14 @@
+<div class="product__price">
+    <span class="product__price">
+        {{ cart.currency.iso_code }} {%- render 'price', price: product.price -%}
+    </span>
+</div>
+<div class="pdc-tv-specs">
+      <div class="pdc-tv-product-type">
+        {{ product.metafields.custom.product_type | default: 'Outdoor TV' }}
+      </div>
+      <div class="pdc-tv-sun-capabilities">
+        {% assign sun_icon = product.metafields.custom.sun_capabilities | downcase %}
+        {% render 'sun-icons', icon: sun_icon %}{{ product.metafields.custom.sun_capabilities }}
+      </div>
+</div>

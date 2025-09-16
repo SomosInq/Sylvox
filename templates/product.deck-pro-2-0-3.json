@@ -168,7 +168,9 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "center",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
+
           }
         },
         "subheading_wRGFdN": {
@@ -176,7 +178,8 @@
           "settings": {
             "text": "No extra streaming boxes. No complicated setup. Just seamless entertainment, right out of the box.",
             "color": "#ffffff",
-            "alignment": "center"
+            "alignment": "center",
+            "subheading_max_width": 80
           }
         }
       },
@@ -191,7 +194,7 @@
         "custom_content_width_enabled": true,
         "custom_content_width": 90,
         "content_max_width": 880,
-        "mobile_content_width": 60,
+        "mobile_content_width": 90,
         "section_height": 600,
         "mobile_section_height": 400,
         "background_color": "#ffffff",
@@ -401,7 +404,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "center",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
           }
         },
         "richtext_PFJ7Nt": {
@@ -624,7 +628,7 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "full",
-        "section_content_width": "standard",
+        "section_content_width": "full",
         "narrow_container": true,
         "alignment": "center",
         "padding_top": 95,
@@ -1336,6 +1340,7 @@
         "view_all_url": "",
         "show_view_all_comparisons": true,
         "show_see_all_specs": true,
+        "use_large_images": true,
         "heading_1": "Outdoor Areas",
         "heading_2": "TV OS",
         "heading_3": "Peak Brightness",
