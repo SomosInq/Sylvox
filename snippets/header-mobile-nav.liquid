@@ -116,12 +116,14 @@
             {% endcomment %}
             {%- if is_collection -%}
               {%- unless link.title == 'Outdoor TVs' %}
-              <li class="slide-nav__item">
-                <a href="{{ link.url }}" class="slide-nav__link">
+              <li class="slide-nav__item view-all-item">
+                <a href="{{ link.url }}" class="slide-nav__link view-all-btn">
                   <span>
                     {% render 't_with_fallback', key: 'actions.view_all', fallback: 'View all' -%}
                   </span>
-                  {% render 'icon', name: chevron_icon %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <path d="M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z" fill="#C6C6C6"/>
+                  </svg>
                 </a>
               </li>
               {%- endunless -%}
@@ -137,7 +139,7 @@
                 {%- if childlink.levels > 0 -%}
                   <button
                     type="button"
-                    class="slide-nav__button js-toggle-submenu"
+                    class="slide-nav__button {% unless link.title == 'Explore' %}js-toggle-submenu{% else %}accordion-submenu{% endunless %}"
                     data-target="tier-3-{{ grand_child_link_id }}"
                     {% if link.active or link.child_active %}
                       data-active="true"
@@ -176,12 +178,14 @@
                       If a collection, automatically add 'view all' link
                     {% endcomment %}
                     {%- if childlink.url contains '/collections/' -%}
-                      <li class="slide-nav__item">
-                        <a href="{{ childlink.url }}" class="slide-nav__link">
+                      <li class="slide-nav__item view-all-item">
+                        <a href="{{ childlink.url }}" class="slide-nav__link view-all-btn">
                           <span>
                             {% render 't_with_fallback', key: 'actions.view_all', fallback: 'View all' -%}
                           </span>
-                          {% render 'icon', name: chevron_icon %}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                            <path d="M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z" fill="#C6C6C6"/>
+                          </svg>
                         </a>
                       </li>
                       {%- for grandchildlink in childlink.object.products -%}
@@ -245,19 +249,24 @@
                         If a collection, automatically add 'view all' link
                       {% endcomment %}
                       {%- if childlink.url contains '/collections/' -%}
-                        <li class="slide-nav__item">
-                          <a href="{{ childlink.url }}" class="slide-nav__link">
+                        <li class="slide-nav__item view-all-item">
+                          <a href="{{ childlink.url }}" class="slide-nav__link view-all-btn">
                             <span>
                               {% render 't_with_fallback', key: 'actions.view_all', fallback: 'View all' -%}
                             </span>
-                            {% render 'icon', name: chevron_icon %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                              <path d="M12 4.5L11.9806 11.8801H10.6053L10.7409 6.7276L4.98789 12.5L4 11.5121L9.75303 5.73971L4.60048 5.85593V4.5L12 4.5Z" fill="#C6C6C6"/>
+                            </svg>
                           </a>
                         </li>
                         {%- for grandchildlink in childlink.object.products limit: 5 -%}
                           <li class="slide-nav__item product-item">
                             <a href="{{ grandchildlink.url }}" class="slide-nav__link">
                               <img src="{{ grandchildlink.featured_image | image_url: width: 100  }}" alt="">
-                              <span>{{ grandchildlink.title }}</span>
+                              <div>
+                                <div>{{ grandchildlink.title | split: '-' | first }}</div>
+                                <div>{{ grandchildlink.title | split: '-' | last }}</div>
+                              </div>
                             </a>
                           </li>
                         {%- endfor -%}

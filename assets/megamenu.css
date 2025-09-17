@@ -21,6 +21,7 @@
   position: absolute;
   top: 100%;
   z-index: 6;
+  pointer-events: none;
 }
 .header-item details[open] .site-nav__dropdown::after {
   display: block;
@@ -33,6 +34,7 @@
   position: absolute;
   top: 100%;
   z-index: 6;
+  pointer-events: none;
 }
 .mega-menu-flex-box {
   display: flex;
@@ -268,4 +270,7 @@ a.mm-cta-button {
     display: block;
     width: 30px;
     height: 30px;
+}
+.megamenu__col .megamenu__col-title a {
+    font-weight: 600;
 }
