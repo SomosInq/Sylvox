@@ -33,9 +33,10 @@
     color: #636363;
   }
   .comparison-values .head{
-    font-size: 18px
+    font-size: 16px
   }
-  .comparison-values .table-values p{
+
+  .comparison-values .table-value p{
     font-size: 16px
   }
   .{{ section.id }}.large-images-mode .comparison-header {
@@ -73,13 +74,23 @@
       font-size: 14px;
       font-weight: 600;
       padding: 10px;
+      padding-left: 20px;
       min-width: fit-content;
       text-wrap-mode: nowrap;
       justify-content: flex-start;
     }
     .comparison-values .table-value {
       padding-top: 40px;
-      padding-bottom: 30px;
+      padding-bottom: 12px;
+    }
+    .comparison-values .table-value img {
+      width: 30px;
+    }
+    .specToggleBtn {
+      padding-bottom: 16px;
+    }
+    .comparison-header .top-title {
+      font-size: 18px;
     }
   }
 {% endstyle %}

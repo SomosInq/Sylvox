@@ -28,6 +28,7 @@
 .atmos-slider .slider-wrapper {
   width: 100%;
   position: relative;
+  max-width: 100%;
 }
 
 .slide-content-container {
@@ -38,8 +39,13 @@
   height: 100%;
   min-height: 100%;
 }
-.flickity-enabled.is-draggable .flickity-viewport {
-    height: 807.172px !important;
+.{{ section.id }} .flickity-enabled.is-draggable .flickity-viewport {
+    height: 800px !important;
+}
+@media screen and (max-width: 1024px) {
+  .{{ section.id }} .flickity-enabled.is-draggable .flickity-viewport {
+      height: 600px !important;
+  }
 }
 .slide-text,
 .slide-media {
@@ -71,7 +77,6 @@
     padding-bottom: 40px!important;
   }
 }
-
 .slide-media img,
 .slide-media video,
 .slide-media iframe {
@@ -100,6 +105,46 @@
   left: 40px;
 }
 
+@media screen and (min-width: 1025px) {
+  .atomos_slider_container .flickity-enabled.is-draggable .flickity-viewport .slide-text .pre-title {
+      margin-top: -100px;
+  }
+  .atomos_slider_container .flickity-enabled.is-draggable .flickity-viewport .slide-text .slide-inner-text {
+      max-width: 70%;
+  }
+  .atmos-slider .slider-wrapper .flickity-page-dots {
+    bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .{{ section.id }} .flickity-enabled.is-draggable .flickity-viewport .slide-text h2 {
+    font-size: 25px;
+  }
+  .{{ section.id }} .flickity-enabled.is-draggable .flickity-viewport .slide-text {
+    justify-content: flex-start;
+    padding-top: 30px !important;
+  }
+  .{{ section.id }} .flickity-enabled.is-draggable .flickity-viewport .slide-text .pre-title {
+      padding-bottom: 30px !important;
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .atmos-slider {
+    padding-bottom: 60px;
+  }
+  .atmos-slider .slider-wrapper .flickity-page-dots {
+    bottom: -20px;
+    width: 80%;
+    left: 10%;
+  }
+  .atomos_slider_container {
+    overflow: unset;
+  }
+}
+
 .atmos-slider .flickity-page-dots .dot.is-selected {
   background: #ff007f;
 }
@@ -124,7 +169,7 @@
     {% endif %}
   </div>
 
-  <div class="section_content_width_{{ section.settings.section_content_width }} atmos-slider {{ section.settings.custom_class }}">
+  <div class="section_content_width_{{ section.settings.section_content_width }} atmos-slider {{ section.settings.custom_class }} {{ section.id }}">
     <div class="slider-wrapper" data-flickity='{"wrapAround": true, "pageDots": {{ section.settings.show_dots }}, "prevNextButtons": {{ section.settings.show_arrows }}}'>
       {% for block in section.blocks %}
         <div class="slide slide-content-container">
@@ -144,7 +189,7 @@
               {{ block.settings.heading }}
             </{{ block.settings.heading_type }}>
 
-            <div style="text-align: {{ block.settings.body_align }};">
+            <div class="slide-inner-text" style="text-align: {{ block.settings.body_align }};">
               {{ block.settings.body | escape }}
             </div>
 

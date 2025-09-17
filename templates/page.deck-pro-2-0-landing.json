@@ -810,9 +810,9 @@
           "settings": {
             "image": "shopify://shop_images/Icons_4.png",
             "image_alignment": "center",
-            "image_width": 4,
-            "use_mobile_width": false,
-            "mobile_image_width": 100
+            "image_width": 9,
+            "use_mobile_width": true,
+            "mobile_image_width": 20
           }
         },
         "title_UccEdf": {
@@ -866,7 +866,7 @@
           "type": "slide",
           "settings": {
             "pre_title": "Immersive, Three-Dimensional Sound<br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Full-Range Audio Without Extra Equipment</span><br>\n<span style=\"color: var(--Dark-Grey, #636363);\">Clear, Crisp, Outdoor-Optimized Audio</span>",
-            "pre_title_padding": 100,
+            "pre_title_padding": 50,
             "subtitle": "Immersive, Three-Dimensional Sound",
             "heading": "Dolby Atmos Support",
             "heading_type": "h2",
@@ -988,7 +988,7 @@
         "content_padding_left": 20,
         "heading_icon": "shopify://shop_images/b57de234d7223ab88e90f104710b49d570ab2242.png",
         "left_image": "shopify://shop_images/9be961560fe8e24e54e91a764421434bc5014fe9_e04c64da-0f1a-46d3-955b-567040d5bdc7.png",
-        "image_radius": 0,
+        "image_radius": 4,
         "image_width_percent": 100,
         "bg_color": "#fafafa",
         "content_bg_color": "#fafafa",
@@ -1015,11 +1015,11 @@
         "button_radius": 0,
         "content_padding": 0,
         "image_lazyload": true,
-        "padding_top": 0,
+        "padding_top": 60,
         "padding_bottom": 0,
         "padding_left": 0,
         "padding_right": 0,
-        "margin_top": 60,
+        "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,
         "margin_right": 0,
@@ -1138,7 +1138,7 @@
       "settings": {
         "narrow_container": false,
         "background_color": "#ffffff",
-        "section_heading": "Set Up in Minutes, Enjoy for Years.",
+        "section_heading": "Set Up in Minutes,<br>Enjoy for Years.",
         "section_description": "Designed for convenience, Deck Pro 2.0 sets up in minutes, so you can get straight to watching.",
         "button_text": "Learn More",
         "button_link": "",
@@ -1293,7 +1293,7 @@
         "view_all_url": "",
         "show_view_all_comparisons": true,
         "show_see_all_specs": true,
-        "use_large_images": false,
+        "use_large_images": true,
         "heading_1": "Outdoor Areas",
         "heading_2": "TV OS",
         "heading_3": "Peak Brightness",
@@ -1417,9 +1417,9 @@
       "settings": {
         "background_color": "#fafafa",
         "padding_top": 60,
-        "padding_bottom": 0,
-        "padding_left": 0,
-        "padding_right": 0,
+        "padding_bottom": 60,
+        "padding_left": 16,
+        "padding_right": 16,
         "margin_top": 0,
         "margin_bottom": 0,
         "margin_left": 0,

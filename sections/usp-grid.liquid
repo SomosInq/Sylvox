@@ -173,6 +173,11 @@ display: flex;
     font-size: 16px;
     color: #636363
 }
+@media only screen and (max-width: 1024px) { 
+  .{{ section.id }} .usp-heading {
+    font-size: 24px!important;
+  }
+}
 
 </style>
 
@@ -181,7 +186,7 @@ display: flex;
 
   {% if section.settings.heading != blank %}
     <div class="usp-heading-wrapper" style="text-align: {{ section.settings.heading_alignment }};">
-      <h2 class="usp-heading" style="font-size: {{ section.settings.heading_font_size }}px;">
+      <h2 class="usp-heading" style="font-size: {{ section.settings.heading_font_size }}px; margin-bottom: 32px;">
         {{ section.settings.heading }}
       </h2>
       {% if section.settings.subtext != blank %}

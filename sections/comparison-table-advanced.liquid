@@ -189,7 +189,7 @@
         </div>
 
         <!-- Table Values Section -->
-        <div class="comparison-values" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 1rem;">
+        <div class="comparison-values" style="display: grid; grid-template-columns: 120px repeat({{ section.blocks.size }}, 1fr); gap: 0rem 1rem;">
           {% assign max_rows = 20 %}
           {% for i in (1..max_rows) %}
             {% assign heading_key = 'heading_' | append: i %}

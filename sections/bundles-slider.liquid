@@ -4,263 +4,287 @@
 {{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
 
 <style>
-  .bundles-slider {
+    .bundles-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .bundle-slider:not(.flickity-enabled) {
+      display: flex;
+      opacity: 1;
+      transition: 200ms;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .bundle-slider.flickity-enabled.is-draggable {
+      opacity: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .bundle-slider.flickity-enabled.is-draggable {
+      height: 430px;
+    }
+  }
+
+    .bundles-slider .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      background: #FAFAFA;
+      padding: 12px 20px;
+      border-radius: 9999px;
+      margin: 0 auto 24px;
+      width: fit-content;
+      flex-wrap: wrap;
+    }
+
+    .bundles-slider .tab {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: #336256;
+    }
+
+    .bundles-slider .tab.active {
+      background: #20413B;
+      color: white;
+    }
+
+    .bundles-slider .tab-content { display: none; }
+    .bundles-slider .tab-content.active { display: block; }
+
+    .bundle-slider {
+      position: relative;
+      width: 100%;
+    }
+
+    .bscarousel-cell {
+      width: 25%;
+      flex: 0 0 25%;
+      box-sizing: border-box;
+      padding: 10px;
+      height: 450px;
+    }
+  @media screen and (max-width: 1024px) {
+    .bscarousel-cell {
+        width: 30%;
+        & .bundle-card > img {
+            width: 100%!important;
+            min-width: auto!important;
+        }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .bscarousel-cell {
+        width: 80%;
+        & .bundle-card > img {
+            width: 100%!important;
+            min-width: auto!important;
+        }
+    }
+  }
+
+  .bundle-card {
     position: relative;
+    background: #F2F2F2;
+    border-radius: 0px;
     overflow: hidden;
-  }
-
-  .bundle-slider.js-flickity.flickity-enabled.is-draggable {
-    height: 500px;
-}
-
-@media screen and (max-width: 768px) { 
-  .bundle-slider.js-flickity.flickity-enabled.is-draggable {
-    height: 430px;
-  }
-}
-
-  .bundles-slider .tabs {
+    padding: 40px 30px;
+    text-align: left;
+    box-shadow: none;
+    height: 100%;
     display: flex;
-    justify-content: center;
-    gap: 16px;
-    background: #FAFAFA;
-    padding: 12px 20px;
-    border-radius: 9999px;
-    margin: 0 auto 24px;
-    width: fit-content;
-    flex-wrap: wrap;
+    flex-flow: column;
   }
 
-  .bundles-slider .tab {
-    padding: 8px 16px;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: background 0.3s;
-    color: #336256;
-  }
-
-  .bundles-slider .tab.active {
-    background: #20413B;
-    color: white;
-  }
-
-  .bundles-slider .tab-content { display: none; }
-  .bundles-slider .tab-content.active { display: block; }
-
-  .bundle-slider {
-    position: relative;
-    width: 100%;
-  }
-
-  .bscarousel-cell {
-    width: 25%;
-    flex: 0 0 25%;
-    box-sizing: border-box;
-    padding: 10px;
-    height: 450px;
-  }
-@media screen and (max-width: 768px) {
-  .bscarousel-cell {
-      width: 50%;
-      & .bundle-card > img {
-          width: 100%!important;
-          min-width: auto!important;
-      }
-  }
-}
-
-.bundle-card {
-  position: relative;
-  background: #F2F2F2;
-  border-radius: 0px;
-  overflow: hidden;
-  padding: 40px 30px;
-  text-align: left;
-  box-shadow: none;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-}
-
-.bundle-card h5 {
-  color: #1D1D1B;
-  font-family: "Neurial Grotesk";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-  .bundle-card p {
-    color: #636363;
-    font-size: 14px;
+  .bundle-card h5 {
+    color: #1D1D1B;
+    font-family: "Neurial Grotesk";
+    font-size: 16px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     line-height: normal;
   }
 
-  .bundle-card img {
-    margin-top: 12px;
-    height: auto;
-    transition: transform 0.3s ease;
-    margin: 0 auto;
-    margin-top: auto;
+    .bundle-card p {
+      color: #636363;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    .bundle-card img {
+      margin-top: 12px;
+      height: auto;
+      transition: transform 0.3s ease;
+      margin: 0 auto;
+      margin-top: auto;
+    }
+
+    .bundle-card .savings {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #DB4B97;
+      color: white;
+      padding: 4px 10px;
+      font-size: 14px;
+      border-bottom-left-radius: 8px;
+    }
+
+    .flickity-enabled.is-draggable .flickity-viewport {
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+      {% comment %} height: 517.172px !important; {% endcomment %}
   }
 
-  .bundle-card .savings {
+    .flickity-prev-next-button {
+      background: white;
+      border-radius: 50%;
+      border: 1px solid #000;
+      width: 40px;
+      height: 40px;
+      color: black;
+      font-size: 24px;
+    }
+
+    .bundles-slider .slider-controls-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+
+
+
+
+    .bundles-slider .flickity-page-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-start;
+      align-items: center;
+      position: static;
+    }
+
+    .bundles-slider .flickity-page-dots .dot {
+      width: 24px;
+      height: 25px;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
+      background-size: contain;
+      cursor: pointer;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .bundles-slider .flickity-page-dots .dot.is-selected {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
+    }
+
+    .bundle-slider .flickity-slider {
+    overflow: visible;
+  }
+  .bundle-slider .flickity-prev-next-button {
     position: absolute;
-    top: 0;
-    right: 0;
-    background: #DB4B97;
-    color: white;
-    padding: 4px 10px;
-    font-size: 14px;
-    border-bottom-left-radius: 8px;
+    bottom: 0px;
+    top: auto;
+    transform: none;
   }
 
-  .flickity-enabled.is-draggable .flickity-viewport {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: grab;
-    {% comment %} height: 517.172px !important; {% endcomment %}
-}
+  .bundle-slider .flickity-prev-next-button.previous {
+    right: 60px;
+  }
 
-  .flickity-prev-next-button {
-    background: white;
-    border-radius: 50%;
-    border: 1px solid #000;
+  .bundle-slider .flickity-prev-next-button.next {
+    right: 10px;
+  }
+
+  .slider-controls-wrapper {
+    position: relative;
+    margin-top: 3rem; /* ensure space for arrows */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .slider-arrows {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .bundles-slider .slider-arrows button {
     width: 40px;
     height: 40px;
-    color: black;
-    font-size: 24px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3px;
   }
-
-  .bundles-slider .slider-controls-wrapper {
+  .slider-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
-    padding: 0 1rem;
+    margin-top: 3rem;
   }
 
-
-
-
-  .bundles-slider .flickity-page-dots {
+  .slider-dots {
     display: flex;
     gap: 8px;
-    justify-content: flex-start;
-    align-items: center;
-    position: static;
   }
 
-  .bundles-slider .flickity-page-dots .dot {
+  .slider-dot {
     width: 24px;
-    height: 25px;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23636363'/></svg>") no-repeat center center;
-    background-size: contain;
+    height: 2px;
+    background-color: #636363;
     cursor: pointer;
-    border: none;
-    margin: 0;
-    padding: 0;
+    display: inline-block;
+    transition: background-color 0.3s ease;
   }
 
-  .bundles-slider .flickity-page-dots .dot.is-selected {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='25'><rect x='4' y='11.95' width='16' height='2' rx='1' fill='%23DB4B97'/></svg>");
+  .slider-arrows {
+    display: flex;
+    gap: 10px;
   }
 
-  .bundle-slider .flickity-slider {
-  overflow: visible;
-}
-.bundle-slider .flickity-prev-next-button {
-  position: absolute;
-  bottom: 0px;
-  top: auto;
-  transform: none;
-}
+  .slider-arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.bundle-slider .flickity-prev-next-button.previous {
-  right: 60px;
-}
-
-.bundle-slider .flickity-prev-next-button.next {
-  right: 10px;
-}
-
-.slider-controls-wrapper {
-  position: relative;
-  margin-top: 3rem; /* ensure space for arrows */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.slider-arrows {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
-.slider-arrows button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #000;
-  background: white;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.slider-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3rem;
-}
-
-.slider-dots {
-  display: flex;
-  gap: 8px;
-}
-
-.slider-dot {
-  width: 24px;
-  height: 2px;
-  background-color: #636363;
-  cursor: pointer;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-{% comment %} .slider-dot.active {
-  background-color: #DB4B97;
-} {% endcomment %}
-
-.slider-arrows {
-  display: flex;
-  gap: 10px;
-}
-
-.slider-arrows button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #000;
-  background: white;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
+  @media screen and (max-width: 768px) {
+     .slider-controls {
+        padding-inline: 0!important;
+      }
+      .bscarousel-cell {
+        padding-left: 0;
+        padding-right: 18px;
+      }
+  }
 </style>
 
-<section id="bundles-slider-{{ section.id }}" class="bundles-slider section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
-  style="background: {{ section.settings.background_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;">
+<section
+  id="bundles-slider-{{ section.id }}"
+  class="bundles-slider section_width_{{ section.settings.section_width }} {{ section.settings.custom_class }}"
+  style="background: {{ section.settings.background_color }}; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;"
+>
   <div class="section_content_width_{{ section.settings.section_content_width }}">
     {% if section.settings.section_title != blank %}
       <{{ section.settings.section_title_tag }} style="text-align:{{ section.settings.section_title_align }}; color:{{ section.settings.section_title_color }}; font-weight:{{ section.settings.section_title_weight }};">
@@ -282,23 +306,17 @@
       {% assign label_array = tab_labels | split: '|' %}
       {% for tid in tab_array %}
         {% unless tid == blank %}
-          <div class="tab {% if forloop.first %}active{% endif %}" data-tab="{{ tid }}">{{ label_array[forloop.index0] }}</div>
+          <div class="tab {% if forloop.first %}active{% endif %}" data-tab="{{ tid }}">
+            {{ label_array[forloop.index0] }}
+          </div>
         {% endunless %}
       {% endfor %}
     </div>
 
     {% for tid in tab_array %}
       {% unless tid == blank %}
-        
         <div class="tab-content tab-{{ tid }} {% if forloop.first %}active{% endif %}">
-          <div class="bundle-slider js-flickity"
-            data-flickity='{
-              "wrapAround": true,
-              "cellAlign": "left",
-              "groupCells": 4,
-              "pageDots": false,
-              "prevNextButtons": false
-            }'>
+          <div class="bundle-slider">
             {% for block in section.blocks %}
               {% if block.settings.tab_id == tid %}
                 <div class="bscarousel-cell">
@@ -307,11 +325,12 @@
                     <h5>{{ block.settings.title }}</h5>
                     <p>{{ block.settings.text }}</p>
                     {% if block.settings.image %}
-                      <img 
-                        src="{{ block.settings.image | image_url: width: 1000 }}" 
-                        style="width: {{ section.settings.image_size }}px; min-width: {{ section.settings.image_size }}px;" 
+                      <img
+                        src="{{ block.settings.image | image_url: width: 1000 }}"
+                        style="width: {{ section.settings.image_size }}px; min-width: {{ section.settings.image_size }}px;"
                         loading="{{ block.settings.lazy_loading | default: true | json }}"
-                        alt="{{ block.settings.title }}">
+                        alt="{{ block.settings.title }}"
+                      >
                     {% endif %}
                   </div>
                 </div>
@@ -319,109 +338,151 @@
             {% endfor %}
           </div>
 
-          <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}" style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;">
-      <div class="slider-dots">
-  {% assign index = 0 %}
-  {% for block in section.blocks %}
-    {% if block.settings.tab_id == tid %}
-      <span class="slider-dot{% if index == 0 %} active{% endif %}" data-index="{{ index }}"></span>
-      {% assign index = index | plus: 1 %}
-    {% endif %}
-  {% endfor %}
-</div>
+          <div
+            class="slider-controls section_content_width_{{ section.settings.section_content_width }}"
+            style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;"
+          >
+            <div class="slider-dots">
+              {% assign index = 0 %}
+              {% for block in section.blocks %}
+                {% if block.settings.tab_id == tid %}
+                  <span class="slider-dot{% if index == 0 %} active{% endif %}" data-index="{{ index }}"></span>
+                  {% assign index = index | plus: 1 %}
+                {% endif %}
+              {% endfor %}
+            </div>
 
-      {% if section.settings.show_arrows %}
-        <div class="slider-arrows">
-          <button class="slider-arrow prev">‹</button>
-          <button class="slider-arrow next">›</button>
+            {% if section.settings.show_arrows %}
+              <div class="slider-arrows">
+                <button class="slider-arrow prev">‹</button>
+                <button class="slider-arrow next">›</button>
+              </div>
+            {% endif %}
+          </div>
         </div>
-      {% endif %}
-    </div>
-
-          
-
-
       {% endunless %}
     {% endfor %}
   </div>
 </section>
-
-
-
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const tabs = document.querySelectorAll('.bundles-slider .tab');
-  const tabContents = document.querySelectorAll('.bundles-slider .tab-content');
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('bundles-slider-{{ section.id }}');
+    if (!section) return;
 
-  function initFlickitySlider(container) {
-    if (!container || container.flickityInstance) return;
+    const tabs = section.querySelectorAll('.tab');
+    const tabContents = section.querySelectorAll('.tab-content');
+    const flickityInstances = new WeakMap();
 
-    const flickity = new Flickity(container, {
-      wrapAround: true,
-      cellAlign: 'left',
-      groupCells: 4,
-      pageDots: false,
-      prevNextButtons: false
-    });
+    function getVisibleCells(track) {
+      const trackWidth = track.offsetWidth;
+      const slide = track.querySelector('.bscarousel-cell');
+      if (!slide) return 1;
 
-    container.flickityInstance = flickity;
+      const style = window.getComputedStyle(slide);
+      const gap = parseFloat(style.marginRight) || 0;
+      const slideWidth = slide.offsetWidth + gap;
 
-    const tabContent = container.closest('.tab-content');
-    const dots = tabContent.querySelectorAll('.slider-dot');
-    const prevBtn = tabContent.querySelector('.slider-arrow.prev');
-    const nextBtn = tabContent.querySelector('.slider-arrow.next');
+      // Adjust per responsive breakpoints
+      if (window.innerWidth >= 1024) return Math.floor(trackWidth / slideWidth) || 1; // desktop
+      if (window.innerWidth >= 768) return Math.floor(trackWidth / slideWidth) || 1; // tablet
+      return 1; // mobile
+    }
 
-    // ✅ Bind dot clicks
-    if (dots.length) {
-      dots.forEach((dot) => {
-        const index = parseInt(dot.getAttribute('data-index'));
-        dot.addEventListener('click', () => flickity.select(index));
+    function initSlider(tabContent) {
+      const track = tabContent.querySelector('.bundle-slider');
+      if (!track) return;
+
+      const slides = tabContent.querySelectorAll('.bscarousel-cell');
+      const dots = tabContent.querySelectorAll('.slider-dots .slider-dot');
+      const prevArrow = tabContent.querySelector('.slider-arrow.prev');
+      const nextArrow = tabContent.querySelector('.slider-arrow.next');
+
+      const visibleCells = getVisibleCells(track);
+
+      // Disable slider if not enough slides
+      if (slides.length <= visibleCells) {
+        if (prevArrow) prevArrow.style.display = 'none';
+        if (nextArrow) nextArrow.style.display = 'none';
+        dots.forEach((dot) => (dot.style.display = 'none'));
+        slides.forEach((s, i) => s.classList.toggle('active', i === 0));
+        return;
+      }
+
+      // Avoid re-initializing
+      if (flickityInstances.has(track)) return flickityInstances.get(track);
+
+      const flkty = new Flickity(track, {
+        wrapAround: slides.length > visibleCells,
+        imagesLoaded: true,
+        pageDots: false,
+        prevNextButtons: false,
+        cellAlign: 'left',
+        contain: true,
+        groupCells: 1,
       });
 
-      // ✅ Update dot styles on change
-      flickity.on('select', () => {
-        const selectedIndex = flickity.selectedIndex;
-        dots.forEach((dot) => {
-          const index = parseInt(dot.getAttribute('data-index'));
-          dot.classList.toggle('active', index === selectedIndex);
+      if (prevArrow) prevArrow.addEventListener('click', () => flkty.previous());
+      if (nextArrow) nextArrow.addEventListener('click', () => flkty.next());
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => flkty.select(index));
+      });
+
+      flkty.on('change', (index) => {
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      });
+
+      if (slides[0]) slides[0].classList.add('active');
+      if (dots[0]) dots[0].classList.add('active');
+
+      flickityInstances.set(track, flkty);
+      return flkty;
+    }
+
+    // Initialize first active tab
+    const firstTabContent = section.querySelector('.tab-content.active');
+    if (firstTabContent) initSlider(firstTabContent);
+
+    // Tab click
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.dataset.tab;
+
+        tabs.forEach((t) => t.classList.toggle('active', t === tab));
+        tabContents.forEach((tc) => {
+          const isTarget = tc.classList.contains('tab-' + targetId);
+          tc.classList.toggle('active', isTarget);
+          if (isTarget) initSlider(tc);
         });
       });
-    }
+    });
 
-    // ✅ Arrows
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener('click', () => flickity.previous());
-      nextBtn.addEventListener('click', () => flickity.next());
-    }
-  }
+    // Optional: handle window resize to recalc visible slides
+    window.addEventListener('resize', () => {
+      tabContents.forEach((tc) => {
+        const track = tc.querySelector('.bundle-slider');
+        if (!track) return;
+        const flkty = flickityInstances.get(track);
+        const slides = tc.querySelectorAll('.bscarousel-cell');
+        const visibleCells = getVisibleCells(track);
 
-  // ✅ Init first visible slider
-  const firstTabContent = document.querySelector('.bundles-slider .tab-content.active .bundle-slider.js-flickity');
-  if (firstTabContent) initFlickitySlider(firstTabContent);
-
-  // ✅ Handle tab switching
-  tabs.forEach(tab => {
-    tab.addEventListener('click', function () {
-      const targetTabId = tab.dataset.tab;
-
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      tabContents.forEach(c => {
-        const isTarget = c.classList.contains('tab-' + targetTabId);
-        c.classList.toggle('active', isTarget);
-        if (isTarget) {
-          const slider = c.querySelector('.bundle-slider.js-flickity');
-          initFlickitySlider(slider);
+        if (slides.length <= visibleCells) {
+          if (flkty) flkty.destroy();
+          const prevArrow = tc.querySelector('.slider-arrow.prev');
+          const nextArrow = tc.querySelector('.slider-arrow.next');
+          const dots = tc.querySelectorAll('.slider-dots .slider-dot');
+          if (prevArrow) prevArrow.style.display = 'none';
+          if (nextArrow) nextArrow.style.display = 'none';
+          dots.forEach((dot) => (dot.style.display = 'none'));
+          slides.forEach((s, i) => s.classList.toggle('active', i === 0));
+        } else if (!flkty) {
+          initSlider(tc);
         }
       });
     });
   });
-});
 </script>
-
-
-
 
 {% schema %}
 {
@@ -429,7 +490,15 @@ document.addEventListener('DOMContentLoaded', function () {
   "settings": [
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#ffffff" },
     { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 4, "default": 0 },
-    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 4, "default": 0 },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0
+    },
     { "type": "range", "id": "padding_left", "label": "Padding Left", "min": 0, "max": 100, "step": 4, "default": 0 },
     { "type": "range", "id": "padding_right", "label": "Padding Right", "min": 0, "max": 100, "step": 4, "default": 0 },
     { "type": "range", "id": "margin_top", "label": "Margin Top", "min": 0, "max": 100, "step": 4, "default": 0 },
@@ -437,12 +506,60 @@ document.addEventListener('DOMContentLoaded', function () {
     { "type": "range", "id": "margin_left", "label": "Margin Left", "min": 0, "max": 100, "step": 4, "default": 0 },
     { "type": "range", "id": "margin_right", "label": "Margin Right", "min": 0, "max": 100, "step": 4, "default": 0 },
     { "type": "text", "id": "section_title", "label": "Section Title" },
-    { "type": "select", "id": "section_title_tag", "label": "Title Tag", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" } ], "default": "h2" },
+    {
+      "type": "select",
+      "id": "section_title_tag",
+      "label": "Title Tag",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
     { "type": "color", "id": "section_title_color", "label": "Title Color", "default": "#000000" },
-    { "type": "select", "id": "section_title_align", "label": "Title Alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "center" },
-    { "type": "select", "id": "section_title_weight", "label": "Title Font Weight", "options": [ { "value": "300", "label": "Light" }, { "value": "400", "label": "Normal" }, { "value": "700", "label": "Bold" } ], "default": "400" },
-    { "type": "select", "id": "section_width", "label": "Section Width", "default": "standard", "options": [ { "value": "standard", "label": "Standard" }, { "value": "full", "label": "Full Width" } ] },
-    { "type": "select", "id": "section_content_width", "label": "Content Width", "default": "standard", "options": [ { "value": "standard", "label": "Standard" }, { "value": "full", "label": "Full Width" } ] },
+    {
+      "type": "select",
+      "id": "section_title_align",
+      "label": "Title Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "section_title_weight",
+      "label": "Title Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "section_content_width",
+      "label": "Content Width",
+      "default": "standard",
+      "options": [
+        { "value": "standard", "label": "Standard" },
+        { "value": "full", "label": "Full Width" }
+      ]
+    },
     {
       "type": "range",
       "id": "image_size",
@@ -472,8 +589,6 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     }
   ],
-  "presets": [
-    { "name": "Bundles Slider", "category": "Somos Custom" }
-  ]
+  "presets": [{ "name": "Bundles Slider", "category": "Somos Custom" }]
 }
 {% endschema %}
