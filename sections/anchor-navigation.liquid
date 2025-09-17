@@ -37,7 +37,7 @@
   #shopify-section-{{ section.id }} {
     position: sticky;
     top: 0;
-   z-index: 9991;
+   z-index: 9999999991;
   }
   #shopify-section-{{ section.id }} .anchor-nav-section {
     background: var(--bg-color);
@@ -60,10 +60,12 @@
     color: #FFF;
     font-size: 18px;
     font-weight: 400;
+    white-space: nowrap;
   }
   nav.anchor-nav ul.anchor-nav__list {
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 0 24px;
     margin: 0;
   }
 
@@ -88,8 +90,33 @@
     background: #FFF;
     font-size: 14px;
     font-weight: 300;
+    white-space: nowrap;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1440px) {
+    #shopify-section-{{ section.id }} .anchor-nav-section.visible {
+      padding: 17px 20px;
+    }
+    .anchor-nav-row{
+      gap: 10px;
+    }
+    .anchor-nav-section .page-width {
+      padding: 0;
+    }
+    nav.anchor-nav ul.anchor-nav__list {
+      gap: 0 14px;
+    }
+    .anchor-nav-title{
+      font-size: 16px;
+    }
+    nav.anchor-nav ul.anchor-nav__list a.anchor-nav__link {
+      font-size: 12px;
+    }
+    a.anchor-nav-cta-buy-now {
+      padding: 9px 15px;
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 1078px) {
     #shopify-section-{{ section.id }} {
       display: none;
     }

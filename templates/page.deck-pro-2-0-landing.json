@@ -325,7 +325,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "center",
-            "font_size": 48
+            "font_size": 38,
+            "mobile_font_size": 24
           }
         },
         "richtext_c9B6TT": {
@@ -347,7 +348,7 @@
         "section_content_width": "standard",
         "custom_content_width_enabled": true,
         "custom_content_width": 100,
-        "content_max_width": 880,
+        "content_max_width": 650,
         "mobile_content_width": 70,
         "section_height": 800,
         "mobile_section_height": 500,
@@ -362,7 +363,7 @@
         "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
-        "mobile_padding_top": 0,
+        "mobile_padding_top": 25,
         "mobile_padding_bottom": 0,
         "mobile_padding_left": 0,
         "mobile_padding_right": 0,
@@ -383,6 +384,8 @@
         "image_KAMyxG": {
           "type": "image",
           "settings": {
+            "comparison_heading": "Indoor TVs",
+            "comparison_description": "300-nit brightness",
             "image": "shopify://shop_images/Property_1_Variant2.png",
             "video": "shopify://files/videos/deck pro 2 1.000 (1).mp4",
             "image_alignment": "center"
@@ -391,6 +394,8 @@
         "image_tnR9zX": {
           "type": "image",
           "settings": {
+            "comparison_heading": "Sylvox Deck Pro 2.0",
+            "comparison_description": "1000 Nit for Partial Sun Area",
             "image": "shopify://shop_images/Property_1_Variant3.png",
             "video": "shopify://files/videos/deck pro 2 300.mp4",
             "image_alignment": "center"
@@ -496,7 +501,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "left",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
           }
         },
         "richtext_g7C6di": {
@@ -516,10 +522,10 @@
       "name": "Somos Banner",
       "settings": {
         "section_width": "full",
-        "section_content_width": "full",
+        "section_content_width": "standard",
         "custom_content_width_enabled": true,
-        "custom_content_width": 40,
-        "content_max_width": 880,
+        "custom_content_width": 100,
+        "content_max_width": 650,
         "mobile_content_width": 90,
         "section_height": 600,
         "mobile_section_height": 500,
@@ -558,8 +564,8 @@
             "layout": "horizontal",
             "image_position": "left",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4_3.png",
-            "image_width": 40,
-            "content_width": 40,
+            "image_width": 50,
+            "content_width": 50,
             "margin_top": 0,
             "margin_bottom": 60,
             "padding_top": 0,
@@ -576,8 +582,8 @@
             "layout": "horizontal",
             "image_position": "right",
             "image": "shopify://shop_images/546e7e18b77a4bcbb240bf75c4164312.mp4.png",
-            "image_width": 40,
-            "content_width": 40,
+            "image_width": 50,
+            "content_width": 50,
             "margin_top": 0,
             "margin_bottom": 60,
             "padding_top": 0,
@@ -622,7 +628,7 @@
         "button_label": "",
         "button_link": "",
         "section_width": "full",
-        "narrow_container": false,
+        "narrow_container": true,
         "section_content_width": "standard",
         "background_color": "#f5f5f5",
         "padding_top": 40,
@@ -647,7 +653,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "center",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
           }
         },
         "subheading_JMFnK4": {
@@ -655,7 +662,8 @@
           "settings": {
             "text": "It Just Works.",
             "color": "#ffffff",
-            "alignment": "center"
+            "alignment": "center",
+            "subheading_max_width": 100
           }
         }
       },
@@ -671,7 +679,7 @@
         "custom_content_width": 90,
         "content_max_width": 880,
         "mobile_content_width": 90,
-        "section_height": 1000,
+        "section_height": 660,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/5170f3f4a781802c17dad672d7925ad12af4a34c.png",
@@ -721,8 +729,8 @@
         "section_content_width": "standard",
         "narrow_container": false,
         "alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 60,
+        "padding_top": 50,
+        "padding_bottom": 20,
         "padding_left": 0,
         "padding_right": 0,
         "margin_top": 0,
@@ -784,7 +792,7 @@
         "autoplay_interval": 5,
         "banner_height": 600,
         "banner_height_mobile": 480,
-        "padding_top": 60,
+        "padding_top": 0,
         "padding_bottom": 60,
         "padding_left": 0,
         "padding_right": 0,
@@ -1285,6 +1293,7 @@
         "view_all_url": "",
         "show_view_all_comparisons": true,
         "show_see_all_specs": true,
+        "use_large_images": false,
         "heading_1": "Outdoor Areas",
         "heading_2": "TV OS",
         "heading_3": "Peak Brightness",

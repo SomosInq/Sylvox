@@ -85,6 +85,52 @@
     }
 
   {% endif %}
+  .comparson-label-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 91;
+    display: flex;
+    justify-content: space-between;
+    padding: 77px 56px;
+  }
+
+  .comparson-label-container .comapre-title {
+    color: #FFF;
+    font-family: "Neurial Grotesk";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 8px;
+  }
+
+  .compare-desc {
+    color: #FFF;
+    font-family: "Neurial Grotesk";
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.176px;
+  }
+  @media only screen and (max-width: 768px) {
+    .comparision-slider-section .index-section {
+      margin: 30px 0 0;
+    }
+    .comparson-label-container {
+      display:none;
+    }
+    .comparision-slider-section .index-section .page-width-container {
+      padding: 0;
+    }
+    .comparision-slider-section .comparison {
+      margin-bottom: 28px;
+    }
+    .comparision-slider-section p {
+      text-align: center;
+      font-size: 14px;
+    }
+  }
 {% endstyle %}
 
 <div class="index-section">
@@ -158,6 +204,14 @@
             </svg>
           </span>
         </button>
+        <div class="comparson-label-container">
+          {% for block in section.blocks %}
+            <div>
+              <div class="comapre-title">{{ block.settings.comparison_heading }}</div>
+              <div class="compare-desc">{{ block.settings.comparison_description }}</div>
+            </div>
+          {% endfor %}
+        </div>
       </image-compare>
 
       <template data-island>
@@ -167,7 +221,7 @@
       </template>
     </is-land>
     {% if section.settings.heading_description != blank %}
-      <p style="text-align: {{ heading_align }}; margin-bottom: 1rem;">{{ section.settings.base_description }}</p>
+      <p style="text-align: {{ heading_align }};">{{ section.settings.base_description }}</p>
     {% endif %}
   </div>
 </div>

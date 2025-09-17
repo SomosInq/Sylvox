@@ -5,13 +5,6 @@
 <div 
   class="feature-showcase-tabs section_width_{{ section.settings.section_width }}" 
   id="feature-showcase-tabs-{{ section.id }}"
-  style="
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
-    max-width: {{ section.settings.banner_width }}px;
-    margin-left: auto;
-    margin-right: auto;
-  "
 >
   <div class="feature-showcase-tabs__content-wrapper section_content_width_{{ section.settings.section_content_width }}">
     {% for block in section.blocks %}
@@ -51,8 +44,13 @@
 </div>
 
 {% style %}
-.feature-showcase-tabs {
+#shopify-section-{{ section.id }} .feature-showcase-tabs {
   text-align: center;
+  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+  margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  max-width: {{ section.settings.banner_width }}px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .feature-showcase-tabs__content-wrapper {
@@ -78,6 +76,13 @@
 @media screen and (max-width: 769px) {
   .feature-showcase-tabs__image {
       height: auto !important;
+  }
+  #shopify-section-{{ section.id }} .feature-showcase-tabs {
+    padding: {{ section.settings.padding_top | divided_by: 2 }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom | divided_by: 2 }}px {{ section.settings.padding_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+  }
+   #shopify-section-{{ section.id }} .feature-showcase-tabs__content-wrapper{
+    padding: 0 !important;
   }
 }
 
