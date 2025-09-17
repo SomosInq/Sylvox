@@ -115,6 +115,10 @@
     opacity: 1;
   }
 
+  .video-swiper-contair .usp-heading {
+    font-size: 30px;
+  }
+
   @media screen and (max-width: 1235px) {
     .video-swiper-contair {
       padding-inline: 15px;
@@ -136,16 +140,21 @@
       max-width: 100%;
     }
 
+    .video-swiper-contair {
+      padding-inline: 0!important
+    }
+
     .video-swiper-contair .usp-heading {
-      font-size: 24px;
+      font-size: 21px;
       padding-bottom: 0;
     }
 
     .content-right {
       margin-top: 10px;
     }
-
-    .video-wrapper {
+  }
+  @media screen and (max-width: 766px) {
+  .video-wrapper {
       flex: 0 0 calc(35% - 10px);
       min-width: 84%;
       aspect-ratio: 9 / 16;

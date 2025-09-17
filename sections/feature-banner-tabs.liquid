@@ -216,19 +216,19 @@
   background: #0a0a0a;
 }
 
-.feature-banner-tabs__carousel {
+.feature-banner-tabs__carousel:not(.flickity-enabled) {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  gap: 24px;
   padding: 0 438px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  gap: 24px;
 }
 
 .feature-banner-tabs__carousel::-webkit-scrollbar {
-  display: none;
+  margin-right: 24px;
 }
 
 .feature-banner-tabs__slide {
@@ -237,6 +237,11 @@
   scroll-snap-align: center;
   opacity: 0.3;
   transition: opacity 0.4s ease;
+}
+
+.flickity-enabled .feature-banner-tabs__slide {
+  margin-right: 20px; /* your desired gap */
+  box-sizing: border-box;
 }
 
 .feature-banner-tabs__slide.active {
@@ -290,6 +295,22 @@
   background: #DB4B97;
 }
 
+@media screen and (max-width: 1024px) {
+  .feature-banner-tabs__tabs {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 15px;
+  }
+  .tab-label {
+    font-size: 13px
+  }
+  .feature-banner-tabs__slide {
+    width: 80%;
+  }
+}
 @media screen and (max-width: 767px) {
   .feature-banner-tabs {
     overflow: hidden;
@@ -306,6 +327,10 @@
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+  }
+
+  .feature-banner-tabs__tabs { 
+    display: none;
   }
 
   .tab-label {
@@ -333,9 +358,10 @@
     max-width: 342px;
     height: 1px;
     background-color: #959393;
+    display: none;
   }
 
-  .feature-banner-tabs__carousel {
+  .feature-banner-tabs__carousel:not(.flickity-enabled) .feature-banner-tabs__carousel {
     padding-left: 24px;
     padding-right: 24px;
     flex-direction: row;
@@ -345,14 +371,14 @@
     display: flex;
   }
 
-  .feature-banner-tabs__slide {
+  .feature-banner-tabs__carousel:not(.flickity-enabled) .feature-banner-tabs__slide {
     width: 370px;
     height: auto;
     position: relative;
     flex-shrink: 0;
   }
 
-  .feature-banner-tabs__banner {
+  .feature-banner-tabs__carousel:not(.flickity-enabled) .feature-banner-tabs__banner {
     width: 370px;
     position: relative;
     top: 0;
@@ -360,7 +386,24 @@
     padding: 0;
   }
 
+  .feature-banner-tabs__banner {
+    position: relative;
+    padding: 0;
+  }
+
   .feature-banner-tabs__content {
+      position: absolute;
+      left: 10%;
+      bottom: 20px;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0;
+  }
+  .feature-banner-tabs__carousel:not(.flickity-enabled) .feature-banner-tabs__content {
     position: absolute;
     left: 15px;
     bottom: 20px;
@@ -410,70 +453,81 @@
   }
 }
 {% endstyle %}
-
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const section = document.getElementById("feature-banner-tabs-{{ section.id }}");
-    const carousel = section.querySelector(".feature-banner-tabs__carousel");
-    const slides = section.querySelectorAll(".feature-banner-tabs__slide");
-    const dots = section.querySelectorAll(".dot");
-    const tabs = section.querySelectorAll(".tab-label");
-    const autoplayEnabled = {{ section.settings.autoplay_enabled | json }};
-    const interval = {{ section.settings.autoplay_interval }} * 1000;
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.getElementById("feature-banner-tabs-{{ section.id }}");
+  if (!section) return;
 
-    const total = {{ section.blocks.size }};
-    let index = 0;
-    let timer;
+  const carousel = section.querySelector(".feature-banner-tabs__carousel");
+  const slides = section.querySelectorAll(".feature-banner-tabs__slide");
+  const tabs = section.querySelectorAll(".tab-label");
+  const dots = section.querySelectorAll(".dot");
+  const autoplayEnabled = {{ section.settings.autoplay_enabled | json }};
+  const interval = {{ section.settings.autoplay_interval }} * 1000;
 
-    function scrollToSlide(i) {
-      index = i;
-      const targetSlide = slides[i + 1];
-      if (!targetSlide) return;
+  if (!carousel || slides.length === 0) return;
 
-      const scrollOffset = targetSlide.offsetLeft - (carousel.offsetWidth - targetSlide.offsetWidth) / 2;
-
-      carousel.scrollTo({
-        left: scrollOffset,
-        behavior: 'smooth'
-      });
-
-      updateUI();
-
-      slides.forEach((slide, idx) => {
-        slide.classList.toggle("active", idx === i + 1);
-      });
-
-      restartAutoplay();
-    }
-
-    function updateUI() {
-      tabs.forEach((tab, i) => tab.classList.toggle("active", i === index));
-      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-    }
-
-    function nextSlide() {
-      index = (index + 1) % total;
-      scrollToSlide(index);
-    }
-
-    function startAutoplay() {
-      timer = setInterval(nextSlide, interval);
-    }
-
-    function restartAutoplay() {
-      if (autoplayEnabled) {
-        clearInterval(timer);
-        startAutoplay();
-      }
-    }
-
-    tabs.forEach((tab, i) => tab.addEventListener("click", () => scrollToSlide(i)));
-    dots.forEach((dot, i) => dot.addEventListener("click", () => scrollToSlide(i)));
-
-    scrollToSlide(0);
-    if (autoplayEnabled) startAutoplay();
+  // Initialize Flickity
+  const flkty = new Flickity(carousel, {
+    wrapAround: true,
+    cellAlign: "center",
+    contain: true,
+    pageDots: false,
+    prevNextButtons: false,
+    autoPlay: autoplayEnabled ? interval : false,
+    imagesLoaded: true,
+    draggable: true,
   });
+
+  let autoplayTimer = null;
+
+  // Function to update active states for tabs, dots, and slides
+  function updateUI(selectedIndex) {
+    tabs.forEach((tab, i) => tab.classList.toggle("active", i === selectedIndex));
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === selectedIndex));
+    slides.forEach((slide, i) => slide.classList.toggle("active", i === selectedIndex));
+  }
+
+  // Reset Flickity autoplay timer
+  function resetAutoplay() {
+    if (!autoplayEnabled) return;
+    flkty.stopPlayer();
+    flkty.playPlayer(interval);
+  }
+
+  // Sync Flickity change with UI
+  flkty.on("change", (index) => {
+    const realIndex = index % tabs.length; // wrapAround clones
+    updateUI(realIndex);
+    resetAutoplay();
+  });
+
+  // User interaction: click tabs
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => {
+      flkty.select(i);
+      resetAutoplay();
+    });
+  });
+
+  // User interaction: click dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      flkty.select(i);
+      resetAutoplay();
+    });
+  });
+
+  // User interaction: dragging slides
+  flkty.on("dragEnd", () => {
+    resetAutoplay();
+  });
+
+  // Initialize UI
+  updateUI(flkty.selectedIndex % tabs.length);
+});
 </script>
+
 
 {% schema %}
 {

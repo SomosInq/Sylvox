@@ -301,7 +301,7 @@
               }
 
               {% if block.settings.use_mobile_width %}
-                @media screen and (max-width: 749px) {   
+                @media screen and (max-width: 1024px) {   
                   #{{ wrapper_id }} .image-text-blocks-section .image-block > img {
                   --block-image-width: {{ block.settings.mobile_image_width | default: 100 }}%
                   }

@@ -123,11 +123,15 @@ white-space: nowrap;
 
   .info-section__header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 0;
   }
-
+  .info-section__header-icon {
+    position: absolute;
+    top: 28px;
+    left: 3%;
+  }
   .info-section .button{
     padding-inline-start: 28px;
     padding-inline-end: 20px;
