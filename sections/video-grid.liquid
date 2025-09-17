@@ -25,11 +25,28 @@
     background: #20413B;
     color: #fff;
   }
+  
+  .outdoor-tabs-section .video-grid-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .outdoor-tabs-section .video-grid-wrapper {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    overflow-x: auto;
+  }
 
   .outdoor-tabs-section .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
+    grid-auto-flow: column;
+    grid-auto-columns: 354px;
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 769px) {
+    .outdoor-tabs-section .video-grid {
+      grid-auto-columns: 264px;
+      gap: 16px;
+    }
   }
 
   .outdoor-tabs-section .video-card {
@@ -39,11 +56,17 @@
     cursor: pointer;
     background-color: var(--video-card-bg, transparent);
     padding-bottom: 10px;
+    border-radius: var(--video-card-radius, 8px) var(--video-card-radius, 8px) 0 0;
+  }
+
+  .outdoor-tabs-section .video-card .video-thumbnail-wrapper {
+      aspect-ratio: 354 / 185;
   }
 
   .outdoor-tabs-section .video-card img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     border-radius: var(--video-card-radius, 8px) var(--video-card-radius, 8px) 0 0;
   }
@@ -112,56 +135,58 @@
       </div>
     {% endunless %}
 
-    <div class="video-grid">
-      {% assign types = "Expert Reviews,Real User Stories,How-To Tutorials" | split: "," %}
-
-      {% if section.settings.hide_tabs %}
-        {% for block in section.blocks %}
-          <div class="video-card"
-               data-modal-video="{{ block.settings.video_url }}"
-               style="--video-card-radius: {{ section.settings.video_border_radius }}px; --video-card-bg: {{ section.settings.video_background_color }};">
-            <div class="video-thumbnail-wrapper">
-              <div class="vide-play-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                  <path d="M37.5 20C37.5 10.335 29.665 2.5 20 2.5C10.335 2.49999 2.5 10.335 2.5 20C2.49999 29.665 10.335 37.5 20 37.5C29.665 37.5 37.5 29.665 37.5 20Z" fill="black" fill-opacity="0.65"/>
-                  <path d="M27.462 20.5693L16.277 27.027C15.8383 27.2802 15.29 26.9637 15.29 26.4572V13.5418C15.29 13.0353 15.8383 12.7187 16.277 12.972L27.462 19.4297C27.9007 19.6829 27.9007 20.316 27.462 20.5693Z" fill="white"/>
-                </svg>
-              </div>
-              {% if block.settings.video_thumbnail %}
-                <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
-              {% endif %}
-            </div>
-            <div class="video-title">{{ block.settings.title }}</div>
-          </div>
-        {% endfor %}
-      {% else %}
-        {% for type in types %}
-          <div class="tab-content" id="{{ type | handleize }}" style="display: none;">
-            <div class="video-grid">
-              {% for block in section.blocks %}
-                {% if block.settings.video_type == type %}
-                  <div class="video-card"
-                       data-modal-video="{{ block.settings.video_url }}"
-                       style="--video-card-radius: {{ section.settings.video_border_radius }}px; --video-card-bg: {{ section.settings.video_background_color }};">
-                    <div class="video-thumbnail-wrapper">
-                    <div class="vide-play-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <path d="M37.5 20C37.5 10.335 29.665 2.5 20 2.5C10.335 2.49999 2.5 10.335 2.5 20C2.49999 29.665 10.335 37.5 20 37.5C29.665 37.5 37.5 29.665 37.5 20Z" fill="black" fill-opacity="0.65"/>
-                        <path d="M27.462 20.5693L16.277 27.027C15.8383 27.2802 15.29 26.9637 15.29 26.4572V13.5418C15.29 13.0353 15.8383 12.7187 16.277 12.972L27.462 19.4297C27.9007 19.6829 27.9007 20.316 27.462 20.5693Z" fill="white"/>
-                      </svg>
-                    </div>
-                    {% if block.settings.video_thumbnail %}
-                      <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
-                    {% endif %}
-                    </div>
-                    <div class="video-title">{{ block.settings.title }}</div>
-                  </div>
+    <div class="video-grid-wrapper">
+      <div class="video-grid">
+        {% assign types = "Expert Reviews,Real User Stories,How-To Tutorials" | split: "," %}
+  
+        {% if section.settings.hide_tabs %}
+          {% for block in section.blocks %}
+            <div class="video-card"
+                 data-modal-video="{{ block.settings.video_url }}"
+                 style="--video-card-radius: {{ section.settings.video_border_radius }}px; --video-card-bg: {{ section.settings.video_background_color }};">
+              <div class="video-thumbnail-wrapper">
+                <div class="vide-play-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M37.5 20C37.5 10.335 29.665 2.5 20 2.5C10.335 2.49999 2.5 10.335 2.5 20C2.49999 29.665 10.335 37.5 20 37.5C29.665 37.5 37.5 29.665 37.5 20Z" fill="black" fill-opacity="0.65"/>
+                    <path d="M27.462 20.5693L16.277 27.027C15.8383 27.2802 15.29 26.9637 15.29 26.4572V13.5418C15.29 13.0353 15.8383 12.7187 16.277 12.972L27.462 19.4297C27.9007 19.6829 27.9007 20.316 27.462 20.5693Z" fill="white"/>
+                  </svg>
+                </div>
+                {% if block.settings.video_thumbnail %}
+                  <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
                 {% endif %}
-              {% endfor %}
+              </div>
+              <div class="video-title">{{ block.settings.title }}</div>
             </div>
-          </div>
-        {% endfor %}
-      {% endif %}
+          {% endfor %}
+        {% else %}
+          {% for type in types %}
+            <div class="tab-content" id="{{ type | handleize }}" style="display: none;">
+              <div class="video-grid">
+                {% for block in section.blocks %}
+                  {% if block.settings.video_type == type %}
+                    <div class="video-card"
+                         data-modal-video="{{ block.settings.video_url }}"
+                         style="--video-card-radius: {{ section.settings.video_border_radius }}px; --video-card-bg: {{ section.settings.video_background_color }};">
+                      <div class="video-thumbnail-wrapper">
+                      <div class="vide-play-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                          <path d="M37.5 20C37.5 10.335 29.665 2.5 20 2.5C10.335 2.49999 2.5 10.335 2.5 20C2.49999 29.665 10.335 37.5 20 37.5C29.665 37.5 37.5 29.665 37.5 20Z" fill="black" fill-opacity="0.65"/>
+                          <path d="M27.462 20.5693L16.277 27.027C15.8383 27.2802 15.29 26.9637 15.29 26.4572V13.5418C15.29 13.0353 15.8383 12.7187 16.277 12.972L27.462 19.4297C27.9007 19.6829 27.9007 20.316 27.462 20.5693Z" fill="white"/>
+                        </svg>
+                      </div>
+                      {% if block.settings.video_thumbnail %}
+                        <img src="{{ block.settings.video_thumbnail | image_url }}" alt="{{ block.settings.title }}">
+                      {% endif %}
+                      </div>
+                      <div class="video-title">{{ block.settings.title }}</div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>

@@ -340,16 +340,6 @@
       }
     },
     {
-      "key": "tv_size",
-      "namespace": "custom",
-      "name": "TV Size",
-      "description": "",
-      "type": {
-        "name": "list.single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
       "key": "target-gender",
       "namespace": "shopify",
       "name": "Target gender",

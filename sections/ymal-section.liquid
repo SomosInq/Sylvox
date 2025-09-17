@@ -53,6 +53,12 @@
   #shopify-section-{{ section.id }} .swiper.ymal-slider:not(.swiper-initialized) .swiper-slide{
     width: 24%;
   }
+  @media screen and (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .section-heading-area h2.section-heading-title {
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+  }
   @media screen and (max-width: 768px) {
     #shopify-section-{{ section.id }}{
       padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
@@ -103,7 +109,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const feat_swiper = new Swiper('.ymal-slider', {
-      slidesPerView: 1,
+      slidesPerView: 1.3,
       spaceBetween: 24,
       navigation: {
         nextEl: '.ymal-swiper-button-next',

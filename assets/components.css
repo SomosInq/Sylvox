@@ -16768,7 +16768,8 @@ p.section-heading-desc{
 .pdc-title {
   color: rgba(0, 0, 0, 0.85);
   font-family: "Neurial Grotesk";
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 2px;
   font-weight: 400;
   line-height: normal;
 }
@@ -16777,6 +16778,7 @@ p.section-heading-desc{
   font-size: 16px;
   font-weight: 400;
   line-height: normal;
+  min-height: 16px;
 }
 
 .pdc-price-min {
@@ -16821,6 +16823,7 @@ p.section-heading-desc{
   }
   .pdc-tv-type {
     font-size: 14px;
+    min-height: 14px;
   }
   .pdc-price-min {
     font-size: 17px;
@@ -16835,6 +16838,7 @@ p.section-heading-desc{
   }
   .pdc-tv-type {
     font-size: 11px;
+    min-height: 11px;
     margin-top: 2px;
   }
   .pdc-price-min {
@@ -16862,6 +16866,9 @@ p.section-heading-desc{
     .pdc-tv-specs,
     .pdc-tv-type {
       font-size: 10px;
+    }
+    .pdc-tv-type {
+     min-height: 10px;
     }
     .pdc-title {
       font-size: 15px;
@@ -17018,4 +17025,7 @@ p.section-heading-desc{
 }
 #MainContent .jdgm-gallery__thumbnail.jdgm-gallery__thumbnail {
   padding: 5px;
+}
+.pswp .pswp__img {
+  transform: scale(0.75);
 }

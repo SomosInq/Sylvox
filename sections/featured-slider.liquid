@@ -27,14 +27,12 @@
       padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
       padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
     }
-    {% if block.settings.mobile_image != nil %}
-        #shopify-section-{{ section.id }} .mobile-image {
-          display: block;
-        }
-        #shopify-section-{{ section.id }} .desktop-image.has-mobile-image {
-          display: none;
-        }
-    {% endif %}
+    #shopify-section-{{ section.id }} .mobile-image {
+      display: block;
+    }
+   #shopify-section-{{ section.id }} .desktop-image.has-mobile-image {
+      display: none;
+    }
   }
 </style>
 <div id="feature-slider-section">
