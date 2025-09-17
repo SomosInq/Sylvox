@@ -50,11 +50,18 @@
   }
   {{ s_id }} .hero-banner-holder{
     position: relative;
-    height: 100vh;
+    aspect-ratio: {{ section.settings.first_image.width }}/{{ section.settings.first_image.height }};
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    min-height: 600px;
+  }
+  @media (max-width: 768px) {
+    {{ s_id }} .hero-banner-holder{
+      min-height: 90dvh;
+    }
   }
   {{ s_id }} .hero-image{
     position: absolute;
@@ -70,11 +77,24 @@
   {{ s_id }} .hero-image.hero-image-1 {
     background-image: url({{ section.settings.first_image | image_url  }});
   }
-
+    {% if section.settings.first_image_mobile != blank %}
+    @media (max-width: 768px) {
+      {{ s_id }} .hero-image.hero-image-1 {
+        background-image: url({{ section.settings.first_image_mobile | image_url  }});
+      }
+    }
+    {% endif %}
   {{ s_id }} .hero-image.hero-image-2 {
     background-image: url({{ section.settings.second_image | image_url  }});
     opacity: 0;
   }
+    {% if section.settings.second_image_mobile != blank %}
+    @media (max-width: 768px) {
+      {{ s_id }} .hero-image.hero-image-2 {
+        background-image: url({{ section.settings.second_image_mobile | image_url  }});
+      }
+    }
+    {% endif %}
   {{ s_id }} .hero-content {
     position: relative;
     z-index: 10;
@@ -105,19 +125,19 @@
   }
   {{ s_id }} .hero-title{
     color: #FFF;
-    font-size: 56px;
+    font-size: 46px;
     font-weight: 500;
     line-height: normal;
   }
   {{ s_id }} .hero-title span{
     color: #FFF;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     line-height: normal;
   }
   {{ s_id }} .hero-paragraph{
     color: #FFF;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     line-height: normal;
   }
@@ -235,6 +255,18 @@
       top: -35px;
       right: 0;
     }
+    {{ s_id }} .hero-title{
+      font-size: 40px;
+    }
+    {{ s_id }} .hero-paragraph{
+      font-size: 16px;
+    }
+    {{ s_id }} .hero-cta-area{
+      flex-direction: column;
+    }
+    {{ s_id }} .hero-button{
+      min-width: 200px;
+    }
   }
 {% endif %}
 </style>
@@ -244,8 +276,8 @@
     const heroTl = gsap.timeline({
         scrollTrigger: {
             trigger: ".animating-hero-section",
-            start: "top 69px",
-            end: "bottom 69px",
+            start: "top 59px",
+            end: "bottom 59px",
             scrub: 1,
             pin: true,
             anticipatePin: 1
@@ -380,8 +412,18 @@
     },
     {
       "type": "image_picker",
+      "id": "first_image_mobile",
+      "label": "First Image(Mobile)"
+    },
+    {
+      "type": "image_picker",
       "id": "second_image",
       "label": "Second Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_image_mobile",
+      "label": "Second Image(Mobile)"
     },
     {
       "type": "textarea",
