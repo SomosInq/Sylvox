@@ -46,16 +46,34 @@
   #shopify-section-{{ section.id }} .img-swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background: #DB4B97;
   }
+  #shopify-section-{{ section.id }} .images-slider {
+    opacity: 0;
+    transition: 200ms;
+  }
+  #shopify-section-{{ section.id }} .images-slider.swiper-initialized {
+    opacity: 1;
+  }
   .image-slide-item img{
     aspect-ratio: 384/476;
     object-fit: cover;
     border-radius: 8px;
   }
-  @media screen and (max-width: 768px) {
-    #shopify-section-{{ section.id }}{
+  #image-slider-section .section-heading-title {
+    font-size: 32px;
+  }
+
+  @media screen and (max-width: 1024px) {
+   #image-slider-section .section-heading-title {
+      font-size: 24px;
+    } 
+     #shopify-section-{{ section.id }}{
       padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
       padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+
   }
 </style>
 <div id="image-slider-section">
@@ -96,7 +114,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const feat_swiper = new Swiper('.images-slider', {
-      slidesPerView: 1,
+      slidesPerView: 1.3,
       spaceBetween: 24,
       navigation: {
         nextEl: '.img-swiper-button-next',

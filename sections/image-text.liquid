@@ -381,14 +381,12 @@
     }
   }
   @media screen and (max-width: 768px) {
-    {% if block.settings.mobile_image != nil %}
         .{{ section.id }} .mobile-image {
           display: block;
         }
         .{{ section.id }} .desktop-image.has-mobile-image {
           display: none;
         }
-    {% endif %}
   }
   @media screen and (max-width: 768px) {
     .{{ section.id }} .image-text-blocks-section {
