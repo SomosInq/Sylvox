@@ -4,7 +4,8 @@ let selectors = {
   nav: '.slide-nav',
   childList: '.slide-nav__dropdown',
   allLinks: 'a.slide-nav__link',
-  subNavToggleBtn: '.js-toggle-submenu'
+  subNavToggleBtn: '.js-toggle-submenu',
+  accToggleBtn: '.accordion-submenu'
 }
 
 let classes = {
@@ -40,6 +41,12 @@ class MobileNav extends HTMLElement {
     // Toggle between menu levels
     this.nav.querySelectorAll(selectors.subNavToggleBtn).forEach((btn) => {
       btn.addEventListener('click', this.toggleSubNav.bind(this), { signal: this.abortController.signal })
+    })
+
+    this.nav.querySelectorAll(selectors.accToggleBtn).forEach((btn) => {
+      btn.addEventListener('click', function () {
+        this.classList.toggle('active');
+      })
     })
 
     // Close nav when a normal link is clicked
