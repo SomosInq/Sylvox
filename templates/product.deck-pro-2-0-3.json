@@ -93,7 +93,7 @@
           "type": "tab",
           "settings": {
             "title": "30-Day Money-Back Guarantee",
-            "content": "<p>Lorum Ipsum</p>",
+            "content": "<p>Get a full refund when you return your undamaged products within 30 days - for any reason. Once the item arrives back at the anker warehouse for inspection, the refund process will begin. See our refund policy for more details about what is needed for a smooth refund process.</p>",
             "page": "",
             "icon": "shopify://shop_images/Icons-1_7dff2306-2131-47ec-940b-f388bbd87e9c.png",
             "background_color": "#ffffff"
@@ -103,7 +103,7 @@
           "type": "tab",
           "settings": {
             "title": "Hassle-Free Warranty",
-            "content": "<p>Lorum Ipsum</p>",
+            "content": "<p>Sylvox provides a straightforward, hassle-free warranty to save you some headaches. All pre-owned and refurbished products come with their own unique warranty that you can find on the product listing or contact us at support@sylvox.com with your order receipt for confirmation.</p>",
             "page": "",
             "icon": "shopify://shop_images/Icons-2_34c1d656-d2e2-4bc0-b9f8-8806f7624a0d.png",
             "background_color": "#ffffff"
@@ -113,7 +113,7 @@
           "type": "tab",
           "settings": {
             "title": "Lifetime Customer Support",
-            "content": "<p>Lorum Ipsum</p>",
+            "content": "<p>We'll Always be There for You. If you have any questions or concerns, feel free to contact us at support@sylvox.com.</p>",
             "page": "",
             "icon": "shopify://shop_images/Icons-3_f9535700-ec1e-464e-bff1-8e94ca84fd54.png",
             "background_color": "#ffffff"
@@ -170,7 +170,6 @@
             "alignment": "center",
             "font_size": 48,
             "mobile_font_size": 24
-
           }
         },
         "subheading_wRGFdN": {
@@ -349,6 +348,8 @@
         "image_PRK3G6": {
           "type": "image",
           "settings": {
+            "comparison_heading": "",
+            "comparison_description": "",
             "image": "shopify://shop_images/Property_1_Variant2.png",
             "image_alignment": "center"
           }
@@ -356,6 +357,8 @@
         "image_RXhEGM": {
           "type": "image",
           "settings": {
+            "comparison_heading": "",
+            "comparison_description": "",
             "image": "shopify://shop_images/Property_1_Variant3.png",
             "image_alignment": "center"
           }
@@ -1452,6 +1455,7 @@
         "view_all_url": "",
         "show_view_all_comparisons": false,
         "show_see_all_specs": true,
+        "use_large_images": false,
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
