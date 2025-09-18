@@ -222,6 +222,16 @@
       "unit": "px"
     },
     {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font Size(Mobile)",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "default": 22,
+      "unit": "px"
+    },
+    {
       "type": "color",
       "id": "text_color",
       "label": "Color",
@@ -289,9 +299,20 @@
     {% case block.type %}
 
       {% when 'paragraph' %}
-      <p class="itfb-paragraph mb-4" style="font-size: {{ block.settings.font_size }}px; color:{{ block.settings.text_color }}">
+      <p id="text-{{ block.id }}" class="itfb-paragraph mb-4" style="">
         {{ block.settings.text }}
       </p>
+      <style>
+        #{{ wrapper_id }} #text-{{ block.id }}{
+          font-size: {{ block.settings.font_size }}px;
+          color:{{ block.settings.text_color }}
+        }
+        @media screen and (max-width: 1024px) {
+          #{{ wrapper_id }} #text-{{ block.id }}{
+            font-size: {{ block.settings.font_size_mobile }}px;
+          }
+        }
+      </style>
 
       {% when 'image' %}
         {% if block.settings.image %}
