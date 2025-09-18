@@ -28,16 +28,7 @@
     </div>
   {% if section.settings.show_dots %}
     <div class="media-logo-carousel__dots">
-      {% assign groups = section.blocks.size | divided_by: 4 %}
-      {% assign remainder = section.blocks.size | mod: 4 %}
-      {% if remainder != 0 %}
-        {% assign groups = groups | plus: 1 %}
-      {% endif %}
-
-      {% for i in (1..groups) %}
-        {% assign i0 = i | minus: 1 %}
-        <span class="dot {% if forloop.first %}active{% endif %}" data-group="{{ i0 }}"></span>
-      {% endfor %}
+    
     </div>
   {% endif %}
 
@@ -221,55 +212,66 @@
     }
   {% endstyle %}
 
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
   const carousels = document.querySelectorAll('.media-logo-carousel');
 
+  // Simple debounce helper
+  function debounce(fn, delay) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
   carousels.forEach(section => {
     const carouselEl = section.querySelector('.media-logo-carousel__carousel');
-    const dots = section.querySelectorAll('.media-logo-carousel__dots .dot');
+    const dotsContainer = section.querySelector('.media-logo-carousel__dots');
 
-    if (!carouselEl || dots.length === 0) return;
+    if (!carouselEl || !dotsContainer) return;
 
     // Initialize Flickity
     const flkty = new Flickity(carouselEl, {
       cellAlign: 'left',
       contain: true,
-      pageDots: false,       
-      prevNextButtons: false, 
-      groupCells: 4,
-      draggable: true,  
+      pageDots: false,        
+      prevNextButtons: false,
+      groupCells: 4,      
+      draggable: true,
       wrapAround: true
     });
 
-    // Helper: update active dot
-    function updateActiveDot() {
-      // Get selected cell
-      const selectedCell = flkty.selectedElement;
-      // Find its index in all cells
-      const cellIndex = flkty.cells.findIndex(cell => cell.element === selectedCell);
-      // Compute group index
-      const groupIndex = Math.floor(cellIndex / flkty.options.groupCells);
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === groupIndex);
+    // Build dots dynamically based on number of groups
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      flkty.slides.forEach((slide, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === flkty.selectedIndex ? ' active' : '');
+        dot.dataset.group = i;
+        dot.addEventListener('click', () => flkty.select(i));
+        dotsContainer.appendChild(dot);
       });
     }
 
-    // Update dots on slide change
-    flkty.on('select', updateActiveDot);
-
-    // Dot click navigation
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const groupIndex = parseInt(dot.dataset.group, 10);
-        const targetIndex = groupIndex * flkty.options.groupCells;
-        flkty.select(targetIndex);
+    // Update active dot
+    function updateActiveDot(index) {
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
       });
-    });
+    }
 
-    // Mark first dot active on load
-    updateActiveDot();
+    // Initial dots
+    buildDots();
+
+    // Sync dots on change
+    flkty.on('change', updateActiveDot);
+
+    // Rebuild dots on resize (debounced to avoid too many calls)
+    flkty.on('resize', debounce(() => {
+      buildDots();
+    }, 200));
   });
 });
 </script>

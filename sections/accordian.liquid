@@ -89,7 +89,7 @@
 }
 {% endstylesheet %}
 
-<section class="section_width_{{ section.settings.section_width }}" 
+<section class="section_width_{{ section.settings.section_width }} {{ section.id }}" 
 style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px; margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; background-color: {{ section.settings.bg_color }}; {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | image_url }}); background-size: cover; background-repeat: no-repeat; background-position: center;{% endif %}">
   <div class="faq-container">
     <div class="faq-left">
@@ -103,7 +103,7 @@ style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding
 
     <div class="faq-right">
       {% for block in section.blocks %}
-        <div class="faq-item" onclick="this.classList.toggle('active')">
+        <div class="faq-item">
           <div class="faq-question-row">
             <div class="faq-question">{{ block.settings.question }}</div>
             {% if section.settings.arrow_image != blank %}
@@ -122,15 +122,15 @@ style="padding: {{ section.settings.padding_top }}px {{ section.settings.padding
   </div>
 </section>
 
-{% javascript %}
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', function () {
-      this.classList.toggle('active');
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.{{ section.id }} .faq-item').forEach(item => {
+      item.addEventListener('click', function () {
+        this.classList.toggle('active');
+      });
     });
   });
-});
-{% endjavascript %}
+</script>
 
 {% schema %}
 {
