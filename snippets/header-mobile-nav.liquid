@@ -210,7 +210,7 @@
                   {%- if childlink.url contains '/collections/' -%}
                     <button
                       type="button"
-                      class="slide-nav__button js-toggle-submenu"
+                      class="slide-nav__button accordion-submenu"
                       data-target="tier-3-{{ grand_child_link_id }}"
                       {% if link.active or link.child_active %}
                         data-active="true"
@@ -225,7 +225,7 @@
                       </span>
                     </button>
                     <ul
-                      class="slide-nav__dropdown"
+                      class="slide-nav__dropdown product-list-drop-down"
                       data-parent="tier-3-{{ grand_child_link_id }}"
                       data-level="3"
                     >
