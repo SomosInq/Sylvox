@@ -334,7 +334,8 @@
     padding-bottom: 30px;
   }
   section.usp-accordion-section {
-    padding-top: 0px;
+    padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
   }
   .accordion{
     padding: 24px;
