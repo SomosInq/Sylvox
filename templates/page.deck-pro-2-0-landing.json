@@ -283,6 +283,7 @@
           "settings": {
             "text": "Transform your backyard into a space for relaxation, connection, and entertainment—all year round.",
             "font_size": 32,
+            "font_size_mobile": 22,
             "text_color": "#636363"
           }
         }
@@ -917,7 +918,7 @@
             "slide_padding_left": 40,
             "slide_background": "#20413b",
             "text_color": "#ffffff",
-            "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4_8913a879-70f3-4e6b-82b5-7e7334df99e3.png",
+            "image": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4_f6312985-7fc1-4eb8-ba14-7314707314b9.png",
             "image_fit": "cover",
             "video_url": ""
           }
