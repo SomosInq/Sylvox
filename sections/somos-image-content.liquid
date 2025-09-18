@@ -154,6 +154,11 @@
         { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
         { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 100, "step": 5, "default": 0, "unit": "px" },
         {
+          "type": "image_picker",
+          "id": "title_icon",
+          "label": "Title Icon"
+        },
+        {
           "type": "text",
           "id": "subtitle",
           "label": "Subtitle",
@@ -252,6 +257,10 @@
   line-height: normal;
   letter-spacing: 0.176px;
 }
+#shopify-section-{{ section.id }} .title-icon img {
+  margin: 0 auto;
+  max-width: 60px;
+}
 @media screen and (max-width: 1024px) {
   .text-col h4 {
       font-size: 16px;
@@ -329,6 +338,9 @@
 
         {% capture text_html %}
           <div class="text-col" style="flex: 0 0 {{ content_width }}; max-width: {{ content_width }}; color: {{ block.settings.text_color }};">
+            {% if block.settings.title_icon != blank %}
+              <div class="title-icon"><img src="{{ block.settings.title_icon | image_url }}" alt=""></div>
+            {% endif %}  
             <h4>{{ block.settings.subtitle }}</h4>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
