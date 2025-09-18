@@ -229,6 +229,13 @@ a.button {
     .custom-blog__main-layout .custom-blog__grid .custom-blog__card {
       flex-flow: column!important;
     }
+    .page-deck-pro-2-0-landing .slider-arrows button.slider-arrow {
+      height: 32px;
+      width: 32px;
+    }
+    .new-banner-slider .slider-carousel {
+      padding-bottom: 8px;
+    }
 
 
   }
