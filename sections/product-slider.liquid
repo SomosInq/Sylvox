@@ -18,8 +18,8 @@
     flex-direction: {% if section.settings.image_position == 'right' %}row-reverse{% else %}row{% endif %};
   }
 
-  .product-slider-left-image { flex: 1 1 30%; }
-  .product-slider-right-content { flex: 1 1 65%; }
+  .product-slider-left-image { flex: 1 1 30%;z-index: 9; }
+  .product-slider-right-content { flex: 1 1 65%; max-width: 65%; }
 
   .tabs-header-row {
     display: flex;
@@ -50,7 +50,6 @@
 
   .product-carousel {
     width: 100%;
-    display: none;
   }
 
   .product-carousel .flickity-button:focus {
@@ -114,6 +113,7 @@
     .product-slider-right-content {
       flex: 1 1 100%;
       width: 100%;
+      max-width: 100%;
     }
     .tabs-header-row {
       flex-direction: column;
@@ -151,6 +151,39 @@
         font-size: 21px;
       }
   }
+  #shopify-section-{{ section.id }}{
+    overflow: hidden
+  }
+  .product-swiper-container{
+    width: 100%;
+    position: relative;
+  }
+  .product-swiper-container::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    pointer-events: none;
+  }
+  .product-carousel-swiper.swiper{
+    overflow: visible;
+    z-index: 1;
+  }
+  .product-carousel-swiper .swiper-wrapper .product-card {
+    width: 35%;
+    margin-right: 24px;
+  }
+  @media (max-width: 768px) {
+    .product-carousel-swiper .swiper-wrapper .product-card {
+      width: 75%;
+      margin-right: 15px;
+    }
+  }
 </style>
 
 <section class="product-slider-section section_width_{{ section.settings.section_width }}">
@@ -179,84 +212,99 @@
       {% endif %}
     </div>
 
-    {% assign first = true %}
-    {% for block in section.blocks %}
-      {% assign block_collection = collections[block.settings.collection] %}
-      <div class="product-carousel js-flickity"
-        data-tab-content="{{ block.id }}"
-        style="display: {% if first %}{% else %}none{% endif %};"
-        data-flickity-options='{
-          "contain": true,
-          "wrapAround": true,
-          "pageDots": false,
-          "cellAlign": "left",
-          "groupCells": false
-        }'>
-        {% if block_collection != blank %}
-          {% for product in block_collection.products limit: 10 %}
-            <div class="product-card">
-              {% render 'product-card-with-size', product: product %}
-            </div>
-          {% endfor %}
-        {% else %}
-          <p>No products found in this collection.</p>
-        {% endif %}
-      </div>
-      {% assign first = false %}
-    {% endfor %}
+    <div class="product-swiper-container">
+      {% assign first = true %}
+      {% for block in section.blocks %}
+        {% assign block_collection = collections[block.settings.collection] %}
+        <div class="product-carousel-swiper swiper"
+          data-tab-content="{{ block.id }}"
+          style="display: {% if first %}{% else %}none{% endif %};">
+          <div class="swiper-wrapper">
+            {% if block_collection != blank %}
+              {% for product in block_collection.products limit: 10 %}
+                <div class="product-card swiper-slide">
+                  {% render 'product-card-with-size', product: product %}
+                </div>
+              {% endfor %}
+            {% else %}
+              <p>No products found in this collection.</p>
+            {% endif %}
+          </div>
+        </div>
+        {% assign first = false %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const section = document.querySelector('.product-slider-section');
-    const flickityInstances = {};
+    // const flickityInstances = {};
 
-    const initFlickity = (carousel) => {
-      const options = JSON.parse(carousel.dataset.flickityOptions);
-      return new Flickity(carousel, options);
-    };
+    // const initFlickity = (carousel) => {
+    //   const options = JSON.parse(carousel.dataset.flickityOptions);
+    //   return new Flickity(carousel, options);
+    // };
 
     const toggleTabs = (targetId) => {
       section.querySelectorAll('.tab-toggle').forEach(btn =>
         btn.classList.toggle('active', btn.dataset.tab === targetId)
       );
 
-      section.querySelectorAll('.product-carousel').forEach(carousel => {
-        const isTarget = carousel.dataset.tabContent === targetId;
-        carousel.style.display = isTarget ? 'block' : 'none';
-
-        if (isTarget) {
-          if (!flickityInstances[targetId]) {
-            flickityInstances[targetId] = initFlickity(carousel);
-          } else {
-            flickityInstances[targetId].resize();
-          }
-        }
+      document.querySelectorAll('[data-tab-content]').forEach(tab => {
+        tab.style.display = 'none';
       });
+      setTimeout(() => {
+        document.querySelector(`[data-tab-content="${targetId}"]`).style.display = 'block';
+      }, 10);
+
+      // section.querySelectorAll('.product-carousel').forEach(carousel => {
+      //   const isTarget = carousel.dataset.tabContent === targetId;
+      //   carousel.style.display = isTarget ? 'block' : 'none';
+
+      //   if (isTarget) {
+      //     if (!flickityInstances[targetId]) {
+      //       flickityInstances[targetId] = initFlickity(carousel);
+      //     } else {
+      //       flickityInstances[targetId].resize();
+      //     }
+      //   }
+      // });
     };
 
     section.querySelectorAll('.tab-toggle').forEach(tab => {
       tab.addEventListener('click', () => toggleTabs(tab.dataset.tab));
     });
 
-    const flickityScript = () => {
-      const firstCarousel = section.querySelector('.product-carousel');
-      if (firstCarousel) {
-        const id = firstCarousel.dataset.tabContent;
-        flickityInstances[id] = initFlickity(firstCarousel);
-        firstCarousel.style.display = 'block';
-      }
-    };
+    // const flickityScript = () => {
+    //   const firstCarousel = section.querySelector('.product-carousel');
+    //   if (firstCarousel) {
+    //     const id = firstCarousel.dataset.tabContent;
+    //     flickityInstances[id] = initFlickity(firstCarousel);
+    //     firstCarousel.style.display = 'block';
+    //   }
+    // };
 
-    if (typeof Flickity === 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
-      script.onload = flickityScript;
-      document.head.appendChild(script);
-    } else {
-      flickityScript();
-    }
+    // if (typeof Flickity === 'undefined') {
+    //   const script = document.createElement('script');
+    //   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js';
+    //   script.onload = flickityScript;
+    //   document.head.appendChild(script);
+    // } else {
+    //   flickityScript();
+    // }
+
+    const product_carousel_swiper = new Swiper('.product-carousel-swiper', {
+      slidesPerView: 1.5,
+      spaceBetween: 15,
+      breakpoints: {
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 24,
+        }
+      }
+    });
   });
 </script>
 
