@@ -103,15 +103,23 @@
     {% assign blog_handle = section.settings.blog | default: 'news' %}
     {% assign blog_posts = blogs[blog_handle].articles | slice: 0, 10 %}
     {% if blog_posts.size > 0 %}
-      <div class="slider-carousel">
-        <div class="slider-track">
+      <div class="article-swiper-container">
+      <div class="articles-swiper-slider swiper">
+        <div class="swiper-wrapper">
           {% for article in blog_posts %}
+            <div class="swiper-slide">
             <a href="{{ article.url }}">
               <div class="slider-slide" data-index="{{ forloop.index0 }}">
                 <div class="blog-post-card">
-                  {% if article.image %}
-                    <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}">
-                  {% endif %}
+                  <div class="blog-post-image-container">
+                    {% if article.image %}
+                      <img src="{{ article.image | image_url: width: 800 }}" alt="{{ article.title }}">
+                    {% endif %}
+                    <span class="artcile-blog">
+                      {%- assign article_blog = article.url | split: '/' -%}
+                      {{- article_blog[2] -}}
+                    </span>
+                  </div>
                   <div class="blog-post-content">
                     {% comment %}
                       <div class="blog-post-tags">
@@ -136,20 +144,25 @@
                 </div>
               </div>
             </a>
+            </div>
           {% endfor %}
         </div>
       </div>
-
+      </div>
       <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}">
-        <div class="slider-dots">
-          {% for article in blog_posts %}
-            <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
-          {% endfor %}
-        </div>
+        <div class="articles-swiper-pagination"></div>
         {% if section.settings.show_arrows %}
-          <div class="slider-arrows">
-            <button class="slider-arrow prev">‹</button>
-            <button class="slider-arrow next">›</button>
+          <div class="articles-slider-arrows">
+            <button class="slider-arrow prev articles-swiper-button-prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M0.558235 5.44125H0.556986L5.11449 10C5.34882 9.76559 5.48047 9.44771 5.48047 9.11625C5.48047 8.78479 5.34882 8.46691 5.11449 8.2325L1.88324 5L5.11324 1.7675C5.34757 1.53309 5.47922 1.2152 5.47922 0.88375C5.47922 0.552294 5.34757 0.23441 5.11324 0L0.555735 4.5575C0.438566 4.6747 0.372744 4.83365 0.372744 4.99937C0.372744 5.1651 0.438566 5.32404 0.555735 5.44125H0.558235Z" fill="#636363"/>
+              </svg>
+            </button>
+            <button class="slider-arrow next articles-swiper-button-next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M5.44176 4.55875H5.44301L0.885514 0C0.651176 0.234409 0.519531 0.552295 0.519531 0.88375C0.519531 1.21521 0.651176 1.53309 0.885514 1.7675L4.11676 5L0.886764 8.2325C0.652426 8.46691 0.520781 8.7848 0.520781 9.11625C0.520781 9.44771 0.652426 9.76559 0.886764 10L5.44426 5.4425C5.56143 5.3253 5.62726 5.16635 5.62726 5.00063C5.62726 4.8349 5.56143 4.67596 5.44426 4.55875H5.44176Z" fill="#636363"/>
+              </svg>
+            </button>
           </div>
         {% endif %}
       </div>
@@ -157,35 +170,27 @@
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const section = document.getElementById('blog-slider-{{ section.id }}');
-      if (!section) return;
-
-      const track = section.querySelector('.slider-track');
-      const slides = section.querySelectorAll('.slider-slide');
-      const dots = section.querySelectorAll('.slider-dot');
-      const prevArrow = section.querySelector('.slider-arrow.prev');
-      const nextArrow = section.querySelector('.slider-arrow.next');
-
-      let current = 0;
-
-      function goTo(index) {
-        if (index < 0 || index >= slides.length) return;
-        current = index;
-        const slide = slides[index];
-        track.scrollTo({ left: slide.offsetLeft - 12, behavior: 'smooth' });
-        slides.forEach((s, i) => s.classList.toggle('active', i === index));
-        dots.forEach((d, i) => d.classList.toggle('active', i === index));
-      }
-
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => goTo(i));
+    document.addEventListener("DOMContentLoaded", function () {
+      const articles_slider = new Swiper('.articles-swiper-slider', {
+        slidesPerView: 1.2,
+        spaceBetween: 24,
+        navigation: {
+          nextEl: '.articles-swiper-button-next',
+          prevEl: '.articles-swiper-button-prev',
+        },
+        pagination: {
+          el: '.articles-swiper-pagination',
+          clickable: true
+        },
+         breakpoints: {
+          767: {
+            slidesPerView: 2
+          },
+          1199: {
+            slidesPerView: 3
+          }
+        }
       });
-
-      prevArrow?.addEventListener('click', () => goTo(current - 1));
-      nextArrow?.addEventListener('click', () => goTo(current + 1));
-
-      goTo(0);
     });
   </script>
 
@@ -229,8 +234,8 @@
 
   {% paginate blog.articles by 9 %}
     <!-- Blog Grid -->
-    <div class="custom-blog__main-layout" style="display: flex; gap: 40px; max-width: 1608px; margin: 0 auto 60px;">
-      <div class="custom-blog__grid" style="flex: 3;">
+    <div class="custom-blog__main-layout">
+      <div class="custom-blog__grid">
         {% for article in blog.articles %}
           <a href="{{ article.url }}">
             <div class="custom-blog__card" data-category="{{ article.tags | join: ' ' }}">
@@ -269,20 +274,33 @@
 
       <aside class="custom-blog__sidebar">
         <details class="custom-blog__dropdown">
-          <summary class="custom-blog__dropdown-title">Sort By</summary>
+          <summary class="custom-blog__dropdown-title">
+            <span>Sort By</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+              <path d="M11.7473 7.75861L6.50025 1.85587L1.25317 7.75861C1.07815 7.95554 0.815247 8.04055 0.563499 7.98162C0.31175 7.92269 0.109402 7.72876 0.0326769 7.47289C-0.0440484 7.21702 0.0165058 6.93809 0.191529 6.74115L5.96918 0.241439C6.10591 0.0875377 6.29837 2.7531e-07 6.5 2.84124e-07C6.70164 2.92938e-07 6.8941 0.0875377 7.03083 0.241439L12.8085 6.74115C13.079 7.04559 13.0607 7.52014 12.7676 7.80111C12.4744 8.08207 12.0179 8.06304 11.7473 7.75861Z" fill="#2C2C2C"/>
+            </svg>
+          </summary>
           <ul class="custom-blog__dropdown-list">
             <li>
-              <label><input type="radio" name="sort" checked> Latest</label>
+              <label><input type="radio" name="filter" value="all"> Latest</label>
             </li>
             <li>
-              <label><input type="radio" name="sort"> Sylvox Top Picks</label>
+              <label><input type="radio" name="filter" value="top-picks"> Sylvox Top Picks</label>
             </li>
           </ul>
         </details>
 
         <details class="custom-blog__dropdown">
-          <summary class="custom-blog__dropdown-title">Filter</summary>
+          <summary class="custom-blog__dropdown-title">
+            <span>Filter</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="8" viewBox="0 0 13 8" fill="none">
+              <path d="M11.7473 7.75861L6.50025 1.85587L1.25317 7.75861C1.07815 7.95554 0.815247 8.04055 0.563499 7.98162C0.31175 7.92269 0.109402 7.72876 0.0326769 7.47289C-0.0440484 7.21702 0.0165058 6.93809 0.191529 6.74115L5.96918 0.241439C6.10591 0.0875377 6.29837 2.7531e-07 6.5 2.84124e-07C6.70164 2.92938e-07 6.8941 0.0875377 7.03083 0.241439L12.8085 6.74115C13.079 7.04559 13.0607 7.52014 12.7676 7.80111C12.4744 8.08207 12.0179 8.06304 11.7473 7.75861Z" fill="#2C2C2C"/>
+            </svg>
+          </summary>
           <ul class="custom-blog__dropdown-list">
+            <li>
+              <label><input type="radio" name="filter" value="all"> All</label>
+            </li>
             {% assign tag_options = blog.all_tags %}
             {% for tag in tag_options %}
               <li>
@@ -322,6 +340,157 @@
     </div>
   {% endpaginate %}
 </section>
+
+<style>
+  #shopify-section-{{ section.id }} .article-swiper-container{
+    margin: 0 -24px;
+  }
+  @media screen and (min-width: 767px) {
+    #shopify-section-{{ section.id }} .article-swiper-container{
+      margin: 0 -20px;
+    }
+  }
+  
+  #shopify-section-{{ section.id }} .articles-swiper-slider{
+    padding: 30px 24px;
+  }
+  #shopify-section-{{ section.id }} .articles-swiper-pagination span.swiper-pagination-bullet {
+    width: 25px;
+    height: 2px;
+    border-radius: 0;
+  }
+  #shopify-section-{{ section.id }} .articles-swiper-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background-color: #db4b97;
+  }
+  #shopify-section-{{ section.id }} .articles-slider-arrows{
+    display: flex;
+    gap: 4px;
+  }
+  #shopify-section-{{ section.id }} .articles-slider-arrows button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #636363;
+  }
+  #shopify-section-{{ section.id }} .blog-post-image-container{
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .blog-post-image-container span.artcile-blog {
+    position: absolute;
+    background: #336256;
+    bottom: 20px;
+    left: 20px;
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  #shopify-section-{{ section.id }} .slider-controls{
+    padding: 0 !important;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Elements
+  const articleGrid = document.querySelector('.custom-blog__grid');
+  const filterInputs = document.querySelectorAll('input[name="filter"]');
+  const allFilterInput = document.querySelector('input[value="all"]');
+  const paginationContainer = document.querySelector('.custom-blog__pagination');
+  const blogHandle = window.location.pathname.split('/')[2]; // Extract blog handle from URL
+  
+  // Add event listeners to filter inputs
+  filterInputs.forEach(input => {
+    input.addEventListener('change', handleFilterChange);
+  });
+  
+  if (allFilterInput) {
+    allFilterInput.addEventListener('change', handleFilterChange);
+  }
+
+  function handleFilterChange(e) {
+    const selectedValue = e.target.value;
+    if (selectedValue) {
+      fetchFilteredArticles(selectedValue);
+    }
+  }
+
+  function toHandleCase(str) {
+    return str
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]+/g, '')
+        .replace(/--+/g, '-')
+        .replace(/^-+|-+$/g, '');
+  }
+
+  function fetchFilteredArticles(tag) {
+    // Show loading state
+    const originalContent = articleGrid.innerHTML;
+    articleGrid.innerHTML = '<div class="loading" style="text-align: center; padding: 2rem; font-size: 1.1rem; color: #666;">Loading articles...</div>';
+    
+    console.log(tag)
+    let url = `/blogs/${blogHandle}/tagged/${toHandleCase(tag)}`;
+    if (tag === 'all') {
+      url = `/blogs/${blogHandle}`;
+    }
+    
+    
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        // Parse the HTML response
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Extract the grid content from the response
+        const newGrid = doc.querySelector('.custom-blog__grid');
+        const newPagination = doc.querySelector('.custom-blog__pagination');
+        
+        if (newGrid) {
+          // Update the article grid
+          articleGrid.innerHTML = newGrid.innerHTML;
+          
+          // Update pagination if exists
+          if (newPagination && paginationContainer) {
+            paginationContainer.innerHTML = newPagination.innerHTML;
+          } else if (paginationContainer) {
+            paginationContainer.innerHTML = '';
+          }
+          
+          // Update URL without reloading the page
+          window.history.pushState({}, '', url);
+        } else {
+          // No results found
+          articleGrid.innerHTML = '<div class="no-results" style="text-align: center; padding: 2rem; font-size: 1.1rem; color: #666;">No articles found for this tag.</div>';
+          if (paginationContainer) {
+            paginationContainer.innerHTML = '';
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching articles:', error);
+        articleGrid.innerHTML = '<div class="error" style="text-align: center; padding: 2rem; font-size: 1.1rem; color: #d32f2f;">Error loading articles. Please try again.</div>';
+        // Revert to original content on error
+        setTimeout(() => {
+          articleGrid.innerHTML = originalContent;
+        }, 2000);
+      });
+  }
+
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', function() {
+    window.location.reload();
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -634,7 +803,7 @@
     align-items: center;
     gap: 16px;
     color: #fff;
-    font-size: 14px;
+    font-size: 18px;
   }
   .custom-blog__social-icons {
     display: flex;
@@ -701,6 +870,8 @@
     flex-direction: column;
     gap: 32px;
     max-width: 280px;
+    min-width: 200px;
+    flex: 1 1 280px;
   }
 
   .custom-blog__dropdown {
@@ -722,13 +893,8 @@
     align-items: center;
   }
 
-  .custom-blog__dropdown-title::after {
-    content: '⌄';
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-  }
 
-  .custom-blog__dropdown[open] .custom-blog__dropdown-title::after {
+  .custom-blog__dropdown[open] svg {
     transform: rotate(180deg);
   }
 
@@ -739,9 +905,14 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-top: 50px;
   }
 
-  .custom-blog__dropdown-list li label {
+  .custom-blog__dropdown-list li {
+    margin-bottom: 25px;
+  }
+
+  #shopify-section-{{ section.id }} .custom-blog__dropdown-list li label {
     color: var(--Dark-Grey, #636363);
     font-size: 16px;
     font-weight: 300;
@@ -751,6 +922,8 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    margin-bottom: 0;
+    text-transform: capitalize;
   }
 
   .custom-blog__dropdown-list input[type="radio"] {
@@ -765,10 +938,10 @@
   .custom-blog__dropdown-list input[type="radio"]:checked::before {
     content: '';
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 6px;
-    height: 6px;
+    top: 1px;
+    left: 1px;
+    width: 10px;
+    height: 10px;
     background: #636363;
     border-radius: 50%;
   }
@@ -786,7 +959,7 @@
 
   .slider-slide {
     flex: 0 0 auto;
-    width: {{ section.settings.slide_width }}px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -817,7 +990,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 3rem;
     }
 
     .slider-dots {
@@ -888,6 +1060,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 1.2;
+    min-height: 72px;
   }
 
   .custom-blog .slider-text {
@@ -964,7 +1137,7 @@
     color: white;
   }
   .custom-blog__heading {
-    font-size: 48px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1046,28 +1219,34 @@
     border-radius: 9999px;
     cursor: pointer;
   }
-  .custom-blog__grid {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr) !important;
-    gap: 48px 24px;
+  .custom-blog__main-layout{
+    display: flex;
+    gap: 25px;
     max-width: 1608px;
+    margin: 0 auto;
+  }
+  .custom-blog__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     margin: 0 auto 60px;
     padding: 0;
+    flex: 1 1 1250px;
   }
   .custom-blog__card {
-  background: #fff;
-      display: flex;
-      flex-direction: row !important;
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-      /* max-width: 519.98px; */
-      width: 100%;
-      display: flex;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    /* max-width: 519.98px; */
+    width: 100%;
+    display: flex;
   }
   .slider-slide:hover,
   .custom-blog__card:hover {
-    box-shadow: 2px 2px 7px 0px #0000001f;
+    box-shadow: 0 4px 28.5px 0 rgba(32, 65, 59, 0.14);
   }
   .slider-slide:hover .blog-post-title,
   .custom-blog__card:hover .custom-blog__card-title {
@@ -1075,12 +1254,13 @@
   }
   .custom-blog__card-image {
     position: relative;
+        flex: 1 1 520px;
   }
   .custom-blog__card-image img {
-      width: auto;
+      width: 100%;
       height: 100%;
-      min-height: 288px;
-      min-width: 520px;
+      aspect-ratio: 520/288;
+      min-width: 340px;
       object-fit: cover;
   }
   .custom-blog__card-content {
@@ -1092,21 +1272,20 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 10px;
-    height: 100%;
+    flex: 1 1 721px;
   }
   .custom-blog__card-image .custom-blog__card-label {
+    background: #336256;
     position: absolute;
     bottom: 20px;
     left: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #ffffff;
-    /* background: #1a1a1a; */
-    /* padding: 6px 12px; */
-    text-transform: capitalize;
-    letter-spacing: 0.2px;
-    border-radius: 0;
     z-index: 2;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: normal;
+    padding: 6px 10px;
+    text-transform: uppercase;
   }
   .custom-blog__card-date {
   color: var(--Dark-Grey, #636363);
@@ -1128,12 +1307,11 @@
   .custom-blog__card-excerpt-arrow {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
     align-items: flex-end;
     gap: 12px;
   }
   .custom-blog__card-excerpt {
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     line-height: 1.6;
@@ -1168,7 +1346,18 @@
   .custom-blog__pagination .current {
     font-weight: bold;
   }
-
+  @media screen and (max-width: 1024px) {
+    .custom-blog__card {
+      flex-direction: column
+    }
+    .custom-blog__dropdown-list{
+      margin-left: 8px;
+    }
+    .custom-blog__card-image,
+    .custom-blog__card-content {
+      flex: auto;
+    }
+  }
   @media screen and (max-width: 767px) {
     .custom-blog__banner {
       height: 600px;
@@ -1201,5 +1390,9 @@
       margin: 40px 24px;
       gap: 24px;
     }
+    .custom-blog .blog-post-title{
+      font-size: 16px;
+    }
+    
   }
 {% endstyle %}

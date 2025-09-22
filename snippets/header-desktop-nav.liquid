@@ -171,10 +171,8 @@
               {%- if is_collection and show_mega_products -%}
                 <div class="megamenu__featured">
                   <div class="product-grid">
-                    {%- liquid
-                      assign mega_product = collection_drop.products.first
-                      render 'product-grid-item', product: mega_product, sizeVariable: '19vw'
-                    -%}
+                    {% assign mega_product = collection_drop.products.first %}
+                    {% render 'product-card-with-size', product: mega_product %}
                   </div>
                 </div>
               {%- endif -%}
