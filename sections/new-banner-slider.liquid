@@ -1,10 +1,12 @@
 {% comment %} New Banner Slider - rewritten using scroll-based carousel (no Flickity) {% endcomment %}
 
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
+
 <section id="new-banner-slider-{{ section.id }}"
   class="new-banner-slider section_width_{{ section.settings.section_width }}"
   style="
   background-color: {{ section.settings.background_color }};
-    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+    margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px; padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
   "
 >
   <div class="slider-text section_content_width_{{ section.settings.section_content_width }} {{ section.settings.text_alignment }}">
@@ -51,6 +53,7 @@
 </section>
 
 <style>
+  #new-banner-slider-{{ section.id }} { overflow: hidden; }
   .slider-text.left { text-align: left; }
   .slider-text.center { text-align: center; }
   .slider-text.right { text-align: right; }

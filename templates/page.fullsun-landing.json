@@ -37,9 +37,9 @@
           "settings": {
             "image": "shopify://shop_images/png__1_2_1_1.png",
             "image_alignment": "center",
-            "image_width": 6,
-            "use_mobile_width": false,
-            "mobile_image_width": 100
+            "image_width": 4,
+            "use_mobile_width": true,
+            "mobile_image_width": 13
           }
         },
         "title_p3eFxr": {
@@ -84,7 +84,7 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "section_width": "standard",
-        "section_content_width": "standard",
+        "section_content_width": "medium",
         "narrow_container": false,
         "alignment": "center",
         "padding_top": 60,
@@ -330,7 +330,7 @@
         "view_all_text": "View All Comparisons",
         "view_all_url": "",
         "show_view_all_comparisons": false,
-        "show_see_all_specs": false,
+        "show_see_all_specs": true,
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
@@ -1161,6 +1161,7 @@
         "view_all_url": "",
         "show_view_all_comparisons": true,
         "show_see_all_specs": true,
+        "use_large_images": true,
         "heading_1": "Outdoor Areas",
         "heading_2": "TV OS",
         "heading_3": "Peak Brightness",

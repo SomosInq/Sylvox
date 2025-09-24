@@ -39,9 +39,11 @@
   .product-layout.image-left {
     flex-direction: row-reverse;
   }
-  .product-content,
+  .product-content {
+    width: 60%;
+  }
   .product-image {
-    width: 50%;
+    width: 40%;
   }
   .product-content {
     padding: 5em;
@@ -115,6 +117,12 @@
     padding: 0!important;
     margin-bottom: 2rem!important;
   }
+
+  .page-fullsun-landing .{{ section.id }} .section-header,
+  .page-partialsun-landing .{{ section.id }} .section-header {
+    justify-content: center;
+  }
+
   .{{ section.id }} .section-header h2 {
     margin-bottom: 0;
   }
@@ -136,24 +144,58 @@
       max-width: 1218px;
     }
   }
-  @media (max-width: 749px) {
+  
+  @media (max-width: 1024px) {
+    .{{ section.id }} {
+      padding-block: 30px!important;
+    }
+    .{{ section.id }} .section-header .main_title {
+      font-size: 28px!important;
+    }
     .product-layout {
-      flex-direction: column !important;
+      flex-direction: column-reverse !important;
+      gap: .5rem;
+    }
+    .product-content,
+    .product-content > * {
+      text-align: center !important;
+      justify-content: center!important;
     }
     .product-content,
     .product-image {
       width: 100%;
     }
+    .icon-list {
+      margin-block: 1.5rem;
+      max-width: 500px;
+      margin-inline: auto;
+    }
     .product-content {
       padding: 30px 0px !important;
     }
-    .section_width_full h2 {
+    .{{ section.id }} .section_width_full h2 {
       padding: 0 16px;
       font-size: 30px;
     }
     .icon-item {
       flex: 1 1 46%;
       text-align: center;
+    }
+
+    .{{ section.id }} .product-image img {
+      max-width: 60%;
+      margin-bottom: 0;
+      margin-inline: auto;
+    }
+
+    .{{ section.id }} .product-content .price {
+      font-size: 21px;
+    }
+    .{{ section.id }} .product-content h2 {
+      font-size: 24px;
+    }
+    .{{ section.id }} .product-content h2 span {
+      font-size: 18px;
     }
   }
 </style>
@@ -172,20 +214,21 @@
   data-hide-tablet="{{ section.settings.hide_tablet }}"
   data-hide-mobile="{{ section.settings.hide_mobile }}"
 >
-  <div class="section-header section_content_width_standard">
-    <h2
-      class="main_title"
-      style="text-align: center; color: {{ section.settings.big_title_color }}; font-size: {{ section.settings.big_title_size }}px;"
-    >
-      {{ section.settings.big_title }}
-    </h2>
-
-    {% if section.settings.header_button_text and section.settings.header_button_link %}
-      <a href="{{ section.settings.header_button_link }}" class="section-header__link">
-        {{ section.settings.header_button_text }}
-      </a>
-    {% endif %}
-  </div>
+  {% if section.settings.big_title != blank %}
+    <div class="section-header section_content_width_standard">
+      <h2
+        class="main_title"
+        style="text-align: center; color: {{ section.settings.big_title_color }}; font-size: {{ section.settings.big_title_size }}px;"
+      >
+        {{ section.settings.big_title }}
+      </h2>
+      {% if section.settings.header_button_text and section.settings.header_button_link %}
+        <a href="{{ section.settings.header_button_link }}" class="section-header__link">
+          {{ section.settings.header_button_text }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
 
   <div
     class="section_content_width_{{ section.settings.section_content_width }}"

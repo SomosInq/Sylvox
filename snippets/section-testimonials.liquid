@@ -13,7 +13,7 @@
   {% render 'section-testimonials' %}
 {%- endcomment -%}
 
-{% stylesheet %}
+<style>
 .testimonials-section .flickity-page-dots {
     position: unset !important;
     width: 10%;
@@ -40,7 +40,18 @@ background: rgba(0, 0, 0, 0.10);
     opacity: .25;
     cursor: pointer;
 }
-{% endstylesheet %}
+@media screen and (max-width: 768px) {
+  .testimonials-section.testimonials-{{ section.id }} {
+      padding-inline: 0 !important;
+  }
+  .testimonials-section.testimonials-{{ section.id }} .slideshow-wrapper{
+      margin-top: 30px;
+  }
+  .testimonials-section.testimonials-{{ section.id }} .slideshow-wrapper .flickity-page-dots{
+      padding-top: 0!important;
+  }
+}
+</style>
 
 {%- liquid
   assign align_text = align_text | default: section.settings.align_text | default: 'center'

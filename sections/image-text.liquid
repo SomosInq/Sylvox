@@ -32,6 +32,7 @@
       "default": "standard",
       "options": [
         { "value": "standard", "label": "50% Width" },
+        { "value": "medium", "label": "73% Width" },
         { "value": "full", "label": "Full Width" }
       ]
     },
@@ -317,13 +318,13 @@
       {% when 'image' %}
         {% if block.settings.image %}
           <style>
-              #{{ wrapper_id }} .image-text-blocks-section .image-block > img {
+              #{{ wrapper_id }} .image-text-blocks-section .{{ block.id }} > img {
               --block-image-width: {{ block.settings.image_width | default: 100 }}%
               }
 
               {% if block.settings.use_mobile_width %}
                 @media screen and (max-width: 1024px) {   
-                  #{{ wrapper_id }} .image-text-blocks-section .image-block > img {
+                  #{{ wrapper_id }} .image-text-blocks-section .{{ block.id }} > img {
                   --block-image-width: {{ block.settings.mobile_image_width | default: 100 }}%
                   }
                 }
@@ -335,7 +336,7 @@
             {% elsif image_align == 'right' %} justify-end
             {% else %} justify-center
             {% endif %}
-            flex mb-4">
+            flex mb-4 {{ block.id }}">
             <img
               src="{{ block.settings.image | image_url: width: 1200 }}"
               alt="Section image"
@@ -396,6 +397,19 @@
 .{{ section.id }} .mobile-image {
   display: none;
 }
+.{{ section.id }} h2 {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.{{ section.id }} .btn {
+  font-size: 16px;
+}
+  @media screen and (min-width: 1024px) {
+    .image-text-blocks-section.content_medium > * {
+      width: 73%;
+      margin: auto;
+    }
+  }
   @media screen and (max-width: 1024px) {
     .{{ section.id }} h2 {
       font-size: 24px!important;

@@ -2,6 +2,9 @@
   Custom section: Feature Banner Tabs | feature-banner-tabs.liquid
 {% endcomment %}
 
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js' | script_tag }}
+
 <div 
   class="feature-banner-tabs" 
   id="feature-banner-tabs-{{ section.id }}"
@@ -309,6 +312,9 @@
   }
   .feature-banner-tabs__slide {
     width: 80%;
+  }
+  .feature-banner-tabs__icon {
+    width: 9%!important;
   }
 }
 @media screen and (max-width: 767px) {
