@@ -37,10 +37,11 @@
     {% assign blog_handle = section.settings.blog | default: 'news' %}
     {% assign blog_posts = blogs[blog_handle].articles | slice: 0, 10 %}
     {% if blog_posts.size > 0 %}
-      <div class="slider-carousel">
-        <div class="slider-track">
+      <div class="article-swiper-container">
+      <div class="articles-swiper-slider swiper">
+        <div class="swiper-wrapper">
           {% for article in blog_posts %}
-            <div class="slider-slide" data-index="{{ forloop.index0 }}">
+            <div class="swiper-slide">
               <a href="{{ article.url }}">
                 <div class="blog-post-card">
                   {% if article.image %}
@@ -72,19 +73,21 @@
           {% endfor %}
         </div>
       </div>
-
+      </div>
       <div class="slider-controls section_content_width_{{ section.settings.section_content_width }}">
-        {% if section.settings.show_dots %}
-          <div class="slider-dots">
-            {% for article in blog_posts %}
-              <span class="slider-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
-            {% endfor %}
-          </div>
-        {% endif %}
+        <div class="articles-swiper-pagination"></div>
         {% if section.settings.show_arrows %}
-          <div class="slider-arrows">
-            <button class="slider-arrow prev">‹</button>
-            <button class="slider-arrow next">›</button>
+          <div class="articles-slider-arrows">
+            <button class="slider-arrow prev articles-swiper-button-prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M0.558235 5.44125H0.556986L5.11449 10C5.34882 9.76559 5.48047 9.44771 5.48047 9.11625C5.48047 8.78479 5.34882 8.46691 5.11449 8.2325L1.88324 5L5.11324 1.7675C5.34757 1.53309 5.47922 1.2152 5.47922 0.88375C5.47922 0.552294 5.34757 0.23441 5.11324 0L0.555735 4.5575C0.438566 4.6747 0.372744 4.83365 0.372744 4.99937C0.372744 5.1651 0.438566 5.32404 0.555735 5.44125H0.558235Z" fill="#636363"/>
+              </svg>
+            </button>
+            <button class="slider-arrow next articles-swiper-button-next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="10" viewBox="0 0 6 10" fill="none">
+                <path d="M5.44176 4.55875H5.44301L0.885514 0C0.651176 0.234409 0.519531 0.552295 0.519531 0.88375C0.519531 1.21521 0.651176 1.53309 0.885514 1.7675L4.11676 5L0.886764 8.2325C0.652426 8.46691 0.520781 8.7848 0.520781 9.11625C0.520781 9.44771 0.652426 9.76559 0.886764 10L5.44426 5.4425C5.56143 5.3253 5.62726 5.16635 5.62726 5.00063C5.62726 4.8349 5.56143 4.67596 5.44426 4.55875H5.44176Z" fill="#636363"/>
+              </svg>
+            </button>
           </div>
         {% endif %}
       </div>
@@ -92,42 +95,93 @@
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const section = document.getElementById('blog-slider-{{ section.id }}');
-      if (!section) return;
-
-      const track = section.querySelector('.slider-track');
-      const slides = section.querySelectorAll('.slider-slide');
-      const dots = section.querySelectorAll('.slider-dot');
-      const prevArrow = section.querySelector('.slider-arrow.prev');
-      const nextArrow = section.querySelector('.slider-arrow.next');
-
-      let current = 0;
-
-      function goTo(index) {
-        if (index < 0 || index >= slides.length) return;
-        current = index;
-        const slide = slides[index];
-        track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' }); // removed offset
-        slides.forEach((s, i) => s.classList.toggle('active', i === index));
-        dots.forEach((d, i) => d.classList.toggle('active', i === index));
-      }
-
-      // Ensure track starts at beginning
-      track.scrollLeft = 0;
-      goTo(0);
-
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => goTo(i));
+    document.addEventListener("DOMContentLoaded", function () {
+      const articles_slider = new Swiper('.articles-swiper-slider', {
+        slidesPerView: 1.2,
+        spaceBetween: 24,
+        navigation: {
+          nextEl: '.articles-swiper-button-next',
+          prevEl: '.articles-swiper-button-prev',
+        },
+        pagination: {
+          el: '.articles-swiper-pagination',
+          clickable: true
+        },
+         breakpoints: {
+          767: {
+            slidesPerView: 2
+          },
+          991: {
+            slidesPerView: 3
+          },
+          1199: {
+            slidesPerView: 4
+          }
+        }
       });
-
-      prevArrow?.addEventListener('click', () => goTo(current - 1));
-      nextArrow?.addEventListener('click', () => goTo(current + 1));
-
-      goTo(0);
     });
   </script>
 </section>
+
+<style>
+  #shopify-section-{{ section.id }} .article-swiper-container{
+    margin: 0 -24px;
+  }
+  @media screen and (min-width: 767px) {
+    #shopify-section-{{ section.id }} .article-swiper-container{
+      margin: 0 -20px;
+    }
+  }
+  
+  #shopify-section-{{ section.id }} .articles-swiper-slider{
+    padding: 30px 24px;
+  }
+  #shopify-section-{{ section.id }} .articles-swiper-pagination span.swiper-pagination-bullet {
+    width: 25px;
+    height: 2px;
+    border-radius: 0;
+  }
+  #shopify-section-{{ section.id }} .articles-swiper-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background-color: #db4b97;
+  }
+  #shopify-section-{{ section.id }} .articles-slider-arrows{
+    display: flex;
+    gap: 4px;
+  }
+  #shopify-section-{{ section.id }} .articles-slider-arrows button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #636363;
+  }
+  #shopify-section-{{ section.id }} .blog-post-image-container{
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .blog-post-image-container span.artcile-blog {
+    position: absolute;
+    background: #336256;
+    bottom: 20px;
+    left: 20px;
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  #shopify-section-{{ section.id }} .slider-controls{
+    padding: 0 !important;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 40px !important;
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .slider-controls{
+      flex-direction: column;
+    }
+  }
+</style>
 
 {% schema %}
 {
