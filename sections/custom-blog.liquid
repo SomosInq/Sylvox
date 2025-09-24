@@ -403,9 +403,13 @@
   }
   #shopify-section-{{ section.id }} .slider-controls{
     padding: 0 !important;
-    flex-direction: column;
     align-items: flex-end;
     gap: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .slider-controls{
+      flex-direction: column;
+    }
   }
 </style>
 
