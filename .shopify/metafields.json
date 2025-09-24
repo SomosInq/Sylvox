@@ -1,5 +1,16 @@
 {
-  "article": [],
+  "article": [
+    {
+      "key": "article_mobile_image",
+      "namespace": "custom",
+      "name": "Article Mobile Image",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
   "blog": [],
   "collection": [],
   "company": [],

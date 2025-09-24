@@ -261,6 +261,11 @@
   margin: 0 auto;
   max-width: 60px;
 }
+
+.page-fullsun-landing .somos-image-content .image-col img,
+.page-partialsun-landing .somos-image-content .image-col img {
+  border-radius: 4px;
+}
 @media screen and (max-width: 1024px) {
   .text-col h4 {
       font-size: 16px;
@@ -286,7 +291,7 @@
 
 {% endstyle %}
 
-<section>
+<section class="somos-image-content">
   <div class="{% if section.settings.narrow_container %}page-width-container{% else %}section_content_width_{{ section.settings.section_content_width }}{% endif %} {{ section.id }}">
     {% if section.settings.parent_subtitle != blank and section.settings.heading != blank and section.settings.description != blank %}
     <div class="icon-grid-heading {% if section.settings.indent_text %}indent-text{% endif %}" style="text-align: {{ section.settings.parent_alignment }}; margin-bottom: 40px;">
