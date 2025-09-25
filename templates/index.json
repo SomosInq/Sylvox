@@ -56,7 +56,7 @@
             "button_2_text": "#ffffff",
             "button_2_border": "#ffffff",
             "horizontal_align": "left",
-            "vertical_align": "middle",
+            "vertical_align": "bottom",
             "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/homepage.jpg",
