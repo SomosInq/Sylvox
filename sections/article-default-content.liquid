@@ -1,0 +1,53 @@
+<div class="section-container">
+  <div class="article-content-wrap">
+    {{ article.content }}
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} .section-container {
+    max-width: 1500px;
+    margin: 40px auto;
+    padding: 0 24px;
+  }
+  #shopify-section-{{ section.id }} .article-content-wrap p,
+  #shopify-section-{{ section.id }} .article-content-wrap ul,
+  #shopify-section-{{ section.id }} .article-content-wrap ol {
+    color: var(--Dark-Grey, #636363);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.198px;
+    margin-bottom: 30px;
+  }
+  #shopify-section-{{ section.id }} .article-content-wrap li p{
+    margin-bottom: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .article-content-wrap h2,
+  #shopify-section-{{ section.id }} .article-content-wrap h3{
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 20px;
+  }
+  #shopify-section-{{ section.id }} .article-content-wrap img{
+    margin-bottom: 30px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Article Default Content",
+  "settings": [
+    
+  ],
+   "presets": [
+    {
+      "name": "Article Default Content",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

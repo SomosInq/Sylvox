@@ -149,6 +149,11 @@
           "type": "image_picker",
           "id": "associated_image",
           "label": "Associated Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "associated_image_mobile",
+          "label": "Associated Image (Mobile)"
         }
       ]
     }
@@ -196,7 +201,10 @@
 .accordion-left {
   flex: 1;
 }
-
+.accordion-left picture{
+  width: 100%;
+  height: 100%;
+}
 .accordion-left img {
   width: 100%;
   height: 100%;
@@ -313,13 +321,13 @@
     padding: 2rem 20px;
   }
   .usp-accordion-section .accordion .accordion-title {
-    font-size: 24px;
+    font-size: 20px;
   }
   .usp-accordion-header h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
   .usp-accordion-section .accordion .accordion-item.active .accordion-header span {
-    font-size: 21px;
+    font-size: 20px;
   }
   .usp-accordion-section .accordion .accordion-content > div {
     font-size: 14px
@@ -328,7 +336,7 @@
     font-size: 16px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .usp-accordion-section {
     padding-top: 30px;
     padding-bottom: 30px;
@@ -365,13 +373,20 @@
 
     <div class="accordion-wrapper">
       <div class="accordion-left">
-        <img id="dynamic-accordion-image" src="{% for block in section.blocks limit:1 %}{{ block.settings.associated_image | image_url }}{% endfor %}" alt="Accordion Image" />
+        {% for block in section.blocks%}
+        <picture data-accordion-photo="{{ forloop.index }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
+          {% if block.settings.associated_image_mobile != blank %}
+            <source srcset="{{ block.settings.associated_image_mobile | image_url }}" media="(max-width: 1024px)">
+          {% endif %}
+          <img id="dynamic-accordion-image" src="{{ block.settings.associated_image | image_url }}" alt="Accordion Image" />
+        </picture>
+        {% endfor %}
       </div>
       <div class="accordion-right">
         <div class="accordion">
           <h2 class="accordion-title">{{ section.settings.title }}</h2>
           {% for block in section.blocks %}
-            <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}">
+            <div class="accordion-item" data-index="{{ forloop.index }}" data-image="{{ block.settings.associated_image | image_url }}" {% if block.settings.associated_image_mobile != blank %}data-image-mobile="{{ block.settings.associated_image | image_url }}"{% endif %}>
               <div class="accordion-header" onclick="toggleAccordion({{ forloop.index }})">
                 <span>{{ block.settings.question }}</span>
                 {% if block.settings.icon %}
@@ -413,11 +428,11 @@ function toggleAccordion(index) {
   });
 
   const clickedItem = document.querySelector(`.accordion-item[data-index="${index}"]`);
-  const newImage = clickedItem.getAttribute('data-image');
-  const imageEl = document.getElementById('dynamic-accordion-image');
-  if (newImage && imageEl) {
-    imageEl.src = newImage;
-  }
+  document.querySelectorAll('[data-accordion-photo]').forEach(element => {
+    console.log(element)
+    element.style.display = 'none';
+  });
+  document.querySelector(`[data-accordion-photo="${index}"]`).style.display = 'block';
 }
 </script>
 
