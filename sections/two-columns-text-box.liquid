@@ -1,0 +1,154 @@
+{% schema %}
+{
+  "name": "2 columns Text box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left Column Title"
+    },
+    {
+      "type": "textarea",
+      "id": "left_description",
+      "label": "Left Column Description"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Right Column Title"
+    },
+    {
+      "type": "textarea",
+      "id": "right_description",
+      "label": "Right Column Description"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "padding_left",
+      "label": "Padding Left (px)",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "padding_right",
+      "label": "Padding Right (px)",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "2 columns Text box"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .two-columns-text-box {
+    display: block;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+  }
+
+  .two-columns-text-box .inner-wrapper {
+    padding: 32px 20px;
+    background-color: #FAFAFA;
+  }
+  .two-columns-text-box .columns-wrapper {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .two-columns-text-box .left-column,
+  .two-columns-text-box .right-column {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .two-columns-text-box .left-column.column {
+    padding-right: 20px;
+  }
+  .two-columns-text-box .right-column.column {
+    padding-left: 20px;
+    border-left: 1px solid #C6C6C6;
+  }
+
+  .two-columns-text-box h2.section-title {
+    color: #0D0D0D;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .two-columns-text-box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .two-columns-text-box p {
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    font-seight: 300;
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 656px) {
+    .two-columns-text-box .columns-wrapper {
+      flex-flow: column;
+    }
+    .two-columns-text-box .left-column.column {
+      padding-right: 0;
+    }
+    .two-columns-text-box .right-column.column {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+</style>
+
+<div class="two-columns-text-box section_width_standard">
+  <div class="inner-wrapper">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+  
+    <div class="columns-wrapper">
+      <div class="left-column column">
+        {% if section.settings.left_title != blank %}
+          <h3>{{ section.settings.left_title }}</h3>
+        {% endif %}
+        {% if section.settings.left_description != blank %}
+          <p>{{ section.settings.left_description }}</p>
+        {% endif %}
+      </div>
+  
+      <div class="right-column column">
+        {% if section.settings.right_title != blank %}
+          <h3>{{ section.settings.right_title }}</h3>
+        {% endif %}
+        {% if section.settings.right_description != blank %}
+          <p>{{ section.settings.right_description }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
