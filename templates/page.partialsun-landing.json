@@ -552,7 +552,7 @@
           "type": "title",
           "settings": {
             "title": "Installation Positioning",
-            "font_size": 36,
+            "font_size": 32,
             "text_color": "#000000"
           }
         },
