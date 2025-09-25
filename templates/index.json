@@ -471,6 +471,22 @@
     "image_blocks_xQffGw": {
       "type": "image-blocks",
       "blocks": {
+        "scenario_wwyq7f": {
+          "type": "scenario",
+          "settings": {
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        },
+        "scenario_LKE49Q": {
+          "type": "scenario",
+          "settings": {
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        },
         "scenario_iKkMc9": {
           "type": "scenario",
           "settings": {
@@ -509,6 +525,8 @@
         }
       },
       "block_order": [
+        "scenario_wwyq7f",
+        "scenario_LKE49Q",
         "scenario_iKkMc9",
         "scenario_gjBgAR",
         "scenario_3mpzX7",
