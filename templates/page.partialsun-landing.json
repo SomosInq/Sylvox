@@ -675,8 +675,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "left",
-            "font_size": 48,
-            "mobile_font_size": 24
+            "font_size": 32,
+            "mobile_font_size": 21
           }
         },
         "richtext_7eECUn": {
