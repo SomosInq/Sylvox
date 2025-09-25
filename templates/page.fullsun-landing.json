@@ -331,6 +331,7 @@
         "view_all_url": "",
         "show_view_all_comparisons": false,
         "show_see_all_specs": true,
+        "use_large_images": false,
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
@@ -463,7 +464,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "center",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
           }
         }
       },
@@ -511,14 +513,18 @@
         "image_wQqkqU": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/7e07b5ee141fe3365f7b32d8345493021c9a0727.png",
+            "comparison_heading": "",
+            "comparison_description": "",
+            "image": "shopify://shop_images/Brightness_diference_1.png",
             "image_alignment": "center"
           }
         },
         "image_KPDHny": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/7e07b5ee141fe3365f7b32d8345493021c9a0727.png",
+            "comparison_heading": "",
+            "comparison_description": "",
+            "image": "shopify://shop_images/Brightness_diference_2.png",
             "image_alignment": "center"
           }
         }
@@ -706,7 +712,8 @@
           "settings": {
             "text": "Built to Last",
             "color": "#f7f7f7",
-            "alignment": "left"
+            "alignment": "left",
+            "subheading_max_width": 100
           }
         },
         "heading_gXrCtx": {
@@ -718,7 +725,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "left",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
           }
         },
         "richtext_YbeHfE": {
