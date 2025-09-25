@@ -32,7 +32,8 @@
             "vertical_align": "middle",
             "text_color": "#ffffff",
             "font_size": 24,
-            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image": "shopify://shop_images/homepage.jpg",
+            "mobile_image": "shopify://shop_images/homepage_mobile.jpg",
             "image_overlay_color": "#000000",
             "image_overlay_opacity": 0.3,
             "image_size": 100
@@ -58,7 +59,8 @@
             "vertical_align": "middle",
             "text_color": "#ffffff",
             "font_size": 24,
-            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image": "shopify://shop_images/homepage.jpg",
+            "mobile_image": "shopify://shop_images/homepage_mobile.jpg",
             "image_overlay_color": "#000000",
             "image_overlay_opacity": 0,
             "image_size": 100
@@ -400,6 +402,7 @@
         "view_all_icon": "shopify://shop_images/Icon.svg",
         "show_view_all_comparisons": false,
         "show_see_all_specs": true,
+        "use_large_images": false,
         "heading_1": "Best For",
         "heading_2": "Peak Brightness",
         "heading_3": "Weather Resistance",
@@ -691,6 +694,8 @@
         "image_3eAxPx": {
           "type": "image",
           "settings": {
+            "comparison_heading": "",
+            "comparison_description": "",
             "image": "shopify://shop_images/Property_1_Variant2.png",
             "image_alignment": "center"
           }
@@ -698,6 +703,8 @@
         "image_4JgVnB": {
           "type": "image",
           "settings": {
+            "comparison_heading": "",
+            "comparison_description": "",
             "image": "shopify://shop_images/Property_1_Variant3.png",
             "image_alignment": "center"
           }
