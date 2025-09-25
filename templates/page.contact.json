@@ -104,7 +104,7 @@
             "image_size": "medium",
             "title": "Live Chat",
             "title_font_size": 20,
-            "text": "24 hours a day\n<br><br>\nMonday - Friday",
+            "text": "\n<storng>\n24 hours a day\n</strong>\n<br><br>\nMonday - Friday",
             "link_text": "",
             "link_color": "",
             "link_url": "",
@@ -151,6 +151,10 @@
             "button_label": "Submits",
             "button_bg_color": "#20413b",
             "show_upload": false,
+            "show_dropdow_field": true,
+            "dropdown_position": 5,
+            "dropdown_title": "Which product are you interested in?",
+            "dropdown_options": "Outdoor TVs,Kitchen Tvs,Bathroom Tvs,RV TVs",
             "show_field_1": true,
             "field_label_1": "First Name*",
             "show_field_2": true,
@@ -179,6 +183,10 @@
             "button_label": "Submits",
             "button_bg_color": "#20413b",
             "show_upload": true,
+            "show_dropdow_field": true,
+            "dropdown_position": 7,
+            "dropdown_title": "Do you need a refund or a replacement?",
+            "dropdown_options": "Refund,Replacement",
             "show_field_1": true,
             "field_label_1": "First Name*",
             "show_field_2": true,
@@ -191,8 +199,8 @@
             "field_label_5": "Which platform did you purchase from?",
             "show_field_6": true,
             "field_label_6": "What is your order number?*",
-            "show_field_7": true,
-            "field_label_7": "Do you need a refund or a replacement?",
+            "show_field_7": false,
+            "field_label_7": "",
             "show_field_8": false,
             "field_label_8": ""
           }
@@ -226,6 +234,20 @@
         "margin_right": 0
       }
     },
+    "two-columns-text-box-section-xuoivhf98": {
+      "type": "two-columns-text-box",
+      "settings": {
+        "title": "Company Address",
+        "left_title": "Warehouse Address",
+        "left_description": "1440 Brooks St. Suite #4 Ontario, CA, 91762",
+        "right_title": "Hongkong Office",
+        "right_description": "5th Floor, Tai Yip Building, 141 Thomson Road, Wan Chai, Hong Kong",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0
+      }
+    },
     "form": {
       "type": "contact-form",
       "disabled": true,
@@ -244,6 +266,7 @@
     "main",
     "rich-text",
     "contact_area_FJkLtn",
-    "form"
+    "form",
+    "two-columns-text-box-section-xuoivhf98"
   ]
 }

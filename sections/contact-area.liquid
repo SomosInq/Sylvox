@@ -27,6 +27,13 @@
     .usp-box {
         flex: 1 1 100%;
     }
+    .contact-area-section .usp-heading {
+      font-size: 26px !important;
+      text-align: center;
+    } 
+    .contact-area-section .contact-form h3 {
+      text-align: center;
+    }
   }
   .usp-forms {
     border-top: var(--stroke-weight-1, 1px) solid rgba(0, 0, 0, 0.08);
@@ -74,7 +81,12 @@
     flex-wrap: wrap;
     gap: 16px;
   }
-  .fieldset input[type="text"] {
+  .fieldset input[type="file"] {
+
+  }
+  .fieldset input[type="text"],
+  .contact-area-section .contact-form form .file-upload-label,
+  .fieldset select.contact-area-select {
     flex: 1 1 calc(25% - 16px);
     box-sizing: border-box;
     padding: 10px;
@@ -85,11 +97,27 @@
     box-sizing: border-box;
     padding: 10px;
   }
+  .contact-area-section .usp-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+
+  .contact-area-section .usp-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .contact-area-section .usp-grid .usp-box {
+    min-width: 264px;
+  }
   .contact-area-section .usp-heading-wrapper {
     max-width: 1167px;
   }
-  .contact-area-section .usp-heading {
-    font-weight: 600;
+  .contact-area-section .usp-heading,
+  .contact-area-section .usp-box .usp-text strong {
+    font-weight: 500;
+    font-size: 16px;
   }
   .contact-area-section .usp-text,
   .contact-area-section .usp-title {
@@ -97,23 +125,43 @@
   }
   .contact-area-section .contact-form h3 {
     margin-bottom: 40px;
-    font-weight: 600;
+    font-weight: 500;
   }
   .contact-area-section .contact-form form {
     margin-top: 40px;
   }
+  .contact-area-section .contact-form form select {
+     appearance: none;        /* Remove native arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;  /* Add space for arrow on the right */
+    background-color: white;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><polyline points='2,4 6,8 10,4' fill='none' stroke='%23C6C6C6' stroke-width='2'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 98% calc(50% + 2px);
+    background-size: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
   .contact-area-section .contact-form form input,
+  .contact-area-section .contact-form form select,
+  .contact-area-section .contact-form form .file-upload-label,
   .contact-area-section .contact-form form textarea {
     border-radius: 10px;
     border-color: #636363;
     padding: 12px 24px;
   }
   .contact-area-section .contact-form form input::placeholder,
+  .contact-area-section .contact-form form select:not(:valid),
   .contact-area-section .contact-form form textarea::placeholder {
     color: #C6C6C6;
     font-weight: 300;
+    font-size: 14px;
   }
   .contact-area-section .contact-form form input:focus-visible,
+  .contact-area-section .contact-form form select:focus-visible,
   .contact-area-section .contact-form form textarea:focus-visible {
     outline-color:#A7DCB7;
   }
@@ -123,7 +171,61 @@
     gap: 10px;
     margin-top: 40px;
     padding: 12px 24px;
+    margin-inline: auto;
   }
+  .contact-area-section .contact-form form .file-upload-wrapper {
+    display: flex;
+    flex: 1 1 calc(25% - 16px);
+  }
+  .contact-area-section .contact-form form .file-upload-input {
+    display: none; /* hide native input */
+  }
+  .contact-area-section .contact-form form .file-upload-label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #636363;
+    margin: 0;
+    color: #C6C6C6;
+    font-size: 14px
+  }
+  .contact-area-section .contact-form form .file-upload-label svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .contact-area-section .contact-form form .file-upload-label:hover {
+    border-color: #A7DCB7;
+  }
+  .contact-area-section .contact-form form input[type="file"]::file-selector-button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-area-section .contact-form form input[type="file"] {
+  font-size: 14px;
+  color: #C6C6C6; 
+}
+.file-upload-wrapper:has(input[type="file"]:valid) .file-upload-label {
+  color: #346257;
+  border-color: #346257;
+} 
+.file-upload-label .success-svg {
+  display: none;
+}
+
+.file-upload-wrapper:has(input[type="file"]:valid) .upload-svg {
+  display: none;
+}
+
+.file-upload-wrapper:has(input[type="file"]:valid) .success-svg {
+  display: inline-flex;
+}
 </style>
 
 <section class="contact-area-section usp-grid-section section_width_{{ section.settings.section_width }}"
@@ -173,19 +275,51 @@
                 {% if block.settings.form_description != blank %}<p>{{ block.settings.form_description }}</p>{% endif %}
                 {% form block.settings.form_post_to | default: 'contact' %}
                   <div class="fieldset">
+                    {% if block.settings.show_dropdow_field %}
+                        {% assign options = block.settings.dropdown_options | split: "," %}
+                        <select required class="contact-area-select" style="order: {{ block.settings.dropdown_position |  minus: 1 }};" name="contact[{{ block.settings.dropdown_title | handleize }}]">
+                          <option value="" class="placeholder">{{ block.settings.dropdown_title }}</option>
+                          {% for option in options %}
+                              <option value="{{ option }}">
+                                {{ option }}
+                              </option>
+                        {% endfor %}
+                        </select>
+                      {% endif %}
+                    {% assign select_order = block.settings.dropdown_position | minus: 1 %}
+                    {% assign counter = 0 %}
                     {% for i in (1..8) %}
                       {% capture show_key %}show_field_{{ i }}{% endcapture %}
                       {% capture label_key %}field_label_{{ i }}{% endcapture %}
                       {% assign show_field = block.settings[show_key] %}
                       {% assign field_label = block.settings[label_key] %}
                       {% if show_field %}
-                        <input type="text" name="contact[{{ field_label | handle }}]" placeholder="{{ field_label }}">
+                        {% assign field_order = counter %}
+                      
+                        {% if counter == select_order %}
+                          {% assign field_order = counter | plus: 1 %}
+                        {% endif %}
+
+                        <input type="text" name="contact[{{ field_label | handle }}]" placeholder="{{ field_label }}" style="order: {{ field_order }};">
                       {% endif %}
+                      {% assign counter = counter | plus: 1 %}
+
                     {% endfor %}
                     {% if block.settings.show_upload %}
-                      <input type="file" name="contact[upload]">
+                      <div class="file-upload-wrapper" style="order: 8;">
+                        <input required type="file" id="contact-upload" name="contact[upload]" class="file-upload-input" />
+                        <label for="contact-upload" class="file-upload-label">
+                          <span>Upload file</span>
+                          <span class="upload-svg">
+                            {% render 'default.icons' name: 'upload' %}
+                          </span>
+                          <span class="success-svg">
+                            {% render 'default.icons' name: 'arrow-down' %}
+                          </span>
+                        </label>
+                      </div>
                     {% endif %}
-                    <textarea name="contact[body]" placeholder="Message"></textarea>
+                    <textarea name="contact[body]" placeholder="Message" style="order: 10;"></textarea>
                     
                   </div>
                   <button type="submit">{{ block.settings.button_label }}  {% render 'default.icons' name: 'arrow-left-short' %}</button>
@@ -297,6 +431,10 @@
         { "type": "text", "id": "button_label", "label": "Submit Button Label", "default": "Submit" },
         { "type": "color", "id": "button_bg_color", "label": "Submit Button Background Color", "default": "#000000" },
         { "type": "checkbox", "id": "show_upload", "label": "Show Upload Field", "default": false },
+        { "type": "checkbox", "id": "show_dropdow_field", "label": "Show Dropdown Field", "default": false },
+        { "type": "number", "id": "dropdown_position", "label": "Dropdown position", "default": 0, "info": "Set the order of this dropdown among other fields (lower = earlier)." },
+        { "type": "text", "id": "dropdown_title", "label": "Dropdown title" },
+        { "type": "text", "id": "dropdown_options", "label": "Dropdown options", "info": "Options for the dropdown separeted by , " },
         { "type": "header", "content": "Custom Fields" },
         { "type": "checkbox", "id": "show_field_1", "label": "Show Field 1", "default": false },
         { "type": "text", "id": "field_label_1", "label": "Field 1 Label" },

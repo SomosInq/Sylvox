@@ -40,6 +40,17 @@ background: rgba(0, 0, 0, 0.10);
     opacity: .25;
     cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+ #{{ section.id }} .testimonials-section {
+   padding: 0!important
+  }
+  #{{ section.id }} .testimonials-section .flickity-page-dots {
+    padding-top: 10px !important;
+  }
+  #{{ section.id }} .testimonials-section .slideshow-wrapper {
+    margin-top: 30px;
+  }
+}
 {% endstylesheet %}
 
 {%- liquid
