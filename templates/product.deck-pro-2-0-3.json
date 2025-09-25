@@ -42,8 +42,26 @@
             "show_product_base": false
           }
         },
+        "bundle_block_Myh6XY": {
+          "type": "bundle_block",
+          "settings": {
+            "heading": "SAVE BIG IN BUNDLES YOU’LL LOVE",
+            "image_1": "shopify://shop_images/25.png",
+            "title_1": "E360 ACE + LTE Box + Hardwire kit",
+            "sale_price_1": "$499.99",
+            "original_price_1": "$629.97",
+            "savings_1": "$129.98",
+            "description_1": "This package includes the E360 ACE Dash Cam, Hardwire Kit for parking mode and LTE Box for cloud connectivity.",
+            "image_2": "shopify://shop_images/render_squared_turbo_boost_622ef1fde3.mp4_f6312985-7fc1-4eb8-ba14-7314707314b9.png",
+            "title_2": "E360 + LTE Box + Hardwire kit",
+            "sale_price_2": "$469.99",
+            "original_price_2": "$569.97",
+            "savings_2": "$99.98"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "variant_labels": true,
             "picker_type": "button",
@@ -125,6 +143,7 @@
         "f30b01a8-3eae-4965-8bc3-af47ad84da34",
         "simple_usp_t7tczA",
         "size_picker_anHCWr",
+        "bundle_block_Myh6XY",
         "variant_picker",
         "ff2ca1bf-5d8a-4d3e-b3b2-c6011b2d2f38",
         "current_selection_m8cm9w",
