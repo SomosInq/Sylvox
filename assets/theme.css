@@ -12391,6 +12391,7 @@ body.template-article .icon-grid-row.layout-horizontal {
 }
 body.template-article .icon-grid-row.layout-horizontal .image-col {
   display: flex;
+  align-items: center;
 }
 body.template-article .icon-grid-row.layout-horizontal .image-col img {
   object-fit: cover;
@@ -12398,6 +12399,16 @@ body.template-article .icon-grid-row.layout-horizontal .image-col img {
 }
 body.template-article .icon-grid-row.layout-horizontal .text-col p {
   max-width: 100%!important;
+}
+@media (max-width: 1024px) {
+  body.template-article .icon-grid-row.layout-horizontal{
+    flex-direction: column !important;
+  }
+  body.template-article .icon-grid-row .image-col,
+  body.template-article .icon-grid-row .text-col{
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
 }
 @media (min-width: 769px) {
   .page-sales-page #MainContent > * {

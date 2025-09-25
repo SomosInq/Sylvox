@@ -16690,7 +16690,7 @@ p.section-heading-desc{
 .text-align-center{
   text-align: center;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1199px) {
   h2.section-heading-title{
     font-size: 48px;
   }
