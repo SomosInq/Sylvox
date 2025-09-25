@@ -12400,6 +12400,10 @@ body.template-article .icon-grid-row.layout-horizontal .image-col img {
 body.template-article .icon-grid-row.layout-horizontal .text-col p {
   max-width: 100%!important;
 }
+body.template-article .section_content_width_standard{
+  max-width: 1656px;
+  padding: 0 24px;
+}
 @media (max-width: 1024px) {
   body.template-article .icon-grid-row.layout-horizontal{
     flex-direction: column !important;
