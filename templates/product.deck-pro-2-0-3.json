@@ -44,6 +44,7 @@
         },
         "bundle_block_Myh6XY": {
           "type": "bundle_block",
+          "disabled": true,
           "settings": {
             "heading": "SAVE BIG IN BUNDLES YOU’LL LOVE",
             "image_1": "shopify://shop_images/25.png",
@@ -61,7 +62,6 @@
         },
         "variant_picker": {
           "type": "variant_picker",
-          "disabled": true,
           "settings": {
             "variant_labels": true,
             "picker_type": "button",
