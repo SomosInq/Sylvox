@@ -941,7 +941,7 @@
           "settings": {
             "content_alignment": "left",
             "icon": "shopify://shop_images/Icons_1224add9-112e-4ffc-80fe-8f419e66e998.png",
-            "image_size": "medium",
+            "image_size": "small",
             "title": "Authenticity Guarantee",
             "title_font_size": 20,
             "text": "100% Genuine, Quality Assured",
