@@ -104,7 +104,7 @@
             "image_size": "medium",
             "title": "Live Chat",
             "title_font_size": 20,
-            "text": "\n<storng>\n24 hours a day\n</strong>\n<br><br>\nMonday - Friday",
+            "text": "<strong>\n24 hours a day\n</strong>\n<br><br>\nMonday - Friday",
             "link_text": "",
             "link_color": "",
             "link_url": "",
@@ -123,6 +123,10 @@
             "button_label": "Submit",
             "button_bg_color": "#20413b",
             "show_upload": false,
+            "show_dropdow_field": false,
+            "dropdown_position": 0,
+            "dropdown_title": "",
+            "dropdown_options": "",
             "show_field_1": true,
             "field_label_1": "First Name*",
             "show_field_2": true,
@@ -234,6 +238,19 @@
         "margin_right": 0
       }
     },
+    "form": {
+      "type": "contact-form",
+      "disabled": true,
+      "settings": {
+        "title": "Write Us a Message",
+        "heading_size": "h2",
+        "heading_position": "left",
+        "text": "<p>For B2B, Media, KOL, Affiliate Marketing Cooperation Submissions;In order to provide you a better service and speed up responding time, Please select the corresponding email address to contact and do provide the relevant information before submitting an inquiry.  We aim to respond to all inquires within 24 hours.</p>",
+        "show_phone": true,
+        "narrow_column": true,
+        "color_scheme": "none"
+      }
+    },
     "two-columns-text-box-section-xuoivhf98": {
       "type": "two-columns-text-box",
       "settings": {
@@ -246,19 +263,6 @@
         "padding_bottom": 20,
         "padding_left": 0,
         "padding_right": 0
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "disabled": true,
-      "settings": {
-        "title": "Write Us a Message",
-        "heading_size": "h2",
-        "heading_position": "left",
-        "text": "<p>For B2B, Media, KOL, Affiliate Marketing Cooperation Submissions;In order to provide you a better service and speed up responding time, Please select the corresponding email address to contact and do provide the relevant information before submitting an inquiry.  We aim to respond to all inquires within 24 hours.</p>",
-        "show_phone": true,
-        "narrow_column": true,
-        "color_scheme": "none"
       }
     }
   },
