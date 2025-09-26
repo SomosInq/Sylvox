@@ -113,7 +113,7 @@
         "paragraph": "A next-level outdoor TV designed to perform in sunlight, rain, or snow.",
         "button_text_1": "Buy It Now",
         "button_link_1": "",
-        "button_text_2": "Watch Video",
+        "button_text_2": "",
         "video": "shopify://files/videos/6月10日(1).mp4"
       }
     },
@@ -442,17 +442,17 @@
         "feature_PemNRF": {
           "type": "feature",
           "settings": {
-            "label": "HDR Technology – Deeper<br> Contrast & More Vivid Colors",
+            "label": "HDR Technology – Deeper Contrast & More Vivid Colors",
             "image": "shopify://shop_images/a81a03768d288538bf826aea1a84aaef34f4cff9.jpg",
             "heading": "HDR Technology – Deeper Contrast & More Vivid Colors",
-            "subheading": "178° Wide Viewing Angle — Every Seat is the Best Seat",
+            "subheading": "",
             "description": "Experience every detail with enhanced contrast and richer colors. HDR technology optimizes brightness and shadow detail, bringing scenes to life with stunning realism."
           }
         },
         "feature_wqii3a": {
           "type": "feature",
           "settings": {
-            "label": "178° Wide Viewing Angle – Every<br> Seat is the Best Seat",
+            "label": "178° Wide Viewing Angle – Every Seat is the Best Seat",
             "image": "shopify://shop_images/adc9d74ea52ed7927d83436003f88acc_jpg.png",
             "heading": "178° Wide Viewing Angle – Every Seat is the Best Seat",
             "subheading": "178° Wide Viewing Angle — Every Seat is the Best Seat",
