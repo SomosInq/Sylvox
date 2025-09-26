@@ -201,6 +201,7 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/rv_4a451eab-b364-4a39-aab5-d95058d516e6.jpg",
+            "image_mobile": "shopify://shop_images/rv-2.jpg",
             "mobile_banner_height": 300,
             "collection": "rv-tv",
             "collection_title_color": "#000000"
