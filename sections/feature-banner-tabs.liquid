@@ -47,21 +47,7 @@
 
 
   <div class="feature-banner-tabs__carousel">
-    {% assign last_block = section.blocks | last %}
-    <div class="feature-banner-tabs__slide is-clone">
-      <div 
-        class="feature-banner-tabs__banner banner-{{ last_block.id }}"
-        style="
-          background-image: url({{ last_block.settings.background | image_url: width: 1600 }});
-          height: {{ section.settings.banner_height }}px;
-        "
-      >
-        <div class="feature-banner-tabs__content">
-          <h2 class="banner-heading-{{ last_block.id }}">{{ last_block.settings.heading }}</h2>
-          <p class="banner-paragraph-{{ last_block.id }}">{{ last_block.settings.description }}</p>
-        </div>
-      </div>
-    </div>
+  
 
     {% for block in section.blocks %}
       <div class="feature-banner-tabs__slide" {{ block.shopify_attributes }}>
@@ -107,21 +93,6 @@
       </div>
     {% endfor %}
 
-    {% assign first_block = section.blocks | first %}
-    <div class="feature-banner-tabs__slide is-clone">
-      <div 
-        class="feature-banner-tabs__banner banner-{{ first_block.id }}"
-        style="
-          background-image: url({{ first_block.settings.background | image_url: width: 1600 }});
-          height: {{ section.settings.banner_height }}px;
-        "
-      >
-        <div class="feature-banner-tabs__content">
-          <h2 class="banner-heading-{{ first_block.id }}">{{ first_block.settings.heading }}</h2>
-          <p class="banner-paragraph-{{ first_block.id }}">{{ first_block.settings.description }}</p>
-        </div>
-      </div>
-    </div>
   </div>
   
 
