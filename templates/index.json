@@ -182,7 +182,8 @@
             "font_weight": "normal",
             "horizontal_position": "left",
             "vertical_position": 50,
-            "image": "shopify://shop_images/Sylvox_7.png",
+            "image": "shopify://shop_images/11_ebb5e720-eec4-4586-beef-9445acca46fe.png",
+            "image_mobile": "shopify://shop_images/homepage-4.jpg",
             "mobile_banner_height": 300,
             "collection": "kitchen-tv",
             "collection_title_color": "#000000"
