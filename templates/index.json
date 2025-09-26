@@ -489,7 +489,6 @@
         },
         "scenario_pKDNWY": {
           "type": "scenario",
-          "disabled": true,
           "settings": {
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
