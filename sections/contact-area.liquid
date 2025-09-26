@@ -86,8 +86,8 @@
   }
   .fieldset input[type="text"],
   .contact-area-section .contact-form form .file-upload-label,
-  .fieldset select.contact-area-select {
-    flex: 1 1 calc(25% - 16px);
+  .fieldset .contact-area-select-wrapper {
+    flex: 0 1 calc(25% - 16px);
     box-sizing: border-box;
     padding: 10px;
   }
@@ -96,6 +96,13 @@
     margin-top: 20px;
     box-sizing: border-box;
     padding: 10px;
+  }
+  .fieldset .contact-area-select {
+    min-width: 100%;
+    height: 100%;
+  }
+  .fieldset .contact-area-select-wrapper {
+    padding: 0;
   }
   .contact-area-section .usp-grid {
     flex-wrap: nowrap;
@@ -114,7 +121,9 @@
   .contact-area-section .usp-heading-wrapper {
     max-width: 1167px;
   }
-  .contact-area-section .usp-heading,
+  .contact-area-section .usp-heading {
+    font-weight: 400;
+  }
   .contact-area-section .usp-box .usp-text strong {
     font-weight: 500;
     font-size: 16px;
@@ -125,7 +134,7 @@
   }
   .contact-area-section .contact-form h3 {
     margin-bottom: 40px;
-    font-weight: 500;
+    font-weight: 400;
   }
   .contact-area-section .contact-form form {
     margin-top: 40px;
@@ -175,7 +184,7 @@
   }
   .contact-area-section .contact-form form .file-upload-wrapper {
     display: flex;
-    flex: 1 1 calc(25% - 16px);
+    flex: 0 1 calc(25% - 16px);
   }
   .contact-area-section .contact-form form .file-upload-input {
     display: none; /* hide native input */
@@ -188,7 +197,9 @@
     border: 1px solid #636363;
     margin: 0;
     color: #C6C6C6;
-    font-size: 14px
+    font-size: 14px;
+    min-width: 100%;
+    white-space: nowrap;
   }
   .contact-area-section .contact-form form .file-upload-label svg {
     width: 22px;
@@ -225,6 +236,14 @@
 
 .file-upload-wrapper:has(input[type="file"]:valid) .success-svg {
   display: inline-flex;
+}
+@media screen and (max-width: 1023px) {
+  .fieldset input[type="text"],
+  .contact-area-section .contact-form form .file-upload-label,
+  .fieldset .contact-area-select-wrapper,
+  .contact-area-section .contact-form form .file-upload-wrapper {
+    flex: 1 1 calc(25% - 16px);
+  }
 }
 </style>
 
@@ -277,14 +296,16 @@
                   <div class="fieldset">
                     {% if block.settings.show_dropdow_field %}
                         {% assign options = block.settings.dropdown_options | split: "," %}
-                        <select required class="contact-area-select" style="order: {{ block.settings.dropdown_position |  minus: 1 }};" name="contact[{{ block.settings.dropdown_title | handleize }}]">
-                          <option value="" class="placeholder">{{ block.settings.dropdown_title }}</option>
-                          {% for option in options %}
-                              <option value="{{ option }}">
-                                {{ option }}
-                              </option>
-                        {% endfor %}
-                        </select>
+                        <div class="contact-area-select-wrapper" style="order: {{ block.settings.dropdown_position |  minus: 1 }};">
+                          <select required class="contact-area-select" name="contact[{{ block.settings.dropdown_title | handleize }}]">
+                            <option value="" class="placeholder">{{ block.settings.dropdown_title }}</option>
+                            {% for option in options %}
+                                <option value="{{ option }}">
+                                  {{ option }}
+                                </option>
+                          {% endfor %}
+                          </select>
+                        </div>
                       {% endif %}
                     {% assign select_order = block.settings.dropdown_position | minus: 1 %}
                     {% assign counter = 0 %}
