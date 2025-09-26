@@ -165,8 +165,8 @@
             "horizontal_position": "left",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
-            "image_mobile": "shopify://shop_images/homepage-3_0e05f917-8c41-41c8-9c05-32b0c3ef356c.jpg",
-            "mobile_banner_height": 400,
+            "image_mobile": "shopify://shop_images/homepage-3.jpg",
+            "mobile_banner_height": 300,
             "collection": "outdoor-tv",
             "collection_title_color": "#000000"
           }
