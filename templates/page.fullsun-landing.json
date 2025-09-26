@@ -726,7 +726,7 @@
             "font_weight": "400",
             "alignment": "left",
             "font_size": 32,
-            "mobile_font_size": 24
+            "mobile_font_size": 21
           }
         },
         "richtext_YbeHfE": {
@@ -751,7 +751,7 @@
         "custom_content_width": 40,
         "content_max_width": 880,
         "mobile_content_width": 90,
-        "section_height": 800,
+        "section_height": 650,
         "mobile_section_height": 500,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/26f53b57c0a8fe6134830445e49d43e5e63c2bc2.jpg",
