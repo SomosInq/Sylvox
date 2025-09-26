@@ -179,7 +179,7 @@
             "description": "<p>More Time Outdoors. More Moments Together.</p>",
             "text_color": "#ffffff",
             "font_weight": "normal",
-            "horizontal_position": "left",
+            "horizontal_position": "right",
             "vertical_position": 50,
             "image": "shopify://shop_images/Sylvox_7.png",
             "mobile_banner_height": 300,
