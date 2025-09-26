@@ -465,7 +465,7 @@
         "show_arrows_desktop": true,
         "padding_top": 0,
         "padding_bottom": 0,
-        "padding_top_mobile": 30,
+        "padding_top_mobile": 15,
         "padding_bottom_mobile": 0,
         "padding_left": 40,
         "padding_right": 40,
