@@ -236,7 +236,8 @@
             "font_weight": "normal",
             "horizontal_position": "left",
             "vertical_position": 50,
-            "image": "shopify://shop_images/Sylvox_7.png",
+            "image": "shopify://shop_images/outdoor_signage.png",
+            "image_mobile": "shopify://shop_images/outdoor_signage-1.png",
             "mobile_banner_height": 300,
             "collection": "outdoor-tv-2",
             "collection_title_color": "#000000"
