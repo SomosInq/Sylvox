@@ -245,6 +245,7 @@
         },
         "tab_HPMjtj": {
           "type": "tab",
+          "disabled": true,
           "settings": {
             "tab_label": "Accessories",
             "title": "Accessories",
