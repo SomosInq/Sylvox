@@ -167,7 +167,7 @@
             "field_label_3": "Your Email*",
             "show_field_4": true,
             "field_label_4": "Your Phone Number",
-            "show_field_5": true,
+            "show_field_5": false,
             "field_label_5": "Which product are you interested in?",
             "show_field_6": true,
             "field_label_6": "How many units?",
