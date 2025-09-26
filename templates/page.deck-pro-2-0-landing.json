@@ -442,9 +442,9 @@
         "feature_PemNRF": {
           "type": "feature",
           "settings": {
-            "label": "HDR Technology – Deeper Contrast & More Vivid Colors",
+            "label": "HDR Technology",
             "image": "shopify://shop_images/a81a03768d288538bf826aea1a84aaef34f4cff9.jpg",
-            "heading": "HDR Technology – Deeper Contrast & More Vivid Colors",
+            "heading": "HDR Technology",
             "subheading": "",
             "description": "Experience every detail with enhanced contrast and richer colors. HDR technology optimizes brightness and shadow detail, bringing scenes to life with stunning realism."
           }
@@ -452,10 +452,10 @@
         "feature_wqii3a": {
           "type": "feature",
           "settings": {
-            "label": "178° Wide Viewing Angle – Every Seat is the Best Seat",
+            "label": "178° Wide Viewing Angle",
             "image": "shopify://shop_images/adc9d74ea52ed7927d83436003f88acc_jpg.png",
-            "heading": "178° Wide Viewing Angle – Every Seat is the Best Seat",
-            "subheading": "178° Wide Viewing Angle — Every Seat is the Best Seat",
+            "heading": "178° Wide Viewing Angle",
+            "subheading": "",
             "description": "Hosting a backyard gathering? No problem. With a 178-degree wide viewing angle, everyone sees the same sharp, high-contrast image—whether they’re sitting directly in front of the TV or off to the side."
           }
         }
