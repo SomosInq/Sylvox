@@ -33,7 +33,7 @@
             "text_color": "#ffffff",
             "font_size": 24,
             "image": "shopify://shop_images/homepage.jpg",
-            "mobile_image": "shopify://shop_images/homepage_mobile.jpg",
+            "mobile_image": "shopify://shop_images/homepage_mobile-2.jpg",
             "image_overlay_color": "#000000",
             "image_overlay_opacity": 0,
             "image_size": 100
@@ -59,8 +59,8 @@
             "vertical_align": "bottom",
             "text_color": "#ffffff",
             "font_size": 24,
-            "image": "shopify://shop_images/homepage.jpg",
-            "mobile_image": "shopify://shop_images/homepage_mobile.jpg",
+            "image": "shopify://shop_images/1_3.jpg",
+            "mobile_image": "shopify://shop_images/4_3_a9d613a8-01bf-405d-ab84-5b37cce1b895.jpg",
             "image_overlay_color": "#000000",
             "image_overlay_opacity": 0,
             "image_size": 100
@@ -86,7 +86,8 @@
             "vertical_align": "middle",
             "text_color": "#ffffff",
             "font_size": 24,
-            "image": "shopify://shop_images/Picture_mk-dtf_us_pc_banner-pc-en-2560x600_411-1047_webp.png",
+            "image": "shopify://shop_images/homepage-1.jpg",
+            "mobile_image": "shopify://shop_images/homepage_mobile-1.jpg",
             "image_overlay_color": "#000000",
             "image_overlay_opacity": 0,
             "image_size": 100
