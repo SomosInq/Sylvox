@@ -478,26 +478,19 @@
     "image_blocks_xQffGw": {
       "type": "image-blocks",
       "blocks": {
-        "scenario_wwyq7f": {
-          "type": "scenario",
-          "settings": {
-            "title": "By the Pool",
-            "description": "Enjoy seamless 4K gaming like never before.",
-            "link": ""
-          }
-        },
-        "scenario_LKE49Q": {
-          "type": "scenario",
-          "settings": {
-            "title": "By the Pool",
-            "description": "Enjoy seamless 4K gaming like never before.",
-            "link": ""
-          }
-        },
         "scenario_iKkMc9": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Sylvox_1.png",
+            "image": "shopify://shop_images/poolside.png",
+            "title": "By the Pool",
+            "description": "Enjoy seamless 4K gaming like never before.",
+            "link": ""
+          }
+        },
+        "scenario_pKDNWY": {
+          "type": "scenario",
+          "disabled": true,
+          "settings": {
             "title": "By the Pool",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -506,7 +499,7 @@
         "scenario_gjBgAR": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Sylvox_2.png",
+            "image": "shopify://shop_images/patio.png",
             "title": "By the Garden or Patio",
             "description": "Enjoy your favorite content with unmatched brightness!",
             "link": ""
@@ -515,7 +508,7 @@
         "scenario_3mpzX7": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Sylvox_3.png",
+            "image": "shopify://shop_images/deck.png",
             "title": "By a Covered Deck",
             "description": "Enjoy seamless 4K gaming like never before.",
             "link": ""
@@ -524,7 +517,7 @@
         "scenario_WfHD6f": {
           "type": "scenario",
           "settings": {
-            "image": "shopify://shop_images/Sylvox_4.png",
+            "image": "shopify://shop_images/Terrace.png",
             "title": "By a Rooftop Terrace",
             "description": "Enjoy your favorite content with unmatched brightness!",
             "link": ""
@@ -532,9 +525,8 @@
         }
       },
       "block_order": [
-        "scenario_wwyq7f",
-        "scenario_LKE49Q",
         "scenario_iKkMc9",
+        "scenario_pKDNWY",
         "scenario_gjBgAR",
         "scenario_3mpzX7",
         "scenario_WfHD6f"
