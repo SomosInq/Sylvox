@@ -104,6 +104,24 @@
     },
     "somos_banner_H37yfk": {
       "type": "somos-banner",
+      "blocks": {
+        "heading_nV9gYe": {
+          "type": "heading",
+          "settings": {
+            "text": "outdoor TV",
+            "heading_tag": "h2",
+            "color": "#ffffff",
+            "italic": false,
+            "font_weight": "400",
+            "alignment": "center",
+            "font_size": 48,
+            "mobile_font_size": 24
+          }
+        }
+      },
+      "block_order": [
+        "heading_nV9gYe"
+      ],
       "name": "Somos Banner",
       "settings": {
         "section_width": "standard",
@@ -134,8 +152,8 @@
         "hide_mobile": false,
         "custom_class": "",
         "custom_id": "",
-        "text_alignment": "center",
-        "content_alignment": "center",
+        "text_alignment": "left",
+        "content_alignment": "left",
         "vertical_alignment": "center",
         "add_zoom_animation": false
       }
