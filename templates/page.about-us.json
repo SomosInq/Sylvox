@@ -17,7 +17,8 @@
           "settings": {
             "text": "Inspiring well-being with technology.",
             "color": "#f7f7f7",
-            "alignment": "center"
+            "alignment": "center",
+            "subheading_max_width": 100
           }
         },
         "heading_mUebgn": {
@@ -29,7 +30,8 @@
             "italic": false,
             "font_weight": "400",
             "alignment": "center",
-            "font_size": 48
+            "font_size": 48,
+            "mobile_font_size": 24
           }
         }
       },
@@ -45,8 +47,8 @@
         "custom_content_width": 90,
         "content_max_width": 880,
         "mobile_content_width": 90,
-        "section_height": 880,
-        "mobile_section_height": 500,
+        "section_height": 600,
+        "mobile_section_height": 400,
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/20105295d8aff1b84c44f90d2028131d1d967718_4e59f643-f30b-495d-ad46-515af7dd105b.jpg",
         "background_zoom": 100,
@@ -67,7 +69,9 @@
         "custom_class": "",
         "custom_id": "",
         "text_alignment": "center",
-        "vertical_alignment": "center"
+        "content_alignment": "center",
+        "vertical_alignment": "center",
+        "add_zoom_animation": false
       }
     },
     "image_text_7GbYEg": {
@@ -86,6 +90,7 @@
           "settings": {
             "text": "Founded by Mr. Golden, a visionary with decades of experience in display technology, Sylvox was created to make outdoor entertainment accessible, immersive, and enjoyable for everyone.",
             "font_size": 16,
+            "font_size_mobile": 22,
             "text_color": "#636363"
           }
         }
@@ -231,8 +236,8 @@
         "show_arrows": true,
         "show_dots": true,
         "slide_size": "large",
-        "slide_height": 900,
-        "slide_width": 1800
+        "slide_height": 400,
+        "slide_width": 600
       }
     },
     "image_text_ycy7Tj": {
