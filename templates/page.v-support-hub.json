@@ -153,7 +153,9 @@
           "type": "heading",
           "settings": {
             "title": "User Manual & FAQs",
-            "heading_size": "h3"
+            "heading_size": "h3",
+            "font_size": 32,
+            "text_color": "#636363"
           }
         }
       },
@@ -372,6 +374,7 @@
         "usp_item_NaBpxB": {
           "type": "usp_item",
           "settings": {
+            "content_alignment": "center",
             "icon": "shopify://shop_images/programming-module-three--code-three-module-programming-plugin--Streamline-Core.svg",
             "image_size": "medium",
             "title": "How to Choose?",
@@ -391,6 +394,7 @@
         "usp_item_Q3BNte": {
           "type": "usp_item",
           "settings": {
+            "content_alignment": "center",
             "icon": "shopify://shop_images/shopping-cart-basket-3--shopping-basket--Streamline-Core.svg",
             "image_size": "medium",
             "title": "How to Buy",
@@ -410,6 +414,7 @@
         "usp_item_zfY3AT": {
           "type": "usp_item",
           "settings": {
+            "content_alignment": "center",
             "icon": "shopify://shop_images/shopping-store-1--store-shop-shops-stores--Streamline-Core.svg",
             "image_size": "medium",
             "title": "Where to Buy",
@@ -440,7 +445,6 @@
         "heading_font_size": 32,
         "subtext": "",
         "heading_alignment": "center",
-        "box_height": 300,
         "show_arrows": true,
         "padding_top": 0,
         "padding_bottom": 60,
